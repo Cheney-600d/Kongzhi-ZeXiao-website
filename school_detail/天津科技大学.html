@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天津科技大学 - 控制类考研院校详情</title>
+<script src="../vendor/chart-4.5.1.umd.min.js"></script>
+<style>
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:#F5F0F7;color:#2d2d3d;margin:0;padding:0;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#5a4a7e,#8a5a8e);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:1.8rem}
+.meta{font-size:13px;opacity:.9}
+.intro{max-width:900px;margin:14px auto 0;font-size:14px;background:rgba(255,255,255,.12);padding:10px 14px;border-radius:10px}
+h2{border-left:4px solid #667eea;padding-left:10px;margin-top:28px;font-size:1.2rem}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(184,164,216,.2)}
+.card h3{margin:0 0 8px;font-size:1.05rem;color:#5a4a7e}
+.stat{font-size:14px;margin:4px 0}
+.score{font-size:13px;color:#555;margin:4px 0 10px}
+.subavg{font-size:14px;font-weight:600;color:#5a4a7e;margin:6px 0;padding:6px 10px;background:#f0ebf3;border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}
+th{background:#f0ebf3;white-space:nowrap}
+footer{text-align:center;color:#999;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>天津科技大学</h1>
+  <div class="meta">双非 · 其他 · 控制类考研</div>
+  <div class="intro">天津科技大学位于渤海之滨、海河之畔，是中央和地方共建、天津市重点建设高校，是以工为主、工理文农医经管法艺教育等学科协调发展的多科性大学，是天津双城之“滨城”唯一一所拥有本硕博完整教育体系的大学。学校始建于1958年，时名为河北轻工业学院，是我国首批4所轻工类本科院校之一，曾隶属轻工业部。</div>
+</header>
+<div class="wrap">
+  <h2>一、学院与专业</h2>
+  <div class="card">
+    <table><thead><tr><th>学院</th><th>专业代码</th><th>专业名称</th><th>招生计划</th><th>26实际录取</th><th>较25变化</th><th>初试科目</th><th>备注</th></tr></thead>
+    <tbody><tr><td></td><td>081100</td><td>控制科学与工程</td><td></td><td></td><td></td><td>101 思想政治理论；201 英语一；301 数学一；819 自动控制理论</td><td></td></tr>
+<tr><td></td><td>085400</td><td>电子信息</td><td></td><td></td><td></td><td>101 思想政治理论；204 英语二；302 数学二；819 自动控制理论</td><td></td></tr></tbody></table>
+  </div>
+  <h2>二、26考研复试分数线</h2>
+  <div class="card">
+    <table><thead><tr><th>学院</th><th>学科</th><th>政治</th><th>英语</th><th>业务课一</th><th>业务课二</th><th>总分</th></tr></thead>
+    <tbody></tbody></table>
+  </div>
+  <h2>三、历年招生人数</h2>
+  <div class="card"><p>暂无历年招生数据</p></div>
+  <h2>四、26考研录取情况分析</h2>
+  
+<div class="card">
+  <h3>三、26考研081100控制科学与工程录取情况分析</h3>
+  <p class="stat">进复试 <b></b> 人 · 实际录取 <b></b> 人 · 复录比 <b></b></p>
+  <p class="score">复试初试：最高  / 最低  / 平均 　|　录取初试：最高  / 最低  / 平均 </p>
+  
+  
+  <div style="height:220px;"><canvas id="chart-0"></canvas></div>
+  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
+  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-0');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [
+        { label: '复试人数', data: [], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: [], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+
+<div class="card">
+  <h3>四、26考研085400 电子信息01控制工程录取情况分析</h3>
+  <p class="stat">进复试 <b>28</b> 人 · 实际录取 <b>25</b> 人 · 复录比 <b></b></p>
+  <p class="score">复试初试：最高 376.0 / 最低 264.0 / 平均 314.86　|　录取初试：最高 376.0 / 最低 264.0 / 平均 316.81　|　专业课均分 101.0 · 数学均分 93.0</p>
+  <p class="subavg">各科均分：政治 60.6 · 英语 62.1 · 数学 93.0 · 专业课 101.0</p>
+  <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>374-376</td><td>1</td><td>1</td><td>100%</td><td>61</td><td>82</td><td>109</td><td>124</td><td>376</td><td></td></tr><tr><td>354-363</td><td>2</td><td>2</td><td>100%</td><td>66.5</td><td>64.5</td><td>91</td><td>136.5</td><td>358.5</td><td></td></tr><tr><td>344-353</td><td>2</td><td>2</td><td>100%</td><td>62.5</td><td>71.5</td><td>109.5</td><td>104.5</td><td>348</td><td></td></tr><tr><td>334-343</td><td>4</td><td>4</td><td>100%</td><td>64</td><td>66.75</td><td>108.75</td><td>98.3</td><td>337.75</td><td></td></tr><tr><td>324-333</td><td>2</td><td>2</td><td>100%</td><td>63</td><td>65.5</td><td>100</td><td>101.5</td><td>330</td><td></td></tr><tr><td>314-323</td><td>3</td><td>3</td><td>100%</td><td>58.33</td><td>47.67</td><td>104</td><td>107.7</td><td>317.67</td><td></td></tr><tr><td>304-313</td><td>4</td><td>4</td><td>100%</td><td>59.25</td><td>59.75</td><td>77.75</td><td>109.5</td><td>306.25</td><td></td></tr><tr><td>294-303</td><td>5</td><td>2</td><td>40%</td><td>58.4</td><td>61.4</td><td>81.6</td><td>96.4</td><td>297.5</td><td></td></tr><tr><td>284-293</td><td>1</td><td>1</td><td>100%</td><td>58</td><td>59</td><td>79</td><td>90</td><td>286</td><td></td></tr><tr><td>274-283</td><td>4</td><td>4</td><td>100%</td><td>58.25</td><td>60</td><td>87.25</td><td>73</td><td>278.5</td><td></td></tr></tbody></table>
+  <div style="height:220px;"><canvas id="chart-1"></canvas></div>
+  <div style="margin-top:10px">
+<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布（按总分段均分）</div>
+<div style="height:160px;"><canvas id="chart-1-math"></canvas></div>
+</div>
+<script>
+try {
+  var c3 = document.getElementById('chart-1-math');
+  new Chart(c3, {
+    type: 'bar',
+    data: {
+      labels: ["374-376", "354-363", "344-353", "334-343", "324-333", "314-323", "304-313", "294-303", "284-293", "274-283"],
+      datasets: [{ label: '均分', data: [109.0, 91.0, 109.5, 108.8, 100.0, 104.0, 77.8, 81.6, 79.0, 87.2], backgroundColor: 'rgba(99,102,241,0.7)' }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+  <div style="margin-top:10px">
+<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布（按总分段均分）</div>
+<div style="height:160px;"><canvas id="chart-1-course"></canvas></div>
+</div>
+<script>
+try {
+  var c3 = document.getElementById('chart-1-course');
+  new Chart(c3, {
+    type: 'bar',
+    data: {
+      labels: ["374-376", "354-363", "344-353", "334-343", "324-333", "314-323", "304-313", "294-303", "284-293", "274-283"],
+      datasets: [{ label: '均分', data: [124.0, 136.5, 104.5, 98.3, 101.5, 107.7, 109.5, 96.4, 90.0, 73.0], backgroundColor: 'rgba(79,70,229,0.7)' }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-1');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["374-376", "354-363", "344-353", "334-343", "324-333", "314-323", "304-313", "294-303", "284-293", "274-283"],
+      datasets: [
+        { label: '复试人数', data: ["1", "2", "2", "4", "2", "3", "4", "5", "1", "4"], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: ["1", "2", "2", "4", "2", "3", "4", "2", "1", "4"], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+  <footer>数据来源：《27考研择校宝典_版8》（控制类）· 仅供参考，最终以院校官方为准</footer>
+</div>
+</body>
+</html>

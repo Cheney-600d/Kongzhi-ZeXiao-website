@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陕西移动2026校园招聘数据分析报告</title>
+    <script src="../../vendor/chart-4.4.0.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* 头部区域 */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .header .data-count {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 30px;
+            font-size: 1em;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 卡片区域 */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* 核心指标卡片 */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .metric-value {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #667eea;
+            line-height: 1.2;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .metric-desc {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* 图表网格 */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            padding: 15px;
+        }
+
+        .chart-container.full-width {
+            grid-column: 1 / -1;
+            height: 400px;
+        }
+
+        /* 洞察框 */
+        .insight-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .insight-box h3 {
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .insight-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .insight-box li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+            color: #444;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .insight-box li:last-child {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .tag-highlight {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        /* 标签页 */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: #f0f0f0;
+            color: #555;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 表格样式 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .data-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .data-table th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .data-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+
+        .data-table tr:hover td {
+            background: #f8f9ff;
+        }
+
+        .edu-tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .edu-bachelor { background: #d4edda; color: #155724; }
+        .edu-master { background: #fff3cd; color: #856404; }
+        .edu-phd { background: #f8d7da; color: #721c24; }
+
+        .tier-tag {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .tier-985 { background: #f8d7da; color: #721c24; }
+        .tier-211 { background: #cce5ff; color: #004085; }
+        .tier-shuangfei { background: #e2e3e5; color: #383d41; }
+        .tier-haiwai { background: #e2ccff; color: #5a189a; }
+
+        /* 考研建议区域 */
+        .advice-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 24px;
+            margin-top: 25px;
+        }
+
+        .advice-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .advice-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .advice-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .advice-card p, .advice-card li {
+            font-size: 0.95em;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .advice-card ul {
+            padding-left: 20px;
+        }
+
+        .advice-card li {
+            margin-bottom: 8px;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .chart-container { height: 300px; }
+            .data-table { font-size: 0.8em; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.5em; }
+        }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+<style>
+.back-home {
+  position: fixed; top: 16px; left: 16px; z-index: 9999;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2); color: #fff;
+  box-shadow: 0 4px 16px rgba(102,126,234,0.3);
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+}
+.back-home:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(102,126,234,0.4); }
+</style>
+<a href="../就业去向index.html" class="back-home">← 返回首页</a>
+
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📊 陕西移动2026校园招聘数据分析报告</h1>
+            <p class="subtitle">中国移动通信集团陕西有限公司 · 2026年度应届毕业生拟录用名单分析</p>
+            <div class="data-count">👥 样本总量：414人 | 📅 数据年份：2026 | 🏢 覆盖单位：11个</div>
+        </div>
+
+        <!-- 核心指标卡片 -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">👥 总录用人数</div>
+                <div class="metric-value">414</div>
+                <div class="metric-desc">覆盖全省11个单位</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">🎓 硕士及以上学历</div>
+                <div class="metric-value">229</div>
+                <div class="metric-desc">占比55.3%，含博士8人</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">🏫 985/211院校</div>
+                <div class="metric-value">118</div>
+                <div class="metric-desc">占比28.5%</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">🌍 海外院校</div>
+                <div class="metric-value">28</div>
+                <div class="metric-desc">占比6.8%</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">👨 男性比例</div>
+                <div class="metric-value">64.7%</div>
+                <div class="metric-desc">268人</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">👩 女性比例</div>
+                <div class="metric-value">35.3%</div>
+                <div class="metric-desc">146人</div>
+            </div>
+        </div>
+
+        <!-- 图表区域 -->
+        <div class="card">
+            <div class="card-title">📈 数据可视化分析</div>
+
+            <div class="charts-grid">
+                <!-- Chart1: 各分公司录用人数 -->
+                <div class="chart-container full-width">
+                    <canvas id="chart1"></canvas>
+                </div>
+
+                <!-- Chart2: 学历分布 -->
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+
+                <!-- Chart3: 院校层级分布 -->
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+
+                <!-- Chart4: 最大生源校占比 -->
+                <div class="chart-container">
+                    <canvas id="chart4"></canvas>
+                </div>
+
+                <!-- Chart5: TOP5生源院校 -->
+                <div class="chart-container">
+                    <canvas id="chart5"></canvas>
+                </div>
+
+                <!-- Chart6: 性别分布 -->
+                <div class="chart-container">
+                    <canvas id="chart6"></canvas>
+                </div>
+
+                <!-- Chart7: 院校层级横向柱状图 -->
+                <div class="chart-container">
+                    <canvas id="chart7"></canvas>
+                </div>
+            </div>
+
+            <!-- 洞察框 -->
+            <div class="insight-box">
+                <h3>🔍 关键数据洞察</h3>
+                <ul>
+                    <li>📌 西安邮电大学是绝对主力生源校，录用147人，占总人数的35.5%，体现了通信行业对专业对口院校的偏好<span class="tag tag-highlight">核心生源</span></li>
+                    <li>📌 咸阳分公司录用人数最多（91人），占全省22.0%，西安分公司紧随其后（74人，17.9%）</li>
+                    <li>📌 硕士研究生占比53.4%，超过半数，博士8人（1.9%），整体学历层次较高<span class="tag tag-highlight">高学历</span></li>
+                    <li>📌 985/211院校毕业生共118人（28.5%），海外院校28人（6.8%），人才来源多元化</li>
+                    <li>📌 男性占比64.7%，女性35.3%，通信行业性别比例差异明显</li>
+                    <li>📌 省公司本部全部要求硕士及以上学历（含6名博士），门槛最高<span class="tag tag-highlight">门槛高</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 交互式表格 -->
+        <div class="card">
+            <div class="card-title">📋 详细录用名单</div>
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="showTab('all')">全部(414)</button>
+                <button class="tab-btn" onclick="showTab('省公司')">省公司(55)</button>
+                <button class="tab-btn" onclick="showTab('西安分公司')">西安分公司(74)</button>
+                <button class="tab-btn" onclick="showTab('咸阳分公司')">咸阳分公司(91)</button>
+                <button class="tab-btn" onclick="showTab('渭南分公司')">渭南分公司(39)</button>
+                <button class="tab-btn" onclick="showTab('榆林分公司')">榆林分公司(32)</button>
+                <button class="tab-btn" onclick="showTab('汉中分公司')">汉中分公司(31)</button>
+                <button class="tab-btn" onclick="showTab('铜川分公司')">铜川分公司(25)</button>
+                <button class="tab-btn" onclick="showTab('宝鸡分公司')">宝鸡分公司(21)</button>
+                <button class="tab-btn" onclick="showTab('安康分公司')">安康分公司(20)</button>
+                <button class="tab-btn" onclick="showTab('商洛分公司')">商洛分公司(14)</button>
+                <button class="tab-btn" onclick="showTab('延安分公司')">延安分公司(12)</button>
+            </div>
+            <div id="table-all" class="tab-content active">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>单位</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-all"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-省公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-省公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-西安分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-西安分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-咸阳分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-咸阳分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-渭南分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-渭南分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-榆林分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-榆林分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-汉中分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-汉中分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-铜川分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-铜川分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-宝鸡分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-宝鸡分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-安康分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-安康分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-商洛分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-商洛分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table-延安分公司" class="tab-content">
+                <div style="overflow-x:auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                        </thead>
+                        <tbody id="tbody-延安分公司"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 考研建议 -->
+        <div class="advice-section">
+            <h2>🎯 控制类考研择校建议</h2>
+            <p style="text-align:center; opacity:0.9;">基于陕西移动2026校招数据，为控制类考生提供以下择校参考</p>
+
+            <div class="advice-grid">
+                <div class="advice-card">
+                    <h4>🏆 冲刺院校（985/211）</h4>
+                    <ul>
+                        <li><strong>西安交通大学</strong>：录用21人，省内第一985，通信工程实力强</li>
+                        <li><strong>西北工业大学</strong>：录用12人，985院校，电子信息特色鲜明</li>
+                        <li><strong>西安电子科技大学</strong>：录用23人，211院校，"两电一邮"成员</li>
+                        <li><strong>北京邮电大学</strong>：录用多人，211院校，通信行业顶尖名校</li>
+                    </ul>
+                </div>
+
+                <div class="advice-card">
+                    <h4>🎓 稳妥院校（行业特色）</h4>
+                    <ul>
+                        <li><strong>西安邮电大学</strong>：录用147人！移动校招最大生源校，通信行业认可度高，性价比极高<span class="tag tag-highlight">强烈推荐</span></li>
+                        <li><strong>重庆邮电大学</strong>：录用多人，"四电四邮"之一</li>
+                        <li><strong>西北大学</strong>：录用13人，211院校，综合类强校</li>
+                    </ul>
+                </div>
+
+                <div class="advice-card">
+                    <h4>🌏 海外院校参考</h4>
+                    <ul>
+                        <li><strong>悉尼大学</strong>、<strong>墨尔本大学</strong>、<strong>新南威尔士大学</strong>：澳洲八大，QS排名高</li>
+                        <li><strong>南洋理工大学</strong>：亚洲顶尖，通信工程世界一流</li>
+                        <li><strong>格拉斯哥大学</strong>、<strong>谢菲尔德大学</strong>：英国名校，工科扎实</li>
+                    </ul>
+                </div>
+
+                <div class="advice-card">
+                    <h4>💡 择校策略建议</h4>
+                    <ul>
+                        <li>目标运营商就业：优先考虑<strong>西安邮电大学</strong>，专业对口、录用人数最多</li>
+                        <li>追求985/211：西电、交大、西工大是首选，院校层次高</li>
+                        <li>海外深造：关注QS前100院校，海外学历受认可</li>
+                        <li>专业选择：通信工程、电子信息工程、计算机科学与技术最对口</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 陕西移动2026校园招聘数据分析报告 | 数据仅供参考</p>
+            <p style="margin-top:10px; font-size:0.85em;">生成时间：2026年6月14日</p>
+        </div>
+    </div>
+
+    <script>
+        // 颜色常量
+        const colors = {
+            blue: '#3498db', red: '#e74c3c', orange: '#f39c12',
+            green: '#2ecc71', purple: '#9b59b6', gray: '#95a5a6', pink: '#e91e63'
+        };
+
+        Chart.defaults.font.family = "'Segoe UI', 'Microsoft YaHei', sans-serif";
+        Chart.defaults.font.size = 12;
+
+        // Chart1: 各分公司录用人数
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ["\u54b8\u9633\u5206\u516c\u53f8", "\u897f\u5b89\u5206\u516c\u53f8", "\u7701\u516c\u53f8", "\u6e2d\u5357\u5206\u516c\u53f8", "\u6986\u6797\u5206\u516c\u53f8", "\u6c49\u4e2d\u5206\u516c\u53f8", "\u94dc\u5ddd\u5206\u516c\u53f8", "\u5b9d\u9e21\u5206\u516c\u53f8", "\u5b89\u5eb7\u5206\u516c\u53f8", "\u5546\u6d1b\u5206\u516c\u53f8", "\u5ef6\u5b89\u5206\u516c\u53f8"],
+                datasets: [{
+                    label: '录用人数',
+                    data: [91, 74, 55, 39, 32, 31, 25, 21, 20, 14, 12],
+                    backgroundColor: [91, 74, 55, 39, 32, 31, 25, 21, 20, 14, 12].map(v => v >= 40 ? colors.red : v >= 20 ? colors.blue : colors.gray),
+                    borderWidth: 0,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '各分公司/地市录用人数分布', font: { size: 16, weight: 'bold' } },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const total = 414;
+                                const pct = (ctx.raw / total * 100).toFixed(1);
+                                return ctx.raw + '人 (' + pct + '%)';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 10 } }
+                }
+            }
+        });
+
+        // Chart2: 学历分布
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['本科 185人', '硕士研究生 221人', '博士 8人'],
+                datasets: [{
+                    data: [185, 221, 8],
+                    backgroundColor: [colors.green, colors.orange, colors.red],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '学历分布', font: { size: 14, weight: 'bold' } },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Chart3: 院校层级分布
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['双非 268人', '211 60人', '985 58人', '海外 28人'],
+                datasets: [{
+                    data: [268, 60, 58, 28],
+                    backgroundColor: [colors.gray, colors.blue, colors.red, colors.purple],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '院校层级分布', font: { size: 14, weight: 'bold' } },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Chart4: 最大生源校占比
+        const ctx4 = document.getElementById('chart4').getContext('2d');
+        new Chart(ctx4, {
+            type: 'doughnut',
+            data: {
+                labels: ['西安邮电大学 147人', '其他院校 267人'],
+                datasets: [{
+                    data: [147, 267],
+                    backgroundColor: [colors.red, colors.gray],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    title: { display: true, text: '最大生源校占比分析（西安邮电大学）', font: { size: 14, weight: 'bold' } },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Chart5: TOP5生源院校
+        const ctx5 = document.getElementById('chart5').getContext('2d');
+        const top5Labels = ["\u897f\u5b89\u90ae\u7535\u5927\u5b66", "\u897f\u5b89\u7535\u5b50\u79d1\u6280\u5927\u5b66", "\u897f\u5b89\u4ea4\u901a\u5927\u5b66", "\u897f\u5317\u5927\u5b66", "\u897f\u5317\u5de5\u4e1a\u5927\u5b66"];
+        const top5Values = [147, 23, 21, 13, 12];
+        new Chart(ctx5, {
+            type: 'bar',
+            data: {
+                labels: top5Labels,
+                datasets: [{
+                    label: '录用人数',
+                    data: top5Values,
+                    backgroundColor: [colors.red, colors.blue, colors.orange, colors.purple, colors.green],
+                    borderWidth: 0,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: { display: true, text: 'TOP5 生源院校', font: { size: 14, weight: 'bold' } },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const total = 414;
+                                const pct = (ctx.raw / total * 100).toFixed(1);
+                                return ctx.raw + '人 (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart6: 性别分布
+        const ctx6 = document.getElementById('chart6').getContext('2d');
+        new Chart(ctx6, {
+            type: 'pie',
+            data: {
+                labels: ['男 268人', '女 146人'],
+                datasets: [{
+                    data: [268, 146],
+                    backgroundColor: [colors.blue, colors.pink],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: { display: true, text: '性别分布', font: { size: 14, weight: 'bold' } },
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Chart7: 院校层级横向柱状图
+        const ctx7 = document.getElementById('chart7').getContext('2d');
+        new Chart(ctx7, {
+            type: 'bar',
+            data: {
+                labels: ['双非', '211', '985', '海外'],
+                datasets: [{
+                    label: '录用人数',
+                    data: [268, 60, 58, 28],
+                    backgroundColor: [colors.gray, colors.blue, colors.red, colors.purple],
+                    borderWidth: 0,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: { display: true, text: '院校层级分布', font: { size: 14, weight: 'bold' } },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                const total = 414;
+                                const pct = (ctx.raw / total * 100).toFixed(1);
+                                return ctx.raw + '人 (' + pct + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 表格数据
+        const tableData = {"咸阳分公司": [{"seq": 103, "name": "", "gender": "男", "school": "西北农林科技大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 104, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 105, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 106, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 107, "name": "", "gender": "男", "school": "太原理工大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 108, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 109, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 110, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 111, "name": "", "gender": "男", "school": "西安理工大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 112, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 113, "name": "", "gender": "男", "school": "西安建筑科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 114, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 115, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 116, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 117, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 118, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 119, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 120, "name": "", "gender": "男", "school": "澳门大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 121, "name": "", "gender": "女", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 122, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 123, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 124, "name": "", "gender": "男", "school": "华北电力大学", "edu": "本科", "tier": "211"}, {"seq": 125, "name": "", "gender": "女", "school": "暨南大学", "edu": "本科", "tier": "211"}, {"seq": 126, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 127, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 128, "name": "", "gender": "男", "school": "西安科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 129, "name": "", "gender": "女", "school": "西安工业大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 130, "name": "", "gender": "女", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 131, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 132, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 133, "name": "", "gender": "男", "school": "沈阳工业大学", "edu": "本科", "tier": "双非"}, {"seq": 134, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 135, "name": "", "gender": "男", "school": "绵阳城市学院", "edu": "本科", "tier": "双非"}, {"seq": 136, "name": "", "gender": "男", "school": "延安大学", "edu": "本科", "tier": "双非"}, {"seq": 137, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 138, "name": "", "gender": "女", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 139, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 140, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 141, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 142, "name": "", "gender": "女", "school": "伦敦大学学院", "edu": "硕士研究生", "tier": "海外"}, {"seq": 143, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 144, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 145, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 337, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 338, "name": "", "gender": "女", "school": "墨尔本大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 339, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 340, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 341, "name": "", "gender": "女", "school": "河北大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 342, "name": "", "gender": "男", "school": "伯明翰大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 343, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 344, "name": "", "gender": "女", "school": "西安工业大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 345, "name": "", "gender": "女", "school": "西安科技大学", "edu": "本科", "tier": "双非"}, {"seq": 346, "name": "", "gender": "女", "school": "安康学院", "edu": "本科", "tier": "双非"}, {"seq": 347, "name": "", "gender": "男", "school": "西安石油大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 348, "name": "", "gender": "男", "school": "西安工业大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 349, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 350, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 351, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 352, "name": "", "gender": "男", "school": "长安大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 353, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 354, "name": "", "gender": "男", "school": "长安大学", "edu": "本科", "tier": "211"}, {"seq": 355, "name": "", "gender": "男", "school": "长江大学", "edu": "本科", "tier": "双非"}, {"seq": 356, "name": "", "gender": "男", "school": "约克大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 357, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 358, "name": "", "gender": "女", "school": "武汉纺织大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 359, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 360, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 361, "name": "", "gender": "男", "school": "西安工程大学", "edu": "本科", "tier": "双非"}, {"seq": 362, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 363, "name": "", "gender": "女", "school": "咸阳师范学院", "edu": "本科", "tier": "双非"}, {"seq": 364, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 365, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 366, "name": "", "gender": "男", "school": "胡安卡洛斯国王大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 367, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 368, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 369, "name": "", "gender": "男", "school": "西安理工大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 370, "name": "", "gender": "男", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 371, "name": "", "gender": "女", "school": "西安科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 372, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 373, "name": "", "gender": "女", "school": "天津财经大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 374, "name": "", "gender": "男", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 375, "name": "", "gender": "男", "school": "莫纳什大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 376, "name": "", "gender": "女", "school": "陕西学前师范学院", "edu": "本科", "tier": "双非"}, {"seq": 377, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 378, "name": "", "gender": "男", "school": "新南威尔士大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 379, "name": "", "gender": "男", "school": "长安大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 380, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "本科", "tier": "211"}, {"seq": 381, "name": "", "gender": "男", "school": "吉林大学", "edu": "本科", "tier": "985"}, {"seq": 382, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 383, "name": "", "gender": "女", "school": "中国海洋大学", "edu": "本科", "tier": "985"}, {"seq": 384, "name": "", "gender": "男", "school": "中国矿业大学", "edu": "本科", "tier": "211"}], "西安分公司": [{"seq": 21, "name": "", "gender": "女", "school": "哈尔滨工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 22, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 23, "name": "", "gender": "男", "school": "香港中文大学", "edu": "博士", "tier": "海外"}, {"seq": 24, "name": "", "gender": "男", "school": "东北石油大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 25, "name": "", "gender": "男", "school": "谢菲尔德大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 26, "name": "", "gender": "女", "school": "江苏大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 27, "name": "", "gender": "女", "school": "圣路易斯华盛顿大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 28, "name": "", "gender": "男", "school": "加州大学圣地亚哥分校", "edu": "硕士研究生", "tier": "海外"}, {"seq": 29, "name": "", "gender": "女", "school": "北京师范大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 30, "name": "", "gender": "男", "school": "香港城市大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 31, "name": "", "gender": "男", "school": "格拉斯哥大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 32, "name": "", "gender": "男", "school": "南洋理工大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 33, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 34, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 35, "name": "", "gender": "男", "school": "加州大学圣地亚哥分校", "edu": "硕士研究生", "tier": "海外"}, {"seq": 36, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 37, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "博士", "tier": "211"}, {"seq": 38, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 39, "name": "", "gender": "女", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 40, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 41, "name": "", "gender": "女", "school": "杜伦大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 42, "name": "", "gender": "男", "school": "北京航空航天大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 43, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 44, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 45, "name": "", "gender": "男", "school": "西北农林科技大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 46, "name": "", "gender": "男", "school": "东北财经大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 47, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 48, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 49, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 50, "name": "", "gender": "男", "school": "伯明翰大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 51, "name": "", "gender": "女", "school": "格拉斯哥大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 52, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 53, "name": "", "gender": "男", "school": "中国科学院大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 54, "name": "", "gender": "男", "school": "悉尼大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 55, "name": "", "gender": "男", "school": "东南大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 56, "name": "", "gender": "女", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 274, "name": "", "gender": "女", "school": "哈尔滨工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 275, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 276, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 277, "name": "", "gender": "女", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 278, "name": "", "gender": "男", "school": "中国传媒大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 279, "name": "", "gender": "女", "school": "电子科技大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 280, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 281, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 282, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 283, "name": "", "gender": "男", "school": "悉尼大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 284, "name": "", "gender": "女", "school": "谢菲尔德大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 285, "name": "", "gender": "男", "school": "西南大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 286, "name": "", "gender": "女", "school": "香港大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 287, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 288, "name": "", "gender": "男", "school": "长安大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 289, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 290, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 291, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 292, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 293, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 294, "name": "", "gender": "女", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 295, "name": "", "gender": "男", "school": "吉林建筑大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 296, "name": "", "gender": "男", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 297, "name": "", "gender": "女", "school": "延安大学", "edu": "本科", "tier": "双非"}, {"seq": 298, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 299, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 300, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 301, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "本科", "tier": "211"}, {"seq": 302, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 303, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 304, "name": "", "gender": "男", "school": "马来西亚博特拉大学", "edu": "本科", "tier": "海外"}, {"seq": 305, "name": "", "gender": "女", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 306, "name": "", "gender": "男", "school": "齐齐哈尔大学", "edu": "本科", "tier": "双非"}, {"seq": 307, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 308, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 309, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 310, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 311, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}], "省公司": [{"seq": 1, "name": "", "gender": "女", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 2, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 3, "name": "", "gender": "男", "school": "北京邮电大学", "edu": "博士", "tier": "211"}, {"seq": 4, "name": "", "gender": "女", "school": "伊利诺伊大学厄巴纳香槟分校", "edu": "硕士研究生", "tier": "海外"}, {"seq": 5, "name": "", "gender": "女", "school": "中国科学院大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 6, "name": "", "gender": "女", "school": "西安交通大学", "edu": "博士", "tier": "985"}, {"seq": 7, "name": "", "gender": "男", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 8, "name": "", "gender": "男", "school": "中国科学院大学", "edu": "博士", "tier": "985"}, {"seq": 9, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 10, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 11, "name": "", "gender": "男", "school": "北京大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 12, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 13, "name": "", "gender": "男", "school": "北京邮电大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 14, "name": "", "gender": "女", "school": "北京邮电大学", "edu": "博士", "tier": "211"}, {"seq": 15, "name": "", "gender": "女", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 16, "name": "", "gender": "女", "school": "中国人民大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 17, "name": "", "gender": "男", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 18, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 19, "name": "", "gender": "男", "school": "武汉大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 20, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 239, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 240, "name": "", "gender": "女", "school": "上海交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 241, "name": "", "gender": "男", "school": "悉尼大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 242, "name": "", "gender": "男", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 243, "name": "", "gender": "男", "school": "电子科技大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 244, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 245, "name": "", "gender": "女", "school": "北京邮电大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 246, "name": "", "gender": "男", "school": "南洋理工大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 247, "name": "", "gender": "男", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 248, "name": "", "gender": "女", "school": "北京邮电大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 249, "name": "", "gender": "女", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 250, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 251, "name": "", "gender": "女", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 252, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 253, "name": "", "gender": "男", "school": "东南大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 254, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 255, "name": "", "gender": "男", "school": "北京邮电大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 256, "name": "", "gender": "男", "school": "北京理工大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 257, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 258, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 259, "name": "", "gender": "女", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 260, "name": "", "gender": "男", "school": "上海交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 261, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 262, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "博士", "tier": "211"}, {"seq": 263, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 264, "name": "", "gender": "男", "school": "中山大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 265, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 266, "name": "", "gender": "男", "school": "墨尔本大学", "edu": "硕士研究生", "tier": "海外"}, {"seq": 267, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 268, "name": "", "gender": "女", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 269, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "博士", "tier": "211"}, {"seq": 270, "name": "", "gender": "男", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 271, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 272, "name": "", "gender": "女", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 273, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}], "渭南分公司": [{"seq": 79, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 80, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 81, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 82, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 83, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 84, "name": "", "gender": "女", "school": "桂林电子科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 85, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 86, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 87, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 88, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 89, "name": "", "gender": "男", "school": "大连交通大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 90, "name": "", "gender": "男", "school": "西安工程大学", "edu": "本科", "tier": "双非"}, {"seq": 91, "name": "", "gender": "男", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 92, "name": "", "gender": "男", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 93, "name": "", "gender": "女", "school": "延安大学", "edu": "本科", "tier": "双非"}, {"seq": 94, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 95, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 96, "name": "", "gender": "男", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 97, "name": "", "gender": "女", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 98, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 99, "name": "", "gender": "男", "school": "兰州理工大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 100, "name": "", "gender": "男", "school": "商洛学院", "edu": "本科", "tier": "双非"}, {"seq": 101, "name": "", "gender": "女", "school": "中央财经大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 102, "name": "", "gender": "女", "school": "陕西师范大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 322, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 323, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 324, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 325, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 326, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "本科", "tier": "211"}, {"seq": 327, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 328, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 329, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 330, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 331, "name": "", "gender": "男", "school": "西北工业大学", "edu": "本科", "tier": "985"}, {"seq": 332, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 333, "name": "", "gender": "女", "school": "西安科技大学", "edu": "本科", "tier": "双非"}, {"seq": 334, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 335, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 336, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}], "榆林分公司": [{"seq": 57, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 58, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 59, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 60, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 61, "name": "", "gender": "女", "school": "中央民族大学", "edu": "本科", "tier": "985"}, {"seq": 62, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 63, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 64, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 65, "name": "", "gender": "女", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 66, "name": "", "gender": "男", "school": "东北电力大学", "edu": "本科", "tier": "双非"}, {"seq": 67, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 68, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 69, "name": "", "gender": "女", "school": "西安电子科技大学", "edu": "本科", "tier": "211"}, {"seq": 70, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 71, "name": "", "gender": "男", "school": "西安石油大学", "edu": "本科", "tier": "双非"}, {"seq": 72, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 73, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 74, "name": "", "gender": "男", "school": "榆林学院", "edu": "本科", "tier": "双非"}, {"seq": 75, "name": "", "gender": "女", "school": "西安科技大学", "edu": "本科", "tier": "双非"}, {"seq": 76, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 77, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 78, "name": "", "gender": "男", "school": "西安科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 312, "name": "", "gender": "女", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 313, "name": "", "gender": "男", "school": "河北科技大学", "edu": "本科", "tier": "双非"}, {"seq": 314, "name": "", "gender": "男", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 315, "name": "", "gender": "女", "school": "三峡大学", "edu": "本科", "tier": "双非"}, {"seq": 316, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 317, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 318, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 319, "name": "", "gender": "男", "school": "西安理工大学", "edu": "本科", "tier": "双非"}, {"seq": 320, "name": "", "gender": "男", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 321, "name": "", "gender": "女", "school": "西安科技大学", "edu": "硕士研究生", "tier": "双非"}], "汉中分公司": [{"seq": 179, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 180, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 181, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 182, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 183, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 184, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 185, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 186, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 187, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 188, "name": "", "gender": "女", "school": "西安石油大学", "edu": "本科", "tier": "双非"}, {"seq": 189, "name": "", "gender": "男", "school": "西安交通大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 190, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 191, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 192, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 193, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 194, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 195, "name": "", "gender": "女", "school": "重庆邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 196, "name": "", "gender": "男", "school": "陕西师范大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 197, "name": "", "gender": "女", "school": "华北电力大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 385, "name": "", "gender": "女", "school": "西安财经大学", "edu": "本科", "tier": "双非"}, {"seq": 386, "name": "", "gender": "男", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 387, "name": "", "gender": "女", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 388, "name": "", "gender": "女", "school": "西安工程大学", "edu": "本科", "tier": "双非"}, {"seq": 389, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 390, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 391, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 392, "name": "", "gender": "男", "school": "西安财经大学", "edu": "本科", "tier": "双非"}, {"seq": 393, "name": "", "gender": "男", "school": "黑龙江大学", "edu": "本科", "tier": "双非"}, {"seq": 394, "name": "", "gender": "男", "school": "长春理工大学", "edu": "本科", "tier": "双非"}, {"seq": 395, "name": "", "gender": "男", "school": "北京邮电大学", "edu": "本科", "tier": "211"}, {"seq": 396, "name": "", "gender": "女", "school": "太原理工大学", "edu": "硕士研究生", "tier": "211"}], "铜川分公司": [{"seq": 227, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 228, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 229, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 230, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 231, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 232, "name": "", "gender": "男", "school": "海南大学", "edu": "本科", "tier": "211"}, {"seq": 233, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 234, "name": "", "gender": "女", "school": "山西农业大学", "edu": "本科", "tier": "双非"}, {"seq": 235, "name": "", "gender": "男", "school": "西安财经大学", "edu": "本科", "tier": "双非"}, {"seq": 236, "name": "", "gender": "女", "school": "咸阳师范学院", "edu": "本科", "tier": "双非"}, {"seq": 237, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 238, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 402, "name": "", "gender": "女", "school": "西北工业大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 403, "name": "", "gender": "男", "school": "哈尔滨理工大学", "edu": "本科", "tier": "双非"}, {"seq": 404, "name": "", "gender": "女", "school": "衡阳师范学院", "edu": "本科", "tier": "双非"}, {"seq": 405, "name": "", "gender": "男", "school": "湖南理工学院", "edu": "硕士研究生", "tier": "双非"}, {"seq": 406, "name": "", "gender": "女", "school": "兰州文理学院", "edu": "本科", "tier": "双非"}, {"seq": 407, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 408, "name": "", "gender": "女", "school": "西安建筑科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 409, "name": "", "gender": "女", "school": "山东财经大学", "edu": "本科", "tier": "双非"}, {"seq": 410, "name": "", "gender": "女", "school": "贵州大学", "edu": "本科", "tier": "211"}, {"seq": 411, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 412, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 413, "name": "", "gender": "男", "school": "电子科技大学", "edu": "本科", "tier": "985"}, {"seq": 414, "name": "", "gender": "女", "school": "西安科技大学", "edu": "硕士研究生", "tier": "双非"}], "宝鸡分公司": [{"seq": 146, "name": "", "gender": "男", "school": "西北农林科技大学", "edu": "硕士研究生", "tier": "985"}, {"seq": 147, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 148, "name": "", "gender": "男", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 149, "name": "", "gender": "女", "school": "西北大学", "edu": "硕士研究生", "tier": "211"}, {"seq": 150, "name": "", "gender": "女", "school": "西北工业大学", "edu": "本科", "tier": "985"}, {"seq": 151, "name": "", "gender": "女", "school": "西安科技大学", "edu": "本科", "tier": "双非"}, {"seq": 152, "name": "", "gender": "女", "school": "西安建筑科技大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 153, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 154, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 155, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 156, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 157, "name": "", "gender": "男", "school": "宝鸡文理学院", "edu": "硕士研究生", "tier": "双非"}, {"seq": 158, "name": "", "gender": "女", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 159, "name": "", "gender": "男", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 160, "name": "", "gender": "女", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 161, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 162, "name": "", "gender": "女", "school": "桂林电子科技大学", "edu": "本科", "tier": "双非"}, {"seq": 163, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 164, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 165, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 166, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}], "安康分公司": [{"seq": 198, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 199, "name": "", "gender": "女", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 200, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 201, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 202, "name": "", "gender": "女", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 203, "name": "", "gender": "男", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 204, "name": "", "gender": "女", "school": "西安财经大学", "edu": "本科", "tier": "双非"}, {"seq": 205, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 206, "name": "", "gender": "男", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 207, "name": "", "gender": "男", "school": "西安石油大学", "edu": "本科", "tier": "双非"}, {"seq": 208, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 209, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 210, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 211, "name": "", "gender": "男", "school": "陕西理工大学", "edu": "本科", "tier": "双非"}, {"seq": 212, "name": "", "gender": "女", "school": "西安工程大学", "edu": "本科", "tier": "双非"}, {"seq": 397, "name": "", "gender": "男", "school": "西北政法大学", "edu": "本科", "tier": "双非"}, {"seq": 398, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 399, "name": "", "gender": "男", "school": "长春工程学院", "edu": "本科", "tier": "双非"}, {"seq": 400, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 401, "name": "", "gender": "男", "school": "西安建筑科技大学", "edu": "本科", "tier": "双非"}], "商洛分公司": [{"seq": 213, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 214, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 215, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 216, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 217, "name": "", "gender": "女", "school": "陕西科技大学", "edu": "本科", "tier": "双非"}, {"seq": 218, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 219, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 220, "name": "", "gender": "男", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 221, "name": "", "gender": "男", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 222, "name": "", "gender": "男", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 223, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 224, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 225, "name": "", "gender": "男", "school": "渭南师范学院", "edu": "本科", "tier": "双非"}, {"seq": 226, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}], "延安分公司": [{"seq": 167, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 168, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 169, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 170, "name": "", "gender": "女", "school": "宝鸡文理学院", "edu": "本科", "tier": "双非"}, {"seq": 171, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 172, "name": "", "gender": "男", "school": "西安工业大学", "edu": "本科", "tier": "双非"}, {"seq": 173, "name": "", "gender": "女", "school": "西北大学", "edu": "本科", "tier": "211"}, {"seq": 174, "name": "", "gender": "女", "school": "西安石油大学", "edu": "本科", "tier": "双非"}, {"seq": 175, "name": "", "gender": "女", "school": "西安邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 176, "name": "", "gender": "男", "school": "西安邮电大学", "edu": "硕士研究生", "tier": "双非"}, {"seq": 177, "name": "", "gender": "男", "school": "重庆邮电大学", "edu": "本科", "tier": "双非"}, {"seq": 178, "name": "", "gender": "男", "school": "西安电子科技大学", "edu": "硕士研究生", "tier": "211"}]};
+        const totalRecords = 414;
+
+        // 学历标签样式
+        function getEduClass(edu) {
+            if (edu === '本科') return 'edu-bachelor';
+            if (edu === '硕士研究生') return 'edu-master';
+            return 'edu-phd';
+        }
+
+        // 院校层级标签样式
+        function getTierClass(tier) {
+            if (tier === '985') return 'tier-985';
+            if (tier === '211') return 'tier-211';
+            if (tier === '海外') return 'tier-haiwai';
+            return 'tier-shuangfei';
+        }
+
+        // 渲染全部表格
+        function renderAllTable() {
+            const tbody = document.getElementById('tbody-all');
+            let html = '';
+            let allRecords = [];
+            for (let unit in tableData) {
+                allRecords = allRecords.concat(tableData[unit]);
+            }
+            allRecords.sort((a, b) => a.seq - b.seq);
+            allRecords.forEach(r => {
+                html += `<tr><td>${r.seq}</td><td>${r.unit || ''}</td><td>${r.gender}</td><td>${r.school}</td>` +
+                        `<td><span class="edu-tag ${getEduClass(r.edu)}">${r.edu}</span></td>` +
+                        `<td><span class="tier-tag ${getTierClass(r.tier)}">${r.tier}</span></td></tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // 渲染分公司表格
+        function renderUnitTable(unit) {
+            const tbody = document.getElementById('tbody-' + unit);
+            if (!tbody) return;
+            let html = '';
+            const records = tableData[unit] || [];
+            records.forEach(r => {
+                html += `<tr><td>${r.seq}</td><td>${r.gender}</td><td>${r.school}</td>` +
+                        `<td><span class="edu-tag ${getEduClass(r.edu)}">${r.edu}</span></td>` +
+                        `<td><span class="tier-tag ${getTierClass(r.tier)}">${r.tier}</span></td></tr>`;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // 标签页切换
+        function showTab(tabName) {
+            // 切换按钮状态
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 切换内容
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            if (tabName === 'all') {
+                document.getElementById('table-all').classList.add('active');
+            } else {
+                const unitId = 'table-' + tabName;
+                const el = document.getElementById(unitId);
+                if (el) el.classList.add('active');
+            }
+        }
+
+        // 初始化渲染
+        renderAllTable();
+        for (let unit in tableData) {
+            renderUnitTable(unit);
+        }
+    </script>
+</body>
+</html>

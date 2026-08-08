@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>备考时间线 - 考研必知常识</title>
+  <meta name="description" content="27考研全年备考总时间线、重要时间节点详解、各阶段复习规划、复试调剂全流程指南">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* 页面专属样式 */
+    .phase-card { border-left: 3px solid #fb7299; }
+    .phase-card.blue { border-left-color: #fb7299; }
+    .phase-card.green { border-left-color: #2e7d32; }
+    .phase-card.red { border-left-color: #fb7299; }
+    .phase-card.purple { border-left-color: #7b1fa2; }
+
+    .phase-label {
+      display: inline-block; padding: 3px 10px; border-radius: 6px;
+      font-size: .78rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .phase-label.orange { background: #fff0f3; color: #fb7299; }
+    .phase-label.blue { background: #e8f0fe; color: #fb7299; }
+    .phase-label.green { background: #e8f5e9; color: #2e7d32; }
+    .phase-label.red { background: #fff0f3; color: #fb7299; }
+    .phase-label.purple { background: #f3e5f5; color: #7b1fa2; }
+
+    .timeline-section { margin-bottom: 36px; }
+    .timeline-section-title {
+      font-size: 1.3rem; font-weight: 700; color: #fb7299;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .timeline-section-title .icon { font-size: 1.4rem; }
+
+    .key-dates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+    .key-date-card {
+      background: #fff; border-radius: 6px; padding: 18px;
+      border: 1px solid #e3e5e7;
+    }
+    .key-date-card .date-tag {
+      display: inline-block; background: #fb7299; color: #fff;
+      padding: 3px 10px; border-radius: 6px; font-size: .8rem; font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .key-date-card .date-title { font-weight: 700; color: #fb7299; margin-bottom: 6px; }
+    .key-date-card p { font-size: .9rem; color: #555; line-height: 1.7; }
+
+    .stage-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .stage-item {
+      background: #fff; border-radius: 6px; padding: 20px;
+      border: 1px solid #e3e5e7;
+    }
+    .stage-item .stage-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
+    }
+    .stage-item .stage-name { font-weight: 700; color: #fb7299; font-size: 1.05rem; }
+    .stage-item .stage-time { font-size: .8rem; color: #888; }
+    .stage-item .stage-task { color: #555; font-size: .92rem; line-height: 1.7; }
+    .stage-item .stage-task strong { color: #fb7299; }
+
+    .checklist { list-style: none; padding: 0; }
+    .checklist li {
+      padding: 6px 0 6px 26px; position: relative; font-size: .92rem; color: #444;
+    }
+    .checklist li::before {
+      content: '✓'; position: absolute; left: 0; top: 5px;
+      color: #2e7d32; font-weight: 700; font-size: .9rem;
+    }
+
+    .tag-group { margin-top: 10px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+      .key-dates-grid { grid-template-columns: 1fr; }
+    }
+
+    .table-responsive { overflow-x: auto; }
+    .simple-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    .simple-table th, .simple-table td {
+      padding: 10px 12px; text-align: left; border-bottom: 1px solid #fff0f3; font-size: .9rem;
+    }
+    .simple-table th { background: #f0f4f8; font-weight: 600; color: #fb7299; }
+    .simple-table tr:nth-child(even) { background: #fafbfc; }
+  </style>
+
+</head>
+<body>
+<!-- 返回首页（固定） -->
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+  ← 返回首页
+</a>
+
+<main class="page-content">
+    <div class="container">
+
+      <!-- 面包屑 -->
+      <div class="breadcrumb">
+        <a href="index.html">首页</a> &gt; 备考时间线
+      </div>
+
+      <!-- ==========================================
+           一、全年备考总时间线概览
+           ========================================== -->
+      <section class="section">
+        <h2 class="section-title">📊 27考研全年备考总时间线</h2>
+
+        <div class="stage-list">
+          <div class="stage-item phase-card">
+            <div class="stage-header">
+              <span class="stage-name">🎯 准备阶段</span>
+              <span class="stage-time">现在 - 2026.2月</span>
+            </div>
+            <div class="stage-task">
+              <strong>核心任务：</strong>择校择专业、收集资料、联系学长学姐<br>
+              确定阶梯型目标院校（冲刺/稳妥/保底），备好公共课教材与专业课指定书目、历年真题。可以开始数学视频课、英语单词的预热学习。
+            </div>
+          </div>
+          <div class="stage-item phase-card blue">
+            <div class="stage-header">
+              <span class="stage-name">📚 基础阶段</span>
+              <span class="stage-time">2026.3 - 6月</span>
+            </div>
+            <div class="stage-task">
+              <strong>核心任务：</strong>打牢公共课基础、专业课初步理解<br>
+              英语单词2-3遍+长难句；数学高数拉完一遍+课后习题；专业课通读教材+构建知识框架。每天6-8小时。
+            </div>
+          </div>
+          <div class="stage-item phase-card green">
+            <div class="stage-header">
+              <span class="stage-name">🔥 强化阶段</span>
+              <span class="stage-time">2026.7 - 8月</span>
+            </div>
+            <div class="stage-task">
+              <strong>核心任务：</strong>暑期黄金期、全面强化知识点<br>
+              没有课程干扰，可全身心投入。英语大范围做阅读+精翻；数学强化复习+建立错题本；政治开始系统学习；专业课深入理解。每天8-10小时。
+            </div>
+          </div>
+          <div class="stage-item phase-card red">
+            <div class="stage-header">
+              <span class="stage-name">📝 冲刺阶段</span>
+              <span class="stage-time">2026.9 - 11月</span>
+            </div>
+            <div class="stage-task">
+              <strong>核心任务：</strong>真题模拟演练、查漏补缺<br>
+              各科进入真题阶段。英语二刷/三刷阅读+准备作文模板；数学真题套卷严格计时；政治二刷1000题+背诵分析题素材；专业课真题研究+多轮背诵。每天10-12小时。
+            </div>
+          </div>
+          <div class="stage-item phase-card purple">
+            <div class="stage-header">
+              <span class="stage-name">🏁 模考阶段</span>
+              <span class="stage-time">2026.12月</span>
+            </div>
+            <div class="stage-task">
+              <strong>核心任务：</strong>全真模拟考试、调整最佳心态<br>
+              每周1-2次全科模拟，严格按照考试时间。使用肖四肖八（政治）、张剑黄皮书（英语）、李林四套卷（数学）等高质量模拟题，训练答题速度与心态。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           二、重要时间节点详解
+           ========================================== -->
+      <section class="section">
+        <h2 class="section-title">📅 考研重要时间节点详解</h2>
+
+        <div class="timeline-section">
+          <div class="timeline-section-title"><span class="icon">🗓️</span> 第一阶段：9-12月（报名与初试）</div>
+          <div class="key-dates-grid">
+            <div class="key-date-card">
+              <span class="date-tag">9月中上旬</span>
+              <div class="date-title">📖 考试大纲公布</div>
+              <p>公共课考纲公布（看机构总结即可）。<strong class="key-point">目标院校专业课考纲需重点关注</strong>，大部分不会变，但有的会微调，有的会直接换专业课，有的专硕换成考数学一/英语一。如遇重大变动，建议直接换学校。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">9月中下旬</span>
+              <div class="date-title">💬 网上咨询周</div>
+              <p>省级招办咨询+目标院校咨询。回答一般比较官方，可重点问：历年真题是否公开、多少分比较稳、四六级没过/双非/跨专业是否歧视等问题。</p>
+            </div>
+            <div class="key-date-card" id="pre-registration">
+              <span class="date-tag">9月24-27日</span>
+              <div class="date-title">🚀 预报名（9:00开抢）</div>
+              <p><strong class="key-point">主要目的：抢考点！</strong> 同时分担研招网压力。报了后一般不更改。报名费约180元（各省略有差异）。<strong>建议9月24日9:00准时登录研招网。</strong></p>
+            </div>
+            <div class="key-date-card" id="formal-registration">
+              <span class="date-tag">10月10-31日</span>
+              <div class="date-title">✍️ 正式报名</div>
+              <p>预报名成功可不用再报。三个关键点：<strong>报考单位、报考专业、报考点</strong>。缴费成功+生成报名号=报名成功。可随时重报，但需谨慎操作。</p>
+            </div>
+            <div class="key-date-card" id="online-confirmation">
+              <span class="date-tag">11月</span>
+              <div class="date-title">📷 网上确认</div>
+              <p>确认个人信息+上传照片（准考证和未来学生证上用）。各地时间不同，需密切关注<strong class="key-point">报考点</strong>通知，不是目标院校的通知。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">12月中旬</span>
+              <div class="date-title">🖨️ 打印准考证</div>
+              <p>考前一周左右，登录学信网/研招网打印。账号密码务必记好！准考证是入场凭证，<strong class="key-point">建议多打印几份备用</strong>。</p>
+            </div>
+            <div class="key-date-card" id="initial-exam">
+              <span class="date-tag">12月下旬</span>
+              <div class="date-title">📝 初试</div>
+              <p>第一天上午政治/管理类联考，下午英语；第二天上午数学/专业课一，下午专业课二。27考研预计2026年12月下旬举行。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <div class="timeline-section-title"><span class="icon">📆</span> 第二阶段：次年1-6月（出分与录取）</div>
+          <div class="key-dates-grid">
+            <div class="key-date-card" id="score-release">
+              <span class="date-tag">2月下旬</span>
+              <div class="date-title">📊 初试成绩公布</div>
+              <p>27考研预计2027年2月底出分（2026年闰年，时间可能偏晚）。<strong class="key-point">出分后需立即估分，一周内完成</strong>，否则容易忘记答题情况。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">3月初</span>
+              <div class="date-title">📈 国家线公布</div>
+              <p>34所自划线高校先公布，随后国家线公布。过国家线理论上就有机会调剂。一周后各院校公布复试线和复试细则。</p>
+            </div>
+            <div class="key-date-card" id="re-exam">
+              <span class="date-tag">3月中下旬</span>
+              <div class="date-title">🎤 复试</div>
+              <p>笔试（专业课相关课程）+ 面试（口语、综合面试、专业面试）。25考研新变化：<strong class="key-point">统一复试时间</strong>，各院校集中在相近时间段复试。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">4月8日左右</span>
+              <div class="date-title">🔄 调剂系统开放</div>
+              <p>校内调剂+校外调剂。冷门专业/学校、名校捡漏名额常有调剂。注意警惕<strong class="key-point">"黑校"</strong>刷一志愿招调剂！</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">4月底前</span>
+              <div class="date-title">✅ 确定拟录取</div>
+              <p>复试通过后等待拟录取通知。确认拟录取后，恭喜你上岸！接下来是体检、政审等流程。录取工作4月底前全部完成。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">6月</span>
+              <div class="date-title">📮 录取通知书</div>
+              <p>期待已久的录取通知书发放。接下来有将近5个月的自由时间，可以好好放松，为研究生生活做准备。</p>
+            </div>
+            <div class="key-date-card">
+              <span class="date-tag">9月</span>
+              <div class="date-title">🎓 报到入学</div>
+              <p>正式报到入学，开启研究生生活！新的征程，新的挑战，新的机遇在等着你。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           三、各阶段详细规划
+           ========================================== -->
+      <section class="section">
+        <h2 class="section-title">📋 各阶段详细规划</h2>
+
+        <!-- 准备阶段 -->
+        <div class="card phase-card" id="preparation">
+          <div class="card-title">
+            <span class="phase-label orange">准备阶段</span>
+            <span style="color:#888; font-size:.9rem; font-weight:400;">现在 - 2026年2月</span>
+          </div>
+          <div class="card-body">
+            <p>准备阶段是成功的基石，充分的调研与准备能让后续复习事半功倍。<strong class="key-point">记住：选择比努力更重要！</strong></p>
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">🎯 择校择专业</h4>
+                <ul class="checklist">
+                  <li>确定阶梯型目标院校：冲刺、稳妥、保底</li>
+                  <li>明确专业方向和职业规划</li>
+                  <li>参考学科评估和院校排名</li>
+                  <li>初步判断难度和竞争程度</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📚 收集资料</h4>
+                <ul class="checklist">
+                  <li>公共课：教材、习题册、真题</li>
+                  <li>专业课：指定书目、历年真题</li>
+                  <li>目标院校老师论文和著作</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:14px;">
+              <h4 style="color:#fb7299; margin-bottom:8px;">👥 联系学长学姐</h4>
+              <p>获取报录比、压分情况、复试公平性等"内幕"信息。了解真实的竞争情况，获取专业课复习经验，咨询复试流程和注意事项。</p>
+            </div>
+            <div class="tip-box" style="margin-top:16px;">
+              <div class="tip-title">💡 核心建议</div>
+              <p>择校时要客观评估自身实力，选择<strong>"跳一跳够得着"</strong>的学校。不要好高骛远，也不要过于保守。同时可以开始数学视频课、英语单词的预热学习。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 基础阶段 -->
+        <div class="card phase-card blue" id="foundation">
+          <div class="card-title">
+            <span class="phase-label blue">基础阶段</span>
+            <span style="color:#888; font-size:.9rem; font-weight:400;">2026年3月 - 6月</span>
+          </div>
+          <div class="card-body">
+            <p>基础阶段是考研备考的重中之重，主要任务是<strong class="key-point">打牢基础</strong>。建议每天学习6-8小时。</p>
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">🗣️ 英语</h4>
+                <p><strong>核心任务：</strong>单词2-3遍 + 长难句 + 阅读基础</p>
+                <ul class="checklist">
+                  <li>每日背单词，利用艾宾浩斯遗忘曲线复习</li>
+                  <li>推荐工具：Anki、墨墨背单词</li>
+                  <li>完成词汇1-2轮，能独立分析长难句</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">🔢 数学</h4>
+                <p><strong>核心任务：</strong>高数拉完一遍 + 理解概念 + 课后习题</p>
+                <ul class="checklist">
+                  <li>教材：同济高数/线代、浙大概率</li>
+                  <li>视频课：武忠祥/张宇（高数）、李永乐（线代）</li>
+                  <li>理解基本概念，完成课后习题</li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-top:14px;">
+              <h4 style="color:#fb7299; margin-bottom:8px;">🔬 专业课</h4>
+              <p><strong>核心任务：</strong>通读教材 + 构建框架</p>
+              <div class="two-col">
+                <div>
+                  <strong>文科类：</strong>通读教材，构建知识框架，使用思维导图（XMind、MindMaster）
+                </div>
+                <div>
+                  <strong>理工科类：</strong>精读教材，理解公式推导和应用条件
+                </div>
+              </div>
+              <p style="margin-top:8px;"><strong>阶段目标：</strong>对知识体系有宏观认识。</p>
+            </div>
+            <div class="tip-box warning" style="margin-top:16px;">
+              <div class="tip-title">⚠️ 重要提醒</div>
+              <p><strong>基础不牢，地动山摇！</strong>这个阶段不要急于求成，要稳扎稳打，把每个知识点都理解透彻。数学至少要完成高数上册的学习，英语单词过完1-2遍。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 强化阶段 -->
+        <div class="card phase-card green" id="intensive">
+          <div class="card-title">
+            <span class="phase-label green">强化阶段</span>
+            <span style="color:#888; font-size:.9rem; font-weight:400;">2026年7月 - 8月</span>
+          </div>
+          <div class="card-body">
+            <p>强化阶段是考研备考的<strong class="key-point">黄金时期</strong>，也是拉开与竞争对手差距的关键期。建议每天学习8-10小时，保持高效专注。</p>
+
+            <div class="tip-box info" style="margin:14px 0;">
+              <div class="tip-title">🔥 为什么暑期是黄金期？</div>
+              <p>没有课程和考试干扰，可以全身心投入复习。这是进行系统性强化训练、攻克重难点的最佳时机。</p>
+            </div>
+
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">❌ 暑期复习常见陷阱</h4>
+                <ul class="checklist">
+                  <li>回家复习：家里学习氛围差，效率低</li>
+                  <li>盲目跟风：没有自己的节奏和规划</li>
+                  <li>只学不练：看视频不做题，眼高手低</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">✅ 各科强化重点</h4>
+                <ul class="checklist">
+                  <li><strong>英语：</strong>大范围做阅读，精翻文章，总结解题技巧</li>
+                  <li><strong>数学：</strong>强化复习，复刷习题册，建立错题本</li>
+                  <li><strong>政治：</strong>开始系统学习，看视频+做1000题</li>
+                  <li><strong>专业课：</strong>深入理解，开始第一轮背诵（文科）</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tip-box warning" style="margin-top:16px;">
+              <div class="tip-title">⚠️ 记住这句话</div>
+              <p><strong>暑期不努力，九月徒伤悲！</strong>建议留校或去图书馆自习，保持规律作息和高效学习状态。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 冲刺阶段 -->
+        <div class="card phase-card red" id="sprint">
+          <div class="card-title">
+            <span class="phase-label red">冲刺阶段</span>
+            <span style="color:#888; font-size:.9rem; font-weight:400;">2026年9月 - 11月</span>
+          </div>
+          <div class="card-body">
+            <p>冲刺阶段是考研备考的<strong class="key-point">决胜时期</strong>，核心是从"知识点学习"转向"实战能力提升"。建议每天学习10-12小时，保持高强度、高效率。</p>
+
+            <div class="tip-box info" style="margin:14px 0;">
+              <div class="tip-title">👑 为什么真题是王？</div>
+              <p>真题是最好的复习资料，没有任何模拟题能比真题更能反映考试的真实情况。通过研究真题，你可以了解命题规律、把握高频考点、熟悉考试节奏、检验复习效果。</p>
+            </div>
+
+            <div class="table-responsive">
+              <table class="simple-table">
+                <thead>
+                  <tr><th>科目</th><th>冲刺重点任务</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>英语</strong></td>
+                    <td>阅读二刷/三刷真题；作文准备模板；小三门（完形、新题型、翻译）专项训练</td>
+                  </tr>
+                  <tr>
+                    <td><strong>数学</strong></td>
+                    <td>真题套卷从2005年起，每天一套严格计时，认真分析总结得失</td>
+                  </tr>
+                  <tr>
+                    <td><strong>政治</strong></td>
+                    <td>二刷1000题；学习腿姐技巧班；背诵分析题模板素材；关注时政热点</td>
+                  </tr>
+                  <tr>
+                    <td><strong>专业课</strong></td>
+                    <td>真题研究分析命题风格；多轮背诵（二轮、三轮）；模拟答题训练速度</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="tip-box success" style="margin-top:16px;">
+              <div class="tip-title">✅ 冲刺阶段黄金法则</div>
+              <p>反复研究真题，把每一道真题都搞懂搞透。同时要开始关注时政热点（政治）、背诵作文模板（英语）、整理答题模板（专业课）。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 模考阶段 -->
+        <div class="card phase-card purple" id="mock">
+          <div class="card-title">
+            <span class="phase-label purple">模考阶段</span>
+            <span style="color:#888; font-size:.9rem; font-weight:400;">2026年12月</span>
+          </div>
+          <div class="card-body">
+            <p>模考阶段的核心是通过全真模拟检验复习成果、调整考试心态、训练答题速度。每周进行1-2次全科模拟，严格按照考试时间（上午政治/数学，下午英语/专业课）。</p>
+
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📋 模拟考试操作指南</h4>
+                <ul class="checklist">
+                  <li>使用标准答题纸作答，规范书写</li>
+                  <li>训练卷面整洁度</li>
+                  <li>模拟后及时复盘，深入分析错题</li>
+                  <li>总结时间分配策略</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📚 经典模拟卷推荐</h4>
+                <ul class="checklist">
+                  <li><strong>政治：</strong>肖四、肖八</li>
+                  <li><strong>英语：</strong>张剑黄皮书</li>
+                  <li><strong>数学：</strong>李林四套卷</li>
+                  <li><strong>专业课：</strong>目标院校真题</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           四、出分后全流程
+           ========================================== -->
+      <section class="section">
+        <h2 class="section-title">🔄 出分后全流程：估分 · 复试 · 调剂</h2>
+
+        <!-- 估分与准备 -->
+        <div class="card" id="estimate">
+          <div class="card-title">📊 出分等待阶段（1-2月）：估分与准备</div>
+          <div class="card-body">
+            <p>考研结束到出分有近两个月时间，<strong class="key-point">考试结束后3天内要完成估分</strong>，此时记忆最清晰。估分的目的是为了提前规划下一步行动，不要等到出分后再手忙脚乱。</p>
+
+            <div class="stage-list" style="margin-top:16px;">
+              <div class="stage-item" style="border-top:3px solid #2e7d32;">
+                <div class="stage-name" style="color:#2e7d32;">情况一：估分很稳</div>
+                <div class="stage-task">
+                  <strong>准备复试</strong><br>
+                  复习专业课笔试、准备面试材料、联系导师。跨考同学要狂补专业课，不需要像初试那样准备，会做题就行。
+                </div>
+              </div>
+              <div class="stage-item" style="border-top:3px solid #fb7299;">
+                <div class="stage-name" style="color:#fb7299;">情况二：擦院线</div>
+                <div class="stage-task">
+                  <strong>两手准备</strong><br>
+                  先准备着复试，同时关注调剂信息，多关注目标院校动态。
+                </div>
+              </div>
+              <div class="stage-item" style="border-top:3px solid #fb7299;">
+                <div class="stage-name" style="color:#fb7299;">情况三：擦国家线</div>
+                <div class="stage-task">
+                  <strong>重点关注调剂</strong><br>
+                  重点关注B区调剂，收集调剂院校信息，准备调剂材料。
+                </div>
+              </div>
+              <div class="stage-item" style="border-top:3px solid #aaa;">
+                <div class="stage-name" style="color:#888;">情况四：没估分/不想估</div>
+                <div class="stage-task">
+                  <strong>准备就业或二战</strong><br>
+                  准备春招/找工作，或考虑二战计划。先毕业，不要焦虑，想各种有的没的。先摆烂一段时间也没啥问题。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 复试阶段 -->
+        <div class="card" id="interview">
+          <div class="card-title">🎤 复试阶段（3月）：临门一脚</div>
+          <div class="card-body">
+            <p>复试是考研上岸的临门一脚，通常包括<strong>专业课笔试、综合面试、英语听说能力测试</strong>三个环节。</p>
+
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📖 专业课笔试</h4>
+                <p>复习初试内容，关注前沿动态。跨考生要狂补，不需要像初试那样准备，会做题就行。</p>
+
+                <h4 style="color:#fb7299; margin:14px 0 8px;">💬 综合面试</h4>
+                <p>考查口语、综合面试、专业面试、竞赛项目。准备自我介绍，练习常见问题。</p>
+
+                <h4 style="color:#fb7299; margin:14px 0 8px;">🌍 英语听说能力</h4>
+                <p>考查英语听力与口语水平。平时多练习英语听力和口语表达。</p>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📋 复试材料准备清单</h4>
+                <table class="simple-table">
+                  <thead>
+                    <tr><th>类别</th><th>具体内容</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>必要材料</strong></td><td>身份证、准考证、学历学位证书、成绩单（盖章）、政审表</td></tr>
+                    <tr><td><strong>加分材料</strong></td><td>竞赛证书、奖学金证书、科研成果、实习证明</td></tr>
+                    <tr><td><strong>其他材料</strong></td><td>个人简历、自我介绍、个人陈述、体检表</td></tr>
+                  </tbody>
+                </table>
+
+                <h4 style="color:#fb7299; margin:14px 0 8px;">📧 联系导师策略</h4>
+                <ul class="checklist">
+                  <li>先看学校导师，了解研究方向</li>
+                  <li>出了分再联系，不要太早</li>
+                  <li>邮件联系，附上个人简历和成绩</li>
+                  <li>态度诚恳，表达学习意愿</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tip-box success" style="margin-top:16px;">
+              <div class="tip-title">✅ 复试成功关键</div>
+              <p>专业知识扎实，基础要牢固；表达能力好，思路清晰；自信大方，不卑不亢；真诚态度，展现真实自我。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 调剂阶段 -->
+        <div class="card" id="adjustment">
+          <div class="card-title">🔄 调剂阶段（4月）：另辟蹊径上岸</div>
+          <div class="card-body">
+            <p>调剂是考研的"第二次机会"，只要<strong class="key-point">过国家线</strong>，理论上就有调剂机会。但还需满足院校调剂线、专业相近等条件。</p>
+
+            <div class="two-col" style="margin-top:14px;">
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">📋 调剂限制条件</h4>
+                <table class="simple-table">
+                  <thead>
+                    <tr><th>规则</th><th>说明</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>学硕→专硕</td><td>学硕可调专硕，专硕原则上不能调学硕</td></tr>
+                    <tr><td>全日制→非全</td><td>全日制可调非全，非全不能调全日制</td></tr>
+                    <tr><td>A区→B区</td><td>A区考生过B区线可调B区；B区考生只能调B区</td></tr>
+                    <tr><td>专项计划</td><td>少干计划不能调出，士兵计划可互调</td></tr>
+                    <tr><td>法硕（非法学）</td><td>不得调剂到其他专业，其他专业也不得调入</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <h4 style="color:#fb7299; margin-bottom:8px;">🔄 调剂流程四步法</h4>
+                <ul class="number-list">
+                  <li><strong>查询调剂信息</strong> — 关注研招网和各招生单位的调剂信息</li>
+                  <li><strong>填报调剂志愿</strong> — 在研招网填报调剂志愿，广泛撒网</li>
+                  <li><strong>参加调剂复试</strong> — 收到调剂复试通知后参加复试</li>
+                  <li><strong>等待录取通知</strong> — 复试合格后等待招生单位录取通知</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tip-box warning" style="margin-top:16px;">
+              <div class="tip-title">⚠️ 调剂特别提醒</div>
+              <p>专业代码前两位相同、公共课相同、专业课相同或相近才允许调剂。调剂时要广泛撒网，突出自身优势。注意警惕<strong>"黑校"</strong>刷一志愿招调剂的情况。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心寄语 -->
+      <div class="tip-box" style="margin-top:40px; text-align:center;">
+        <div class="tip-title">💡 时间规划寄语</div>
+        <p>考研没有捷径，但有方法。<strong style="color:#fb7299;">按部就班就是伟大，稳定踏实你就一定能上岸！</strong><br>
+        每一个阶段都有它的意义，不要焦虑于进度，而要关注于质量。你的努力，时间都看得见。</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <!-- Back to Top -->
+  <div id="back-to-top"><button>↑</button></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="01-basics.html">基础常识</a>
+        <a href="02-timeline.html">备考时间线</a>
+        <a href="03-public-courses.html">公共课备考</a>
+        <a href="04-major.html">专业课备考</a>
+        <a href="05-school-selection.html">考研择校</a>
+        <a href="06-mindset-career.html">心态与就业</a>
+        <a href="07-faq.html">常见问题</a>
+        <a href="08-methods.html">学习方法</a>
+        <a href="experience.html">上岸经验贴</a>
+      </div>
+      <p>内容由 <a href="#">@一只通信考研的er</a> 整理制作 | 仅供考研学习交流使用</p>
+      <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
+    </div>
+  </footer>
+<script>
+(function(){
+  const btn=document.getElementById('back-to-top');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>300);
+  });
+  btn.querySelector('button').addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

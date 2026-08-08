@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no">
+<title>关于 UP · 努力可以获得什么</title>
+
+
+
+<link href="../../vendor/fonts/387a0691407dd5886cfb0ca1454379b5.css" rel="stylesheet">
+<style>
+:root{
+  --pink:#fb7299; --pink-deep:#f45a6f; --pink-soft:#fff5f7; --sakura:#ffe4e9;
+  --ink:#18191c; --ink-2:#3a3a44; --muted:#9499a8; --line:#f3e4e8;
+  --gold:#ffb027; --bg:#fdf6f8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Sans SC',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(251,114,153,.10), transparent 40%),
+    radial-gradient(circle at 88% 8%, rgba(255,176,39,.07), transparent 35%),
+    radial-gradient(circle at 50% 95%, rgba(251,114,153,.06), transparent 45%),
+    var(--bg);
+  color:var(--ink); font-size:13.5px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+  overflow-x:hidden;
+  padding-top:0;
+}
+@media(min-width:901px){body{background-attachment:fixed}}
+@media(max-width:900px){
+  body{background:var(--bg)!important;background-image:none!important;-webkit-filter:none!important;filter:none!important}
+}
+.petal{position:fixed;top:-30px;z-index:0;pointer-events:none;opacity:.4;
+  font-size:14px;animation:fall linear infinite;color:var(--pink)}
+@media(max-width:900px){.petal{display:none}}
+@keyframes fall{
+  0%{transform:translateY(-30px) rotate(0deg);opacity:0}
+  10%{opacity:.4} 90%{opacity:.4}
+  100%{transform:translateY(105vh) rotate(540deg);opacity:0}
+}
+.topbar{
+  position:sticky;top:0;z-index:100;height:50px;display:flex;align-items:center;
+  gap:14px;padding:0 22px;background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--line);
+}
+.home-btn{margin-left:auto;font-size:12px;color:#fff;text-decoration:none;padding:6px 14px;
+  border:none;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+  box-shadow:0 3px 10px rgba(244,90,111,.3);transition:all .2s;white-space:nowrap}
+.home-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(244,90,111,.4);color:#fff}
+.brand{display:flex;align-items:center;gap:8px;font-family:'Noto Serif SC',serif;
+  font-weight:900;font-size:16px;color:var(--pink-deep)}
+.brand .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;font-size:15px;
+  box-shadow:0 3px 10px rgba(244,90,111,.35)}
+.back-btn{font-size:12px;color:var(--pink-deep);text-decoration:none;padding:5px 12px;
+  border:1px solid var(--pink);border-radius:12px;background:var(--sakura);transition:.15s}
+.back-btn:hover{background:var(--pink);color:#fff}
+.crumb{font-size:11.5px;color:var(--muted);margin-left:4px}
+
+.content{max-width:1240px;margin:0 auto;padding:26px 28px 100px;display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start}
+.page-header{text-align:left;margin-bottom:32px}
+.page-title{font-family:'Noto Serif SC';font-weight:900;font-size:28px;
+  background:linear-gradient(120deg,var(--pink-deep),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
+.page-sub{font-size:13px;color:var(--muted)}
+
+.side-nav{position:sticky;top:70px;z-index:10;max-height:calc(100vh - 90px);overflow-y:auto}
+.side-nav-title{font-family:'Noto Serif SC';font-weight:700;font-size:13px;color:var(--pink-deep);
+  margin-bottom:10px;display:flex;align-items:center;gap:6px;padding-bottom:8px;
+  border-bottom:1px solid var(--line)}
+.side-nav-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.side-nav-list a{font-size:12px;color:var(--ink-2);text-decoration:none;transition:.15s;
+  padding:7px 10px;border-radius:8px;display:block;line-height:1.4;border-left:3px solid transparent}
+.side-nav-list a:hover{background:var(--pink-soft);color:var(--pink-deep)}
+.side-nav-list a.active{background:var(--pink-soft);color:var(--pink-deep);border-left-color:var(--pink);font-weight:600}
+
+.main-content{min-width:0}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:18px 22px;margin-bottom:16px;box-shadow:0 4px 16px rgba(244,90,111,.04)}
+.card-title{font-family:'Noto Serif SC';font-weight:700;font-size:17px;color:var(--pink-deep);
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px dashed var(--line)}
+.card-title .icon{font-size:18px}
+.sub-h{font-size:14px;font-weight:600;color:var(--ink);margin:14px 0 6px;
+  padding-left:10px;border-left:3px solid var(--pink)}
+.sub-h2{font-size:13px;font-weight:600;color:var(--pink-deep);margin:10px 0 4px}
+.tip{background:var(--pink-soft);border-left:3px solid var(--pink);padding:8px 14px;
+  border-radius:8px;font-size:12.5px;color:var(--ink-2);margin:8px 0}
+.warn{background:#fff8e6;border-left:3px solid var(--gold);padding:8px 14px;
+  border-radius:8px;font-size:12.5px;color:var(--ink-2);margin:8px 0}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.tag{font-size:11.5px;color:var(--pink-deep);background:var(--sakura);
+  padding:3px 12px;border-radius:12px}
+
+.list{margin:6px 0;padding-left:20px}
+.list li{margin:3px 0;line-height:1.7}
+.list.num{list-style:none;padding-left:0;counter-reset:li}
+.list.num li{counter-increment:li;padding-left:28px;position:relative;margin:6px 0}
+.list.num li::before{content:counter(li);position:absolute;left:0;top:2px;width:20px;height:20px;
+  border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+  color:#fff;font-size:10.5px;font-weight:600;display:grid;place-items:center}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:800px){.grid3{grid-template-columns:1fr}}
+
+.box{background:var(--pink-soft);border-radius:10px;padding:10px 14px}
+.box-name{font-size:12px;font-weight:600;color:var(--pink-deep);margin-bottom:4px}
+.box-text{font-size:12px;color:var(--ink-2);line-height:1.6}
+
+.anchor{scroll-margin-top:70px}
+
+td,th{border:1px solid var(--line);padding:6px 10px;font-size:12px}
+table{border-collapse:collapse;margin:8px 0;width:100%}
+th{background:var(--pink-soft);color:var(--pink-deep);font-size:11.5px}
+
+/* Timeline styles */
+.timeline{position:relative;padding-left:30px;margin:12px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;
+  width:2px;background:linear-gradient(to bottom,var(--pink),var(--sakura),var(--pink))}
+.tl-item{position:relative;margin-bottom:20px;padding:10px 14px;background:#fff;
+  border:1px solid var(--line);border-radius:10px;box-shadow:0 2px 8px rgba(244,90,111,.04)}
+.tl-item::before{content:'';position:absolute;left:-26px;top:14px;width:12px;height:12px;
+  border-radius:50%;background:var(--pink);border:3px solid #fff;box-shadow:0 0 0 2px var(--pink)}
+.tl-year{font-size:12px;font-weight:700;color:var(--pink-deep);margin-bottom:4px}
+.tl-content{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+
+/* Stats grid */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:linear-gradient(135deg,var(--pink-soft),var(--sakura));
+  border-radius:12px;padding:14px;text-align:center;border:1px solid var(--line)}
+.stat-num{font-family:'Noto Serif SC';font-size:26px;font-weight:900;color:var(--pink-deep)}
+.stat-label{font-size:11.5px;color:var(--ink-2);margin-top:2px}
+
+/* Hero banner */
+.hero{background:linear-gradient(135deg,var(--pink-soft),#fff);
+  border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:20px;
+  position:relative;overflow:hidden;display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start}
+.hero::after{content:'❀';position:absolute;right:-20px;bottom:-30px;font-size:180px;
+  color:var(--sakura);opacity:.6;transform:rotate(-20deg);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-title{font-family:'Noto Serif SC';font-size:22px;font-weight:900;color:var(--pink-deep)}
+.hero-name{font-family:'Noto Serif SC';font-size:30px;font-weight:900;
+  background:linear-gradient(120deg,var(--pink-deep),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin:6px 0}
+.hero-desc{font-size:12.5px;color:var(--ink-2);line-height:1.8}
+.hero-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+
+/* Hero 右侧时间线 */
+.hero-avatar{width:72px;height:72px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 16px rgba(244,90,111,.3);object-fit:cover;flex-shrink:0}
+.hero-header{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+.hero-tl{display:flex;flex-direction:column;gap:0;margin-left:auto;width:100%;max-width:420px}
+.hero-tl-title{font-family:'Noto Serif SC';font-weight:800;color:var(--pink-deep);font-size:14px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.hero-tl-track{display:flex;flex-direction:column;gap:0;padding:0}
+.hero-tl-item{display:grid;grid-template-columns:52px 18px 1fr;gap:6px;align-items:start;font-size:11px}
+.hero-tl-date{text-align:right;font-weight:700;color:var(--pink-deep);font-size:11px;line-height:22px;white-space:nowrap}
+.hero-tl-dot{position:relative;display:flex;flex-direction:column;align-items:center}
+.hero-tl-dot::before{content:'';width:10px;height:10px;border-radius:50%;background:var(--pink-deep);border:2px solid #fff;box-shadow:0 0 0 2px var(--pink-deep);flex-shrink:0;margin-top:6px;z-index:2}
+.hero-tl-item:not(:last-child) .hero-tl-dot::after{content:'';width:2px;flex:1;min-height:18px;background:linear-gradient(to bottom,var(--pink-deep),var(--sakura))}
+.hero-tl-content{background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 8px;color:var(--ink-1);line-height:1.35;font-size:10px;margin:2px 0;box-shadow:0 1px 3px rgba(235,107,135,.08);white-space:nowrap}
+.hero-tl-item.now .hero-tl-dot::before{background:var(--gold);box-shadow:0 0 0 2px var(--gold);animation:hero-pulse 1.6s infinite}
+.hero-tl-item.now .hero-tl-content{background:linear-gradient(135deg,#fff5e6,#fff);border-color:var(--gold)}
+@keyframes hero-pulse{0%{transform:scale(1);box-shadow:0 0 0 2px var(--gold),0 0 0 0 rgba(255,193,7,.5)}70%{transform:scale(1.05);box-shadow:0 0 0 2px var(--gold),0 0 0 10px rgba(255,193,7,0)}100%{transform:scale(1);box-shadow:0 0 0 2px var(--gold),0 0 0 0 rgba(255,193,7,0)}}
+
+/* Motivation */
+.motivation-card{background:linear-gradient(135deg,#fff,var(--pink-soft));
+  border:1px solid var(--line);border-radius:14px;padding:18px;margin:10px 0;
+  display:flex;gap:14px;align-items:flex-start;transition:.2s}
+.motivation-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(244,90,111,.1)}
+.motivation-icon{font-size:32px;flex-shrink:0}
+.motivation-title{font-size:14px;font-weight:700;color:var(--pink-deep);margin-bottom:4px}
+.motivation-text{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+@media(max-width:700px){.gallery{grid-template-columns:1fr 1fr}}
+.gallery-item{border-radius:12px;overflow:hidden;aspect-ratio:4/3;
+  background:var(--pink-soft);display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--pink-deep);font-weight:700;
+  border:1px solid var(--line);position:relative;transition:.2s}
+.gallery-item:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(244,90,111,.15)}
+.gallery-item .cap{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;
+  background:linear-gradient(transparent,rgba(244,90,111,.85));color:#fff;
+  font-size:11.5px;font-weight:500}
+
+/* Quote */
+.quote-box{background:linear-gradient(135deg,#fff,var(--pink-soft));
+  border:1px solid var(--pink);border-radius:14px;padding:20px 24px;margin:16px 0;color:var(--ink);position:relative;overflow:hidden}
+.quote-box::before{content:'❀';position:absolute;right:10px;top:-10px;font-size:60px;color:var(--pink);opacity:.15}
+.quote-text{font-family:'Noto Serif SC';font-size:16px;font-weight:700;line-height:1.7}
+.quote-author{font-size:12px;margin-top:8px;color:var(--pink-deep)}
+
+/* Roadmap */
+.roadmap{display:flex;align-items:center;gap:0;margin:16px 0;overflow-x:auto;padding-bottom:8px}
+.rm-node{flex-shrink:0;text-align:center;width:140px;position:relative}
+.rm-dot{width:16px;height:16px;border-radius:50%;background:var(--pink);
+  margin:0 auto 8px;box-shadow:0 0 0 4px var(--sakura)}
+.rm-node.active .rm-dot{background:var(--pink-deep);box-shadow:0 0 0 4px var(--pink),0 0 0 8px var(--sakura)}
+.rm-date{font-size:11px;color:var(--pink-deep);font-weight:700}
+.rm-label{font-size:11px;color:var(--ink-2);margin-top:2px}
+.rm-connector{flex:1;height:2px;background:linear-gradient(90deg,var(--pink),var(--sakura));
+  min-width:20px;margin-bottom:20px}
+
+@media(max-width:900px){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
+    will-change:auto!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+  html{min-height:100%;overflow-x:hidden}
+  body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+  body{padding-top:0 !important}
+  .content{grid-template-columns:1fr;padding:12px 12px 80px;gap:12px}
+  .side-nav{position:static;max-height:none;overflow-y:visible;order:-1;margin-bottom:8px}
+  .side-nav-title{display:none}
+  .side-nav-list{flex-direction:row;flex-wrap:wrap;gap:2px}
+  .side-nav-list a{border-left:none;border-bottom:3px solid transparent;font-size:11px;padding:4px 8px;line-height:1.3}
+  .hero{grid-template-columns:1fr;padding:16px;gap:16px}
+  .hero-header{gap:10px}
+  .hero-avatar{width:56px;height:56px;border-width:2px}
+  .hero-title{font-size:18px}
+  .hero-name{font-size:22px;margin:4px 0}
+  .hero-desc{font-size:12px;line-height:1.7}
+  .hero-tags{gap:4px}
+  .tag{font-size:10.5px;padding:2px 8px}
+  .hero-tl{max-width:none;margin-left:0}
+  .hero-tl-title{font-size:13px}
+  .hero-tl-item{grid-template-columns:44px 16px 1fr;gap:5px}
+  .hero-tl-date{font-size:10.5px;line-height:20px}
+  .hero-tl-dot::before{width:8px;height:8px;margin-top:6px}
+  .hero-tl-item:not(:last-child) .hero-tl-dot::after{min-height:16px}
+  .hero-tl-content{font-size:10px;padding:3px 6px;white-space:normal;line-height:1.3}
+  .card{padding:14px 14px;margin-bottom:12px}
+  .card-title{font-size:15px}
+  .page-title{font-size:22px}
+  .quote-box{padding:16px 18px}
+  .quote-text{font-size:14px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:8px}
+  .stat-num{font-size:22px}
+  .gallery{grid-template-columns:1fr 1fr}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .timeline{padding-left:24px}
+  .timeline::before{left:6px}
+  .motivation-card{padding:14px;gap:10px}
+  .motivation-icon{font-size:26px}
+  .topbar{position:static;padding:0 12px;gap:8px}
+  .brand{font-size:13px}
+  .brand .logo{width:24px;height:24px;font-size:13px}
+  .crumb{display:none}
+  .back-btn{font-size:11px;padding:4px 10px}
+  .hero::after{font-size:120px;right:-10px;bottom:-20px}
+}
+/* 关键字高亮 */
+.kw-red{color:#c0392b;font-size:1.25em;font-weight:700}
+.kw-green{color:#1a7a3c;font-size:1.25em;font-weight:700}
+.kw-orange{color:#d35400;font-size:1.25em;font-weight:700}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back-btn" href="../index.html">← 返回指南首页</a>
+  <div class="brand"><div class="logo">❀</div>电子信息大类·本科指南</div>
+  <div class="crumb">✨ 关于 UP · 努力可以获得什么</div>
+  <a class="home-btn" href="../../index.html">🏠 返回网站首页</a>
+</div>
+<div class="content">
+  <nav class="side-nav"><div class="side-nav-title">📑 个人故事</div><ul class="side-nav-list">
+    <a href="#sec-1" data-idx="0">自我介绍</a>
+    <a href="#sec-2" data-idx="1">数据说话</a>
+    <a href="#sec-3" data-idx="2">大学成长轨迹</a>
+    <a href="#sec-4" data-idx="3">学历提升之路</a>
+    <a href="#sec-5" data-idx="4">从实习到入职</a>
+    <a href="#sec-6" data-idx="5">支线任务</a>
+    <a href="#sec-7" data-idx="6">七条核心建议</a>
+    <a href="#sec-8" data-idx="7">四个底层能力</a>
+    <a href="#sec-9" data-idx="8">关于读研</a>
+    <a href="#sec-10" data-idx="9">给学弟学妹的话</a>
+  </ul></nav>
+  <div class="main-content">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-header">
+          <img class="hero-avatar" src="../../专业课选择/images/平台图标/avatar_compressed.png" alt="UP 头像">
+          <div>
+            <div class="hero-title">✨ 关于 UP</div>
+            <div class="hero-name">从大山里走出来的通信人</div>
+          </div>
+        </div>
+        <div class="hero-desc">
+          大家好，我是@一只通信考研的er。<b>本科 2016 届成都工业学院 · 通信工程专业</b>，<b>研究生西南交通大学 · 通信工程</b>，<b>工作 3 年（C++ 后端开发）</b>。
+          我是一个从大山里走出来的孩子——小学在山上村里的学校读的，一年级班上有 60 个人，到六年级毕业只剩下 24 个人，<b>最后只有我一个人最终读到了本科</b>。
+          我的初中也是全县最差的几个之一，学习氛围极差。在这么恶劣的环境中走出来，<b>我深感教育落后地区上学的不容易</b>。
+          现在有能力去帮助到大家，我想尽我所能去把通信电子大类的相关大学科普做好。
+        </div>
+        <div class="hero-tags">
+          <span class="tag">🏫 成都工业学院 · 本科</span>
+          <span class="tag">🎓 西南交大 · 硕士</span>
+          <span class="tag">💻 就业 3 年 · C++ 后端</span>
+          <span class="tag">📺 B站UP主 · 六年</span>
+          <span class="tag">🏔️ 从大山里走出来</span>
+        </div>
+      </div>
+
+      <div class="hero-tl">
+        <div class="hero-tl-title">⏳ 我的成长时间线</div>
+        <div class="hero-tl-track">
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2016.09</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">🎓 大一入学 · 成都工业学院 通信工程</div>
+          </div>
+
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2020.04</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">🎯 考研 380 分 · 上岸西南交通大学</div>
+          </div>
+
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2020.09</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">📚 研究生入学（无线室内定位）</div>
+          </div>
+
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2022.06</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">🏢 华为成研所实习</div>
+          </div>
+
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2023.06</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">🎓 研究生毕业</div>
+          </div>
+
+          <div class="hero-tl-item">
+            <div class="hero-tl-date">2023.07</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">💼 入职成都私企 · C++ 后端开发</div>
+          </div>
+
+          <div class="hero-tl-item now">
+            <div class="hero-tl-date">至今</div>
+            <div class="hero-tl-dot"></div>
+            <div class="hero-tl-content">✨ 某私企 · C++ 后端开发 · 就业 3 年</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. 自我介绍 -->
+    <section id="sec-1" class="card anchor">
+      <div class="card-title"><span class="icon">👋</span>自我介绍</div>
+      <div class="sub-h">🎯 核心身份：本硕 7 年（通信工程）· 工作 3 年（程序员）· 做 UP 6 年</div>
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">🎓 教育背景</div>
+          <div class="box-text">
+            <b>本科</b>：成都工业学院 · 2016 级通信工程专业<br>
+            <b>硕士</b>：西南交通大学 · 信息学院 · 研究方向：室内定位
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">💼 工作情况</div>
+          <div class="box-text">
+            22 年暑期华为成研所实习 2 个月<br>
+            现就职于成都一家私企 · <b>C++ 后端开发 · 已就业 3 年</b>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">📊 本科成绩</div>
+          <div class="box-text">绩点 2.8 · 四六级都过了 · 学院丙等奖学金 2 次</div>
+        </div>
+        <div class="box">
+          <div class="box-name">🎯 考研成绩</div>
+          <div class="box-text">
+            政治 69 · 英语二 69 · 数学二 101 · 信号与系统 141<br>
+            总分 <b>380 分</b> · 20 年分数线 350 分
+          </div>
+        </div>
+      </div>
+      <div class="sub-h">🏆 竞赛经历</div>
+      <div class="tip">
+        <b>本科</b>：省一四次 · 国三一次<br>
+        <b>读研</b>：研电赛省二 · 华为区域一等奖（进了决赛，去东莞华为总部）
+      </div>
+      <div class="tip" style="border-left-color:var(--gold);background:#fff8e6">
+        <b>📺 做 UP 主 6 年</b>：从考研备战期间开始分享，累计 B 站粉丝 27w+，分享主题包括：大学规划、竞赛、考研、就业。
+      </div>
+    </section>
+
+    <!-- 2. 数据说话 -->
+    <section id="sec-2" class="card anchor">
+      <div class="card-title"><span class="icon">📈</span>数据会说话</div>
+      <div class="stats">
+        <div class="stat-card"><div class="stat-num">60→24→1</div><div class="stat-label">小学幸存率（读到本科）</div></div>
+        <div class="stat-card"><div class="stat-num">380</div><div class="stat-label">考研总分（超线 30 分）</div></div>
+        <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">省级一等奖</div></div>
+        <div class="stat-card"><div class="stat-num">3年</div><div class="stat-label">C++ 后端就业经验</div></div>
+        <div class="stat-card"><div class="stat-num">27w+</div><div class="stat-label">B 站粉丝（6 年积累）</div></div>
+        <div class="stat-card"><div class="stat-num">6年</div><div class="stat-label">UP 主经历（银牌牌认证）</div></div>
+        <div class="stat-card"><div class="stat-num">1.6w+</div><div class="stat-label">官媒采访阅读量</div></div>
+        <div class="stat-card"><div class="stat-num">40本</div><div class="stat-label">考研数学习题本</div></div>
+        <div class="stat-card"><div class="stat-num">14遍</div><div class="stat-label">百词斩单词背诵</div></div>
+        <div class="stat-card"><div class="stat-num">50天</div><div class="stat-label">刷完张宇 1000 题</div></div>
+        <div class="stat-card"><div class="stat-num">453</div><div class="stat-label">六级最高分</div></div>
+        <div class="stat-card"><div class="stat-num">2.8</div><div class="stat-label">本科绩点（逆袭上岸）</div></div>
+      </div>
+      <div class="quote-box">
+        <div class="quote-text">"我不是天赋型选手，出身也没有任何优势。本科绩点 2.8，考研全靠自己一年拼出来。但每一步都认真走了下来——从零基础做竞赛，到考研逆袭 380 分，再到华为实习、C++ 就业。<b>努力不会骗人，时间会给你答案。</b>"</div>
+        <div class="quote-author">—— @一只通信考研的er</div>
+      </div>
+    </section>
+
+    <!-- 3. 大学成长轨迹 -->
+    <section id="sec-3" class="card anchor">
+      <div class="card-title"><span class="icon">🌱</span>大学成长轨迹</div>
+      <div class="sub-h">本科四年时间线 · 每一年都有不同的重心</div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">大一 · 2016.09 – 2017.09</div>
+          <div class="tl-content">
+            1. 完成了 C 语言的学习，尝试写出了俄罗斯方块小游戏<br>
+            2. 独立完成基于 STC15 单片机的避障小车，参加四川省通信创新杯获一等奖<br>
+            <span style="color:var(--pink-deep)">🔑 关键词：入门 · 打基础 · 第一次竞赛</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">大二 · 2017.09 – 2018.09</div>
+          <div class="tl-content">
+            1. 担任学院老师的助理，协助管理实验室日常运作<br>
+            2. 完成 STM32、K60、树莓派等嵌入式开发平台的学习<br>
+            3. 参加电子设计竞赛、飞思卡尔、物联网、智能互联竞赛，均获不错成绩<br>
+            4. 带队完成基于 STM32F200 + 摄像头的智能寻迹小车（负责代码调试与控制算法）<br>
+            5. 带队完成基于 STM32、GPS 和 UWB 的智能垃圾回收系统，获西部赛区一等奖<br>
+            <span style="color:var(--pink-deep)">🔑 关键词：大二以竞赛为主 · 四个省一 & 一个国三</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">大三 · 2018.09 – 2019.09</div>
+          <div class="tl-content">
+            1. 担任学院实验室负责人之一，组织实验室比赛工作<br>
+            2. 完成 PCB 绘制学习，绘制了无人机和平衡车的 PCB 板<br>
+            3. 协助老师做项目，申请了有关超高频 RFID 的专利
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">大四 · 2019.09 – 2020.06</div>
+          <div class="tl-content">
+            1. 考研初试及复试准备<br>
+            2. 毕业设计：《基于 STM32 的平衡车设计与实现》——以 STM32F103c8t6 为主控，MPU6050 为姿态检测
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 学历提升之路 -->
+    <section id="sec-4" class="card anchor">
+      <div class="card-title"><span class="icon">🎓</span>学历提升之路</div>
+
+      <div class="roadmap">
+        <div class="rm-node"><div class="rm-dot"></div><div class="rm-date">2016.09</div><div class="rm-label">大一入学<br>成都工业学院 · 通信</div></div>
+        <div class="rm-connector"></div>
+        <div class="rm-node"><div class="rm-dot"></div><div class="rm-date">2020.04</div><div class="rm-label">考研初试<br>380 分上岸</div></div>
+        <div class="rm-connector"></div>
+        <div class="rm-node"><div class="rm-dot"></div><div class="rm-date">2020.06</div><div class="rm-label">大四毕业</div></div>
+        <div class="rm-connector"></div>
+        <div class="rm-node active"><div class="rm-dot"></div><div class="rm-date">2020.09</div><div class="rm-label">西南交大研究生<br>无线室内定位</div></div>
+        <div class="rm-connector"></div>
+        <div class="rm-node"><div class="rm-dot"></div><div class="rm-date">2023.06</div><div class="rm-label">研究生毕业</div></div>
+      </div>
+
+      <div class="sub-h">📅 考研上岸全历程 · 一年时间线</div>
+      <div class="timeline kaoyan-tl">
+
+        <div class="tl-item">
+          <div class="tl-year">2018.11.17 · 大三上期末 · 启动</div>
+          <div class="tl-content">
+            📖 <b>第一次踏入图书馆</b>——大学前几年几乎从未去过图书馆，为了考六级第一次去自习。六级 360+ 没过，决定考研再战。
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.01 – 2019.02 · 寒假 · 基础起步</div>
+          <div class="tl-content">
+            📺 <b>英语</b>：用念念有词看视频课，过年在家学到第 181 页 / 第 63 个视频（完成 1/3）<br>
+            📐 <b>数学</b>：跟张宇零基础班，2 月 3 日打印讲义做笔记<br>
+            ⏰ <b>作息</b>：采用「半夜学习、白天睡觉」模式，避免外界干扰，效率极高
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.02 – 2019.03 · 回校 · 就位</div>
+          <div class="tl-content">
+            📚 2 月 16 日：校内图书馆未开，先去<b>郫县公共图书馆</b>连续自习两周<br>
+            🪑 3 月 26 日：选定图书馆靠窗<b>专属考研座位</b>（一整年陪伴，考研水杯考完后遗失）<br>
+            📋 自制计划表：时间段任务 + 完成打勾 + 每周总结，不花哨但实用
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.04 – 2019.05 · 基础期 · 找节奏</div>
+          <div class="tl-content">
+            📒 4 月：数学习题本侧面手写日期+内容做标识，<b>一整年用了 40 本习题本</b><br>
+            🌱 5 月：启动<b>英语阅读精翻</b>，逐字逐句翻译+纠错（三四十篇后英语质变）<br>
+            🔤 百词斩背单词：巅峰日刷 1000 词，全周期共 <b>过单词 14 遍</b>（5 月 11 日数据丢失，联系客服找回）<br>
+            🏃 每晚跑步 20 分钟（坚持 1-2 月后因总耗时 1 小时放弃）<br>
+            🧮 5 月 30 日：<b>50 天刷完张宇 1000 题第一遍</b>（普遍要 3-4 个月）
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.06 · 中期 · 节奏稳定</div>
+          <div class="tl-content">
+            🔂 念念有词过 4 遍 · 百词斩过 6 遍 · 累计单词题库刷 12 遍<br>
+            📝 完成 2001-2003 英语阅读真题<br>
+            🏕️ 6 月 3 日：提交西南交大夏令营材料（<b>未通过</b>，提醒自己不要过早启动专业课）<br>
+            📱 1800 元小米平板看课（建议不买苹果，国产/二手完全够用）<br>
+            📄 6 月 10 日：草稿纸堆叠已达 <b>12 cm 厚</b>（全程 2-3 倍）<br>
+            🔖 6 月 12 日起：倒计时 192 天 → 开始<b>每日 SOUL 动态记录</b>当日学习内容+次日安排
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.07 – 2019.08 · 暑假 · 效率巅峰</div>
+          <div class="tl-content">
+            ☀️ 暑假每日有效学习时长稳定 <b>10h+</b>，状态好时可达 <b>14h</b>（全年效率最高期）<br>
+            ⏰ 保持早起：最早 6:13 起床<br>
+            🧱 8 月草稿纸厚度 <b>17 cm</b><br>
+            🛞 确定毕业设计方向：两轮平衡车<br>
+            🏅 8 月 21 日：<b>第三次六级 453 分顺利通过</b>（第一次 260、第二次 360+、后续第四次 442）
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.09 – 2019.10 · 冲刺期 · 疲劳期</div>
+          <div class="tl-content">
+            📉 9 月后日有效时长回落到 8-9h（后期状态普遍下滑，正常）<br>
+            🧮 10 月：完成 <b>10 套数学真题</b><br>
+            🎯 10 月 14 日：辅导员通知可申请<b>5000 元励志奖学金</b>，因成绩未进年级前 10% 错失（本科最大遗憾）
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2019.12 · 初试 · 上战场</div>
+          <div class="tl-content">
+            ⏳ 考前 12 天：肖四首发，<b>肖四第一套选择 50 中 42 分</b>，考研正式选择得 39 分<br>
+            📖 考前一天仍在背肖四<br>
+            🍲 考完当天 + 研友 + 室友一起吃火锅跨年<br>
+            📝 12 月 31 日跨年总结：六级通过，预估可进西南交大复试
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2020.02 · 出分 · 联系导师</div>
+          <div class="tl-content">
+            🎓 2 月 10 日：居家开始准备复试（照顾在家读初二的妹妹）<br>
+            🎉 2 月 20 日：<b>初试成绩 380 分公布</b>（政治 69、英二 69、数二 101、信号 141）<br>
+            📧 2 月 23 日：开始陆续联系多位导师，多数未及时回复；<b>联系现导师 2 小时即收到回复</b>，承诺「复试通过就录取」
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-year">2020.03 – 2020.04 · 复试 · 上岸</div>
+          <div class="tl-content">
+            🏡 疫情居家：照顾妹妹、学打麻将、尝试果树嫁接、种草莓/葡萄/樱桃/蓝莓/橘子（误以为草莓会爬藤被朋友嘲笑）<br>
+            ✅ 3 月 7 日：开始复习复试笔试<br>
+            🎉 复试顺利通过，正式上岸西南交通大学通信工程硕士
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sub-h">考研经验分享</div>
+      <div class="tip">
+        <b>初试科目</b>：政治 69 · 英语二 69 · 数学二 101 · 信号与系统 141<br>
+        <b>总分</b> 380 分，20 年分数线 350 分，超线 30 分成功上岸西南交通大学
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">📚 择校思路</div>
+          <div class="box-text">本科双非 → 选择西南地区 211（西南交通大学），通信专业实力强，招生名额多，初试科目信号与系统是自己竞赛时学过的，有基础优势</div>
+        </div>
+        <div class="box">
+          <div class="box-name">⏰ 复习节奏</div>
+          <div class="box-text">3-6 月：数学基础 + 专业课过教材<br>7-9 月：强化刷题 + 英语真题<br>10-12 月：政治冲刺 + 模拟考试卷</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 从实习到入职 -->
+    <section id="sec-5" class="card anchor">
+      <div class="card-title"><span class="icon">💼</span>从实习到入职</div>
+
+      <div class="sub-h">华为实习经历</div>
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">🏢 实习单位</div>
+          <div class="box-text">华为技术有限公司 · 成都研究所<br>2022.06 – 2022.08</div>
+        </div>
+        <div class="box">
+          <div class="box-name">🛠️ 实习内容</div>
+          <div class="box-text">熟悉产品代码架构，基于 C++ 和 python 编写代码，参与代码能力培训和考核；参加部门技术会议，跟随学习华为的工作流程</div>
+        </div>
+      </div>
+
+      <div class="sub-h">求职经验</div>
+      <ul class="list">
+        <li>研三上学期开始找实习 → 10 月实习 → 秋招开始时已有实习经历简历加分</li>
+        <li>参加了秋招，拿到了多家企业 offer，最终选择成都一家私企从事 <b>C++ 后端开发</b></li>
+        <li>选择成都的原因：离家近 · 薪资水平尚可 · 有更好的发展空间</li>
+      </ul>
+
+      <div class="sub-h2">✨ 从实习到入职的时间线</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2022.06 – 2022.08</div>
+          <div class="tl-content">华为成研所实习，熟悉 C++ 后端开发和大型项目协作流程</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023.07</div>
+          <div class="tl-content">入职成都一家私企，从事 C++ 后端开发工作</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">至今 · 就业 3 年</div>
+          <div class="tl-content">工作三年回顾：技术能力稳步提升，适应了企业开发节奏</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 支线任务 -->
+    <section id="sec-6" class="card anchor">
+      <div class="card-title"><span class="icon">🎮</span>支线任务 · 人生不只有主线</div>
+      <div class="tip">大学六年，不只是读书和竞赛。那些"支线"反而让人生更精彩——做 UP、开旅馆、做兼职、买车、旅游、接受采访……每一件都是成长的一部分。</div>
+
+      <div class="sub-h">📺 UP 主之路</div>
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">🎬 做 UP 主 6 年 · 收获银牌牌</div>
+          <div class="box-text">
+            从考研备战期间开始做 B 站 UP 主，分享考研经验和大学生活。六年时间，<b>收获了银牌牌</b>（B站等级认证），累计粉丝 27w+。<br>
+            <span style="color:var(--pink-deep)">✨ 做 UP 的收获</span>：表达能力提升 · 总结能力锻炼 · 自媒体思维 · 意外的采访机会
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">📰 西南交大官媒两次采访</div>
+          <div class="box-text">
+            2022 年 4 月，接受西南交大官媒两次采访，分享考研经验、做 UP 的初衷和读研的心路历程。公众号推文阅读量 1.6 万+，点赞 163，成为交大校园内的"小网红"。<br>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+              <a href="https://mp.weixin.qq.com/s/LLtmSZea1k4gA664kyXIqg" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--pink-deep);background:var(--sakura);padding:6px 12px;border-radius:10px;text-decoration:none;border:1px solid var(--line);transition:.15s">📝 公众号推文《交大身边事——"研"出必行》→ 点击跳转</a>
+              <a href="https://www.bilibili.com/audio/au2957364/?type=3&spm_id_from=333.1387.0.0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--pink-deep);background:var(--sakura);padding:6px 12px;border-radius:10px;text-decoration:none;border:1px solid var(--line);transition:.15s">📻 B 站电台采访音频 → 点击跳转</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-h">💰 赚钱与独立</div>
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">💼 做各种兼职</div>
+          <div class="box-text">
+            大学期间做过多种兼职：家教、发传单、校园代理…… 这些兼职虽然收入不高，但让我学会了<b>与不同类型的人沟通</b>，也体会到了赚钱的不易。
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">🏨 大二和室友做校园旅馆</div>
+          <div class="box-text">
+            大二时和室友一起尝试做"校园旅馆"——利用宿舍空余时间接待外来访客。那段时间学会了<b>怎么谈价格、怎么服务客户、怎么处理突发情况</b>，也算是创业初体验。
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-h">🚗 生活里程碑</div>
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">🚙 2022.07 研二下学期 · 买了车</div>
+          <div class="box-text">
+            研二下学期，靠实习工资和兼职收入，自己攒钱买了一辆车。这是人生中<b>第一件用自己赚的钱买的大件</b>，那种独立感和成就感是考试拿奖都比不了的。
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">✈️ 读研到处旅游比较多</div>
+          <div class="box-text">
+            读研期间利用假期走了不少地方：川西、云南、陕西、北京…… 旅行让人开阔眼界，也让人在紧张的科研生活中找到平衡。<br>
+            <span style="color:var(--pink-deep)">📍 推荐</span>：成都周边的小山、川西高原、重庆山城，都是学生党周末放松的好去处。
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-h">🎭 社交与自我提升</div>
+      <div class="tip">
+        <b>参加各种活动进行自我提升和交友</b>——读研期间积极参加实验室团建、校团委活动、行业峰会、技术分享会…… 不仅认识了很多朋友，也在不断的社交中锻炼了自己的沟通和表达能力。<br><br>
+        <span style="color:var(--pink-deep)">💡 我的心得</span>：大学不应该只盯着 GPA 和 offer。多参加活动、多交朋友、多尝试不同的事情——这些"支线任务"会让你的人生变得立体而丰富。
+      </div>
+    </section>
+
+    <!-- 7. 七条核心建议 -->
+    <section id="sec-7" class="card anchor">
+      <div class="card-title"><span class="icon">💡</span>七条核心建议（来自我的 PPT）</div>
+
+      <ol class="list num">
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🧠</div>
+            <div>
+              <div class="motivation-title">① 打破认知，重塑自我</div>
+              <div class="motivation-text">
+                警惕"读书无用论""专业无用论""xx 事情做了有没有用"。<br>
+                <b>增强自我辨别能力</b>：个例代表不了总体（幸存者偏差）· 你看到的世界可能是别人想让你看到的。<br>
+                认识到自己的不足，<b>主动向优秀前辈学习</b>。迷茫很正常，我工作 3 年了也还迷茫。
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">👥</div>
+            <div>
+              <div class="motivation-title">② 建立自己的圈子，利用好自己的资源</div>
+              <div class="motivation-text">
+                <b>本科</b>：社团学生会圈子 + <b>实验室 & 竞赛队友（最有价值）</b> + 室友圈子<br>
+                <b>研究生</b>：以导师为中心的圈子 + 同届优秀同学<br>
+                <b>就业后</b>：校友会 + 兴趣爱好类圈子积累
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🏆</div>
+            <div>
+              <div class="motivation-title">③ 多参加竞赛，包装项目</div>
+              <div class="motivation-text">
+                <b>竞赛好处</b>：评奖评优 · 就业加分 · 考研加分 · 技术能力实实在在提升（软/硬件）<br>
+                <b>我的经历</b>：待实验室的 C 语言 → 单片机（STC15/K60/STM32/树莓派）→ PCB 绘制焊接 → 本科多场比赛去了北京/南京/武汉/乐山；研电赛华为那个进了决赛去了东莞华为总部<br>
+                <b>竞赛类别</b>：限定题目（飞思卡尔/光电竞赛/电赛）· 算法类（ACM/蓝桥杯/华为算法）· 开放性（物联网/智能互联/互联网+/研电赛）<br>
+                <b>项目起步</b>：嵌入式从点灯开始 · 算法从 LeetCode 开始 · 多看 GitHub 开源 · 学会用 AI 写代码 · 做了啥/怎么做的/遇到啥困难/怎么解决的 → 总结成 STAR 法则故事
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🎯</div>
+            <div>
+              <div class="motivation-title">④ 认清自我，规划未来</div>
+              <div class="motivation-text">
+                定期复盘：<b>我会啥？缺啥能力？</b><br>
+                把自己欠缺的东西当成一个项目来做，做好<b>长期规划和短期计划</b>，一步一步来。
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🙋</div>
+            <div>
+              <div class="motivation-title">⑤ 学会问问题</div>
+              <div class="motivation-text">
+                遇到大佬要<b>主动</b>——问问题要能吸引别人、让别人记住你、展示你的积极性（到了职场也一样）。<br>
+                问问题要<b>明确、具体</b>，说明你的情况，明确你的需求。<br>
+                <div class="warn">❌ 错误："二本推荐院校？""信号系统怎么学？""考研难吗？"<br>✅ 正确："我双非二本，GPA3.5，目标川渝，意向通信，能推荐冲稳保 2-3 所吗？"</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🔁</div>
+            <div>
+              <div class="motivation-title">⑥ 以结果推过程</div>
+              <div class="motivation-text">
+                <b>向成功者吸取经验</b>——成功的捷径就是复制别人走过的路，你可能遇到的问题别人早都遇到过解决了。<br>
+                想就业就去看就业的人的简历长什么样，我入职前就看别人的转正答辩 PPT 找标杆。<br>
+                比如我做 UP，就会看张雪峰如何讲考研，学习他的表达方式。
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="motivation-card" style="margin:6px 0">
+            <div class="motivation-icon">🏃</div>
+            <div>
+              <div class="motivation-title">⑦ 不要怕没准备好，尽力而为</div>
+              <div class="motivation-text">
+                "X 月准备 XX 还来得及吗？"——这类问题我收到过太多了。<b>降低预期，提升自己，尽力就好，接受现实</b>。<br>
+                考研很多人会弃考，或者还没考就想着二战。找工作也是！海投不够多、不敢面试，最后只能怪自己。<br>
+                先上场，在比赛中调整自己——<b>不要等"准备好了"才开始</b>。
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 8. 四个底层能力 -->
+    <section id="sec-8" class="card anchor">
+      <div class="card-title"><span class="icon">🧱</span>四个值得刻意训练的底层能力</div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🔍</div>
+        <div>
+          <div class="motivation-title">1. 信息检索能力</div>
+          <div class="motivation-text">
+            怎么通过期末考试？考研网课怎么找？怎么加直系师兄师姐？<b>是否会过滤无效信息？</b><br>
+            这种能力不止上学有用——<b>以后租房能不能直接找到房东</b>、买房怎么避坑、看病怎么挂对号，全都要靠信息检索。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🎤</div>
+        <div>
+          <div class="motivation-title">2. 演讲沟通能力</div>
+          <div class="motivation-text">
+            做自我介绍会不会怯场？说话有没有逻辑？<br>
+            考研复试面试、工作面试、读研做项目汇报、工作与同事沟通——<b>这是性价比最高的通用能力</b>。<br>
+            就像我今天来给大家做分享，也是在提升我自己的演讲能力。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🎁</div>
+        <div>
+          <div class="motivation-title">3. 自我包装能力</div>
+          <div class="motivation-text">
+            首先要<b>使自己强大</b>，才有包装的可能。<br>
+            学会"讲故事"让别人信服——考研复试、工作面试，每次问你的就那么些问题，<b>提前练习，多练几次就自然了</b>。<br>
+            给自己<b>打标签</b>，让别人记住你。比如我的标签：程序员 · UP 主 · 酷似 Uzi 😄
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🧩</div>
+        <div>
+          <div class="motivation-title">4. 解决问题、分解问题的能力</div>
+          <div class="motivation-text">
+            把大问题拆成小问题，逐个击破，不焦虑、不拖延。<br>
+            这是理工科最核心的素养，也是职场最看重的能力之一。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. 关于读研 -->
+    <section id="sec-9" class="card anchor">
+      <div class="card-title"><span class="icon">🎓</span>关于读研 · 读研给我带来了什么</div>
+
+      <div class="grid2">
+        <div class="box">
+          <div class="box-name">🚪 学历敲门砖</div>
+          <div class="box-text">
+            毕业就能直接去到一个<b>更高的平台</b>。很多研究所/大厂/国企的门槛是硕士起步，没有这个学历根本投不进去。
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">🛠️ 项目经历</div>
+          <div class="box-text">
+            导师给的项目和课题，我拿去参加比赛得了奖 → 由此撬动了<b>华为实习的 offer</b>。<br>
+            没有读研的项目积累，华为实习的简历关可能都过不了。
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">🎯 更多的选择</div>
+          <div class="box-text">
+            技术岗 / 非技术岗 / 考公 / 甚至自己创业——<b>可选范围比本科宽得多</b>。<br>
+            本科毕业可能被限制在某几个窄方向，硕士毕业选择权在自己手上。
+          </div>
+        </div>
+        <div class="box">
+          <div class="box-name">🤝 人脉关系</div>
+          <div class="box-text">
+            师兄师姐的内推 · 同届混得好的同学 · 自媒体吸引来的行业朋友 · 毕业后的各种圈子。<br>
+            这些人脉会在工作多年后持续发挥作用。
+          </div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:14px;border-left-color:var(--gold);background:#fff8e6">
+        <b>🌤️ 额外的：更多玩和享受生活的时间</b>——读研其实是个"过渡期"。本科毕业直接就业压力很大，读研给了你多 2-3 年继续探索、试错、享受生活的时间。
+      </div>
+    </section>
+
+    <!-- 10. 给学弟学妹的话 -->
+    <section id="sec-10" class="card anchor">
+      <div class="card-title"><span class="icon">💌</span>给学弟学妹的话</div>
+
+      <div class="quote-box">
+        <div class="quote-text">
+          我从大山里的小学 → 全县最差的初中 → 本科成都工业学院 → 考研 380 分上岸西南交大 → 华为实习 → C++ 就业 3 年 → 6 年 UP 主粉丝 27w+。<br>
+          我没有任何天赋和背景优势，能走出来靠的只有一句话：<b>认准方向，然后坚持。</b>
+        </div>
+        <div class="quote-author">—— 与所有正在奋斗的你共勉</div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🏔️</div>
+        <div>
+          <div class="motivation-title">如果我能做到，你也可以</div>
+          <div class="motivation-text">
+            我小学班上 60 个人，只有我一个人读到了本科。我初中是全县最差的，学习氛围极差。我本科绩点也只有 2.8，挂过科。<br>
+            <b>如果这样的我都能做到，你凭什么做不到？</b> 不要给自己设限，更不要让别人定义你的上限。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🔬</div>
+        <div>
+          <div class="motivation-title">竞赛是性价比最高的提升路径</div>
+          <div class="motivation-text">
+            竞赛不仅能锻炼技术能力，还能帮你认识一批志同道合的队友。一个项目可以参加多场比赛，<b>海投多场比赛的性价比极高</b>。我本科四年拿了省一四次、国三一次，这些经历在考研复试和求职面试中都是加分项。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">📚</div>
+        <div>
+          <div class="motivation-title">考研不是唯一的路，但它是一条值得走的路</div>
+          <div class="motivation-text">
+            本科绩点 2.8 不算高，考研 380 分是对自己的一次证明。考研给了我更高的平台、更好的机会。<b>如果决定考研，就全力以赴；如果决定就业，就尽早实习</b>——两条路都走得通，关键是选好后不要后悔。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🌟</div>
+        <div>
+          <div class="motivation-title">迷茫不可怕，可怕的是放弃</div>
+          <div class="motivation-text">
+            我也迷茫过：大一不知道自己适不适合这个专业，大二挂过一门课，考研前焦虑到失眠。但我没有放弃，一步一步地走了下来。<b>接受迷茫的状态并持续行动</b>——这是走出迷茫的唯一方法。
+          </div>
+        </div>
+      </div>
+
+      <div class="motivation-card">
+        <div class="motivation-icon">🤲</div>
+        <div>
+          <div class="motivation-title">希望你也能成为帮别人点灯的人</div>
+          <div class="motivation-text">
+            正因为我知道教育落后地区上学有多难，所以我想尽我所能把通信电子大类的大学科普做好。<br>
+            希望有一天，<b>你也能从被帮助的人，变成帮助别人的人</b>。把知识和经验传递下去，让更多山里的孩子、更多没资源的孩子，能看到更清晰的方向。
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-box" style="margin-top:20px">
+        <div class="quote-text">努力不会骗人，时间会给你答案。<br>愿每一个正在努力的你，都能在未来某一天，感谢今天没有放弃的自己。</div>
+        <div class="quote-author">—— 与所有正在奋斗的你共勉</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+const navLinks = document.querySelectorAll('.side-nav-list a');
+const sections = document.querySelectorAll('.anchor');
+function setActive(){
+  let idx = 0;
+  sections.forEach((s,i)=>{
+    if(s.getBoundingClientRect().top <= 80) idx = i;
+  });
+  navLinks.forEach(a=>a.classList.remove('active'));
+  const target = navLinks[idx];
+  if(target){
+    target.classList.add('active');
+    if(window.innerWidth>900){
+      target.scrollIntoView({block:'nearest',behavior:'smooth'});
+    }
+  }
+}
+navLinks.forEach(a=>{
+  a.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if(el){
+      el.scrollIntoView({behavior:window.innerWidth<=900?'auto':'smooth',block:'start'});
+    }
+    navLinks.forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+var _scheduled=false;
+function _throttledSetActive(){
+  if(window.innerWidth<=900){
+    if(_scheduled)return;
+    _scheduled=true;
+    requestAnimationFrame(function(){_scheduled=false;setActive()});
+  }else{
+    setActive();
+  }
+}
+window.addEventListener('scroll',_throttledSetActive,{passive:true});
+setActive();
+</script>
+<script>
+function spawnPetals(){
+  if(window.innerWidth<=900)return;
+  const ua=navigator.userAgent||'';
+  if(/BiliDroid|BiliTV|MicroMessenger|MQQBrowser|QQBrowser|UCBrowser/i.test(ua))return;
+  const chars=['❀','✿','❁','✾'];
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.textContent=chars[i%chars.length];
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(10+Math.random()*10)+'s';
+    p.style.animationDelay=(-Math.random()*15)+'s';
+    p.style.fontSize=(10+Math.random()*8)+'px';
+    document.body.appendChild(p);
+  }
+}
+spawnPetals();
+</script>
+<script>
+/* 关键字高亮：自动扫描全文，用红/绿/橙色标记关键字 */
+(function(){
+  var kwRed=['380分','380 分','60→24→1','27w+','省一四次','国三一次','一等奖','上岸','50天','50 天','14遍','14 遍','40本','40 本','10h+','14h','453分','453 分','442分','442 分','5000元','5000 元','42分','42 分','39分','39 分','绩点 2.8','绩点2.8','银牌牌','丙等奖学金','逆袭','就业 3 年','就业3年'];
+  var kwGreen=['C++','C语言','Python','python','STM32F103c8t6','STM32F200','STM32','STC15','K60','树莓派','MPU6050','信号与系统','信号系统','PCB','UWB','GPS','RFID','无线室内定位','室内定位','平衡车','避障小车','张宇1000题','张宇 1000 题','张宇十八讲','百词斩','念念有词','精翻','肖四','单片机','嵌入式','通信工程','电子设计竞赛','飞思卡尔','研电赛','后端开发','俄罗斯方块','超高频 RFID'];
+  var kwOrange=['@一只通信考研的er','成都工业学院','西南交通大学','西南交大','华为','B站','B 站','UP主','UP 主','郫县','山东','考研','六级','复试','初试','夏令营','励志奖学金','东莞华为总部','成都研究所','成研所','张雪峰','Uzi','秋招','实习','毕业设计','毕设'];
+
+  var all=[];
+  kwRed.forEach(function(w){all.push({w:w,c:'red'})});
+  kwGreen.forEach(function(w){all.push({w:w,c:'green'})});
+  kwOrange.forEach(function(w){all.push({w:w,c:'orange'})});
+  all.sort(function(a,b){return b.w.length-a.w.length});
+
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  var pat='('+all.map(function(x){return esc(x.w)}).join('|')+')';
+  var re=new RegExp(pat,'g');
+  var reT=new RegExp(pat,'');
+  var wc={};all.forEach(function(x){wc[x.w]=x.c});
+
+  var skipTags={'SCRIPT':1,'STYLE':1,'A':1,'INPUT':1,'TEXTAREA':1,'BUTTON':1,'SELECT':1};
+  var root=document.querySelector('.main-content')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(node){
+      var p=node.parentElement;
+      if(!p)return NodeFilter.FILTER_REJECT;
+      if(skipTags[p.tagName])return NodeFilter.FILTER_REJECT;
+      if(p.closest('.side-nav'))return NodeFilter.FILTER_REJECT;
+      if(p.closest('.hero-tl-date'))return NodeFilter.FILTER_REJECT;
+      if(p.closest('.rm-date'))return NodeFilter.FILTER_REJECT;
+      if(p.closest('.stat-num'))return NodeFilter.FILTER_REJECT;
+      if(p.classList.contains('kw-red')||p.classList.contains('kw-green')||p.classList.contains('kw-orange'))return NodeFilter.FILTER_REJECT;
+      return reT.test(node.textContent)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }
+  });
+  var nodes=[],n;
+  while(n=walker.nextNode())nodes.push(n);
+  for(var i=0;i<nodes.length;i++){
+    var node=nodes[i],text=node.textContent;
+    re.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=re.exec(text))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(text.slice(last,m.index)));
+      var span=document.createElement('span');
+      span.className='kw-'+(wc[m[0]]||'red');
+      span.textContent=m[0];
+      frag.appendChild(span);
+      last=m.index+m[0].length;
+    }
+    if(last<text.length)frag.appendChild(document.createTextNode(text.slice(last)));
+    node.parentNode.replaceChild(frag,node);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>院校PK对比 - 27控制类考研择校</title>
+<meta name="description" content="控制类考研院校PK对比工具，支持多院校复试、录取、复录比、专业课等维度横向对比。">
+<meta name="keywords" content="通信考研,电子考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<script src="vendor/tailwind.js"></script>
+<script src="vendor/echarts.min.js"></script>
+<script src="vendor/html2canvas.min.js"></script>
+<script src="kaoyan_data.js"></script>
+<script src="course_index.js"></script>
+<script src="school_detail_data.js"></script>
+<style>
+@import url('vendor/fonts/fd7c59f8d290aab04d9d487b4c33ba39.css');
+body{font-family:'Noto+Sans+SC',sans-serif;background:#F5F0F7;font-weight:600;color:#2d2d3d;}
+.card{background:#FFFFFF;border-radius:12px;box-shadow:0 4px 12px rgba(184,164,216,0.2);}
+.btn-primary{background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:700;transition:transform .2s,box-shadow .2s;}
+.btn-primary:hover{transform:scale(1.02);box-shadow:0 6px 16px rgba(184,164,216,0.35);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#FFFFFF;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:#6a6a7a;border:none;transition:transform .2s,background .2s;}
+.back-btn:hover{background:#E8E0E8;transform:scale(1.02);}
+.select-box{padding:10px 14px;border:1px solid #D4C8E0;border-radius:8px;background:#FFFFFF;color:#2d2d3d;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+.select-box:focus{border-color:#B8A4D8;box-shadow:0 0 0 3px rgba(184,164,216,0.25);}
+.school-tag{display:inline-flex;align-items:center;gap:18px;padding:18px 42px;background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border-radius:40px;font-size:24px;font-weight:700;transition:box-shadow .2s,transform .2s;}
+.school-tag:hover{box-shadow:0 8px 24px rgba(184,164,216,0.35);transform:scale(1.01);}
+.school-tag .del{cursor:pointer;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.3);display:none;align-items:center;justify-content:center;font-size:20px;}
+.school-tag:hover .del{display:inline-flex;}
+.school-tag .del:hover{background:rgba(255,255,255,0.5);}
+.pk-tags-wrap{display:grid;gap:12px;justify-content:center;max-width:100%;margin:0 auto;}
+.search-wrap{position:relative;}
+.search-dropdown{position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border:1px solid #D4C8E0;border-radius:8px;max-height:200px;overflow-y:auto;z-index:20;display:none;box-shadow:0 4px 12px rgba(184,164,216,0.2);}
+.search-dropdown.active{display:block;}
+.search-dropdown div{padding:8px 14px;cursor:pointer;font-size:14px;color:#2d2d3d;font-weight:600;}
+.search-dropdown div:hover{background:#F5F0F7;}
+.pk-title{font-size:6.25rem;font-weight:900;color:#e74c3c;margin:0;text-align:center;display:block;width:100%;letter-spacing:1px;}
+h1,h2,h3{font-weight:700;color:#2d2d3d;}
+.compare-table .school-col{font-weight:700;}
+.compare-table .label-col{font-weight:700;}
+.compare-table th{font-weight:700;}
+.compare-table td{font-weight:600;color:#2d2d3d;}
+.number-glow{font-weight:700;color:#2d2d3d;}
+.pk-section-title{font-size:1.25rem;font-weight:700;text-align:center;padding:10px 20px;margin-bottom:16px;border-radius:8px;background:linear-gradient(135deg,#E8E0E8 0%,#D4C8E0 100%);color:#2d2d3d;box-shadow:0 2px 8px rgba(184,164,216,0.2);position:relative;}
+.heart-burst{position:fixed;pointer-events:none;z-index:9999;font-size:28px;animation:heartBurst .8s ease-out forwards;}
+@keyframes heartBurst{0%{transform:scale(0) rotate(0deg);opacity:1;}50%{transform:scale(1.5) rotate(10deg);opacity:.9;}100%{transform:scale(2.2) rotate(-10deg) translateY(-40px);opacity:0;}}
+.heart-glow{position:fixed;pointer-events:none;z-index:9998;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,150,0.4) 0%,transparent 70%);animation:glowExpand .6s ease-out forwards;}
+@keyframes glowExpand{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
+.live-text{position:fixed;pointer-events:none;z-index:10000;font-size:16px;font-weight:700;color:#F48FB1;text-shadow:0 0 8px rgba(236,72,153,0.5);animation:textPop 1s ease-out forwards;white-space:nowrap;}
+@keyframes textPop{0%{transform:scale(0.5) translateY(0);opacity:0;}20%{transform:scale(1.2) translateY(-10px);opacity:1;}60%{transform:scale(1) translateY(-30px);opacity:1;}100%{transform:scale(0.8) translateY(-60px);opacity:0;}}
+.compare-table{display:grid;grid-template-columns:minmax(140px,1fr) repeat(var(--cols,1),minmax(140px,1fr));font-size:20px;border:1px solid #E8E0E8;border-bottom:none;border-right:none;}
+.compare-table thead,.compare-table tbody,.compare-table tr{display:contents;}
+.compare-table th,.compare-table td{padding:6px 8px;border-right:1px solid #E8E0E8;border-bottom:1px solid #E8E0E8;text-align:center;}
+.compare-table th{background:#B8A4D8;font-weight:700;color:#fff;}
+.compare-table td{background:#FFFFFF;color:#2d2d3d;font-weight:600;}
+.compare-table tr:nth-child(even) td{background:#FAF7FC;}
+.compare-table .school-col{font-weight:700;}
+.compare-table .label-col{background:#F5F0F7;font-weight:700;color:#2d2d3d;text-align:left;}
+.tier-985{color:#fff;font-weight:700;background:#e74c3c;padding:3px 10px;border-radius:4px;}
+.tier-211{color:#fff;font-weight:700;background:#8b5cf6;padding:3px 10px;border-radius:4px;}
+.tier-syl{color:#fff;font-weight:600;background:#0ea5e9;padding:3px 10px;border-radius:4px;}
+.tier-sf{background:#e5e7eb;color:#6b7280;font-weight:600;padding:3px 10px;border-radius:4px;}
+.score-high{color:#FF5252;font-weight:700;}
+.score-mid{color:#FFB300;font-weight:700;}
+.score-low{color:#43A047;font-weight:700;}
+.ratio-high{color:#FF5252;font-weight:700;}
+.ratio-mid{color:#FFB300;font-weight:700;}
+.ratio-low{color:#43A047;font-weight:700;}
+.eval-a-plus{background:#15803d;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-a{background:#2563eb;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-a-minus{background:#60a5fa;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-b-plus{background:#22c55e;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-b{background:#16a34a;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-b-minus{background:#bbf7d0;color:#166534;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-c-plus{background:#facc15;color:#713f12;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-c{background:#f97316;color:#fff;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.eval-c-minus{background:#d1d5db;color:#374151;padding:4px 12px;border-radius:4px;font-size:16px;font-weight:700;}
+.page{padding:24px;max-width:1400px;margin:0 auto;}
+.chart-container{background:#FFFFFF;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(184,164,216,0.2);}
+.empty-tip{text-align:center;padding:60px;color:#8b949e;font-size:16px;font-weight:600;}
+
+/* === 院校详情弹窗 === */
+/* 院校详情弹窗 */
+.school-link { color: #9A8AC8; cursor: pointer; text-decoration: underline; font-weight: 600; }
+.school-link:hover { color: #B8A4D8; }
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 10000; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: #fff; border-radius: 12px; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
+.modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; cursor: pointer; color: #718096; }
+.modal-close:hover { color: #e53e3e; }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #2d2d3d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #E8E0E8; }
+.modal-section { margin-bottom: 18px; }
+.modal-section h4 { font-size: 0.95rem; color: #9A8AC8; margin-bottom: 8px; font-weight: 600; }
+.modal-section p, .modal-section li { font-size: 0.85rem; line-height: 1.7; color: #4a5568; }
+.modal-section ul { padding-left: 18px; margin: 0; }
+.modal-section table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+.modal-section table td, .modal-section table th { border: 1px solid #E8E0E8; padding: 6px 8px; text-align: left; }
+.modal-section table th { background: #f7fafc; font-weight: 600; }
+
+/* === 院校详情弹窗 === */
+/* 院校详情弹窗 */
+.school-link { color: #9A8AC8; cursor: pointer; text-decoration: underline; font-weight: 600; }
+.school-link:hover { color: #B8A4D8; }
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 10000; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: #fff; border-radius: 12px; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
+.modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; cursor: pointer; color: #718096; }
+.modal-close:hover { color: #e53e3e; }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #2d2d3d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #E8E0E8; }
+.modal-section { margin-bottom: 18px; }
+.modal-section h4 { font-size: 0.95rem; color: #9A8AC8; margin-bottom: 8px; font-weight: 600; }
+.modal-section p, .modal-section li { font-size: 0.85rem; line-height: 1.7; color: #4a5568; }
+.modal-section ul { padding-left: 18px; margin: 0; }
+.modal-section table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+.modal-section table td, .modal-section table th { border: 1px solid #E8E0E8; padding: 6px 8px; text-align: left; }
+.modal-section table th { background: #f7fafc; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .compare-table { font-size: 14px; }
+  .pk-title { font-size: 4.5rem; color: #e74c3c; }
+  .school-tag { font-size: 16px !important; padding: 8px 16px !important; }
+}
+</style>
+
+
+
+<style id="entry-responsive-adapt">
+html{overflow-x:hidden}
+body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,canvas,video{max-width:100%}
+a,button,input,.school-link,.school-tag .del{touch-action:manipulation}
+a:focus-visible,button:focus-visible,input:focus-visible,.school-link:focus-visible,.school-tag .del:focus-visible{outline:3px solid rgba(184,164,216,.48);outline-offset:3px}
+.compare-table{min-width:max(560px,calc(140px + var(--cols,1)*150px))}
+.compare-table th,.compare-table td{word-break:break-word}
+.chart-container{overflow:hidden}
+.modal-box{-webkit-overflow-scrolling:touch}
+@media (hover:none){.btn-primary:hover,.back-btn:hover,.school-tag:hover{transform:none}}
+@media (max-width:900px){
+  .page{width:100%;padding:16px max(12px,env(safe-area-inset-left)) 28px max(12px,env(safe-area-inset-right))}
+  .pk-title{font-size:clamp(2.4rem,13vw,4.2rem);line-height:1.05;margin-top:8px}
+  .card{border-radius:14px}
+  .card .flex.items-center.gap-3{align-items:stretch}
+  .search-wrap{width:100%!important}
+  .select-box{min-height:44px}
+  .btn-primary,.back-btn{min-height:44px;justify-content:center}
+  .school-tag{max-width:100%;font-size:15px!important;padding:9px 14px!important;gap:10px;overflow-wrap:anywhere}
+  .pk-tags-wrap{justify-content:stretch}
+  .compare-table{font-size:13px;min-width:max(540px,calc(126px + var(--cols,1)*132px))}
+  .compare-table th,.compare-table td{padding:8px 6px}
+  .modal-overlay{align-items:flex-end;padding:12px}
+  .modal-box{width:100%;max-height:calc(100dvh - 24px);padding:22px 16px;border-radius:16px}
+}
+</style>
+
+</head>
+<body>
+
+<!-- 导航历史记录 -->
+<script>
+(function(){
+  const key = 'navHistory';
+  let history = [];
+  try {
+    const saved = sessionStorage.getItem(key);
+    if(saved) history = JSON.parse(saved);
+  }catch(e){}
+  const current = location.href;
+  if(history.length === 0 || history[history.length-1] !== current){
+    history.push(current);
+    sessionStorage.setItem(key, JSON.stringify(history));
+  }
+  window.goBack = function(){
+    if(history.length <= 1) return;
+    history.pop();
+    const prev = history[history.length-1];
+    if(prev){ sessionStorage.setItem(key, JSON.stringify(history)); location.href = prev; }
+  };
+  window.hasBack = function(){ return history.length > 1; };
+})();
+</script>
+
+<div class="page">
+  <!-- 返回按钮 -->
+  <div class="flex gap-2 mb-4">
+    <button class="back-btn" onclick="goBack()" id="backBtn" style="display:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回上一级
+    </button>
+    <a href="index.html" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回首页
+    </a>
+  </div>
+
+  <!-- 顶部表情包 -->
+
+  <!-- 标题 -->
+  <h1 class="pk-title mb-6">27控制类考研院校大PK</h1>
+
+  <!-- 院校选择区 -->
+  <div class="card p-4 mb-6">
+    <div class="flex items-center gap-3 flex-wrap">
+      <span class="text-gray-600 font-medium">添加院校:</span>
+      <div class="search-wrap" style="width:280px;position:relative;">
+        <input id="pkSearch" type="text" placeholder="输入学校名称搜索..." class="select-box" style="width:100%;" oninput="onPkSearch(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();onPkEnter();}">
+        <div id="pkDropdown" class="search-dropdown"></div>
+      </div>
+      <span class="text-gray-400 text-sm">已选 <span id="pkCount">0</span>/10</span>
+      <button class="btn-primary text-sm" onclick="exportPkImage()" style="white-space:nowrap;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:middle;margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        导出分析
+      </button>
+      <button class="back-btn text-sm" onclick="resetPk()" style="background:#fee2e2;color:#991b1b;border:1px solid #fecaca;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        重置对比
+      </button>
+    </div>
+    <div id="pkSelected" class="flex gap-2 mt-3 flex-wrap items-center"></div>
+  </div>
+
+  <!-- 对比内容区 -->
+  <div id="pkContent"></div>
+</div>
+
+<script>
+// ===================== 数据初始化 =====================
+const DATA = window.KAOYAN_DATA;
+const COLS = DATA.columns;
+const records = DATA.records.map(r => {
+  const obj = {};
+  COLS.forEach((c,i) => obj[c] = r[i]);
+  return obj;
+});
+
+// ===================== 数据准备 =====================
+const ALL_SCHOOLS = [...new Set(records.map(r=>r.school))].sort();
+const SCHOOL_STATS_MAP = {};
+DATA.schoolStats.forEach(s=> SCHOOL_STATS_MAP[s['学校']] = s);
+
+// 院校标签（复用index.html中的定义）
+const SCHOOL_TAGS = {
+  '28所': new Set(['清华大学','北京大学','中国科学院大学','北京航空航天大学','北京理工大学','北京工业大学','复旦大学','上海交通大学','同济大学','东南大学','南京大学','浙江大学','中国科学技术大学','合肥工业大学','西安交通大学','西北工业大学','西安电子科技大学','电子科技大学','华中科技大学','中山大学','华南理工大学','天津大学','大连理工大学','山东大学','国防科学技术大学','福州大学','厦门大学','南方科技大学']),
+  '国防七子': new Set(['北京航空航天大学','北京理工大学','哈尔滨工业大学','西北工业大学','哈尔滨工程大学','南京航空航天大学','南京理工大学']),
+  '军工六校': new Set(['中国人民解放军国防科技大学','哈尔滨工程大学','南京理工大学','中国人民解放军陆军工程大学','中国人民解放军陆军装甲兵学院','中国人民解放军陆军防化学院']),
+  '兵工七子': new Set(['北京理工大学','南京理工大学','中北大学','长春理工大学','沈阳理工大学','西安工业大学','重庆理工大学']),
+  '四电四邮': new Set(['北京邮电大学','南京邮电大学','重庆邮电大学','西安邮电大学','电子科技大学','西安电子科技大学','杭州电子科技大学','桂林电子科技大学']),
+  '两电一邮': new Set(['电子科技大学','西安电子科技大学','北京邮电大学']),
+  'C9联盟': new Set(['北京大学','清华大学','浙江大学','复旦大学','上海交通大学','南京大学','中国科学技术大学','哈尔滨工业大学','西安交通大学'])
+};
+
+const EVAL_TAGS = {};
+// 有就业数据的院校（73所）
+const EMPLOYMENT_SCHOOLS = new Set([
+  '上海大学','上海电力大学','东北大学','东北林业大学','东南大学',
+  '中国海洋大学','中国矿业大学','中山大学','北京工业大学','北京理工大学',
+  '北京航空航天大学','北京邮电大学','华东师范大学','华中师范大学','华中科技大学',
+  '华北电力大学','华南农业大学','华南师范大学','南京信息工程大学','南京理工大学',
+  '南京航空航天大学','南京邮电大学','南方科技大学','南昌大学','厦门大学',
+  '合肥工业大学','吉林大学','哈尔滨工业大学','哈尔滨工程大学','国防科技大学',
+  '大连海事大学','大连理工大学','天津大学','天津工业大学','宁波大学',
+  '安徽大学','广东工业大学','成都信息工程大学','成都理工大学','暨南大学',
+  '杭州电子科技大学','桂林电子科技大学','武汉大学','武汉理工大学','江南大学',
+  '沈阳航空航天大学','河北大学','河北工业大学','河海大学','浙江大学',
+  '浙江工业大学','海南大学','清华大学','湖南大学','电子科技大学','福州大学',
+  '苏州大学','西北工业大学','西华大学','西南交通大学','西安交通大学',
+  '西安工程大学','西安理工大学','西安电子科技大学','西安邮电大学','贵州大学',
+  '重庆邮电大学','长安大学','黑龙江大学'
+]);
+const EMPLOYMENT_MAP = {
+  '中国石油大学(华东)': '就业相关/院校就业去向/schools/中国石油大学（华东）.html',
+  '中国科学院大学': '就业相关/院校就业去向/schools/中国科学院成都光电技术研究所.html'
+};
+
+const EMPLOYMENT_DATA = {
+  "清华大学": "博士就业去向",
+  "北京邮电大学": "就业单位TOP10：比亚迪、华为、天翼云等",
+  "国防科技大学": "就业TOP10：比亚迪、华为、天翼云、美团、阿里等",
+  "大连理工大学": "500强TOP30：华为139人、航空工业137人、船舶109人",
+  "浙江大学": "IT行业60.55%、华为/比亚迪/阿里云TOP3、留杭40.20%",
+  "北京航空航天大学": "就业TOP10：美团、阿里、腾讯、字节、华为、百度等",
+  "中国科学院成都光电技术研究所": "科研院所就业去向",
+  "东南大学": "IT业46.8%、华为/中兴TOP3、留宁23.88%",
+  "哈尔滨工业大学": "就业率90%+，华为签约467人全国第三",
+  "西安交通大学": "24届953人签约、华为系76人、IT/金融/科研/制造四业并进",
+  "西北工业大学": "华为19人TOP1、航空/航天/国防特色、大厂+国企央企双轨",
+  "电子科技大学": "985重点高校",
+  "天津大学": "24家主要单位：华为/阿里/腾讯/中兴+国家电网/中航/航天",
+  "北京理工大学": "航天科技165人TOP1、四大军工集团554人、就业率99.55%",
+  "厦门大学": "985重点高校",
+  "武汉大学": "IT业66%+、华为/腾讯/美团/字节TOP10、留武汉27%",
+  "华中科技大学": "央企1167人、国防军工399人/电力338人、选调生315人",
+  "中山大学": "IT业73.9%、华为/腾讯/头条/虾皮TOP10、留广东78人",
+  "华东师范大学": "IT约55%、华为/合见各7人TOP、上海本地70%+",
+  "湖南大学": "985重点高校",
+  "东北大学": "985重点高校",
+  "吉林大学": "华为42W总包、新凯来2人、江苏无线电厂28K×16",
+  "中国海洋大学": "小米39/歌尔36/比亚迪23人TOP、青岛本地就业主导",
+  "大连海事大学": "28家单位BAT/华为/中兴/字节、全国就业不限东北",
+  "苏州大学": "连续五年就业率100%、86%年薪超20万、IT业61人",
+  "合肥工业大学": "安徽省薪酬No.1、国企49%、华为/中兴/烽火/长鑫/联发科",
+  "西安电子科技大学": "华为558人/电科326人/航天172人TOP、IT业48%、30w不是问题",
+  "北京工业大学": "北方华创50人TOP、中建35/电信32/移动25人、央企国企为主",
+  "南京理工大学": "中兴221/电科193/华为190人TOP、32.63%进500强、军工超500人",
+  "南京航空航天大学": "华为南京16人/中兴14人/展讯9人TOP、国防+电子信息+集成电路",
+  "中国石油大学（华东）": "电子科技总包30w/船舶22w/石油20K×14/海信20w/海尔18w",
+  "西安邮电大学": "中航工业20+/中兴15+/电信8+人TOP、留西安45%、就业率近100%",
+  "南京邮电大学": "中兴356/华为225/电信216/移动182/烽火100/联通90，年薪18-30万",
+  "福州大学": "IT 38%+ / 制造业 30.37% / 金融 14.51% | 锐捷/比亚迪/工行TOP3",
+  "河北工业大学": "中建211/铁路44/一汽41/联通31/电网29/长城25, 天津就业杠杠",
+  "中国矿业大学": "中建239/电网193/比亚迪53/铁路48/能源44, 央企国企 dominance",
+  "河海大学": "国企121/民企94, 江浙沪90.9%, 思源电气22w/天合光能16.5k",
+  "华北电力大学": "电力25.81%/IT25.35%/制造22.58%, 超聚变20k/歌尔17k/许继15k",
+  "华北电力（北京）": "电力35.6%/IT18.98%/制造14.81%, 北京35.19%, 国网系 dominance",
+  "西南交通大学": "IT51.88%/金融18.75%/制造17.50%, 成都37.19%",
+  "哈尔滨工程大学": "IT43.95%/科研40%/制造11.40%, 华为/中电科54所/10所/36所/28所",
+  "武汉理工大学": "华为103/中国船舶66/中兴69/紫光68/TCL62, 华为30-35w/南网20-25w",
+  "暨南大学": "华为/虾皮/字节/腾讯/多益/4399, 互联网游戏大厂dominance",
+  "上海大学": "移动26/商飞25/电网24/电信21, 荣耀42.4w/中兴37.8w/华为35w",
+  "安徽大学": "比亚迪225/长鑫存储94/晶合45, 留安徽63.72%/合肥47.97%",
+  "南昌大学": "建筑204/比亚迪95/电网93/移动65/电信41",
+  "华南师范大学": "比亚迪TOP1+TOP4/广发银行TOP2/交行TOP3/电信设计院TOP6",
+  "华中师范大学": "IT 47%+ / 科研 22.22% / 制造 13.89% | 联发科TOP1/虾皮TOP3",
+  "东北林业大学": "IT 31.51% / 金融 30.14% / 制造 27.40% | 比亚迪TOP1",
+  "江南大学": "211重点高校",
+  "海南大学": "制造 47%+ / IT 26.60% / 金融 7.39% | 比亚迪TOP1",
+  "长安大学": "世界500强514人/中国500强768人 | 百度20-35K/阿里14K",
+  "中国地质大学": "211重点高校",
+  "贵州大学": "IT 36% / 金融 20.29% / 制造 6.90% | 电信TOP1",
+  "杭州电子科技大学": "IT 60.42% / 制造 15.16% / 金融 11.34% | 华为194/海康131/字节84",
+  "重庆邮电大学": "IT 61.41% / 制造 17.97% / 金融 8.18% | 中移物联网TOP1",
+  "沈阳航空航天大学": "IT 40.91% / 制造 31.82% / 科研 20.45% | 成飞TOP1",
+  "南京信息工程大学": "特色高校",
+  "南方科技大学": "IT 54.93% / 制造 22.54% / 教育 14.08% | 华为TOP1",
+  "成都理工大学": "IT 53.54% / 制造 20.47% / 教育 5.51% | 经纬恒润TOP1",
+  "黑龙江大学": "特色高校",
+  "成都信息工程大学": "IT 53.9% / 制造 18.75% / 教育 8.20% | 天奥电子TOP1",
+  "广东工业大学": "IT 43.18% / 制造 14.55% / 电信 5.01% | 就业率100%",
+  "桂林电子科技大学": "深圳20.3%/桂林8.9%/南宁8.7% | 移远通信TOP1",
+  "宁波大学": "宁波本地6席 | 奥克斯TOP1/联通宁波TOP2/海康威视TOP4",
+  "天津工业大学": "年薪12-45万 | 民企47%/事业21%/国企14% | 华为/小米/抖音/海康",
+  "西安理工大学": "特色高校",
+  "浙江工业大学": "控制工程就业率>98% | 500强占比23.27% | 移动15人/比亚迪14人",
+  "西华大学": "通信+电子双方向 | 川内为主 | 京东方/华虹/芯源",
+  "上海电力大学": "特色高校",
+  "河北大学": "22届电子与通信工程 | 移动河北3人/新风航天/小米",
+  "华南农业大学": "省内就业85.35% | 硕士企业63.56%/国家机关11.70%",
+  "西安工程大学": "特色高校",
+};
+[
+  ['电子科学与技术A+',['电子科技大学','西安电子科技大学']],
+  ['电子科学与技术A',['北京大学','清华大学','东南大学']],
+  ['电子科学与技术A-',['北京邮电大学','复旦大学','上海交通大学','南京大学','浙江大学','西安交通大学']],
+  ['电子科学与技术B+',['北京航空航天大学','北京理工大学','天津大学','吉林大学','南京邮电大学','杭州电子科技大学','华中科技大学','西北工业大学','国防科技大学','空军工程大学']],
+  ['电子科学与技术B',['北京工业大学','南开大学','哈尔滨工业大学','华东师范大学','南京理工大学','中国科学技术大学','厦门大学','武汉大学','中山大学','华南理工大学']],
+  ['电子科学与技术B-',['北京交通大学','大连理工大学','安徽大学','合肥工业大学','福州大学','山东大学','湖南大学','重庆大学','西南交通大学','西安理工大学','解放军理工大学']],
+  ['电子科学与技术C+',['中国传媒大学','河北工业大学','太原理工大学','长春理工大学','黑龙江大学','燕山大学','上海大学','中南大学']],
+  ['电子科学与技术C',['重庆邮电大学','兰州大学','解放军信息工程大学']],
+  ['电子科学与技术C-',['天津工业大学','天津理工大学','南京航空航天大学','湖北大学','长沙理工大学','桂林电子科技大学','四川大学','贵州大学','西安邮电大学','海军航空工程学院','北方工业大学','河北大学','华北电力大学','中北大学','哈尔滨工程大学','苏州大学','中国计量大学','郑州大学','武汉理工大学','深圳大学','西北大学']]
+].forEach(([tag,schools])=> schools.forEach(s=>{ if(!EVAL_TAGS[s]) EVAL_TAGS[s]=[]; EVAL_TAGS[s].push(tag); }));
+
+[
+  ['信息与通信工程A+',['北京邮电大学','电子科技大学']],
+  ['信息与通信工程A',['清华大学','上海交通大学','西安电子科技大学','国防科技大学']],
+  ['信息与通信工程A-',['北京交通大学','北京航空航天大学','北京理工大学','哈尔滨工业大学','东南大学','解放军信息工程大学','解放军理工大学']],
+  ['信息与通信工程B+',['北京大学','天津大学','大连理工大学','哈尔滨工程大学','南京邮电大学','浙江大学','中国科学技术大学','华中科技大学','华南理工大学','西南交通大学','重庆邮电大学','西安交通大学','海军航空工程学院','空军工程大学']],
+  ['信息与通信工程B',['中国传媒大学','中北大学','东北大学','上海大学','南京大学','南京航空航天大学','南京理工大学','厦门大学','山东大学','武汉大学','武汉理工大学','深圳大学','四川大学','西北工业大学']],
+  ['信息与通信工程B-',['大连海事大学','吉林大学','苏州大学','中国矿业大学','河海大学','合肥工业大学','中山大学','桂林电子科技大学','重庆大学','宁波大学','西安邮电大学','装备学院','海军工程大学']],
+  ['信息与通信工程C+',['北京工业大学','北京科技大学','华北电力大学','长春理工大学','同济大学','华东师范大学','南京信息工程大学','南通大学','福州大学','郑州大学','湖南大学','海南大学','成都信息工程大学','云南大学']],
+  ['信息与通信工程C',['南开大学','天津工业大学','中国民航大学','黑龙江大学','复旦大学','上海海事大学','杭州电子科技大学','浙江工业大学','浙江工商大学','南昌大学','华东交通大学','中国海洋大学','中南大学','暨南大学']],
+  ['信息与通信工程C-',['天津理工大学','沈阳航空航天大学','燕山大学','东华大学','山东科技大学','中国地质大学','西北大学','西安理工大学','西安科技大学','兰州大学','兰州交通大学','广东工业大学','火箭军工程大学']]
+].forEach(([tag,schools])=> schools.forEach(s=>{ if(!EVAL_TAGS[s]) EVAL_TAGS[s]=[]; EVAL_TAGS[s].push(tag); }));
+
+function wrapSchoolBadge(schoolName) {
+  return '<span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:middle;"><img src="专业课选择/images/校徽/' + schoolName + '.jpg" onerror="this.style.display=\'none\'" style="width:1em;height:1em;border-radius:50%;object-fit:cover;flex-shrink:0;">' + schoolName + '</span>';
+}
+function getSchoolTags(schoolName){
+  const tags = [];
+  Object.entries(SCHOOL_TAGS).forEach(([name,set])=>{ if(set.has(schoolName)) tags.push(name); });
+  if(EVAL_TAGS[schoolName]) EVAL_TAGS[schoolName].forEach(t=> tags.push(t));
+  return tags;
+}
+
+function getGroupTagStyle(tag){
+  const map = {
+    '28所':   'background:#fee2e2;color:#991b1b;border:1px solid #fecaca;',
+    '国防七子': 'background:#d1fae5;color:#166534;border:1px solid #86efac;',
+    '军工六校': 'background:#ffedd5;color:#9a3412;border:1px solid #fed7aa;',
+    '兵工七子': 'background:#fef3c7;color:#92400e;border:1px solid #fde68a;',
+    '四电四邮': 'background:#ede9fe;color:#6b21a8;border:1px solid #c4b5fd;',
+    '两电一邮': 'background:#fce7f3;color:#9d174d;border:1px solid #f9a8d4;',
+    'C9联盟':  'background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;'
+  };
+  return map[tag] || 'background:#e5e7eb;color:#6b7280;border:1px solid #d1d5db;';
+}
+function getEvalClass(tag){
+  if(tag.includes('A+')) return 'eval-a-plus';
+  if(tag.includes('A-')) return 'eval-a-minus';
+  if(tag.includes('A')) return 'eval-a';
+  if(tag.includes('B+')) return 'eval-b-plus';
+  if(tag.includes('B-')) return 'eval-b-minus';
+  if(tag.includes('B')) return 'eval-b';
+  if(tag.includes('C+')) return 'eval-c-plus';
+  if(tag.includes('C-')) return 'eval-c-minus';
+  if(tag.includes('C')) return 'eval-c';
+  return '';
+}
+
+// ===================== 状态管理 =====================
+let selectedSchools = [];
+const PK_COLORS = ['#B8A4D8','#E57373','#66BB6A','#F9A825','#64B5F6','#FF8A65','#BA68C8','#4DB6AC','#FFB74D','#7986CB'];
+const MAX_SCHOOLS = 10;
+
+// ===================== 搜索功能 =====================
+function onPkSearch(val){
+  const dd = document.getElementById('pkDropdown');
+  if(!val){ dd.classList.remove('active'); return; }
+  const matches = ALL_SCHOOLS.filter(s=>s.includes(val)&&!selectedSchools.includes(s)).slice(0,10);
+  if(matches.length===0){ dd.classList.remove('active'); return; }
+  dd.innerHTML = matches.map(s=>`<div onclick="addSchool('${s.replace(/'/g,"\\'")}')">${s}</div>`).join('');
+  dd.classList.add('active');
+}
+
+function onPkEnter(){
+  const dd = document.getElementById('pkDropdown');
+  const first = dd.querySelector('div');
+  if(first){
+    first.click();
+  }
+}
+
+function addSchool(name){
+  if(selectedSchools.length>=MAX_SCHOOLS) return;
+  if(selectedSchools.includes(name)) return;
+  selectedSchools.push(name);
+  localStorage.setItem('pkSelectedSchools', JSON.stringify(selectedSchools));
+  document.getElementById('pkSearch').value='';
+  document.getElementById('pkDropdown').classList.remove('active');
+  updateSelected();
+  renderPk();
+}
+
+function removeSchool(name){
+  selectedSchools = selectedSchools.filter(s=>s!==name);
+  localStorage.setItem('pkSelectedSchools', JSON.stringify(selectedSchools));
+  updateSelected();
+  renderPk();
+}
+
+function resetPk(){
+  selectedSchools = [];
+  localStorage.removeItem('pkSelectedSchools');
+  document.getElementById('pkSearch').value='';
+  updateSelected();
+  renderPk();
+}
+
+function updateSelected(){
+  const el = document.getElementById('pkSelected');
+  document.getElementById('pkCount').textContent = selectedSchools.length;
+  const n = selectedSchools.length;
+  
+  // 获取每行分布，避免最后一行只有1个
+  function getDistribution(n) {
+    if (n <= 4) return [n];
+    if (n === 5) return [3, 2];
+    if (n === 6) return [3, 3];
+    if (n === 7) return [4, 3];
+    if (n === 8) return [4, 4];
+    if (n === 9) return [3, 3, 3];
+    if (n === 10) return [4, 3, 3];
+    return [4, 4, 4];
+  }
+  
+  const dist = getDistribution(n);
+  const maxCols = Math.max(...dist);
+  
+  // 字号大幅放大，让字体充满标签85%空间
+  const fs = maxCols === 1 ? 66 : maxCols === 2 ? 56 : maxCols === 3 ? 50 : 44;
+  const vsFs = Math.max(28, fs - 12);
+  // 高度放大，让标签更饱满舒适
+  const padV = 14;
+  const padH = 16;
+  
+  function hexToRgba(hex, a) {
+    const r = parseInt(hex.slice(1,3), 16);
+    const g = parseInt(hex.slice(3,5), 16);
+    const b = parseInt(hex.slice(5,7), 16);
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+  }
+  
+  // 外层容器：宽度100%，每行垂直排列，间距20px
+  let html = '<div style="width:100%;display:flex;flex-direction:column;gap:20px;">';
+  let idx = 0;
+  
+  dist.forEach(count => {
+    html += '<div style="display:flex;width:100%;justify-content:center;align-items:center;gap:16px;">';
+    for (let i = 0; i < count; i++) {
+      const s = selectedSchools[idx];
+      const c = PK_COLORS[idx % PK_COLORS.length];
+      const glow = hexToRgba(c, 0.85);
+      const glow2 = hexToRgba(c, 0.5);
+      // 白色文字 + 黑色粗描边，类似图片中的圆润卡牌风格
+      const textShadow = '0 1px 3px rgba(0,0,0,0.3)';
+      html += '<span class="school-tag" style="background:linear-gradient(135deg,'+c+' 0%,'+c+' 100%);justify-content:center;font-size:'+fs+'px;font-weight:900;letter-spacing:1px;padding:'+padV+'px '+padH+'px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#FFFFFF;text-shadow:'+textShadow+';border-radius:32px;">'
+        + '<span style="cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" onclick="window.open(\'index.html?school='+encodeURIComponent(s)+'&from=院校PK.html\',\'_blank\')" title="查看'+s+'详情">'+wrapSchoolBadge(s)+'</span>'
+        + '<span class="del" style="flex-shrink:0;width:32px;height:32px;font-size:18px;margin-left:8px;color:#FFFFFF;text-shadow:'+textShadow+';" onclick="removeSchool(\''+s.replace(/'/g, "\\'")+'\')">×</span>'
+        + '</span>';
+      idx++;
+      if (i < count - 1) {
+        html += '<span style="font-size:'+vsFs+'px;font-weight:900;color:#2d2d3d;text-shadow:0 0 4px rgba(184,164,216,0.3);flex-shrink:0;letter-spacing:1px;">VS</span>';
+      }
+    }
+    html += '</div>';
+  });
+  
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+// ===================== 渲染对比内容 =====================
+function renderPk(){
+  const container = document.getElementById('pkContent');
+  if(selectedSchools.length<2){
+    container.innerHTML = '<div class="empty-tip">请至少选择2所院校进行对比</div>';
+    return;
+  }
+
+  const schools = selectedSchools;
+  const stats = schools.map(s=>SCHOOL_STATS_MAP[s]||{});
+  const recs = schools.map(s=>records.filter(r=>r.school===s));
+
+  // 计算各院校汇总数据
+  const summaries = schools.map((s,i)=>{
+    const r = recs[i];
+    const st = stats[i];
+    const totalEnter = r.reduce((sum,x)=>sum+(x.enterNum||0),0);
+    const totalAdmit = r.reduce((sum,x)=>sum+(x.admitNum||0),0);
+    const avgAdmit = r.length ? r.reduce((sum,x)=>sum+(x.admitAvg||0),0)/r.length : 0;
+    const avgCourse = r.length ? r.reduce((sum,x)=>sum+(x.courseAvg||0),0)/r.length : 0;
+    const ratio = totalAdmit ? (totalEnter/totalAdmit).toFixed(2) : '-';
+    const colleges = [...new Set(r.map(x=>x.college))];
+    const majors = [...new Set(r.map(x=>x.majorCode))];
+    const tags = getSchoolTags(s);
+    return {school:s, tier:st.tier||'双非', province:st['省份/自治区']||'-', collegeCount:colleges.length, majorCount:majors.length, totalEnter, totalAdmit, ratio, avgAdmit, avgCourse, tags, colleges, recs:r};
+  });
+
+  // 颜色分配（10个马卡龙色系，循环使用）
+  const colors = PK_COLORS;
+
+  let html = '';
+
+  // ===== 基本信息对比 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">基本信息</h3>`;
+  html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">对比项</th>${schools.map((s,i)=>`<th class="school-col" style="color:#fff;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
+  
+  // 层级
+  const tierClassMap = {'985':'tier-985','211':'tier-211','双一流':'tier-syl','双非':'tier-sf'};
+  html += `<tr><td class="label-col">层级</td>${summaries.map(s=>`<td><span class="${tierClassMap[s.tier]||'tier-sf'}">${s.tier}</span></td>`).join('')}</tr>`;
+  
+  // 省份
+  html += `<tr><td class="label-col">省份</td>${summaries.map(s=>`<td>${s.province}</td>`).join('')}</tr>`;
+  
+  // 群体标签
+  html += `<tr><td class="label-col">群体标签</td>${summaries.map(s=>{
+    const groupTags = s.tags.filter(t=>!t.includes('电子科学与技术')&&!t.includes('信息与通信工程'));
+    return `<td>${groupTags.length?groupTags.map(t=>`<span style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;margin:2px;${getGroupTagStyle(t)}">${t}</span>`).join(''):'-'}</td>`;
+  }).join('')}</tr>`;
+  
+  // 学科评估
+  html += `<tr><td class="label-col">电子科学与技术</td>${summaries.map(s=>{
+    const tag = s.tags.find(t=>t.includes('电子科学与技术'));
+    return `<td>${tag?`<span class="${getEvalClass(tag)}" style="cursor:pointer;" onclick="openSchoolModal('${s.school}','0809')">${tag.replace('电子科学与技术','')}</span>`:'/'}</td>`;
+  }).join('')}</tr>`;
+  
+  html += `<tr><td class="label-col">信息与通信工程</td>${summaries.map(s=>{
+    const tag = s.tags.find(t=>t.includes('信息与通信工程'));
+    return `<td>${tag?`<span class="${getEvalClass(tag)}" style="cursor:pointer;" onclick="openSchoolModal('${s.school}','0810')">${tag.replace('信息与通信工程','')}</span>`:'/'}</td>`;
+  }).join('')}</tr>`;
+  
+  html += `</tbody></table></div></div>`;
+
+  // ===== 招生规模对比 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">招生规模</h3>`;
+  html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">对比项</th>${schools.map((s,i)=>`<th class="school-col" style="color:#fff;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
+  html += `<tr><td class="label-col">学院数</td>${summaries.map(s=>`<td>${s.collegeCount}</td>`).join('')}</tr>`;
+  html += `<tr><td class="label-col">专业方向数</td>${summaries.map(s=>`<td>${s.majorCount}</td>`).join('')}</tr>`;
+  html += `<tr><td class="label-col">总进复试人数</td>${summaries.map(s=>`<td>${s.totalEnter}</td>`).join('')}</tr>`;
+  html += `<tr><td class="label-col">总拟录取人数</td>${summaries.map(s=>`<td>${s.totalAdmit}</td>`).join('')}</tr>`;
+  html += `</tbody></table></div></div>`;
+
+  // ===== 竞争难度对比 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">竞争难度</h3>`;
+  html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">对比项</th>${schools.map((s,i)=>`<th class="school-col" style="color:#fff;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
+  
+  function ratioClass(r){ if(!r||r==='-') return ''; const v=parseFloat(r); if(v>1.5) return 'ratio-high'; if(v>1.3) return 'ratio-mid'; return 'ratio-low'; }
+  function scoreClass(s){ if(!s) return ''; if(s>=380) return 'score-high'; if(s>=350) return 'score-mid'; return 'score-low'; }
+  
+  html += `<tr><td class="label-col">平均复录比</td>${summaries.map(s=>`<td class="${ratioClass(s.ratio)}">${s.ratio}</td>`).join('')}</tr>`;
+  html += `<tr><td class="label-col">平均录取分</td>${summaries.map(s=>`<td class="${scoreClass(s.avgAdmit)}">${s.avgAdmit?s.avgAdmit.toFixed(1):'-'}</td>`).join('')}</tr>`;
+  html += `<tr><td class="label-col">平均专业课分</td>${summaries.map(s=>`<td class="${scoreClass(s.avgCourse)}">${s.avgCourse?s.avgCourse.toFixed(1):'-'}</td>`).join('')}</tr>`;
+  html += `</tbody></table></div></div>`;
+
+  // ===== 就业对比 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">就业对比</h3>`;
+  html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">对比项</th>${schools.map((s,i)=>`<th class="school-col" style="color:#fff;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
+  
+  // 就业数据链接
+  html += `<tr><td class="label-col">就业数据</td>${schools.map(s=>{
+    const hasData = EMPLOYMENT_SCHOOLS.has(s);
+    const mappedPath = EMPLOYMENT_MAP[s];
+    if (hasData || mappedPath) {
+      const path = mappedPath || '就业相关/院校就业去向/schools/' + s + '.html';
+      return `<td><a href="${path}" style="display:inline-block;padding:4px 12px;background:#E8E0E8;color:#9A8AC8;border-radius:6px;font-size:13px;text-decoration:none;font-weight:700;" title="查看就业详情">📊 查看就业</a></td>`;
+    } else {
+      return `<td><span style="display:inline-block;padding:4px 12px;background:#F5F0F7;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">敬请期待</span></td>`;
+    }
+  }).join('')}</tr>`;
+  
+  // 就业概况（直接展示）
+  html += `<tr><td class="label-col">就业概况</td>${schools.map(s=>{
+    const info = EMPLOYMENT_DATA[s];
+    if (info && info !== '特色高校' && info !== '985重点高校' && info !== '211重点高校') {
+      return `<td style="font-size:13px;color:#555;text-align:left;padding:10px 12px;line-height:1.6;">${info}</td>`;
+    } else if (info) {
+      return `<td style="font-size:13px;color:#888;">${info}</td>`;
+    } else {
+      return `<td><span style="display:inline-block;padding:4px 12px;background:#F5F0F7;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">敬请期待</span></td>`;
+    }
+  }).join('')}</tr>`;
+  
+  html += `</tbody></table></div></div>`;
+
+  // ===== 专业课考察对比 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">专业课考察</h3>`;
+  
+  // 从 records 中收集所有对比学校的专业课（提取纯名称）
+  function extractCourseName(course2){
+    if(!course2) return '';
+    return course2.replace(/^\(\d+\)/, '').replace(/（.*?）/g, '').trim();
+  }
+  function extractCourseCode(course2){
+    if(!course2) return '';
+    const match = course2.match(/^\((\d+)\)/);
+    return match ? match[1] : '';
+  }
+  
+  const allSubjects = new Set();
+  schools.forEach(s=>{
+    records.filter(r=>r.school===s).forEach(r=>{
+      const name = extractCourseName(r.course2);
+      if(name) allSubjects.add(name);
+    });
+  });
+  const subjectList = [...allSubjects].sort();
+  
+  if(subjectList.length>0){
+    html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">专业课</th>${schools.map((s,i)=>`<th style="color:#fff;min-width:120px;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
+    subjectList.forEach(subject=>{
+      // 检查至少有一个学校有这门课的数据
+      const hasAnyData = schools.some(s=>{
+        return records.some(r=>r.school===s && extractCourseName(r.course2)===subject);
+      });
+      if(!hasAnyData) return;
+      
+      html += `<tr><td class="label-col">${subject}</td>${schools.map(s=>{
+        // 查找该学校该专业课的所有记录
+        const relevantRecs = records.filter(r=>r.school===s && extractCourseName(r.course2)===subject);
+        if(relevantRecs.length===0) return '<td>-</td>';
+        
+        // 提取代码（去重）
+        const codes = [...new Set(relevantRecs.map(r=>extractCourseCode(r.course2)).filter(Boolean))];
+        const codeText = codes.length ? codes.join('<br>') : '请见择校宝典';
+        
+        // 计算加权平均分（按拟录取人数加权）- 专业课均分
+        let totalAdmit = 0;
+        let weightedSum = 0;
+        relevantRecs.forEach(r=>{
+          const admit = r.admitNum || 0;
+          const avg = r.courseAvg || 0;
+          if(admit > 0 && avg > 0){
+            totalAdmit += admit;
+            weightedSum += avg * admit;
+          }
+        });
+        const weightedAvg = totalAdmit > 0 ? (weightedSum / totalAdmit).toFixed(1) : null;
+        
+        const avgText = weightedAvg ? `<br>(${weightedAvg})` : '';
+        return `<td style="font-size:13px;">${codeText}${avgText}</td>`;
+      }).join('')}</tr>`;
+    });
+    html += `</tbody></table></div>`;
+  }
+  html += `</div>`;
+
+  // ===== 各学院招生详情 =====
+  html += `<div class="card p-4 mb-6"><h3 class="pk-section-title">各学院招生详情</h3>`;
+  
+  // 使用网格分列展示，每列一个学校
+  html += `<div style="display:grid;grid-template-columns:repeat(${schools.length},1fr);gap:16px;align-items:start;">`;
+  
+  schools.forEach((s,i)=>{
+    const schoolRecs = summaries[i].recs;
+    const collegeGroups = {};
+    schoolRecs.forEach(r=>{
+      const c = r.college || '未知学院';
+      if(!collegeGroups[c]) collegeGroups[c] = [];
+      collegeGroups[c].push(r);
+    });
+    
+    html += `<div style="background:#f8fafc;border-radius:10px;border-top:4px solid ${colors[i]};padding:12px;">`;
+    html += `<div style="font-size:1.05rem;font-weight:700;color:${colors[i]};text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed #6a6a7a;">${wrapSchoolBadge(s)}</div>`;
+    
+    Object.entries(collegeGroups).forEach(([college, recs])=>{
+      const enter = recs.reduce((sum,r)=>sum+(r.enterNum||0),0);
+      const admit = recs.reduce((sum,r)=>sum+(r.admitNum||0),0);
+      const ratio = admit?(enter/admit).toFixed(2):'-';
+      const avgAdmit = recs.length?recs.reduce((sum,r)=>sum+(r.admitAvg||0),0)/recs.length:0;
+      const foldId = `fold-${s}-${college}`.replace(/[^a-zA-Z0-9]/g,'-');
+      
+      html += `<div style="margin-bottom:10px;padding:8px 10px;background:#FFFFFF;border-radius:6px;border-left:3px solid ${colors[i]};">`;
+      html += `<div style="font-weight:700;color:#2d2d3d;margin-bottom:4px;font-size:13px;">${college}</div>`;
+      html += `<div style="font-size:12px;color:#4b5563;line-height:1.7;">`;
+      html += `进复试:${enter} | 录取:${admit}<br>`;
+      html += `复录比:<span class="${ratioClass(ratio)}">${ratio}</span> | 均分:<span class="${scoreClass(avgAdmit)}">${avgAdmit?avgAdmit.toFixed(1):'-'}</span>`;
+      html += `</div>`;
+      
+      // 折叠按钮 + 子方向列表
+      html += `<div style="margin-top:6px;">`;
+      html += `<button onclick="toggleFold('${foldId}')" style="width:100%;padding:4px 8px;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;border-radius:6px;cursor:pointer;font-size:12px;color:#0369a1;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .2s;" onmouseover="this.style.background='linear-gradient(135deg,#e0f2fe 0%,#bae6fd 100%)'" onmouseout="this.style.background='linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%)'">`;
+      html += `<span id="${foldId}-icon">▶</span> 方向详情 (${recs.length}个)`;
+      html += `</button>`;
+      
+      html += `<div id="${foldId}" style="display:none;margin-top:6px;padding-top:6px;border-top:1px dashed #e2e8f0;">`;
+      const idxColors = ['#FF5252','#FFB300','#ca8a04','#43A047','#0891b2','#2563eb','#7c3aed','#db2777','#c2410c','#059669'];
+      recs.forEach((r,idx)=>{
+        const code = r.majorCode || '';
+        const name = r.majorName || '';
+        const math = r.math || '-';
+        const eng = r.english || '-';
+        const course = r.course2 || '-';
+        const cColor = idxColors[idx % idxColors.length];
+        html += `<div style="font-size:11px;color:#6a6a7a;line-height:1.7;padding:3px 0;display:flex;align-items:flex-start;gap:4px;">`;
+        html += `<span style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:${cColor};color:#fff;font-size:10px;font-weight:700;">${idx+1}</span>`;
+        html += `<span style="word-break:break-all;">(${code})${name}：${math}+${eng}+${course}</span>`;
+        html += `</div>`;
+      });
+      html += `</div>`;
+      html += `</div>`;
+      
+      html += `</div>`;
+    });
+    
+    html += `</div>`;
+  });
+  
+  html += `</div>`;
+  html += `</div>`;
+
+  container.innerHTML = html;
+}
+
+function toggleFold(id){
+  const el = document.getElementById(id);
+  const icon = document.getElementById(id+'-icon');
+  if(!el) return;
+  if(el.style.display === 'none'){
+    el.style.display = 'block';
+    if(icon) icon.textContent = '▼';
+  } else {
+    el.style.display = 'none';
+    if(icon) icon.textContent = '▶';
+  }
+}
+
+// ===================== 页面初始化 =====================
+(function(){
+  const params = new URLSearchParams(location.search);
+  const urlSchools = params.get('schools');
+  
+  if(urlSchools){
+    // URL参数优先，覆盖缓存
+    urlSchools.split(',').forEach(s=>{
+      const name = decodeURIComponent(s.trim());
+      if(ALL_SCHOOLS.includes(name) && !selectedSchools.includes(name)){
+        selectedSchools.push(name);
+      }
+    });
+    localStorage.setItem('pkSelectedSchools', JSON.stringify(selectedSchools));
+  } else {
+    // 无URL参数时，从localStorage加载
+    const saved = localStorage.getItem('pkSelectedSchools');
+    if(saved){
+      try{
+        const arr = JSON.parse(saved);
+        arr.forEach(name=>{
+          if(ALL_SCHOOLS.includes(name) && !selectedSchools.includes(name)){
+            selectedSchools.push(name);
+          }
+        });
+      }catch(e){}
+    }
+  }
+  
+  updateSelected();
+  renderPk();
+  
+  // 显示返回上一级按钮
+  const backBtn = document.getElementById('backBtn');
+  if(backBtn && hasBack()) backBtn.style.display = 'inline-flex';
+  
+})();
+
+// ===================== 导出分析图片 =====================
+function exportPkImage(){
+  if(selectedSchools.length < 2){
+    alert('请至少选择2所院校后再导出');
+    return;
+  }
+  
+  const btn = document.querySelector('button[onclick="exportPkImage()"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '导出中...';
+  btn.disabled = true;
+  
+  // 基础文件名
+  const baseName = selectedSchools.join('vs');
+  
+  // 获取所有对比内容卡片（排除搜索区）
+  const cards = document.querySelectorAll('#pkContent > .card');
+  if(cards.length === 0){
+    alert('暂无对比内容可导出');
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+    return;
+  }
+  
+  // 添加导出专用样式
+  const style = document.createElement('style');
+  style.id = 'export-style';
+  style.innerHTML = `
+    .export-mode * {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      word-wrap: normal !important;
+    }
+    .export-mode .compare-table {
+      table-layout: fixed !important;
+      width: auto !important;
+      min-width: 100% !important;
+    }
+    .export-mode .compare-table th,
+    .export-mode .compare-table td {
+      white-space: nowrap !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+      font-weight: 600 !important;
+      font-size: 15px !important;
+      padding: 8px 12px !important;
+      line-height: 1.4 !important;
+      height: auto !important;
+    }
+    .export-mode .compare-table .label-col {
+      text-align: left !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      width: auto !important;
+      min-width: 140px !important;
+    }
+    .export-mode h3 {
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      margin-bottom: 12px !important;
+      white-space: nowrap !important;
+    }
+    .export-mode .school-tag,
+    .export-mode .tier-985, .export-mode .tier-211, .export-mode .tier-syl, .export-mode .tier-sf,
+    .export-mode .eval-a-plus, .export-mode .eval-a, .export-mode .eval-a-minus,
+    .export-mode .eval-b-plus, .export-mode .eval-b, .export-mode .eval-b-minus,
+    .export-mode .eval-c-plus, .export-mode .eval-c, .export-mode .eval-c-minus {
+      font-weight: 700 !important;
+      font-size: 24px !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      margin: 1px !important;
+    }
+    .export-mode tr {
+      height: auto !important;
+    }
+    .export-mode div {
+      line-height: 1.4 !important;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // 逐个导出每个卡片
+  let index = 0;
+  function exportNext(){
+    if(index >= cards.length){
+      // 完成，清理
+      document.head.removeChild(style);
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      alert(`已导出 ${cards.length} 张对比图片`);
+      return;
+    }
+    
+    const card = cards[index];
+    const title = card.querySelector('h3')?.textContent?.trim() || `对比${index+1}`;
+    const fileName = `${baseName}_${title}.jpg`;
+    
+    // 添加导出模式类
+    card.classList.add('export-mode');
+    
+    html2canvas(card, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+      width: card.scrollWidth,
+      height: card.scrollHeight
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = fileName;
+      link.href = canvas.toDataURL('image/jpeg', 0.95);
+      link.click();
+      
+      card.classList.remove('export-mode');
+      index++;
+      setTimeout(exportNext, 300); // 间隔300ms避免浏览器阻塞
+    }).catch(err => {
+      console.error('导出失败:', err);
+      card.classList.remove('export-mode');
+      index++;
+      setTimeout(exportNext, 300);
+    });
+  }
+  
+  exportNext();
+}
+
+// ===================== 点击空白关闭下拉 =====================
+document.addEventListener('click',(e)=>{
+  if(!e.target.closest('.search-wrap')){
+    document.getElementById('pkDropdown').classList.remove('active');
+  }
+});
+
+// ===================== 单击空白处爱心光晕效果 =====================
+(function(){
+  const liveWords = ['求赞~','求关注','多多弹幕交流','一键三连','点个关注不迷路','弹幕走起来','感谢支持','记得关注哦','互动起来','点赞支持'];
+  const isInteractive = function(el){
+    if(!el) return false;
+    const tag = el.tagName;
+    if(['A','BUTTON','INPUT','SELECT','TEXTAREA','IMG','SVG','CANVAS','LABEL'].includes(tag)) return true;
+    const cls = el.className || '';
+    if(typeof cls === 'string' && /tag|clickable|btn|button|filter|select|nav-icon|back-btn|modal|chart/.test(cls)) return true;
+    if(el.closest && (el.closest('a') || el.closest('button') || el.closest('label'))) return true;
+    return false;
+  };
+  document.addEventListener('click', function(e){
+    if(isInteractive(e.target)) return;
+    const x = e.clientX, y = e.clientY;
+    // 光晕
+    const glow = document.createElement('div');
+    glow.className = 'heart-glow';
+    glow.style.left = (x - 30) + 'px';
+    glow.style.top = (y - 30) + 'px';
+    document.body.appendChild(glow);
+    setTimeout(() => glow.remove(), 600);
+    // 爱心
+    const heart = document.createElement('div');
+    heart.className = 'heart-burst';
+    heart.textContent = '❤️';
+    heart.style.left = (x - 14) + 'px';
+    heart.style.top = (y - 14) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 800);
+    // 文字
+    const text = document.createElement('div');
+    text.className = 'live-text';
+    text.textContent = liveWords[Math.floor(Math.random() * liveWords.length)];
+    text.style.left = (x + 10) + 'px';
+    text.style.top = (y - 20) + 'px';
+    document.body.appendChild(text);
+    setTimeout(() => text.remove(), 1000);
+  });
+})();
+
+</script>
+
+
+<script id="entry-a11y-adapt-js">
+(function(){
+  function enhanceClickableKeyboard(){
+    document.querySelectorAll('[onclick]:not(button):not(a):not(input):not(select):not(textarea)').forEach(function(el){
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(el.dataset.keyEnhanced === '1') return;
+      el.dataset.keyEnhanced = '1';
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', enhanceClickableKeyboard);
+  }else{
+    enhanceClickableKeyboard();
+  }
+})();
+</script>
+
+</body>
+</html>

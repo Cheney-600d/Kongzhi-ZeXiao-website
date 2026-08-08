@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浙江移动2026春季校园招聘数据分析报告</title>
+    <script src="../../vendor/chart-4.4.0.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { width: 80%; margin: 0 auto; }
+        .header { text-align: center; padding: 40px 20px; color: white; }
+        .header h1 { font-size: 2.8em; font-weight: 700; text-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-bottom: 15px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header .data-count { display: inline-block; margin-top: 15px; padding: 10px 30px; background: rgba(255,255,255,0.2); border-radius: 30px; font-size: 1em; backdrop-filter: blur(10px); }
+        .card { background: white; border-radius: 24px; padding: 30px; margin-bottom: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-title { font-size: 1.5em; font-weight: 700; color: #333; margin-bottom: 25px; padding-left: 15px; border-left: 4px solid #667eea; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px; }
+        .metric-card { background: white; border-radius: 20px; padding: 25px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; }
+        .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .metric-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .metric-value { font-size: 3.5em; font-weight: 700; color: #667eea; line-height: 1.2; margin: 10px 0; }
+        .metric-label { font-size: 1.1em; color: #555; font-weight: 600; }
+        .metric-desc { font-size: 0.85em; color: #999; margin-top: 5px; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 25px; }
+        .chart-container { position: relative; height: 350px; padding: 15px; }
+        .chart-container.full-width { grid-column: 1 / -1; height: 400px; }
+        .insight-box { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); border-left: 5px solid #e74c3c; padding: 20px 25px; margin: 20px 0; border-radius: 0 12px 12px 0; }
+        .insight-box h3 { color: #e74c3c; font-weight: 700; margin-bottom: 12px; font-size: 1.2em; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 8px 0; border-bottom: 1px dashed #ccc; color: #444; font-size: 0.95em; line-height: 1.6; }
+        .insight-box li:last-child { border-bottom: none; }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; margin-left: 8px; }
+        .tag-highlight { background: #fff3cd; color: #856404; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+        .data-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 15px; text-align: left; font-weight: 600; position: sticky; top: 0; }
+        .data-table th:first-child { border-radius: 10px 0 0 0; }
+        .data-table th:last-child { border-radius: 0 10px 0 0; }
+        .data-table td { padding: 10px 15px; border-bottom: 1px solid #eee; color: #444; }
+        .data-table tr:hover td { background: #f8f9ff; }
+        .edu-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.8em; font-weight: 600; }
+        .edu-bachelor { background: #d4edda; color: #155724; }
+        .edu-master { background: #fff3cd; color: #856404; }
+        .edu-phd { background: #f8d7da; color: #721c24; }
+        .tier-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.8em; font-weight: 600; }
+        .tier-985 { background: #f8d7da; color: #721c24; }
+        .tier-211 { background: #cce5ff; color: #004085; }
+        .tier-shuangfei { background: #e2e3e5; color: #383d41; }
+        .tier-haiwai { background: #e2ccff; color: #5a189a; }
+        .tier-gangao { background: #d1fae5; color: #166534; }
+        .tier-local { background: #ffedd5; color: #9a3412; }
+        .advice-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; border-radius: 24px; margin-top: 25px; }
+        .advice-section h2 { font-size: 1.8em; margin-bottom: 20px; text-align: center; }
+        .advice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px; }
+        .advice-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2); }
+        .advice-card h4 { font-size: 1.2em; margin-bottom: 15px; color: #fff; }
+        .advice-card p, .advice-card li { font-size: 0.95em; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        .advice-card ul { padding-left: 20px; }
+        .advice-card li { margin-bottom: 8px; }
+        .footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .chart-container { height: 300px; }
+            .data-table { font-size: 0.8em; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.5em; }
+        }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 9999; display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; box-shadow: 0 4px 16px rgba(102,126,234,0.3); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .back-home:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(102,126,234,0.4); }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+<a href="index.html" class="back-home">← 返回首页</a>
+
+<div class="container">
+    <div class="header">
+        <h1>📊 浙江移动2026春季校园招聘数据分析报告</h1>
+        <p class="subtitle">中国移动通信集团浙江有限公司 · 2026春季校园招聘拟录用名单分析</p>
+        <div class="data-count">👥 样本总量：240人 | 📅 数据年份：2026 | 🏢 公司：浙江移动</div>
+    </div>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-label">👥 总录用人数</div>
+            <div class="metric-value">240</div>
+            <div class="metric-desc">浙江移动春招单批次</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🎓 硕士及以上</div>
+            <div class="metric-value">183</div>
+            <div class="metric-desc">占比76.3%（含博士6人）</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🏫 985/211院校</div>
+            <div class="metric-value">127</div>
+            <div class="metric-desc">占比52.9%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🌍 海外/港澳台</div>
+            <div class="metric-value">36</div>
+            <div class="metric-desc">占比15.0%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">👨 男性比例</div>
+            <div class="metric-value">53.3%</div>
+            <div class="metric-desc">128人</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">👩 女性比例</div>
+            <div class="metric-value">46.7%</div>
+            <div class="metric-desc">112人</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📈 数据可视化分析</div>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="chart-container full-width">
+                <canvas id="chart5"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart6"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart7"></canvas>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h3>🔍 关键数据洞察</h3>
+            <ul>
+                <li>📌 浙江工业大学是最大生源校，录用17人，超过浙江大学（10人），体现本地省属重点在浙江省移动校招中的强劲竞争力<span class="tag tag-highlight">本地优势</span></li>
+                <li>📌 硕士及以上学历占比76.3%，本科仅占23.8%，浙江移动春招整体学历门槛较高</li>
+                <li>📌 省内重点/行业强校生源66人（27.5%），包括浙江工商、杭电、浙江理工等，本地人才集聚明显</li>
+                <li>📌 985/211生源127人（52.9%），海外/港澳台36人（15.0%），人才层次多元</li>
+                <li>📌 北京邮电大学、南京邮电大学作为行业顶尖院校，分别有10人和6人录用，通信行业认可度突出</li>
+                <li>📌 男女性别比例接近，男性53.3%、女性46.7%</li>
+                <li>📌 博士6人（2.5%），包括浙江大学、上海交通大学、武汉大学、香港城市大学等名校</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📋 详细录用名单</div>
+        <div style="overflow-x:auto; max-height: 700px; overflow-y: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr><th>序号</th><th>姓名</th><th>性别</th><th>毕业院校</th><th>学历</th><th>院校层级</th></tr>
+                </thead>
+                <tbody id="tbody-all"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="advice-section">
+        <h2>🎯 控制类考研择校建议</h2>
+        <p style="text-align:center; opacity:0.9;">基于浙江移动2026春招数据，为控制类考生提供以下择校参考</p>
+        <div class="advice-grid">
+            <div class="advice-card">
+                <h4>🏆 冲刺院校（985/顶尖211）</h4>
+                <ul>
+                    <li><strong>浙江大学</strong>：录用10人，浙江省内唯一985，计算机/通信学科顶尖</li>
+                    <li><strong>上海交通大学、复旦大学</strong>：上海Top2，博士/硕士均有录用</li>
+                    <li><strong>东南大学、北京邮电大学</strong>：通信A类学科，分别录用7人和10人</li>
+                    <li><strong>华东师范大学、北京师范大学</strong>：985名校，硕士稳定录用</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>🎓 稳妥院校（浙江本地/行业特色）</h4>
+                <ul>
+                    <li><strong>浙江工业大学</strong>：录用17人！浙江移动最大生源校，性价比极高<span class="tag tag-highlight">强烈推荐</span></li>
+                    <li><strong>杭州电子科技大学</strong>：录用9人，电子信息特色强校，行业认可度高</li>
+                    <li><strong>浙江工商大学、浙江理工大学</strong>：各录用9人，省内商科/工科强校</li>
+                    <li><strong>浙江师范大学、宁波大学</strong>：省内重点，均有稳定录用</li>
+                    <li><strong>南京邮电大学</strong>：四电四邮之一，录用6人</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>🌏 海外/港澳台院校参考</h4>
+                <ul>
+                    <li><strong>香港大学</strong>：录用5人，QS前50，工科/商科均受认可</li>
+                    <li><strong>新南威尔士大学</strong>：录用5人，澳洲八大，工科强</li>
+                    <li><strong>南洋理工大学、新加坡国立大学</strong>：亚洲顶尖，通信/计算机认可</li>
+                    <li><strong>伦敦大学学院、伦敦国王学院、曼彻斯特大学</strong>：英国名校，硕士为主</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>💡 择校策略建议</h4>
+                <ul>
+                    <li>目标浙江移动就业：优先<strong>浙江工业大学</strong>、<strong>杭州电子科技大学</strong>，本地+行业双优势</li>
+                    <li>追求985平台：浙江大学、上海交通大学、东南大学是首选</li>
+                    <li>通信行业顶尖：北邮、南邮、西电等行业强校认可度极高</li>
+                    <li>海外深造：关注QS前100院校，海外/港澳台在浙江移动占比15%</li>
+                    <li>学历建议：硕士及以上学历占比超75%，建议考研提升竞争力</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>📊 浙江移动2026春季校园招聘数据分析报告 | 数据仅供参考</p>
+        <p style="margin-top:10px; font-size:0.85em;">数据来源：中国移动浙江公司2026届春季校园招聘拟录用人员情况表 | 生成时间：2026年7月</p>
+    </div>
+</div>
+
+<script>
+    const colors = { blue: '#3498db', red: '#e74c3c', orange: '#f39c12', green: '#2ecc71', purple: '#9b59b6', gray: '#95a5a6', pink: '#e91e63', teal: '#1abc9c', cyan: '#00bcd4', brown: '#e67e22' };
+    Chart.defaults.font.family = "'Segoe UI', 'Microsoft YaHei', sans-serif";
+    Chart.defaults.font.size = 12;
+
+    const records = [
+        {"idx":1,"name":"何乘远","gender":"男","school":"浙江大学","edu":"博士研究生","tier":"985"},{"idx":2,"name":"张卓若","gender":"女","school":"浙江大学","edu":"博士研究生","tier":"985"},{"idx":3,"name":"高婕","gender":"女","school":"上海交通大学","edu":"博士研究生","tier":"985"},{"idx":4,"name":"李存岩","gender":"男","school":"上海交通大学","edu":"博士研究生","tier":"985"},{"idx":5,"name":"徐清杨","gender":"男","school":"武汉大学","edu":"博士研究生","tier":"985"},{"idx":6,"name":"朱律意","gender":"男","school":"香港城市大学","edu":"博士研究生","tier":"港澳台"},{"idx":7,"name":"徐婉妮","gender":"女","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":8,"name":"盛广雨","gender":"男","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":9,"name":"陈睿扬","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":10,"name":"卓昱池","gender":"女","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":11,"name":"陈睿明","gender":"男","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":12,"name":"刘绿诚","gender":"男","school":"同济大学","edu":"硕士研究生","tier":"985"},{"idx":13,"name":"董镗鹞","gender":"女","school":"中国科学院大学","edu":"硕士研究生","tier":"双一流"},{"idx":14,"name":"乔泽远","gender":"男","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":15,"name":"梁可达","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":16,"name":"梁怡栋","gender":"男","school":"北京理工大学","edu":"硕士研究生","tier":"985"},{"idx":17,"name":"汪国庆","gender":"男","school":"中央财经大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":18,"name":"顾旭亮","gender":"男","school":"香港大学","edu":"硕士研究生","tier":"港澳台"},{"idx":19,"name":"陈蒋豪","gender":"男","school":"中国科学院大学","edu":"硕士研究生","tier":"双一流"},{"idx":20,"name":"董文婕","gender":"女","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":21,"name":"刘育铭","gender":"男","school":"南开大学","edu":"硕士研究生","tier":"985"},{"idx":22,"name":"李潇娟","gender":"女","school":"厦门大学","edu":"硕士研究生","tier":"985"},{"idx":23,"name":"凌梦洁","gender":"女","school":"中国传媒大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":24,"name":"杨玲","gender":"女","school":"北京师范大学","edu":"硕士研究生","tier":"985"},{"idx":25,"name":"陈雨瞳","gender":"女","school":"香港大学","edu":"硕士研究生","tier":"港澳台"},{"idx":26,"name":"石子慧","gender":"女","school":"西安电子科技大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":27,"name":"刘天祺","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":28,"name":"陈双熹","gender":"女","school":"约翰霍普金斯大学","edu":"硕士研究生","tier":"海外院校"},{"idx":29,"name":"马威龙","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":30,"name":"应昊","gender":"男","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":31,"name":"彭书亮","gender":"女","school":"华威大学","edu":"硕士研究生","tier":"海外院校"},{"idx":32,"name":"吴凡","gender":"男","school":"杭州师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":33,"name":"李宁","gender":"女","school":"东北大学","edu":"硕士研究生","tier":"985"},{"idx":34,"name":"刘金泉","gender":"男","school":"上海对外经贸大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":35,"name":"李伟翔","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":36,"name":"邓树强","gender":"男","school":"纽卡斯尔大学","edu":"硕士研究生","tier":"海外院校"},{"idx":37,"name":"岳禹宇","gender":"女","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":38,"name":"肖亚楠","gender":"女","school":"伦敦大学学院","edu":"硕士研究生","tier":"海外院校"},{"idx":39,"name":"钟志鸿","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":40,"name":"刘厚宇","gender":"男","school":"河北工业大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":41,"name":"谢馨芸","gender":"女","school":"南京师范大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":42,"name":"刘子琦","gender":"女","school":"昆士兰大学","edu":"硕士研究生","tier":"海外院校"},{"idx":43,"name":"包思睿","gender":"女","school":"中国海洋大学","edu":"硕士研究生","tier":"985"},{"idx":44,"name":"高飞","gender":"女","school":"江南大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":45,"name":"揭圣","gender":"男","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":46,"name":"陈亚","gender":"女","school":"南京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":47,"name":"卞晗颖","gender":"女","school":"布里斯托大学","edu":"硕士研究生","tier":"海外院校"},{"idx":48,"name":"邢卓悦","gender":"女","school":"新南威尔士大学","edu":"硕士研究生","tier":"海外院校"},{"idx":49,"name":"张雅琼","gender":"女","school":"太原理工大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":50,"name":"何正阳","gender":"女","school":"香港大学","edu":"硕士研究生","tier":"港澳台"},{"idx":51,"name":"俞李杰","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":52,"name":"刘浩然","gender":"男","school":"杭州电子科技大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":53,"name":"丁洲","gender":"女","school":"大连理工大学","edu":"硕士研究生","tier":"985"},{"idx":54,"name":"赵志聪","gender":"女","school":"辽宁大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":55,"name":"陈向蔚","gender":"男","school":"浙江理工大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":56,"name":"夏雯欣","gender":"女","school":"香港大学","edu":"硕士研究生","tier":"港澳台"},{"idx":57,"name":"张超","gender":"男","school":"浙江理工大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":58,"name":"李睿","gender":"女","school":"杜克大学","edu":"硕士研究生","tier":"海外院校"},{"idx":59,"name":"周俊杰","gender":"男","school":"温州大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":60,"name":"沈明迪","gender":"女","school":"浙江理工大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":61,"name":"冯可宇","gender":"男","school":"波士顿大学","edu":"硕士研究生","tier":"海外院校"},{"idx":62,"name":"廖嘉欣","gender":"女","school":"浙江理工大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":63,"name":"周家杰","gender":"男","school":"杭州电子科技大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":64,"name":"完一诺","gender":"女","school":"北京化工大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":65,"name":"王卉真","gender":"女","school":"杭州电子科技大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":66,"name":"樊泽宇","gender":"男","school":"莫纳什大学","edu":"硕士研究生","tier":"海外院校"},{"idx":67,"name":"陈宁宁","gender":"女","school":"南京理工大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":68,"name":"沈孟铖","gender":"男","school":"浙江农林大学","edu":"硕士研究生","tier":"双非"},{"idx":69,"name":"张奥","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":70,"name":"钟向荣","gender":"男","school":"浙江师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":71,"name":"冯皓","gender":"女","school":"东北大学","edu":"硕士研究生","tier":"985"},{"idx":72,"name":"周雪","gender":"女","school":"浙江农林大学","edu":"硕士研究生","tier":"双非"},{"idx":73,"name":"张静怡","gender":"女","school":"黑龙江大学","edu":"硕士研究生","tier":"双非"},{"idx":74,"name":"魏泽宇","gender":"男","school":"宾夕法尼亚大学","edu":"硕士研究生","tier":"海外院校"},{"idx":75,"name":"宋子涵","gender":"男","school":"杭州电子科技大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":76,"name":"王森亭","gender":"男","school":"中国计量大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":77,"name":"王一凡","gender":"女","school":"西安外国语大学","edu":"硕士研究生","tier":"双非"},{"idx":78,"name":"谢昱","gender":"男","school":"新南威尔士大学","edu":"硕士研究生","tier":"海外院校"},{"idx":79,"name":"陈晓蕾","gender":"女","school":"浙江理工大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":80,"name":"沈徐昊","gender":"男","school":"上海财经大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":81,"name":"郭雅琪","gender":"女","school":"香港中文大学(深圳)","edu":"硕士研究生","tier":"港澳台"},{"idx":82,"name":"傅昶","gender":"男","school":"浙江师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":83,"name":"程欣","gender":"女","school":"莫纳什大学","edu":"硕士研究生","tier":"海外院校"},{"idx":84,"name":"彭璐","gender":"女","school":"浙江师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":85,"name":"王一舟","gender":"女","school":"天津工业大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":86,"name":"蒋翼飞","gender":"男","school":"墨尔本大学","edu":"硕士研究生","tier":"海外院校"},{"idx":87,"name":"刘文新","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":88,"name":"朱起贤","gender":"女","school":"伦敦国王学院","edu":"硕士研究生","tier":"海外院校"},{"idx":89,"name":"叶怡","gender":"女","school":"北京师范大学","edu":"硕士研究生","tier":"985"},{"idx":90,"name":"梁潇潇","gender":"男","school":"中国科学技术大学","edu":"硕士研究生","tier":"985"},{"idx":91,"name":"宗一宸","gender":"男","school":"北京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":92,"name":"夏瑞辰","gender":"男","school":"南洋理工大学","edu":"硕士研究生","tier":"海外院校"},{"idx":93,"name":"李中豪","gender":"男","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":94,"name":"甄熠","gender":"男","school":"浙江师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":95,"name":"左洪博","gender":"男","school":"南安普敦大学","edu":"硕士研究生","tier":"海外院校"},{"idx":96,"name":"仇小柯","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":97,"name":"韩龙宇","gender":"男","school":"宁波诺丁汉大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":98,"name":"俞晴好","gender":"女","school":"中南大学","edu":"硕士研究生","tier":"985"},{"idx":99,"name":"王臻杰","gender":"男","school":"中国海洋大学","edu":"硕士研究生","tier":"985"},{"idx":100,"name":"韩浠雯","gender":"女","school":"中央财经大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":101,"name":"张裕荣","gender":"男","school":"中国政法大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":102,"name":"陶逸国","gender":"男","school":"河海大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":103,"name":"张瑞盛","gender":"男","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":104,"name":"陈威选","gender":"男","school":"曼彻斯特大学","edu":"硕士研究生","tier":"海外院校"},{"idx":105,"name":"陈敏建","gender":"男","school":"宁波大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":106,"name":"陈爽","gender":"男","school":"北京理工大学","edu":"硕士研究生","tier":"985"},{"idx":107,"name":"邓卫国","gender":"男","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":108,"name":"包子涵","gender":"女","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":109,"name":"柳俊辉","gender":"男","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":110,"name":"朱伟倬","gender":"男","school":"重庆大学","edu":"硕士研究生","tier":"985"},{"idx":111,"name":"周敏霞","gender":"女","school":"华南理工大学","edu":"硕士研究生","tier":"985"},{"idx":112,"name":"肖新月","gender":"女","school":"浙江师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":113,"name":"陈清源","gender":"女","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":114,"name":"包哲南","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":115,"name":"范春赟","gender":"女","school":"上海大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":116,"name":"郑雪策","gender":"男","school":"湖南大学","edu":"硕士研究生","tier":"985"},{"idx":117,"name":"唐良平","gender":"男","school":"苏州大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":118,"name":"蔡奕凯","gender":"男","school":"杭州电子科技大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":119,"name":"曹莹雪","gender":"女","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":120,"name":"何嘉杰","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":121,"name":"胡至盈","gender":"女","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":122,"name":"徐杨波","gender":"男","school":"浙江工商大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":123,"name":"方倩","gender":"女","school":"南京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":124,"name":"沈均瑶","gender":"女","school":"北京师范大学","edu":"硕士研究生","tier":"985"},{"idx":125,"name":"刘志豪","gender":"男","school":"华东师范大学","edu":"硕士研究生","tier":"985"},{"idx":126,"name":"张雪","gender":"女","school":"南京大学","edu":"硕士研究生","tier":"985"},{"idx":127,"name":"肖宇煊","gender":"男","school":"悉尼大学","edu":"硕士研究生","tier":"海外院校"},{"idx":128,"name":"应程杰","gender":"男","school":"武汉理工大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":129,"name":"邢戈","gender":"男","school":"上海海洋大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":130,"name":"孟詹裸","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":131,"name":"阙诗奇","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":132,"name":"王鹏轶","gender":"男","school":"华东师范大学","edu":"硕士研究生","tier":"985"},{"idx":133,"name":"江凯琳","gender":"女","school":"上海大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":134,"name":"任雨","gender":"女","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":135,"name":"叶芊含","gender":"女","school":"南洋理工大学","edu":"硕士研究生","tier":"海外院校"},{"idx":136,"name":"张欢","gender":"女","school":"中国海洋大学","edu":"硕士研究生","tier":"985"},{"idx":137,"name":"柯琴芳","gender":"女","school":"杜伦大学","edu":"硕士研究生","tier":"海外院校"},{"idx":138,"name":"王陈媛","gender":"女","school":"华东师范大学","edu":"硕士研究生","tier":"985"},{"idx":139,"name":"吕友路","gender":"男","school":"浙江大学","edu":"硕士研究生","tier":"985"},{"idx":140,"name":"葛怡梦","gender":"女","school":"北京科技大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":141,"name":"张闯","gender":"男","school":"东北林业大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":142,"name":"沈宇杰","gender":"男","school":"河海大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":143,"name":"濮佳成","gender":"男","school":"南京邮电大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":144,"name":"刘翔宇","gender":"男","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":145,"name":"汪煜","gender":"男","school":"暨南大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":146,"name":"李奕涵","gender":"女","school":"新南威尔士大学","edu":"硕士研究生","tier":"海外院校"},{"idx":147,"name":"李磊","gender":"男","school":"西南交通大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":148,"name":"温蕾宇","gender":"女","school":"中国科学院大学","edu":"硕士研究生","tier":"双一流"},{"idx":149,"name":"李梦瑶","gender":"女","school":"南昌大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":150,"name":"马骁","gender":"男","school":"西安交通大学","edu":"硕士研究生","tier":"985"},{"idx":151,"name":"朱奕帆","gender":"男","school":"新南威尔士大学","edu":"硕士研究生","tier":"海外院校"},{"idx":152,"name":"郭荧莹","gender":"女","school":"福州大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":153,"name":"于枭","gender":"女","school":"重庆大学","edu":"硕士研究生","tier":"985"},{"idx":154,"name":"郑魏烨","gender":"女","school":"悉尼大学","edu":"硕士研究生","tier":"海外院校"},{"idx":155,"name":"王欣蓝","gender":"女","school":"中央民族大学","edu":"硕士研究生","tier":"985"},{"idx":156,"name":"杨沈宇","gender":"女","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":157,"name":"孙钱屹","gender":"男","school":"香港大学","edu":"硕士研究生","tier":"港澳台"},{"idx":158,"name":"方齐一","gender":"女","school":"墨尔本大学","edu":"硕士研究生","tier":"海外院校"},{"idx":159,"name":"袁盛","gender":"男","school":"中国人民大学","edu":"硕士研究生","tier":"985"},{"idx":160,"name":"袁德琴","gender":"女","school":"上海科技大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":161,"name":"俞海伟","gender":"男","school":"中国科学院大学","edu":"硕士研究生","tier":"双一流"},{"idx":162,"name":"王一君","gender":"男","school":"苏州大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":163,"name":"张家鹏","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":164,"name":"袁新洋","gender":"男","school":"浙江工业大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":165,"name":"卢听雨","gender":"女","school":"南洋理工大学","edu":"硕士研究生","tier":"海外院校"},{"idx":166,"name":"盛祎来","gender":"女","school":"华东师范大学","edu":"硕士研究生","tier":"985"},{"idx":167,"name":"高琳怡","gender":"女","school":"新加坡国立大学","edu":"硕士研究生","tier":"海外院校"},{"idx":168,"name":"阮邹涛","gender":"男","school":"墨尔本大学","edu":"硕士研究生","tier":"海外院校"},{"idx":169,"name":"宋晶洁","gender":"女","school":"新南威尔士大学","edu":"硕士研究生","tier":"海外院校"},{"idx":170,"name":"刘国威","gender":"男","school":"南开大学","edu":"硕士研究生","tier":"985"},{"idx":171,"name":"刘锐","gender":"男","school":"杭州师范大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":172,"name":"郭星月","gender":"女","school":"中国计量大学","edu":"硕士研究生","tier":"省内重点/行业强校"},{"idx":173,"name":"于晓璐","gender":"女","school":"东北电力大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":174,"name":"王子怡","gender":"女","school":"暨南大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":175,"name":"吴正芸","gender":"女","school":"济南大学","edu":"硕士研究生","tier":"双非"},{"idx":176,"name":"孙明珠","gender":"女","school":"南京大学","edu":"硕士研究生","tier":"985"},{"idx":177,"name":"马文浩","gender":"男","school":"上海应用技术大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":178,"name":"邵文巧","gender":"男","school":"西安电子科技大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":179,"name":"郑晓豪","gender":"男","school":"南京航空航天大学","edu":"硕士研究生","tier":"211/双一流"},{"idx":180,"name":"徐恒","gender":"男","school":"东南大学","edu":"硕士研究生","tier":"985"},{"idx":181,"name":"任茹晴","gender":"女","school":"中国科学院大学","edu":"硕士研究生","tier":"双一流"},{"idx":182,"name":"陈小龙","gender":"男","school":"华东师范大学","edu":"硕士研究生","tier":"985"},{"idx":183,"name":"周嘉豪","gender":"男","school":"中国海洋大学","edu":"硕士研究生","tier":"985"},{"idx":184,"name":"鲍文恺","gender":"男","school":"浙江大学","edu":"本科","tier":"985"},{"idx":185,"name":"卢宸阳","gender":"女","school":"浙江大学","edu":"本科","tier":"985"},{"idx":186,"name":"俞城鑫","gender":"男","school":"哈尔滨工业大学","edu":"本科","tier":"985"},{"idx":187,"name":"卢佳","gender":"女","school":"东南大学","edu":"本科","tier":"985"},{"idx":188,"name":"王莹雪","gender":"女","school":"北京交通大学","edu":"本科","tier":"211/双一流"},{"idx":189,"name":"徐晨","gender":"女","school":"北京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":190,"name":"杨吉","gender":"男","school":"中国矿业大学","edu":"本科","tier":"211/双一流"},{"idx":191,"name":"莫唯","gender":"女","school":"南京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":192,"name":"吕乐扬","gender":"女","school":"北京师范大学","edu":"本科","tier":"985"},{"idx":193,"name":"黄河","gender":"男","school":"北京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":194,"name":"俞咏斌","gender":"男","school":"西安科技大学","edu":"本科","tier":"双非"},{"idx":195,"name":"黄翔","gender":"男","school":"杭州电子科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":196,"name":"林煜轩","gender":"男","school":"浙江财经大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":197,"name":"刘旭","gender":"女","school":"太原理工大学","edu":"本科","tier":"211/双一流"},{"idx":198,"name":"田雨琦","gender":"女","school":"浙江工商大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":199,"name":"傅哲斌","gender":"男","school":"杭州电子科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":200,"name":"何世鸿","gender":"男","school":"南昌航空大学","edu":"本科","tier":"双非"},{"idx":201,"name":"戴烨","gender":"男","school":"浙江理工大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":202,"name":"李泽宇","gender":"男","school":"武汉理工大学","edu":"本科","tier":"211/双一流"},{"idx":203,"name":"裴雪茹","gender":"女","school":"河南师范大学","edu":"本科","tier":"双非"},{"idx":204,"name":"陈利涛","gender":"男","school":"温州大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":205,"name":"傅迪","gender":"男","school":"宁波大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":206,"name":"张天爱","gender":"女","school":"浙江工商大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":207,"name":"张坤源","gender":"女","school":"中北大学","edu":"本科","tier":"双非"},{"idx":208,"name":"张丁霁","gender":"女","school":"浙江理工大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":209,"name":"林佳佳","gender":"女","school":"浙江科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":210,"name":"陈匡","gender":"男","school":"福州大学","edu":"本科","tier":"211/双一流"},{"idx":211,"name":"蒋津","gender":"女","school":"浙江万里学院","edu":"本科","tier":"省内重点/行业强校"},{"idx":212,"name":"吴炜杰","gender":"男","school":"浙江海洋大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":213,"name":"尹少波","gender":"男","school":"宁夏大学","edu":"本科","tier":"211/双一流"},{"idx":214,"name":"刘嘉宸","gender":"男","school":"浙江理工大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":215,"name":"徐子迪","gender":"女","school":"哈尔滨金融学院","edu":"本科","tier":"双非"},{"idx":216,"name":"王鑫杰","gender":"男","school":"大连理工大学","edu":"本科","tier":"985"},{"idx":217,"name":"周相宇","gender":"男","school":"杭州电子科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":218,"name":"施弘荐","gender":"男","school":"福建师范大学","edu":"本科","tier":"双非"},{"idx":219,"name":"舒凯悦","gender":"女","school":"西南交通大学","edu":"本科","tier":"211/双一流"},{"idx":220,"name":"曹钰阳","gender":"女","school":"浙江理工大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":221,"name":"潘舒妍","gender":"女","school":"浙江工业大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":222,"name":"陈皓宇","gender":"男","school":"重庆大学","edu":"本科","tier":"985"},{"idx":223,"name":"孙境遥","gender":"女","school":"北京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":224,"name":"刘佳愉","gender":"女","school":"上海大学","edu":"本科","tier":"211/双一流"},{"idx":225,"name":"杨诗琪","gender":"女","school":"海南大学","edu":"本科","tier":"211/双一流"},{"idx":226,"name":"张含宁","gender":"女","school":"湘南学院","edu":"本科","tier":"双非"},{"idx":227,"name":"陈思程","gender":"男","school":"海南大学","edu":"本科","tier":"211/双一流"},{"idx":228,"name":"余柯兰","gender":"女","school":"浙江工业大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":229,"name":"王辉","gender":"男","school":"温州大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":230,"name":"陈安妮","gender":"女","school":"南京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":231,"name":"吴欣颖","gender":"女","school":"华中农业大学","edu":"本科","tier":"211/双一流"},{"idx":232,"name":"何辛越","gender":"女","school":"兰州交通大学","edu":"本科","tier":"双非"},{"idx":233,"name":"潘何恺","gender":"男","school":"杭州电子科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":234,"name":"周俊涛","gender":"男","school":"浙江科技大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":235,"name":"吴若曦","gender":"女","school":"浙江财经大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":236,"name":"李凤钰","gender":"女","school":"南京邮电大学","edu":"本科","tier":"211/双一流"},{"idx":237,"name":"颜鑫浩","gender":"男","school":"浙江财经大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":238,"name":"张颢译","gender":"男","school":"温州大学","edu":"本科","tier":"省内重点/行业强校"},{"idx":239,"name":"赵晨圩","gender":"男","school":"中山大学","edu":"本科","tier":"985"},{"idx":240,"name":"钟浩","gender":"男","school":"浙江工商大学","edu":"本科","tier":"省内重点/行业强校"}
+    ];
+
+    // 学历分布
+    new Chart(document.getElementById('chart2').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: ['本科 57人', '硕士研究生 177人', '博士研究生 6人'],
+            datasets: [{ data: [57, 177, 6], backgroundColor: [colors.green, colors.orange, colors.red], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '学历分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // 院校层级分布
+    new Chart(document.getElementById('chart3').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: ['985 56人', '211/双一流 71人', '双一流 5人', '省内重点/行业强校 66人', '海外院校 29人', '港澳台 7人', '双非 6人'],
+            datasets: [{ data: [56, 71, 5, 66, 29, 7, 6], backgroundColor: [colors.red, colors.blue, colors.teal, colors.brown, colors.purple, colors.green, colors.gray], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '院校层级分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // TOP10生源院校
+    new Chart(document.getElementById('chart5').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['浙江工业大学', '浙江大学', '北京邮电大学', '浙江工商大学', '杭州电子科技大学', '浙江理工大学', '东南大学', '南京邮电大学', '中国科学院大学', '香港大学'],
+            datasets: [{
+                label: '录用人数',
+                data: [17, 10, 10, 9, 9, 9, 7, 6, 5, 5],
+                backgroundColor: [colors.brown, colors.red, colors.blue, colors.brown, colors.brown, colors.brown, colors.gray, colors.gray, colors.gray, colors.gray],
+                borderRadius: 8
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'TOP10 生源院校', font: { size: 16, weight: 'bold' } }, legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 2 } } } }
+    });
+
+    // 性别分布
+    new Chart(document.getElementById('chart6').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['男性 128人', '女性 112人'],
+            datasets: [{ data: [128, 112], backgroundColor: [colors.blue, colors.pink], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '性别分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // 院校层级横向柱状图
+    new Chart(document.getElementById('chart7').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['985', '211/双一流', '双一流', '省内重点/行业强校', '海外院校', '港澳台', '双非'],
+            datasets: [{
+                label: '录用人数',
+                data: [56, 71, 5, 66, 29, 7, 6],
+                backgroundColor: [colors.red, colors.blue, colors.teal, colors.brown, colors.purple, colors.green, colors.gray],
+                borderRadius: 8
+            }]
+        },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '院校层级横向分布', font: { size: 14, weight: 'bold' } }, legend: { display: false } }, scales: { x: { beginAtZero: true } } }
+    });
+
+    // 表格渲染
+    const tbody = document.getElementById('tbody-all');
+    records.forEach(r => {
+        const tr = document.createElement('tr');
+        let eduClass = 'edu-bachelor';
+        if (r.edu === '硕士研究生') eduClass = 'edu-master';
+        if (r.edu === '博士研究生') eduClass = 'edu-phd';
+        let tierClass = 'tier-shuangfei';
+        if (r.tier === '985') tierClass = 'tier-985';
+        else if (r.tier === '211/双一流') tierClass = 'tier-211';
+        else if (r.tier === '海外院校') tierClass = 'tier-haiwai';
+        else if (r.tier === '港澳台') tierClass = 'tier-gangao';
+        else if (r.tier === '省内重点/行业强校') tierClass = 'tier-local';
+        tr.innerHTML = `<td>${r.idx}</td><td>${r.name}</td><td>${r.gender}</td><td>${r.school}</td><td><span class="edu-tag ${eduClass}">${r.edu}</span></td><td><span class="tier-tag ${tierClass}">${r.tier}</span></td>`;
+        tbody.appendChild(tr);
+    });
+</script>
+</body>
+</html>

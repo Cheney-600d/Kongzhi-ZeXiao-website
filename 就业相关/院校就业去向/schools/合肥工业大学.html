@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合肥工业大学 - 控制类考研就业去向</title>
+        <style>
+        :root {
+            --primary-color: #A8E6CF;
+            --secondary-color: #7EC8A1;
+            --accent-color: #C5E8D8;
+            --bg-light: #F8FAFC;
+            --border-color: #e0e0e0;
+        }
+        body { background-color: var(--bg-light); }
+        .hero {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #A8E6CF 0%, #7EC8A1 100%);
+            color: #1a1a2e;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #C5E8D8;
+        }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            border: 1px solid #e8e8e8;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .info-card h3 {
+            color: #1a1a2e;
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #A8E6CF 0%, #7EC8A1 100%);
+            color: #1a1a2e;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .company-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
+        .tip-box {
+            background: #F8C3CD;
+            border: 1px solid #C5E8D8;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 1em;
+        }
+        .tip-box strong { color: #1a1a2e; }
+        .industry-chart { margin: 16px 0; }
+        .industry-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .industry-bar {
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: width 0.8s ease;
+        }
+        .industry-label { min-width: 120px; font-weight: 600; color: #2d3436; margin-right: 12px; }
+        .industry-pct { margin-left: 10px; color: #5a5a5a; font-weight: 600; }
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .region-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+        }
+        .region-name { font-weight: 600; color: var(--primary-color); }
+        .region-count { color: #5a5a5a; font-size: 0.9em; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>合肥工业大学 <span class="badge badge-211">211</span></h1>
+        <p>211重点高校 / 2023-2024届毕业生就业去向</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">96%+</div><div class="stat-label">就业率</div></div>
+                        <div class="stat-item"><div class="stat-number">No.1</div><div class="stat-label">安徽省薪酬排行</div></div>
+                        <div class="stat-item"><div class="stat-number">49%</div><div class="stat-label">国企就业占比</div></div>
+                        <div class="stat-item"><div class="stat-number">72%</div><div class="stat-label">华东就业占比</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 主要就业企业</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">华为</div><div class="company-count">通信设备</div></div>
+                    <div class="company-card"><div class="company-name">中兴</div><div class="company-count">通信设备</div></div>
+                    <div class="company-card"><div class="company-name">烽火通信</div><div class="company-count">通信设备</div></div>
+                    <div class="company-card"><div class="company-name">中国电信</div><div class="company-count">运营商</div></div>
+                    <div class="company-card"><div class="company-name">中国移动</div><div class="company-count">运营商</div></div>
+                    <div class="company-card"><div class="company-name">中国联通</div><div class="company-count">运营商</div></div>
+                    <div class="company-card"><div class="company-name">中国电子科技集团</div><div class="company-count">央企</div></div>
+                    <div class="company-card"><div class="company-name">中国航天科技/科工</div><div class="company-count">央企</div></div>
+                    <div class="company-card"><div class="company-name">中国航空工业</div><div class="company-count">央企</div></div>
+                    <div class="company-card"><div class="company-name">中国邮政</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">百度</div><div class="company-count">互联网</div></div>
+                    <div class="company-card"><div class="company-name">腾讯</div><div class="company-count">互联网</div></div>
+                    <div class="company-card"><div class="company-name">字节跳动</div><div class="company-count">互联网</div></div>
+                    <div class="company-card"><div class="company-name">网易</div><div class="company-count">互联网</div></div>
+                    <div class="company-card"><div class="company-name">长鑫</div><div class="company-count">半导体</div></div>
+                    <div class="company-card"><div class="company-name">联发科</div><div class="company-count">半导体</div></div>
+                    <div class="company-card"><div class="company-name">intel</div><div class="company-count">半导体</div></div>
+                    <div class="company-card"><div class="company-name">浩鲸科技</div><div class="company-count">IT服务</div></div>
+                    <div class="company-card"><div class="company-name">苏宁易购</div><div class="company-count">电商</div></div>
+                    <div class="company-card"><div class="company-name">ThunderSoft</div><div class="company-count">软件</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🗺️ 就业地域分布</h3>
+                <div class="region-grid">
+                    <div class="region-item"><div class="region-name">安徽</div><div class="region-count">46.54%</div></div>
+                    <div class="region-item"><div class="region-name">江苏</div><div class="region-count">9.13%</div></div>
+                    <div class="region-item"><div class="region-name">广东</div><div class="region-count">7.91%</div></div>
+                    <div class="region-item"><div class="region-name">浙江</div><div class="region-count">6.07%</div></div>
+                    <div class="region-item"><div class="region-name">上海</div><div class="region-count">5.60%</div></div>
+                    <div class="region-item"><div class="region-name">其他</div><div class="region-count">24.75%</div></div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 地域特点：</strong>就业集中在华东地区（72.44%），尤其是长三角城市群（上海、杭州、南京、苏州、合肥）。安徽本地占比最高（46.54%），江苏、广东、浙江、上海为辅。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🏭 单位性质分布（2023届硕士）</h3>
+                <div class="industry-chart">
+                    <div class="industry-item">
+                        <div class="industry-label">国有企业</div>
+                        <div class="industry-bar" style="width: 49.21%; background: linear-gradient(90deg, #A8E6CF, #B8E6D8);">1350人 49.21%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">其他企业</div>
+                        <div class="industry-bar" style="width: 29.80%; background: linear-gradient(90deg, #B8E6D8, #C5E8D8);">974人 29.80%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">三资企业</div>
+                        <div class="industry-bar" style="width: 9.76%; background: linear-gradient(90deg, #C5E8D8, #D4F1E0);">403人 9.76%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">机关</div>
+                        <div class="industry-bar" style="width: 4.25%; background: linear-gradient(90deg, #B8E6D8, #C5E8D8);">219人 4.25%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">高等教育单位</div>
+                        <div class="industry-bar" style="width: 2.88%; background: linear-gradient(90deg, #A8E6CF, #A8E6CF);">61人 2.88%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">其他事业单位</div>
+                        <div class="industry-bar" style="width: 1.59%; background: linear-gradient(90deg, #A8E6CF, #C5E8D8);">79人 1.59%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">科研设计单位</div>
+                        <div class="industry-bar" style="width: 1.14%; background: linear-gradient(90deg, #B8E6D8, #D4F1E0);">54人 1.14%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">中初教育单位</div>
+                        <div class="industry-bar" style="width: 0.67%; background: linear-gradient(90deg, #F5F5F5, #F5F5F5);">41人 0.67%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_hefei_tech.png" alt="合肥工业大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💰 薪资与就业特点</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">8969</div><div class="stat-label">平均月薪（CNY）</div></div>
+                        <div class="stat-item"><div class="stat-number">No.1</div><div class="stat-label">安徽省薪酬排行</div></div>
+                        <div class="stat-item"><div class="stat-number">96%+</div><div class="stat-label">就业率</div></div>
+                        <div class="stat-item"><div class="stat-number">49%</div><div class="stat-label">国企占比</div></div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 就业特点：</strong>毕业生就业适配性高，就业集中在高端制造业和信息技术与互联网行业。主要进入CETC、CASC/CASIC、AVIC等军工央企，以及移动/电信/联通等运营商、华为/中兴/烽火等通信设备商、BAT/字节等互联网大厂。绝对稳定且高薪！
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#999;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：2023届毕业生就业质量年度报告、2024年安徽省薪酬排行榜 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

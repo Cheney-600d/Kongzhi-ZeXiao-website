@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="sakura-pink" data-themes="sakura-pink,tokyo-night,tech-blue,pure-white,macaron">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 实战：考研择校网站从零到上线</title>
+<style>
+/* html-ppt :: shared webfonts (async via link below) */
+</style>
+
+
+<link href="../../../vendor/fonts/acd32df2e4c5e02bb71287db882b8d68.css" rel="stylesheet">
+<style>
+/* html-ppt :: base.css tokens */
+:root {
+  --bg:#1a1b26;--bg-soft:#16161e;--surface:#24283b;--surface-2:#2f334d;
+  --border:rgba(192,202,245,.12);--border-strong:rgba(192,202,245,.24);
+  --text-1:#c0caf5;--text-2:#a9b1d6;--text-3:#565f89;
+  --accent:#7aa2f7;--accent-2:#bb9af7;--accent-3:#7dcfff;
+  --good:#9ece6a;--warn:#e0af68;--bad:#f7768e;
+  --grad:linear-gradient(135deg,#7aa2f7,#bb9af7 55%,#f7768e);
+  --grad-soft:linear-gradient(135deg,#24283b,#2f334d);
+  --radius:14px;--radius-sm:8px;--radius-lg:22px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow-lg:0 24px 62px rgba(0,0,0,.6);
+  --font-sans:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --font-mono:'JetBrains Mono','IBM Plex Mono',SFMono-Regular,Menlo,monospace;
+  --font-display:var(--font-sans);
+  --letter-tight:-.03em;--letter-normal:-.01em;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text-1);
+  font-family:var(--font-sans);font-weight:400;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  letter-spacing:var(--letter-normal)}
+img,svg,video{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+
+/* ================= SLIDE SYSTEM ================= */
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--bg)}
+.slide{
+  position:absolute;inset:0;
+  display:none;flex-direction:column;justify-content:flex-start;
+  padding:52px 60px 46px;
+  box-sizing:border-box;
+  opacity:0;pointer-events:none;
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+  transform:translateX(30px);
+  overflow:hidden;overflow-y:auto;
+}
+.slide.is-active{display:flex;opacity:1;pointer-events:auto;transform:translateX(0);z-index:2}
+.slide.is-prev{transform:translateX(-30px)}
+.slide::-webkit-scrollbar{width:6px}
+.slide::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+.slide::-webkit-scrollbar-track{background:transparent}
+
+/* ================= TYPOGRAPHY ================= */
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
+.kicker{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+h1.title,.h1{font-family:var(--font-display);font-size:62px;line-height:1.08;font-weight:800;letter-spacing:var(--letter-tight);margin:0 0 16px;color:var(--text-1)}
+h2.title,.h2{font-family:var(--font-display);font-size:44px;line-height:1.15;font-weight:700;letter-spacing:var(--letter-tight);margin:0 0 12px}
+h3,.h3{font-size:26px;line-height:1.25;font-weight:600;letter-spacing:var(--letter-normal);margin:0 0 8px}
+h4,.h4{font-size:18px;line-height:1.3;font-weight:600;margin:0 0 6px}
+.lede{font-size:20px;line-height:1.55;color:var(--text-2);font-weight:300;max-width:62ch}
+.dim{color:var(--text-2)}
+.dim2{color:var(--text-3)}
+.mono{font-family:var(--font-mono)}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* ================= LAYOUT PRIMITIVES ================= */
+.stack>*+*{margin-top:12px}
+.row{display:flex;gap:20px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.row.stretch{display:flex;gap:24px;align-items:stretch}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.center{display:flex;align-items:center;justify-content:center;text-align:center}
+.fill{flex:1}
+.mt-s{margin-top:6px}.mt-m{margin-top:16px}.mt-l{margin-top:28px}
+.mb-s{margin-bottom:6px}.mb-m{margin-bottom:16px}.mb-l{margin-bottom:28px}
+
+/* ================= CARDS ================= */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:22px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card-soft{background:var(--surface-2);border:1px solid var(--border)}
+.card-accent{background:var(--surface);border-top:3px solid var(--accent)}
+.card-hover{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.card-hover:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.card-good{border-top:3px solid var(--good)}
+.card-warn{border-top:3px solid var(--warn)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:500;
+  background:var(--surface-2);color:var(--text-2);border:1px solid var(--border)}
+.pill-accent{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.pill-good{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
+.pill-warn{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.pill-bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+
+/* ================= CHROME ================= */
+.deck-header{position:absolute;top:18px;left:32px;right:32px;display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;z-index:10;pointer-events:none}
+.deck-footer{position:absolute;bottom:16px;left:32px;right:32px;display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:var(--text-3);z-index:10;pointer-events:none}
+.slide-number::before{content:attr(data-current)}
+.slide-number::after{content:" / " attr(data-total)}
+.progress-bar{position:fixed;left:0;right:0;bottom:0;height:3px;background:transparent;z-index:20}
+.progress-bar > span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s var(--ease)}
+.nav-hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:15;
+  background:rgba(36,40,59,.9);border:1px solid var(--border);border-radius:999px;
+  padding:6px 16px;font-size:11px;color:var(--text-3);letter-spacing:.08em;
+  display:flex;gap:14px;align-items:center;opacity:.7;backdrop-filter:blur(8px)}
+.nav-hint kbd{font-family:var(--font-mono);font-size:10px;background:var(--surface-2);
+  padding:1px 6px;border-radius:4px;border:1px solid var(--border);color:var(--text-2)}
+
+/* ================= ANIMATIONS ================= */
+@keyframes kf-fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-down{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-left{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-right{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+@keyframes kf-scale-in{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes kf-blur-in{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
+@keyframes kf-slide-up{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
+.anim-fade-up{animation:kf-fade-up .7s var(--ease) both}
+.anim-fade-down{animation:kf-fade-down .7s var(--ease) both}
+.anim-fade-left{animation:kf-fade-left .7s var(--ease) both}
+.anim-fade-right{animation:kf-fade-right .7s var(--ease) both}
+.anim-scale-in{animation:kf-scale-in .7s var(--ease) both}
+.anim-blur-in{animation:kf-blur-in .8s var(--ease) both}
+.anim-slide-up{animation:kf-slide-up .8s var(--ease) both}
+.anim-stagger > *{animation:kf-fade-up .6s var(--ease) both}
+.anim-stagger > *:nth-child(1){animation-delay:.05s}
+.anim-stagger > *:nth-child(2){animation-delay:.15s}
+.anim-stagger > *:nth-child(3){animation-delay:.25s}
+.anim-stagger > *:nth-child(4){animation-delay:.35s}
+.anim-stagger > *:nth-child(5){animation-delay:.45s}
+.anim-stagger > *:nth-child(6){animation-delay:.55s}
+
+/* ================= BUTTONS ================= */
+.btn-acrylic{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;cursor:pointer;border:none;
+  transition:all .3s var(--ease);position:relative;overflow:hidden}
+.btn-acrylic::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;
+  background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .5s,height .5s}
+.btn-acrylic:hover::before{width:300px;height:300px}
+.btn-acrylic:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.btn-acrylic:active{transform:translateY(0)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#1a1b26}
+.btn-good{background:linear-gradient(135deg,var(--good),#7ee787);color:#1a1b26}
+.btn-warn{background:linear-gradient(135deg,var(--warn),#ffab70);color:#1a1b26}
+.btn-outline{background:transparent;border:1.5px solid var(--border-strong);color:var(--text-1)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ================= TERMINAL ================= */
+.terminal{background:#0d1017;border:1px solid var(--border);border-radius:var(--radius);
+  font-family:var(--font-mono);font-size:13px;overflow:hidden;box-shadow:var(--shadow)}
+.terminal-head{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+.terminal-dot{width:11px;height:11px;border-radius:50%}
+.terminal-dot.r{background:#ff5f57}.terminal-dot.y{background:#febc2e}.terminal-dot.g{background:#28c840}
+.terminal-title{margin-left:8px;font-size:11px;color:var(--text-3);letter-spacing:.08em}
+.terminal-body{padding:16px 18px;line-height:1.7;color:var(--text-2);min-height:100px}
+.terminal-body .prompt{color:var(--good)}
+.terminal-body .cmd{color:var(--accent-3)}
+.terminal-body .flag{color:var(--accent-2)}
+.terminal-body .fn{color:var(--accent)}
+.terminal-body .str{color:var(--good)}
+.terminal-body .out{color:var(--text-3)}
+.terminal-body .ok{color:var(--good)}
+.terminal-body .err{color:var(--bad)}
+.terminal-body .cmt{color:var(--text-3)}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--accent-3);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ================= FEATURE CARDS ================= */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;transition:all .3s var(--ease)}
+.feature:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
+.f-icon{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;
+  justify-content:center;font-size:20px;margin-bottom:12px;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.feature h4{font-size:15px;margin-bottom:4px}
+.feature p{font-size:13px;color:var(--text-2);line-height:1.55}
+
+/* ================= PROMPT BLOCK ================= */
+.prompt-block{background:#0d1017;border:1px solid var(--border-strong);border-radius:var(--radius);
+  padding:18px 20px;font-family:var(--font-mono);font-size:12px;line-height:1.7;
+  color:var(--text-2);position:relative;margin-top:10px}
+.prompt-block .tag{color:var(--accent);font-weight:500}
+.prompt-block .hl{color:var(--good)}
+.prompt-block::before{content:'PROMPT';position:absolute;top:-9px;left:16px;
+  font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--accent);
+  background:var(--surface);padding:2px 10px;border-radius:4px}
+
+/* ================= CODE SNIPPET ================= */
+.code-snip{background:#0d1017;border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-family:var(--font-mono);font-size:12px;padding:14px 16px;overflow-x:auto;line-height:1.7}
+.code-snip .kw{color:var(--accent-2)}
+.code-snip .fn{color:var(--accent-3)}
+.code-snip .str{color:var(--good)}
+.code-snip .cmt{color:var(--text-3)}
+.code-snip .tag{color:var(--bad)}
+.code-snip .var{color:var(--warn)}
+.code-snip .num{color:var(--accent)}
+
+/* ================= WORKFLOW STEPS ================= */
+.workflow-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.workflow-node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;text-align:center;min-width:110px;transition:all .3s var(--ease)}
+.workflow-node:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}
+.workflow-node .wn-icon{font-size:26px;display:block;margin-bottom:6px}
+.workflow-node .wn-label{font-size:12px;font-weight:600;color:var(--accent)}
+.workflow-arrow{color:var(--text-3);font-size:20px;flex-shrink:0}
+
+/* ================= COMPARISON TABLE ================= */
+.compare-table{width:100%;border-collapse:collapse;font-size:13px}
+.compare-table th{text-align:left;padding:10px 14px;color:var(--text-3);font-weight:500;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.compare-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-2)}
+.compare-table tr:hover td{background:var(--surface-2)}
+.compare-table .check{color:var(--good);font-weight:700}
+.compare-table .cross{color:var(--bad)}
+
+/* ================= STATS ================= */
+.big-stat{font-family:var(--font-display);font-size:48px;font-weight:800;line-height:1;color:var(--accent)}
+.big-stat-label{font-size:13px;color:var(--text-3);margin-top:4px}
+
+/* ================= CANVAS FX ================= */
+.fx-particles{position:absolute;inset:0;z-index:0;opacity:.4;pointer-events:none}
+.slide > *{position:relative;z-index:1}
+
+/* ================= OVERVIEW ================= */
+.overview{position:fixed;inset:0;background:rgba(10,12,18,.92);backdrop-filter:blur(12px);z-index:50;
+  display:none;padding:30px;overflow:auto}
+.overview.open{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-content:start}
+.overview .thumb{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  aspect-ratio:16/9;overflow:hidden;cursor:pointer;position:relative;color:var(--text-1);padding:12px;
+  font-size:10px;transition:transform .2s var(--ease)}
+.overview .thumb:hover{transform:scale(1.04)}
+.overview .thumb .n{position:absolute;top:6px;left:8px;font-weight:700;font-size:12px;color:var(--text-3)}
+.overview .thumb .t{position:absolute;bottom:8px;left:10px;right:10px;font-weight:600;color:var(--text-1);font-size:11px}
+
+/* ================= INTERACTIVE DEBUG DEMO ================= */
+.cp-demo{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:stretch}
+.cp-stage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;position:relative;overflow:hidden;min-height:220px}
+.cp-side{display:flex;flex-direction:column;gap:12px}
+.cp-explain{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px;flex:1;min-height:100px;transition:border-color .3s}
+.cp-step-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  background:color-mix(in srgb,var(--accent-3) 14%,transparent);color:var(--accent-3);
+  padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.cp-explain h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--text-1)}
+.cp-explain p{font-size:12px;color:var(--text-2);line-height:1.6;margin:0}
+.cp-controls{display:flex;gap:10px;align-items:center}
+.cp-term{background:#0d1017;border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-family:var(--font-mono);font-size:12px;padding:10px 14px;line-height:1.7;color:var(--text-2);min-height:46px}
+.cp-el{transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.cp-el.hidden{opacity:0}
+.hidden{display:none!important}
+.cp-highlight-box{background:var(--surface-2);border:2px solid var(--accent-3);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;transition:all .5s var(--ease)}
+.cp-highlight-box.broken{border-color:var(--bad)}
+.cp-highlight-box.fixed{border-color:var(--good)}
+
+.notes{display:none!important}
+</style>
+
+<!-- AUTO-INJECTED: compact-layout + auto-fit (idempotent) -->
+<style>
+/* ===== Compact base layout (reduces most "just-overflow" cases) ===== */
+.deck .slide                                              { padding: 28px 38px 22px; }
+.deck .slide h1.title, .deck .slide .h1                   { font-size: 44px; line-height: 1.08; margin: 0 0 10px; }
+.deck .slide h2.title, .deck .slide .h2                   { font-size: 30px; line-height: 1.15; margin: 0 0 8px; }
+.deck .slide h3,       .deck .slide .h3                   { font-size: 20px; line-height: 1.25; margin: 0 0 6px; }
+.deck .slide h4,       .deck .slide .h4                   { font-size: 15px; line-height: 1.3;  margin: 0 0 4px; }
+.deck .slide .lede                                         { font-size: 16px; line-height: 1.5; }
+.deck .slide .eyebrow, .deck .slide .kicker                { font-size: 12px; }
+.deck .slide .card                                         { padding: 14px 16px; border-radius: 12px; }
+.deck .slide .card-soft, .deck .slide .card-accent         { padding: 14px 16px; }
+.deck .slide .feature                                      { padding: 12px; }
+.deck .slide .flow-step                                    { padding: 12px 10px; }
+.deck .slide .grid, .deck .slide .feature-grid             { gap: 12px; }
+.deck .slide .row                                          { gap: 14px; }
+.deck .slide .row.stretch                                  { gap: 14px; }
+.deck .slide .stack > * + *                                { margin-top: 7px; }
+.deck .slide .flow-steps                                   { gap: 8px; }
+.deck .slide .pill                                         { padding: 3px 10px; font-size: 11px; }
+.deck .slide .terminal                                     { font-size: 11px; }
+.deck .slide .terminal-body                                { padding: 10px 12px; min-height: 60px; max-height: 200px; }
+.deck .slide .code-snip                                    { font-size: 11px; padding: 10px 12px; }
+.deck .slide .compare-table                                { font-size: 12px; }
+.deck .slide .compare-table th                             { padding: 7px 10px; font-size: 10px; }
+.deck .slide .compare-table td                             { padding: 8px 10px; }
+.deck .slide .mt-l                                         { margin-top: 16px; }
+.deck .slide .mt-m                                         { margin-top: 10px; }
+.deck .slide .mb-l                                         { margin-bottom: 16px; }
+.deck .slide .mb-m                                         { margin-bottom: 10px; }
+/* Extra-compact for slides that still overflow (JS toggles this class) */
+.deck .slide.is-scale-compact                              { padding: 18px 24px 12px; }
+.deck .slide.is-scale-compact h1.title,
+.deck .slide.is-scale-compact .h1                          { font-size: 38px; margin: 0 0 8px; }
+.deck .slide.is-scale-compact h2.title,
+.deck .slide.is-scale-compact .h2                          { font-size: 26px; margin: 0 0 6px; }
+.deck .slide.is-scale-compact h3, .deck .slide.is-scale-compact .h3 { font-size: 18px; }
+.deck .slide.is-scale-compact h4, .deck .slide.is-scale-compact .h4 { font-size: 14px; }
+.deck .slide.is-scale-compact .lede                        { font-size: 15px; }
+.deck .slide.is-scale-compact .card                        { padding: 10px 12px; border-radius: 10px; }
+.deck .slide.is-scale-compact .feature,
+.deck .slide.is-scale-compact .flow-step                   { padding: 8px; }
+.deck .slide.is-scale-compact .grid,
+.deck .slide.is-scale-compact .row,
+.deck .slide.is-scale-compact .row.stretch,
+.deck .slide.is-scale-compact .feature-grid                { gap: 9px; }
+.deck .slide.is-scale-compact .stack > * + *               { margin-top: 5px; }
+.deck .slide.is-scale-compact .terminal-body               { max-height: 170px; }
+/* Content wrapper used by the auto-fit JS (transform scales this) */
+.deck .slide .slide-content-wrap                           { transform-origin: top center; will-change: transform; position: relative; width: 100%; }
+</style>
+</head>
+<body>
+
+<!-- ================================ DECK ================================ -->
+<div class="deck" id="deck">
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide" data-title="封面">
+  <canvas class="fx-particles" data-fx="starfield"></canvas>
+  <div class="deck-header"><span>软件解决方案 · 03-05</span><span class="slide-number" data-current="1" data-total="10"></span></div>
+  <div class="center" style="flex-direction:column;gap:24px">
+    <div class="anim-scale-in" style="font-size:72px;line-height:1">🌐</div>
+    <div class="anim-fade-up" style="animation-delay:.3s">
+      <div class="kicker mb-s">AI-Driven Static Website</div>
+      <h1 class="title gradient-text" style="font-size:56px">AI 实战：考研择校网站<br>从零到上线</h1>
+      <p class="lede" style="text-align:center;max-width:700px;margin:0 auto">
+        手把手教你用 AI 辅助，从零搭建一个纯静态的控制类考研择校网站。<br>无需后端、无需框架 — 只需 HTML + CSS + JavaScript。
+      </p>
+    </div>
+    <div class="row wrap anim-fade-up" style="animation-delay:.5s;justify-content:center;gap:10px">
+      <span class="pill pill-accent">纯静态站点</span>
+      <span class="pill pill-good">HTML+CSS+JS</span>
+      <span class="pill pill-warn">Git 版本管理</span>
+      <span class="pill pill-bad">免费部署上线</span>
+    </div>
+    <div class="anim-fade-up" style="animation-delay:.7s">
+      <button class="btn-acrylic btn-primary" onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'}))">
+        开始学习 &rarr;
+      </button>
+    </div>
+  </div>
+  <div class="deck-footer"><span>AI 科普课程 · 控制类</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 2: 我们要做什么 ============ -->
+<section class="slide" data-title="目标产品">
+  <div class="deck-header"><span>01 · 目标产品</span><span class="slide-number" data-current="2" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">What We Build</div>
+    <h2 class="title">一个纯静态的考研择校网站</h2>
+    <p class="lede">就像 <span class="mono" style="color:var(--accent)">txkyer.cn</span> 一样 — 单页应用，数据驱动，拖拽即上线。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="f-icon">🔍</div>
+          <h4>院校搜索引擎</h4>
+          <p>输入院校名或专业方向，实时过滤匹配结果，支持模糊搜索</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--accent-2) 12%,transparent);color:var(--accent-2)">📊</div>
+          <h4>分数线可视化</h4>
+          <p>近三年复试线折线图，多院校横向对比，趋势一目了然</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--good) 12%,transparent);color:var(--good)">🏷️</div>
+          <h4>多维度筛选</h4>
+          <p>按地区、985/211、专硕/学硕、考试科目组合筛选</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)">📱</div>
+          <h4>全平台适配</h4>
+          <p>PC + 平板 + 手机，一套代码响应式适配所有屏幕</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:14px;min-width:260px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">技术栈 · 极简至上</h4>
+        <div class="code-snip mt-s" style="font-size:11px">
+          <span class="cmt">// 结构</span><br>
+          HTML5 语义化标签<br>
+          <span class="cmt">// 样式</span><br>
+          CSS3 Grid + Flexbox + 变量<br>
+          <span class="cmt">// 交互</span><br>
+          原生 JavaScript (fetch + DOM)<br>
+          <span class="cmt">// 数据</span><br>
+          静态 JSON 文件（无需数据库）<br>
+          <span class="cmt">// 部署</span><br>
+          GitHub Pages / Vercel（免费）
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:16px 18px">
+        <h4>全程 AI 辅助</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill pill-accent">需求 &rarr; 代码</span>
+          <span class="pill pill-good">5 页搞定</span>
+          <span class="pill pill-warn">零基础友好</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>先看清目标，再开始动手</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 3: AI 辅助规划 ============ -->
+<section class="slide" data-title="AI辅助规划">
+  <div class="deck-header"><span>02 · AI 辅助规划</span><span class="slide-number" data-current="3" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 1 · Plan Before Code</div>
+    <h2 class="title">第一步：让 AI 帮你做规划</h2>
+    <p class="lede">不要上来就写代码。先用自然语言把需求、页面结构、数据模型聊清楚。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="prompt-block mb-m">
+        <span class="tag">你：</span>我要做一个控制类考研择校网站。纯静态，单页应用，包含以下功能：1)顶部导航 + 搜索框 2)院校卡片列表（显示名称、地区、层次、分数线）3)按地区和层次筛选 4)点击卡片展开详情。请帮我设计页面结构、HTML骨架和院校数据的 JSON 格式。
+      </div>
+      <div class="card card-accent" style="padding:14px 16px">
+        <h4 style="color:var(--accent)">AI 返回的页面结构</h4>
+        <div class="code-snip mt-s" style="font-size:11px;max-height:160px;overflow-y:auto">
+<span class="kw">index.html 结构：</span><br>
+<span class="kw">├─</span> <span class="tag">&lt;header&gt;</span> 导航栏 + 标题<br>
+<span class="kw">├─</span> <span class="tag">&lt;section#search&gt;</span> 搜索框 + 筛选器<br>
+<span class="kw">├─</span> <span class="tag">&lt;section#school-list&gt;</span> 院校卡片网格<br>
+<span class="kw">├─</span> <span class="tag">&lt;div#detail-modal&gt;</span> 详情弹窗<br>
+<span class="kw">└─</span> <span class="tag">&lt;footer&gt;</span> 底部信息<br>
+<br>
+<span class="kw">schools.json 结构：</span><br>
+<span class="kw">[{</span><br>
+<span class="kw">  </span><span class="str">"name"</span>: <span class="str">"北京邮电大学"</span>,<br>
+<span class="kw">  </span><span class="str">"region"</span>: <span class="str">"北京"</span>,<br>
+<span class="kw">  </span><span class="str">"level"</span>: <span class="str">"211"</span>,<br>
+<span class="kw">  </span><span class="str">"scores"</span>: <span class="kw">{</span><span class="str">"2024"</span>:<span class="num">345</span>,<span class="str">"2025"</span>:<span class="num">352</span>}<br>
+<span class="kw">}]</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-soft" style="padding:16px 18px">
+        <h4 style="color:var(--accent-2)">高效 Prompt 公式</h4>
+        <p style="font-size:13px;color:var(--text-2);line-height:1.65">
+          <strong style="color:var(--accent)">场景 + 技术约束 + 输出格式</strong>
+        </p>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">// 1. 明确场景</span><br>
+"做考研择校网站" &rarr; AI 知道领域<br>
+<span class="cmt">// 2. 技术约束</span><br>
+"纯静态，单 HTML 文件" &rarr; 不引入框架<br>
+<span class="cmt">// 3. 指定输出</span><br>
+"给我 HTML 骨架 + JSON 格式" &rarr; 精确
+        </div>
+      </div>
+      <div class="card card-good" style="padding:14px 16px">
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          <strong style="color:var(--good)">核心原则：</strong>你越精确地告诉 AI 你要什么、不要什么，AI 的输出越精准。把 AI 当成一个「懂代码的实习生」—— 指令越清晰，结果越好。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>好的规划是成功的一半</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 4: AI 写 HTML ============ -->
+<section class="slide" data-title="AI写HTML">
+  <div class="deck-header"><span>03 · AI 写 HTML 结构</span><span class="slide-number" data-current="4" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 2 · Generate Structure</div>
+    <h2 class="title">第二步：让 AI 写 HTML 骨架</h2>
+    <p class="lede">从导航栏到院校卡片，一步步用 prompt 生成语义化的 HTML 结构。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s;display:flex;flex-direction:column;gap:12px">
+      <div class="prompt-block" style="font-size:11px">
+        <span class="tag">你：</span>现在给我写一个 header，左边放网站标题「控制类考研择校」，右边放三个导航链接：首页、院校对比、关于。用 HTML 语义化标签。
+      </div>
+      <div class="code-snip" style="font-size:11px;max-height:100px;overflow:hidden">
+<span class="tag">&lt;header class="site-header"&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="tag">&lt;h1&gt;</span>控制类考研择校<span class="tag">&lt;/h1&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="tag">&lt;nav&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;a</span> <span class="fn">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>首页<span class="tag">&lt;/a&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;a</span> <span class="fn">href</span>=<span class="str">"#"</span><span class="tag">&gt;</span>院校对比<span class="tag">&lt;/a&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="tag">&lt;/nav&gt;</span><br>
+<span class="tag">&lt;/header&gt;</span>
+      </div>
+      <div class="prompt-block" style="font-size:11px">
+        <span class="tag">你：</span>接下来做院校卡片。每个卡片显示：校名、地区标签、985/211 标签、近两年复试线。用 section + article 标签，计划放 6-8 个卡片。
+      </div>
+      <div class="code-snip" style="font-size:11px;max-height:100px;overflow:hidden">
+<span class="tag">&lt;section id="school-list"&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="tag">&lt;article class="school-card"&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;h3&gt;</span>北京邮电大学<span class="tag">&lt;/h3&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;span</span> <span class="fn">class</span>=<span class="str">"tag"</span><span class="tag">&gt;</span>北京<span class="tag">&lt;/span&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;span</span> <span class="fn">class</span>=<span class="str">"tag green"</span><span class="tag">&gt;</span>211<span class="tag">&lt;/span&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tag">&lt;div&gt;</span>复试线: 345 / 352<span class="tag">&lt;/div&gt;</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="tag">&lt;/article&gt;</span><br>
+<span class="tag">&lt;/section&gt;</span>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">HTML 编写核心原则</h4>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.8">
+          <div><span class="pill pill-accent" style="margin-right:6px">1</span> 优先使用语义化标签：<span class="mono dim2">header / nav / section / article</span></div>
+          <div><span class="pill pill-accent" style="margin-right:6px">2</span> 结构先行，内容后填：先搭架子，再填充具体数据</div>
+          <div><span class="pill pill-accent" style="margin-right:6px">3</span> 每个区域独立模块：方便后续 CSS 和 JS 单独控制</div>
+          <div><span class="pill pill-accent" style="margin-right:6px">4</span> 数据与结构分离：院校数据放 JSON 文件，不硬编码</div>
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:14px 16px">
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          <strong style="color:var(--accent-3)">技巧：</strong>生成 HTML 后，立刻在浏览器打开看效果。如果结构不对，把页面截图发给 AI，说「这里不对，修正为 XX」比文字描述快 10 倍。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>HTML 是骨架，CSS 是皮肤</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 5: AI 写 CSS ============ -->
+<section class="slide" data-title="AI写CSS">
+  <div class="deck-header"><span>04 · AI 写 CSS 样式</span><span class="slide-number" data-current="5" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 3 · Style with AI</div>
+    <h2 class="title">第三步：用 AI 设计视觉风格</h2>
+    <p class="lede">CSS 不需要从零手写 — 告诉 AI 你想要的感觉，它来写代码。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s;display:flex;flex-direction:column;gap:12px">
+      <div class="prompt-block" style="font-size:11px">
+        <span class="tag">你：</span>给这个择校网站设计配色方案：深色背景为主，卡片用暗色调，文字浅色。主色调用蓝紫色系。院校卡片 hover 时上浮 + 发光边框。要写出完整的 CSS 变量体系。
+      </div>
+      <div class="code-snip" style="font-size:11px;max-height:80px;overflow:hidden">
+<span class="kw">:root {</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="str">--bg</span>: <span class="str">#0f0f1a</span>;<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="str">--card</span>: <span class="str">#1a1a2e</span>;<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="str">--text</span>: <span class="str">#e8e8f0</span>;<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="str">--accent</span>: <span class="str">#7c8cf8</span>;<br>
+<span class="kw">}</span><br>
+<span class="kw">.school-card:hover {</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="fn">transform</span>: translateY(-4px);<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="fn">box-shadow</span>: 0 0 20px var(--accent);<br>
+<span class="kw">}</span>
+      </div>
+      <div class="prompt-block" style="font-size:11px">
+        <span class="tag">你：</span>页面要响应式。PC 端用 3 列卡片网格，平板 2 列，手机 1 列。导航栏手机端做成汉堡菜单。用 CSS Grid 和媒体查询实现。
+      </div>
+      <div class="code-snip" style="font-size:11px;max-height:80px;overflow:hidden">
+<span class="kw">.school-grid {</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="fn">display</span>: grid;<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="fn">gap</span>: 20px;<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="fn">grid-template-columns</span>: repeat(3, 1fr);<br>
+<span class="kw">}</span><br>
+<span class="kw">@media (max-width: 768px) {</span><br>
+<span class="kw">&nbsp;&nbsp;</span><span class="kw">.school-grid</span> { <span class="fn">grid-template-columns</span>: 1fr; }<br>
+<span class="kw">}</span>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">CSS Prompt 策略</h4>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.8">
+          <div><span class="pill pill-good" style="margin-right:6px">配色</span> 「深色 + 蓝紫，科技感」</div>
+          <div><span class="pill pill-good" style="margin-right:6px">布局</span> 「3列网格，响应式」</div>
+          <div><span class="pill pill-good" style="margin-right:6px">动效</span> 「hover 上浮 + 发光」</div>
+          <div><span class="pill pill-good" style="margin-right:6px">细节</span> 「圆角 12px，间距 20px」</div>
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:14px 16px">
+        <h4>为什么不直接用 Tailwind？</h4>
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          对于<strong style="color:var(--warn)">学习目的</strong>，手写 CSS 能让你理解布局原理。但如果你追求效率，告诉 AI「用 Tailwind CSS CDN 引入，帮我把卡片改成 Tailwind class」即可秒切框架。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>CSS 让页面从骨架变成设计</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 6: AI 写 JS ============ -->
+<section class="slide" data-title="AI写JS">
+  <div class="deck-header"><span>05 · AI 写 JS 交互</span><span class="slide-number" data-current="6" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 4 · Add Interactivity</div>
+    <h2 class="title">第四步：让页面「活」起来</h2>
+    <p class="lede">搜索过滤、排序切换、点击展开 — 这些交互逻辑 AI 写得比你还快。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">核心 JS 功能：三个关键交互</h4>
+      </div>
+      <div class="code-snip" style="font-size:11px;max-height:140px;overflow-y:auto">
+<span class="cmt">// 1. 搜索过滤</span><br>
+<span class="kw">function</span> <span class="fn">filterSchools</span>(query) {<br>
+<span class="kw">&nbsp;&nbsp;</span><span class="kw">const</span> <span class="var">cards</span> = document.querySelectorAll(<span class="str">'.card'</span>);<br>
+<span class="kw">&nbsp;&nbsp;</span>cards.forEach(<span class="var">card</span> => {<br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="kw">const</span> <span class="var">name</span> = card.dataset.name;<br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;</span>card.style.display = name.includes(query)<br>
+<span class="kw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>? <span class="str">'block'</span> : <span class="str">'none'</span>;<br>
+<span class="kw">&nbsp;&nbsp;</span>});<br>
+<span class="kw">}</span><br>
+<br>
+<span class="cmt">// 2. 数据加载</span><br>
+<span class="kw">fetch</span>(<span class="str">'schools.json'</span>)<br>
+<span class="kw">&nbsp;&nbsp;</span>.then(<span class="var">r</span> => r.json())<br>
+<span class="kw">&nbsp;&nbsp;</span>.then(<span class="var">data</span> => renderCards(data));<br>
+<br>
+<span class="cmt">// 3. 详情弹窗</span><br>
+<span class="kw">function</span> <span class="fn">showDetail</span>(schoolId) {<br>
+<span class="kw">&nbsp;&nbsp;</span>modal.classList.add(<span class="str">'open'</span>);<br>
+<span class="kw">&nbsp;&nbsp;</span>modal.innerHTML = renderDetail(schoolId);<br>
+<span class="kw">}</span>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="prompt-block" style="font-size:11px">
+        <span class="tag">你：</span>帮我写 JS：1)页面加载时 fetch schools.json 渲染卡片 2)搜索框输入时实时过滤 3)点击卡片弹出详情弹窗。用原生 JS，不引入任何库。
+      </div>
+      <div class="card card-soft" style="padding:16px 18px">
+        <h4>JS Prompt 关键点</h4>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.8">
+          <div><span class="pill pill-accent" style="margin-right:6px">明确数据源</span> 「从 schools.json 加载」</div>
+          <div><span class="pill pill-accent" style="margin-right:6px">描述行为</span> 「输入时实时过滤，不是点按钮」</div>
+          <div><span class="pill pill-accent" style="margin-right:6px">技术约束</span> 「原生 JS，不用 jQuery」</div>
+          <div><span class="pill pill-accent" style="margin-right:6px">边界情况</span> 「搜不到时显示空状态」</div>
+        </div>
+      </div>
+      <div class="card card-warn" style="padding:14px 16px">
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          <strong style="color:var(--warn)">注意：</strong>生成 JS 后一定要在浏览器 Console 中测试。如果报错，把错误信息完整复制给 AI，它能秒定位问题。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>JS 是大脑，让页面能思考</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 7: AI 辅助调试 ============ -->
+<section class="slide" data-title="AI辅助调试">
+  <div class="deck-header"><span>06 · AI 辅助调试</span><span class="slide-number" data-current="7" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 5 · Debug with AI</div>
+    <h2 class="title">第五步：出错了？让 AI 帮你修</h2>
+    <p class="lede">页面不对别慌 — 把截图 + 报错信息扔给 AI，比你自己排查快 100 倍。</p>
+  </div>
+  <div class="cp-demo">
+    <div class="cp-stage" id="cpStage">
+      <div class="cp-highlight-box broken" id="cpPreview">
+        <div style="font-size:28px;margin-bottom:8px">🔍</div>
+        <div style="font-weight:700;font-size:15px;color:var(--text-1);margin-bottom:4px">院校列表</div>
+        <div id="cpCardDemo" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;width:120px;text-align:center;font-size:11px">
+            <div style="font-weight:600;color:var(--text-1)">北邮</div>
+            <div style="color:var(--accent)">345分</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;width:120px;text-align:center;font-size:11px">
+            <div style="font-weight:600;color:var(--text-1)">南邮</div>
+            <div style="color:var(--accent)">320分</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;width:120px;text-align:center;font-size:11px" id="cpBrokenCard">
+            <div style="font-weight:600;color:var(--bad)">西电</div>
+            <div style="color:var(--text-3);font-size:10px">undefined</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text-3);margin-top:8px" id="cpStatus">3 所院校 · 1 个数据显示异常</div>
+      </div>
+    </div>
+    <div class="cp-side">
+      <div class="cp-explain" id="cpExplain">
+        <span class="cp-step-tag">Step 0 · 发现问题</span>
+        <h4>分数线显示 undefined</h4>
+        <p>西电的复试线没有正常显示，其他院校都正常。问题可能出在 JSON 数据格式或 JS 读取逻辑。点击下一步看 AI 如何排查修复。</p>
+      </div>
+      <div class="cp-term" id="cpTerm">
+        <span class="cmt">// 浏览器 Console 报错</span><br>
+        <span class="err">TypeError: Cannot read property '2024' of undefined</span><br>
+        <span class="out">at renderCards (app.js:42)</span>
+      </div>
+      <div class="cp-controls">
+        <button class="btn-acrylic btn-primary" id="cpNext" style="font-size:12px;padding:6px 16px">下一步 ▶</button>
+        <button class="btn-acrylic btn-outline" id="cpReset" style="font-size:12px;padding:6px 16px">重置</button>
+        <span style="font-size:11px;color:var(--text-3)" id="cpProgress">0 / 3</span>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>AI 是最好的 Debug 伙伴</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 8: Git 版本管理 ============ -->
+<section class="slide" data-title="Git版本管理">
+  <div class="deck-header"><span>07 · Git 版本管理</span><span class="slide-number" data-current="8" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 6 · Version Control</div>
+    <h2 class="title">第六步：用 Git 管理代码版本</h2>
+    <p class="lede">衔接模块2 知识点 — 将项目纳入版本控制，为团队协作和部署打基础。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="terminal" style="margin-bottom:14px">
+        <div class="terminal-head">
+          <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+          <span class="terminal-title">Git Bash — zexiao-site/</span>
+        </div>
+        <div class="terminal-body" id="term-website"></div>
+      </div>
+      <div style="text-align:center">
+        <button class="btn-acrylic btn-outline" onclick="window.replayTerminal('term-website')" style="font-size:11px;padding:4px 12px">重播</button>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">三句命令搞定</h4>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9">
+          <div><span class="mono" style="color:var(--good)">git init</span> — 初始化仓库</div>
+          <div><span class="mono" style="color:var(--good)">git add .</span> — 暂存所有文件</div>
+          <div><span class="mono" style="color:var(--good)">git commit -m "..."</span> — 提交版本</div>
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:14px 16px">
+        <h4>为什么静态网站也需要 Git？</h4>
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          <span class="pill pill-accent" style="margin-right:4px">回滚</span> 改坏了随时回到上一版<br>
+          <span class="pill pill-accent" style="margin-right:4px">部署</span> push 到 GitHub = 自动上线<br>
+          <span class="pill pill-accent" style="margin-right:4px">协作</span> 多人共同维护一份数据
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>先 commit 再部署，好习惯</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 9: 静态网站部署 ============ -->
+<section class="slide" data-title="部署上线">
+  <div class="deck-header"><span>08 · 部署上线</span><span class="slide-number" data-current="9" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Phase 7 · Deploy</div>
+    <h2 class="title">第七步：3 分钟让网站上线</h2>
+    <p class="lede">纯静态网站部署极其简单 — 没有服务器配置，没有数据库，拖拽文件夹就上线。</p>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <table class="compare-table">
+        <thead>
+          <tr><th>平台</th><th>方式</th><th>费用</th><th>自定义域名</th><th>推荐</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text-1)">GitHub Pages</td>
+            <td>git push 即上线</td>
+            <td><span class="check">免费</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="pill pill-accent">最佳</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-1)">Vercel</td>
+            <td>拖拽文件夹 / Git 关联</td>
+            <td><span class="check">免费</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="pill pill-good">推荐</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-1)">Netlify</td>
+            <td>拖拽文件夹</td>
+            <td><span class="check">免费</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="pill pill-good">推荐</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-1)">云服务器</td>
+            <td>Nginx + scp 上传</td>
+            <td>几十元/月</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="pill">进阶</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:12px">
+      <div class="card card-good" style="padding:16px 18px">
+        <h4 style="color:var(--good)">GitHub Pages 实操</h4>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt"># 1. GitHub 创建仓库 zexiao-site</span><br>
+<span class="prompt">$</span> <span class="cmd">git</span> <span class="fn">remote</span> <span class="fn">add</span> <span class="str">origin</span> git@github.com:you/zexiao-site.git<br>
+<br>
+<span class="cmt"># 2. 推送代码</span><br>
+<span class="prompt">$</span> <span class="cmd">git</span> <span class="fn">push</span> <span class="flag">-u</span> <span class="str">origin main</span><br>
+<br>
+<span class="cmt"># 3. Settings → Pages → 选择 main 分支 → Save</span><br>
+<span class="cmt"># 等 30 秒，你的网站就在线了！</span><br>
+<span class="ok">✓ https://you.github.io/zexiao-site</span>
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:14px 16px">
+        <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">
+          <strong style="color:var(--accent-3)">进阶：</strong>买一个域名（约 50 元/年），在 GitHub Pages Settings 里填入域名，添加一条 CNAME 记录，你的网站就有专属网址了，就像 <span class="mono" style="color:var(--accent)">txkyer.cn</span> 一样。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>部署不是终点，是起点</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 10: 总结 ============ -->
+<section class="slide" data-title="总结">
+  <canvas class="fx-particles" data-fx="constellation"></canvas>
+  <div class="deck-header"><span>09 · 总结</span><span class="slide-number" data-current="10" data-total="10"></span></div>
+  <div class="anim-fade-down mb-m">
+    <div class="kicker mb-s">Recap</div>
+    <h2 class="title">AI 协作搭建网站的全流程</h2>
+  </div>
+  <div class="row stretch">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="workflow-row mb-m">
+        <div class="workflow-node"><div class="wn-icon">📋</div><div class="wn-label">需求规划</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">🏗️</div><div class="wn-label">HTML 骨架</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">🎨</div><div class="wn-label">CSS 样式</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">⚡</div><div class="wn-label">JS 交互</div></div>
+      </div>
+      <div class="workflow-row mb-m">
+        <div class="workflow-node"><div class="wn-icon">🐛</div><div class="wn-label">调试修复</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">📦</div><div class="wn-label">Git 管理</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">🚀</div><div class="wn-label">部署上线</div></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-node"><div class="wn-icon">🌐</div><div class="wn-label">网站运行</div></div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;display:flex;flex-direction:column;gap:14px">
+      <div class="card card-accent" style="padding:16px 18px">
+        <h4 style="color:var(--accent)">AI 协作三大心法</h4>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.9">
+          <div><span style="color:var(--accent);font-weight:700">1. 描述精确</span> — 告诉 AI「做什么、用什么技术、输出什么格式」</div>
+          <div><span style="color:var(--accent);font-weight:700">2. 分步推进</span> — 不要一次性要求全部功能，逐步迭代完善</div>
+          <div><span style="color:var(--accent);font-weight:700">3. 善用报错</span> — 遇到问题直接把截图 + Console 错误发给 AI</div>
+        </div>
+      </div>
+      <div class="card card-soft" style="padding:14px 16px">
+        <h4>下一步可以做什么？</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill pill-accent">接入真实数据</span>
+          <span class="pill pill-good">做移动端 App 版</span>
+          <span class="pill pill-warn">加 AI 智能推荐</span>
+          <span class="pill pill-bad">SEO 优化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>从零到一，AI 是你的加速器</span><span class="footer-page"></span></div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- Progress bar -->
+<div class="progress-bar"><span id="progress"></span></div>
+
+<!-- Nav hint -->
+<div class="nav-hint">
+  <span><kbd>← →</kbd> 翻页</span>
+  <span><kbd>T</kbd> 换主题</span>
+  <span><kbd>O</kbd> 总览</span>
+  <span><kbd>F</kbd> 全屏</span>
+</div>
+
+<!-- Overview -->
+<div class="overview" id="overview"></div>
+
+<script>
+(function(){
+  'use strict';
+  var root = document.documentElement;
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var progress = document.getElementById('progress');
+  var overview = document.getElementById('overview');
+
+  /* ===== Theme cycling (inline, no external fetch) ===== */
+  var themes = ['tokyo-night','sakura-pink','tech-blue','pure-white','macaron'];
+  var themeIdx = 0;
+  var themeVars = ['--bg','--bg-soft','--surface','--surface-2','--border','--border-strong',
+    '--text-1','--text-2','--text-3','--accent','--accent-2','--accent-3',
+    '--good','--warn','--bad','--grad','--grad-soft','--shadow','--shadow-lg'];
+  var themeCSS = {
+    'tokyo-night': {},
+    'sakura-pink': {
+      '--bg':'#fdf2f8','--bg-soft':'#fce7f3','--surface':'#ffffff','--surface-2':'#fbcfe8',
+      '--border':'rgba(157,23,77,.10)','--border-strong':'rgba(157,23,77,.20)',
+      '--text-1':'#831843','--text-2':'#9d3567','--text-3':'#c090a8',
+      '--accent':'#ec4899','--accent-2':'#f472b6','--accent-3':'#db2777',
+      '--good':'#10b981','--warn':'#f59e0b','--bad':'#ef4444',
+      '--grad':'linear-gradient(135deg,#ec4899,#f472b6 55%,#f9a8d4)',
+      '--grad-soft':'linear-gradient(135deg,#fce7f3,#fbcfe8)',
+      '--shadow':'0 10px 30px rgba(157,23,77,.12)',
+      '--shadow-lg':'0 24px 62px rgba(157,23,77,.18)'
+    },
+    'tech-blue': {
+      '--bg':'#0a1628','--bg-soft':'#07101e','--surface':'#102a4c','--surface-2':'#1a3a5c',
+      '--border':'rgba(0,212,255,.12)','--border-strong':'rgba(0,212,255,.24)',
+      '--text-1':'#e0f0ff','--text-2':'#a0c8e8','--text-3':'#4a7090',
+      '--accent':'#00d4ff','--accent-2':'#0078ff','--accent-3':'#00ffaa',
+      '--good':'#00ff88','--warn':'#ffaa00','--bad':'#ff3366',
+      '--grad':'linear-gradient(135deg,#00d4ff,#0078ff 55%,#00ffaa)',
+      '--grad-soft':'linear-gradient(135deg,#102a4c,#1a3a5c)',
+      '--shadow':'0 10px 30px rgba(0,0,0,.5)',
+      '--shadow-lg':'0 24px 62px rgba(0,0,0,.65)'
+    },
+    'pure-white': {
+      '--bg':'#ffffff','--bg-soft':'#f8f9fa','--surface':'#ffffff','--surface-2':'#f0f2f5',
+      '--border':'rgba(0,0,0,.08)','--border-strong':'rgba(0,0,0,.16)',
+      '--text-1':'#1a1a2e','--text-2':'#555566','--text-3':'#999aaa',
+      '--accent':'#4a6cf7','--accent-2':'#7c3aed','--accent-3':'#06b6d4',
+      '--good':'#10b981','--warn':'#f59e0b','--bad':'#ef4444',
+      '--grad':'linear-gradient(135deg,#4a6cf7,#7c3aed 55%,#06b6d4)',
+      '--grad-soft':'linear-gradient(135deg,#f8f9fa,#f0f2f5)',
+      '--shadow':'0 10px 30px rgba(0,0,0,.08)',
+      '--shadow-lg':'0 24px 62px rgba(0,0,0,.12)'
+    },
+    'macaron': {
+      '--bg':'#fef9f0','--bg-soft':'#fdf3e7','--surface':'#fff5e8','--surface-2':'#ffecd9',
+      '--border':'rgba(139,90,60,.10)','--border-strong':'rgba(139,90,60,.20)',
+      '--text-1':'#5c4a3a','--text-2':'#8a7a6a','--text-3':'#c0b0a0',
+      '--accent':'#ff9aa2','--accent-2':'#a8e6cf','--accent-3':'#ffdac1',
+      '--good':'#a8e6cf','--warn':'#ffdac1','--bad':'#ff8a8a',
+      '--grad':'linear-gradient(135deg,#ff9aa2,#ffdac1 45%,#a8e6cf)',
+      '--grad-soft':'linear-gradient(135deg,#fdf3e7,#ffecd9)',
+      '--shadow':'0 10px 30px rgba(139,90,60,.10)',
+      '--shadow-lg':'0 24px 62px rgba(139,90,60,.15)'
+    }
+  };
+  function applyTheme(name){
+    themeVars.forEach(function(v){ root.style.removeProperty(v); });
+    var css = themeCSS[name];
+    if(!css) return;
+    Object.keys(css).forEach(function(k){ root.style.setProperty(k, css[k]); });
+    root.setAttribute('data-theme', name);
+  }
+
+  function cycleTheme(){
+    if(!themes.length) return;
+    themeIdx = (themeIdx+1) % themes.length;
+    applyTheme(themes[themeIdx]);
+  }
+
+  /* ===== Navigation ===== */
+  var transitioning = false;
+  function go(n, fromRemote){
+    if(transitioning) return;
+    if(n < 0) n = 0;
+    if(n > total-1) n = total-1;
+    if(n === idx) return;
+    transitioning = true;
+    var dir = n > idx ? 1 : -1;
+    var oldSlide = slides[idx];
+    var newSlide = slides[n];
+    newSlide.classList.add('is-active');
+    newSlide.style.opacity = '0';
+    newSlide.style.transform = 'translateX(' + (30*dir) + 'px)';
+    void newSlide.offsetWidth;
+    oldSlide.style.opacity = '0';
+    oldSlide.style.transform = 'translateX(' + (-30*dir) + 'px)';
+    requestAnimationFrame(function(){
+      newSlide.style.opacity = '';
+      newSlide.style.transform = '';
+    });
+    idx = n;
+    updateChrome();
+    initSlideFX(slides[idx]);
+    setTimeout(function(){
+      oldSlide.classList.remove('is-active');
+      oldSlide.style.opacity = '';
+      oldSlide.style.transform = '';
+      transitioning = false;
+    }, 420);
+  }
+
+  function updateChrome(){
+    slides.forEach(function(s,i){
+      var sn = s.querySelector('.slide-number');
+      if(sn){ sn.setAttribute('data-current', i+1); sn.setAttribute('data-total', total); }
+      var fp = s.querySelector('.footer-page');
+      if(fp){ fp.textContent = (i+1) + ' / ' + total; }
+    });
+    progress.style.width = ((idx+1)/total*100) + '%';
+  }
+
+  /* ===== Terminal typewriter ===== */
+  var terminalScripts = {
+    'term-website': [
+      {t:'cmt', txt:'# 初始化 Git 仓库\n'},
+      {t:'prompt',txt:'$ '},{t:'cmd',txt:'git'},{t:'plain',txt:' '},{t:'fn',txt:'init'},
+      {t:'plain',txt:'\n'},{t:'ok',txt:'✓ Initialized empty Git repository\n\n'},
+      {t:'cmt',txt:'# 暂存所有项目文件\n'},
+      {t:'prompt',txt:'$ '},{t:'cmd',txt:'git'},{t:'plain',txt:' '},{t:'fn',txt:'add'},{t:'plain',txt:' '},{t:'str',txt:'.'},
+      {t:'plain',txt:'\n'},{t:'ok',txt:'✓ 已暂存 index.html, styles.css, schools.json 等文件\n\n'},
+      {t:'cmt',txt:'# 提交第一个版本\n'},
+      {t:'prompt',txt:'$ '},{t:'cmd',txt:'git'},{t:'plain',txt:' '},{t:'fn',txt:'commit'},{t:'plain',txt:' '},{t:'flag',txt:'-m'},{t:'plain',txt:' '},{t:'str',txt:'"feat: 考研择校网站初版"'},
+      {t:'plain',txt:'\n'},{t:'ok',txt:'[main a1b2c3d] feat: 考研择校网站初版\n'}
+    ]
+  };
+
+  var typedTerminals = {};
+  function typeTerminal(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    if(typedTerminals[id]) return;
+    var script = terminalScripts[id];
+    if(!script) return;
+    el.innerHTML = '';
+    typedTerminals[id] = true;
+    var i = 0;
+    function next(){
+      if(i >= script.length){
+        var cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        el.appendChild(cursor);
+        return;
+      }
+      var seg = script[i];
+      var span = document.createElement('span');
+      if(seg.t === 'plain'){ span.textContent = seg.txt; }
+      else { span.className = seg.t; span.textContent = seg.txt; }
+      el.appendChild(span);
+      i++;
+      var delay = 16;
+      if(seg.txt.indexOf('\n') >= 0) delay = 100;
+      setTimeout(next, delay);
+    }
+    next();
+  }
+
+  window.replayTerminal = function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    typedTerminals[id] = false;
+    el.innerHTML = '';
+    setTimeout(function(){ typeTerminal(id); }, 100);
+  };
+
+  /* ===== Canvas FX ===== */
+  var activeFX = [];
+  function initSlideFX(slide){
+    activeFX.forEach(function(f){ cancelAnimationFrame(f.raf); });
+    activeFX = [];
+    var canvases = slide.querySelectorAll('canvas[data-fx]');
+    canvases.forEach(function(canvas){
+      var fx = canvas.getAttribute('data-fx');
+      if(fx === 'starfield') startStarfield(canvas);
+      else if(fx === 'constellation') startConstellation(canvas);
+    });
+  }
+
+  function startStarfield(canvas){
+    var ctx = canvas.getContext('2d');
+    var stars = [];
+    function resize(){
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      stars = [];
+      for(var i=0;i<120;i++){
+        stars.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          r: Math.random()*1.6+0.3,
+          a: Math.random()*0.8+0.2,
+          sp: Math.random()*0.15+0.03
+        });
+      }
+    }
+    resize();
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      stars.forEach(function(s){
+        s.y += s.sp;
+        if(s.y > canvas.height) s.y = 0;
+        s.a += (Math.random()-0.5)*0.05;
+        if(s.a<0.1) s.a=0.1; if(s.a>1) s.a=1;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(192,202,245,'+s.a+')';
+        ctx.fill();
+      });
+      var raf = requestAnimationFrame(draw);
+      activeFX.push({canvas:canvas, raf:raf});
+    }
+    draw();
+  }
+
+  function startConstellation(canvas){
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    function resize(){
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      nodes = [];
+      for(var i=0;i<40;i++){
+        nodes.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          vx: (Math.random()-0.5)*0.25,
+          vy: (Math.random()-0.5)*0.25,
+          r: Math.random()*1.8+0.6
+        });
+      }
+    }
+    resize();
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      nodes.forEach(function(n){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x<0||n.x>canvas.width) n.vx*=-1;
+        if(n.y<0||n.y>canvas.height) n.vy*=-1;
+      });
+      for(var i=0;i<nodes.length;i++){
+        for(var j=i+1;j<nodes.length;j++){
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var d = Math.sqrt(dx*dx+dy*dy);
+          if(d < 140){
+            ctx.strokeStyle = 'rgba(122,162,247,'+(0.25*(1-d/140))+')';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(function(n){
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(187,154,247,0.7)';
+        ctx.fill();
+      });
+      var raf = requestAnimationFrame(draw);
+      activeFX.push({canvas:canvas, raf:raf});
+    }
+    draw();
+  }
+
+  /* ===== Debug interactive demo ===== */
+  var cpStep = 0;
+  var cpMax = 3;
+  var cpInited = false;
+
+  var cpExplainData = [
+    { tag:'Step 0 · 发现问题', h:'分数线显示 undefined',
+      p:'西电的复试线没有正常显示。打开浏览器 Console 发现报错：<span style="color:var(--bad);font-family:var(--font-mono);font-size:11px">TypeError: Cannot read property \'2024\' of undefined</span>。说明 JSON 中该院校的 scores 字段有问题。' },
+    { tag:'Step 1 · 检查数据', h:'定位 JSON 数据错误',
+      p:'打开 schools.json 检查西电的数据，发现 <span style="color:var(--bad);font-family:var(--font-mono);font-size:11px">"score"</span> 写成了单数形式，而 JS 代码里读的是 <span style="color:var(--good);font-family:var(--font-mono);font-size:11px">"scores"</span>。字段名不匹配！' },
+    { tag:'Step 2 · AI 快速修复', h:'把报错和 JSON 片段发给 AI',
+      p:'对 AI 说：「西电的 JSON 里 score 字段 JS 读不到，帮我检查」。AI 秒回复：字段名不匹配，需要统一为 scores。你手动修正 JSON 即可。' },
+    { tag:'Step 3 · 验证修复', h:'刷新页面，数据正常显示',
+      p:'修正 JSON 后刷新页面，西电的分数线 <span style="color:var(--good);font-weight:700">330分</span> 正常显示了。整个排查+修复过程不超过 2 分钟。这就是 AI 辅助调试的效率。' }
+  ];
+
+  function cpRender(){
+    var preview = document.getElementById('cpPreview');
+    var broken = document.getElementById('cpBrokenCard');
+    var status = document.getElementById('cpStatus');
+    var explain = document.getElementById('cpExplain');
+    var term = document.getElementById('cpTerm');
+    var prog = document.getElementById('cpProgress');
+    var btn = document.getElementById('cpNext');
+
+    if(cpStep === 0){
+      if(preview) preview.className = 'cp-highlight-box broken';
+      if(broken && broken.querySelector('div:last-child')) broken.querySelector('div:last-child').textContent = 'undefined';
+      if(status) status.textContent = '3 所院校 · 1 个数据显示异常';
+    }
+    if(cpStep >= 1){
+      if(broken && broken.querySelector('div:last-child')) broken.querySelector('div:last-child').textContent = 'scores 字段为空';
+      if(status) status.textContent = '3 所院校 · 已定位原因';
+    }
+    if(cpStep >= 2){
+      if(broken && broken.querySelector('div:first-child')) broken.querySelector('div:first-child').style.color = 'var(--warn)';
+      if(status) status.textContent = '3 所院校 · AI 已给出修复方案';
+    }
+    if(cpStep >= 3){
+      if(preview) preview.className = 'cp-highlight-box fixed';
+      if(broken && broken.querySelector('div:first-child')) broken.querySelector('div:first-child').style.color = 'var(--text-1)';
+      if(broken && broken.querySelector('div:last-child')) broken.querySelector('div:last-child').textContent = '330分';
+      if(broken && broken.querySelector('div:last-child')) broken.querySelector('div:last-child').style.color = 'var(--good)';
+      if(status) status.textContent = '3 所院校 · 全部正常 ✓';
+    }
+
+    var d = cpExplainData[cpStep];
+    if(explain && d){
+      explain.innerHTML = '<span class="cp-step-tag">'+d.tag+'</span><h4>'+d.h+'</h4><p>'+d.p+'</p>';
+      explain.style.borderColor = cpStep >= 3 ? 'var(--good)' : (cpStep >= 1 ? 'var(--accent-3)' : 'var(--border)');
+    }
+
+    if(prog) prog.textContent = cpStep + ' / ' + cpMax;
+    if(btn){ btn.innerHTML = cpStep >= cpMax ? '完成 ✓' : '下一步 ▶'; btn.disabled = (cpStep >= cpMax); btn.style.opacity = (cpStep >= cpMax ? '.55' : '1'); }
+  }
+
+  function cpInit(){
+    if(cpInited) return;
+    cpInited = true;
+    var btn = document.getElementById('cpNext');
+    var rst = document.getElementById('cpReset');
+    if(btn){ btn.addEventListener('click', function(){ if(cpStep < cpMax){ cpStep++; cpRender(); } }); }
+    if(rst){ rst.addEventListener('click', function(){ cpStep = 0; cpRender(); }); }
+    cpRender();
+  }
+
+  /* ===== Overview ===== */
+  function buildOverview(){
+    overview.innerHTML = '';
+    slides.forEach(function(s,i){
+      var t = s.getAttribute('data-title') || ('Slide '+(i+1));
+      var thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      thumb.innerHTML = '<span class="n">'+(i+1)+'</span><span class="t">'+t+'</span>';
+      thumb.onclick = function(){ go(i); toggleOverview(false); };
+      overview.appendChild(thumb);
+    });
+  }
+  function toggleOverview(force){
+    var open = force!==undefined ? force : !overview.classList.contains('open');
+    overview.classList.toggle('open', open);
+  }
+
+  /* ===== Keyboard ===== */
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    switch(e.key){
+      case 'ArrowRight': case ' ': case 'PageDown': case 'Enter':
+        go(idx+1); e.preventDefault(); break;
+      case 'ArrowLeft': case 'PageUp': case 'Backspace':
+        go(idx-1); e.preventDefault(); break;
+      case 'Home': go(0); break;
+      case 'End': go(total-1); break;
+      case 'f': case 'F': fullscreen(); break;
+      case 'o': case 'O': toggleOverview(); break;
+      case 't': case 'T': cycleTheme(); break;
+      case 'Escape': toggleOverview(false); break;
+    }
+  });
+
+  function fullscreen(){
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    else document.exitFullscreen && document.exitFullscreen();
+  }
+
+  /* ===== Hash deep-link ===== */
+  function fromHash(){
+    var m = /^#\/(\d+)/.exec(location.hash||'');
+    if(m) go(Math.max(0, parseInt(m[1],10)-1));
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  /* ===== Init ===== */
+  applyTheme(themes[0]);
+  buildOverview();
+  slides[0].classList.add('is-active');
+  updateChrome();
+  initSlideFX(slides[0]);
+
+  var origGo = go;
+  go = function(n, fromRemote){
+    origGo(n, fromRemote);
+    // type terminal when Git slide is active (slide 8, index 7)
+    if(idx === 7){
+      setTimeout(function(){ typeTerminal('term-website'); }, 400);
+    }
+    // init debug demo when slide 7 (index 6) is active
+    if(idx === 6){
+      setTimeout(function(){ cpInit(); }, 350);
+    }
+  };
+  fromHash();
+})();
+</script>
+
+<!-- AUTO-INJECTED: slide-overflow detector + auto-fit scaler (idempotent) -->
+<script>
+(function(){
+  var deck = document.querySelector('.deck');
+  if (!deck) return;
+  var slides = deck.querySelectorAll('.slide');
+  var MARKER = '__autofitInjected';
+  if (deck[MARKER]) return;
+  deck[MARKER] = true;
+
+  function ensureWrap(slide) {
+    if (slide.__wrapped) return slide.querySelector(':scope > .slide-content-wrap');
+    var kids = Array.prototype.slice.call(slide.children);
+    var hasWrap = slide.querySelector(':scope > .slide-content-wrap');
+    if (hasWrap) { slide.__wrapped = true; return hasWrap; }
+    var wrap = document.createElement('div');
+    wrap.className = 'slide-content-wrap';
+    // 先追加，再移动子元素（背景 canvas 留在最上一层作为 sibling）
+    slide.insertBefore(wrap, slide.firstChild);
+    kids.forEach(function(c) {
+      if (c === wrap) return;
+      if (c.classList && c.classList.contains('fx-particles')) return; // 背景保留在wrap外
+      wrap.appendChild(c);
+    });
+    slide.__wrapped = true;
+    return wrap;
+  }
+
+  function measure(slide) {
+    var wrap = ensureWrap(slide);
+    if (!wrap) return null;
+    var prev = wrap.style.transform || '';
+    wrap.style.transform = 'none';
+    void wrap.offsetWidth; // 强制重排
+    var avail = slide.clientHeight - 6;   // 留 6px 安全边距
+    var content = wrap.scrollHeight;
+    return { wrap: wrap, avail: avail, content: content, prev: prev };
+  }
+
+  function fit(slide) {
+    var info = measure(slide);
+    if (!info) return;
+    slide.classList.remove('is-scale-compact');
+    // 先尝试"紧凑 padding"
+    var pass2 = measure(slide);
+    var scale = 1;
+    if (pass2.content > pass2.avail) {
+      slide.classList.add('is-scale-compact');
+      var pass3 = measure(slide);
+      if (pass3.content > pass3.avail) {
+        scale = Math.max(0.80, pass3.avail / pass3.content);
+      }
+    }
+    if (scale < 1) {
+      info.wrap.style.transform = 'scale(' + scale.toFixed(3) + ')';
+    } else {
+      info.wrap.style.transform = 'none';
+    }
+  }
+
+  function fitActive() {
+    var a = deck.querySelector('.slide.is-active');
+    if (a) fit(a);
+  }
+
+  // 监听 class 变化（.is-active 被 runtime 加上）
+  var obs = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        var t = m.target;
+        if (t.classList && t.classList.contains('slide') && t.classList.contains('is-active')) {
+          requestAnimationFrame(function() { setTimeout(fitActive, 420); });
+        }
+      }
+    });
+  });
+  slides.forEach(function(s) { obs.observe(s, { attributes: true, attributeFilter: ['class'] }); });
+
+  var rt = null;
+  window.addEventListener('resize', function() {
+    clearTimeout(rt); rt = setTimeout(fitActive, 150);
+  });
+  document.addEventListener('fullscreenchange', function() { setTimeout(fitActive, 220); });
+  document.addEventListener('webkitfullscreenchange', function() { setTimeout(fitActive, 220); });
+
+  window.addEventListener('load', function() { setTimeout(fitActive, 500); });
+  setTimeout(fitActive, 300);
+})();
+</script>
+</body>
+</html>

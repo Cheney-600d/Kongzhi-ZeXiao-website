@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆邮电大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-other { background: #C5CAE9; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .rank-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; margin-right: 12px; flex-shrink: 0; }
+        .rank-1 { background: #F8C3CD; color: #1a1a2e; }
+        .rank-2 { background: #C5CAE9; color: #1a1a2e; }
+        .rank-3 { background: #FFCCBC; color: #1a1a2e; }
+        .rank-other { background: #E8F5E9; color: #1a1a2e; }
+        .rank-name { font-weight: 600; color: #2d3436; }
+        .rank-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-left: 8px; }
+        .tag-telecom { background: #A8E6CF; color: #1a1a2e; }
+        .tag-car { background: #FFCCBC; color: #1a1a2e; }
+        .tag-bank { background: #C5CAE9; color: #1a1a2e; }
+        .tag-chip { background: #D1C4E9; color: #1a1a2e; }
+        .tag-comm { background: #F8C3CD; color: #1a1a2e; }
+        .offer-list { margin-top: 16px; }
+        .offer-item { background: white; border-left: 4px solid var(--accent-color); padding: 14px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
+        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
+        .offer-highlight { color: #d63031; font-weight: 600; }
+        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
+        .industry-name { width: 220px; color: #2d3436; font-weight: 500; }
+        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
+        .industry-percent { color: #5a5a5a; font-weight: 600; }
+        .region-bar { display: flex; align-items: center; margin: 6px 0; font-size: 0.9em; }
+        .region-name { width: 160px; color: #2d3436; font-weight: 500; }
+        .region-bar-fill { height: 18px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 20px; }
+        .region-percent { color: #5a5a5a; font-weight: 600; width: 60px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .industry-name { width: 160px; font-size: 0.85em; } .region-name { width: 120px; font-size: 0.85em; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>重庆邮电大学 <span class="badge badge-other">其他</span></h1>
+        <p>通信特色强校 / 重庆 / 中移物联网TOP1/长安汽车TOP2/比亚迪TOP3</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">61.41%</div><div class="stat-label">信息传输/IT</div></div>
+                        <div class="stat-item"><div class="stat-number">17.97%</div><div class="stat-label">制造业</div></div>
+                        <div class="stat-item"><div class="stat-number">8.18%</div><div class="stat-label">金融业</div></div>
+                        <div class="stat-item"><div class="stat-number">24%</div><div class="stat-label">留重庆</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 就业单位 TOP10</h3>
+                <div class="rank-item">
+                    <span class="rank-num rank-1">1</span>
+                    <span class="rank-name">中移物联网有限公司 <span class="rank-tag tag-telecom">运营商/物联网</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-2">2</span>
+                    <span class="rank-name">重庆长安汽车软件科技有限公司 <span class="rank-tag tag-car">汽车软件</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-3">3</span>
+                    <span class="rank-name">比亚迪股份有限公司 <span class="rank-tag tag-car">汽车新能源</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">4</span>
+                    <span class="rank-name">中兴通讯股份有限公司 <span class="rank-tag tag-comm">通信设备</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">5</span>
+                    <span class="rank-name">重庆长安汽车股份有限公司 <span class="rank-tag tag-car">汽车制造</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">6</span>
+                    <span class="rank-name">象帝先计算技术（重庆）有限公司 <span class="rank-tag tag-chip">GPU芯片</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">7</span>
+                    <span class="rank-name">交通银行股份有限公司四川省分行 <span class="rank-tag tag-bank">银行金融</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">8</span>
+                    <span class="rank-name">北京经纬恒润科技股份有限公司 <span class="rank-tag tag-car">汽车电子</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">9</span>
+                    <span class="rank-name">北京经纬恒润科技股份有限公司成都分公司 <span class="rank-tag tag-car">汽车电子</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">10</span>
+                    <span class="rank-name">成都鼎桥通信技术有限公司 <span class="rank-tag tag-comm">通信设备</span></span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏅 通信学院 TOP10</h3>
+                <div class="rank-item">
+                    <span class="rank-num rank-1">1</span>
+                    <span class="rank-name">中移物联网有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-2">2</span>
+                    <span class="rank-name">重庆传音通讯技术有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-3">3</span>
+                    <span class="rank-name">四川九洲电器集团有限责任公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">4</span>
+                    <span class="rank-name">上海华为技术有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">5</span>
+                    <span class="rank-name">赛力斯集团股份有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">6</span>
+                    <span class="rank-name">重庆长安汽车股份有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">7</span>
+                    <span class="rank-name">交通银行股份有限公司四川省分行</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">8</span>
+                    <span class="rank-name">中国电信股份有限公司重庆分公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">9</span>
+                    <span class="rank-name">中兴通讯股份有限公司</span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">10</span>
+                    <span class="rank-name">中国电信股份有限公司成都分公司</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📈 就业单位行业 TOP5</h3>
+                <div class="industry-bar">
+                    <span class="industry-name">信息传输/软件/IT</span>
+                    <div class="industry-bar-fill" style="width: 200px;"></div>
+                    <span class="industry-percent">61.41%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">制造业</span>
+                    <div class="industry-bar-fill" style="width: 59px;"></div>
+                    <span class="industry-percent">17.97%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">金融业</span>
+                    <div class="industry-bar-fill" style="width: 27px;"></div>
+                    <span class="industry-percent">8.18%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">科学研究和技术服务</span>
+                    <div class="industry-bar-fill" style="width: 21px;"></div>
+                    <span class="industry-percent">6.57%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">教育</span>
+                    <div class="industry-bar-fill" style="width: 5px;"></div>
+                    <span class="industry-percent">1.50%</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 就业单位性质</h3>
+                <div class="tip-box">
+                    <strong>国有企业：</strong>占比最大，中移物联网、长安汽车、比亚迪、中兴通讯、交通银行、中国电信、鼎桥通信等央企/国企是主要吸纳方。
+                </div>
+                <div class="tip-box">
+                    <strong>其他企业（含民营企业）：</strong>象帝先计算、传音通讯、九洲电器、赛力斯、经纬恒润等民企/混合所有制企业占相当比例。
+                </div>
+                <div class="tip-box">
+                    <strong>三资企业/外商投资：</strong>上海华为（华为子公司）、部分合资企业占比中等。
+                </div>
+                <div class="tip-box">
+                    <strong>科研设计/高等教育/事业单位：</strong>科研设计单位、高等教育单位、其他事业单位、机关、医疗卫生单位等占比较小。
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🗺️ 就业地区分布</h3>
+                <div class="region-bar">
+                    <span class="region-name">重庆市</span>
+                    <div class="region-bar-fill" style="width: 200px;"></div>
+                    <span class="region-percent">24%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">四川省成都市</span>
+                    <div class="region-bar-fill" style="width: 158px;"></div>
+                    <span class="region-percent">19.01%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">广东省深圳市</span>
+                    <div class="region-bar-fill" style="width: 95px;"></div>
+                    <span class="region-percent">11.41%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">北京市</span>
+                    <div class="region-bar-fill" style="width: 74px;"></div>
+                    <span class="region-percent">8.87%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">上海市</span>
+                    <div class="region-bar-fill" style="width: 44px;"></div>
+                    <span class="region-percent">5.30%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">浙江省杭州市</span>
+                    <div class="region-bar-fill" style="width: 40px;"></div>
+                    <span class="region-percent">4.84%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">湖北省武汉市</span>
+                    <div class="region-bar-fill" style="width: 20px;"></div>
+                    <span class="region-percent">2.42%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">江苏省苏州市</span>
+                    <div class="region-bar-fill" style="width: 18px;"></div>
+                    <span class="region-percent">2.19%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">四川省绵阳市</span>
+                    <div class="region-bar-fill" style="width: 13px;"></div>
+                    <span class="region-percent">1.61%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">天津市</span>
+                    <div class="region-bar-fill" style="width: 12px;"></div>
+                    <span class="region-percent">1.38%</span>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💼 真实Offer案例</h3>
+                <div class="offer-list">
+                    <div class="offer-item">
+                        <div class="offer-company">建设银行</div>
+                        <div class="offer-detail">科技岗 · <span class="offer-highlight">18K × 14薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">重庆览山电子</div>
+                        <div class="offer-detail">数模混合工程师 · <span class="offer-highlight">22K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">华润微电子</div>
+                        <div class="offer-detail">技术岗 · <span class="offer-highlight">12K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">深信服</div>
+                        <div class="offer-detail">后端开发 · <span class="offer-highlight">18K × 15薪</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_重庆邮电大学.png" alt="重庆邮电大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📡 通信/物联网</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">中移物联网</div><div class="company-count">TOP1</div></div>
+                    <div class="company-card"><div class="company-name">中兴通讯</div><div class="company-count">TOP4</div></div>
+                    <div class="company-card"><div class="company-name">成都鼎桥通信</div><div class="company-count">TOP10</div></div>
+                    <div class="company-card"><div class="company-name">重庆传音通讯</div><div class="company-count">通院TOP2</div></div>
+                    <div class="company-card"><div class="company-name">四川九洲电器</div><div class="company-count">通院TOP3</div></div>
+                    <div class="company-card"><div class="company-name">上海华为</div><div class="company-count">通院TOP4</div></div>
+                    <div class="company-card"><div class="company-name">中国电信重庆</div><div class="company-count">通院TOP8</div></div>
+                    <div class="company-card"><div class="company-name">中国电信成都</div><div class="company-count">通院TOP10</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🚗 汽车/新能源</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">长安汽车软件</div><div class="company-count">TOP2</div></div>
+                    <div class="company-card"><div class="company-name">长安汽车</div><div class="company-count">TOP5</div></div>
+                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">TOP3</div></div>
+                    <div class="company-card"><div class="company-name">赛力斯</div><div class="company-count">通院TOP5</div></div>
+                    <div class="company-card"><div class="company-name">北京经纬恒润</div><div class="company-count">TOP8/9</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🔬 半导体/GPU/芯片</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">象帝先计算</div><div class="company-count">TOP6 GPU</div></div>
+                    <div class="company-card"><div class="company-name">重庆览山电子</div><div class="company-count">22K×15薪</div></div>
+                    <div class="company-card"><div class="company-name">华润微电子</div><div class="company-count">12K×15薪</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏦 银行/金融科技</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">交通银行四川</div><div class="company-count">TOP7</div></div>
+                    <div class="company-card"><div class="company-name">建设银行</div><div class="company-count">18K×14薪</div></div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>📡 通信/物联网 dominance：</strong>信息传输/IT占61.41%，是绝对第一大行业。中移物联网TOP1、中兴通讯TOP4、鼎桥通信TOP10、传音通讯（通院TOP2）、九洲电器（通院TOP3）、华为（通院TOP4）、电信重庆/成都（通院TOP8/10），通信/物联网/电信类企业占绝对主导。这与重庆邮电大学"通信特色强校"的定位高度匹配。
+                </div>
+                <div class="tip-box">
+                    <strong>🚗 汽车/新能源：</strong>制造业占17.97%，长安汽车软件TOP2、长安汽车TOP5、比亚迪TOP3、赛力斯（通院TOP5）、经纬恒润TOP8/9，汽车/新能源企业占TOP10的5席。重庆作为"汽车城"（长安总部），加上赛力斯（华为问界合作方）、比亚迪布局，汽车电子/软件是重邮第二大就业方向。
+                </div>
+                <div class="tip-box">
+                    <strong>🔬 半导体/GPU芯片：</strong>象帝先计算TOP6（国产GPU芯片设计公司）、重庆览山电子（数模混合22K×15薪）、华润微电子（12K×15薪），半导体/芯片设计是新兴高薪方向。重庆/成都作为国家集成电路产业重要节点，为重邮毕业生提供芯片设计岗位。
+                </div>
+                <div class="tip-box">
+                    <strong>🏦 银行/金融：</strong>金融业占8.18%，交通银行四川TOP7、建设银行（18K×14薪），金融科技岗位是控制类硕士向金融业转型的通道。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域：重庆+成都+深圳+北京：</strong>重庆24%（本地基本盘）、成都19.01%（九洲电器、鼎桥、电信成都等）、深圳11.41%（比亚迪、华为、传音等）、北京8.87%（经纬恒润）、上海5.30%（上海华为）、杭州4.84%（部分互联网），成渝经济圈+一线城市双重驱动。成渝两地合计超40%，是核心就业圈。
+                </div>
+                <div class="tip-box">
+                    <strong>🏢 单位性质：国企+民企并重：</strong>中移物联网（央企）、长安汽车（国企）、比亚迪（民企）、中兴通讯（国企）、象帝先（民企）、传音（民企）、赛力斯（民企），国企与大型民企并重，市场化就业与体制内就业都有相当规模。
+                </div>
+                <div class="tip-box">
+                    <strong>💰 薪资水平：</strong>数模混合IC工程师22K×15薪（年薪33W）、后端开发18K×15薪（年薪27W）、科技岗18K×14薪（年薪25.2W），半导体/互联网/金融科技岗位薪资在25-35W区间。华润微电子12K×15薪（18W）属于半导体制造业中较低水平，但工作稳定。
+                </div>
+                <div class="tip-box">
+                    <strong>🎓 通信学院特色：</strong>通院TOP10中通信/电信类企业占主导（中移物联网、传音、九洲、华为、电信、中兴、鼎桥），体现通信学院在通信设备/终端/物联网领域的强就业竞争力。与全校TOP10相比，通院更聚焦通信/电信行业，全校则汽车/制造业占比更高。
+                </div>
+                <div class="tip-box">
+                    <strong>🌆 成渝经济圈优势：</strong>重庆24%+成都19.01%合计超40%，成渝双城经济圈是重邮毕业生的核心就业圈。重庆本地（长安、中移物联网、象帝先、传音）和成都（九洲电器、鼎桥、电信成都、交通银行四川）提供了大量技术岗位，成渝两地IT/通信/汽车产业协同效应明显。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：重庆邮电大学就业质量报告 + 通信学院就业数据 + 真实Offer案例 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

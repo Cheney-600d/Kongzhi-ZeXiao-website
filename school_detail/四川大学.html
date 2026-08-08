@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四川大学 - 控制类考研院校详情</title>
+<script src="../vendor/chart-4.5.1.umd.min.js"></script>
+<style>
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:#F5F0F7;color:#2d2d3d;margin:0;padding:0;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#5a4a7e,#8a5a8e);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:1.8rem}
+.meta{font-size:13px;opacity:.9}
+.intro{max-width:900px;margin:14px auto 0;font-size:14px;background:rgba(255,255,255,.12);padding:10px 14px;border-radius:10px}
+h2{border-left:4px solid #667eea;padding-left:10px;margin-top:28px;font-size:1.2rem}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(184,164,216,.2)}
+.card h3{margin:0 0 8px;font-size:1.05rem;color:#5a4a7e}
+.stat{font-size:14px;margin:4px 0}
+.score{font-size:13px;color:#555;margin:4px 0 10px}
+.subavg{font-size:14px;font-weight:600;color:#5a4a7e;margin:6px 0;padding:6px 10px;background:#f0ebf3;border-radius:6px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}
+th{background:#f0ebf3;white-space:nowrap}
+footer{text-align:center;color:#999;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>四川大学</h1>
+  <div class="meta">985 · C · 控制类考研</div>
+  <div class="intro">简称“川大”，坐落于四川省会成都，是教育部直属、中央直管副部级的全国重点大学；位列世界一流大学建设高校（A类）、211工程、985工程。</div>
+</header>
+<div class="wrap">
+  <h2>一、学院与专业</h2>
+  <div class="card">
+    <table><thead><tr><th>学院</th><th>专业代码</th><th>专业名称</th><th>招生计划</th><th>26实际录取</th><th>较25变化</th><th>初试科目</th><th>备注</th></tr></thead>
+    <tbody><tr><td></td><td>081100</td><td>控制科学与工程</td><td>3</td><td></td><td></td><td>101 思想政治理论；201 英语一；301 数学一；871 自动控制原理</td><td></td></tr>
+<tr><td></td><td>085400</td><td>电子信息</td><td>23</td><td></td><td></td><td>101 思想政治理论；204 英语二；302 数学二；871 自动控制原理</td><td></td></tr>
+<tr><td></td><td>082500</td><td>航空宇航科学与技术</td><td>4</td><td></td><td>（增加3人）</td><td>101 思想政治理论；201 英语一；301 数学一；871 自动控制原理</td><td>注：名额展示与变动统计均为当年研招网数据</td></tr>
+<tr><td></td><td>085503</td><td>航空工程</td><td>8</td><td></td><td>（增加1人）</td><td>101 思想政治理论；204 英语二；302 数学二；871 自动控制原理</td><td>注：名额展示与变动统计均为当年研招网数据</td></tr></tbody></table>
+  </div>
+  <h2>二、26考研复试分数线</h2>
+  <div class="card">
+    <table><thead><tr><th>学院</th><th>学科</th><th>政治</th><th>英语</th><th>业务课一</th><th>业务课二</th><th>总分</th></tr></thead>
+    <tbody></tbody></table>
+  </div>
+  <h2>三、历年招生人数</h2>
+  <div class="card"><p>暂无历年招生数据</p></div>
+  <h2>四、26考研录取情况分析</h2>
+  
+<div class="card">
+  <h3>三、26考研控制科学与工程录取情况</h3>
+  <p class="stat">进复试 <b>8</b> 人 · 实际录取 <b>5</b> 人 · 复录比 <b>1.6</b></p>
+  <p class="score">复试初试：最高  / 最低  / 平均 　|　录取初试：最高 386.0 / 最低 330.0 / 平均 358.8</p>
+  
+  
+  <div style="height:220px;"><canvas id="chart-0"></canvas></div>
+  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
+  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-0');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [
+        { label: '复试人数', data: [], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: [], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+
+<div class="card">
+  <h3>四、26考研电子信息录取情况</h3>
+  <p class="stat">进复试 <b>42</b> 人 · 实际录取 <b>27</b> 人 · 复录比 <b>1.56</b></p>
+  <p class="score">复试初试：最高  / 最低  / 平均 　|　录取初试：最高  / 最低  / 平均 390.4</p>
+  
+  
+  <div style="height:220px;"><canvas id="chart-1"></canvas></div>
+  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
+  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-1');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [
+        { label: '复试人数', data: [], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: [], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+
+<div class="card">
+  <h3>五、26考研航空宇航科学与技术录取情况</h3>
+  <p class="stat">进复试 <b>4</b> 人 · 实际录取 <b>14</b> 人 · 复录比 <b>1.0</b></p>
+  <p class="score">复试初试：最高  / 最低  / 平均 　|　录取初试：最高 404.0 / 最低 313.0 / 平均 356.5</p>
+  
+  
+  <div style="height:220px;"><canvas id="chart-2"></canvas></div>
+  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
+  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-2');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [
+        { label: '复试人数', data: [], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: [], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+
+<div class="card">
+  <h3>六、26考研航空工程录取情况</h3>
+  <p class="stat">进复试 <b>19</b> 人 · 实际录取 <b>14</b> 人 · 复录比 <b>1.35</b></p>
+  <p class="score">复试初试：最高  / 最低  / 平均 　|　录取初试：最高  / 最低  / 平均 376.7</p>
+  
+  
+  <div style="height:220px;"><canvas id="chart-3"></canvas></div>
+  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
+  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
+</div>
+<script>
+try {
+  var ctx = document.getElementById('chart-3');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [
+        { label: '复试人数', data: [], backgroundColor: 'rgba(102,126,234,0.7)' },
+        { label: '录取人数', data: [], backgroundColor: 'rgba(16,185,129,0.7)' }
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+  });
+} catch(e) { console.error(e); }
+</script>
+  <footer>数据来源：《27考研择校宝典_版8》（控制类）· 仅供参考，最终以院校官方为准</footer>
+</div>
+</body>
+</html>

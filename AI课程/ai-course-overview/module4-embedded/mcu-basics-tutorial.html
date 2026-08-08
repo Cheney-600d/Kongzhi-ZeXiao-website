@@ -1,0 +1,2630 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="sakura-pink" data-themes="sakura-pink,tokyo-night,tech-blue,pure-white,macaron">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>单片机基础与进阶生态 · 32 页完整版</title>
+<style>
+/* html-ppt :: shared webfonts (async via link below) */
+</style>
+
+
+<link href="../../../vendor/fonts/acd32df2e4c5e02bb71287db882b8d68.css" rel="stylesheet">
+<style>
+:root {
+  --bg:#1a1b26;--bg-soft:#16161e;--surface:#24283b;--surface-2:#2f334d;
+  --border:rgba(192,202,245,.12);--border-strong:rgba(192,202,245,.24);
+  --text-1:#c0caf5;--text-2:#a9b1d6;--text-3:#565f89;
+  --accent:#7aa2f7;--accent-2:#bb9af7;--accent-3:#7dcfff;
+  --good:#9ece6a;--warn:#e0af68;--bad:#f7768e;
+  --grad:linear-gradient(135deg,#7aa2f7,#bb9af7 55%,#f7768e);
+  --grad-soft:linear-gradient(135deg,#24283b,#2f334d);
+  --radius:14px;--radius-sm:8px;--radius-lg:22px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);--shadow-lg:0 24px 62px rgba(0,0,0,.6);
+  --font-sans:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --font-mono:'JetBrains Mono','IBM Plex Mono',SFMono-Regular,Menlo,monospace;
+  --font-display:var(--font-sans);--letter-tight:-.03em;--letter-normal:-.01em;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text-1);
+  font-family:var(--font-sans);font-weight:400;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  letter-spacing:var(--letter-normal)}
+img,svg,video{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+
+/* ================= SLIDE SYSTEM ================= */
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--bg)}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:flex-start;
+  padding:42px 56px 32px;box-sizing:border-box;opacity:0;pointer-events:none;
+  transition:opacity .4s var(--ease),transform .4s var(--ease);transform:translateX(30px);overflow:hidden}
+.slide.is-active{display:flex;opacity:1;pointer-events:auto;transform:translateX(0);z-index:2}
+.slide.is-prev{transform:translateX(-30px)}
+.slide > *{position:relative;z-index:1}
+.slide::-webkit-scrollbar{width:6px}
+.slide::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+.slide::-webkit-scrollbar-track{background:transparent}
+
+/* ================= TYPOGRAPHY ================= */
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
+.kicker{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+h1.title,.h1{font-family:var(--font-display);font-size:56px;line-height:1.08;font-weight:800;letter-spacing:var(--letter-tight);margin:0 0 16px;color:var(--text-1)}
+h2.title,.h2{font-family:var(--font-display);font-size:38px;line-height:1.15;font-weight:700;letter-spacing:var(--letter-tight);margin:0 0 12px}
+h3,.h3{font-size:24px;line-height:1.25;font-weight:600;letter-spacing:var(--letter-normal);margin:0 0 8px}
+h4,.h4{font-size:17px;line-height:1.3;font-weight:600;margin:0 0 6px}
+.lede{font-size:18px;line-height:1.55;color:var(--text-2);font-weight:300;max-width:62ch}
+.dim{color:var(--text-2)}.dim2{color:var(--text-3)}.mono{font-family:var(--font-mono)}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* ================= LAYOUT ================= */
+.stack>*+*{margin-top:10px}
+.row{display:flex;gap:20px;align-items:center}.row.wrap{flex-wrap:wrap}
+.row.stretch{display:flex;gap:24px;align-items:stretch}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.center{display:flex;align-items:center;justify-content:center;text-align:center}
+.fill{flex:1}.mt-s{margin-top:6px}.mt-m{margin-top:14px}.mt-l{margin-top:24px}
+.mb-s{margin-bottom:6px}.mb-m{margin-bottom:14px}.mb-l{margin-bottom:24px}
+
+/* ================= CARDS ================= */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card-soft{background:var(--surface-2);border:1px solid var(--border)}
+.card-accent{background:var(--surface);border-top:3px solid var(--accent)}
+.card-good{border-top:3px solid var(--good)}.card-warn{border-top:3px solid var(--warn)}
+.card-bad{border-top:3px solid var(--bad)}
+.card-hover{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.card-hover:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:500;
+  background:var(--surface-2);color:var(--text-2);border:1px solid var(--border)}
+.pill-accent{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.pill-good{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
+.pill-warn{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.pill-bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+
+/* ================= CHROME ================= */
+.deck-header{position:absolute;top:14px;left:32px;display:flex;align-items:center;
+  gap:14px;font-size:11px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;z-index:10;pointer-events:none;max-width:55%}
+.deck-footer{position:absolute;top:14px;right:32px;display:flex;align-items:center;justify-content:flex-end;gap:14px;font-size:11px;color:var(--text-3);z-index:10;pointer-events:none}
+.slide-number::before{content:attr(data-current)}
+.slide-number::after{content:" / " attr(data-total)}
+.progress-bar{position:fixed;left:0;right:0;bottom:0;height:3px;background:transparent;z-index:20}
+.progress-bar>span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s var(--ease)}
+.nav-hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:15;
+  background:rgba(36,40,59,.9);border:1px solid var(--border);border-radius:999px;
+  padding:5px 14px;font-size:11px;color:var(--text-3);letter-spacing:.08em;
+  display:flex;gap:12px;align-items:center;opacity:.65;backdrop-filter:blur(8px)}
+.nav-hint kbd{font-family:var(--font-mono);font-size:10px;background:var(--surface-2);
+  padding:1px 5px;border-radius:4px;border:1px solid var(--border);color:var(--text-2)}
+
+/* ================= ANIMATIONS ================= */
+@keyframes kf-fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-down{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-left{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:none}}
+@keyframes kf-fade-right{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+@keyframes kf-scale-in{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes kf-slide-up{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
+.anim-fade-up{animation:kf-fade-up .7s var(--ease) both}
+.anim-fade-down{animation:kf-fade-down .7s var(--ease) both}
+.anim-fade-left{animation:kf-fade-left .7s var(--ease) both}
+.anim-fade-right{animation:kf-fade-right .7s var(--ease) both}
+.anim-scale-in{animation:kf-scale-in .7s var(--ease) both}
+.anim-slide-up{animation:kf-slide-up .8s var(--ease) both}
+.anim-stagger>*{animation:kf-fade-up .6s var(--ease) both}
+.anim-stagger>*:nth-child(1){animation-delay:.05s}
+.anim-stagger>*:nth-child(2){animation-delay:.15s}
+.anim-stagger>*:nth-child(3){animation-delay:.25s}
+.anim-stagger>*:nth-child(4){animation-delay:.35s}
+.anim-stagger>*:nth-child(5){animation-delay:.45s}
+.anim-stagger>*:nth-child(6){animation-delay:.55s}
+
+/* ================= BUTTONS ================= */
+.btn-acrylic{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;cursor:pointer;border:none;
+  transition:all .3s var(--ease);position:relative;overflow:hidden}
+.btn-acrylic:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#1a1b26}
+
+/* ================= TERMINAL ================= */
+.terminal{background:#0d1017;border:1px solid var(--border);border-radius:var(--radius);
+  font-family:var(--font-mono);font-size:13px;overflow:hidden;box-shadow:var(--shadow)}
+.terminal-head{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+.terminal-dot{width:11px;height:11px;border-radius:50%}
+.terminal-dot.r{background:#ff5f57}.terminal-dot.y{background:#febc2e}.terminal-dot.g{background:#28c840}
+.terminal-title{margin-left:8px;font-size:11px;color:var(--text-3);letter-spacing:.08em}
+.terminal-body{padding:14px 16px;line-height:1.7;color:var(--text-2);min-height:80px;max-height:300px;overflow-y:auto}
+.terminal-body .prompt{color:var(--good)}
+.terminal-body .cmd{color:var(--accent-3)}
+.terminal-body .fn{color:var(--accent)}
+.terminal-body .str{color:var(--good)}
+.terminal-body .out{color:var(--text-3)}
+.terminal-body .ok{color:var(--good)}
+.terminal-body .err{color:var(--bad)}
+.terminal-body .cmt{color:var(--text-3)}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--accent-3);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ================= FEATURE CARDS ================= */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;transition:all .3s var(--ease)}
+.feature:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
+.f-icon{width:38px;height:38px;border-radius:var(--radius-sm);display:flex;align-items:center;
+  justify-content:center;font-size:18px;margin-bottom:10px;
+  background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.feature h4{font-size:14px;margin-bottom:4px}
+.feature p{font-size:12px;color:var(--text-2);line-height:1.5}
+
+/* ================= FLOW STEPS ================= */
+.flow-steps{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.flow-step{flex:1;min-width:120px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 14px;text-align:center;transition:all .3s var(--ease)}
+.flow-step:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-lg)}
+.flow-step .step-num{display:inline-block;width:30px;height:30px;line-height:30px;border-radius:50%;
+  background:var(--accent);color:#1a1b26;font-weight:700;font-size:13px;margin-bottom:6px}
+.flow-step h4{font-size:13px;color:var(--accent);margin-bottom:4px}
+.flow-step p{font-size:11px;color:var(--text-2);line-height:1.45}
+
+/* ================= CODE SNIPPET ================= */
+.code-snip{background:#0d1017;border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-family:var(--font-mono);font-size:12px;padding:14px 16px;overflow-x:auto;line-height:1.7}
+.code-snip .kw{color:var(--accent-2)}
+.code-snip .fn{color:var(--accent-3)}
+.code-snip .str{color:var(--good)}
+.code-snip .cmt{color:var(--text-3)}
+.code-snip .num{color:var(--warn)}
+.code-snip .tag{color:var(--bad)}
+
+/* ================= COMPARISON TABLE ================= */
+.compare-table{width:100%;border-collapse:collapse;font-size:13px}
+.compare-table th{text-align:left;padding:10px 14px;color:var(--text-3);font-weight:500;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.compare-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text-2)}
+.compare-table tr:hover td{background:var(--surface-2)}
+.compare-table .check{color:var(--good);font-weight:700}
+.compare-table .cross{color:var(--bad)}
+
+/* ================= CANVAS FX ================= */
+.fx-particles{position:absolute;inset:0;z-index:0;opacity:.4;pointer-events:none}
+
+/* ================= OVERVIEW ================= */
+.overview{position:fixed;inset:0;z-index:50;background:rgba(22,22,30,.96);backdrop-filter:blur(16px);
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;
+  padding:56px 40px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.overview.open{opacity:1;pointer-events:auto}
+.thumb{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:36px 14px;text-align:center;cursor:pointer;transition:all .25s var(--ease);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.thumb:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.thumb .n{font-family:var(--font-mono);font-size:26px;font-weight:700;color:var(--accent)}
+.thumb .t{font-size:12px;color:var(--text-2)}
+
+/* ================= KNOWLEDGE CHAIN ================= */
+.kchain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.kchain-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;font-size:12px;color:var(--text-2);transition:all .3s var(--ease);text-align:center}
+.kchain-item:hover{border-color:var(--accent);color:var(--accent)}
+.kchain-item.active{background:color-mix(in srgb,var(--accent) 14%,transparent);border-color:var(--accent);color:var(--accent)}
+.kchain-arrow{color:var(--text-3);font-size:14px}
+
+/* ================= CIRCUIT DIAGRAM (SVG-like) ================= */
+.circuit-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;align-items:center;justify-content:center}
+
+/* ================= FORMULA BOX ================= */
+.formula-box{background:#0d1017;border:1px solid var(--border-strong);border-radius:var(--radius);
+  padding:16px 20px;font-family:var(--font-mono);font-size:15px;text-align:center;color:var(--accent-3)}
+.formula-box .var{color:var(--warn)}
+.formula-box .op{color:var(--accent-2)}
+
+/* ================= CALLOUT ================= */
+.callout{border-left:3px solid var(--warn);background:color-mix(in srgb,var(--warn) 8%,transparent);
+  padding:12px 16px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:13px;color:var(--text-2)}
+.callout.bad{border-left-color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent)}
+.callout.good{border-left-color:var(--good);background:color-mix(in srgb,var(--good) 8%,transparent)}
+
+/* ================= MCU FAMILY CARD ================= */
+.mcu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;transition:all .3s var(--ease);position:relative;overflow:hidden}
+.mcu-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.mcu-card .mcu-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mcu-card .mcu-logo{width:48px;height:48px;border-radius:var(--radius-sm);display:flex;
+  align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.mcu-card .mcu-name{font-size:18px;font-weight:700}
+.mcu-card .mcu-sub{font-size:12px;color:var(--text-3)}
+.mcu-card .mcu-body{font-size:13px;color:var(--text-2);line-height:1.6}
+.mcu-card .mcu-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+
+/* ================= ARCH DIAGRAM ================= */
+.arch-box{background:var(--surface-2);border:2px solid var(--border-strong);border-radius:var(--radius-sm);
+  padding:12px 16px;text-align:center;font-size:13px;font-weight:600;color:var(--accent)}
+.arch-box.alt{border-color:var(--accent-2);color:var(--accent-2)}
+.arch-box.mem{border-color:var(--good);color:var(--good)}
+.arch-arrow{color:var(--text-3);font-size:20px;text-align:center}
+.arch-bus{height:4px;background:var(--accent);border-radius:2px;margin:8px 0;position:relative}
+.arch-bus::after{content:attr(data-label);position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase}
+
+/* ================= SPEC TABLE ================= */
+.spec-table{width:100%;border-collapse:collapse;font-size:12px}
+.spec-table th{text-align:left;padding:8px 12px;color:var(--text-3);font-weight:500;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border-strong)}
+.spec-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-2)}
+.spec-table td:first-child{font-weight:600;color:var(--text-1)}
+
+/* ================= TIMELINE ================= */
+.timeline{display:flex;align-items:stretch;gap:0;position:relative;padding:20px 0}
+.timeline-item{flex:1;text-align:center;position:relative}
+.timeline-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);
+  margin:0 auto 10px;position:relative;z-index:2;box-shadow:0 0 0 4px var(--surface)}
+.timeline-item:nth-child(even) .timeline-dot{background:var(--accent-2)}
+.timeline-item:nth-child(odd) .timeline-dot{background:var(--accent-3)}
+.timeline-line{position:absolute;top:27px;left:0;right:0;height:2px;background:var(--border-strong);z-index:1}
+.timeline-year{font-size:11px;font-weight:700;color:var(--accent);font-family:var(--font-mono)}
+.timeline-label{font-size:11px;color:var(--text-2);margin-top:4px;line-height:1.4}
+
+/* ================= COMPARISON GRID ================= */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.vs-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;text-align:center;transition:all .3s var(--ease)}
+.vs-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.vs-card .vs-icon{font-size:36px;margin-bottom:10px}
+.vs-card .vs-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.vs-card .vs-desc{font-size:12px;color:var(--text-2);line-height:1.5}
+.vs-card .vs-pros{margin-top:10px;font-size:11px;color:var(--good)}
+.vs-card .vs-cons{font-size:11px;color:var(--bad)}
+
+/* ================= BADGE ================= */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:6px;
+  font-size:11px;font-weight:600;letter-spacing:.04em}
+.badge-8bit{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)}
+.badge-16bit{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.badge-32bit{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.badge-64bit{background:color-mix(in srgb,var(--accent-2) 14%,transparent);color:var(--accent-2)}
+
+/* ================= PIN DIAGRAM ================= */
+.pin-row{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.pin-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.pin-dot.pwr{background:var(--bad)}.pin-dot.gnd{background:var(--text-3)}
+.pin-dot.gpio{background:var(--accent)}.pin-dot.adc{background:var(--good)}
+.pin-dot.com{background:var(--warn)}.pin-dot.pwm{background:var(--accent-2)}
+.pin-label{font-family:var(--font-mono);font-size:11px;color:var(--text-2)}
+
+/* ================= SECTION DIVIDER ================= */
+.section-divider{display:flex;align-items:center;gap:16px;margin:8px 0}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-strong)}
+.section-divider span{font-size:12px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+</style>
+
+<!-- AUTO-INJECTED: compact-layout + auto-fit (idempotent) -->
+<style>
+/* ===== Compact base layout (reduces most "just-overflow" cases) ===== */
+.deck .slide                                              { padding: 28px 38px 22px; }
+.deck .slide h1.title, .deck .slide .h1                   { font-size: 44px; line-height: 1.08; margin: 0 0 10px; }
+.deck .slide h2.title, .deck .slide .h2                   { font-size: 30px; line-height: 1.15; margin: 0 0 8px; }
+.deck .slide h3,       .deck .slide .h3                   { font-size: 20px; line-height: 1.25; margin: 0 0 6px; }
+.deck .slide h4,       .deck .slide .h4                   { font-size: 15px; line-height: 1.3;  margin: 0 0 4px; }
+.deck .slide .lede                                         { font-size: 16px; line-height: 1.5; }
+.deck .slide .eyebrow, .deck .slide .kicker                { font-size: 12px; }
+.deck .slide .card                                         { padding: 14px 16px; border-radius: 12px; }
+.deck .slide .card-soft, .deck .slide .card-accent         { padding: 14px 16px; }
+.deck .slide .feature                                      { padding: 12px; }
+.deck .slide .flow-step                                    { padding: 12px 10px; }
+.deck .slide .grid, .deck .slide .feature-grid             { gap: 12px; }
+.deck .slide .row                                          { gap: 14px; }
+.deck .slide .row.stretch                                  { gap: 14px; }
+.deck .slide .stack > * + *                                { margin-top: 7px; }
+.deck .slide .flow-steps                                   { gap: 8px; }
+.deck .slide .pill                                         { padding: 3px 10px; font-size: 11px; }
+.deck .slide .terminal                                     { font-size: 11px; }
+.deck .slide .terminal-body                                { padding: 10px 12px; min-height: 60px; max-height: 200px; }
+.deck .slide .code-snip                                    { font-size: 11px; padding: 10px 12px; }
+.deck .slide .compare-table                                { font-size: 12px; }
+.deck .slide .compare-table th                             { padding: 7px 10px; font-size: 10px; }
+.deck .slide .compare-table td                             { padding: 8px 10px; }
+.deck .slide .mt-l                                         { margin-top: 16px; }
+.deck .slide .mt-m                                         { margin-top: 10px; }
+.deck .slide .mb-l                                         { margin-bottom: 16px; }
+.deck .slide .mb-m                                         { margin-bottom: 10px; }
+/* Extra-compact for slides that still overflow (JS toggles this class) */
+.deck .slide.is-scale-compact                              { padding: 18px 24px 12px; }
+.deck .slide.is-scale-compact h1.title,
+.deck .slide.is-scale-compact .h1                          { font-size: 38px; margin: 0 0 8px; }
+.deck .slide.is-scale-compact h2.title,
+.deck .slide.is-scale-compact .h2                          { font-size: 26px; margin: 0 0 6px; }
+.deck .slide.is-scale-compact h3, .deck .slide.is-scale-compact .h3 { font-size: 18px; }
+.deck .slide.is-scale-compact h4, .deck .slide.is-scale-compact .h4 { font-size: 14px; }
+.deck .slide.is-scale-compact .lede                        { font-size: 15px; }
+.deck .slide.is-scale-compact .card                        { padding: 10px 12px; border-radius: 10px; }
+.deck .slide.is-scale-compact .feature,
+.deck .slide.is-scale-compact .flow-step                   { padding: 8px; }
+.deck .slide.is-scale-compact .grid,
+.deck .slide.is-scale-compact .row,
+.deck .slide.is-scale-compact .row.stretch,
+.deck .slide.is-scale-compact .feature-grid                { gap: 9px; }
+.deck .slide.is-scale-compact .stack > * + *               { margin-top: 5px; }
+.deck .slide.is-scale-compact .terminal-body               { max-height: 170px; }
+/* Content wrapper used by the auto-fit JS (transform scales this) */
+.deck .slide .slide-content-wrap                           { transform-origin: top center; will-change: transform; position: relative; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ============ SLIDE 1: 封面 ============ -->
+<section class="slide" data-title="封面">
+  <canvas class="fx-particles" data-fx="starfield"></canvas>
+  <div class="deck-header"><span>嵌入式方案 · 单片机基础</span><span class="slide-number" data-current="1" data-total="14"></span></div>
+  <div class="center" style="flex-direction:column;gap:20px">
+    <div class="anim-scale-in" style="font-size:60px;line-height:1">🔌</div>
+    <div class="anim-fade-up" style="animation-delay:.3s">
+      <div class="kicker mb-s" style="text-align:center">MCU Basics + Ecosystem · 32 Pages · BA-0 ~ BA-11 + Advanced</div>
+      <h1 class="title gradient-text" style="font-size:52px">单片机基础与进阶生态</h1>
+      <p class="lede" style="text-align:center;max-width:680px;margin:0 auto">
+        从电压原理到 MCU 家族全景 — 32 页递进式知识链，覆盖 51/STM32/ESP32/Arduino/AVR/PIC/国产MCU/RISC-V 全生态。
+      </p>
+    </div>
+    <div class="row wrap anim-fade-up" style="animation-delay:.5s;justify-content:center;gap:10px">
+      <span class="pill pill-accent">零基础友好</span>
+      <span class="pill pill-good">问题引导式</span>
+      <span class="pill pill-warn">递进知识链</span>
+      <span class="pill pill-bad">实操避坑</span>
+      <span class="pill pill-accent">MCU 全生态</span>
+      <span class="pill pill-good">32 页完整版</span>
+    </div>
+    <div class="anim-fade-up" style="animation-delay:.7s">
+      <button class="btn-acrylic btn-primary" onclick="document.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight'}))">
+        <span>开始学习 →</span>
+      </button>
+    </div>
+  </div>
+  <div class="deck-footer"><span>AI 科普课程 · 控制类</span><span>按 ← → 翻页 · T 换主题 · O 总览</span></div>
+</section>
+
+<!-- ============ SLIDE 2: 单片机是什么 ============ -->
+<section class="slide" data-title="单片机是什么">
+  <div class="deck-header"><span>BA-0 · 总领篇</span><span class="slide-number" data-current="2" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-0 · What is MCU</div>
+    <h2 class="title">单片机到底是什么？</h2>
+    <p class="lede">指甲盖大小、几块钱一个，专门控制小电器的迷你小电脑。</p>
+  </div>
+  <div class="row stretch mt-l">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="f-icon">💰</div>
+          <h4>价格低</h4>
+          <p>几块钱一个，量产成本极低</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--accent-2) 12%,transparent);color:var(--accent-2)">📐</div>
+          <h4>体积小</h4>
+          <p>指甲盖大小，可嵌入任何设备</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--good) 12%,transparent);color:var(--good)">🔋</div>
+          <h4>低功耗</h4>
+          <p>毫安级电流，电池可运行数月</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon" style="background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)">🛡️</div>
+          <h4>高稳定</h4>
+          <p>功能简单越不易死机，适合长期运行</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:320px">
+      <div class="card card-accent">
+        <h4 style="color:var(--accent)">典型应用场景</h4>
+        <div class="stack mt-m" style="font-size:13px;color:var(--text-2)">
+          <div>⌚ 电子表 — 时间显示与闹钟</div>
+          <div>🌀 小风扇 — 转速控制</div>
+          <div>💡 感应灯 — 人体红外检测</div>
+          <div>🛵 电动车仪表盘 — 速度/电量显示</div>
+          <div>🎮 小玩具 — 声光控制</div>
+          <div>🌡️ 测温枪 — 红外温度采集</div>
+          <div>🚗 遥控车 — 无线通信+电机驱动</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout good mt-m anim-fade-up" style="animation-delay:.5s">
+    <strong>学习前提：</strong>仅需初中电路知识 + 基础编程认知，无其他门槛。学完即可看懂并上手实际单片机项目。
+  </div>
+  <div class="deck-footer"><span>下一步：搞懂电路的底层基础 — 电压</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 3: 电压与共地 ============ -->
+<section class="slide" data-title="电压与共地">
+  <div class="deck-header"><span>BA-1 + BA-2 · 底层基础</span><span class="slide-number" data-current="3" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-1 · BA-2 · Voltage & Common Ground</div>
+    <h2 class="title">电压是差值，共地是前提</h2>
+    <p class="lede">所有电路的底层核心：电压是相对 GND 的差值，多模块必须共地才能通信。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">BA-1：电压核心定义</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📌 电压 = 两点之间的<strong style="color:var(--good)">电位差</strong>，单位伏特(V)</div>
+          <div>📌 电压是电流产生的<strong style="color:var(--good)">前提</strong>，必须形成完整回路才有电流</div>
+          <div>📌 <strong style="color:var(--warn)">0V 是人为定义的参考电位</strong>（GND/地线）</div>
+          <div>📌 电压数值默认是对 GND 的差值；负电压 = 低于 GND</div>
+        </div>
+      </div>
+      <div class="card card-warn">
+        <h4 style="color:var(--warn)">关键认知</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          在两个<strong>未连接</strong>的独立系统中，无法得出另一个系统相对于当前系统的电位信息。这就是为什么需要共地。
+        </p>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-bad mb-m">
+        <h4 style="color:var(--bad)">BA-2：不共地的后果</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>❌ A 模块认为的 2V，B 模块识别不到</div>
+          <div>❌ 信号处于<strong>悬空（开路）</strong>状态</div>
+          <div>❌ 通信失败、舵机乱动等异常</div>
+        </div>
+        <div class="callout bad mt-m" style="font-size:12px">
+          新手阶段<strong>极其容易忽略</strong>这个问题！
+        </div>
+      </div>
+      <div class="card card-good">
+        <h4 style="color:var(--good)">共地规则</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          所有设备的 GND（地线/0V参考电位点）<strong style="color:var(--good)">连接在一起</strong>，共享同一个参考电位。
+        </p>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">// 正确接线</span><br>
+<span class="kw">模块A</span> GND ───┐<br>
+<span class="kw">模块B</span> GND ───┼── <span class="str">共地</span><br>
+<span class="kw">单片机</span> GND ─┘
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>解决参考标准 → 下一步：单片机怎么跑起来？</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 4: 最小系统 ============ -->
+<section class="slide" data-title="最小系统">
+  <div class="deck-header"><span>BA-3 · 运行核心</span><span class="slide-number" data-current="4" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-3 · Minimum System</div>
+    <h2 class="title">电子积木，启动！</h2>
+    <p class="lede">移除任何一个核心组件都无法正常工作的最基础硬件配置。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-up" style="animation-delay:.2s">
+      <div class="grid g2">
+        <div class="card card-hover card-accent">
+          <div style="font-size:28px;margin-bottom:8px">🧠</div>
+          <h4 style="color:var(--accent)">主控芯片</h4>
+          <p style="font-size:12px;color:var(--text-2)">系统核心，负责执行程序、处理信号。如 STM32、ESP32、51 单片机</p>
+        </div>
+        <div class="card card-hover card-warn">
+          <div style="font-size:28px;margin-bottom:8px">⚡</div>
+          <h4 style="color:var(--warn)">电源电路</h4>
+          <p style="font-size:12px;color:var(--text-2)">为系统工作提供能量来源，通常 3.3V 或 5V 稳压</p>
+        </div>
+        <div class="card card-hover card-good">
+          <div style="font-size:28px;margin-bottom:8px">⏱️</div>
+          <h4 style="color:var(--good)">时钟电路（晶振）</h4>
+          <p style="font-size:12px;color:var(--text-2)">提供系统工作节拍，每一次震荡推动主控完成一步计算</p>
+        </div>
+        <div class="card card-hover" style="border-top:3px solid var(--accent-3)">
+          <div style="font-size:28px;margin-bottom:8px">🔄</div>
+          <h4 style="color:var(--accent-3)">复位电路</h4>
+          <p style="font-size:12px;color:var(--text-2)">实现单片机一键重启，恢复初始稳定状态</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-left" style="animation-delay:.3s;max-width:300px;display:flex;flex-direction:column;justify-content:center">
+      <div class="card card-soft">
+        <h4>最小系统板</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          集成最小系统全部电路的开发板，通过板载<strong style="color:var(--accent)">引脚</strong>外接其他模块，扩展实现各类功能。
+        </p>
+        <div class="callout mt-m" style="font-size:12px">
+          <strong>核心主线：</strong>后续所有功能都是通过最小系统板的引脚实现的 → 由此开启 GPIO 系列
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>搞懂启动条件 → 下一步：引脚怎么读 0 和 1？</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 5: GPIO 输入 ============ -->
+<section class="slide" data-title="GPIO输入">
+  <div class="deck-header"><span>BA-4-1 · 基础输入</span><span class="slide-number" data-current="5" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-4-1 · GPIO Input</div>
+    <h2 class="title">GPIO：先读到 0 和 1</h2>
+    <p class="lede">单片机最基础的外设，读取引脚电平状态，高电平=1，低电平=0。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">输入模式核心功能</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📡 读取引脚电平状态</div>
+          <div>⚡ 高电平 = 逻辑 1（工作电压 3.3V/5V）</div>
+          <div>🟫 低电平 = 逻辑 0（GND/0V）</div>
+          <div>🔘 最典型应用：按键检测</div>
+        </div>
+      </div>
+      <div class="card card-bad">
+        <h4 style="color:var(--bad)">致命问题：悬空</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          按键释放时引脚无固定电平接入，处于<strong style="color:var(--bad)">悬空开路</strong>状态，读取值随机（可能是 0 也可能是 1）！
+        </p>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">解决方案：上拉/下拉电阻</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div><strong style="color:var(--accent-3)">上拉电阻：</strong>引脚默认拉至高电平 1，按键按下时拉低为 0</div>
+          <div><strong style="color:var(--accent-2)">下拉电阻：</strong>引脚默认拉至低电平 0，按键按下时拉高为 1</div>
+        </div>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">// 两种接入方式</span><br>
+<span class="kw">方式一：</span>外部接 1kΩ~100kΩ 电阻<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（常用 <span class="num">4.7kΩ</span> / <span class="num">10kΩ</span>）<br>
+<span class="kw">方式二：</span>芯片内部上拉/下拉<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码直接开启即可
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4>输入模式分类</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill">浮空输入</span>
+          <span class="pill pill-accent">上拉输入</span>
+          <span class="pill pill-accent">下拉输入</span>
+        </div>
+        <p style="font-size:12px;color:var(--text-3);margin-top:8px">
+          完成了「读」的能力 → 自然引出反向能力：怎么输出 0 和 1？
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>能读了 → 下一步：怎么向外输出控制外部元件？</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 6: GPIO 输出 ============ -->
+<section class="slide" data-title="GPIO输出">
+  <div class="deck-header"><span>BA-4-2 · 基础输出</span><span class="slide-number" data-current="6" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-4-2 · GPIO Output</div>
+    <h2 class="title">GPIO：再输出 0 和 1</h2>
+    <p class="lede">芯片内部通过开关控制引脚连接到 VCC 或 GND，直接驱动外部元件。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">推挽输出（Push-Pull）</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔧 内部两个开关，分别控制引脚接 VCC 或 GND</div>
+          <div>✅ 可直接输出高电平 1 / 低电平 0</div>
+          <div>✅ 具备一定驱动能力（单引脚最大 ~10mA）</div>
+          <div>💡 典型应用：LED 亮灭控制</div>
+        </div>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">// 推挽输出控制 LED</span><br>
+<span class="kw">接 VCC</span> → LED 正极=VCC, 负极=GND → <span class="str">亮</span><br>
+<span class="kw">接 GND</span> → LED 正负极均=GND → <span class="err">灭</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-warn mb-m">
+        <h4 style="color:var(--warn)">开漏输出（Open-Drain）</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔧 仅一个开关控制引脚接 GND</div>
+          <div>⚠️ 无法主动输出高电平，需外接/内部上拉电阻</div>
+          <div>📌 开关断开 → 上拉至高电平 1（但驱动能力极弱）</div>
+          <div>📌 开关闭合 → 输出低电平 0</div>
+        </div>
+      </div>
+      <div class="card card-good">
+        <h4 style="color:var(--good)">为什么用开漏输出？</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          实现<strong style="color:var(--good)">「线与」逻辑</strong>：多设备输出引脚直接并接在同一总线，任一设备拉低即为低电平，所有设备释放才由上拉电阻置高，<strong>无输出短路风险</strong>。多用于通信总线场景。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="callout mt-m anim-fade-up" style="animation-delay:.5s">
+    <strong>核心局限：</strong>引脚只能输出纯 0 或纯 1，怎么表示 0.666 这样的中间值？→ 由此开启 PWM
+  </div>
+  <div class="deck-footer"><span>只能 0 或 1 → 下一步：怎么模拟 0.666？</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 7: PWM ============ -->
+<section class="slide" data-title="PWM">
+  <div class="deck-header"><span>BA-5 · 模拟输出</span><span class="slide-number" data-current="7" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-5 · Pulse Width Modulation</div>
+    <h2 class="title">PWM：不只是 0 和 1，还有 0.666</h2>
+    <p class="lede">用数字信号（只有 0/1）模拟出模拟信号（0~1），通过快速切换高低电平实现。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">PWM 核心原理</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          通过快速切换 0/1 高低电平，用<strong style="color:var(--accent)">高电平在一个周期内的时间占比</strong>，模拟出连续的模拟电压。
+        </p>
+        <div style="margin-top:12px;padding:16px;background:#0d1017;border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:12px;color:var(--text-2)">
+          <span style="color:var(--accent-3)">高</span> ┌──┐  ┌──┐  ┌──┐<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│  │  │  │  │  │&nbsp;&nbsp;<span style="color:var(--text-3)">← 66% 占空比</span><br>
+<span style="color:var(--bad)">低</span>&nbsp;&nbsp;&nbsp;&nbsp;└──┘──└──┘──└──┘<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--text-3)">└─周期─┘</span>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="card card-good">
+          <h4 style="color:var(--good);font-size:14px">频率</h4>
+          <p style="font-size:12px;color:var(--text-2);margin-top:4px">1秒内完整周期的次数。越高越平稳</p>
+          <span class="pill pill-good mt-s" style="font-size:11px">蜂鸣器音调</span>
+        </div>
+        <div class="card card-warn">
+          <h4 style="color:var(--warn);font-size:14px">占空比</h4>
+          <p style="font-size:12px;color:var(--text-2);margin-top:4px">高电平时间 ÷ 总周期时间。越大越接近高电平</p>
+          <div class="row wrap mt-s" style="gap:6px">
+            <span class="pill pill-warn" style="font-size:11px">LED亮度</span>
+            <span class="pill pill-warn" style="font-size:11px">电机转速</span>
+            <span class="pill pill-warn" style="font-size:11px">舵机角度</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:320px;display:flex;flex-direction:column;justify-content:center;gap:12px">
+      <div class="callout">
+        <strong>问题来了：</strong>用主程序循环模拟 PWM 会占用全部 CPU 资源、精度还不够。有没有专门的硬件来干这件事？
+      </div>
+      <div class="card card-soft" style="text-align:center">
+        <div style="font-size:14px;color:var(--text-3)">↓ 下一步</div>
+        <h3 style="color:var(--accent);margin-top:6px">用 TIM 产生 PWM</h3>
+        <p style="font-size:12px;color:var(--text-2)">硬件外设自主运行，不占用 CPU</p>
+      </div>
+      <div class="callout good">
+        <strong>镜像闭环：</strong>本章讲「数字→模拟」的输出能力，后续 ADC 会讲「模拟→数字」的输入能力
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>软件模拟太占CPU → 下一步：硬件定时器</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 8: TIM 定时器 ============ -->
+<section class="slide" data-title="TIM定时器">
+  <div class="deck-header"><span>BA-6 · 硬件实现</span><span class="slide-number" data-current="8" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-6 · Timer/Counter</div>
+    <h2 class="title">0.666，用 TIM 产生</h2>
+    <p class="lede">单片机内部独立硬件外设，配置完成后自主运行，不占用 CPU 资源。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">外设（Peripheral）概念</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          单片机内部独立的硬件单元，配置完成后可<strong style="color:var(--accent)">自主完成特定功能</strong>，无需占用 CPU 主程序资源。GPIO、TIM、ADC 全部属于外设。
+        </p>
+        <div class="callout good mt-s" style="font-size:12px">
+          <strong>类比：</strong>外设像现实中的工具，机械计数器通过电路实现就是 TIM 定时器/计数器
+        </div>
+      </div>
+      <div class="card card-warn">
+        <h4 style="color:var(--warn)">TIM 三大核心参数</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div><strong style="color:var(--accent-3)">PSC（预分频值）：</strong>输入 PSC 个脉冲再输出 1 个脉冲，降低频率到 1/PSC</div>
+          <div><strong style="color:var(--accent-3)">ARR（自动重装值）：</strong>计数器达到此值后清零并溢出</div>
+          <div><strong style="color:var(--accent-3)">CCR（比较值）：</strong>决定 PWM 高电平的切换点</div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:340px">
+      <div class="card" style="border-top:3px solid var(--accent-3)">
+        <h4 style="color:var(--accent-3)">PWM 计算公式</h4>
+        <div class="formula-box mt-m" style="font-size:14px">
+          <span class="var">PWM频率</span> <span class="op">=</span> 主频 <span class="op">÷</span> [(<span class="var">PSC</span>+1) <span class="op">×</span> (<span class="var">ARR</span>+1)]
+        </div>
+        <div class="formula-box mt-s" style="font-size:14px">
+          <span class="var">PWM占空比</span> <span class="op">=</span> <span class="var">CCR</span> <span class="op">÷</span> (<span class="var">ARR</span>+1) <span class="op">×</span> 100%
+        </div>
+      </div>
+      <div class="card card-soft mt-m">
+        <h4 style="font-size:14px">信号流程</h4>
+        <div class="code-snip mt-s" style="font-size:11px">
+时钟频率 → <span class="fn">分频器(PSC)</span> → <span class="fn">计数器(TIM)</span> → IO输出<br><br>
+<span class="cmt">// PSC 变小 → 输出频率变大</span><br>
+<span class="cmt">// PSC 变大 → 输出频率变小</span>
+        </div>
+      </div>
+      <div class="callout mt-s" style="font-size:12px">
+        <strong>拓展能力：</strong>TIM 还能实现精准定时、外部事件计数 → 在中断章节中被充分使用
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>解决了输出模拟量 → 下一步：怎么读取模拟量？</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 9: ADC ============ -->
+<section class="slide" data-title="ADC模数转换">
+  <div class="deck-header"><span>BA-7 · 模拟输入</span><span class="slide-number" data-current="9" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-7 · Analog-to-Digital Converter</div>
+    <h2 class="title">ADC：读取 0.666，转换为 0 和 1</h2>
+    <p class="lede">与 PWM/BA-5-6 形成镜像闭环，将连续模拟电压转换为离散数字信号。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">ADC 核心定义</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          模数转换器，将连续的模拟电压信号转换为离散数字信号的单片机外设。
+        </p>
+        <div class="code-snip mt-s" style="font-size:12px">
+<span class="cmt">// 示例：5V 单片机，读取 3.1V 电压</span><br>
+<span class="kw">12bit</span> 精度: <span class="num">2539</span>/<span class="num">4095</span> → <span class="str">0111 1111 0111</span><br>
+<span class="kw">8bit</span>&nbsp; 精度: <span class="num">158</span>/<span class="num">255</span>&nbsp;&nbsp; → <span class="str">1001 1110</span>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="card card-soft">
+          <h4 style="font-size:14px;color:var(--accent-2)">量程</h4>
+          <p style="font-size:12px;color:var(--text-2)">默认以 VCC 为最大参考电压，部分单片机可通过 ADC_VREF 引脚指定</p>
+        </div>
+        <div class="card card-soft">
+          <h4 style="font-size:14px;color:var(--good)">精度/分辨率</h4>
+          <p style="font-size:12px;color:var(--text-2)">N bit = 2ⁿ 个电压台阶。常见 8bit、12bit，位数越高分辨越强</p>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:340px">
+      <div class="card card-bad mb-m">
+        <h4 style="color:var(--bad)">⚠️ 新手高频坑：通道切换</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>多路 ADC 多为<strong>异步采样</strong>（一次只获取一个通道）</div>
+          <div>切换通道后需等待一定时间（如 <strong style="color:var(--warn)">20μs</strong>）再采集</div>
+          <div>否则通道间相互干扰，采样结果不准确</div>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px">采样率/转换时间</h4>
+        <p style="font-size:12px;color:var(--text-2);margin-top:4px">
+          ADC 内部一般通过<strong>逐次逼近</strong>方式得到结果，需要一定时间完成一次转换。
+        </p>
+      </div>
+      <div class="callout good mt-s" style="font-size:12px">
+        <strong>铺垫：</strong>ADC 采样数据搬运 → 在 DMA 章节中做效率优化
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>数字→模拟→数字闭环完成 → 下一步：实时处理</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 10: IRQ 中断 ============ -->
+<section class="slide" data-title="IRQ中断">
+  <div class="deck-header"><span>BA-8 · 实时处理</span><span class="slide-number" data-current="10" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-8 · Interrupt Request</div>
+    <h2 class="title">IRQ：中断一下，请求先看这个！</h2>
+    <p class="lede">主程序正常运行时，有紧急事件需要立刻处理，不用一直循环等待查询。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">中断核心机制</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          通过预设触发条件<strong style="color:var(--accent)">暂停主程序</strong>，优先执行中断处理函数，执行完成后返回主程序断点处继续运行。
+        </p>
+        <div class="code-snip mt-s" style="font-size:12px">
+<span class="cmt">// 中断执行流程</span><br>
+<span class="kw">主程序</span> 运行中... → <span class="bad">触发中断!</span><br>
+&nbsp;&nbsp;↓<br>
+<span class="fn">中断处理函数</span> 执行 → 完成<br>
+&nbsp;&nbsp;↓<br>
+<span class="kw">主程序</span> 从断点继续运行
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px">常见触发条件</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill">高电平触发</span>
+          <span class="pill">低电平触发</span>
+          <span class="pill pill-accent">上升沿触发</span>
+          <span class="pill pill-accent">下降沿触发</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <h4 style="color:var(--accent-2);margin-bottom:10px">常见中断来源</h4>
+      <div class="stack">
+        <div class="card card-hover" style="padding:14px 16px">
+          <div style="font-size:24px;float:left;margin-right:10px">📍</div>
+          <h4 style="font-size:14px">外部引脚触发</h4>
+          <p style="font-size:12px;color:var(--text-2)">按键检测、传感器紧急触发</p>
+        </div>
+        <div class="card card-hover" style="padding:14px 16px">
+          <div style="font-size:24px;float:left;margin-right:10px">🔢</div>
+          <h4 style="font-size:14px">TIM 计数器/定时器触发</h4>
+          <p style="font-size:12px;color:var(--text-2)">精准定时、外部事件计数（如电机每转一圈）</p>
+        </div>
+        <div class="card card-hover" style="padding:14px 16px">
+          <div style="font-size:24px;float:left;margin-right:10px">📡</div>
+          <h4 style="font-size:14px">硬件外设触发</h4>
+          <p style="font-size:12px;color:var(--text-2)">UART/DMA/ADC/I2C/SPI 等硬件事件的实时处理</p>
+        </div>
+      </div>
+      <div class="callout mt-s" style="font-size:12px">
+        <strong>全场景适配：</strong>后续所有通信外设、DMA 的事件处理都会用到中断能力
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>解决实时性 → 下一步：多设备大数据传输</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 11: I2C/SPI ============ -->
+<section class="slide" data-title="I2C/SPI通信">
+  <div class="deck-header"><span>BA-9 · 高速通信</span><span class="slide-number" data-current="11" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-9 · I2C / SPI Bus</div>
+    <h2 class="title">I2C/SPI：少量线，多数据</h2>
+    <p class="lede">用少量信号线，按约定规则实现大量数据的双向传输（串行同步通信）。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">I2C 总线</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📌 仅需 <strong style="color:var(--good)">2 根通信线</strong>：SCL（时钟）+ SDA（数据）</div>
+          <div>📌 均为<strong style="color:var(--warn)">开漏输出</strong>（对应 BA-4-2 知识点）</div>
+          <div>📌 支持<strong style="color:var(--accent)">一主机多从机</strong></div>
+        </div>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">// I2C 接线</span><br>
+<span class="kw">主机</span> ──SCL─── <span class="kw">从机1</span>（OLED）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─SDA─── <span class="kw">从机2</span>（MPU6050）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─VCC/GND─ 共地供电
+        </div>
+        <p style="font-size:12px;color:var(--text-3);margin-top:8px">
+          典型应用：OLED 显示屏、LCD 屏幕、MPU6050 姿态传感器
+        </p>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-warn mb-m">
+        <h4 style="color:var(--warn)">SPI 总线</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📌 <strong style="color:var(--good)">4 根信号线</strong>（单向通信可简化为 3 根）</div>
+          <div>📌 通信速率<strong style="color:var(--accent)">远高于 I2C</strong></div>
+        </div>
+        <table class="compare-table mt-s" style="font-size:12px">
+          <tr><td><strong style="color:var(--accent-3)">SCK</strong></td><td>时钟信号（主机发生）</td></tr>
+          <tr><td><strong style="color:var(--accent-3)">MOSI</strong></td><td>主机发→从机收</td></tr>
+          <tr><td><strong style="color:var(--accent-3)">MISO</strong></td><td>主机收←从机发</td></tr>
+          <tr><td><strong style="color:var(--accent-3)">CS</strong></td><td>片选信号（主机发生）</td></tr>
+        </table>
+      </div>
+      <div class="callout" style="font-size:12px">
+        <strong>新手痛点：</strong>I2C/SPI 配置太复杂、线还是多 → 有没有更简单的方式？→ 由此开启 UART
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>芯片间通信解决 → 下一步：更简单的通信方式</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 12: UART ============ -->
+<section class="slide" data-title="UART通信">
+  <div class="deck-header"><span>BA-10 · 极简通信</span><span class="slide-number" data-current="12" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-10 · Universal Async Receiver/Transmitter</div>
+    <h2 class="title">UART：还是太好用了</h2>
+    <p class="lede">无需时钟线，TX/RX 交叉接线，约定好参数即可双向通信，新手最友好。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">UART 核心特点</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>✅ <strong style="color:var(--good)">异步通信</strong>，无需时钟线</div>
+          <div>✅ 仅需 <strong style="color:var(--accent-3)">TX（发送）+ RX（接收）</strong>交叉接线</div>
+          <div>✅ 双方约定好参数（波特率等）即可通信</div>
+          <div>✅ 使用门槛极低，新手最常用的调试工具</div>
+        </div>
+        <div class="code-snip mt-s" style="font-size:12px">
+<span class="cmt">// UART 接线</span><br>
+<span class="kw">设备A</span> TX ───→ <span class="kw">设备B</span> RX<br>
+<span class="kw">设备A</span> RX ←─── <span class="kw">设备B</span> TX<br>
+<span class="kw">设备A</span> GND ──── <span class="kw">设备B</span> GND <span class="cmt">// 别忘了共地!</span>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px">典型应用</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill pill-accent">单片机 ↔ 单片机</span>
+          <span class="pill pill-accent">单片机 ↔ 电脑</span>
+          <span class="pill pill-accent">单片机 ↔ 蓝牙模块</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:340px">
+      <div class="card card-warn mb-m">
+        <h4 style="color:var(--warn)">电脑 USB 不能直接对接 UART</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">
+          需要 <strong style="color:var(--accent)">TTL 转 USB 模块</strong>实现协议与电平转换：
+        </p>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="kw">TTL</span>: 0V→逻辑0, 3.3V/5V→逻辑1<br>
+<span class="kw">USB</span>: D+/D- 电压差(±3.3V)→0和1<br><br>
+<span class="cmt">// 转换流程</span><br>
+USB ──→ <span class="fn">TTL转USB模块</span> ──→ UART<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;协议转换 + 电平转换
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px">程序下载调试</h4>
+        <p style="font-size:12px;color:var(--text-2);margin-top:4px">
+          常用 SWD（2线）、JTAG（4~5线）协议，通过调试模块实现电脑与单片机的程序传输与在线调试
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>基础功能全部实现 → 下一步：系统优化</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 13: WDG 与 DMA ============ -->
+<section class="slide" data-title="WDG与DMA">
+  <div class="deck-header"><span>BA-11 · 优化升级</span><span class="slide-number" data-current="13" data-total="14"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">BA-11 · Watchdog & DMA</div>
+    <h2 class="title">WDG 与 DMA：锦上添花</h2>
+    <p class="lede">已实现所有基础功能，最后两件事：让系统更可靠、更高效。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">🐕 WDG 看门狗 — 提升可靠性</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔧 本质是<strong>独立的递减计数器</strong></div>
+          <div>⏰ 程序需定期「喂狗」重置计数器</div>
+          <div>💀 若程序卡死/跑飞未喂狗 → 计数器归零 → <strong style="color:var(--bad)">自动复位重启</strong></div>
+          <div>🛡️ 使用<strong>独立电路与独立内置时钟</strong>，即使主时钟/核心电路故障仍可工作</div>
+        </div>
+        <div class="code-snip mt-s" style="font-size:12px">
+<span class="cmt">// 看门狗工作流程</span><br>
+<span class="kw">主程序</span> 正常运行 → 定期 <span class="fn">喂狗()</span> → 计数器重置<br>
+<span class="kw">主程序</span> 卡死/跑飞 → 未喂狗 → 计数器减到0<br>
+&nbsp;&nbsp;↓<br>
+<span class="bad">💥 触发单片机复位 → 系统恢复</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">⚡ DMA 直接存储器访问 — 提升效率</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔧 <strong>无需 CPU 参与</strong>，自主完成数据搬运</div>
+          <div>📌 外设 ↔ RAM、RAM ↔ RAM 之间</div>
+          <div>✅ 全程不占用 CPU 资源，也无需中断处理</div>
+        </div>
+        <div class="card card-soft mt-s" style="padding:12px 14px">
+          <h4 style="font-size:13px;color:var(--accent-3)">典型应用</h4>
+          <div class="stack mt-s" style="font-size:12px;color:var(--text-2)">
+            <div>📥 UART 接收数据 → 实时搬运到 char 数组</div>
+            <div>📊 ADC 采样结果 → 实时更新到 int 变量</div>
+            <div>💡 主程序直接读取变量 = 对应外设实时数据</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout bad" style="font-size:12px">
+        <strong>⚠️ 合规提醒：</strong>游戏外挂 DMA 原理一致（绕过 CPU 直接读写内存），但属于违规操作。适当游戏，热爱生活。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>全教程闭环完成 → 进阶拓展</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 14: 芯片架构 ============ -->
+<section class="slide" data-title="芯片架构">
+  <div class="deck-header"><span>进阶 · 芯片架构</span><span class="slide-number" data-current="14" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Advanced · CPU Architecture</div>
+    <h2 class="title">冯·诺依曼 vs 哈佛架构</h2>
+    <p class="lede">单片机的"大脑"怎么组织？两种经典架构决定了数据怎么流动。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">🏛️ 冯·诺依曼架构（Von Neumann）</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">程序和数据共用一条总线和同一块存储器。</p>
+        <div style="margin-top:14px">
+          <div class="arch-box">CPU 核心</div>
+          <div class="arch-arrow">↕</div>
+          <div class="arch-bus" data-label="共享总线"></div>
+          <div class="arch-box mem">统一存储器（程序+数据）</div>
+        </div>
+        <div class="stack mt-m" style="font-size:12px">
+          <div>✅ 结构简单，成本低</div>
+          <div>❌ <strong style="color:var(--bad)">冯·诺依曼瓶颈</strong>：取指和取数据不能同时进行</div>
+          <div>📌 代表：早期 x86 PC、部分 51 单片机</div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">🏛️ 哈佛架构（Harvard）</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">程序和数据分开存储，各自有独立总线。</p>
+        <div style="margin-top:14px">
+          <div class="arch-box">CPU 核心</div>
+          <div class="row" style="gap:12px;margin-top:6px">
+            <div class="fill"><div class="arch-arrow">↕</div><div class="arch-bus" data-label="指令总线"></div><div class="arch-box mem" style="font-size:11px">Flash<br>程序存储</div></div>
+            <div class="fill"><div class="arch-arrow">↕</div><div class="arch-bus" data-label="数据总线" style="background:var(--accent-2)"></div><div class="arch-box mem" style="font-size:11px;border-color:var(--accent-2);color:var(--accent-2)">RAM<br>数据存储</div></div>
+          </div>
+        </div>
+        <div class="stack mt-m" style="font-size:12px">
+          <div>✅ 取指和取数据<strong style="color:var(--good)">同时进行</strong>，速度更快</div>
+          <div>✅ 现代 MCU 主流选择</div>
+          <div>📌 代表：<strong>STM32</strong>、<strong>ESP32</strong>、<strong>AVR</strong>、大多数 DSP</div>
+        </div>
+      </div>
+      <div class="callout mt-m" style="font-size:12px">
+        <strong>改进型哈佛架构：</strong>现代 ARM Cortex-M 采用，总线分开但统一编址，兼顾速度与灵活性。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>架构决定性能上限 → 下一步看存储器</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 15: 存储器体系 ============ -->
+<section class="slide" data-title="存储器体系">
+  <div class="deck-header"><span>进阶 · 存储器体系</span><span class="slide-number" data-current="15" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Advanced · Memory System</div>
+    <h2 class="title">单片机的"记忆"体系</h2>
+    <p class="lede">Flash 存程序、RAM 跑变量、EEPROM 存配置、寄存器控制一切 — 各司其职。</p>
+  </div>
+  <div class="g3 mt-m anim-stagger">
+    <div class="mcu-card">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)">💾</div>
+        <div><div class="mcu-name">Flash</div><div class="mcu-sub">程序存储器</div></div>
+      </div>
+      <div class="mcu-body">
+        🔹 断电不丢失（非易失性）<br>
+        🔹 存放编译后的程序代码<br>
+        🔹 容量：16KB ~ 2MB<br>
+        🔹 写入寿命：~10 万次<br>
+        🔹 读取速度快，写入慢
+      </div>
+      <div class="mcu-tags"><span class="badge badge-32bit">非易失</span><span class="pill pill-accent">只读为主</span></div>
+    </div>
+    <div class="mcu-card">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)">⚡</div>
+        <div><div class="mcu-name">SRAM</div><div class="mcu-sub">数据存储器</div></div>
+      </div>
+      <div class="mcu-body">
+        🔹 断电即丢失（易失性）<br>
+        🔹 存放运行时变量、堆栈<br>
+        🔹 容量：2KB ~ 512KB<br>
+        🔹 读写速度极快（ns 级）<br>
+        🔹 无写入次数限制
+      </div>
+      <div class="mcu-tags"><span class="badge badge-32bit">易失</span><span class="pill pill-good">高速读写</span></div>
+    </div>
+    <div class="mcu-card">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)">📝</div>
+        <div><div class="mcu-name">EEPROM</div><div class="mcu-sub">配置存储器</div></div>
+      </div>
+      <div class="mcu-body">
+        🔹 断电不丢失，可字节级读写<br>
+        🔹 存放校准参数、配置信息<br>
+        🔹 容量：通常 0 ~ 16KB<br>
+        🔹 写入寿命：~100 万次<br>
+        🔹 部分芯片用 Flash 模拟
+      </div>
+      <div class="mcu-tags"><span class="badge badge-32bit">非易失</span><span class="pill pill-warn">可擦写</span></div>
+    </div>
+  </div>
+  <div class="card card-soft mt-m anim-fade-up" style="animation-delay:.4s;padding:14px 18px">
+    <h4 style="color:var(--accent-3)">⚙️ 寄存器（Register）— 最底层的控制旋钮</h4>
+    <div class="row wrap mt-s" style="gap:14px;font-size:12px;color:var(--text-2)">
+      <div>📋 <strong>特殊功能寄存器（SFR）</strong>：控制外设行为，每个 bit 对应一个开关</div>
+      <div>📊 <strong>状态寄存器</strong>：读取外设当前状态（如标志位）</div>
+      <div>🔧 <strong>数据寄存器</strong>：读写实际数据（如 GPIO 端口值）</div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>存储器各司其职 → 下一步看时钟系统</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 16: 时钟系统 ============ -->
+<section class="slide" data-title="时钟系统">
+  <div class="deck-header"><span>进阶 · 时钟系统</span><span class="slide-number" data-current="16" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Advanced · Clock System</div>
+    <h2 class="title">单片机的"心跳"：时钟系统</h2>
+    <p class="lede">所有数字电路按节拍工作。时钟就是节拍器，频率越高跑得越快，也越费电。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">🕐 时钟来源</h4>
+        <table class="spec-table mt-s">
+          <tr><th>来源</th><th>类型</th><th>典型频率</th><th>精度</th></tr>
+          <tr><td>HSI</td><td>内部 RC 振荡器</td><td>8/16/48 MHz</td><td>±1%~5%</td></tr>
+          <tr><td>HSE</td><td>外部晶振</td><td>4~26 MHz</td><td>±20ppm</td></tr>
+          <tr><td>LSE</td><td>外部 32.768kHz</td><td>32.768 kHz</td><td>±20ppm</td></tr>
+          <tr><td>LSI</td><td>内部低频 RC</td><td>32~40 kHz</td><td>±10%</td></tr>
+        </table>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">⚡ PLL 倍频器</h4>
+        <p style="font-size:12px;color:var(--text-2);margin-top:6px">
+          输入 8MHz → PLL 倍频 ×9 → 输出 72MHz。用低频晶振得到高频时钟，兼顾精度与速度。
+        </p>
+        <div class="formula-box mt-s" style="font-size:13px;padding:10px">
+          <span class="var">f_out</span> <span class="op">=</span> <span class="var">f_in</span> <span class="op">×</span> <span class="var">N</span> <span class="op">/</span> (<span class="var">M</span> <span class="op">×</span> <span class="var">P</span>)
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:360px">
+      <div class="card card-good">
+        <h4 style="color:var(--good)">🌳 时钟树（Clock Tree）</h4>
+        <p style="font-size:13px;color:var(--text-2);margin-top:6px">时钟从源头出发，经过分频/倍频，分配给各外设。</p>
+        <div class="code-snip mt-s" style="font-size:11px">
+<span class="cmt">/* STM32 时钟树简化 */</span><br><br>
+<span class="tag">HSE 8MHz</span> ──┐<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├→ <span class="fn">PLL</span>(×9) → <span class="kw">SYSCLK 72MHz</span><br>
+<span class="tag">HSI 8MHz</span> ──┘&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├→ <span class="kw">AHB</span> /1 → HCLK 72MHz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├→ <span class="kw">APB1</span> /2 → 36MHz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└→ <span class="kw">APB2</span> /1 → 72MHz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└→ <span class="kw">ADC</span> /6 → 12MHz<br><br>
+<span class="cmt">// 每个外设独立使能时钟</span><br>
+<span class="fn">RCC_APB2</span>.<span class="kw">GPIOAEN</span> = <span class="num">1</span>; <span class="cmt">// 开 GPIOA 时钟</span>
+        </div>
+      </div>
+      <div class="callout mt-m" style="font-size:12px">
+        <strong>省电技巧：</strong>不用的外设关掉时钟，可大幅降低功耗。这是低功耗设计的核心手段之一。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>时钟驱动一切 → 下一步看电源管理</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 17: 电源管理 ============ -->
+<section class="slide" data-title="电源管理">
+  <div class="deck-header"><span>进阶 · 电源管理</span><span class="slide-number" data-current="17" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Advanced · Power Management</div>
+    <h2 class="title">电源管理：让单片机更省电</h2>
+    <p class="lede">电池供电的 IoT 设备，续航靠的不是电池容量，而是低功耗设计。</p>
+  </div>
+  <div class="g3 mt-m anim-stagger">
+    <div class="mcu-card" style="border-top:3px solid var(--good)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)">🏃</div>
+        <div><div class="mcu-name">Run 模式</div><div class="mcu-sub">正常运行</div></div>
+      </div>
+      <div class="mcu-body">
+        全速运行，所有外设可用<br>
+        功耗：~20-60 mA<br>
+        响应：即时<br>
+        <span class="pill pill-bad mt-s" style="margin-top:8px">最耗电</span>
+      </div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--warn)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)">😴</div>
+        <div><div class="mcu-name">Sleep 模式</div><div class="mcu-sub">浅度睡眠</div></div>
+      </div>
+      <div class="mcu-body">
+        CPU 停止，外设仍运行<br>
+        功耗：~2-8 mA<br>
+        唤醒：任意中断/事件<br>
+        <span class="pill pill-warn mt-s" style="margin-top:8px">中等省电</span>
+      </div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--accent)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)">💤</div>
+        <div><div class="mcu-name">Stop / Standby</div><div class="mcu-sub">深度睡眠</div></div>
+      </div>
+      <div class="mcu-body">
+        几乎全关，仅保留唤醒电路<br>
+        功耗：~1-20 μA<br>
+        唤醒：外部中断 / RTC / 看门狗<br>
+        <span class="pill pill-good mt-s" style="margin-top:8px">极致省电</span>
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="card card-soft">
+        <h4 style="color:var(--accent-2)">📊 功耗对比（典型 32 位 MCU）</h4>
+        <table class="compare-table mt-s">
+          <tr><th>模式</th><th>电流</th><th>唤醒时间</th><th>RAM 保持</th></tr>
+          <tr><td>Run @72MHz</td><td>~36 mA</td><td>—</td><td class="check">✓</td></tr>
+          <tr><td>Sleep</td><td>~6 mA</td><td>~1 μs</td><td class="check">✓</td></tr>
+          <tr><td>Stop</td><td>~20 μA</td><td>~5 μs</td><td class="check">✓</td></tr>
+          <tr><td>Standby</td><td>~2 μA</td><td>~50 ms</td><td class="cross">✗</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:300px">
+      <div class="callout good" style="font-size:13px">
+        <strong>🔋 省电三原则：</strong><br>
+        1. 不用的外设关时钟<br>
+        2. 空闲时进 Sleep，深度空闲进 Stop<br>
+        3. 用 RTC 定时唤醒代替轮询
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>电源管理是 IoT 关键 → 下一步看 MCU 家族全景</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 18: MCU 家族全景 ============ -->
+<section class="slide" data-title="MCU家族全景">
+  <div class="deck-header"><span>进阶 · MCU 家族全景</span><span class="slide-number" data-current="18" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Advanced · MCU Family Map</div>
+    <h2 class="title">单片机家族全景图</h2>
+    <p class="lede">从 4 位到 64 位，从几毛钱到几十块 — 一张图看懂整个单片机生态。</p>
+  </div>
+  <div class="mt-m anim-fade-up" style="animation-delay:.2s">
+    <div class="section-divider"><span>按位数分类</span></div>
+    <div class="g4">
+      <div class="mcu-card" style="border-left:3px solid var(--good)">
+        <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good);font-size:18px">8b</div>
+        <div><div class="mcu-name" style="font-size:15px">8 位 MCU</div><div class="mcu-sub">入门 / 简单控制</div></div></div>
+        <div class="mcu-body" style="font-size:12px">
+          <span class="badge badge-8bit">8-bit</span><br>
+          51 系列 · AVR · PIC<br>
+          价格 ¥1~10 · 主频 ~20MHz<br>
+          引脚少、外设简单
+        </div>
+      </div>
+      <div class="mcu-card" style="border-left:3px solid var(--warn)">
+        <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn);font-size:18px">16b</div>
+        <div><div class="mcu-name" style="font-size:15px">16 位 MCU</div><div class="mcu-sub">过渡 / 特定领域</div></div></div>
+        <div class="mcu-body" style="font-size:12px">
+          <span class="badge badge-16bit">16-bit</span><br>
+          MSP430 · dsPIC<br>
+          价格 ¥5~20 · 超低功耗<br>
+          电表、传感器节点
+        </div>
+      </div>
+      <div class="mcu-card" style="border-left:3px solid var(--accent)">
+        <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-size:18px">32b</div>
+        <div><div class="mcu-name" style="font-size:15px">32 位 MCU</div><div class="mcu-sub">主流 / 高性能</div></div></div>
+        <div class="mcu-body" style="font-size:12px">
+          <span class="badge badge-32bit">32-bit</span><br>
+          STM32 · ESP32 · GD32<br>
+          价格 ¥3~30 · 主频 ~240MHz<br>
+          生态丰富、AI/IoT 首选
+        </div>
+      </div>
+      <div class="mcu-card" style="border-left:3px solid var(--accent-2)">
+        <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--accent-2) 14%,transparent);color:var(--accent-2);font-size:18px">64b</div>
+        <div><div class="mcu-name" style="font-size:15px">64 位 SoC</div><div class="mcu-sub">高端 / 边缘计算</div></div></div>
+        <div class="mcu-body" style="font-size:12px">
+          <span class="badge badge-64bit">64-bit</span><br>
+          树莓派 · 全志 · 瑞芯微<br>
+          价格 ¥30~200 · 主频 1GHz+<br>
+          跑 Linux、AI 推理
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-l anim-fade-up" style="animation-delay:.4s">
+    <div class="section-divider"><span>按架构分类</span></div>
+    <div class="feature-grid">
+      <div class="feature"><div class="f-icon">🟦</div><h4>8051 (C51)</h4><p>1980 年 Intel 推出，经典教学入门。12T/1T 之分，国产兼容芯片众多</p></div>
+      <div class="feature"><div class="f-icon" style="background:color-mix(in srgb,var(--accent-2) 12%,transparent);color:var(--accent-2)">🟩</div><h4>AVR</h4><p>Atmel 开发，哈佛架构，单周期执行。Arduino 的核心，开源生态好</p></div>
+      <div class="feature"><div class="f-icon" style="background:color-mix(in srgb,var(--good) 12%,transparent);color:var(--good)">🟪</div><h4>ARM Cortex-M</h4><p>英国 ARM 公司设计 IP 核，32 位主流之王。M0/M3/M4/M7/M33 系列</p></div>
+      <div class="feature"><div class="f-icon" style="background:color-mix(in srgb,var(--warn) 12%,transparent);color:var(--warn)">🟧</div><h4>RISC-V</h4><p>开源指令集，无授权费。平头哥/乐鑫/沁恒积极布局，未来之星</p></div>
+      <div class="feature"><div class="f-icon" style="background:color-mix(in srgb,var(--bad) 12%,transparent);color:var(--bad)">🟥</div><h4> Xtensa (LX6/LX7)</h4><p>乐鑫 ESP32 系列专用架构，WiFi+BT 集成，IoT 领域王者</p></div>
+      <div class="feature"><div class="f-icon" style="background:color-mix(in srgb,var(--accent-3) 12%,transparent);color:var(--accent-3)">⬜</div><h4>PIC / MSP430</h4><p>Microchip PIC 经典工业级；TI MSP430 超低功耗之王</p></div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>全景图看清生态 → 逐一深入主流家族</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 19: 51单片机 ============ -->
+<section class="slide" data-title="51单片机">
+  <div class="deck-header"><span>进阶 · 51 单片机</span><span class="slide-number" data-current="19" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">8051 · The Classic</div>
+    <h2 class="title">🟦 51 单片机：经典入门之王</h2>
+    <p class="lede">1980 年诞生，至今仍在教学和低成本产品中广泛使用 — 单片机界的"老前辈"。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📌 核心特点</h4>
+        <table class="spec-table mt-s">
+          <tr><td>架构</td><td>8 位 CISC，冯·诺依曼（改进型）</td></tr>
+          <tr><td>主频</td><td>12MHz 典型（12T/1T 之分）</td></tr>
+          <tr><td>RAM</td><td>128 / 256 字节</td></tr>
+          <tr><td>ROM</td><td>4KB ~ 64KB Flash</td></tr>
+          <tr><td>定时器</td><td>2~3 个 16 位</td></tr>
+          <tr><td>串口</td><td>1 个 UART</td></tr>
+          <tr><td>I/O</td><td>32 个（4 组 × 8 位）</td></tr>
+        </table>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">🔧 典型型号</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill pill-accent">STC89C52RC</span>
+          <span class="pill pill-accent">AT89S52</span>
+          <span class="pill pill-good">STC12C5608</span>
+          <span class="pill pill-good">STC8H系列 (1T)</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:340px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">✅ 优势</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📚 教学资源极其丰富，入门首选</div>
+          <div>💰 价格极低（STC 系列 ¥1~3）</div>
+          <div>📖 汇编 + C51 双语言，打好底层基础</div>
+          <div>🏭 国产 STC 兼容替代成熟稳定</div>
+        </div>
+      </div>
+      <div class="card card-bad">
+        <h4 style="color:var(--bad)">⚠️ 局限</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🐌 12T 架构效率低（12 个时钟周期 = 1 机器周期）</div>
+          <div>💾 RAM 太小（128B），稍复杂程序就不够用</div>
+          <div>🔌 无硬件 I2C/SPI/ADC（需软件模拟）</div>
+          <div>📱 无 WiFi/蓝牙，不适合现代 IoT</div>
+        </div>
+      </div>
+      <div class="callout mt-m" style="font-size:12px">
+        <strong>学习建议：</strong>用 STC89C52 入门理解底层原理，然后转 STM32 做实际项目。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>经典入门 → 下一步：现代主流 STM32</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 20: STM32 系列 ============ -->
+<section class="slide" data-title="STM32系列">
+  <div class="deck-header"><span>进阶 · STM32 系列</span><span class="slide-number" data-current="20" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">ARM Cortex-M · The Mainstream</div>
+    <h2 class="title">🟪 STM32：32 位主流之王</h2>
+    <p class="lede">意法半导体（ST）出品，基于 ARM Cortex-M 内核，生态最完善的 32 位 MCU。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📊 STM32 系列矩阵</h4>
+        <table class="spec-table mt-s">
+          <tr><th>系列</th><th>内核</th><th>主频</th><th>定位</th><th>典型型号</th></tr>
+          <tr><td>F0</td><td>M0</td><td>48MHz</td><td>入门替代 51</td><td>STM32F030</td></tr>
+          <tr><td>F1</td><td>M3</td><td>72MHz</td><td>主流性价比</td><td>STM32F103C8T6</td></tr>
+          <tr><td>F4</td><td>M4F</td><td>168MHz</td><td>高性能+DSP</td><td>STM32F407</td></tr>
+          <tr><td>F7</td><td>M7</td><td>216MHz</td><td>超高性能</td><td>STM32F767</td></tr>
+          <tr><td>G4</td><td>M4F</td><td>170MHz</td><td>混合信号</td><td>STM32G431</td></tr>
+          <tr><td>H7</td><td>M7+M4</td><td>480MHz</td><td>旗舰双核</td><td>STM32H743</td></tr>
+          <tr><td>L4</td><td>M4F</td><td>80MHz</td><td>超低功耗</td><td>STM32L432</td></tr>
+          <tr><td>U5</td><td>M33</td><td>160MHz</td><td>超低功耗+安全</td><td>STM32U585</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:300px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">✅ 核心优势</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📚 HAL/LL 库 + CubeMX 图形化配置</div>
+          <div>🔧 外设极其丰富（USB/CAN/ETH/SDIO...）</div>
+          <div>📋 参考手册和社区资料最全</div>
+          <div>💰 F103C8T6 "蓝丸"板仅 ¥10</div>
+          <div>🛡️ 部分型号带硬件加密/安全启动</div>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-2)">🛠️ 开发生态</h4>
+        <div class="stack mt-s" style="font-size:12px;color:var(--text-2)">
+          <div>📦 STM32CubeIDE（官方免费）</div>
+          <div>📦 Keil MDK（商业，教学常用）</div>
+          <div>📦 PlatformIO / VS Code</div>
+          <div>📦 ST-Link V2 烧录调试器</div>
+          <div>📦 HAL 库 + FreeRTOS 集成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>32 位主流之王 → 下一步：IoT 之王 ESP32</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 21: ESP32 系列 ============ -->
+<section class="slide" data-title="ESP32系列">
+  <div class="deck-header"><span>进阶 · ESP32 系列</span><span class="slide-number" data-current="21" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Xtensa / RISC-V · IoT King</div>
+    <h2 class="title">🟥 ESP32：IoT 之王</h2>
+    <p class="lede">乐鑫科技出品，WiFi+蓝牙双模集成，AI 语音+物联网场景首选。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📊 ESP32 家族</h4>
+        <table class="spec-table mt-s">
+          <tr><th>型号</th><th>内核</th><th>主频</th><th>WiFi</th><th>BT</th><th>亮点</th></tr>
+          <tr><td>ESP32</td><td>双核 Xtensa LX6</td><td>240MHz</td><td>b/g/n</td><td>4.2</td><td>经典款，功能全</td></tr>
+          <tr><td>ESP32-S2</td><td>单核 LX7</td><td>240MHz</td><td>b/g/n</td><td>✗</td><td>USB OTG + 安全</td></tr>
+          <tr><td>ESP32-S3</td><td>双核 LX7</td><td>240MHz</td><td>b/g/n</td><td>5.0</td><td>AI 向量指令</td></tr>
+          <tr><td>ESP32-C3</td><td>单核 RISC-V</td><td>160MHz</td><td>b/g/n</td><td>5.0</td><td>RISC-V 低成本</td></tr>
+          <tr><td>ESP32-C6</td><td>双核 RISC-V</td><td>160MHz</td><td>6(b/g/n/ax)</td><td>5.0</td><td>WiFi 6 支持</td></tr>
+          <tr><td>ESP32-H2</td><td>单核 RISC-V</td><td>96MHz</td><td>✗</td><td>5.0</td><td>Thread/Zigbee</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:300px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">✅ 核心优势</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>📡 WiFi + BT 双模，无需外挂模组</div>
+          <div>🧠 S3 支持向量指令，可跑轻量 AI</div>
+          <div>💰 价格极低（ESP32-C3 ~¥8）</div>
+          <div>📦 ESP-IDF + Arduino 双框架</div>
+          <div>🌐 小智机器人就是基于 ESP32-S3</div>
+        </div>
+      </div>
+      <div class="card card-warn">
+        <h4 style="color:var(--warn)">⚠️ 注意事项</h4>
+        <div class="stack mt-s" style="font-size:12px">
+          <div>🔥 WiFi 发热较大，注意散热</div>
+          <div>⚡ 工作电流大，不适合纽扣电池</div>
+          <div>📋 ESP-IDF 学习曲线略陡</div>
+          <div>🔧 硬件 FPU 部分型号缺失</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>IoT 之王 → 下一步：开源之王 Arduino</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 22: Arduino 生态 ============ -->
+<section class="slide" data-title="Arduino生态">
+  <div class="deck-header"><span>进阶 · Arduino 生态</span><span class="slide-number" data-current="22" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Open Source · Rapid Prototyping</div>
+    <h2 class="title">🟩 Arduino：开源快速原型之王</h2>
+    <p class="lede">不是一颗芯片，而是一整套开源生态 — 硬件图纸开放、软件库丰富、入门零门槛。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📋 主流 Arduino 开发板</h4>
+        <table class="spec-table mt-s">
+          <tr><th>开发板</th><th>芯片</th><th>架构</th><th>Flash</th><th>特点</th></tr>
+          <tr><td>Uno R3</td><td>ATmega328P</td><td>8位 AVR</td><td>32KB</td><td>最经典教学板</td></tr>
+          <tr><td>Nano</td><td>ATmega328P</td><td>8位 AVR</td><td>32KB</td><td>小巧面包板友好</td></tr>
+          <tr><td>Mega 2560</td><td>ATmega2560</td><td>8位 AVR</td><td>256KB</td><td>54 路 GPIO</td></tr>
+          <tr><td>Due</td><td>ATSAM3X8E</td><td>32位 ARM</td><td>512KB</td><td>84MHz Cortex-M3</td></tr>
+          <tr><td>Nano 33 IoT</td><td>ATSAMD21</td><td>32位 ARM</td><td>256KB</td><td>WiFi + IMU</td></tr>
+          <tr><td>ESP32 板</td><td>ESP32</td><td>32位 Xtensa</td><td>4MB</td><td>第三方兼容板</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:300px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">✅ 为什么用 Arduino？</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🚀 setup() + loop() 极简模型</div>
+          <div>📚 数千个开源库（传感器/显示/通信）</div>
+          <div>🔌 一键编译上传，零配置</div>
+          <div>💻 跨平台 IDE（Win/Mac/Linux）</div>
+          <div>🤖 兼容 ESP32/STM32 等第三方板</div>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-2)">📦 典型库生态</h4>
+        <div class="row wrap mt-s" style="gap:6px">
+          <span class="pill pill-accent">Wire (I2C)</span>
+          <span class="pill pill-accent">SPI</span>
+          <span class="pill pill-good">Servo</span>
+          <span class="pill pill-good">FastLED</span>
+          <span class="pill pill-warn">WiFi</span>
+          <span class="pill pill-warn">HTTP</span>
+          <span class="pill pill-bad">MQTT</span>
+          <span class="pill pill-bad">ArduinoJson</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout mt-m anim-fade-up" style="animation-delay:.4s;font-size:13px">
+    <strong>Arduino 的价值：</strong>它降低了嵌入式开发门槛 — 艺术、设计、教育领域的创作者无需懂寄存器，也能做出交互硬件作品。它和 STM32/ESP32 是互补关系：原型用 Arduino，量产优化转原生 SDK。
+  </div>
+  <div class="deck-footer"><span>开源快速原型 → 下一步：经典 8 位双雄</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 23: AVR & PIC ============ -->
+<section class="slide" data-title="AVR与PIC">
+  <div class="deck-header"><span>进阶 · AVR & PIC</span><span class="slide-number" data-current="23" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">8-bit Classics · AVR & PIC</div>
+    <h2 class="title">🟧 AVR & PIC：经典 8 位双雄</h2>
+    <p class="lede">两个老牌 8 位架构，一个开源友好（AVR），一个工业稳定（PIC），各有所长。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent">
+        <div class="mcu-head">
+          <div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)">🅰️</div>
+          <div><div class="mcu-name">AVR (Atmel → Microchip)</div><div class="mcu-sub">哈佛架构 · 单周期执行</div></div>
+        </div>
+        <table class="spec-table mt-s">
+          <tr><td>代表型号</td><td>ATmega328P / ATtiny85 / ATmega2560</td></tr>
+          <tr><td>主频</td><td>16~20 MHz（1T 单周期）</td></tr>
+          <tr><td>Flash</td><td>2KB ~ 256KB</td></tr>
+          <tr><td>RAM</td><td>128B ~ 8KB</td></tr>
+          <tr><td>亮点</td><td>哈佛架构、单周期 IO、Flash 可编程</td></tr>
+          <tr><td>开发</td><td>AVR-GCC / Arduino IDE / Atmel Studio</td></tr>
+        </table>
+        <div class="callout good mt-s" style="font-size:12px">
+          <strong>地位：</strong>Arduino UNO 的核心就是 ATmega328P。学 Arduino 其实就是在用 AVR。
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s">
+      <div class="card card-warn">
+        <div class="mcu-head">
+          <div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)">🔵</div>
+          <div><div class="mcu-name">PIC (Microchip)</div><div class="mcu-sub">哈佛架构 · 工业级稳定</div></div>
+        </div>
+        <table class="spec-table mt-s">
+          <tr><td>代表型号</td><td>PIC16F877A / PIC18F4520 / PIC32MX</td></tr>
+          <tr><td>主频</td><td>4~64 MHz（PIC32 可达 200MHz+）</td></tr>
+          <tr><td>Flash</td><td>1KB ~ 512KB</td></tr>
+          <tr><td>RAM</td><td>36B ~ 128KB</td></tr>
+          <tr><td>亮点</td><td>工业级抗干扰、OTP 量产成本低</td></tr>
+          <tr><td>开发</td><td>MPLAB X IDE + XC 编译器</td></tr>
+        </table>
+        <div class="callout mt-s" style="font-size:12px">
+          <strong>地位：</strong>工业控制、家电主板、汽车电子领域的老牌选择。PIC32 系列基于 MIPS 架构，32 位高性能。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-soft mt-m anim-fade-up" style="animation-delay:.4s;padding:14px 18px">
+    <h4 style="color:var(--accent-3);font-size:14px">⚖️ AVR vs PIC vs 51 对比</h4>
+    <table class="compare-table mt-s" style="font-size:12px">
+      <tr><th>特性</th><th>AVR</th><th>PIC</th><th>8051</th></tr>
+      <tr><td>执行效率</td><td class="check">1T 单周期</td><td>4T</td><td class="cross">12T</td></tr>
+      <tr><td>开源生态</td><td class="check">极好 (Arduino)</td><td class="cross">一般</td><td>好 (教学)</td></tr>
+      <tr><td>工业可靠性</td><td>良好</td><td class="check">优秀</td><td>一般</td></tr>
+      <tr><td>入门难度</td><td class="check">低</td><td>中</td><td>中</td></tr>
+      <tr><td>量产成本</td><td>中</td><td class="check">低 (OTP)</td><td class="check">低</td></tr>
+    </table>
+  </div>
+  <div class="deck-footer"><span>经典 8 位双雄 → 下一步：国产 MCU 崛起</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 24: 国产MCU ============ -->
+<section class="slide" data-title="国产MCU">
+  <div class="deck-header"><span>进阶 · 国产 MCU</span><span class="slide-number" data-current="24" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Domestic MCU · Rising Stars</div>
+    <h2 class="title">🇨🇳 国产 MCU：正在崛起</h2>
+    <p class="lede">从"平替"到"超越" — 国产 MCU 在性能、生态、价格上全面发力。</p>
+  </div>
+  <div class="g3 mt-m anim-stagger">
+    <div class="mcu-card" style="border-top:3px solid var(--accent)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)">GD</div>
+        <div><div class="mcu-name">兆易创新 GD32</div><div class="mcu-sub">ARM Cortex-M · Pin-to-Pin 兼容 STM32</div></div>
+      </div>
+      <div class="mcu-body" style="font-size:12px">
+        🔹 GD32F103 完全兼容 STM32F103<br>
+        🔹 主频更高（108MHz vs 72MHz）<br>
+        🔹 价格约为 ST 的 50~70%<br>
+        🔹 F1/F4/F0/L4/H7 全系列覆盖<br>
+        🔹 Flash 用自研 NOR 工艺
+      </div>
+      <div class="mcu-tags"><span class="pill pill-accent">STM32 兼容</span><span class="pill pill-good">高性价比</span></div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--good)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)">CH</div>
+        <div><div class="mcu-name">沁恒 CH32</div><div class="mcu-sub">RISC-V · 青稞处理器</div></div>
+      </div>
+      <div class="mcu-body" style="font-size:12px">
+        🔹 基于 RISC-V 自研"青稞"内核<br>
+        🔹 CH32V103 兼容 STM32F103 引脚<br>
+        🔹 CH32V203 性价比极高（~¥3）<br>
+        🔹 自带 USB/以太网 PHY<br>
+        🔹 WCH Link 一键烧录调试<br>
+        🔹 USB 芯片领域市场占有率高
+      </div>
+      <div class="mcu-tags"><span class="pill pill-good">RISC-V</span><span class="pill pill-accent">USB 专长</span></div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--warn)">
+      <div class="mcu-head">
+        <div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)">HP</div>
+        <div><div class="mcu-name">先楫 HPM</div><div class="mcu-sub">RISC-V · 超高性能</div></div>
+      </div>
+      <div class="mcu-body" style="font-size:12px">
+        🔹 RISC-V 双核高达 816MHz<br>
+        🔹 算力超 STM32H7 两倍以上<br>
+        🔹 内置 DSP + FPU + AI 指令<br>
+        🔹 千兆以太网 + USB 2.0 HS<br>
+        🔹 适合电机驱动、数字电源<br>
+        🔹 高端工业控制新选择
+      </div>
+      <div class="mcu-tags"><span class="pill pill-warn">超高性能</span><span class="pill pill-bad">工业级</span></div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">🏭 更多国产 MCU 厂商</h4>
+        <div class="g2 mt-s" style="font-size:12px;gap:10px">
+          <div><strong style="color:var(--accent)">华大半导体</strong> — HC32 系列，超低功耗</div>
+          <div><strong style="color:var(--accent)">极海半导体</strong> — APM32，兼容 STM32</div>
+          <div><strong style="color:var(--accent)">雅特力</strong> — AT32，高主频 M4</div>
+          <div><strong style="color:var(--accent)">中颖电子</strong> — SH 系列，家电控制</div>
+          <div><strong style="color:var(--accent)">灵动微</strong> — MM32，教学+工业</div>
+          <div><strong style="color:var(--accent)">平头哥</strong> — 剑桥 CK/RISC-V IP</div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:280px">
+      <div class="callout good" style="font-size:13px">
+        <strong>国产替代趋势：</strong><br>
+        供应链安全 → 国产 MCU 渗透率从 5% 快速提升至 15%+。教学和初创项目优先选国产，成本更低、供货更稳。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>国产崛起 → 下一步：RISC-V 革命</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 25: RISC-V ============ -->
+<section class="slide" data-title="RISC-V架构">
+  <div class="deck-header"><span>进阶 · RISC-V 架构</span><span class="slide-number" data-current="25" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Open ISA · The Future</div>
+    <h2 class="title">🟧 RISC-V：开源指令集革命</h2>
+    <p class="lede">没有授权费、没有限制 — RISC-V 正在重塑芯片产业格局。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📖 什么是 RISC-V？</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔬 2010 年诞生于加州大学伯克利分校</div>
+          <div>📜 开源指令集架构（ISA），任何人可免费使用</div>
+          <div>🏗️ 模块化设计：基础指令 + 可选扩展（M/A/F/D/C/V...）</div>
+          <div>💰 无 ARM 那样的授权费（ARM 授权费可达数百万美元）</div>
+          <div>🌍 RISC-V 国际基金会管理，已有 300+ 成员</div>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-2)">📦 RISC-V 模块化扩展</h4>
+        <div class="row wrap mt-s" style="gap:8px">
+          <span class="pill pill-accent">I — 整数基础（必选）</span>
+          <span class="pill pill-good">M — 乘除法</span>
+          <span class="pill pill-good">A — 原子操作</span>
+          <span class="pill pill-warn">F — 单精度浮点</span>
+          <span class="pill pill-warn">D — 双精度浮点</span>
+          <span class="pill pill-bad">C — 压缩指令</span>
+          <span class="pill pill-bad">V — 向量(SIMD)</span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:300px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">✅ RISC-V 优势</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🆓 完全免费，无授权费</div>
+          <div>🔧 可自由扩展自定义指令</div>
+          <div>📐 精简优雅（基础仅 47 条指令）</div>
+          <div>🛡️ 不受地缘政治限制</div>
+          <div>📈 生态快速增长中</div>
+        </div>
+      </div>
+      <div class="card card-warn">
+        <h4 style="color:var(--warn)">⚠️ 当前挑战</h4>
+        <div class="stack mt-s" style="font-size:12px">
+          <div>📚 生态不如 ARM 成熟</div>
+          <div>🔧 调试工具链仍在完善</div>
+          <div>📋 标准碎片化风险</div>
+          <div>🏭 高性能应用仍在起步</div>
+        </div>
+      </div>
+      <div class="callout mt-s" style="font-size:12px">
+        <strong>代表芯片：</strong>CH32V（沁恒）、HPM（先楿）、ESP32-C/H（乐鑫）、K210（嘉楠）
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>开源指令集革命 → 下一步：选型指南</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 26: MCU 选型指南 ============ -->
+<section class="slide" data-title="MCU选型指南">
+  <div class="deck-header"><span>进阶 · 选型指南</span><span class="slide-number" data-current="26" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Selection Guide · How to Choose</div>
+    <h2 class="title">MCU 选型指南：如何选对芯片</h2>
+    <p class="lede">没有"最好的 MCU"，只有"最合适的 MCU"。从需求出发，逐步缩小范围。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent">
+        <h4 style="color:var(--accent)">🎯 选型七步法</h4>
+        <div class="flow-steps mt-s" style="flex-wrap:wrap">
+          <div class="flow-step"><div class="step-num">1</div><h4>明确需求</h4><p>功能/性能/功耗/成本/周期</p></div>
+          <div class="flow-step"><div class="step-num">2</div><h4>确定位数</h4><p>简单控制→8位<br>通用→32位<br>AI/Linux→64位</p></div>
+          <div class="flow-step"><div class="step-num">3</div><h4>外设清单</h4><p>GPIO/ADC/UART<br>I2C/SPI/CAN/USB</p></div>
+          <div class="flow-step"><div class="step-num">4</div><h4>资源估算</h4><p>Flash ≥ 代码×1.5<br>RAM ≥ 变量×2</p></div>
+          <div class="flow-step"><div class="step-num">5</div><h4>通信需求</h4><p>WiFi→ESP32<br>有线→STM32+PHY</p></div>
+          <div class="flow-step"><div class="step-num">6</div><h4>生态评估</h4><p>库/社区/资料<br>开发工具</p></div>
+          <div class="flow-step"><div class="step-num">7</div><h4>成本供货</h4><p>单价/批量价<br>交期/生命周期</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">📊 典型场景推荐</h4>
+        <table class="compare-table mt-s" style="font-size:12px">
+          <tr><th>场景</th><th>推荐 MCU</th><th>理由</th></tr>
+          <tr><td>🎓 教学入门</td><td>STC89C52 / Arduino UNO</td><td>资料多、成本低、理解底层</td></tr>
+          <tr><td>💡 简单控制（灯/风扇）</td><td>STC8H / ATtiny</td><td>便宜够用、封装小</td></tr>
+          <tr><td>📡 IoT WiFi 设备</td><td>ESP32-C3 / ESP32-S3</td><td>WiFi+BT 集成、成本低</td></tr>
+          <tr><td>🏭 工业控制</td><td>STM32F4 / GD32F4</td><td>外设全、可靠性高</td></tr>
+          <tr><td>🔋 电池供电传感器</td><td>STM32L4 / MSP430</td><td>超低功耗、RTC 唤醒</td></tr>
+          <tr><td>🤖 AI 语音终端</td><td>ESP32-S3</td><td>向量指令、小智生态</td></tr>
+          <tr><td>⚡ 高性能电机驱动</td><td>STM32G4 / HPM6750</td><td>高分辨率 PWM、DSP</td></tr>
+          <tr><td>🖥️ 跑 Linux</td><td>树莓派 / 全志 H6</td><td>64 位 SoC + MMU</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:260px">
+      <div class="callout bad" style="font-size:12px">
+        <strong>⚠️ 选型常见坑：</strong><br>
+        1. 选了冷门芯片，找不到资料<br>
+        2. 引脚够但 RAM 不够，重选板子<br>
+        3. 批量涨价断货，被迫重新设计<br>
+        4. 没考虑封装大小，PCB 放不下<br>
+        <br>
+        <strong style="color:var(--good)">原则：主流优先，够用就好，留 30% 余量。</strong>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>选对芯片是成功的一半 → 下一步：开发工具链</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 27: 开发工具链 ============ -->
+<section class="slide" data-title="开发工具链">
+  <div class="deck-header"><span>进阶 · 开发工具链</span><span class="slide-number" data-current="27" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Toolchain · IDE & Compiler</div>
+    <h2 class="title">🛠️ 开发工具链全景</h2>
+    <p class="lede">从写代码到烧录运行 — IDE 编译器、烧录器、调试器缺一不可。</p>
+  </div>
+  <div class="g3 mt-m anim-stagger">
+    <div class="mcu-card">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)">💻</div>
+      <div><div class="mcu-name" style="font-size:16px">IDE 集成开发环境</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        <strong style="color:var(--accent)">Keil MDK</strong> — ARM 经典 IDE，教学常用<br>
+        <strong style="color:var(--accent)">STM32CubeIDE</strong> — ST 官方免费<br>
+        <strong style="color:var(--accent)">ESP-IDF</strong> — 乐鑫官方 IoT 框架<br>
+        <strong style="color:var(--accent)">Arduino IDE</strong> — 最简单，跨平台<br>
+        <strong style="color:var(--accent)">PlatformIO</strong> — VS Code 插件，多板支持<br>
+        <strong style="color:var(--accent)">MPLAB X</strong> — PIC 专用
+      </div>
+    </div>
+    <div class="mcu-card">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)">📦</div>
+      <div><div class="mcu-name" style="font-size:16px">编译器工具链</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        <strong style="color:var(--good)">ARM-GCC</strong> — 开源免费，命令行<br>
+        <strong style="color:var(--good)">arm-none-eabi-gcc</strong> — 裸机标准<br>
+        <strong style="color:var(--good)">xtensa-esp32-elf-gcc</strong> — ESP32<br>
+        <strong style="color:var(--good)">riscv-none-elf-gcc</strong> — RISC-V<br>
+        <strong style="color:var(--good)">AVR-GCC</strong> — Arduino 底层<br>
+        <strong style="color:var(--good)">SDCC</strong> — 51 开源编译器
+      </div>
+    </div>
+    <div class="mcu-card">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)">🔌</div>
+      <div><div class="mcu-name" style="font-size:16px">烧录/调试器</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        <strong style="color:var(--warn)">ST-Link V2</strong> — STM32 烧录调试<br>
+        <strong style="color:var(--warn)">J-Link</strong> — 通用高端调试器<br>
+        <strong style="color:var(--warn)">DAP-Link</strong> — 开源 CMSIS-DAP<br>
+        <strong style="color:var(--warn)">WCH-Link</strong> — CH32 系列专用<br>
+        <strong style="color:var(--warn)">USB-TTL (CH340)</strong> — 串口烧录<br>
+        <strong style="color:var(--warn)">AVRISP</strong> — AVR 烧录器
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">📋 工具链选择建议</h4>
+        <table class="compare-table mt-s" style="font-size:12px">
+          <tr><th>水平</th><th>推荐方案</th><th>适合人群</th></tr>
+          <tr><td>零基础</td><td>Arduino IDE</td><td>学生/爱好者/设计师</td></tr>
+          <tr><td>入门 STM32</td><td>Keil MDK + ST-Link</td><td>学生/教学</td></tr>
+          <tr><td>ESP32 开发</td><td>ESP-IDF 或 Arduino</td><td>IoT 开发者</td></tr>
+          <tr><td>专业开发</td><td>STM32CubeIDE / PlatformIO</td><td>工程师/团队</td></tr>
+          <tr><td>CI/CD 自动化</td><td>Make + GCC + OpenOCD</td><td>量产/自动化</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:280px">
+      <div class="callout good" style="font-size:12px">
+        <strong>💡 趋势：</strong>VS Code + PlatformIO 正在成为统一开发环境 — 一个插件支持 STM32/ESP32/AVR/PIC 等数百种开发板，告别多 IDE 切换。
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>工具链是开发的基石 → 下一步：调试技术</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 28: 调试技术 ============ -->
+<section class="slide" data-title="调试技术">
+  <div class="deck-header"><span>进阶 · 调试技术</span><span class="slide-number" data-current="28" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Debug · Finding Bugs</div>
+    <h2 class="title">🔍 调试技术：找 Bug 的武器库</h2>
+    <p class="lede">嵌入式调试比纯软件难 — 硬件、软件、信号三个层面的问题混在一起。</p>
+  </div>
+  <div class="g4 mt-m anim-stagger">
+    <div class="mcu-card" style="border-top:3px solid var(--accent)">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-size:20px">🖥️</div>
+      <div><div class="mcu-name" style="font-size:15px">串口调试</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        最常用、最简单的调试手段。<br>
+        printf() 打印变量值和状态。<br>
+        工具：串口助手 / minicom<br>
+        <span class="pill pill-accent" style="margin-top:6px">必备技能</span>
+      </div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--good)">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good);font-size:20px">⏯️</div>
+      <div><div class="mcu-name" style="font-size:15px">SWD/JTAG</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        硬件在线调试：断点/单步/查看寄存器。<br>
+        SWD 只需 2 线（SWCLK+SWDIO）。<br>
+        JTAG 需 4~5 线，功能更强。<br>
+        <span class="pill pill-good" style="margin-top:6px">专业必备</span>
+      </div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--warn)">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn);font-size:20px">📡</div>
+      <div><div class="mcu-name" style="font-size:15px">逻辑分析仪</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        抓取多路数字信号时序波形。<br>
+        分析 I2C/SPI/UART 协议数据。<br>
+        入门款：DSLogic / Saleae<br>
+        <span class="pill pill-warn" style="margin-top:6px">协议调试利器</span>
+      </div>
+    </div>
+    <div class="mcu-card" style="border-top:3px solid var(--bad)">
+      <div class="mcu-head"><div class="mcu-logo" style="background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad);font-size:20px"> OSC</div>
+      <div><div class="mcu-name" style="font-size:15px">示波器</div></div></div>
+      <div class="mcu-body" style="font-size:12px">
+        观察模拟信号波形（电压随时间变化）。<br>
+        查电源纹波、信号边沿、时序。<br>
+        入门款：DSO-138 / DSO225<br>
+        <span class="pill pill-bad" style="margin-top:6px">硬件调试必备</span>
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="terminal">
+        <div class="terminal-head"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">Serial Monitor — 调试输出</span></div>
+        <div class="terminal-body" style="font-size:12px">
+<span class="cmt">[DEBUG] main.c:42</span> <span class="fn">sensor_init</span>() ... <span class="ok">OK</span><br>
+<span class="cmt">[DEBUG] main.c:58</span> ADC raw = <span class="str">2048</span> → voltage = <span class="str">1.65V</span><br>
+<span class="cmt">[INFO]  main.c:73</span> WiFi connecting to <span class="str">"MyHome"</span>...<br>
+<span class="cmt">[INFO]  main.c:81</span> IP: <span class="str">192.168.1.108</span> <span class="ok">✓</span><br>
+<span class="cmt">[WARN]  sensor.c:156</span> temp=<span class="str">85.2</span>°C exceeds threshold!<br>
+<span class="cmt">[ERROR] motor.c:92</span> PWM duty <span class="err">> 100%</span>, clamped to 100%<br>
+<span class="cmt">[DEBUG] main.c:120</span> loop <span class="str">#1024</span> | free RAM: <span class="str">3892</span>B<br>
+<span class="prompt">></span> <span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:280px">
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-2)">🧠 调试心法</h4>
+        <div class="stack mt-s" style="font-size:12px">
+          <div>1️⃣ <strong>先缩小范围</strong>：硬件还是软件？</div>
+          <div>2️⃣ <strong>二分法</strong>：注释掉一半代码看是否复现</div>
+          <div>3️⃣ <strong>看信号</strong>：代码没错≠信号没问题</div>
+          <div>4️⃣ <strong>查电源</strong>：90% 的"奇怪问题"是供电不足</div>
+          <div>5️⃣ <strong>看手册</strong>：寄存器配置遗漏是高频 Bug</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>调试是嵌入式核心能力 → 下一步：RTOS</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 29: RTOS ============ -->
+<section class="slide" data-title="RTOS">
+  <div class="deck-header"><span>进阶 · RTOS</span><span class="slide-number" data-current="29" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">RTOS · Real-Time Operating System</div>
+    <h2 class="title">⏱️ RTOS：实时操作系统</h2>
+    <p class="lede">当你的项目需要同时做多件事 — 采集数据 + WiFi 通信 + 屏幕刷新 — RTOS 登场。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent mb-m">
+        <h4 style="color:var(--accent)">📖 为什么需要 RTOS？</h4>
+        <div class="stack mt-s" style="font-size:13px">
+          <div>🔄 <strong>裸机程序</strong>：一个超级大 loop()，所有任务轮流执行，互相阻塞</div>
+          <div>⚡ <strong>RTOS 程序</strong>：每个任务独立线程，按优先级调度，互不阻塞</div>
+          <div>🛡️ <strong>实时性</strong>：高优先级任务能在确定时间内获得 CPU</div>
+          <div>📦 <strong>IPC 机制</strong>：信号量/队列/互斥锁，任务间安全通信</div>
+        </div>
+      </div>
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">🏗️ RTOS 核心概念</h4>
+        <div class="g2 mt-s" style="font-size:12px;gap:10px">
+          <div><strong style="color:var(--accent)">任务（Task）</strong> — 独立的执行线程</div>
+          <div><strong style="color:var(--accent)">调度器（Scheduler）</strong> — 按优先级切换任务</div>
+          <div><strong style="color:var(--accent)">信号量（Semaphore）</strong> — 资源计数</div>
+          <div><strong style="color:var(--accent)">队列（Queue）</strong> — 任务间数据传递</div>
+          <div><strong style="color:var(--accent)">互斥锁（Mutex）</strong> — 保护共享资源</div>
+          <div><strong style="color:var(--accent)">定时器（Timer）</strong> — 周期性任务</div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:300px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">📦 主流 RTOS 对比</h4>
+        <table class="spec-table mt-s" style="font-size:11px">
+          <tr><th>RTOS</th><th>来源</th><th>特点</th></tr>
+          <tr><td>FreeRTOS</td><td>开源(AWS)</td><td>最流行、最小巧</td></tr>
+          <tr><td>RT-Thread</td><td>国产开源</td><td>中文生态好、组件全</td></tr>
+          <tr><td>Zephyr</td><td>Linux Found.</td><td>超可配置、安全</td></tr>
+          <tr><td>uC/OS-III</td><td>商业</td><td>认证级、工业</td></tr>
+          <tr><td>NuttX</td><td>Apache</td><td>POSIX 兼容</td></tr>
+          <tr><td>AliOS</td><td>阿里</td><td>IoT 云集成</td></tr>
+        </table>
+      </div>
+      <div class="callout good" style="font-size:12px">
+        <strong>选择建议：</strong><br>
+        入门 → FreeRTOS（文档最全）<br>
+        国产项目 → RT-Thread（中文好）<br>
+        ESP32 → 自带 FreeRTOS<br>
+        功能机 → 不需要 RTOS，裸机 loop 足够
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>RTOS 让复杂项目变得可控 → 下一步：低功耗设计</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 30: 低功耗设计 ============ -->
+<section class="slide" data-title="低功耗设计">
+  <div class="deck-header"><span>进阶 · 低功耗设计</span><span class="slide-number" data-current="30" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Low Power · Battery Life</div>
+    <h2 class="title">🔋 低功耗设计：让电池活更久</h2>
+    <p class="lede">不只是选低功耗芯片 — 从硬件到软件，每一个细节都决定续航。</p>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.2s">
+      <div class="card card-accent">
+        <h4 style="color:var(--accent)">🛠️ 低功耗设计五层策略</h4>
+        <div class="stack mt-m" style="font-size:13px">
+          <div class="card card-soft" style="padding:12px 14px">
+            <h4 style="font-size:13px;color:var(--good)">1️⃣ 硬件层：选对芯片 + 合理供电</h4>
+            <div class="dim2 mt-s" style="font-size:12px">选 STM32L/U 系列、MSP430 等低功耗 MCU · 用 LDO 或 Buck 供电 · 不用的外设物理断开</div>
+          </div>
+          <div class="card card-soft" style="padding:12px 14px">
+            <h4 style="font-size:13px;color:var(--accent)">2️⃣ 时钟层：降频 + 按需开关</h4>
+            <div class="dim2 mt-s" style="font-size:12px">空闲时降低主频 · 不用的外设关时钟 · 用 LSE 代替 HSE 维持 RTC</div>
+          </div>
+          <div class="card card-soft" style="padding:12px 14px">
+            <h4 style="font-size:13px;color:var(--warn)">3️⃣ 休眠层：善用低功耗模式</h4>
+            <div class="dim2 mt-s" style="font-size:12px">Sleep（短空闲）→ Stop（长空闲）→ Standby（深度休眠）· 用 RTC 定时唤醒</div>
+          </div>
+          <div class="card card-soft" style="padding:12px 14px">
+            <h4 style="font-size:13px;color:var(--accent-2)">4️⃣ 外设层：GPIO 状态管理</h4>
+            <div class="dim2 mt-s" style="font-size:12px">进休眠前配置所有 GPIO 为模拟输入或输出低 · 浮空引脚会漏电</div>
+          </div>
+          <div class="card card-soft" style="padding:12px 14px">
+            <h4 style="font-size:13px;color:var(--bad)">5️⃣ 软件层：事件驱动代替轮询</h4>
+            <div class="dim2 mt-s" style="font-size:12px">用中断唤醒代替 while(1) 轮询 · 快速处理完事件立即重新休眠</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.3s;max-width:280px">
+      <div class="card card-good mb-m">
+        <h4 style="color:var(--good)">📊 典型低功耗场景</h4>
+        <table class="spec-table mt-s" style="font-size:11px">
+          <tr><th>场景</th><th>策略</th><th>续航</th></tr>
+          <tr><td>温度传感器</td><td>每5分钟 RTC 唤醒采集+上传</td><td>1~2 年</td></tr>
+          <tr><td>智能门锁</td><td>中断唤醒 + Standby</td><td>6~12 月</td></tr>
+          <tr><td>BLE 信标</td><td>定时广播 + Sleep</td><td>3~6 月</td></tr>
+          <tr><td>环境监测站</td><td>Solar + Stop 模式</td><td>永久</td></tr>
+        </table>
+      </div>
+      <div class="callout" style="font-size:12px">
+        <strong>💡 关键公式：</strong><br>
+        平均电流 = (活跃电流 × 活跃时间 + 休眠电流 × 休眠时间) / 总周期<br><br>
+        如果 99% 时间休眠（2μA），1% 活跃（20mA）：<br>
+        均值 ≈ 200μA → 一节 CR2032 约用 100 天
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>低功耗是 IoT 产品成败关键 → 下一步：芯片对比</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 31: MCU vs FPGA vs DSP ============ -->
+<section class="slide" data-title="MCU vs FPGA vs DSP">
+  <div class="deck-header"><span>进阶 · 三大芯片对比</span><span class="slide-number" data-current="31" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">MCU vs FPGA vs DSP · Choose Your Weapon</div>
+    <h2 class="title">⚖️ MCU vs FPGA vs DSP</h2>
+    <p class="lede">三种芯片三种哲学 — MCU 灵活通用，FPGA 硬件可编程，DSP 算力怪兽。</p>
+  </div>
+  <div class="vs-grid mt-m anim-stagger">
+    <div class="vs-card">
+      <div class="vs-icon">🧠</div>
+      <div class="vs-title">MCU</div>
+      <div class="vs-desc">通用微控制器，软件定义逻辑，外设丰富，生态成熟</div>
+      <div class="vs-pros">✅ 灵活、便宜、易开发<br>✅ 生态丰富、资料多<br>✅ 功耗可控</div>
+      <div class="vs-cons">❌ 算力有限<br>❌ 并行能力弱<br>❌ 实时性不如 FPGA</div>
+      <div class="row wrap mt-s" style="gap:6px;justify-content:center">
+        <span class="pill pill-accent">控制</span>
+        <span class="pill pill-accent">IoT</span>
+        <span class="pill pill-accent">人机交互</span>
+      </div>
+    </div>
+    <div class="vs-card" style="border-color:var(--accent-2)">
+      <div class="vs-icon">⚡</div>
+      <div class="vs-title">FPGA</div>
+      <div class="vs-desc">现场可编程门阵列，硬件电路可重构，真并行执行</div>
+      <div class="vs-pros">✅ 纳秒级实时响应<br>✅ 真并行，多任务同时<br>✅ 可自定义任意硬件逻辑</div>
+      <div class="vs-cons">❌ 价格高、功耗大<br>❌ 学习曲线极陡<br>❌ 开发工具复杂</div>
+      <div class="row wrap mt-s" style="gap:6px;justify-content:center">
+        <span class="pill pill-bad">高速采集</span>
+        <span class="pill pill-bad">5G/通信</span>
+        <span class="pill pill-bad">视频处理</span>
+      </div>
+    </div>
+    <div class="vs-card" style="border-color:var(--good)">
+      <div class="vs-icon">📊</div>
+      <div class="vs-title">DSP</div>
+      <div class="vs-desc">数字信号处理器，专为信号算法优化，MAC 运算极快</div>
+      <div class="vs-pros">✅ FFT/滤波运算极快<br>✅ 硬件乘法器+累加器<br>✅ 实时信号处理强</div>
+      <div class="vs-cons">❌ 通用控制能力弱<br>❌ 外设不如 MCU 丰富<br>❌ 开发门槛较高</div>
+      <div class="row wrap mt-s" style="gap:6px;justify-content:center">
+        <span class="pill pill-good">音频处理</span>
+        <span class="pill pill-good">雷达</span>
+        <span class="pill pill-good">电机控制</span>
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-up" style="animation-delay:.3s">
+      <div class="card card-soft">
+        <h4 style="font-size:14px;color:var(--accent-3)">📋 详细对比</h4>
+        <table class="compare-table mt-s" style="font-size:12px">
+          <tr><th>维度</th><th>MCU</th><th>FPGA</th><th>DSP</th></tr>
+          <tr><td>编程方式</td><td>C/C++（软件）</td><td>Verilog/VHDL（硬件）</td><td>C/汇编（优化C）</td></tr>
+          <tr><td>并行能力</td><td class="cross">伪并行（RTOS）</td><td class="check">真并行</td><td>流水线并行</td></tr>
+          <tr><td>实时性</td><td>μs~ms 级</td><td class="check">ns 级</td><td>μs 级</td></tr>
+          <tr><td>典型价格</td><td class="check">¥1~30</td><td>¥30~500+</td><td>¥10~100</td></tr>
+          <tr><td>开发难度</td><td class="check">低~中</td><td class="cross">高</td><td>中~高</td></tr>
+          <tr><td>代表芯片</td><td>STM32/ESP32</td><td>Xilinx/Altera</td><td>TI C2000/6000</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:240px">
+      <div class="callout good" style="font-size:12px">
+        <strong>🤝 融合趋势：</strong><br>
+        • STM32G4/H7 内置 DSP 指令<br>
+        • ESP32-S3 加向量指令做 AI<br>
+        • SoC 集成 MCU+FPGA（如 Zynq）<br>
+        • 未来芯片越来越"全能"
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>三大芯片各有所长 → 最终总结</span><span class="footer-page"></span></div>
+</section>
+
+<!-- ============ SLIDE 32: 总结 ============ -->
+<section class="slide" data-title="总结">
+  <canvas class="fx-particles" data-fx="constellation"></canvas>
+  <div class="deck-header"><span>总结 · 完整知识体系</span><span class="slide-number" data-current="32" data-total="32"></span></div>
+  <div class="anim-fade-down">
+    <div class="kicker mb-s">Summary · 32 Pages · Complete Knowledge System</div>
+    <h2 class="title">全流程回顾：从基础到生态</h2>
+    <p class="lede">13 个基础章节 + 18 个进阶拓展 = 31 页递进知识链，覆盖从电压原理到 MCU 生态全景。</p>
+  </div>
+  <div class="mt-s anim-fade-up" style="animation-delay:.2s">
+    <div class="card" style="padding:16px 20px">
+      <div class="section-divider" style="margin:4px 0"><span>Part 1 · 基础知识链 (BA-0 ~ BA-11)</span></div>
+      <div class="kchain">
+        <span class="kchain-item active">BA-0 总领</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-1 电压</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-2 共地</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-3 最小系统</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-4 GPIO</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-5 PWM</span>
+      </div>
+      <div class="kchain mt-s">
+        <span class="kchain-item">BA-6 TIM</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-7 ADC</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-8 IRQ</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-9 I2C/SPI</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">BA-10 UART</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item active">BA-11 WDG/DMA</span>
+      </div>
+      <div class="section-divider" style="margin:10px 0 6px"><span>Part 2 · 进阶生态拓展 (14~31)</span></div>
+      <div class="kchain">
+        <span class="kchain-item active">芯片架构</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">存储器</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">时钟</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">电源</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">家族全景</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">51</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">STM32</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">ESP32</span>
+      </div>
+      <div class="kchain mt-s">
+        <span class="kchain-item">Arduino</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">AVR/PIC</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">国产MCU</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">RISC-V</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">选型</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">工具链</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">调试</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">RTOS</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item">低功耗</span><span class="kchain-arrow">→</span>
+        <span class="kchain-item active">vs FPGA/DSP</span>
+      </div>
+    </div>
+  </div>
+  <div class="row stretch mt-m">
+    <div class="fill anim-fade-left" style="animation-delay:.3s">
+      <div class="card card-accent">
+        <h4 style="color:var(--accent)">🎓 学习心法（扩展版）</h4>
+        <div class="stack mt-s" style="font-size:12px">
+          <div>1️⃣ <strong style="color:var(--good)">问题引导</strong>：先问"这解决什么问题"，再学原理</div>
+          <div>2️⃣ <strong style="color:var(--accent-2)">递进串联</strong>：每个知识点承上启下，不跳跃</div>
+          <div>3️⃣ <strong style="color:var(--warn)">实操避坑</strong>：共地、GPIO 悬空、ADC 通道、供电不足</div>
+          <div>4️⃣ <strong style="color:var(--accent-3)">类比理解</strong>：外设=工具、看门狗=狗、总线=公路</div>
+          <div>5️⃣ <strong style="color:var(--good)">生态意识</strong>：选 MCU 先看生态——库、社区、工具链</div>
+          <div>6️⃣ <strong style="color:var(--accent)">选型思维</strong>：够用就好、主流优先、留 30% 余量</div>
+          <div>7️⃣ <strong style="color:var(--warn)">全局视野</strong>：MCU/FPGA/DSP 各有所长，融合是趋势</div>
+        </div>
+      </div>
+    </div>
+    <div class="fill anim-fade-right" style="animation-delay:.4s;max-width:280px">
+      <div class="card card-soft">
+        <h4 style="color:var(--accent-2)">🚀 学完之后能做什么</h4>
+        <div class="row wrap mt-s" style="gap:6px">
+          <span class="pill pill-good">GPIO 控制</span>
+          <span class="pill pill-good">PWM 调光</span>
+          <span class="pill pill-good">ADC 采集</span>
+          <span class="pill pill-good">串口通信</span>
+          <span class="pill pill-accent">I2C/SPI 总线</span>
+          <span class="pill pill-accent">看门狗/DMA</span>
+          <span class="pill pill-warn">MCU 选型</span>
+          <span class="pill pill-warn">RTOS 开发</span>
+          <span class="pill pill-warn">低功耗设计</span>
+          <span class="pill pill-bad">硬件调试</span>
+        </div>
+        <div class="callout good mt-m" style="font-size:12px">
+          <strong>推荐路线：</strong><br>
+          1. 51/Arduino 入门 → 理解底层<br>
+          2. STM32 进阶 → 掌握 32 位<br>
+          3. ESP32 实战 → AI+IoT 项目<br>
+          4. RISC-V 探索 → 拥抱开源未来
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="deck-footer"><span>【完】单片机基础 + 进阶生态 · 32 页完整版</span><span>按 ← 回到封面 · O 总览所有页</span></div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- Progress bar -->
+<div class="progress-bar"><span id="progress"></span></div>
+
+<!-- Nav hint -->
+<div class="nav-hint">
+  <kbd>←</kbd><kbd>→</kbd> 翻页
+  <kbd>O</kbd> 总览
+  <kbd>T</kbd> 主题
+  <kbd>F</kbd> 全屏
+</div>
+
+<!-- Overview -->
+<div class="overview" id="overview"></div>
+
+<script>
+(function(){
+  var deck = document.getElementById('deck');
+  var slides = [].slice.call(deck.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var progress = document.getElementById('progress');
+  var overview = document.getElementById('overview');
+
+  /* ===== Navigation ===== */
+  var transitioning = false;
+  function go(n){
+    if(transitioning) return;
+    if(n < 0) n = 0;
+    if(n > total-1) n = total-1;
+    if(n === idx) return;
+    transitioning = true;
+    var dir = n > idx ? 1 : -1;
+    var oldSlide = slides[idx];
+    var newSlide = slides[n];
+    // Prepare new slide: visible to browser but opacity 0
+    newSlide.classList.add('is-active');
+    newSlide.style.opacity = '0';
+    newSlide.style.transform = 'translateX(' + (30*dir) + 'px)';
+    // Force reflow
+    void newSlide.offsetWidth;
+    // Animate old slide out
+    oldSlide.style.opacity = '0';
+    oldSlide.style.transform = 'translateX(' + (-30*dir) + 'px)';
+    // Animate new slide in
+    requestAnimationFrame(function(){
+      newSlide.style.opacity = '';
+      newSlide.style.transform = '';
+    });
+    idx = n;
+    updateChrome();
+    initSlideFX(slides[idx]);
+    // After transition, fully hide old slide to avoid rendering cost
+    setTimeout(function(){
+      oldSlide.classList.remove('is-active');
+      oldSlide.style.opacity = '';
+      oldSlide.style.transform = '';
+      transitioning = false;
+    }, 420);
+  }
+
+  function updateChrome(){
+    slides.forEach(function(s,i){
+      var sn = s.querySelector('.slide-number');
+      if(sn){ sn.setAttribute('data-current', i+1); sn.setAttribute('data-total', total); }
+      var fp = s.querySelector('.footer-page');
+      if(fp){ fp.textContent = (i+1) + ' / ' + total; }
+    });
+    progress.style.width = ((idx+1)/total*100) + '%';
+  }
+
+  /* ===== Canvas FX ===== */
+  var activeFX = [];
+  function initSlideFX(slide){
+    activeFX.forEach(function(f){ cancelAnimationFrame(f.raf); });
+    activeFX = [];
+    var canvases = slide.querySelectorAll('canvas[data-fx]');
+    canvases.forEach(function(canvas){
+      var fx = canvas.getAttribute('data-fx');
+      if(fx === 'starfield') startStarfield(canvas);
+      else if(fx === 'constellation') startConstellation(canvas);
+    });
+  }
+
+  function startStarfield(canvas){
+    var ctx = canvas.getContext('2d');
+    var stars = [];
+    function resize(){
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      stars = [];
+      for(var i=0;i<120;i++){
+        stars.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          r: Math.random()*1.6+0.3,
+          a: Math.random()*0.8+0.2,
+          sp: Math.random()*0.15+0.03
+        });
+      }
+    }
+    resize();
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      stars.forEach(function(s){
+        s.y += s.sp;
+        if(s.y > canvas.height) s.y = 0;
+        s.a += (Math.random()-0.5)*0.05;
+        if(s.a<0.1) s.a=0.1; if(s.a>1) s.a=1;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(192,202,245,'+s.a+')';
+        ctx.fill();
+      });
+      var raf = requestAnimationFrame(draw);
+      activeFX.push({canvas:canvas, raf:raf});
+    }
+    draw();
+  }
+
+  function startConstellation(canvas){
+    var ctx = canvas.getContext('2d');
+    var nodes = [];
+    function resize(){
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      nodes = [];
+      for(var i=0;i<40;i++){
+        nodes.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          vx: (Math.random()-0.5)*0.25,
+          vy: (Math.random()-0.5)*0.25,
+          r: Math.random()*1.8+0.6
+        });
+      }
+    }
+    resize();
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      nodes.forEach(function(n){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x<0||n.x>canvas.width) n.vx*=-1;
+        if(n.y<0||n.y>canvas.height) n.vy*=-1;
+      });
+      for(var i=0;i<nodes.length;i++){
+        for(var j=i+1;j<nodes.length;j++){
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var d = Math.sqrt(dx*dx+dy*dy);
+          if(d < 140){
+            ctx.strokeStyle = 'rgba(122,162,247,'+(0.25*(1-d/140))+')';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(function(n){
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(187,154,247,0.7)';
+        ctx.fill();
+      });
+      var raf = requestAnimationFrame(draw);
+      activeFX.push({canvas:canvas, raf:raf});
+    }
+    draw();
+  }
+
+  /* ===== Overview ===== */
+  function buildOverview(){
+    overview.innerHTML = '';
+    slides.forEach(function(s,i){
+      var t = s.getAttribute('data-title') || ('Slide '+(i+1));
+      var thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      thumb.innerHTML = '<span class="n">'+(i+1)+'</span><span class="t">'+t+'</span>';
+      thumb.onclick = function(){ go(i); toggleOverview(false); };
+      overview.appendChild(thumb);
+    });
+  }
+  function toggleOverview(force){
+    var open = force!==undefined ? force : !overview.classList.contains('open');
+    overview.classList.toggle('open', open);
+  }
+
+  /* ===== Keyboard ===== */
+  document.addEventListener('keydown', function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    switch(e.key){
+      case 'ArrowRight': case ' ': case 'PageDown': case 'Enter':
+        go(idx+1); e.preventDefault(); break;
+      case 'ArrowLeft': case 'PageUp': case 'Backspace':
+        go(idx-1); e.preventDefault(); break;
+      case 'Home': go(0); break;
+      case 'End': go(total-1); break;
+      case 'f': case 'F': fullscreen(); break;
+      case 'o': case 'O': toggleOverview(); break;
+      case 't': case 'T': cycleTheme(); break;
+      case 'Escape': toggleOverview(false); break;
+    }
+  });
+
+  function fullscreen(){
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    else document.exitFullscreen && document.exitFullscreen();
+  }
+
+  /* ===== Hash deep-link ===== */
+  function fromHash(){
+    var m = /^#\/(\d+)/.exec(location.hash||'');
+    if(m) go(Math.max(0, parseInt(m[1],10)-1));
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  /* ===== Theme (inline, no external fetch needed) ===== */
+  var themes = ['tokyo-night','sakura-pink','tech-blue','pure-white','macaron'];
+  var themeIdx = 0;
+  var themeVars = ['--bg','--bg-soft','--surface','--surface-2','--border','--border-strong',
+    '--text-1','--text-2','--text-3','--accent','--accent-2','--accent-3',
+    '--good','--warn','--bad','--grad','--grad-soft','--shadow','--shadow-lg'];
+  var themeCSS = {
+    'tokyo-night': {},
+    'sakura-pink': {
+      '--bg':'#fdf2f8','--bg-soft':'#fce7f3','--surface':'#ffffff','--surface-2':'#fbcfe8',
+      '--border':'rgba(157,23,77,.10)','--border-strong':'rgba(157,23,77,.20)',
+      '--text-1':'#831843','--text-2':'#9d3567','--text-3':'#c090a8',
+      '--accent':'#ec4899','--accent-2':'#f472b6','--accent-3':'#db2777',
+      '--good':'#10b981','--warn':'#f59e0b','--bad':'#ef4444',
+      '--grad':'linear-gradient(135deg,#ec4899,#f472b6 55%,#f9a8d4)',
+      '--grad-soft':'linear-gradient(135deg,#fce7f3,#fbcfe8)',
+      '--shadow':'0 10px 30px rgba(157,23,77,.12)',
+      '--shadow-lg':'0 24px 62px rgba(157,23,77,.18)'
+    },
+    'tech-blue': {
+      '--bg':'#0a1628','--bg-soft':'#07101e','--surface':'#102a4c','--surface-2':'#1a3a5c',
+      '--border':'rgba(0,212,255,.12)','--border-strong':'rgba(0,212,255,.24)',
+      '--text-1':'#e0f0ff','--text-2':'#a0c8e8','--text-3':'#4a7090',
+      '--accent':'#00d4ff','--accent-2':'#0078ff','--accent-3':'#00ffaa',
+      '--good':'#00ff88','--warn':'#ffaa00','--bad':'#ff3366',
+      '--grad':'linear-gradient(135deg,#00d4ff,#0078ff 55%,#00ffaa)',
+      '--grad-soft':'linear-gradient(135deg,#102a4c,#1a3a5c)',
+      '--shadow':'0 10px 30px rgba(0,0,0,.5)',
+      '--shadow-lg':'0 24px 62px rgba(0,0,0,.65)'
+    },
+    'pure-white': {
+      '--bg':'#ffffff','--bg-soft':'#f8f9fa','--surface':'#ffffff','--surface-2':'#f0f2f5',
+      '--border':'rgba(0,0,0,.08)','--border-strong':'rgba(0,0,0,.16)',
+      '--text-1':'#1a1a2e','--text-2':'#555566','--text-3':'#999aaa',
+      '--accent':'#4a6cf7','--accent-2':'#7c3aed','--accent-3':'#06b6d4',
+      '--good':'#10b981','--warn':'#f59e0b','--bad':'#ef4444',
+      '--grad':'linear-gradient(135deg,#4a6cf7,#7c3aed 55%,#06b6d4)',
+      '--grad-soft':'linear-gradient(135deg,#f8f9fa,#f0f2f5)',
+      '--shadow':'0 10px 30px rgba(0,0,0,.08)',
+      '--shadow-lg':'0 24px 62px rgba(0,0,0,.12)'
+    },
+    'macaron': {
+      '--bg':'#fef9f0','--bg-soft':'#fdf3e7','--surface':'#fff5e8','--surface-2':'#ffecd9',
+      '--border':'rgba(139,90,60,.10)','--border-strong':'rgba(139,90,60,.20)',
+      '--text-1':'#5c4a3a','--text-2':'#8a7a6a','--text-3':'#c0b0a0',
+      '--accent':'#ff9aa2','--accent-2':'#a8e6cf','--accent-3':'#ffdac1',
+      '--good':'#a8e6cf','--warn':'#ffdac1','--bad':'#ff8a8a',
+      '--grad':'linear-gradient(135deg,#ff9aa2,#ffdac1 45%,#a8e6cf)',
+      '--grad-soft':'linear-gradient(135deg,#fdf3e7,#ffecd9)',
+      '--shadow':'0 10px 30px rgba(139,90,60,.10)',
+      '--shadow-lg':'0 24px 62px rgba(139,90,60,.15)'
+    }
+  };
+  function applyTheme(name){
+    var root = document.documentElement;
+    themeVars.forEach(function(v){ root.style.removeProperty(v); });
+    var css = themeCSS[name];
+    if(!css) return;
+    Object.keys(css).forEach(function(k){ root.style.setProperty(k, css[k]); });
+    root.setAttribute('data-theme', name);
+  }
+  function cycleTheme(){
+    themeIdx = (themeIdx+1) % themes.length;
+    applyTheme(themes[themeIdx]);
+  }
+
+  /* ===== Init ===== */
+  applyTheme(themes[0]);
+  buildOverview();
+  slides[0].classList.add('is-active');
+  updateChrome();
+  initSlideFX(slides[0]);
+  fromHash();
+})();
+</script>
+
+<!-- AUTO-INJECTED: slide-overflow detector + auto-fit scaler (idempotent) -->
+<script>
+(function(){
+  var deck = document.querySelector('.deck');
+  if (!deck) return;
+  var slides = deck.querySelectorAll('.slide');
+  var MARKER = '__autofitInjected';
+  if (deck[MARKER]) return;
+  deck[MARKER] = true;
+
+  function ensureWrap(slide) {
+    if (slide.__wrapped) return slide.querySelector(':scope > .slide-content-wrap');
+    var kids = Array.prototype.slice.call(slide.children);
+    var hasWrap = slide.querySelector(':scope > .slide-content-wrap');
+    if (hasWrap) { slide.__wrapped = true; return hasWrap; }
+    var wrap = document.createElement('div');
+    wrap.className = 'slide-content-wrap';
+    // 先追加，再移动子元素（背景 canvas 留在最上一层作为 sibling）
+    slide.insertBefore(wrap, slide.firstChild);
+    kids.forEach(function(c) {
+      if (c === wrap) return;
+      if (c.classList && c.classList.contains('fx-particles')) return; // 背景保留在wrap外
+      wrap.appendChild(c);
+    });
+    slide.__wrapped = true;
+    return wrap;
+  }
+
+  function measure(slide) {
+    var wrap = ensureWrap(slide);
+    if (!wrap) return null;
+    var prev = wrap.style.transform || '';
+    wrap.style.transform = 'none';
+    void wrap.offsetWidth; // 强制重排
+    var avail = slide.clientHeight - 6;   // 留 6px 安全边距
+    var content = wrap.scrollHeight;
+    return { wrap: wrap, avail: avail, content: content, prev: prev };
+  }
+
+  function fit(slide) {
+    var info = measure(slide);
+    if (!info) return;
+    slide.classList.remove('is-scale-compact');
+    // 先尝试"紧凑 padding"
+    var pass2 = measure(slide);
+    var scale = 1;
+    if (pass2.content > pass2.avail) {
+      slide.classList.add('is-scale-compact');
+      var pass3 = measure(slide);
+      if (pass3.content > pass3.avail) {
+        scale = Math.max(0.80, pass3.avail / pass3.content);
+      }
+    }
+    if (scale < 1) {
+      info.wrap.style.transform = 'scale(' + scale.toFixed(3) + ')';
+    } else {
+      info.wrap.style.transform = 'none';
+    }
+  }
+
+  function fitActive() {
+    var a = deck.querySelector('.slide.is-active');
+    if (a) fit(a);
+  }
+
+  // 监听 class 变化（.is-active 被 runtime 加上）
+  var obs = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        var t = m.target;
+        if (t.classList && t.classList.contains('slide') && t.classList.contains('is-active')) {
+          requestAnimationFrame(function() { setTimeout(fitActive, 420); });
+        }
+      }
+    });
+  });
+  slides.forEach(function(s) { obs.observe(s, { attributes: true, attributeFilter: ['class'] }); });
+
+  var rt = null;
+  window.addEventListener('resize', function() {
+    clearTimeout(rt); rt = setTimeout(fitActive, 150);
+  });
+  document.addEventListener('fullscreenchange', function() { setTimeout(fitActive, 220); });
+  document.addEventListener('webkitfullscreenchange', function() { setTimeout(fitActive, 220); });
+
+  window.addEventListener('load', function() { setTimeout(fitActive, 500); });
+  setTimeout(fitActive, 300);
+})();
+</script>
+</body>
+</html>

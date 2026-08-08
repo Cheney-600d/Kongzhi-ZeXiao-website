@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苏州大学 - 控制类考研就业去向</title>
+        <style>
+        :root {
+            --primary-color: #E1BEE7;
+            --secondary-color: #E1BEE7;
+            --accent-color: #E8F5E9;
+            --bg-light: #F8FAFC;
+            --border-color: #e0e0e0;
+        }
+        body { background-color: var(--bg-light); }
+        .hero {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #E1BEE7 0%, #E1BEE7 100%);
+            color: #1a1a2e;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #E8F5E9;
+        }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            border: 1px solid #e8e8e8;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .info-card h3 {
+            color: #1a1a2e;
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #E1BEE7 0%, #E1BEE7 100%);
+            color: #1a1a2e;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .company-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #E1BEE7; color: #1a1a2e; }
+        .tip-box {
+            background: #F8FAFC;
+            border: 1px solid #E8F5E9;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 1em;
+        }
+        .tip-box strong { color: #1a1a2e; }
+        .industry-chart { margin: 16px 0; }
+        .industry-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .industry-bar {
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: width 0.8s ease;
+        }
+        .industry-label { min-width: 160px; font-weight: 600; color: #2d3436; margin-right: 12px; }
+        .industry-pct { margin-left: 10px; color: #5a5a5a; font-weight: 600; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } }
+    
+        .chart-container { background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 16px; margin-bottom: 20px; }
+    </style>
+    <script src="../../../vendor/echarts.min.js"></script>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>苏州大学 <span class="badge badge-211">211</span></h1>
+        <p>211重点高校 / 电子信息学院2024届研究生就业去向</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">连续五年就业率</div></div>
+                        <div class="stat-item"><div class="stat-number">86%</div><div class="stat-label">年薪超20万</div></div>
+                        <div class="stat-item"><div class="stat-number">24%</div><div class="stat-label">年薪超30万</div></div>
+                        <div class="stat-item"><div class="stat-number">27.2%</div><div class="stat-label">国企就业占比</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 主要就业企业</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">中国移动</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">中国电信</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">国家电网</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">中国银行</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">腾讯</div><div class="company-count">互联网</div></div>
+                    <div class="company-card"><div class="company-name">小米</div><div class="company-count">制造业</div></div>
+                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">制造业</div></div>
+                    <div class="company-card"><div class="company-name">英特尔</div><div class="company-count">半导体</div></div>
+                    <div class="company-card"><div class="company-name">中国铁路</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">中国中车</div><div class="company-count">国企</div></div>
+                    <div class="company-card"><div class="company-name">海康威视</div><div class="company-count">安防</div></div>
+                    <div class="company-card"><div class="company-name">京东方</div><div class="company-count">面板</div></div>
+                    <div class="company-card"><div class="company-name">曙光</div><div class="company-count">IT</div></div>
+                    <div class="company-card"><div class="company-name">浪潮</div><div class="company-count">IT</div></div>
+                    <div class="company-card"><div class="company-name">Samsung</div><div class="company-count">半导体</div></div>
+                    <div class="company-card"><div class="company-name">科大讯飞</div><div class="company-count">AI</div></div>
+                    <div class="company-card"><div class="company-name">NXP</div><div class="company-count">半导体</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🎓 深造读博院校</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">华盛顿大学</div><div class="company-count">美国</div></div>
+                    <div class="company-card"><div class="company-name">复旦大学</div><div class="company-count">985</div></div>
+                    <div class="company-card"><div class="company-name">香港科技大学</div><div class="company-count">HK</div></div>
+                    <div class="company-card"><div class="company-name">苏州大学</div><div class="company-count">本校</div></div>
+                    <div class="company-card"><div class="company-name">加泰罗尼亚理工大学</div><div class="company-count">西班牙</div></div>
+                    <div class="company-card"><div class="company-name">澳门大学</div><div class="company-count">澳门</div></div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 深造特点：</strong>2024年研究生读博人数大幅增加，涵盖国内外知名高校，包括美国、香港、欧洲及国内985院校。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🏭 行业分布</h3>
+                <div class="industry-chart">
+                    <div class="industry-item">
+                        <div class="industry-label">信息传输/软件/IT</div>
+                        <div class="industry-bar" style="width: 61%; background: linear-gradient(90deg, #E1BEE7, #F8C3CD);">61人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">制造业</div>
+                        <div class="industry-bar" style="width: 39%; background: linear-gradient(90deg, #E1BEE7, #F8C3CD);">39人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">科研/技术服务</div>
+                        <div class="industry-bar" style="width: 22%; background: linear-gradient(90deg, #F8C3CD, #F8C3CD);">22人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">其他行业</div>
+                        <div class="industry-bar" style="width: 13%; background: linear-gradient(90deg, #F8C3CD, #F8C3CD);">13人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">公共管理/社会保障</div>
+                        <div class="industry-bar" style="width: 6%; background: linear-gradient(90deg, #F8FAFC, #F8C3CD);">6人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">金融业</div>
+                        <div class="industry-bar" style="width: 5%; background: linear-gradient(90deg, #F8C3CD, #E8F5E9);">5人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">电力/能源</div>
+                        <div class="industry-bar" style="width: 3%; background: linear-gradient(90deg, #E1BEE7, #E8F5E9);">3人</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">教育单位</div>
+                        <div class="industry-bar" style="width: 2%; background: linear-gradient(90deg, #E1BEE7, #F8C3CD);">2人</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>👔 职位类别分布</h3>
+                <div class="industry-chart">
+                    <div class="industry-item">
+                        <div class="industry-label">专业技术人员</div>
+                        <div class="industry-bar" style="width: 74%; background: linear-gradient(90deg, #E1BEE7, #F8C3CD);">74%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">其他人员</div>
+                        <div class="industry-bar" style="width: 11%; background: linear-gradient(90deg, #E1BEE7, #F8C3CD);">11%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">金融从业人员</div>
+                        <div class="industry-bar" style="width: 8%; background: linear-gradient(90deg, #F8C3CD, #F8C3CD);">8%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">科研教学人员</div>
+                        <div class="industry-bar" style="width: 5%; background: linear-gradient(90deg, #F8C3CD, #F8C3CD);">5%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">公务员</div>
+                        <div class="industry-bar" style="width: 2%; background: linear-gradient(90deg, #F8FAFC, #F8C3CD);">2%</div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 职位特点：</strong>超过80%的毕业生从事专业技术相关工作，74%为专业技术人员，体现了较强的技术能力培养。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_suzhou.png" alt="苏州大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💰 薪资水平</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">86%</div><div class="stat-label">税后年薪超20万</div></div>
+                        <div class="stat-item"><div class="stat-number">24%</div><div class="stat-label">税后年薪超30万</div></div>
+                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">连续五年就业率</div></div>
+                        <div class="stat-item"><div class="stat-number">27.2%</div><div class="stat-label">国企就业占比</div></div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 薪资特点：</strong>毕业生总体薪资水平较高，发展前景良好。约86%的毕业生税后年薪超过20万，约24%的毕业生税后年薪超过30万，在211高校中表现优异。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="info-card full-width">
+<h3>📊 就业数据洞察（2026/6/21更新）</h3>
+<p style="margin-bottom:16px;color:#555;">以下数据已可视化展示，交互图表可查看详细数据。</p>
+<div class='chart-container' id='yearly-chart' style='width:100%;height:400px;margin-bottom:20px;'></div>
+    <script>
+    (function() {
+        var chart1 = echarts.init(document.getElementById('yearly-chart'));
+        var option1 = {
+            title: { text: 'TOP企业历年出现频次', left: 'center' },
+            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            legend: { data: ['中国电信集团有限公司', '中国移动通信集团有限公司', '中国银行股份有限公司', '瑞晟微电子（苏州）有限公司', '杭州海康威视数字技术股份有限公司', '烽火通信科技股份有限公司', '国家电网有限公司', '小米集团', '中国银联股份有限公司', '上海中兴通讯技术股份有限公司'], top: 30, type: 'scroll' },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: 80, containLabel: true },
+            xAxis: { type: 'category', data: ['2021届', '2022届', '2024届'] },
+            yAxis: { type: 'value', name: '出现频次' },
+            series: [{name: '中国电信集团有限公司', type: 'bar', data: [1, 1, 1], emphasis: {focus: 'series'}},{name: '中国移动通信集团有限公司', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '中国银行股份有限公司', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '瑞晟微电子（苏州）有限公司', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '杭州海康威视数字技术股份有限公司', type: 'bar', data: [1, 1, 0], emphasis: {focus: 'series'}},{name: '烽火通信科技股份有限公司', type: 'bar', data: [0, 1, 1], emphasis: {focus: 'series'}},{name: '国家电网有限公司', type: 'bar', data: [0, 1, 1], emphasis: {focus: 'series'}},{name: '小米集团', type: 'bar', data: [0, 1, 1], emphasis: {focus: 'series'}},{name: '中国银联股份有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}},{name: '上海中兴通讯技术股份有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}}]
+        };
+        chart1.setOption(option1);
+    })();</script>
+    <div class="footer" style="text-align:center;padding:24px;color:#999;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：电子信息学院2024届研究生就业调查报告 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

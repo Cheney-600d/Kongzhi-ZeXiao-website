@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武汉大学 - 控制类硕士就业去向</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #F8FAFC;
+            color: #2d3436;
+            line-height: 1.7;
+        }
+        
+        .header {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #F8C3CD 0%, #E8F5E9 100%);
+            color: #1a1a2e;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 0 4px;
+            backdrop-filter: blur(4px);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #F8C3CD;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 20px;
+            font-size: 1em;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .back-btn:hover {
+            background: #F8C3CD;
+            color: #1a1a2e;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border-left: 4px solid #F8C3CD;
+        }
+        
+        .stat-value {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            color: #7a7a7a;
+            font-size: 0.85em;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .section h2 {
+            font-size: 1.2em;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #F8C3CD;
+        }
+        
+        .offers-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .offers-table th {
+            text-align: left;
+            padding: 12px;
+            background: #F8C3CD;
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .offers-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9em;
+        }
+        
+        .offers-table tr:hover {
+            background: #F8FAFC;
+        }
+        
+        .company-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            white-space: nowrap;
+        }
+        
+        .company-detail {
+            color: #5a5a5a;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-grid .section {
+            margin-bottom: 0;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .wordcloud-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .wordcloud-section h3 {
+            font-size: 1.15em;
+            color: #F8C3CD;
+            margin-bottom: 12px;
+        }
+        .wordcloud-img {
+            max-width: 70%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bar-chart { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+        .bar-track { flex: 1; height: 22px; background: #f0f0f0; border-radius: 11px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, #F8C3CD, #F8C3CD); }
+        .bar-label { min-width: 160px; font-size: 0.85em; color: #5a5a5a; }
+        .bar-value { min-width: 60px; font-size: 0.85em; font-weight: 600; color: #F8C3CD; text-align: right; }
+        .top10-list { list-style: none; padding: 0; }
+        .top10-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
+        .top10-list li:last-child { border-bottom: none; }
+        .rank-num { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #F8C3CD; color: #1a1a2e; border-radius: 50%; font-size: 0.8em; font-weight: 600; margin-right: 10px; }
+        .employer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+        .employer-item { padding: 8px 12px; background: #F8FAFC; border-radius: 8px; font-size: 0.85em; display: flex; align-items: center; gap: 8px; }
+        .employer-rank { width: 20px; height: 20px; line-height: 20px; text-align: center; background: #F8C3CD; color: #1a1a2e; border-radius: 50%; font-size: 0.75em; font-weight: 600; flex-shrink: 0; }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8a8a8a;
+            font-size: 0.85em;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.4em; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+            .offers-table th, .offers-table td { padding: 8px; font-size: 0.85em; }
+            .company-name { white-space: normal; }
+        }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <div class="header">
+        <h1>武汉大学</h1>
+        <div>
+            <span class="badge">985</span>
+            <span class="tag">985</span>
+        </div>
+    </div>
+    
+    <a href="javascript:history.back()" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回上一级
+    </a>
+    
+    <div class="container">
+        <div class="content-grid">
+            <div class="section full-width">
+                <h2>📊 就业数据概览</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">66%+</div>
+                        <div class="stat-label">信息传输/软件/IT服务业</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">华为</div>
+                        <div class="stat-label">就业单位TOP1</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">27%</div>
+                        <div class="stat-label">留武汉就业比例</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">整体就业率</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section full-width wordcloud-section">
+                <h3>🏢 主要就业单位词云</h3>
+                <img src="../wordclouds/wordcloud_武汉大学.png" alt="武汉大学就业单位词云" class="wordcloud-img">
+            </div>
+
+            <div class="section">
+                <h2>🏆 就业单位TOP10</h2>
+                <ul class="top10-list">
+                    <li><span class="rank-num">1</span>华为技术有限公司</li>
+                    <li><span class="rank-num">2</span>腾讯科技（深圳）有限公司</li>
+                    <li><span class="rank-num">3</span>普联技术有限公司</li>
+                    <li><span class="rank-num">4</span>北京三快在线科技有限公司（美团）</li>
+                    <li><span class="rank-num">5</span>腾讯科技（深圳）有限公司</li>
+                    <li><span class="rank-num">6</span>中航材导航技术（北京）有限公司</li>
+                    <li><span class="rank-num">7</span>上海随训通电子科技有限公司</li>
+                    <li><span class="rank-num">8</span>北京字跳网络技术有限公司（字节跳动）</li>
+                    <li><span class="rank-num">9</span>中国人民解放军驻武汉大学、中国地质大学选培办</li>
+                    <li><span class="rank-num">10</span>百度在线网络技术（北京）有限公司</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📈 就业单位行业TOP5</h2>
+                <div class="bar-chart">
+                    <span class="bar-label">信息传输/软件/IT服务</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 66%"></div></div>
+                    <span class="bar-value">66%+</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">金融业</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 15.48%"></div></div>
+                    <span class="bar-value">15.48%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">科学研究和技术服务</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 7.14%"></div></div>
+                    <span class="bar-value">7.14%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">电力/热力/燃气/水供应</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 4.76%"></div></div>
+                    <span class="bar-value">4.76%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">制造业</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 3.57%"></div></div>
+                    <span class="bar-value">3.57%</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🌍 就业地区分布TOP10</h2>
+                <div class="bar-chart">
+                    <span class="bar-label">武汉市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 27%"></div></div>
+                    <span class="bar-value">27%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">深圳市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 17.86%"></div></div>
+                    <span class="bar-value">17.86%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">北京市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 13.10%"></div></div>
+                    <span class="bar-value">13.10%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">上海市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 13.10%"></div></div>
+                    <span class="bar-value">13.10%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">杭州市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 10.71%"></div></div>
+                    <span class="bar-value">10.71%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">广州市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 5.95%"></div></div>
+                    <span class="bar-value">5.95%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">南京市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 3.57%"></div></div>
+                    <span class="bar-value">3.57%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">成都市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 2.38%"></div></div>
+                    <span class="bar-value">2.38%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">盐城市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 1.19%"></div></div>
+                    <span class="bar-value">1.19%</span>
+                </div>
+                <div class="bar-chart">
+                    <span class="bar-label">宁波市</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 1.19%"></div></div>
+                    <span class="bar-value">1.19%</span>
+                </div>
+            </div>
+
+            <div class="section full-width">
+                <h2>📋 就业去向详情</h2>
+                <p style="margin-bottom: 16px; color: #5a5a5a;">武汉大学毕业生以<strong>去单位就业</strong>为主，就业单位性质分布包括其他企业、国有企业、三资企业、其他事业单位、机关、医疗卫生单位、高等教育单位、科研设计单位、中初教育单位等。</p>
+                <div class="employer-grid">
+                    <div class="employer-item">华为</div>
+                    <div class="employer-item">腾讯</div>
+                    <div class="employer-item">普联（TP-LINK）</div>
+                    <div class="employer-item">美团</div>
+                    <div class="employer-item">字节跳动</div>
+                    <div class="employer-item">百度</div>
+                    <div class="employer-item">中航材导航</div>
+                    <div class="employer-item">随训通电子</div>
+                    <div class="employer-item">部队/选培办</div>
+                    <div class="employer-item">金融业</div>
+                    <div class="employer-item">科研设计单位</div>
+                    <div class="employer-item">国有企业</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
+        <p>仅供参考，数据可能存在时效性差异</p>
+    </footer>
+</body>
+</html>

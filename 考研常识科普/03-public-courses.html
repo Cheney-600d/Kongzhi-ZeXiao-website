@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公共课备考攻略 - 考研必知常识</title>
+  <meta name="description" content="考研政治、英语、数学三科全面备考指南。涵盖题型分值、复习规划、老师推荐、刷题策略、高分技巧等。">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* 页面专属样式 */
+    .subject-tabs {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;
+      justify-content: center;
+    }
+    .subject-tab {
+      padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer;
+      border: 2px solid #fb7299; background: #fff; color: #fb7299;
+      transition: all .2s;
+    }
+    .subject-tab:hover, .subject-tab.active {
+      background: #fb7299; color: #fff;
+    }
+    .score-chart {
+      display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0;
+    }
+    .score-item {
+      flex: 1; min-width: 140px; background: #fff; padding: 16px;
+      border-radius: 6px; text-align: center; border: 1px solid #e3e5e7;
+    }
+    .score-num {
+      font-size: 1.6rem; font-weight: 700; color: #fb7299;
+    }
+    .score-label {
+      font-size: .85rem; color: #888; margin-top: 4px;
+    }
+    .module-bar {
+      display: flex; align-items: center; gap: 12px; margin: 10px 0;
+    }
+    .module-name {
+      width: 80px; font-weight: 600; color: #fb7299; text-align: right; flex-shrink: 0;
+    }
+    .module-track {
+      flex: 1; height: 28px; background: #e8f0fe; border-radius: 6px; overflow: hidden;
+    }
+    .module-fill {
+      height: 100%; background: linear-gradient(90deg, #fb7299, #ff85ad);
+      border-radius: 6px; display: flex; align-items: center; justify-content: flex-end;
+      padding-right: 10px; color: #fff; font-size: .8rem; font-weight: 600;
+    }
+    .module-pct { width: 50px; font-weight: 700; color: #fb7299; }
+    .stage-card {
+      background: #fff; border-radius: 6px; padding: 20px; margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05); border-left: 3px solid #fb7299;
+    }
+    .stage-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
+    }
+    .stage-name { font-weight: 700; color: #fb7299; font-size: 1.05rem; }
+    .stage-time {
+      background: #fb7299; color: #fff; padding: 2px 10px; border-radius: 6px;
+      font-size: .8rem; font-weight: 600;
+    }
+    .teacher-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 16px 0;
+    }
+    .teacher-item {
+      background: #fff; padding: 14px; border-radius: 6px; text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+    }
+    .teacher-subject { font-size: .8rem; color: #fb7299; font-weight: 600; margin-bottom: 4px; }
+    .teacher-name { font-weight: 700; color: #fb7299; }
+    .formula-box {
+      background: #f8f9fa; border-radius: 14px; padding: 16px 20px; margin: 12px 0;
+      border: 1px dashed #ffc4d6;
+    }
+    .formula-title { font-weight: 700; color: #fb7299; margin-bottom: 6px; }
+    .method-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 16px 0;
+    }
+    .method-card {
+      background: #fff; padding: 18px; border-radius: 6px;
+      border: 1px solid #e3e5e7;
+    }
+    .method-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .method-name { font-weight: 700; color: #fb7299; margin-bottom: 6px; }
+    .method-desc { font-size: .9rem; color: #555; }
+    .three-what { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+    .what-card {
+      background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #e3e5e7;
+      border-top: 4px solid;
+    }
+    .what-card.what { border-top-color: #fb7299; }
+    .what-card.why { border-top-color: #fb7299; }
+    .what-card.how { border-top-color: #2e7d32; }
+    .what-label {
+      display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: .8rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .what-card.what .what-label { background: #e8f0fe; color: #fb7299; }
+    .what-card.why .what-label { background: #fff0f3; color: #fb7299; }
+    .what-card.how .what-label { background: #e8f5e9; color: #2e7d32; }
+  </style>
+
+</head>
+<body>
+<!-- 返回首页（固定） -->
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+  ← 返回首页
+</a>
+
+<main class="page-content">
+    <div class="container">
+      <!-- 面包屑 -->
+      <div class="breadcrumb">
+        <a href="index.html">首页</a> / 公共课备考攻略
+      </div>
+
+      <!-- 引言 -->
+      <div class="tip-box info" style="margin-bottom:30px;">
+        <div class="tip-title">📌 公共课复习核心原则</div>
+        <p>公共课（政治+英语+数学）是考研的"基本功"，合计占500分中的<span class="key-point">350分</span>。公共课成绩决定了你能不能过国家线，能不能进复试。<strong>政治不需要太早开始，英语要尽早准备，数学基础不牢地动山摇。</strong></p>
+      </div>
+
+      <!-- ==================== 政治 ==================== -->
+      <section class="section" id="politics">
+        <h2 class="section-title">🗳️ 政治备考攻略</h2>
+
+        <!-- 题型分值 -->
+        <div class="card">
+          <div class="card-title">📊 政治题型与分值分布</div>
+          <div class="score-chart">
+            <div class="score-item">
+              <div class="score-num">16分</div>
+              <div class="score-label">单选题<br>16题 × 1分</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num" style="color:#fb7299;">34分</div>
+              <div class="score-label">多选题<br>17题 × 2分</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num" style="color:#2e7d32;">50分</div>
+              <div class="score-label">分析题<br>5题 × 10分</div>
+            </div>
+          </div>
+          <div class="tip-box warning">
+            <div class="tip-title">⚠️ 核心结论</div>
+            <p>选择题与分析题分值各占一半，复习时需给予同等重视。<strong class="key-point">多选题是得分关键</strong>，多选、少选、错选均不得分，需重点突破。</p>
+          </div>
+        </div>
+
+        <!-- 各模块分值 -->
+        <div class="card">
+          <div class="card-title">📈 各模块分值占比与复习重点</div>
+          <div class="module-bar">
+            <div class="module-name">毛中特</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:30%">30%</div>
+            </div>
+            <div class="module-pct">30%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">马原</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:24%">24%</div>
+            </div>
+            <div class="module-pct">24%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">思修法基</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:16%">16%</div>
+            </div>
+            <div class="module-pct">16%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">时政</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:16%">16%</div>
+            </div>
+            <div class="module-pct">16%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">史纲</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:14%">14%</div>
+            </div>
+            <div class="module-pct">14%</div>
+          </div>
+          <div class="tip-box info" style="margin-top:14px;">
+            <div class="tip-title">💡 复习优先级建议</div>
+            <p>优先攻克<strong>毛中特</strong>和<strong>马原</strong>两大重点，这两部分占了54%的分值，是复习的绝对核心。史纲、思修法基、时政相对容易拿分，可以适当分配时间。</p>
+          </div>
+        </div>
+
+        <!-- 选择题策略 -->
+        <div class="card">
+          <div class="card-title">✅ 政治选择题高分策略</div>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="method-icon">🎯</div>
+              <div class="method-name">直选法</div>
+              <div class="method-desc">直接根据所学知识选出正确答案，适用于记忆性题目。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">🚫</div>
+              <div class="method-name">排除法</div>
+              <div class="method-desc">排除错误选项，缩小选择范围，提高正确率。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">🔑</div>
+              <div class="method-name">关键词法</div>
+              <div class="method-desc">抓住题干中的关键词，快速定位考点。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">📋</div>
+              <div class="method-name">全面性原则</div>
+              <div class="method-desc">选项要全面，不能遗漏正确答案。宁缺毋滥，不确定不要选。</div>
+            </div>
+          </div>
+          <div class="tip-box warning">
+            <div class="tip-title">⚠️ 多选题核心提醒</div>
+            <p>多选题是政治考试的重中之重，17题34分，占比很高。多选、少选、错选均不得分！不确定的选项不要选。多刷真题，总结干扰项设置规律。</p>
+          </div>
+        </div>
+
+        <!-- 分析题策略 -->
+        <div class="card">
+          <div class="card-title">✍️ 政治分析题高分策略：三段论答题法</div>
+          <div class="three-what">
+            <div class="what-card what">
+              <div class="what-label">WHAT · 是什么</div>
+              <p>点明题目考查的核心知识点。准确写出相关概念的定义，简明扼要，开门见山，使用教材原文表述。</p>
+            </div>
+            <div class="what-card why">
+              <div class="what-label">WHY · 为什么</div>
+              <p>阐述知识点的内涵、意义与作用。分析原因、意义、影响，结合材料内容，分点作答，逻辑清晰。</p>
+            </div>
+            <div class="what-card how">
+              <div class="what-label">HOW · 怎么做</div>
+              <p>结合材料与实际，提出对策建议。提出具体措施和方法，联系实际，避免空谈，体现时代性和针对性。</p>
+            </div>
+          </div>
+          <div class="tip-box success">
+            <div class="tip-title">📝 答题注意事项</div>
+            <ul class="check-list">
+              <li>分点作答，逻辑清晰，层次分明</li>
+              <li>结合材料，理论联系实际</li>
+              <li>卷面整洁，字迹工整</li>
+              <li>字数充足，每题至少写满2/3</li>
+              <li>审题准确，划出关键词</li>
+              <li>总结升华，简要总结升华主题</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 四阶段规划 -->
+        <div class="card">
+          <div class="card-title">📅 政治备考四阶段规划</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🌱 基础阶段</span>
+              <span class="stage-time">9-10月</span>
+            </div>
+            <p><strong>核心任务：</strong>系统学习知识点</p>
+            <p><strong>推荐资料：</strong>核心考案 / 精讲精练</p>
+            <p>理解基本概念和原理，构建知识框架。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🔥 强化阶段</span>
+              <span class="stage-time">10-11月</span>
+            </div>
+            <p><strong>核心任务：</strong>刷题，重点是选择题</p>
+            <p><strong>推荐资料：</strong>1000题 / 优题库</p>
+            <p>通过大量刷题巩固知识点，总结答题技巧。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🚀 冲刺阶段</span>
+              <span class="stage-time">11-12月</span>
+            </div>
+            <p><strong>核心任务：</strong>背诵分析题素材</p>
+            <p><strong>推荐资料：</strong>肖八</p>
+            <p>背诵分析题答题素材，关注时事政治热点。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🏁 模考阶段</span>
+              <span class="stage-time">12月</span>
+            </div>
+            <p><strong>核心任务：</strong>模拟考试</p>
+            <p><strong>推荐资料：</strong>肖四（救命稻草！）</p>
+            <p>全真模拟考试，训练答题速度和规范性。肖四肖八是救命稻草！</p>
+          </div>
+          <div class="tip-box info">
+            <div class="tip-title">⏰ 时间规划建议</div>
+            <p>政治复习<strong>不需要太早开始，8月开始即可</strong>。如果考数学，等数学进入正轨（高数上复习完）再开始政治。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 英语 ==================== -->
+      <section class="section" id="english">
+        <h2 class="section-title">📖 英语备考攻略</h2>
+
+        <!-- 英语一vs英语二 -->
+        <div class="card">
+          <div class="card-title">🔄 英语一 vs 英语二</div>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>对比项</th>
+                <th>英语一</th>
+                <th>英语二</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>适用对象</td>
+                <td>学术型硕士（学硕）</td>
+                <td>专业型硕士（专硕）</td>
+              </tr>
+              <tr>
+                <td>词汇量要求</td>
+                <td>更高，约5500词</td>
+                <td>相对较低，约5000词</td>
+              </tr>
+              <tr>
+                <td>阅读B节</td>
+                <td>七选五/排序/小标题，难度较大</td>
+                <td>小标题/匹配，相对简单</td>
+              </tr>
+              <tr>
+                <td>翻译</td>
+                <td>5个长难句翻译</td>
+                <td>整段翻译</td>
+              </tr>
+              <tr>
+                <td>大作文</td>
+                <td>图画作文（需抽象思维）</td>
+                <td>图表作文（侧重数据描述）</td>
+              </tr>
+              <tr>
+                <td>整体难度</td>
+                <td>较高</td>
+                <td>相对较低</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tip-box warning">
+            <div class="tip-title">⚠️ 重要提醒</div>
+            <p>确认自己考哪个非常重要！这决定了你的复习方向和难度定位。英语一词汇量要求更高，阅读B节和翻译难度更大；英语二相对简单，题型更直接。</p>
+          </div>
+        </div>
+
+        <!-- 题型分值 -->
+        <div class="card">
+          <div class="card-title">📊 英语题型与分值分布（英语一）</div>
+          <div class="score-chart">
+            <div class="score-item">
+              <div class="score-num">50分</div>
+              <div class="score-label">阅读理解<br>4篇阅读+新题型</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num">30分</div>
+              <div class="score-label">写作<br>大作文+小作文</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num">10分</div>
+              <div class="score-label">完形填空<br>20题×0.5分</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num">10分</div>
+              <div class="score-label">翻译<br>英译汉</div>
+            </div>
+          </div>
+          <div class="tip-box info">
+            <div class="tip-title">💡 核心策略</div>
+            <p><strong class="key-point">"得阅读者得天下"</strong>，阅读理解占了50分，是英语备考的重中之重，必须投入最多的时间和精力。写作占30分，是第二大得分点。完形填空和翻译各占10分，可以适当分配时间。</p>
+          </div>
+        </div>
+
+        <!-- 阅读策略 -->
+        <div class="card">
+          <div class="card-title">📚 英语阅读高分策略：五步解题法</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-title">浏览题干</div>
+              <p>带着问题看文章，提高阅读效率，明确要找什么信息。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-title">通读全文</div>
+              <p>把握文章主旨和段落脉络，不要纠结个别生词。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-title">定位原文</div>
+              <p>根据关键词找到对应段落，精准定位答题区域。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-title">分析选项</div>
+              <p>对比原文信息，排除干扰项，识别同义替换。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div class="step-title">选出答案</div>
+              <p>确保在原文中能找到依据，不要过度推理。</p>
+            </div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">🔑 核心注意事项</div>
+            <ul class="check-list">
+              <li>精准定位关键词：关注人名、地名、时间、数字等</li>
+              <li>识别同义替换：留意词性、同义词及句式转换</li>
+              <li>警惕干扰信息：排除偷换概念、过度推理等陷阱</li>
+              <li>真题为王：反复研究近10年真题</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 单词记忆 -->
+        <div class="card">
+          <div class="card-title">🧠 英语单词记忆方法：四大高效策略</div>
+          <div class="method-grid">
+            <div class="method-card">
+              <div class="method-icon">📉</div>
+              <div class="method-name">艾宾浩斯遗忘曲线</div>
+              <div class="method-desc">根据遗忘规律及时复习。科学复习时间点：第1天→第2天→第4天→第7天→第15天。推荐工具：Anki、墨墨背单词。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">🔤</div>
+              <div class="method-name">词根词缀法</div>
+              <div class="method-desc">通过学习词根词缀科学扩大词汇量。如词根"spect"=看，inspect=向内看（检查），respect=反复看（尊重）。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">💡</div>
+              <div class="method-name">联想记忆法</div>
+              <div class="method-desc">联系形象、场景或故事提高记忆效率。如ambulance谐音"俺不能死"，联想到救护车救命。</div>
+            </div>
+            <div class="method-card">
+              <div class="method-icon">📖</div>
+              <div class="method-name">语境记忆法</div>
+              <div class="method-desc">在阅读中记忆单词，理解用法。精读真题文章，结合上下文猜测词义，定期复习加深印象。</div>
+            </div>
+          </div>
+          <div class="tip-box success">
+            <div class="tip-title">💡 单词记忆核心建议</div>
+            <p>没有最好的方法，只有最适合你的方法。可以综合运用多种方法：<strong>用艾宾浩斯规划复习，用词根词缀扩大词汇量，用联想记忆加深印象，用语境记忆理解用法。</strong>坚持是关键！</p>
+          </div>
+        </div>
+
+        <!-- 作文策略 -->
+        <div class="card">
+          <div class="card-title">✍️ 英语作文备考策略：大小作文全面突破</div>
+          <div class="card-grid card-grid-2">
+            <div>
+              <h4 style="color:#fb7299; margin-bottom:10px;">📝 小作文（Task 1）· 10分</h4>
+              <ul class="check-list">
+                <li>掌握书信、通知、报告等不同文体的固定格式</li>
+                <li>背诵不同类型模板（道歉信、感谢信、申请信等）</li>
+                <li>记忆常用的开头、结尾及过渡句型</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="color:#fb7299; margin-bottom:10px;">📄 大作文（Task 2）· 20分</h4>
+              <ul class="check-list">
+                <li>掌握三段论结构（开头-中间-结尾）</li>
+                <li>覆盖教育、科技、环境、文化等常考领域</li>
+                <li>积累话题素材和论据，构建自己的写作框架</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tip-box info">
+            <div class="tip-title">📅 作文备考时间规划</div>
+            <p><strong>9月</strong>：背诵高频词汇和句型 → <strong>10月</strong>：学习作文结构，背诵模板 → <strong>11月</strong>：每周练习1-2篇，仿写 → <strong>12月</strong>：熟练模板，查漏补缺</p>
+          </div>
+        </div>
+
+        <!-- 英语四阶段 -->
+        <div class="card">
+          <div class="card-title">📅 英语备考四阶段规划</div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🌱 基础阶段</span>
+              <span class="stage-time">3-6月</span>
+            </div>
+            <p><strong>核心任务：</strong>背单词 + 学语法</p>
+            <p><strong>推荐资料：</strong>词汇闪过 / 红宝书</p>
+            <p>单词每天必背，利用艾宾浩斯遗忘曲线复习。学习长难句分析。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🔥 强化阶段</span>
+              <span class="stage-time">7-9月</span>
+            </div>
+            <p><strong>核心任务：</strong>做真题阅读 + 精翻</p>
+            <p><strong>推荐资料：</strong>考研真相 / 黄皮书</p>
+            <p>大范围做阅读，精翻文章，总结解题技巧。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🚀 冲刺阶段</span>
+              <span class="stage-time">10-11月</span>
+            </div>
+            <p><strong>核心任务：</strong>作文 + 小三门</p>
+            <p><strong>推荐资料：</strong>王江涛高分写作</p>
+            <p>专项训练作文、完形、翻译、新题型。</p>
+          </div>
+          <div class="stage-card">
+            <div class="stage-header">
+              <span class="stage-name">🏁 模考阶段</span>
+              <span class="stage-time">12月</span>
+            </div>
+            <p><strong>核心任务：</strong>全真模拟</p>
+            <p><strong>推荐资料：</strong>张剑黄皮书</p>
+            <p>严格按照考试时间模拟，保持手感。</p>
+          </div>
+          <div class="tip-box success">
+            <div class="tip-title">💡 英语备考核心建议</div>
+            <p>英语复习<strong>要尽早开始，从决定考研就开始</strong>。单词要天天背，真题要反复研究！考研不考听力，重点在阅读理解和写作。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 数学 ==================== -->
+      <section class="section" id="math">
+        <h2 class="section-title">🔢 数学备考攻略</h2>
+
+        <!-- 数一/二/三对比 -->
+        <div class="card">
+          <div class="card-title">🔄 数学一 vs 数学二 vs 数学三</div>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>对比项</th>
+                <th>数学一</th>
+                <th>数学二</th>
+                <th>数学三</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>高数占比</td>
+                <td>约56%</td>
+                <td>约78%</td>
+                <td>约56%</td>
+              </tr>
+              <tr>
+                <td>线代</td>
+                <td>✅ 考</td>
+                <td>✅ 考</td>
+                <td>✅ 考</td>
+              </tr>
+              <tr>
+                <td>概率统计</td>
+                <td>✅ 考</td>
+                <td>❌ 不考</td>
+                <td>✅ 考</td>
+              </tr>
+              <tr>
+                <td>多的内容</td>
+                <td>三重积分、曲面积分、向量代数、无穷级数</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>难度</td>
+                <td>最高</td>
+                <td>中等</td>
+                <td>相对低</td>
+              </tr>
+              <tr>
+                <td>适用专业</td>
+                <td>工科类学硕</td>
+                <td>部分工科专硕</td>
+                <td>经济、管理类</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tip-box info">
+            <div class="tip-title">💡 选择建议</div>
+            <p>根据报考专业确定数学类型。<strong>数一内容最多最难</strong>；<strong>数二不考概率</strong>，高数占比高；<strong>数三经管专用</strong>，内容同数一但难度低。如果数学基础不好，可以优先考虑考数二或数三的专业。</p>
+          </div>
+        </div>
+
+        <!-- 题型分值 -->
+        <div class="card">
+          <div class="card-title">📊 数学题型与分值分布</div>
+          <div class="score-chart">
+            <div class="score-item">
+              <div class="score-num">32分</div>
+              <div class="score-label">选择题<br>8题 × 4分</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num">24分</div>
+              <div class="score-label">填空题<br>6题 × 4分</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num">94分</div>
+              <div class="score-label">解答题<br>9题共94分</div>
+            </div>
+          </div>
+          <div class="tip-box warning">
+            <div class="tip-title">⚠️ 核心结论</div>
+            <p>选择填空占56分，占总分近一半，是得分关键！<strong>选择填空分值高、容易失分</strong>，必须重视。</p>
+          </div>
+        </div>
+
+        <!-- 三步走 -->
+        <div class="card">
+          <div class="card-title">🎯 数学高分备考策略：三步走</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-title">夯实基础</div>
+              <p>吃透同济高数、线代，浙大概率。深入理解定义、定理和公式推导。熟记并掌握公式的应用条件。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-title">强化训练</div>
+              <p>大量刷题（李永乐全书、张宇1000题、李林880）。归纳常见题型，总结解题方法。掌握快速解题技巧。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-title">冲刺模拟</div>
+              <p>真题模拟（李林真题精析、合工大五套卷）。查漏补缺，针对薄弱环节重点强化。调整心态，自信应考。</p>
+            </div>
+          </div>
+
+          <h4 style="color:#fb7299; margin:20px 0 10px;">👨‍🏫 推荐老师与资料</h4>
+          <div class="teacher-grid">
+            <div class="teacher-item">
+              <div class="teacher-subject">高数</div>
+              <div class="teacher-name">武忠祥</div>
+            </div>
+            <div class="teacher-item">
+              <div class="teacher-subject">高数</div>
+              <div class="teacher-name">张宇</div>
+            </div>
+            <div class="teacher-item">
+              <div class="teacher-subject">高数</div>
+              <div class="teacher-name">汤家凤</div>
+            </div>
+            <div class="teacher-item">
+              <div class="teacher-subject">线代</div>
+              <div class="teacher-name">李永乐</div>
+            </div>
+            <div class="teacher-item">
+              <div class="teacher-subject">概率</div>
+              <div class="teacher-name">王式安</div>
+            </div>
+            <div class="teacher-item">
+              <div class="teacher-subject">概率</div>
+              <div class="teacher-name">余炳森</div>
+            </div>
+          </div>
+
+          <h4 style="color:#fb7299; margin:20px 0 10px;">📚 推荐习题</h4>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="tag tag-blue">李林880</span>
+            <span class="tag tag-blue">张宇1000题</span>
+            <span class="tag tag-blue">李永乐全书</span>
+            <span class="tag tag-orange">李林真题精析</span>
+            <span class="tag tag-orange">合工大五套卷</span>
+          </div>
+        </div>
+
+        <!-- 解题技巧 -->
+        <div class="card">
+          <div class="card-title">🛠️ 数学题型解题技巧</div>
+          <div class="card-grid card-grid-3">
+            <div>
+              <h4 style="color:#fb7299; margin-bottom:8px;">🎯 选择题技巧</h4>
+              <ul class="check-list">
+                <li><strong>代入法</strong>：将选项代入题干验证</li>
+                <li><strong>排除法</strong>：排除明显错误选项</li>
+                <li><strong>特殊值法</strong>：选取特殊值简化计算</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="color:#fb7299; margin-bottom:8px;">📝 填空题技巧</h4>
+              <ul class="check-list">
+                <li><strong>直接法</strong>：根据题干直接计算</li>
+                <li><strong>数形结合法</strong>：通过画图直观得出答案</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="color:#fb7299; margin-bottom:8px;">📐 解答题技巧</h4>
+              <ul class="check-list">
+                <li><strong>步骤清晰</strong>：写出详细步骤，不要跳步</li>
+                <li><strong>规范书写</strong>：使用规范的数学符号</li>
+                <li><strong>不会也写</strong>：写出相关公式也有分</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 错题本 -->
+        <div class="card">
+          <div class="card-title">📓 数学错题本的高效使用方法</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-title">整理方法</div>
+              <p>按知识点或错误原因分类，详细记录题干、错因、正确解法，标注日期和来源。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-title">复习方法</div>
+              <p>每周定期回顾，独立重做错题，总结易错点，建立知识体系。</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-title">使用技巧</div>
+              <p>考前重点冲刺，查漏补缺，针对性复习薄弱环节，建立错题类型清单。</p>
+            </div>
+          </div>
+
+          <div class="formula-box">
+            <div class="formula-title">📅 复习频率建议</div>
+            <p><strong>第1次</strong>：错题后1-2天 → <strong>第2次</strong>：错题后1周 → <strong>第3次</strong>：错题后2周 → <strong>第4次</strong>：考前1个月</p>
+          </div>
+
+          <div class="tip-box success">
+            <div class="tip-title">💡 错题分类建议</div>
+            <p>按<strong>知识点分类</strong>（高数/线代/概率）、按<strong>错误原因分类</strong>（概念不清/计算失误/方法不熟）、按<strong>难度分类</strong>（基础题/中档题/难题）。建议至少完成近10年真题的错题整理和复习。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 三科对比总结 ==================== -->
+      <section class="section" id="summary">
+        <h2 class="section-title">📋 三科备考要点速查</h2>
+        <div class="card">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>科目</th>
+                <th>开始时间</th>
+                <th>核心策略</th>
+                <th>救命资料</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>政治</strong></td>
+                <td>8月开始</td>
+                <td>选择题刷题 + 分析题背模板</td>
+                <td>肖四、肖八</td>
+              </tr>
+              <tr>
+                <td><strong>英语</strong></td>
+                <td>决定考研即开始</td>
+                <td>得阅读者得天下</td>
+                <td>真题、作文模板</td>
+              </tr>
+              <tr>
+                <td><strong>数学</strong></td>
+                <td>决定考研即开始</td>
+                <td>基础不牢地动山摇</td>
+                <td>真题、错题本</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip-box" style="margin-top:20px;">
+          <div class="tip-title">💡 公共课复习黄金法则</div>
+          <ol class="number-list">
+            <li><strong>政治</strong>：不要早开始，8月足够；选择题决定下限，分析题决定上限；肖四肖八是救命稻草。</li>
+            <li><strong>英语</strong>：单词天天背，真题反复刷；阅读是王道，作文是关键；不考听力，别浪费时间。</li>
+            <li><strong>数学</strong>：基础阶段吃透教材，强化阶段大量刷题，冲刺阶段真题模拟；错题本是最好的老师。</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 核心寄语 -->
+      <div class="tip-box" style="margin-top:40px; text-align:center;">
+        <div class="tip-title">💡 备考寄语</div>
+        <p>公共课是考研的"基本盘"，稳扎稳打才能笑到最后。<br>
+        <strong style="color:#fb7299;">政治靠突击，英语靠积累，数学靠苦练。</strong><br>
+        三科齐头并进，上岸指日可待！</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <!-- Back to Top -->
+  <div id="back-to-top"><button>↑</button></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="01-basics.html">基础常识</a>
+        <a href="02-timeline.html">备考时间线</a>
+        <a href="03-public-courses.html">公共课备考</a>
+        <a href="04-major.html">专业课备考</a>
+        <a href="05-school-selection.html">考研择校</a>
+        <a href="06-mindset-career.html">心态与就业</a>
+        <a href="07-faq.html">常见问题</a>
+        <a href="08-methods.html">学习方法</a>
+        <a href="experience.html">上岸经验贴</a>
+      </div>
+      <p>内容由 <a href="#">@一只通信考研的er</a> 整理制作 | 仅供考研学习交流使用</p>
+      <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
+    </div>
+  </footer>
+<script>
+(function(){
+  const btn=document.getElementById('back-to-top');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>300);
+  });
+  btn.querySelector('button').addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

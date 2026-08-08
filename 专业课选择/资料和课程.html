@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27控制专业课课程介绍</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif; background: linear-gradient(135deg, #F5F0F7 0%, #E8E0F0 100%); min-height: 100vh; padding: 20px; color: #2d2d3d; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        /* 导航栏 */
+        .top-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        .top-nav-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #FFFFFF; border-radius: 8px; font-size: 13px; font-weight: 600; color: #4A5570; text-decoration: none; box-shadow: 0 2px 8px rgba(184,164,216,0.2); transition: all 0.2s; }
+        /* Subject-specific tag colors */
+        .subject-tag.tag-signal { background: linear-gradient(135deg, #E8E0F0, #F5F0F7); color: #5D4E75; border-color: #D1C4E9; }
+        .subject-tag.tag-signal:hover { background: linear-gradient(135deg, #B8A4D8, #C5B4D8); color: white; }
+        .subject-tag.tag-digital { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); color: #1565C0; border-color: #90CAF9; }
+        .subject-tag.tag-digital:hover { background: linear-gradient(135deg, #42A5F5, #1E88E5); color: white; }
+        .subject-tag.tag-analog { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #E65100; border-color: #FFCC80; }
+        .subject-tag.tag-analog:hover { background: linear-gradient(135deg, #FF8A65, #F4511E); color: white; }
+        .subject-tag.tag-comm { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #2E7D32; border-color: #A5D6A7; }
+        .subject-tag.tag-comm:hover { background: linear-gradient(135deg, #66BB6A, #43A047); color: white; }
+        .subject-tag.tag-circuit { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); color: #C62828; border-color: #EF9A9A; }
+        .subject-tag.tag-circuit:hover { background: linear-gradient(135deg, #EF5350, #E53935); color: white; }
+        .subject-tag.tag-dsp { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); color: #7B1FA2; border-color: #CE93D8; }
+        .subject-tag.tag-dsp:hover { background: linear-gradient(135deg, #AB47BC, #8E24AA); color: white; }
+        .subject-tag.tag-em { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); color: #006064; border-color: #80DEEA; }
+        .subject-tag.tag-em:hover { background: linear-gradient(135deg, #26C6DA, #00BCD4); color: white; }
+        .subject-tag.tag-semi { background: linear-gradient(135deg, #FFF8E1, #FFECB3); color: #F57F17; border-color: #FFE082; }
+        .subject-tag.tag-semi:hover { background: linear-gradient(135deg, #FFD54F, #FFC107); color: white; }
+        .subject-tag.tag-semi2 { background: linear-gradient(135deg, #E0F2F1, #B2DFDB); color: #00695C; border-color: #80CBC4; }
+        .subject-tag.tag-semi2:hover { background: linear-gradient(135deg, #26A69A, #00897B); color: white; }
+        
+        /* Teacher avatar colors */
+        .teacher-avatar.avatar-1 { background: linear-gradient(135deg, #B8A4D8, #C5B4D8); }
+        .teacher-avatar.avatar-2 { background: linear-gradient(135deg, #42A5F5, #1E88E5); }
+        .teacher-avatar.avatar-3 { background: linear-gradient(135deg, #FF8A65, #F4511E); }
+        .teacher-avatar.avatar-4 { background: linear-gradient(135deg, #66BB6A, #43A047); }
+        .teacher-avatar.avatar-5 { background: linear-gradient(135deg, #EC407A, #D81B60); }
+        .teacher-avatar.avatar-6 { background: linear-gradient(135deg, #EF5350, #E53935); }
+        .teacher-avatar.avatar-7 { background: linear-gradient(135deg, #FFD54F, #FFB300); }
+        
+        /* School logo in teacher cards */
+        .teacher-school-logo {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 6px;
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: #fff;
+            display: inline-block;
+        }
+        
+        .top-nav-link:hover { background: linear-gradient(135deg, #B8A4D8, #9A8AC8); color: #fff; transform: translateY(-2px); }
+        
+        .header { text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, #B8A4D8 0%, #C5B4D8 100%); border-radius: 16px; color: white; box-shadow: 0 4px 15px rgba(184,164,216,0.3); }
+        .header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header p { font-size: 1rem; opacity: 0.9; }
+        
+        /* 页面切换 */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        /* 课程区块 */
+        .course-section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .course-section-title { font-size: 1.3rem; font-weight: 900; color: #B71C1C; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        
+        /* 资料体系概览 */
+        .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; }
+        .overview-grid:nth-of-type(1) { grid-template-columns: repeat(4, 1fr); }
+        .overview-card { background: #FFFFFF; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+        .overview-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(184,164,216,0.3); border-color: rgba(184,164,216,0.3); }
+        /* 马卡龙配色 - 第一个grid (7个卡片) */
+        .overview-grid:nth-of-type(1) > :nth-child(2) { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
+        .overview-grid:nth-of-type(1) > :nth-child(3) { background: linear-gradient(135deg, #FFF9C4, #FFE082); }
+        .overview-grid:nth-of-type(1) > :nth-child(4) { background: linear-gradient(135deg, #E8F5E9, #A5D6A7); }
+        .overview-grid:nth-of-type(1) > :nth-child(5) { background: linear-gradient(135deg, #F3E5F5, #CE93D8); }
+        .overview-grid:nth-of-type(1) > :nth-child(6) { background: linear-gradient(135deg, #FFF3E0, #FFCC80); }
+        .overview-grid:nth-of-type(1) > :nth-child(7) { background: linear-gradient(135deg, #E1F5FE, #81D4FA); }
+        /* 马卡龙配色 - 第二个grid (3个卡片) */
+        .overview-grid:nth-of-type(2) > :nth-child(1) { background: linear-gradient(135deg, #FFF3E0, #FFCC80); }
+        .overview-grid:nth-of-type(2) > :nth-child(2) { background: linear-gradient(135deg, #E1F5FE, #81D4FA); }
+        .overview-grid:nth-of-type(2) > :nth-child(3) { background: linear-gradient(135deg, #F1F8E9, #C5E1A5); }
+        .overview-card-icon { font-size: 2rem; margin-bottom: 6px; }
+        .overview-card-cover { width: calc(100% + 28px); height: 280px; object-fit: contain; border-radius: 10px 10px 0 0; margin: -14px -14px 10px -14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.3s; background: #f5f5f5; }
+        .overview-card:hover .overview-card-cover { transform: scale(1.02); }
+        .overview-card-title { font-weight: 800; color: #2d2d3d; font-size: 14px; margin-bottom: 4px; }
+        .overview-card-desc { font-size: 11px; color: #6a6a7a; }
+        .overview-card-hint { font-size: 10px; color: #B71C1C; font-weight: 700; margin-top: 4px; }
+        
+        /* 科目标签 */
+        .subject-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; justify-content: center; padding: 10px 0; }
+        .subject-tag { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; background: linear-gradient(135deg, #E8E0F0, #F5F0F7); border-radius: 20px; font-size: 13px; font-weight: 700; color: #5D4E75; border: 1px solid #D1C4E9; transition: all 0.2s; }
+        .subject-tag:hover { background: linear-gradient(135deg, #B8A4D8, #C5B4D8); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(184,164,216,0.3); }
+        
+        /* 表格样式 */
+        .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 10px; }
+        .data-table thead { background: linear-gradient(135deg, #B8A4D8, #C5B4D8); color: white; }
+        .data-table th { padding: 12px 10px; text-align: center; font-weight: 800; font-size: 13px; border: 1px solid #C5B4D8; }
+        .data-table td { padding: 10px; border: 1px solid #E0E0E0; line-height: 1.6; vertical-align: middle; }
+        .data-table tbody tr:nth-child(even) { background: #FAF7FC; }
+        .data-table tbody tr:hover { background: #F0E6FA; }
+        .data-table td:first-child { font-weight: 700; color: #4A5570; background: #F8F5FA; width: 140px; }
+        .data-table .col-check { text-align: center; width: 80px; font-size: 18px; }
+        .check-yes { color: #2E7D32; font-weight: 700; }
+        .col-desc { color: #555; font-size: 12.5px; }
+
+        /* 课程架构表（Part1 精品课程） */
+        .course-arch-table td:first-child { width: 200px; }
+        .course-arch-table .col-hour { width: 80px; text-align: center; white-space: nowrap; color: #C0392B; font-weight: 800; }
+        .course-arch-table .col-check { width: 64px; font-size: 16px; }
+        .course-arch-table .tier-num { color: #C0392B; font-weight: 800; font-size: 13px; white-space: nowrap; }
+        .course-tagline { display: block; font-size: 11.5px; font-weight: 600; color: #E67E22; margin-top: 2px; }
+        .arch-group-row td { background: linear-gradient(135deg, #B8A4D8, #C5B4D8) !important; color: #fff; font-weight: 800; font-size: 14px; text-align: left; }
+        .arch-group-row .col-check { color: #fff; }
+        .part2-table td:first-child { width: 220px; }
+
+        /* 师资卡片 */
+        .teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+        .teacher-card { background: #FFFFFF; border-radius: 14px; padding: 18px; border: 2px solid #F0E6FA; transition: all 0.3s; display: flex; gap: 14px; align-items: flex-start; }
+        .teacher-card:hover { border-color: #B8A4D8; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(184,164,216,0.2); }
+        .teacher-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #B8A4D8, #C5B4D8); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+        .teacher-info { flex: 1; }
+        .teacher-name { font-size: 15px; font-weight: 900; color: #B71C1C; margin-bottom: 4px; }
+        .teacher-title { font-size: 12px; color: #B8A4D8; font-weight: 700; margin-bottom: 6px; }
+        .teacher-desc { font-size: 12px; color: #555; line-height: 1.6; }
+        
+        /* 高分喜报 */
+        .score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .score-card { background: #fff; border-radius: 12px; overflow: hidden; border: 2px solid #FFF176; transition: all 0.3s; cursor: pointer; }
+        .score-card:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 8px 20px rgba(255,183,77,0.25); }
+        .score-card img { width: 100%; height: auto; object-fit: contain; display: block; }
+        .score-school { font-size: 13px; font-weight: 700; color: #4A5570; margin-bottom: 6px; }
+        .score-number { font-size: 26px; font-weight: 900; color: #B71C1C; margin-bottom: 4px; }
+        .score-label { font-size: 11px; color: #6a6a7a; font-weight: 600; }
+        
+        /* 按钮 */
+        .btn { display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #B8A4D8, #C5B4D8); color: white; border-radius: 8px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(184,164,216,0.4); }
+        .btn-outline { background: transparent; border: 2px solid #B8A4D8; color: #B8A4D8; }
+        .btn-outline:hover { background: #B8A4D8; color: white; }
+        
+        /* 详情卡片 */
+        .detail-card { background: #FFFFFF; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 10px; }
+        .detail-card-title { font-weight: 800; color: #F57F17; font-size: 16px; margin-bottom: 6px; }
+        .detail-card-desc { font-size: 13px; color: #2d2d3d; line-height: 1.7; }
+        
+        /* 模态框 - 宝典S & 刷题本 */
+        .baodian-s-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.75); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+        .baodian-s-modal-overlay.active { display: flex; }
+        .baodian-s-modal { background: #FFFFFF; border-radius: 16px; max-width: 90vw; width: 100%; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .baodian-s-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #E8EAF6; }
+        .baodian-s-modal-header h3 { font-size: 1.2rem; font-weight: 900; color: #2d2d3d; margin: 0; }
+        .baodian-s-modal-close { background: none; border: none; font-size: 1.5rem; color: #6a6a7a; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .baodian-s-modal-close:hover { background: #F5F0F7; color: #B71C1C; }
+        .baodian-s-modal-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 80vh; position: relative; background: #F5F0F7; }
+        .baodian-s-modal-img { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 8px; transition: opacity 0.3s, max-width 0.3s, max-height 0.3s; }
+        .baodian-s-modal-img.fullscreen { max-width: 95vw; max-height: 95vh; width: auto; height: auto; }
+        .baodian-s-expand-btn { background: rgba(255,255,255,0.9); border: none; border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; color: #4A5570; font-weight: 600; transition: all 0.2s; }
+        .baodian-s-expand-btn:hover { background: #B8A4D8; color: white; }
+        .baodian-s-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; font-size: 1.2rem; color: #2d2d3d; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 2; }
+        .baodian-s-nav-btn:hover { background: #B8A4D8; color: white; }
+        .baodian-s-nav-btn.prev { left: 12px; }
+        .baodian-s-nav-btn.next { right: 12px; }
+        .baodian-s-modal-footer { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; border-top: 1px solid #E8EAF6; }
+        .baodian-s-counter { font-size: 0.9rem; color: #6a6a7a; font-weight: 600; min-width: 60px; text-align: center; }
+        .baodian-s-dots { display: flex; gap: 8px; justify-content: center; flex: 1; }
+        .baodian-s-dot { width: 8px; height: 8px; border-radius: 50%; background: #E0E0E0; border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
+        .baodian-s-dot.active { background: #B8A4D8; transform: scale(1.3); }
+        .baodian-s-dot:hover { background: #C5B4D8; }
+        
+        /* 择校宝典 - 大竖版卡片 */
+        .book-showcase-card {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 380px;
+        }
+        .book-showcase-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255,183,77,0.3);
+            border-color: rgba(255,183,77,0.4);
+        }
+        .book-showcase-cover {
+            width: 180px;
+            height: 240px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            margin-bottom: 16px;
+            transition: transform 0.3s;
+        }
+        .book-showcase-card:hover .book-showcase-cover {
+            transform: scale(1.05);
+        }
+        .book-showcase-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #B71C1C;
+            margin-bottom: 6px;
+        }
+        .book-showcase-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .book-showcase-hint {
+            font-size: 12px;
+            color: #E65100;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .baodian-s-modal { max-width: 100%; border-radius: 12px; }
+            .baodian-s-modal-body { min-height: 280px; padding: 12px; }
+            .baodian-s-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
+            .baodian-s-modal-img { max-height: 55vh; }
+            .data-table { font-size: 12px; }
+            .data-table th, .data-table td { padding: 8px 6px; }
+            .data-table td:first-child { width: 100px; }
+            .teacher-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="top-nav">
+            <a href="../index.html" class="top-nav-link">🏠 首页</a>
+        </div>
+        
+        <!-- 资料体系概览 -->
+        <div class="course-section" id="courseOverview">
+            <div class="course-section-title">📊 万人教育资料体系概览</div>
+            <div class="overview-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="book-showcase-card" onclick="showZexiaoBookGallery()">
+                    <img class="book-showcase-cover" src="images/择校宝典/txkybook.jpg" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
+                    <div class="book-showcase-title">📕 27控制类择校宝典</div>
+                    <div class="book-showcase-desc">覆盖217所高校<br>1090+专业方向数据<br>分数线/科目/报录比全收录</div>
+                    <div class="book-showcase-hint">👆 点击查看内页详情</div>
+                </div>
+                <div class="overview-card" onclick="show660Gallery()">
+                    <img class="overview-card-cover" src="images/660/image33.jpg" alt="660题" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📝</div>
+                    <div class="overview-card-title">660题</div>
+                    <div class="overview-card-desc">经典习题集<br>强化阶段必备</div>
+                    <div class="overview-card-hint">👆 点击查看详情</div>
+                </div>
+                <div class="overview-card" onclick="showBaodianSModal()">
+                    <img class="overview-card-cover" src="images/宝典S/宝典S.jpg" alt="宝典S" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📖</div>
+                    <div class="overview-card-title">宝典S</div>
+                    <div class="overview-card-desc">精编复习讲义<br>基础阶段核心</div>
+                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                </div>
+                <div class="overview-card" onclick="showBaodianAModal()">
+                    <img class="overview-card-cover" src="images/宝典SABD/宝典A.jpg" alt="宝典A" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📋</div>
+                    <div class="overview-card-title">宝典A</div>
+                    <div class="overview-card-desc">历年真题<br>真题演练必备</div>
+                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                </div>
+                <div class="overview-card">
+                    <img class="overview-card-cover" src="images/宝典SABD/宝典B.jpg" alt="宝典B" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📄</div>
+                    <div class="overview-card-title">宝典B</div>
+                    <div class="overview-card-desc">模拟试卷10套<br>查漏补缺</div>
+                </div>
+                <div class="overview-card">
+                    <img class="overview-card-cover" src="images/宝典SABD/宝典C.jpg" alt="宝典C" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">🎯</div>
+                    <div class="overview-card-title">宝典C</div>
+                    <div class="overview-card-desc">冲刺预测4套<br>考前点睛</div>
+                </div>
+                <div class="overview-card" onclick="showBaodianDModal()">
+                    <img class="overview-card-cover" src="images/宝典D/0de98d12f311f07732d2e81e27606a51.jpg" alt="宝典D" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📚</div>
+                    <div class="overview-card-title">宝典D</div>
+                    <div class="overview-card-desc">专项训练，难点勤练<br>板块化训练，强化爬坡必备</div>
+                    <div class="overview-card-hint">（仅电路、半导体物理、电磁场、数字信号处理赠送）</div>
+                </div>
+            </div>
+            <div class="overview-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 10px;">
+                <div class="overview-card" onclick="showFormulaBookGallery()">
+                    <img class="overview-card-cover" src="images/公式宝典/bli.jpg" alt="各科公式宝典" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📐</div>
+                    <div class="overview-card-title">各科公式宝典</div>
+                    <div class="overview-card-desc">由上交高分学长编写<br>深度解析每个公式</div>
+                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                </div>
+                <div class="overview-card" onclick="showWorkbookGallery()">
+                    <img class="overview-card-cover" src="images/刷题本/image (2).jpg" alt="课后题刷题本" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">🖊️</div>
+                    <div class="overview-card-title">课后题刷题本</div>
+                    <div class="overview-card-desc">市面电子通信考研独一份<br>主流版本重点习题</div>
+                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                </div>
+                <div class="overview-card" onclick="showRealExamGallery()">
+                    <img class="overview-card-cover" src="images/真题/屏幕截图 2026-06-19 153327.jpg" alt="各院校真题电子档合集" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <div class="overview-card-icon" style="display:none">📄</div>
+                    <div class="overview-card-title">各院校真题电子档合集</div>
+                    <div class="overview-card-desc">免费开源领取</div>
+                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header">
+            <h1>📚 万人教育控制考研课程</h1>
+            <p>27控制专业课课程介绍</p>
+        </div>
+        
+        <!-- Part1 精品课程 -->
+        <div class="course-section" id="part1">
+            <div class="course-section-title">📚 Part1 精品课程</div>
+            <p style="margin:-4px 0 14px; font-size:12.5px; color:#999;">课程架构及亮点 —— 万人教育 27 控制专业课完整体系</p>
+            <div style="overflow-x: auto;">
+                <table class="data-table course-arch-table">
+                    <thead>
+                        <tr>
+                            <th>课程模块</th>
+                            <th class="col-hour">课时</th>
+                            <th class="col-check">全程班</th>
+                            <th class="col-check">督学班</th>
+                            <th class="col-check">一对一</th>
+                            <th class="col-check">SVIP</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🌱 自控零基础课<span class="course-tagline">跨考福音 · 针对控制小白</span></td>
+                            <td class="col-hour">3课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">教务团队直击痛点，重新打磨27零基础内容！手把手教学，短时间高效突击！彻底理解自控中的数学语言、摆脱公式恐惧，建立学习信心，为正式课打下扎实基础！涵盖复变函数、拉普拉斯变换、电路相关知识、力学相关知识等讲解，通过实际例题，演示数学工具如何解决稳定性分析、系统建模等问题！</td>
+                        </tr>
+                        <tr>
+                            <td>📘 自控基础课<span class="course-tagline">27升级更新 · 上岸学员强推</span></td>
+                            <td class="col-hour">40课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">万人教育核心课程，夯实理论基础！减少无效复习时间，考研复习不漏盲点，广度有保障！定校后针对院校考点全面覆盖，巩固理论基础。只讲大纲对应的控制考研知识点及典型基础例题；只练大纲对应的基础阶段对应练习。</td>
+                        </tr>
+                        <tr>
+                            <td>📗 现控基础课</td>
+                            <td class="col-hour">35课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">三步通关现控：理论、例题、自测！将核心内容拆解为清晰的知识模块，搭配典型例题、章末自测进行实战演练，通过"学完就练、练完就测"的循环强化模式，形成完整的学习闭环，确保知识从输入到输出的高效转化。定校后针对院校知识点。</td>
+                        </tr>
+                        <tr>
+                            <td>✏️ 自控强化习题课</td>
+                            <td class="col-hour">30课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">对课本母题和考研常考的一类题目进行专题讲解，高效掌握该类题目的解题通法，剖析考研专业课命题规律，梳理解题思路，归纳解题窍门；通过典型题型、重点提升、勇攀高峰多板块、多难度不同类型的例题，带你吃透真题，融会贯通！定校后针对院校知识点。</td>
+                        </tr>
+                        <tr>
+                            <td>🚀 自控冲刺专题课</td>
+                            <td class="col-hour">8课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">三套组合拳：知识点概括+易错题总结+重难点讲解，降低时间成本，高效补足短板！</td>
+                        </tr>
+                        <tr>
+                            <td>🧠 现控强化习题课</td>
+                            <td class="col-hour">30课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">包含题型归类+方法总结，讲练结合超高效！以实战为导向讲解，提升应试解题能力，突破提分瓶颈！讲透题目背后的原理与技巧，培养考试应变与审题能力，实现从"学过"到"考得好"的关键跃迁！定校后聚焦考纲考点，覆盖真题考察题型。</td>
+                        </tr>
+                        <tr>
+                            <td>⚡ 现控冲刺专题课</td>
+                            <td class="col-hour">10课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">考点精要速通，考前高效补缺！核心知识点高度浓缩，帮你快速回顾必考点；汇总高频易错题型，拆解陷阱套路，让你精准避坑；直击重难点突破技巧，扫清得分盲区！</td>
+                        </tr>
+                        <tr>
+                            <td>📜 真题讲解课</td>
+                            <td class="col-hour">12课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">至少八年真题讲解！高分学长学姐逐题深度剖析，不光带你看选项对错，更一步步展示完整解题思路与过程；从题干分析到答案推导，手把手带着做透每一道题，让你真正弄懂真题、会用方法！</td>
+                        </tr>
+                        <tr>
+                            <td>📌 划重点课程</td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">深度融合历年真题命题规律，凭借对本校考试的深刻洞察，像"指南针"般帮你牢牢锁定复习侧重点。让你备考靶向性更强，避开无效复习，冲刺高分更有底气！</td>
+                        </tr>
+                        <tr>
+                            <td>📖 胡寿松课后题讲解</td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">深度精讲，不放过任何一个得分细节！学透这些习题，不仅能夯实教材基础，更能掌握应试关键技巧，让复习节奏尽在掌控，应对考试游刃有余！</td>
+                        </tr>
+                        <tr class="arch-group-row">
+                            <td colspan="7">⭐ 独家特色课程 —— 衔接基础与强化的进阶服务模块</td>
+                        </tr>
+                        <tr>
+                            <td>⏱️ 自控短时通关课</td>
+                            <td class="col-hour">15课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">基础强化阶段衔接课程！短时间内高效梳理自控核心概念，系统总结基础方法；通过精准引导快速唤醒知识记忆，筑牢基础认知，让强化阶段的深度学习衔接更顺畅、进阶更高效！</td>
+                        </tr>
+                        <tr class="arch-group-row">
+                            <td colspan="7">🎯 知识点分类强化精讲 —— 模块化精讲核心考点，分类整理近5年高频考题</td>
+                        </tr>
+                        <tr>
+                            <td>📺 直播专题课</td>
+                            <td class="col-hour">5-10课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">模块化精讲核心考点：系统梳理控制理论核心知识框架。系统归纳高频题型：分类整理近5年高频考题。直播互动剖析技巧：实时演示快速解题秘诀、在线即时答疑解惑。注意：报名后开启，报名前已直播内容为回放，直播时间、时长以实际为准。</td>
+                        </tr>
+                        <tr class="arch-group-row">
+                            <td colspan="7">🏫 小班授课 —— 核心讲师面对面专题答疑，小班教学深度互动</td>
+                        </tr>
+                        <tr>
+                            <td>👨‍🏫 核心讲师面对面专题答疑课</td>
+                            <td class="col-hour">5-10课时+</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">依据学员的真实反馈及学习回访情况，万人教育核心讲师针对大家普遍反映的重难点问题，特开设专题式面对面小灶课程，深入剖析其背后的原理及解题技巧。</td>
+                        </tr>
+                        <tr>
+                            <td>🏫 目标院校专题点睛课</td>
+                            <td class="col-hour">5课时+</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">目标院校的直系高分学长汇总学员普遍存在的疑问，结合自身成功上岸的备考经验，开展针对性的专题直播授课，精准规避学长曾走过的弯路，助你掌握更高效的学习方法！</td>
+                        </tr>
+                        <tr>
+                            <td>🤝 一对一授课</td>
+                            <td class="col-hour">20/40课时</td>
+                            <td class="col-check"></td><td class="col-check"></td><td class="col-check tier-num">20课时</td><td class="col-check tier-num">40课时</td>
+                            <td class="col-desc">额外一对一专属课程，时间灵活安排，专为个人情况量身定制，进行一对一教学，并配备专属班主任全程监督与答疑，助力学员高效规划学习进度。</td>
+                        </tr>
+                        <tr class="arch-group-row">
+                            <td colspan="7">⭐ 全程答疑 —— 清华鲁老师坐镇，顶尖985高分学长学姐组成答疑天团，备考期间全程陪伴</td>
+                        </tr>
+                        <tr>
+                            <td>💬 全程答疑</td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check"></td><td class="col-check"></td><td class="col-check"></td>
+                            <td class="col-desc">采用文字答疑、图片答疑、手写答疑、语音答疑等多种答疑形式为你解惑，帮你减负。由清华鲁老师坐镇，顶尖985高分学长学姐组成的答疑天团，备考期间全程陪伴，保姆式答疑节假日也"不断更"，日答疑时长超10小时。</td>
+                        </tr>
+                        <tr>
+                            <td>📺 答疑直播</td>
+                            <td class="col-hour">近20课时+</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">理想老师每月定期收集学员问题，现场剖析题目解答步骤，学习如何巧妙得高分！支持弹幕提问，当场解决问题，专治疑难杂症！注意：报名后开启，报名前已直播内容为回放，直播时间、时长以实际为准。</td>
+                        </tr>
+                        <tr>
+                            <td>🧮 数学答疑</td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check tier-num">可选</td><td class="col-check tier-num">赠送</td><td class="col-check tier-num">赠送</td><td class="col-check tier-num">赠送</td>
+                            <td class="col-desc">源自顶尖985的数学高分答疑师资天团，全程高水平答疑，热情耐心解决你数学备考上的各类疑难杂症。</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin:10px 0 0; font-size:12px; color:#999;">✅ 表示该档位包含此课程/服务；「20课时 / 40课时」表示一对一授课在对应档位中包含的课时数；「可选 / 赠送」表示数学答疑在各档位的附加方式。</p>
+            </div>
+        </div>
+
+        <!-- Part2 独家宝典 -->
+        <div class="course-section" id="part2">
+            <div class="course-section-title">📖 Part2 独家资料</div>
+            <div style="overflow-x: auto;">
+                <table class="data-table part2-table">
+                    <thead>
+                        <tr>
+                            <th>资料名称</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>📖 宝典A</td>
+                            <td class="col-desc">院校真题合集，配有顶尖专业高分学长独家解析：不止给出标准答案，更深度拆解做题步骤，用过来人的实战视角带你看透真题背后的得分逻辑，冲刺阶段开启，效率直逼巅峰！</td>
+                        </tr>
+                        <tr>
+                            <td>📗 宝典S</td>
+                            <td class="col-desc">内容科学系统，定校后知识点难度与内容贴合院校风格，搭建导学、知识点、思考题、本节习题、主讲老师点评、章末自测的学习模块，选取精品好题拓宽思路！适配基础课程。</td>
+                        </tr>
+                        <tr>
+                            <td>📙 宝典B</td>
+                            <td class="col-desc">选取经典题目，组成专题，定校后结合历年真题特点及考察难度，并适度拓展延伸。答案册中精心整理了实用手算方法，助力大家高效适应无计算器作答环境，突出重围！适配强化课程。</td>
+                        </tr>
+                        <tr>
+                            <td>📄 宝典C</td>
+                            <td class="col-desc">院校冲刺模拟卷6套，命题源于真题又高于真题，贴近考试风格！往届学员封称"押题卷"！</td>
+                        </tr>
+                        <tr>
+                            <td>📚 宝典O</td>
+                            <td class="col-desc">零基础课程配套文件，既是课前预习的"向导"，帮你提前熟悉关键术语；也是课中同步的"笔记助手"，为后续学习筑牢根基！</td>
+                        </tr>
+                        <tr>
+                            <td>📖 短时通关课配套讲义</td>
+                            <td class="col-desc">补充自控知识，过渡基础到强化。</td>
+                        </tr>
+                        <tr>
+                            <td>📝 自动控制原理1~8章章末检测卷、强化阶段真题模拟月考</td>
+                            <td class="col-desc">配套课程进度，阶段检测学习效果，查漏补缺。</td>
+                        </tr>
+                        <tr>
+                            <td>🧠 1~8章知识点控制考研考点思维导图</td>
+                            <td class="col-desc">考点脉络一图梳理，复习更有全局感。</td>
+                        </tr>
+                        <tr>
+                            <td>📐 考前"一小时搞定自控"一张纸</td>
+                            <td class="col-desc">核心考点浓缩精华，考前冲刺必备。</td>
+                        </tr>
+                        <tr>
+                            <td>✍️ 纯手搓（禁用计算器）算题技巧</td>
+                            <td class="col-desc">考场禁计算器环境下的高效手算方法，突出重围！</td>
+                        </tr>
+                        <tr>
+                            <td>📅 每日一题合集（含视频讲解）</td>
+                            <td class="col-desc">每日一题持续训练，保持手感，配套精讲视频。</td>
+                        </tr>
+                        <tr>
+                            <td>🎯 百所院校真题题目及万人教育独家精细讲解</td>
+                            <td class="col-desc">全部公开！真题根本练不完！万人教育独家精细讲解，精讲精练。</td>
+                        </tr>
+                        <tr>
+                            <td>🏛️ 择校宝典、葵花宝典、就业宝典等资料</td>
+                            <td class="col-desc">一站式配套择校与就业指导资料。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Part3 全程保姆式服务 -->
+        <div class="course-section" id="part3">
+            <div class="course-section-title">🤝 Part3 贴心服务</div>
+            <div style="overflow-x: auto;">
+                <table class="data-table course-arch-table">
+                    <thead>
+                        <tr>
+                            <th>服务模块</th>
+                            <th class="col-hour">课时</th>
+                            <th class="col-check">全程班</th>
+                            <th class="col-check">督学班</th>
+                            <th class="col-check">一对一</th>
+                            <th class="col-check">SVIP</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>📅 月考<span class="course-tagline">独家服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">根据学员目标院校及复习情况分梯度命题、统一组织月考、限时答卷再现考场考试氛围、批改排名并直播讲解、设置阶段性复习规划，助力各位学员及时查漏补缺。注意：月考为报名后开启，统一考核以实际情况为准~</td>
+                        </tr>
+                        <tr>
+                            <td>🎯 择校指导<span class="course-tagline">一对一</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">由控制阿祖亲自负责，结合考生情况、意愿给出多选项指导建议！</td>
+                        </tr>
+                        <tr>
+                            <td>👨‍🏫 班主任制度<span class="course-tagline">陪伴式解惑</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">由重点院校上岸学长学姐担任管理，进行复习规划与督学并跟进度，提供一对一服务，全程紧跟你的节奏！</td>
+                        </tr>
+                        <tr>
+                            <td>💬 班会课<span class="course-tagline">陪伴式解惑</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">由院校班主任主持，不固定时间段开启，对遇到复习问题进行答疑解惑，结合本校专业特色与备考规律，给出科学的学习规划建议，让每一步努力都精准踩在提分节点上，备考更有方向、更高效！</td>
+                        </tr>
+                        <tr>
+                            <td>📝 模拟考试<span class="course-tagline">以考代练</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">组织学员至少1-2次模拟考试，并进行直播答疑，国庆期间配有"国庆大联考"，四科全部包含，对复习成果进行阶段性测验！</td>
+                        </tr>
+                        <tr>
+                            <td>📱 专属学习打卡群<span class="course-tagline">督学专属服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">由经验丰富的班主任统一管理，每日进行督学打卡，提供四科学习进度的详细反馈，及时调整学习计划，确保复习效果更有保障！</td>
+                        </tr>
+                        <tr>
+                            <td>🧑‍🤝‍🧑 专属小群答疑<span class="course-tagline">督学专属服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">高分上岸学长学姐担任答疑老师，热情耐心地全天候高水平答疑，无固定答疑时间，学长看到即回！</td>
+                        </tr>
+                        <tr>
+                            <td>📋 专属周计划<span class="course-tagline">督学专属服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">每周由班主任制定个性化专属复习计划表格，紧密结合每周学习情况，并更新复习计划。</td>
+                        </tr>
+                        <tr>
+                            <td>🔍 专属督学回访<span class="course-tagline">督学专属服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">由班主任定期一对一督学回访，有效解决学习过程中的问题，结合学长备考经验，给出更高效的学习建议，不限于电话、语音、文字等形式，全程陪伴。</td>
+                        </tr>
+                        <tr>
+                            <td>📊 专属测评<span class="course-tagline">督学专属服务</span></td>
+                            <td class="col-hour">—</td>
+                            <td class="col-check"></td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td><td class="col-check check-yes">✅</td>
+                            <td class="col-desc">小班学员每月至少2次定期专题测试，检查自身学习情况，根据测试暴露出来的问题针对性查漏补缺，核心老师给予批改，反馈学习意见。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 豪华师资介绍 -->
+        <div class="course-section" id="teachers">
+            <div class="course-section-title">👨‍🏫 豪华师资介绍</div>
+            <div class="teacher-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar avatar-1">🎓</div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">清华鲁老师</div>
+                        <div class="teacher-title"><img class="teacher-school-logo" src="images/校徽/清华大学.jpg" alt="" onerror="this.style.display='none'" loading="lazy">学霸名师 · 自控主讲</div>
+                        <div class="teacher-desc">清华本硕，国家奖学金得主，七年一线授课经验。清华大学自动控制原理专业课助教，精通自控专业课，辅导认真负责，讲课风趣幽默，对自控原理考点极熟悉，擅长搭建知识框架，梳理典型题型，总结常见错误，帮助10000+考生圆梦研究生！</div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar avatar-2">📺</div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">理想老师</div>
+                        <div class="teacher-title">百万播放 · 专题主讲</div>
+                        <div class="teacher-desc">顶尖双一流本硕，考研成绩430+，初复试均第一。B站控制考研系列课程数百万播放量，深耕控制考研领域，熟悉自控、现控考研重难点，善于总结题型和做题技巧，精准掌握考研命题规律和考点。</div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar avatar-3">👩‍🎓</div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">指纹学姐</div>
+                        <div class="teacher-title"><img class="teacher-school-logo" src="images/校徽/中国科学院大学.jpg" alt="" onerror="this.style.display='none'" loading="lazy">专业过硬 · 现控主讲</div>
+                        <div class="teacher-desc">国科大硕士，控制A+985本科，熟悉各校现控考点，值得信赖的高颜值学姐。细致与巧妙，是指纹学姐的教学风格。</div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar avatar-4">✍️</div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">元芳老师</div>
+                        <div class="teacher-title"><img class="teacher-school-logo" src="images/校徽/西安交通大学.jpg" alt="" onerror="this.style.display='none'" loading="lazy">钻研真题 · 月考主讲</div>
+                        <div class="teacher-desc">本硕西交，专注控制真题精研，对知识脉络与命题趋势有着精准把握，擅长从海量真题中提炼核心高频考点与经典解题模型，化繁为简，直击要害，是让学员完成从听懂到做对"闭环"的做题家。</div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar avatar-5">💡</div>
+                    <div class="teacher-info">
+                        <div class="teacher-name">柔柔老师</div>
+                        <div class="teacher-title">深耕专业 · 习题类主讲</div>
+                        <div class="teacher-desc">C9硕士，拥有扎实的控制学术基础和丰富的辅导经验，能快速定位学生的知识盲区，擅长用通俗易懂的方式讲解复杂知识，逻辑清晰，语言生动。善于从学生角度出发，精准找出学习难点、高频考点与易错陷阱，帮助学生快速掌握重点章节和常考题型。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 高分喜报 -->
+        <div class="course-section" id="scores">
+            <div class="course-section-title">🎉 高分喜报</div>
+            <div class="score-grid" onclick="showXibaoGallery()">
+                <div class="score-card"><img src="images/喜报/18f0529882b8b605cecbd2adc27a49b4.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/19AF8EEBCB2021E074BEEAA7FFC59715.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/2DA0E157DE514F3D18E086D225EF8ADF.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/394d6e50791847b89c082962b4109150.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/407.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/4A3DD741570E1149149FAA6F8F495F1A.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/5aaf74b3f7c0b226f0894d156e22ecd3.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/61e67934220bc3ef1fd72e3e2f843b87.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/7520631080f76a96773d69a0aedaa926.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/802喜报1.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/826喜报1.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/882喜报1.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/882喜报2.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/e2089e3f3fea10a93d83624842ab499b.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/mmexport1772272186963.jpg" alt="高分喜报"></div>
+                <div class="score-card"><img src="images/喜报/单个高分喜报_01.jpg" alt="高分喜报"></div>
+            </div>
+            <div style="text-align:center; margin-top:12px; font-size:13px; color:#6a6a7a;">👆 点击图片查看全部高分喜报</div>
+        </div>
+        
+    </div>
+    
+    <!-- 宝典S & 刷题本 图片展示模态框 -->
+    <div class="baodian-s-modal-overlay" id="baodianSModal">
+        <div class="baodian-s-modal">
+            <div class="baodian-s-modal-header">
+                <h3 id="galleryModalTitle">📖 宝典S 精编复习讲义</h3>
+                <button class="baodian-s-modal-close" onclick="hideBaodianSModal()">&times;</button>
+            </div>
+            <div class="baodian-s-modal-body" id="baodianSModalBody">
+                <button class="baodian-s-nav-btn prev" onclick="prevBaodianSImage()">&#10094;</button>
+                <img class="baodian-s-modal-img" id="baodianSModalImg" src="" alt="实拍">
+                <button class="baodian-s-nav-btn next" onclick="nextBaodianSImage()">&#10095;</button>
+            </div>
+            <div class="baodian-s-modal-footer">
+                <button class="baodian-s-nav-btn prev" style="position:static; transform:none;" onclick="prevBaodianSImage()">&#10094;</button>
+                <button class="baodian-s-expand-btn" onclick="toggleFullscreen()">🔍 放大</button>
+                <span class="baodian-s-counter" id="baodianSCounter">1 / 1</span>
+                <div class="baodian-s-dots" id="baodianSDots"></div>
+                <button class="baodian-s-nav-btn next" style="position:static; transform:none;" onclick="nextBaodianSImage()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 择校宝典图片数据（直接穷举，不用manifest.json）
+        const zexiaoBookImages = [
+            'images/择校宝典/txkybook.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140705.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140715.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140720.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140725.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140729.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140733.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140737.jpg',
+            'images/择校宝典/屏幕截图 2026-06-19 140745.jpg'
+        ];
+        
+        // 择校宝典图片展示
+        function showZexiaoBookGallery() {
+            currentGalleryImages = zexiaoBookImages;
+            currentGalleryIndex = 0;
+            document.getElementById('galleryModalTitle').textContent = '📕 27控制类择校宝典';
+            document.getElementById('baodianSModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            renderGalleryDots();
+            updateGalleryImage();
+        }
+        const baodianSImages = [
+            'images/宝典S/124d622bad4b2ce3632d7a0397ede475.jpg',
+            'images/宝典S/5701d64128774eafa9bc361e796a4ecf.jpg',
+            'images/宝典S/614208eab3d1e34d8ca62cc9618f6987.jpg',
+            'images/宝典S/74afbeeb4fad0013199a0800535c3036.jpg',
+            'images/宝典S/b13c5c46f4fc12ab6b928922c3ed73f0.jpg',
+            'images/宝典S/c2ebedca0a66b3c2f91038a6b0427a63.jpg'
+        ];
+        
+        // 刷题本图片数据（直接穷举，不用manifest.json）
+        const workbookImages = [
+            'images/刷题本/image (2).jpg',
+            'images/刷题本/幻灯片1.jpg',
+            'images/刷题本/幻灯片2.jpg',
+            'images/刷题本/幻灯片3.jpg',
+            'images/刷题本/幻灯片4.jpg',
+            'images/刷题本/幻灯片5.jpg',
+            'images/刷题本/幻灯片6.jpg',
+            'images/刷题本/幻灯片7.jpg',
+            'images/刷题本/幻灯片8.jpg',
+            'images/刷题本/幻灯片9.jpg',
+            'images/刷题本/幻灯片10.jpg',
+            'images/刷题本/幻灯片11.jpg',
+            'images/刷题本/幻灯片12.jpg',
+            'images/刷题本/幻灯片13.jpg',
+            'images/刷题本/幻灯片14.jpg',
+            'images/刷题本/幻灯片15.jpg',
+            'images/刷题本/幻灯片16.jpg',
+            'images/刷题本/幻灯片17.jpg',
+            'images/刷题本/幻灯片18.jpg',
+            'images/刷题本/屏幕截图 2026-06-19 153313.jpg',
+            'images/刷题本/屏幕截图 2026-06-19 153317.jpg',
+            'images/刷题本/微信图片_20260619153025_165_312.jpg'
+        ];
+        
+        // 真题图片数据（直接穷举，不用manifest.json）
+        const realExamImages = [
+            'images/真题/09226568066d275aa0183f8fa1be2589.jpg',
+            'images/真题/8012bb84ccfa0f34aafda0b76967a4a1.jpg',
+            'images/真题/b86054a4a1953165854b417b74468da5.jpg',
+            'images/真题/c8dd0e4e402fd0e6fc102cc8adf7f0a1.jpg',
+            'images/真题/屏幕截图 2026-06-19 153324.jpg',
+            'images/真题/屏幕截图 2026-06-19 153327.jpg',
+            'images/真题/屏幕截图 2026-06-19 153330.jpg',
+            'images/真题/屏幕截图 2026-06-19 153341.jpg',
+            'images/真题/屏幕截图 2026-06-24 203414.jpg',
+            'images/真题/屏幕截图 2026-06-24 203549.jpg',
+            'images/真题/屏幕截图 2026-06-24 203606.jpg',
+            'images/真题/屏幕截图 2026-06-24 203845.jpg'
+        ];
+
+        // 公式宝典图片数据
+        const formulaBookImages = [
+            'images/公式宝典/74ac1dd423c4cdf2c80fa5aafdff7cc4.jpg',
+            'images/公式宝典/bli.jpg',
+            'images/公式宝典/b329a011344875bf427e8ceca16afd26.jpg',
+            'images/公式宝典/ddff2649550cccc3ba6b40ecea03e718.jpg'
+        ];
+
+        // 宝典D图片数据
+        const baodianDImages = [
+            'images/宝典D/0de98d12f311f07732d2e81e27606a51.jpg',
+            'images/宝典D/02eca467b571bcba7dc519fc72fb28df.jpg',
+            'images/宝典D/3c81d813351ce0e1dd277654ad650ede.jpg',
+            'images/宝典D/cfd8f86c6f215b1831b4fdc23ce5ed1d.jpg'
+        ];
+
+        // 高分喜报图片数据
+        const xibaoImages = [
+            'images/喜报/18f0529882b8b605cecbd2adc27a49b4.jpg',
+            'images/喜报/19AF8EEBCB2021E074BEEAA7FFC59715.jpg',
+            'images/喜报/2DA0E157DE514F3D18E086D225EF8ADF.jpg',
+            'images/喜报/394d6e50791847b89c082962b4109150.jpg',
+            'images/喜报/407.jpg',
+            'images/喜报/4A3DD741570E1149149FAA6F8F495F1A.jpg',
+            'images/喜报/5aaf74b3f7c0b226f0894d156e22ecd3.jpg',
+            'images/喜报/61e67934220bc3ef1fd72e3e2f843b87.jpg',
+            'images/喜报/7520631080f76a96773d69a0aedaa926.jpg',
+            'images/喜报/802喜报1.jpg',
+            'images/喜报/826喜报1.jpg',
+            'images/喜报/882喜报1.jpg',
+            'images/喜报/882喜报2.jpg',
+            'images/喜报/e2089e3f3fea10a93d83624842ab499b.jpg',
+            'images/喜报/mmexport1772272186963.jpg',
+            'images/喜报/mmexport1772272194148.jpg',
+            'images/喜报/mmexport1772272200760.jpg',
+            'images/喜报/mmexport1772272206802.jpg',
+            'images/喜报/mmexport1772272216497.jpg',
+            'images/喜报/mmexport1772272222362.jpg',
+            'images/喜报/mmexport1772272229943.jpg',
+            'images/喜报/mmexport1772272237815.jpg',
+            'images/喜报/mmexport1772272243971.jpg',
+            'images/喜报/mmexport1772272248119.jpg',
+            'images/喜报/mmexport1772272252119.jpg',
+            'images/喜报/单个高分喜报_01(1).jpg',
+            'images/喜报/单个高分喜报_01(2).jpg',
+            'images/喜报/单个高分喜报_01(3).jpg',
+            'images/喜报/单个高分喜报_01(4).jpg',
+            'images/喜报/单个高分喜报_01(5).jpg',
+            'images/喜报/单个高分喜报_01(6).jpg',
+            'images/喜报/单个高分喜报_01(7).jpg',
+            'images/喜报/单个高分喜报_01(8).jpg',
+            'images/喜报/单个高分喜报_01.jpg'
+        ];
+
+        // 宝典A图片数据（直接穷举，不用manifest.json）
+        const baodianAImages = [
+            'images/宝典SABD/23e2c69eba87754fdfb433703dabffa.jpg',
+            'images/宝典SABD/398865d13ac468c43a10d78945d5e86.jpg',
+            'images/宝典SABD/535f5aa81c1512443ea8b2f0696f343.jpg',
+            'images/宝典SABD/840d8850f2b682648c5a3804101a57c.jpg',
+            'images/宝典SABD/8c253317aa6b363cb0f99a6c89506a2.jpg',
+            'images/宝典SABD/916161678ddd4c61b6b4897cd6099bb.jpg',
+            'images/宝典SABD/a0e46d7226e1efb74e193ef54ece044.jpg',
+            'images/宝典SABD/b22ffbc1e0645211217eacefaef84ca.jpg',
+            'images/宝典SABD/c17d1c8e94cbd954e0461d811be82cc.jpg',
+            'images/宝典SABD/ccd22ec19d2943ffccb428779183776.jpg',
+            'images/宝典SABD/db44f14ab40d74d3c23dd83293bb85d.jpg',
+            'images/宝典SABD/e3ecabd24ce492b3595c7d871d0d84d.jpg',
+            'images/宝典SABD/ef76743caa04f5dc2516f4181390c44.jpg',
+            'images/宝典SABD/f413e2693f365eb26524de85c6876a9.jpg'
+        ];
+        
+        // 课后习题集图片数据（直接穷举，不用manifest.json）
+        const images660 = [
+            'images/660/image26.jpg',
+            'images/660/image27.jpg',
+            'images/660/image28.jpg',
+            'images/660/image33.jpg',
+            'images/660/屏幕截图 2026-06-19 153355.jpg',
+            'images/660/屏幕截图 2026-06-19 153359.jpg'
+        ];
+        
+        let currentGalleryImages = [];
+        let currentGalleryIndex = 0;
+        let currentGalleryTitle = '';
+        
+        // 统一打开图片画廊（新增后续直接调用此函数即可）
+        function openGallery(title, images) {
+            currentGalleryImages = images;
+            currentGalleryIndex = 0;
+            currentGalleryTitle = title;
+            // 重置全屏状态
+            const img = document.getElementById('baodianSModalImg');
+            img.classList.remove('fullscreen');
+            document.querySelector('.baodian-s-expand-btn').textContent = '🔍 放大';
+            isFullscreen = false;
+            // 更新标题并打开
+            document.getElementById('galleryModalTitle').textContent = title;
+            updateGalleryImage();
+            renderGalleryDots();
+            document.getElementById('baodianSModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 各入口函数（保持现有HTML调用方式不变）
+        function showBaodianSModal() { openGallery('📖 宝典S 精编复习讲义', baodianSImages); }
+        function showWorkbookGallery() { openGallery('🖊️ 课后题刷题本', workbookImages); }
+        function show660Gallery() { openGallery('📝 660题', images660); }
+        function showBaodianAModal() { openGallery('📋 宝典A 历年真题', baodianAImages); }
+        function showRealExamGallery() { openGallery('📄 各院校真题电子档合集', realExamImages); }
+        function showFormulaBookGallery() { openGallery('📐 各科公式宝典', formulaBookImages); }
+        function showBaodianDModal() { openGallery('📚 宝典D 专项训练', baodianDImages); }
+        function showXibaoGallery() { openGallery('🎉 高分喜报', xibaoImages); }
+        
+        function hideBaodianSModal() {
+            document.getElementById('baodianSModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // 重置全屏状态
+            isFullscreen = false;
+            document.getElementById('baodianSModalImg').classList.remove('fullscreen');
+            document.querySelector('.baodian-s-expand-btn').textContent = '🔍 放大';
+        }
+        
+        let isFullscreen = false;
+        function toggleFullscreen() {
+            const img = document.getElementById('baodianSModalImg');
+            const btn = document.querySelector('.baodian-s-expand-btn');
+            isFullscreen = !isFullscreen;
+            if (isFullscreen) {
+                img.classList.add('fullscreen');
+                btn.textContent = '🔍 缩小';
+            } else {
+                img.classList.remove('fullscreen');
+                btn.textContent = '🔍 放大';
+            }
+        }
+        
+        function updateGalleryImage() {
+            const img = document.getElementById('baodianSModalImg');
+            img.style.opacity = '0';
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" font-size="16" fill="%23999">图片加载失败</text></svg>';
+                this.onerror = null;
+            };
+            setTimeout(() => {
+                img.src = currentGalleryImages[currentGalleryIndex];
+                img.style.opacity = '1';
+            }, 150);
+            document.getElementById('baodianSCounter').textContent = (currentGalleryIndex + 1) + ' / ' + currentGalleryImages.length;
+            updateGalleryDots();
+        }
+        
+        function prevBaodianSImage() {
+            currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateGalleryImage();
+        }
+        
+        function nextBaodianSImage() {
+            currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+            updateGalleryImage();
+        }
+        
+        function renderGalleryDots() {
+            const container = document.getElementById('baodianSDots');
+            container.innerHTML = '';
+            for (let i = 0; i < currentGalleryImages.length; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'baodian-s-dot' + (i === currentGalleryIndex ? ' active' : '');
+                dot.onclick = () => { currentGalleryIndex = i; updateGalleryImage(); };
+                container.appendChild(dot);
+            }
+        }
+        
+        function updateGalleryDots() {
+            const dots = document.querySelectorAll('.baodian-s-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentGalleryIndex);
+            });
+        }
+        
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('baodianSModal').classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') prevBaodianSImage();
+            if (e.key === 'ArrowRight') nextBaodianSImage();
+            if (e.key === 'Escape') hideBaodianSModal();
+        });
+        
+        // 触摸滑动支持
+        (function() {
+            const body = document.getElementById('baodianSModalBody');
+            let startX = 0;
+            body.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+            body.addEventListener('touchend', e => {
+                const diff = e.changedTouches[0].clientX - startX;
+                if (diff > 50) prevBaodianSImage();
+                if (diff < -50) nextBaodianSImage();
+            });
+        })();
+        
+        // 点击遮罩关闭
+        document.getElementById('baodianSModal').addEventListener('click', function(e) {
+            if (e.target === this) hideBaodianSModal();
+        });
+    </script>
+</body>
+</html>

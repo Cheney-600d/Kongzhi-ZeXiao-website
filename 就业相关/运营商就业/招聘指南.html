@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国运营商2026年招聘信息汇总</title>
+  <style>
+    :root {
+      --c-orange: #ff914d;
+      --c-black: #000000;
+      --c-text: #333333;
+      --c-gray: #808080;
+      --c-border: #d1d1d1;
+      --c-bg: #f9f9f9;
+      --c-white: #ffffff;
+      --c-cm: #0066CC;
+      --c-cu: #E60012;
+      --c-ct: #0088CC;
+      --c-tower: #FF6600;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      background: var(--c-bg); color: var(--c-text); line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--c-border); height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+    }
+    .nav-brand { font-size: 16px; font-weight: 700; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      font-size: 13px; color: var(--c-text); font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--c-orange); }
+    .nav-toggle {
+      display: none; background: none; border: none; font-size: 22px; cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute; top: 56px; left: 0; right: 0;
+        background: var(--c-white); border-bottom: 1px solid var(--c-border);
+        flex-direction: column; padding: 16px 24px; gap: 12px;
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* Container */
+    .container { width: 80%; margin: 0 auto; padding: 0 20px; }
+
+    /* Section */
+    .section { padding: 48px 0; }
+    .section:nth-child(even) { background: var(--c-white); }
+    .section:nth-child(odd) { background: var(--c-bg); }
+
+    /* Hero */
+    .hero { padding-top: 80px; text-align: center; }
+    .hero h1 {
+      font-size: 32px; font-weight: 700; letter-spacing: 1px;
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .hero .subtitle { color: var(--c-gray); font-size: 14px; margin-bottom: 24px; }
+
+    /* Overview cards */
+    .overview-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; margin-top: 24px;
+    }
+    .overview-card {
+      background: var(--c-white); border: 1px solid var(--c-border);
+      border-radius: 12px; padding: 20px; transition: border-color 0.2s;
+    }
+    .overview-card:hover { border-color: var(--c-orange); }
+    .overview-card .header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .overview-card .logo {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 14px;
+    }
+    .overview-card .header h3 { font-size: 16px; }
+    .overview-card .info-row {
+      display: flex; align-items: flex-start; gap: 6px;
+      margin-bottom: 8px; font-size: 13px;
+    }
+    .overview-card .info-row .label { color: var(--c-gray); white-space: nowrap; }
+    .overview-card .info-row .value { font-weight: 500; }
+    .overview-card .majors {
+      margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0;
+      font-size: 12px; color: var(--c-gray); line-height: 1.6;
+    }
+    .overview-card .majors strong { color: var(--c-text); }
+
+    /* Carrier section header */
+    .carrier-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .carrier-header .logo {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 14px;
+    }
+    .carrier-header h2 { font-size: 24px; }
+    .carrier-header .desc { color: var(--c-gray); font-size: 13px; margin-left: auto; }
+
+    /* Region tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 8px 18px; border-radius: 100px; border: 1px solid var(--c-border);
+      background: var(--c-white); cursor: pointer; font-size: 13px; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: white; border-color: transparent; }
+    .tab-btn:not(.active):hover { border-color: var(--c-orange); }
+
+    /* Job cards */
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+    }
+    .job-card {
+      background: var(--c-white); border: 1px solid var(--c-border);
+      border-radius: 8px; padding: 14px; font-size: 13px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .job-card:hover { border-color: var(--c-orange); transform: translateY(-2px); }
+    .job-card .title {
+      font-weight: 600; margin-bottom: 6px; display: flex;
+      justify-content: space-between; align-items: flex-start; gap: 8px;
+    }
+    .job-card .badge {
+      font-size: 10px; padding: 1px 6px; border-radius: 4px;
+      border: 1px solid; white-space: nowrap; font-weight: 500;
+    }
+    .job-card .badge.tech { border-color: var(--c-cm); color: var(--c-cm); }
+    .job-card .badge.market { border-color: var(--c-cu); color: var(--c-cu); }
+    .job-card .badge.general { border-color: var(--c-gray); color: var(--c-gray); }
+    .job-card .meta {
+      color: var(--c-gray); font-size: 12px;
+      display: flex; align-items: center; gap: 4px; margin-top: 3px;
+    }
+    .job-card .meta svg { width: 12px; height: 12px; }
+
+    /* Table */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--c-border); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead { background: var(--c-bg); }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+    th { font-weight: 600; color: var(--c-text); white-space: nowrap; }
+    tr:hover { background: rgba(255,145,77,0.04); }
+
+    /* Info box */
+    .info-box {
+      background: var(--c-white); border: 1px solid var(--c-border);
+      border-radius: 10px; padding: 18px; margin-bottom: 12px;
+    }
+    .info-box h4 { font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px; padding: 3px 10px; border-radius: 4px;
+      background: var(--c-bg); color: var(--c-gray);
+    }
+    .tag.accent { background: rgba(255,145,77,0.1); color: var(--c-orange); }
+
+    /* Process steps */
+    .process { display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: wrap; }
+    .step {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .step .circle {
+      width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--c-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; background: var(--c-white);
+    }
+    .step .label { font-size: 11px; color: var(--c-gray); }
+    .step-arrow { color: var(--c-border); font-size: 16px; }
+
+    /* Exam cards */
+    .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .exam-card {
+      background: var(--c-white); border: 1px solid var(--c-border);
+      border-radius: 10px; padding: 16px;
+    }
+    .exam-card .carrier { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+    .exam-card .carrier-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .exam-card .carrier-name { font-weight: 600; font-size: 14px; }
+    .exam-card .content { color: var(--c-orange); font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+    .exam-card ul { list-style: none; }
+    .exam-card li { font-size: 12px; color: var(--c-gray); margin-bottom: 4px; padding-left: 12px; position: relative; }
+    .exam-card li::before { content: "›"; position: absolute; left: 0; color: var(--c-orange); font-weight: 700; }
+
+    /* Salary */
+    .salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .salary-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: 12px; padding: 20px; }
+    .salary-card .header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .salary-card .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .salary-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .salary-row:last-child { border-bottom: none; }
+    .salary-row .level { font-size: 13px; }
+    .salary-row .note { font-size: 11px; color: var(--c-gray); max-width: 60%; text-align: right; }
+    .salary-row .amount { font-size: 18px; font-weight: 700; color: var(--c-orange); white-space: nowrap; }
+
+    /* Hard jobs */
+    .hard-item {
+      background: var(--c-white); border: 1px solid var(--c-border);
+      border-radius: 10px; padding: 18px; margin-bottom: 10px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .hard-item .rank {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,145,77,0.1); color: var(--c-orange);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; flex-shrink: 0;
+    }
+    .hard-item h4 { font-size: 15px; margin-bottom: 2px; }
+    .hard-item .sub { font-size: 13px; color: var(--c-orange); margin-bottom: 6px; }
+    .hard-item p { font-size: 13px; color: var(--c-gray); line-height: 1.7; }
+
+    /* City ranking bar */
+    .rank-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; }
+    .rank-row .name { width: 90px; flex-shrink: 0; font-weight: 500; }
+    .rank-row .bar-wrap { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+    .rank-row .bar { height: 100%; background: var(--c-orange); border-radius: 4px; }
+    .rank-row .val { width: 70px; text-align: right; color: var(--c-orange); font-weight: 600; flex-shrink: 0; }
+
+    /* Footer */
+    .footer { background: var(--c-black); color: var(--c-white); padding: 30px 0; text-align: center; }
+    .footer p { font-size: 12px; color: #666; }
+    .footer .links { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+    .footer .links a { font-size: 13px; color: #aaa; transition: color 0.2s; }
+    .footer .links a:hover { color: var(--c-white); }
+
+    /* Utility */
+    .mt-2 { margin-top: 8px; }
+    .mt-3 { margin-top: 12px; }
+    .mb-3 { margin-bottom: 12px; }
+    .text-gray { color: var(--c-gray); }
+    .text-sm { font-size: 13px; }
+    .text-xs { font-size: 12px; }
+    .font-bold { font-weight: 700; }
+    .hide { display: none !important; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 24px; }
+      .job-grid { grid-template-columns: 1fr; }
+      .salary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+<style>
+.back-home {
+  position: fixed; top: 16px; left: 16px; z-index: 9999;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2); color: #fff;
+  box-shadow: 0 4px 16px rgba(102,126,234,0.3);
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+}
+.back-home:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(102,126,234,0.4); }
+</style>
+<a href="../就业去向index.html" class="back-home">← 返回首页</a>
+
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-brand"></div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+  <div class="nav-links">
+    <a href="#overview">概览</a>
+    <a href="#cm">中国移动</a>
+    <a href="#cu">中国联通</a>
+    <a href="#ct">中国电信</a>
+    <a href="#tower">中国铁塔</a>
+    <a href="#exam">笔试面试</a>
+    <a href="#salary">薪资福利</a>
+  </div>
+</nav>
+
+<!-- ==================== 概览 ==================== -->
+<div class="section hero" id="overview">
+  <div class="container">
+    <h1>2026年运营商招聘信息汇总</h1>
+    <p class="subtitle">中国移动 · 中国联通 · 中国电信 · 中国铁塔</p>
+
+    <div class="overview-grid">
+      <!-- 中国移动 -->
+      <div class="overview-card">
+        <div class="header">
+          <div class="logo" style="background:var(--c-cm)">移</div>
+          <h3>中国移动</h3>
+        </div>
+        <div class="info-row"><span class="label">报名：</span><span class="value">9月上旬-10月15日</span></div>
+        <div class="info-row"><span class="label">笔试：</span><span class="value">10月25日左右</span></div>
+        <div class="info-row"><span class="label">对象：</span><span class="value">26、27届应届生</span></div>
+        <div class="info-row"><span class="label">地区：</span><span class="value">山东、四川、黑龙江等31省</span></div>
+        <div class="majors"><strong>专业：</strong>IT技术、软件开发、大数据、土建、法律、财务、人力资源、新闻传播、市场营销等</div>
+      </div>
+      <!-- 中国联通 -->
+      <div class="overview-card">
+        <div class="header">
+          <div class="logo" style="background:var(--c-cu)">联</div>
+          <h3>中国联通</h3>
+        </div>
+        <div class="info-row"><span class="label">报名：</span><span class="value">8月24日-10月15日</span></div>
+        <div class="info-row"><span class="label">笔试：</span><span class="value">11月初</span></div>
+        <div class="info-row"><span class="label">对象：</span><span class="value">26、27届应届生</span></div>
+        <div class="info-row"><span class="label">地区：</span><span class="value">深圳、山东、哈尔滨、广东等</span></div>
+        <div class="majors"><strong>专业：</strong>计算机、电子信息、数学、统计学、自动化、管理科学与工程、新闻传播、财务会计等</div>
+      </div>
+      <!-- 中国电信 -->
+      <div class="overview-card">
+        <div class="header">
+          <div class="logo" style="background:var(--c-ct)">信</div>
+          <h3>中国电信</h3>
+        </div>
+        <div class="info-row"><span class="label">报名：</span><span class="value">8月下旬启动</span></div>
+        <div class="info-row"><span class="label">笔试：</span><span class="value">10月中旬起</span></div>
+        <div class="info-row"><span class="label">对象：</span><span class="value">26、27届应届生</span></div>
+        <div class="info-row"><span class="label">地区：</span><span class="value">北京、天津、河北、上海、黑龙江等</span></div>
+        <div class="majors"><strong>专业：</strong>计算机、电子信息、信息安全、自动化、数学、物理、电气能源、财务、法律等</div>
+      </div>
+      <!-- 中国铁塔 -->
+      <div class="overview-card">
+        <div class="header">
+          <div class="logo" style="background:var(--c-tower)">塔</div>
+          <h3>中国铁塔</h3>
+        </div>
+        <div class="info-row"><span class="label">报名：</span><span class="value">10月15日-11月12日</span></div>
+        <div class="info-row"><span class="label">笔试：</span><span class="value">11月16日</span></div>
+        <div class="info-row"><span class="label">对象：</span><span class="value">27届应届生</span></div>
+        <div class="info-row"><span class="label">地区：</span><span class="value">全国</span></div>
+        <div class="majors"><strong>专业：</strong>工商管理、电子信息、计算机、土木、通信、财政学、经济学、电子商务等</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 中国移动 ==================== -->
+<div class="section" id="cm">
+  <div class="container">
+    <div class="carrier-header">
+      <div class="logo" style="background:var(--c-cm)">移</div>
+      <h2>中国移动</h2>
+      <span class="desc">2026春季校园招聘 · 按地区</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" style="background:var(--c-cm)" onclick="switchCmRegion('sd',this)">山东（4月8日截止）</button>
+      <button class="tab-btn" onclick="switchCmRegion('sc',this)">四川（4月3日截止）</button>
+      <button class="tab-btn" onclick="switchCmRegion('hlj',this)">黑龙江</button>
+    </div>
+
+    <!-- 山东 -->
+    <div id="cm-sd" class="job-grid">
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 胶州市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 平度市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 高新区</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 莱西市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 黄岛区</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 青岛分公司 · 即墨区</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 菏泽分公司 · 成武县</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 菏泽分公司 · 东明县</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 菏泽分公司 · 单县</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 聊城分公司 · 东阿县</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 聊城分公司 · 冠县</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 聊城分公司 · 莘县</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 聊城分公司 · 临清市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 烟台分公司 · 海阳市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 烟台分公司 · 莱阳市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 烟台分公司 · 招远市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 烟台分公司 · 龙口市</div></div>
+      <div class="job-card"><div class="title">市场运营<span class="badge market">市场</span></div><div class="meta">📍 潍坊分公司 · 安丘市/昌邑市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 潍坊分公司 · 诸城市/临朐县</div></div>
+      <div class="job-card"><div class="title">市场运营<span class="badge market">市场</span></div><div class="meta">📍 滨州分公司 · 无棣县/沾化区</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 淄博分公司 · 高青县</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 济宁分公司 · 曲阜市/微山县</div></div>
+      <div class="job-card"><div class="title">客户运营<span class="badge market">市场</span></div><div class="meta">📍 济南分公司 · 商河县/章丘区</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 济南分公司 · 起步区</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 泰安分公司 · 新泰市</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 泰安分公司 · 新泰市</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 日照分公司 · 莒县</div></div>
+    </div>
+
+    <!-- 四川 -->
+    <div id="cm-sc" class="job-grid hide">
+      <div class="job-card"><div class="title">数据审计岗<span class="badge general">综合</span></div><div class="meta">📍 集团总部成都审计分部 · 成都市 · 硕士</div></div>
+      <div class="job-card"><div class="title">网络信息安全工程师<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 锦江区 · 硕士</div></div>
+      <div class="job-card"><div class="title">大数据开发工程师<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 金牛区 · 硕士</div></div>
+      <div class="job-card"><div class="title">网络运营工程师-云资源池<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 锦江区 · 硕士</div></div>
+      <div class="job-card"><div class="title">业务支撑工程师-5G及物联网<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 锦江区 · 硕士</div></div>
+      <div class="job-card"><div class="title">综合会计<span class="badge general">综合</span></div><div class="meta">📍 四川公司 · 武侯区 · 硕士</div></div>
+      <div class="job-card"><div class="title">金种子-大模型及AI工程师<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 锦江区 · 博士</div></div>
+      <div class="job-card"><div class="title">金种子-AI算法工程师<span class="badge tech">技术</span></div><div class="meta">📍 四川公司 · 锦江区 · 博士</div></div>
+      <div class="job-card"><div class="title">媒体运营<span class="badge market">市场</span></div><div class="meta">📍 成都分公司 · 锦江区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 天府新区分公司 · 双流区 · 硕士</div></div>
+      <div class="job-card"><div class="title">网络安全管理工程师<span class="badge tech">技术</span></div><div class="meta">📍 天府新区分公司 · 双流区 · 硕士</div></div>
+      <div class="job-card"><div class="title">项目交付工程师-政企<span class="badge tech">技术</span></div><div class="meta">📍 天府新区分公司 · 双流区 · 硕士</div></div>
+      <div class="job-card"><div class="title">项目交付工程师-政企<span class="badge tech">技术</span></div><div class="meta">📍 绵阳分公司 · 三台县 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 绵阳分公司 · 盐亭县 · 本科</div></div>
+      <div class="job-card"><div class="title">客户运营<span class="badge market">市场</span></div><div class="meta">📍 眉山分公司 · 东坡区 · 本科</div></div>
+      <div class="job-card"><div class="title">项目交付工程师-政企<span class="badge tech">技术</span></div><div class="meta">📍 甘孜分公司 · 康定市 · 本科</div></div>
+      <div class="job-card"><div class="title">网络运维工程师-无线网<span class="badge tech">技术</span></div><div class="meta">📍 甘孜分公司 · 康定市 · 本科</div></div>
+      <div class="job-card"><div class="title">成本管理<span class="badge general">综合</span></div><div class="meta">📍 甘孜分公司 · 康定市 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 泸州分公司 · 龙马潭区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案支撑工程师<span class="badge tech">技术</span></div><div class="meta">📍 攀枝花分公司 · 东区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 德阳分公司 · 旌阳区/广汉市 · 本科</div></div>
+      <div class="job-card"><div class="title">项目交付工程师-政企<span class="badge tech">技术</span></div><div class="meta">📍 德阳分公司 · 中江县 · 本科</div></div>
+      <div class="job-card"><div class="title">网络运营工程师-政企<span class="badge tech">技术</span></div><div class="meta">📍 广元分公司 · 利州区 · 本科</div></div>
+      <div class="job-card"><div class="title">综合会计<span class="badge general">综合</span></div><div class="meta">📍 广元分公司 · 利州区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 达州分公司 · 达川区 · 本科</div></div>
+      <div class="job-card"><div class="title">业务支撑工程师-有线及云网<span class="badge tech">技术</span></div><div class="meta">📍 宜宾分公司 · 叙州区 · 本科</div></div>
+      <div class="job-card"><div class="title">业务和产品管理<span class="badge market">市场</span></div><div class="meta">📍 绵阳分公司 · 涪城区 · 本科</div></div>
+      <div class="job-card"><div class="title">网络支撑工程师-智慧家庭<span class="badge tech">技术</span></div><div class="meta">📍 雅安分公司 · 荥经县 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 内江分公司 · 东兴区 · 本科</div></div>
+      <div class="job-card"><div class="title">网络优化工程师-无线网<span class="badge tech">技术</span></div><div class="meta">📍 乐山分公司 · 五通桥区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案工程师<span class="badge tech">技术</span></div><div class="meta">📍 巴中分公司 · 巴州区 · 本科</div></div>
+      <div class="job-card"><div class="title">解决方案支撑工程师<span class="badge tech">技术</span></div><div class="meta">📍 南充分公司 · 嘉陵区 · 本科</div></div>
+      <div class="job-card"><div class="title">系统支撑工程师<span class="badge tech">技术</span></div><div class="meta">📍 凉山分公司 · 西昌市 · 本科</div></div>
+      <div class="job-card"><div class="title">政企业务管理<span class="badge market">市场</span></div><div class="meta">📍 自贡分公司 · 自流井区 · 本科</div></div>
+    </div>
+
+    <!-- 黑龙江 -->
+    <div id="cm-hlj" class="job-grid hide">
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 黑龙江省公司 · 哈尔滨 · 招2人</div></div>
+      <div class="job-card"><div class="title">政企项目交付经理<span class="badge tech">技术</span></div><div class="meta">📍 黑龙江省公司 · 哈尔滨 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企客户运营<span class="badge tech">技术</span></div><div class="meta">📍 黑龙江省公司 · 哈尔滨 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企运维工程师<span class="badge tech">技术</span></div><div class="meta">📍 黑龙江省公司 · 哈尔滨 · 招1人</div></div>
+      <div class="job-card"><div class="title">客户响应中心业务支持<span class="badge tech">技术</span></div><div class="meta">📍 哈尔滨分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">维护中心边缘计算维护<span class="badge tech">技术</span></div><div class="meta">📍 哈尔滨分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 哈尔滨分公司 · 招2人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 哈尔滨分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">业务和产品管理<span class="badge market">市场</span></div><div class="meta">📍 哈尔滨分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">传输网运行维护<span class="badge tech">技术</span></div><div class="meta">📍 哈尔滨分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企客户经理<span class="badge market">市场</span></div><div class="meta">📍 齐齐哈尔分公司 · 招2人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 齐齐哈尔分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 齐齐哈尔分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企项目交付经理<span class="badge tech">技术</span></div><div class="meta">📍 齐齐哈尔分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">专线及云网业务支撑<span class="badge tech">技术</span></div><div class="meta">📍 牡丹江分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 牡丹江分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">业务支持<span class="badge tech">技术</span></div><div class="meta">📍 牡丹江分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">传输网运行维护<span class="badge tech">技术</span></div><div class="meta">📍 牡丹江分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企客户经理<span class="badge market">市场</span></div><div class="meta">📍 牡丹江分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企行业客户经理<span class="badge market">市场</span></div><div class="meta">📍 大庆分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 大庆分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企项目交付经理<span class="badge tech">技术</span></div><div class="meta">📍 大庆分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">传输网运行维护<span class="badge tech">技术</span></div><div class="meta">📍 大庆分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">普法管理<span class="badge general">综合</span></div><div class="meta">📍 鸡西分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 鸡西分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">传输网运行维护<span class="badge tech">技术</span></div><div class="meta">📍 鸡西分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 绥化分公司 · 招2人</div></div>
+      <div class="job-card"><div class="title">业务系统维护<span class="badge tech">技术</span></div><div class="meta">📍 绥化分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企解决方案经理<span class="badge tech">技术</span></div><div class="meta">📍 伊春分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">收入会计<span class="badge general">综合</span></div><div class="meta">📍 大兴安岭分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">大数据管理<span class="badge tech">技术</span></div><div class="meta">📍 大兴安岭分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">政企项目交付经理<span class="badge tech">技术</span></div><div class="meta">📍 大兴安岭分公司 · 招1人</div></div>
+      <div class="job-card"><div class="title">通信网络安全运营<span class="badge tech">技术</span></div><div class="meta">📍 大兴安岭分公司 · 招1人</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 中国联通 ==================== -->
+<div class="section" id="cu" style="background:var(--c-bg)">
+  <div class="container">
+    <div class="carrier-header">
+      <div class="logo" style="background:var(--c-cu)">联</div>
+      <h2>中国联通</h2>
+      <span class="desc">2026春季校园招聘 · 3月4日起网申</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" style="background:var(--c-cu)" onclick="switchCuTab('jobs',this)">招聘岗位</button>
+      <button class="tab-btn" onclick="switchCuTab('majors',this)">招聘专业</button>
+      <button class="tab-btn" onclick="switchCuTab('reqs',this)">招聘要求</button>
+    </div>
+
+    <!-- 招聘岗位 -->
+    <div id="cu-jobs">
+      <div class="info-box">
+        <h4>技术研发类 <span class="text-gray text-xs">📍 深圳、山东、哈尔滨、广东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag">软件研发工程师</span><span class="tag">AI算法工程师</span><span class="tag">大数据开发工程师</span><span class="tag">云计算工程师</span><span class="tag">网络安全工程师</span><span class="tag">前端开发工程师</span><span class="tag">后端开发工程师</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>网络技术类 <span class="text-gray text-xs">📍 深圳、山东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag">网络工程师</span><span class="tag">算力网络工程师</span><span class="tag">网络优化工程师</span><span class="tag">项目交付工程师</span><span class="tag">通信电源工程师</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>产品/解决方案类 <span class="text-gray text-xs">📍 深圳、广东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag">政企解决方案经理</span><span class="tag">智算产品经理</span><span class="tag">人工智能产品</span><span class="tag">行业解决方案</span><span class="tag">项目经理</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>市场营销类 <span class="text-gray text-xs">📍 深圳、广东、山东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag">政企营销专家</span><span class="tag">市场营销专员</span><span class="tag">客户经理</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>职能管理类 <span class="text-gray text-xs">📍 深圳、广东、山东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag">财务管理</span><span class="tag">法务经理</span><span class="tag">人力资源岗</span><span class="tag">政策研究员</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>管培生/新苗计划 <span class="text-gray text-xs">📍 重庆、山东</span></h4>
+        <div class="tag-wrap mt-2">
+          <span class="tag accent">闪耀新苗（AI/云计算/网络安全方向）</span><span class="tag accent">管培生</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 招聘专业 -->
+    <div id="cu-majors" class="hide">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+        <div class="info-box">
+          <h4>核心专业类</h4>
+          <div class="tag-wrap mt-2">
+            <span class="tag accent">计算机科学与技术</span><span class="tag accent">软件工程</span><span class="tag accent">网络工程</span><span class="tag accent">信息安全</span><span class="tag accent">物联网工程</span><span class="tag accent">人工智能</span><span class="tag accent">数据科学与大数据技术</span><span class="tag accent">通信工程</span><span class="tag accent">电子信息工程</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <h4>数学统计类</h4>
+          <div class="tag-wrap mt-2">
+            <span class="tag">数学</span><span class="tag">统计学</span><span class="tag">应用统计学</span><span class="tag">信息与计算科学</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <h4>交叉学科类</h4>
+          <div class="tag-wrap mt-2">
+            <span class="tag">控制科学与工程</span><span class="tag">智能科学与技术</span><span class="tag">机器人工程</span><span class="tag">集成电路工程</span><span class="tag">光电工程</span><span class="tag">机械设计制造及其自动化</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <h4>管理支撑类</h4>
+          <div class="tag-wrap mt-2">
+            <span class="tag">财务管理</span><span class="tag">会计学</span><span class="tag">人力资源管理</span><span class="tag">法学</span><span class="tag">经管类</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 招聘要求 -->
+    <div id="cu-reqs" class="hide">
+      <div class="info-box">
+        <h4>招聘对象</h4>
+        <p class="text-sm text-gray mt-2">2026届国内外应届毕业生；2025届国内外毕业未就业毕业生</p>
+      </div>
+      <div class="info-box">
+        <h4>学历要求</h4>
+        <p class="text-sm text-gray mt-2">本科及以上为主，部分研发岗位要求硕士（如哈尔滨软件研究院软件研发岗要求硕士）</p>
+      </div>
+      <div class="info-box">
+        <h4>英语要求</h4>
+        <p class="text-sm text-gray mt-2">部分岗位要求英语四级425分及以上</p>
+      </div>
+      <div class="info-box">
+        <h4>其他要求</h4>
+        <p class="text-sm text-gray mt-2">深圳联通部分岗位优先考虑成绩排名前50%</p>
+      </div>
+      <div class="info-box" style="border-color:var(--c-orange)">
+        <h4>校招流程</h4>
+        <p class="text-sm text-gray mt-2">网申 → 简历筛选 → 笔试 → 面试 → 体检 → 签约 → 入职</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 中国电信 ==================== -->
+<div class="section" id="ct">
+  <div class="container">
+    <div class="carrier-header">
+      <div class="logo" style="background:var(--c-ct)">信</div>
+      <h2>中国电信</h2>
+      <span class="desc">暑期实习计划 · 河南社招</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" style="background:var(--c-ct)" onclick="switchCtTab('intern',this)">暑期实习生计划</button>
+      <button class="tab-btn" onclick="switchCtTab('henan',this)">河南分公司社招</button>
+    </div>
+
+    <!-- 实习生计划 -->
+    <div id="ct-intern">
+      <p class="text-sm text-gray mb-3">📅 报名时间：2026年5月18日起 · 最多投5家单位，每家最多2个岗位</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>实习单位</th><th>实习岗位</th><th>专业要求</th><th>学历</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>北京分公司</td><td>通信网络工程师</td><td>计算机类、软件工程类、电子信息类、自动化类、人工智能类、数学类、通信类等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>北京分公司</td><td>算法工程师(AI研发团队)</td><td>计算机类、软件工程类、电子信息类、自动化类、人工智能类、数学类、物理类等</td><td style="color:var(--c-ct);font-weight:600">硕士及以上</td></tr>
+            <tr><td>北京分公司</td><td>大数据集成工程师</td><td>计算机类、软件工程类、电子信息类、人工智能类、大数据类、数学类、自动化类</td><td style="color:var(--c-ct);font-weight:600">硕士及以上</td></tr>
+            <tr><td>天津分公司</td><td>财务管理</td><td>财务管理、会计学、审计学等相关专业</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>天津分公司</td><td>解决方案与交付工程师</td><td>信息技术、计算机、软件工程、通信工程、电子工程、工业控制、自动化等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>天津分公司</td><td>云网通信技术工程师</td><td>通信、网络及计算机等相关专业</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>河北分公司</td><td>产品经理(唐山)</td><td>计算机、软件工程、电子信息、通信工程等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>河北分公司</td><td>通信网络工程师(廊坊)</td><td>通信工程、信息与通信工程、计算机科学与技术、数据科学与大数据技术等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>黑龙江分公司</td><td>云网技术</td><td>计算机、大数据、人工智能、网信安全、云计算、自动化、通信、电子信息等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>上海分公司</td><td>解决方案经理</td><td>软件开发、人工智能、大数据、云计算、IT/ICT、5G、未来网络(6G)、网信安全</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>安徽分公司</td><td>土建管理</td><td>土建类专业基础知识</td><td style="color:var(--c-ct);font-weight:600">硕士及以上</td></tr>
+            <tr><td>广西分公司</td><td>云网技术支撑</td><td>计算机科学与技术、软件工程、网络工程、信息安全、物联网工程等</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+            <tr><td>甘肃分公司</td><td>法律事务管理</td><td>法学、法律(法学)</td><td style="color:var(--c-ct);font-weight:600">本科及以上</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 河南社招 -->
+    <div id="ct-henan" class="hide">
+      <p class="text-sm text-gray mb-3">📅 报名截止：2026年6月18日24时 · 每人限报1个岗位 · https://henandianxin.zhaopin.com/</p>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <h4 style="font-size:15px;">IT项目管理</h4>
+          <span class="tag accent">招1人</span>
+          <span class="text-gray text-xs">📍 河南郑州</span>
+        </div>
+        <p class="text-sm text-gray"><strong>职责：</strong>负责IT项目全生命周期管理，包括立项、需求分析、进度管控、风险管理及验收交付，推动项目敏捷化转型。</p>
+        <p class="text-sm text-gray mt-2"><strong>要求：</strong>本科及以上学历，计算机、软件工程、网络工程、信息安全等相关专业；3年及以上相关工作经验，年龄35周岁及以下；具有PMP、PRINCE2或软考高级证书者优先。</p>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <h4 style="font-size:15px;">网信安全管理</h4>
+          <span class="tag accent">招1人</span>
+          <span class="text-gray text-xs">📍 河南郑州</span>
+        </div>
+        <p class="text-sm text-gray"><strong>职责：</strong>负责整体网络信息安全体系建设，制定安全策略、应急预案，开展安全风险评估与渗透测试，构建安全防护体系。</p>
+        <p class="text-sm text-gray mt-2"><strong>要求：</strong>本科及以上学历，计算机、软件工程、网络工程、信息安全等相关专业；3年及以上工作经验，年龄35周岁及以下；熟悉主流安全产品，掌握Python/Shell，能使用机器学习库进行安全数据分析者优先。</p>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <h4 style="font-size:15px;">系统运营维护</h4>
+          <span class="tag accent">招1人</span>
+          <span class="text-gray text-xs">📍 河南郑州</span>
+        </div>
+        <p class="text-sm text-gray"><strong>职责：</strong>负责核心业务系统的日常运维管理，包括系统监控、故障排查、性能优化、数据备份与恢复等工作。</p>
+        <p class="text-sm text-gray mt-2"><strong>要求：</strong>本科及以上学历，计算机相关专业；3年及以上工作经验，年龄35周岁及以下；熟悉Linux/Windows系统管理，掌握Shell/Python脚本编写，有自动化运维经验者优先。</p>
+      </div>
+
+      <div class="info-box">
+        <h4>基本条件</h4>
+        <ol class="text-sm text-gray mt-2" style="padding-left:18px;line-height:2;">
+          <li>遵守宪法和法律，积极践行社会主义核心价值观；具有良好的品行，认同企业文化</li>
+          <li>大学本科及以上学历</li>
+          <li>具备3年及以上相关工作经验</li>
+          <li>年龄35周岁及以下，身体健康，达到国家公务员通用体检标准</li>
+          <li>具备岗位所需的其他条件</li>
+        </ol>
+        <p class="text-sm text-gray mt-3" style="border-top:1px solid #f0f0f0;padding-top:10px;">
+          <strong>流程：</strong>简历投递 → 简历筛选 → 资格审核 → 笔试 → 面试 → 体检 → 背景调查
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 中国铁塔 ==================== -->
+<div class="section" id="tower" style="background:var(--c-bg)">
+  <div class="container">
+    <div class="carrier-header">
+      <div class="logo" style="background:var(--c-tower)">塔</div>
+      <h2>中国铁塔</h2>
+      <span class="desc">2027届秋季校园招聘</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
+      <div class="info-box" style="margin-bottom:0;">
+        <span class="text-gray text-xs">报名时间</span>
+        <p class="font-bold" style="font-size:14px;margin-top:4px;">10月15日-11月12日</p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <span class="text-gray text-xs">笔试时间</span>
+        <p class="font-bold" style="font-size:14px;margin-top:4px;">11月16日</p>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <span class="text-gray text-xs">投递对象</span>
+        <p class="font-bold" style="font-size:14px;margin-top:4px;">27届应届生</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>笔试内容</h4>
+      <div class="mt-2" style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <span class="tag accent" style="white-space:nowrap;flex-shrink:0;margin-top:2px;">行测</span>
+          <span class="text-sm text-gray">30-40题左右，考察逻辑推理、数字运算、图形推理、思维策略</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <span class="tag accent" style="white-space:nowrap;flex-shrink:0;margin-top:2px;">专业知识</span>
+          <span class="text-sm text-gray">7大类选做1类</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <span class="tag accent" style="white-space:nowrap;flex-shrink:0;margin-top:2px;">性格测试</span>
+          <span class="text-sm text-gray">标准性格测评</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>专业知识7大类</h4>
+      <div class="mt-2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+        <div><span class="tag accent">管理市场类</span><span class="text-gray text-xs" style="margin-left:6px;">工商管理、市场营销、电子商务</span></div>
+        <div><span class="tag accent">通信类</span><span class="text-gray text-xs" style="margin-left:6px;">通信工程、电子信息</span></div>
+        <div><span class="tag accent">计算机类</span><span class="text-gray text-xs" style="margin-left:6px;">计算机科学、软件工程、网络工程</span></div>
+        <div><span class="tag accent">财务审计金融类</span><span class="text-gray text-xs" style="margin-left:6px;">财务管理、会计学、金融学</span></div>
+        <div><span class="tag accent">电力电气类</span><span class="text-gray text-xs" style="margin-left:6px;">电气工程、能源动力</span></div>
+        <div><span class="tag accent">土木建筑类</span><span class="text-gray text-xs" style="margin-left:6px;">土木工程、建筑工程</span></div>
+        <div><span class="tag accent">法律类</span><span class="text-gray text-xs" style="margin-left:6px;">法学、法律</span></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>专业要求</h4>
+      <p class="text-sm text-gray mt-2">工商管理类、电子信息类、计算机类、土木类、通信类、财政学类、经济学类、电子商务类等。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 笔试面试 ==================== -->
+<div class="section" id="exam">
+  <div class="container">
+    <h2 style="font-size:24px;margin-bottom:6px;">笔试面试</h2>
+    <p class="text-gray text-sm mb-4">三大运营商 + 中国铁塔 笔试内容与面试指南</p>
+
+    <h3 style="font-size:16px;margin-bottom:14px;">校招流程</h3>
+    <div class="process mb-4">
+      <div class="step"><div class="circle">1</div><span class="label">网申</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">2</div><span class="label">简历筛选</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">3</div><span class="label">笔试</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">4</div><span class="label">面试</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">5</div><span class="label">体检</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">6</div><span class="label">签约</span></div>
+      <span class="step-arrow">→</span>
+      <div class="step"><div class="circle">7</div><span class="label">入职</span></div>
+    </div>
+
+    <h3 style="font-size:16px;margin:20px 0 14px;">笔试内容对比</h3>
+    <div class="exam-grid">
+      <div class="exam-card">
+        <div class="carrier"><div class="carrier-dot" style="background:var(--c-cm)"></div><span class="carrier-name">中国移动</span></div>
+        <div class="content">行测 + 企业文化</div>
+        <ul><li>行测考察言语理解、数字运算、资料分析、逻辑推理</li><li>创新能力测试，题目较为新颖</li><li>部分省份加入英语测试</li></ul>
+      </div>
+      <div class="exam-card">
+        <div class="carrier"><div class="carrier-dot" style="background:var(--c-ct)"></div><span class="carrier-name">中国电信</span></div>
+        <div class="content">行测 + 专业知识 + 企业文化</div>
+        <ul><li>行测考察言语理解、数字运算、资料分析、逻辑推理</li><li>专业知识按岗位分大类考察</li><li>关注电信战略、云改数转、数字中国等时政</li></ul>
+      </div>
+      <div class="exam-card">
+        <div class="carrier"><div class="carrier-dot" style="background:var(--c-cu)"></div><span class="carrier-name">中国联通</span></div>
+        <div class="content">行测 + 专业知识 + 英语 + 性格测试</div>
+        <ul><li>各地区笔试内容有所区别</li><li>有的地区只考行测</li><li>有的地区考行测+专业知识</li><li>有的地区均考察</li></ul>
+      </div>
+      <div class="exam-card">
+        <div class="carrier"><div class="carrier-dot" style="background:var(--c-tower)"></div><span class="carrier-name">中国铁塔</span></div>
+        <div class="content">行测(30-40题) + 专业知识(7选1) + 性格测试</div>
+        <ul><li>行测：逻辑推理、数字运算、图形推理、思维策略</li><li>专业知识：管理市场、通信、计算机、财务审计金融、电力电气、土木建筑、法律</li></ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;margin:20px 0 14px;">中国电信笔试&面试详情</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;">
+      <div class="info-box" style="margin-bottom:0;">
+        <h4>笔试内容</h4>
+        <ol class="text-sm text-gray mt-2" style="padding-left:16px;line-height:1.9;">
+          <li><strong style="color:var(--c-text)">行测/EPI：</strong>言语理解、资料分析、数字推理、逻辑判断、图形推理</li>
+          <li><strong style="color:var(--c-text)">性格测评：</strong>稳定性、抗压性、团队协作、岗位适配度</li>
+          <li><strong style="color:var(--c-text)">专业知识：</strong>技术岗考计算机网络、数据库、操作系统、通信原理、编程基础、信息安全、云计算、大数据；财务岗考会计、财管、审计、税法；市场岗考营销基础、数据分析、客户服务</li>
+          <li><strong style="color:var(--c-text)">时政热点：</strong>中国电信战略、云改数转智惠、数字中国、网络强国、5G/算力/AI/云网融合</li>
+        </ol>
+      </div>
+      <div class="info-box" style="margin-bottom:0;">
+        <h4>面试内容</h4>
+        <ol class="text-sm text-gray mt-2" style="padding-left:16px;line-height:1.9;">
+          <li><strong style="color:var(--c-text)">自我介绍：</strong>1-2分钟，突出与岗位匹配的经历和能力</li>
+          <li><strong style="color:var(--c-text)">结构化面试：</strong>行为面试题（STAR法则）、情景模拟题、职业规划题</li>
+          <li><strong style="color:var(--c-text)">专业面试：</strong>根据岗位深入询问专业知识和技能</li>
+          <li><strong style="color:var(--c-text)">综合面试：</strong>考察沟通能力、团队协作、抗压能力等软实力</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 薪资福利 ==================== -->
+<div class="section" id="salary" style="background:var(--c-bg)">
+  <div class="container">
+    <h2 style="font-size:24px;margin-bottom:6px;">薪资待遇</h2>
+    <p class="text-gray text-sm mb-4">三大运营商薪资结构与福利保障</p>
+
+    <div class="salary-grid">
+      <div class="salary-card">
+        <div class="header"><div class="dot" style="background:var(--c-cu)"></div><h3 style="font-size:16px;">中国联通</h3></div>
+        <div class="salary-row"><span class="level">本科</span><span class="amount">10-18万</span></div>
+        <div class="salary-row"><span class="level">硕士</span><span class="amount">15-22万</span></div>
+        <div class="salary-row"><span class="level">博士</span><span class="amount">30-40万</span></div>
+        <p class="text-xs text-gray mt-3" style="border-top:1px solid #f0f0f0;padding-top:10px;">基本工资 + 绩效 + 年终奖（2-4个月）+ 补贴，14-16薪为主。一线城市技术岗14-18万，职能/市场岗10-14万。总部/5G研发22-28万，新苗计划上浮10-20%。博士可议薪，含安家费。</p>
+      </div>
+      <div class="salary-card">
+        <div class="header"><div class="dot" style="background:var(--c-ct)"></div><h3 style="font-size:16px;">中国电信</h3></div>
+        <div class="salary-row"><span class="level">一线城市</span><span class="amount">15-30万+</span></div>
+        <div class="salary-row"><span class="level">二线城市</span><span class="amount">8-15万</span></div>
+        <div class="salary-row"><span class="level">其他地区</span><span class="amount">6-10万</span></div>
+        <p class="text-xs text-gray mt-3" style="border-top:1px solid #f0f0f0;padding-top:10px;">一线城市指北京、上海、深圳、广州等东部沿海城市；二线城市指成都、武汉等中部、西部、南部、北部效益较好地区。五险一金 + 企业年金 + 补充医疗保险 + 年度体检 + 年节慰问。</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;margin:24px 0 12px;">福利保障</h3>
+    <div class="tag-wrap">
+      <span class="tag">五险一金</span><span class="tag">企业年金</span><span class="tag">补充医疗保险</span><span class="tag">年度体检</span><span class="tag">年节慰问</span><span class="tag">绩效奖金</span><span class="tag">年终奖</span><span class="tag">住房补贴</span><span class="tag">交通补贴</span><span class="tag">餐饮补贴</span>
+    </div>
+
+    <h3 style="font-size:16px;margin:24px 0 12px;">学历要求参考</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;">
+      <div class="info-box" style="margin-bottom:0;border-color:var(--c-orange)"><h4 style="font-size:13px;">总部及一级科技子公司</h4><p class="text-sm text-gray mt-1">985硕士 / QS前30硕士</p></div>
+      <div class="info-box" style="margin-bottom:0;"><h4 style="font-size:13px;">大部分省级分公司</h4><p class="text-sm text-gray mt-1">211及以上硕士 / 985本科也有机会</p></div>
+      <div class="info-box" style="margin-bottom:0;"><h4 style="font-size:13px;">市级子公司</h4><p class="text-sm text-gray mt-1">一线城市：一本硕士（最好有当地户口）；二三线城市：一本及以上</p></div>
+      <div class="info-box" style="margin-bottom:0;"><h4 style="font-size:13px;">县级子公司</h4><p class="text-sm text-gray mt-1">二本及以上 + 最好有当地户口</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 岗位辛苦榜 ==================== -->
+<div class="section">
+  <div class="container">
+    <h2 style="font-size:24px;margin-bottom:6px;">运营商"牛马"岗位 Top5</h2>
+    <p class="text-gray text-sm mb-4">话糙理不糙，三大运营商坐拥数十万员工，体面的央企光环背后，有一群人在任务量大、工时长、考核严的三重夹击下默默扛着。</p>
+
+    <div class="hard-item">
+      <div class="rank">1</div>
+      <div>
+        <h4>客户经理</h4>
+        <div class="sub">累到胃病都成了"标配"</div>
+        <p>一个客户经理手里管着80到200个单位客户，既要摸透每家的需求、定制通信解决方案，又要完成宽带、5G卡、云电脑等一堆销售指标。KPI完不成，降薪、末位淘汰就在眼前。为了谈成一个客户，午饭顾不上吃是常态，腰酸背痛加老胃病，几乎成了这个岗位的"职业认证"。</p>
+      </div>
+    </div>
+    <div class="hard-item">
+      <div class="rank">2</div>
+      <div>
+        <h4>网络及装维工程师</h4>
+        <div class="sub">别想睡安稳觉</div>
+        <p>干了这行，手机就是闹钟，而且没有关闭键。网络故障不分白天黑夜，一个电话就得往现场冲，通宵抢修是家常便饭。更要命的是高空作业，系着安全带在几十米高的铁塔上检修设备，坠落、触电的风险时刻悬在头顶。除了本职的维护安装，还要被摊派随销任务，完不成就罚款。拿着维护的工资，操着营销的心，说多了都是泪。</p>
+      </div>
+    </div>
+    <div class="hard-item">
+      <div class="rank">3</div>
+      <div>
+        <h4>市场营销岗</h4>
+        <div class="sub">不是白发就是秃顶</div>
+        <p>写不完的汇报材料、做不完的营销方案PPT，再加上新增发展、存量保有、价值提升等一长串考核指标。关键是通信市场已经趋近饱和，从竞争对手嘴里抢客户，难度堪比虎口夺食。有人说，辨认运营商市场岗员工有个简单方法——看发际线。不是白发就是秃顶，此言不虚。</p>
+      </div>
+    </div>
+    <div class="hard-item">
+      <div class="rank">4</div>
+      <div>
+        <h4>营业员</h4>
+        <div class="sub">微笑背后全是委屈</div>
+        <p>早九晚七甚至更晚，周末节假日照常营业。业务高峰期连喝水上厕所的时间都被压缩，有营业员说忙起来一上午都站不起来。除了办业务，还得推销手机、新套餐、增值服务，完成公司下达的销售指标。最难熬的不是身体的疲惫，而是面对不理解的客户的指责甚至辱骂，还得保持微笑、耐心解释。长年累月下来，心情压抑到了极点。</p>
+      </div>
+    </div>
+    <div class="hard-item">
+      <div class="rank">5</div>
+      <div>
+        <h4>综合岗</h4>
+        <div class="sub">看似打杂，实则操碎了心</div>
+        <p>很多人以为综合岗就是轻松的行政文员，大错特错！起草文件、安排会议、采购物资、协调各部门，事无巨细全要管。一场重要会议从场地预订到设备调试再到资料准备，任何一个环节出纰漏都是事故。综合岗就是公司的"大管家"，什么都得操心，见过的综合岗员工基本都是一副愁眉苦脸的样子。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 31省营收排名 ==================== -->
+<div class="section" style="background:var(--c-bg)">
+  <div class="container">
+    <h2 style="font-size:24px;margin-bottom:6px;">中国移动31省公司营收排名</h2>
+    <p class="text-gray text-sm mb-4">数据来源：各公司公开财报 · 仅供参考</p>
+    <div class="info-box" style="max-height:500px;overflow-y:auto;padding:0;">
+      <div class="rank-row" style="padding:8px 14px;background:var(--c-bg);font-weight:600;"><span class="name">省份</span><span class="bar-wrap"></span><span class="val">营收</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">广东移动</span><div class="bar-wrap"><div class="bar" style="width:100%"></div></div><span class="val">1065.9亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">江苏移动</span><div class="bar-wrap"><div class="bar" style="width:66%"></div></div><span class="val">703.4亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">浙江移动</span><div class="bar-wrap"><div class="bar" style="width:62.8%"></div></div><span class="val">669.9亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">河南移动</span><div class="bar-wrap"><div class="bar" style="width:54.4%"></div></div><span class="val">580亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">山东移动</span><div class="bar-wrap"><div class="bar" style="width:52.5%"></div></div><span class="val">560亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">四川移动</span><div class="bar-wrap"><div class="bar" style="width:48.8%"></div></div><span class="val">520亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">云南移动</span><div class="bar-wrap"><div class="bar" style="width:46%"></div></div><span class="val">490亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">北京移动</span><div class="bar-wrap"><div class="bar" style="width:43.2%"></div></div><span class="val">460亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">安徽移动</span><div class="bar-wrap"><div class="bar" style="width:40.3%"></div></div><span class="val">430亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">福建移动</span><div class="bar-wrap"><div class="bar" style="width:38.5%"></div></div><span class="val">410亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">湖南移动</span><div class="bar-wrap"><div class="bar" style="width:36.6%"></div></div><span class="val">390亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">河北移动</span><div class="bar-wrap"><div class="bar" style="width:35.6%"></div></div><span class="val">380亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">湖北移动</span><div class="bar-wrap"><div class="bar" style="width:34.7%"></div></div><span class="val">370亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">上海移动</span><div class="bar-wrap"><div class="bar" style="width:32.8%"></div></div><span class="val">350亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">广西移动</span><div class="bar-wrap"><div class="bar" style="width:31.9%"></div></div><span class="val">340亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">辽宁移动</span><div class="bar-wrap"><div class="bar" style="width:31%"></div></div><span class="val">330亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">江西移动</span><div class="bar-wrap"><div class="bar" style="width:30%"></div></div><span class="val">320亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">贵州移动</span><div class="bar-wrap"><div class="bar" style="width:29.1%"></div></div><span class="val">310亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">陕西移动</span><div class="bar-wrap"><div class="bar" style="width:28.1%"></div></div><span class="val">300亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">山西移动</span><div class="bar-wrap"><div class="bar" style="width:27.2%"></div></div><span class="val">290亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">重庆移动</span><div class="bar-wrap"><div class="bar" style="width:26.3%"></div></div><span class="val">280亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">黑龙江移动</span><div class="bar-wrap"><div class="bar" style="width:25.3%"></div></div><span class="val">270亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">内蒙古移动</span><div class="bar-wrap"><div class="bar" style="width:24.4%"></div></div><span class="val">260亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">新疆移动</span><div class="bar-wrap"><div class="bar" style="width:23.4%"></div></div><span class="val">250亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">甘肃移动</span><div class="bar-wrap"><div class="bar" style="width:22.5%"></div></div><span class="val">240亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">吉林移动</span><div class="bar-wrap"><div class="bar" style="width:21.6%"></div></div><span class="val">230亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">海南移动</span><div class="bar-wrap"><div class="bar" style="width:20.6%"></div></div><span class="val">220亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">天津移动</span><div class="bar-wrap"><div class="bar" style="width:19.7%"></div></div><span class="val">210亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">宁夏移动</span><div class="bar-wrap"><div class="bar" style="width:14.1%"></div></div><span class="val">150亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">青海移动</span><div class="bar-wrap"><div class="bar" style="width:12.2%"></div></div><span class="val">130亿</span></div>
+      <div class="rank-row" style="padding:8px 14px;"><span class="name">西藏移动</span><div class="bar-wrap"><div class="bar" style="width:10.3%"></div></div><span class="val">110亿</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Footer ==================== -->
+<div class="footer">
+  <div class="links">
+    <a href="#overview">概览</a><a href="#cm">中国移动</a><a href="#cu">中国联通</a><a href="#ct">中国电信</a><a href="#tower">中国铁塔</a><a href="#exam">笔试面试</a><a href="#salary">薪资福利</a>
+  </div>
+  <p>运营商招聘信息汇总 · 仅供参考 · 请以各运营商官方招聘公告为准</p>
+</div>
+
+<script>
+// 中国移动地区切换
+function switchCmRegion(region, btn) {
+  document.querySelectorAll('#cm .tab-btn').forEach(b => { b.classList.remove('active'); b.style.background = ''; });
+  btn.classList.add('active'); btn.style.background = 'var(--c-cm)';
+  ['sd','sc','hlj'].forEach(r => document.getElementById('cm-'+r).classList.add('hide'));
+  document.getElementById('cm-'+region).classList.remove('hide');
+}
+
+// 中国联通标签切换
+function switchCuTab(tab, btn) {
+  document.querySelectorAll('#cu .tab-btn').forEach(b => { b.classList.remove('active'); b.style.background = ''; });
+  btn.classList.add('active'); btn.style.background = 'var(--c-cu)';
+  ['jobs','majors','reqs'].forEach(t => document.getElementById('cu-'+t).classList.add('hide'));
+  document.getElementById('cu-'+tab).classList.remove('hide');
+}
+
+// 中国电信标签切换
+function switchCtTab(tab, btn) {
+  document.querySelectorAll('#ct .tab-btn').forEach(b => { b.classList.remove('active'); b.style.background = ''; });
+  btn.classList.add('active'); btn.style.background = 'var(--c-ct)';
+  ['intern','henan'].forEach(t => document.getElementById('ct-'+t).classList.add('hide'));
+  document.getElementById('ct-'+tab).classList.remove('hide');
+}
+</script>
+
+</body>
+</html>

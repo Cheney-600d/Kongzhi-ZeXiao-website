@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>控制类考研热度数据对比分析</title>
+<meta name="description" content="控制类考研院校热度榜与热度对比分析，基于最新搜索与关注数据。">
+<meta name="keywords" content="通信考研,电子考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; background: #F5F0F7; color: #333; font-size: 14px; line-height: 1.6; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+header { background: linear-gradient(135deg, #B8A4D8 0%, #9A8AC8 100%); color: #fff; padding: 30px 20px; text-align: center; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(184,164,216,0.2); }
+header h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+header p { opacity: 0.9; font-size: 1rem; }
+
+.controls { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(184,164,216,0.2); }
+.control-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.control-label { font-weight: 600; color: #555; white-space: nowrap; }
+.btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.month-btn { padding: 10px 24px; border: 2px solid #e0e0e0; background: #fff; border-radius: 24px; cursor: pointer; font-size: 1rem; font-weight: 700; transition: all 0.2s; }
+.month-btn:hover { border-color: #B8A4D8; color: #B8A4D8; }
+.month-btn.active { background: #B8A4D8; color: #fff; border-color: #B8A4D8; box-shadow: 0 4px 12px rgba(184,164,216,0.3); }
+.month-btn.disabled { opacity: 0.4; cursor: not-allowed; background: #f5f5f5; border-color: #ddd; color: #999; }
+.month-btn.disabled:hover { border-color: #ddd; color: #999; }
+.tier-btn { padding: 8px 18px; border: 2px solid #e0e0e0; background: #fff; border-radius: 20px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+.tier-btn:hover { border-color: #B8A4D8; color: #B8A4D8; }
+.tier-btn.active { background: #B8A4D8; color: #fff; border-color: #B8A4D8; }
+
+.compare-section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(184,164,216,0.2); }
+.section-title { font-size: 1.3rem; font-weight: 700; color: #333; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #E8E0E8; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.section-title > span { min-width: 0; }
+.web-hot-link { padding: 14px 36px; border: none; background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); border-radius: 30px; color: #fff; text-decoration: none; font-size: 1.25rem; font-weight: 700; white-space: nowrap; transition: all 0.25s; box-shadow: 0 4px 18px rgba(255,107,53,0.4); display: inline-flex; align-items: center; gap: 10px; }
+.web-hot-link:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 28px rgba(255,107,53,0.55); }
+.web-hot-center { text-align: center; margin: 16px 0 20px; }
+.compare-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 20px; }
+.compare-panel { background: #fff; border-radius: 10px; padding: 16px; }
+.table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #D4C8E0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+thead { background: #F5F0F7; position: sticky; top: 0; }
+th { padding: 10px 12px; text-align: left; font-weight: 600; color: #555; border-bottom: 1px solid #D4C8E0; }
+td { padding: 10px 12px; border-bottom: 1px solid #E8E0E8; }
+tbody tr:hover { background: #F5F0F7; }
+.rank { font-weight: 700; color: #9A8AC8; width: 40px; }
+.school { font-weight: 600; }
+.heat { font-weight: 700; color: #8E7EC8; }
+.tier-tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.tier-tag.tier-985 { background: #e74c3c; color: #fff; }
+.tier-tag.tier-211 { background: #8b5cf6; color: #fff; }
+.tier-tag.tier-双非 { background: #e5e7eb; color: #6b7280; }
+.tier-tag.tier-四邮四电 { background: #ede9fe; color: #6b21a8; }
+.tier-tag.tier-双一流 { background: #0ea5e9; color: #fff; }
+
+.month-btn:hover { border-color: #B8A4D8; color: #B8A4D8; transform: scale(1.02); }
+.month-btn.active { background: #B8A4D8; color: #fff; border-color: #B8A4D8; box-shadow: 0 4px 12px rgba(184,164,216,0.3), 0 0 16px rgba(184,164,216,0.5); }
+.tier-btn:hover { border-color: #B8A4D8; color: #B8A4D8; transform: scale(1.02); }
+.tier-btn.active { background: #B8A4D8; color: #fff; border-color: #B8A4D8; box-shadow: 0 0 16px rgba(184,164,216,0.5); }
+
+tbody tr:nth-child(even) { background: #FAF7FC; }
+tbody tr { transition: background 0.2s; }
+tbody tr:hover { background: #F0EBF3; }
+
+.rank { font-weight: 700; color: #9A8AC8; width: 40px; text-align: center; }
+tbody tr:nth-child(1) .rank { color: #fff; background: linear-gradient(135deg, #FFD700, #FFA000); border-radius: 4px; font-weight: 800; }
+tbody tr:nth-child(2) .rank { color: #fff; background: linear-gradient(135deg, #A0A0A0, #707070); border-radius: 4px; font-weight: 800; }
+tbody tr:nth-child(3) .rank { color: #fff; background: linear-gradient(135deg, #CD7F32, #8D6E63); border-radius: 4px; font-weight: 800; }
+
+.stats-bar { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.stat-item { background: #fff; border-radius: 8px; padding: 12px 20px; box-shadow: 0 4px 12px rgba(184,164,216,0.2); text-align: center; flex: 1; min-width: 120px; }
+.stat-item .num { font-size: 1.4rem; font-weight: 700; color: #9A8AC8; }
+.stat-item .lbl { font-size: 0.8rem; color: #888; margin-top: 4px; }
+
+.empty-msg { text-align: center; padding: 60px; color: #999; font-size: 1.1rem; }
+
+.trend-up { color: #e74c3c; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
+.trend-down { color: #27ae60; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
+.trend-same { color: #999; font-size: 0.85rem; white-space: nowrap; }
+.trend-arrow { margin-right: 2px; }
+
+@media (max-width: 768px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .control-row { flex-direction: column; align-items: stretch; }
+    .btn-group { justify-content: center; }
+    .web-hot-link { padding: 12px 24px; font-size: 1.05rem; }
+    .web-hot-center { margin: 12px 0 16px; }
+}
+</style>
+
+
+<style id="entry-responsive-adapt">
+html{overflow-x:hidden}
+body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,canvas,video{max-width:100%}
+button,a,input,select{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(154,138,200,.42);outline-offset:3px}
+.table-wrap{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.table-wrap table{min-width:560px}
+.back-to-home{top:calc(16px + env(safe-area-inset-top,0px))!important;left:calc(16px + env(safe-area-inset-left,0px))!important}
+@media (hover:none){.month-btn:hover,.tier-btn:hover,.web-hot-link:hover{transform:none;box-shadow:none}}
+@media (max-width:900px){
+  .container{width:100%;padding:72px max(12px,env(safe-area-inset-left)) 28px max(12px,env(safe-area-inset-right))}
+  header{padding:22px 14px;margin-bottom:16px}
+  header h1{font-size:clamp(1.25rem,5.2vw,1.65rem)}
+  header p{font-size:.9rem}
+  .controls,.compare-section{padding:14px;margin-bottom:16px;border-radius:12px}
+  .control-row{align-items:stretch}
+  .control-label{width:100%}
+  .btn-group{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  .btn-group::-webkit-scrollbar{display:none}
+  .month-btn,.tier-btn{flex:0 0 auto;min-height:44px;padding:9px 16px;font-size:.92rem}
+  .section-title{font-size:1.05rem;align-items:flex-start}
+  .web-hot-link{width:100%;justify-content:center;white-space:normal;text-align:center}
+  .stats-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .stat-item{min-width:0;padding:10px 8px}
+  .stat-item .num{font-size:1.05rem;word-break:break-word}
+}
+@media (max-width:520px){
+  .stats-bar{grid-template-columns:1fr}
+  .compare-panel{padding:10px 0}
+}
+</style>
+
+</head>
+<body>
+<a href="index.html" class="back-to-home" style="position:fixed;top:16px;left:16px;z-index:1000;padding:10px 18px;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(184,164,216,0.2);transition:transform .2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">← 返回首页</a>
+<div class="container">
+<header>
+<h1>控制类考研热度数据对比分析</h1>
+<p>2026年7月 · 控制类考研热度总榜 · 985 / 211 / 双非 层级筛选</p>
+</header>
+
+<div class="controls">
+<div class="control-row">
+<span class="control-label">月份切换：</span>
+<div class="btn-group" id="month-btns">
+<button class="month-btn active" data-month="7" onclick="switchMonth('7')">7月</button>
+</div>
+</div>
+<div class="control-row" style="margin-top:12px">
+<span class="control-label">院校层级：</span>
+<div class="btn-group">
+<button class="tier-btn active" data-tier="all" onclick="filterTier('all')">全部</button>
+<button class="tier-btn" data-tier="985" onclick="filterTier('985')">985</button>
+<button class="tier-btn" data-tier="211" onclick="filterTier('211')">211</button>
+<button class="tier-btn" data-tier="双非" onclick="filterTier('双非')">双非</button>
+</div>
+</div>
+</div>
+
+<div id="compare-container"></div>
+
+<div class="footer">数据来源：2026年7月控制类考研热度总榜</div>
+</div>
+
+<script>
+var HEAT_DATA = {"202607":[{"rank":"1","school":"华北电力大学","heat":77.2,"tier":"211"},{"rank":"2","school":"上海大学","heat":77.16,"tier":"211"},{"rank":"3","school":"哈尔滨工业大学","heat":73.3,"tier":"985"},{"rank":"4","school":"南京理工大学","heat":71.32,"tier":"211"},{"rank":"5","school":"中国计量大学","heat":69.65,"tier":"双非"},{"rank":"6","school":"华东理工大学","heat":66.83,"tier":"211"},{"rank":"7","school":"天津大学","heat":66.44,"tier":"985"},{"rank":"8","school":"哈尔滨工程大学","heat":65.43,"tier":"211"},{"rank":"9","school":"北京邮电大学","heat":63.26,"tier":"211"},{"rank":"10","school":"中国科学院大学","heat":61.3,"tier":"双非"}]};
+
+var activeTier = 'all';
+var activeMonth = '7';
+
+function switchMonth(month) {
+    activeMonth = month;
+    document.querySelectorAll('#month-btns .month-btn').forEach(function(el) {
+        el.classList.toggle('active', el.getAttribute('data-month') === month);
+    });
+    render();
+}
+
+function filterTier(tier) {
+    activeTier = tier;
+    document.querySelectorAll('.tier-btn').forEach(function(el) {
+        el.classList.toggle('active', el.getAttribute('data-tier') === tier);
+    });
+    render();
+}
+
+function getSchoolMap(month) {
+    var data = HEAT_DATA[month] || [];
+    var map = {};
+    var filteredItems = [];
+    for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        if (activeTier !== 'all' && item.tier !== activeTier) continue;
+        filteredItems.push(item);
+    }
+    for (var j = 0; j < filteredItems.length; j++) {
+        var item = filteredItems[j];
+        map[item.school] = {
+            rank: String(j + 1),
+            heat: item.heat,
+            tier: item.tier,
+            school: item.school
+        };
+    }
+    return map;
+}
+
+function getSchoolsByTier(month) {
+    var data = HEAT_DATA[month] || [];
+    var result = [];
+    for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        if (activeTier !== 'all' && item.tier !== activeTier) continue;
+        result.push(item);
+    }
+    return result;
+}
+
+function getSchoolLink(schoolName) {
+    var badgeImg = '<img src="专业课选择/images/校徽/' + schoolName + '.jpg" onerror="this.style.display=\'none\'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">';
+    return '<a href="index.html?school=' + encodeURIComponent(schoolName) + '&from=heat_compare.html" style="color:#B8A4D8;text-decoration:none;font-weight:600;" onmouseover="this.style.color=\'#9A8AC8\'" onmouseout="this.style.color=\'#B8A4D8\'">' + badgeImg + schoolName + '</a>';
+}
+
+function renderTable(schools, compareMap) {
+    if (!schools.length) return '<div class="empty-msg">暂无数据</div>';
+    var html = '<div class="table-wrap"><table><thead><tr><th>排名</th><th>学校</th><th>热度</th><th>排名趋势</th><th>层级</th></tr></thead><tbody>';
+    for (var i = 0; i < schools.length; i++) {
+        var s = schools[i];
+        var displayRank = i + 1;
+        var tierClass = 'tier-' + s.tier;
+        var trendHtml = '<span class="trend-same">-</span>';
+        if (compareMap && compareMap[s.school]) {
+            var prev = compareMap[s.school];
+            var rankDiff = parseInt(prev.rank) - displayRank;  // 去年排名 - 今年排名
+            if (rankDiff > 0) {
+                // 排名上升了（数字变小了）
+                trendHtml = '<span class="trend-up"><span class="trend-arrow">↑</span>' + rankDiff + '</span>';
+            } else if (rankDiff < 0) {
+                // 排名下降了（数字变大了）
+                trendHtml = '<span class="trend-down"><span class="trend-arrow">↓</span>' + Math.abs(rankDiff) + '</span>';
+            }
+        } else if (compareMap) {
+            // 去年有数据但今年没这个学校？不，这里是今年有数据的情况
+            // 如果 compareMap 存在但找不到该学校，说明新上榜
+            trendHtml = '<span class="trend-up" style="color:#3498db;">新</span>';
+        }
+        html += '<tr><td class="rank">' + displayRank + '</td><td class="school">' + getSchoolLink(s.school) + '</td><td class="heat">' + s.heat + '</td><td>' + trendHtml + '</td><td><span class="tier-tag ' + tierClass + '">' + s.tier + '</span></td></tr>';
+    }
+    html += '</tbody></table></div>';
+    return html;
+}
+
+function renderStats(schools, label) {
+    var count = schools.length;
+    var totalHeat = 0;
+    for (var i = 0; i < schools.length; i++) totalHeat += schools[i].heat;
+    var avgHeat = count ? (totalHeat / count).toFixed(2) : 0;
+    var topSchool = count ? getSchoolLink(schools[0].school) : '-';
+    return '<div class="stats-bar"><div class="stat-item"><div class="num">' + count + '</div><div class="lbl">' + label + '上榜数</div></div><div class="stat-item"><div class="num">' + avgHeat + '</div><div class="lbl">平均热度</div></div><div class="stat-item"><div class="num">' + topSchool + '</div><div class="lbl">热度第一</div></div></div>';
+}
+
+function render() {
+    var container = document.getElementById('compare-container');
+    var html = '';
+
+    var data = getSchoolsByTier('202607');
+    html += '<div class="compare-section">';
+    html += '<div class="section-title"><span>2026年7月 · 控制类考研热度总榜</span></div>';
+    html += renderStats(data, '上榜');
+    html += '<div class="compare-grid">';
+    html += '<div class="compare-panel"><div class="panel-title">热度总榜 TOP10</div>' + renderTable(data, null) + '</div>';
+    html += '</div></div>';
+
+    container.innerHTML = html;
+}
+
+render();
+
+// URL 参数解析：自动切换到指定月份
+(function(){
+  var urlParams = new URLSearchParams(window.location.search);
+  var monthParam = urlParams.get('month');
+  if(monthParam) {
+    var validMonths = ['7'];
+    if(validMonths.indexOf(monthParam) >= 0) {
+      switchMonth(monthParam);
+    }
+  }
+})();
+</script>
+
+<script id="entry-a11y-adapt-js">
+(function(){
+  function enhanceClickableKeyboard(){
+    document.querySelectorAll('[onclick]:not(button):not(a):not(input):not(select):not(textarea)').forEach(function(el){
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(el.dataset.keyEnhanced === '1') return;
+      el.dataset.keyEnhanced = '1';
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', enhanceClickableKeyboard);
+  }else{
+    enhanceClickableKeyboard();
+  }
+})();
+</script>
+
+</body>
+</html>

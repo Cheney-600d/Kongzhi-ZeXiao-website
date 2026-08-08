@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西安电子科技大学 - 控制类考研就业去向</title>
+        <style>
+        :root {
+            --primary-color: #C5CAE9;
+            --secondary-color: #9FA8DA;
+            --accent-color: #D1C4E9;
+            --bg-light: #F8FAFC;
+            --border-color: #e0e0e0;
+        }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #C5CAE9 0%, #D1C4E9 100%);
+            color: #1a1a2e;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #D1C4E9;
+        }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            border: 1px solid #e8e8e8;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .info-card h3 {
+            color: #1a1a2e;
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #C5CAE9 0%, #D1C4E9 100%);
+            color: #1a1a2e;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .company-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-4e4y { background: #C5CAE9; color: #1a1a2e; }
+        .tip-box {
+            background: #FCE4EC;
+            border: 1px solid #D1C4E9;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 0.95em;
+        }
+        .tip-box strong { color: #1a1a2e; }
+        .industry-chart { margin: 16px 0; }
+        .industry-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .industry-bar {
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: width 0.8s ease;
+        }
+        .industry-label { min-width: 160px; font-weight: 600; color: #2d3436; margin-right: 12px; }
+        .industry-pct { margin-left: 10px; color: #5a5a5a; font-weight: 600; }
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .region-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+            background: #fafafa;
+        }
+        .region-name { font-weight: 600; color: #1a1a2e; }
+        .region-count { color: #5a5a5a; font-size: 0.9em; }
+        .offer-list { margin-top: 16px; }
+        .offer-item {
+            background: white;
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
+        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
+        .offer-highlight { color: #d63031; font-weight: 600; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>西安电子科技大学 <span class="badge badge-4e4y">四电四邮</span></h1>
+        <p>四电四邮 / 2024届毕业生就业质量年度报告</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">558</div><div class="stat-label">华为签约</div></div>
+                        <div class="stat-item"><div class="stat-number">326</div><div class="stat-label">中国电科</div></div>
+                        <div class="stat-item"><div class="stat-number">97.81%</div><div class="stat-label">研究生就业率</div></div>
+                        <div class="stat-item"><div class="stat-number">3.90</div><div class="stat-label">人均Offer数</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 TOP15 签约单位</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">华为</div><div class="company-count">558人</div></div>
+                    <div class="company-card"><div class="company-name">中国电科</div><div class="company-count">326人</div></div>
+                    <div class="company-card"><div class="company-name">中国航空工业</div><div class="company-count">219人</div></div>
+                    <div class="company-card"><div class="company-name">中国航天科技</div><div class="company-count">172人</div></div>
+                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">109人</div></div>
+                    <div class="company-card"><div class="company-name">中国兵器</div><div class="company-count">96人</div></div>
+                    <div class="company-card"><div class="company-name">中国电信</div><div class="company-count">96人</div></div>
+                    <div class="company-card"><div class="company-name">普联(TP-LINK)</div><div class="company-count">96人</div></div>
+                    <div class="company-card"><div class="company-name">阿里巴巴</div><div class="company-count">93人</div></div>
+                    <div class="company-card"><div class="company-name">中国航天科工</div><div class="company-count">90人</div></div>
+                    <div class="company-card"><div class="company-name">中兴</div><div class="company-count">87人</div></div>
+                    <div class="company-card"><div class="company-name">中国移动</div><div class="company-count">78人</div></div>
+                    <div class="company-card"><div class="company-name">美团</div><div class="company-count">66人</div></div>
+                    <div class="company-card"><div class="company-name">腾讯</div><div class="company-count">60人</div></div>
+                    <div class="company-card"><div class="company-name">中国电子产业集团</div><div class="company-count">58人</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🗺️ 就业地域分布</h3>
+                <div class="region-grid">
+                    <div class="region-item"><div class="region-name">西安</div><div class="region-count">38%+</div></div>
+                    <div class="region-item"><div class="region-name">北京</div><div class="region-count">13.60%</div></div>
+                    <div class="region-item"><div class="region-name">上海</div><div class="region-count">8.21%</div></div>
+                    <div class="region-item"><div class="region-name">深圳</div><div class="region-count">6.64%</div></div>
+                    <div class="region-item"><div class="region-name">杭州</div><div class="region-count">4.45%</div></div>
+                    <div class="region-item"><div class="region-name">成都</div><div class="region-count">4.39%</div></div>
+                    <div class="region-item"><div class="region-name">南京</div><div class="region-count">2.98%</div></div>
+                    <div class="region-item"><div class="region-name">广州</div><div class="region-count">2.04%</div></div>
+                    <div class="region-item"><div class="region-name">合肥</div><div class="region-count">1.67%</div></div>
+                    <div class="region-item"><div class="region-name">天津</div><div class="region-count">1.62%</div></div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 地域特点：</strong>西安本地就业占比38%+，北京、上海、深圳一线城市占比约28%。西电毕业生全国分布广泛，不受地域限制。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🏭 行业分布</h3>
+                <div class="industry-chart">
+                    <div class="industry-item">
+                        <div class="industry-label">IT/软件/信息服务</div>
+                        <div class="industry-bar" style="width: 48.01%; background: linear-gradient(90deg, #C5CAE9, #D1C4E9);">48.01%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">科研/技术服务</div>
+                        <div class="industry-bar" style="width: 20.40%; background: linear-gradient(90deg, #A8E6CF, #B8E6D8);">20.40%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">制造业</div>
+                        <div class="industry-bar" style="width: 19.82%; background: linear-gradient(90deg, #FFCCBC, #FFD1A9);">19.82%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">金融业</div>
+                        <div class="industry-bar" style="width: 8.16%; background: linear-gradient(90deg, #F8C3CD, #FFCCBC);">8.16%</div>
+                    </div>
+                    <div class="industry-item">
+                        <div class="industry-label">其他</div>
+                        <div class="industry-bar" style="width: 3.61%; background: linear-gradient(90deg, #F8FAFC, #E8E8E8);">3.61%</div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 行业特点：</strong>西电就业甚至超985！主要流向软件和信息技术服务业（48%）、科学研究（20%）+制造业（20%），IT+科研+制造三业并进。30w年薪不是问题！
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_xidian.png" alt="西安电子科技大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💼 高薪Offer案例</h3>
+                <div class="offer-list">
+                    <div class="offer-item">
+                        <div class="offer-company">字节跳动</div>
+                        <div class="offer-detail">软件开发 · <span class="offer-highlight">32K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">快手</div>
+                        <div class="offer-detail">后端研发 · <span class="offer-highlight">32K × 16薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">美团</div>
+                        <div class="offer-detail">开发ssp · <span class="offer-highlight">28K × 15.5薪，总包43w</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">阿里</div>
+                        <div class="offer-detail">算法岗 · <span class="offer-highlight">27K × 16薪，总包43w</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">拼多多</div>
+                        <div class="offer-detail">软件开发 · <span class="offer-highlight">27K × 18薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">华为</div>
+                        <div class="offer-detail">软件开发 · <span class="offer-highlight">24K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">华为</div>
+                        <div class="offer-detail">射频通信工程师（Base成都） · <span class="offer-highlight">年薪30w</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">OPPO</div>
+                        <div class="offer-detail">年薪30w，天线工程师</div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">经纬恒润</div>
+                        <div class="offer-detail">嵌入式 · <span class="offer-highlight">总包30w</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">比亚迪</div>
+                        <div class="offer-detail">高级数字IC设计工程师 · <span class="offer-highlight">20K × 1.36 × 12</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">OPPO</div>
+                        <div class="offer-detail">软件开发 · <span class="offer-highlight">22K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">中国电气装备集团</div>
+                        <div class="offer-detail">央企技术岗 · <span class="offer-highlight">16-20w</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>📈 招聘数据亮点</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">7348</div><div class="stat-label">来校招聘单位</div></div>
+                        <div class="stat-item"><div class="stat-number">1936</div><div class="stat-label">宣讲会场次</div></div>
+                        <div class="stat-item"><div class="stat-number">43:1</div><div class="stat-label">岗位供需比</div></div>
+                        <div class="stat-item"><div class="stat-number">84.74%</div><div class="stat-label">高质量单位占比</div></div>
+                    </div>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 就业特点：</strong>西电2024届毕业生签约单位TOP30占总签约47.03%。无论想去大厂（华为558人、阿里93人、腾讯60人、美团66人、字节39人），还是稳定的国企央企（中电科326人、航天172人、航空219人、兵器96人、银行/运营商），都能找到很不错的岗位！
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：2024届毕业生就业质量年度报告 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

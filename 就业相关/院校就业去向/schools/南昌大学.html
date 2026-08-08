@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南昌大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .company-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85em; }
+        .company-table th, .company-table td { padding: 8px 10px; border-bottom: 1px solid #e0e0e0; text-align: left; }
+        .company-table th { background: #E8F5E9; font-weight: 600; color: #1a1a2e; }
+        .company-table td { background: white; }
+        .company-table tr:hover td { background: #f5f5f5; }
+        .top-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-left: 4px; }
+        .tag-500 { background: #FFCCBC; color: #1a1a2e; }
+        .tag-world { background: #F8C3CD; color: #1a1a2e; }
+        .tag-china { background: #C5CAE9; color: #1a1a2e; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .company-table { font-size: 0.75em; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>南昌大学 <span class="badge badge-211">211</span></h1>
+        <p>211高校 / 江西省唯一211 / 2022届硕士就业去向</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">204</div><div class="stat-label">中国建筑</div></div>
+                        <div class="stat-item"><div class="stat-number">95</div><div class="stat-label">比亚迪</div></div>
+                        <div class="stat-item"><div class="stat-number">93</div><div class="stat-label">国家电网</div></div>
+                        <div class="stat-item"><div class="stat-number">65</div><div class="stat-label">中国移动</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 世界500强雇主 TOP20</h3>
+                <table class="company-table">
+                    <tr><th>公司</th><th>人数</th></tr>
+                    <tr><td>中国建筑 <span class="top-tag tag-world">世界500</span></td><td><strong>204</strong></td></tr>
+                    <tr><td>比亚迪 <span class="top-tag tag-world">世界500</span></td><td><strong>95</strong></td></tr>
+                    <tr><td>国家电网 <span class="top-tag tag-world">世界500</span></td><td><strong>93</strong></td></tr>
+                    <tr><td>中国移动 <span class="top-tag tag-world">世界500</span></td><td><strong>65</strong></td></tr>
+                    <tr><td>中国铁路工程 <span class="top-tag tag-world">世界500</span></td><td><strong>53</strong></td></tr>
+                    <tr><td>中国电信 <span class="top-tag tag-world">世界500</span></td><td><strong>41</strong></td></tr>
+                    <tr><td>海尔智家 <span class="top-tag tag-world">世界500</span></td><td><strong>32</strong></td></tr>
+                    <tr><td>中国航空工业 <span class="top-tag tag-world">世界500</span></td><td><strong>29</strong></td></tr>
+                    <tr><td>中国电力建设 <span class="top-tag tag-world">世界500</span></td><td><strong>25</strong></td></tr>
+                    <tr><td>美的集团 <span class="top-tag tag-world">世界500</span></td><td><strong>20</strong></td></tr>
+                    <tr><td>中国中车 <span class="top-tag tag-world">世界500</span></td><td><strong>20</strong></td></tr>
+                    <tr><td>江西铜业 <span class="top-tag tag-world">世界500</span></td><td><strong>19</strong></td></tr>
+                    <tr><td>中国华润 <span class="top-tag tag-world">世界500</span></td><td><strong>18</strong></td></tr>
+                    <tr><td>农业银行 <span class="top-tag tag-world">世界500</span></td><td><strong>18</strong></td></tr>
+                    <tr><td>珠海格力 <span class="top-tag tag-world">世界500</span></td><td><strong>17</strong></td></tr>
+                    <tr><td>中国铁道建筑 <span class="top-tag tag-world">世界500</span></td><td><strong>16</strong></td></tr>
+                    <tr><td>鸿海精密（富士康）<span class="top-tag tag-world">世界500</span></td><td><strong>15</strong></td></tr>
+                    <tr><td>兴业银行 <span class="top-tag tag-world">世界500</span></td><td><strong>15</strong></td></tr>
+                    <tr><td>工商银行 <span class="top-tag tag-world">世界500</span></td><td><strong>15</strong></td></tr>
+                    <tr><td>中国银行 <span class="top-tag tag-world">世界500</span></td><td><strong>15</strong></td></tr>
+                </table>
+            </div>
+
+            <div class="info-card">
+                <h3>🏅 中国500强特色雇主</h3>
+                <table class="company-table">
+                    <tr><th>公司</th><th>人数</th></tr>
+                    <tr><td>TCL科技 <span class="top-tag tag-china">中国500</span></td><td><strong>32</strong></td></tr>
+                    <tr><td>天马微电子 <span class="top-tag tag-china">中国500</span></td><td><strong>32</strong></td></tr>
+                    <tr><td>中国航空科技工业 <span class="top-tag tag-china">中国500</span></td><td><strong>27</strong></td></tr>
+                    <tr><td>药明康德 <span class="top-tag tag-china">中国500</span></td><td><strong>26</strong></td></tr>
+                    <tr><td>江铃汽车 <span class="top-tag tag-china">中国500</span></td><td><strong>22</strong></td></tr>
+                    <tr><td>宁德时代 <span class="top-tag tag-china">中国500</span></td><td><strong>22</strong></td></tr>
+                    <tr><td>海康威视 <span class="top-tag tag-china">中国500</span></td><td><strong>21</strong></td></tr>
+                    <tr><td>万华化学 <span class="top-tag tag-china">中国500</span></td><td><strong>20</strong></td></tr>
+                    <tr><td>伊利实业 <span class="top-tag tag-china">中国500</span></td><td><strong>17</strong></td></tr>
+                    <tr><td>中芯国际 <span class="top-tag tag-china">中国500</span></td><td><strong>14</strong></td></tr>
+                    <tr><td>欣旺达电子 <span class="top-tag tag-china">中国500</span></td><td><strong>13</strong></td></tr>
+                    <tr><td>海天味业 <span class="top-tag tag-china">中国500</span></td><td><strong>13</strong></td></tr>
+                    <tr><td>中国核工业建设 <span class="top-tag tag-china">中国500</span></td><td><strong>13</strong></td></tr>
+                    <tr><td>邮政储蓄银行 <span class="top-tag tag-china">中国500</span></td><td><strong>13</strong></td></tr>
+                    <tr><td>烽火通信 <span class="top-tag tag-china">中国500</span></td><td><strong>6</strong></td></tr>
+                    <tr><td>理想汽车 <span class="top-tag tag-china">中国500</span></td><td><strong>6</strong></td></tr>
+                    <tr><td>浙江大华 <span class="top-tag tag-china">中国500</span></td><td><strong>6</strong></td></tr>
+                    <tr><td>欧菲光 <span class="top-tag tag-china">中国500</span></td><td><strong>7</strong></td></tr>
+                </table>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_南昌大学.png" alt="南昌大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🚗 汽车新能源</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">95人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">上海汽车</div><div class="company-count">11人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">吉利汽车</div><div class="company-count">9人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">广州汽车</div><div class="company-count">8人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">东风汽车</div><div class="company-count">7人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">中国一汽</div><div class="company-count">6人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">江铃汽车</div><div class="company-count">22人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">宁德时代</div><div class="company-count">22人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">理想汽车</div><div class="company-count">6人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">一汽解放</div><div class="company-count">6人（中国500）</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📡 三大运营商</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">中国移动</div><div class="company-count">65人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">中国电信</div><div class="company-count">41人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">中国联通</div><div class="company-count">13人（世界500）</div></div>
+                </div>
+                <h3 style="margin-top: 20px;">⚡ 电网/能源</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">国家电网</div><div class="company-count">93人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">南方电网</div><div class="company-count">13人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">国家电投</div><div class="company-count">5人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">特变电工</div><div class="company-count">6人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">厦门钨业</div><div class="company-count">6人（中国500）</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏠 电器/家电</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">海尔智家</div><div class="company-count">32人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">珠海格力</div><div class="company-count">17人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">美的集团</div><div class="company-count">20人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">TCL科技</div><div class="company-count">32人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">海信视像</div><div class="company-count">部分</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏦 银行/金融</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">农业银行</div><div class="company-count">18人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">兴业银行</div><div class="company-count">15人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">工商银行</div><div class="company-count">15人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">中国银行</div><div class="company-count">15人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">招商银行</div><div class="company-count">13人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">交通银行</div><div class="company-count">11人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">建设银行</div><div class="company-count">10人（世界500）</div></div>
+                    <div class="company-card"><div class="company-name">邮政储蓄</div><div class="company-count">13人（中国500）</div></div>
+                    <div class="company-card"><div class="company-name">中国平安</div><div class="company-count">8人（世界500）</div></div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>🚗 汽车新能源 dominance：</strong>比亚迪95人居首，加上江铃22人、宁德时代22人、上汽11人、吉利9人、广汽8人、东风7人、一汽6人、理想6人、一汽解放6人，汽车新能源产业链是南昌大学硕士就业第一大去向。这与江西省及周边汽车产业集群（比亚迪南昌基地、江铃、宁德时代江西布局）高度相关。
+                </div>
+                <div class="tip-box">
+                    <strong>📡 三大运营商+电网稳定吸纳：</strong>中国移动65人、中国电信41人、中国联通13人，三大运营商合计119人；国家电网93人、南方电网13人，电网系统合计106人。通信/电力央企是南昌大学稳定的高质量就业出口。
+                </div>
+                <div class="tip-box">
+                    <strong>🏗️ 建筑央企大规模招聘：</strong>中国建筑204人、中国铁路工程53人、中国电力建设25人、中国铁道建筑16人、中国交通建设9人、上海建工7人，建筑央企合计超300人，是南昌大学就业最大吸纳方。这与土木工程、工程管理等专业相关，控制类也有一部分进入建筑信息化/智能化岗位。
+                </div>
+                <div class="tip-box">
+                    <strong>🏦 银行金融占比高：</strong>农业银行18人、兴业银行15人、工商银行15人、中国银行15人、招商银行13人、交通银行11人、建设银行10人、邮政储蓄13人，银行系统合计超100人。金融科技岗位是控制类硕士向金融业转型的重要通道。
+                </div>
+                <div class="tip-box">
+                    <strong>🏠 电器家电传统强项：</strong>海尔32人、美的20人、格力17人、TCL32人，电器家电企业合计超100人。南昌大学在制造业/电器领域的传统就业优势依然明显。
+                </div>
+                <div class="tip-box">
+                    <strong>🔬 半导体/电子新兴增长：</strong>天马微电子32人、海康威视21人、中芯国际14人、欣旺达13人、烽火通信6人、欧菲光7人、浙江大华6人，半导体/电子类企业合计约100人。显示面板、半导体制造、安防电子、消费电子等细分方向正在快速增长。
+                </div>
+                <div class="tip-box">
+                    <strong>🌐 互联网/科技：</strong>腾讯10人、小米10人、阿里巴巴5人、华为9人，头部互联网/科技公司也有一定数量的毕业生。字节跳动、百度、美团等未在500强列表中体现，但南昌大学毕业生在这些公司也有分布。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域特征：</strong>南昌作为江西省会，本地就业以江西铜业（19人）、江铃汽车（22人）、南昌铁路局等为主；省外以深圳（比亚迪、华为、腾讯）、上海（上汽、银行）、北京（小米、阿里巴巴）、福建（宁德时代）、浙江（吉利、海康威视）为主要流向。赣籍学生回流+周边经济强省外溢双重驱动。
+                </div>
+                <div class="tip-box">
+                    <strong>🏛️ 体制内/央企 dominance：</strong>世界500强+中国500强合计超500人，央企、国企、银行、电网、三大运营商等体制内单位占绝对主导。这与南昌大学作为省属211、江西考生偏爱稳定的就业偏好高度相关。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：南昌大学2022届毕业生就业质量报告（世界500强+中国500强）| 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

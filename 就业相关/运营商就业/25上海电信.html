@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海电信2025校园招聘数据分析报告</title>
+    <script src="../../vendor/chart-4.4.0.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { width: 80%; margin: 0 auto; }
+        .header { text-align: center; padding: 40px 20px; color: white; }
+        .header h1 { font-size: 2.8em; font-weight: 700; text-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-bottom: 15px; }
+        .header .subtitle { font-size: 1.2em; opacity: 0.9; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header .data-count { display: inline-block; margin-top: 15px; padding: 10px 30px; background: rgba(255,255,255,0.2); border-radius: 30px; font-size: 1em; backdrop-filter: blur(10px); }
+        .card { background: white; border-radius: 24px; padding: 30px; margin-bottom: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-title { font-size: 1.5em; font-weight: 700; color: #333; margin-bottom: 25px; padding-left: 15px; border-left: 4px solid #667eea; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px; }
+        .metric-card { background: white; border-radius: 20px; padding: 25px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; }
+        .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .metric-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .metric-value { font-size: 3.5em; font-weight: 700; color: #667eea; line-height: 1.2; margin: 10px 0; }
+        .metric-label { font-size: 1.1em; color: #555; font-weight: 600; }
+        .metric-desc { font-size: 0.85em; color: #999; margin-top: 5px; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 25px; }
+        .chart-container { position: relative; height: 350px; padding: 15px; }
+        .chart-container.full-width { grid-column: 1 / -1; height: 400px; }
+        .insight-box { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); border-left: 5px solid #e74c3c; padding: 20px 25px; margin: 20px 0; border-radius: 0 12px 12px 0; }
+        .insight-box h3 { color: #e74c3c; font-weight: 700; margin-bottom: 12px; font-size: 1.2em; }
+        .insight-box ul { list-style: none; padding: 0; }
+        .insight-box li { padding: 8px 0; border-bottom: 1px dashed #ccc; color: #444; font-size: 0.95em; line-height: 1.6; }
+        .insight-box li:last-child { border-bottom: none; }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; margin-left: 8px; }
+        .tag-highlight { background: #fff3cd; color: #856404; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+        .data-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 15px; text-align: left; font-weight: 600; position: sticky; top: 0; }
+        .data-table th:first-child { border-radius: 10px 0 0 0; }
+        .data-table th:last-child { border-radius: 0 10px 0 0; }
+        .data-table td { padding: 10px 15px; border-bottom: 1px solid #eee; color: #444; }
+        .data-table tr:hover td { background: #f8f9ff; }
+        .edu-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.8em; font-weight: 600; }
+        .edu-bachelor { background: #d4edda; color: #155724; }
+        .edu-master { background: #fff3cd; color: #856404; }
+        .edu-phd { background: #f8d7da; color: #721c24; }
+        .tier-tag { display: inline-block; padding: 3px 12px; border-radius: 15px; font-size: 0.8em; font-weight: 600; }
+        .tier-985 { background: #f8d7da; color: #721c24; }
+        .tier-211 { background: #cce5ff; color: #004085; }
+        .tier-shuangfei { background: #e2e3e5; color: #383d41; }
+        .tier-haiwai { background: #e2ccff; color: #5a189a; }
+        .tier-gangao { background: #d1fae5; color: #166534; }
+        .advice-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; border-radius: 24px; margin-top: 25px; }
+        .advice-section h2 { font-size: 1.8em; margin-bottom: 20px; text-align: center; }
+        .advice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px; }
+        .advice-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.2); }
+        .advice-card h4 { font-size: 1.2em; margin-bottom: 15px; color: #fff; }
+        .advice-card p, .advice-card li { font-size: 0.95em; line-height: 1.8; color: rgba(255,255,255,0.9); }
+        .advice-card ul { padding-left: 20px; }
+        .advice-card li { margin-bottom: 8px; }
+        .footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .chart-container { height: 300px; }
+            .data-table { font-size: 0.8em; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+        @media (max-width: 480px) {
+            .metrics-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.5em; }
+        }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 9999; display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; box-shadow: 0 4px 16px rgba(102,126,234,0.3); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .back-home:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(102,126,234,0.4); }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+<a href="index.html" class="back-home">← 返回首页</a>
+
+<div class="container">
+    <div class="header">
+        <h1>📊 上海电信2025校园招聘数据分析报告</h1>
+        <p class="subtitle">中国电信股份有限公司上海分公司 · 2025校园招聘录用名单分析</p>
+        <div class="data-count">👥 样本总量：177人 | 📅 数据年份：2025 | 🏢 公司：上海电信</div>
+    </div>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-label">👥 总录用人数</div>
+            <div class="metric-value">177</div>
+            <div class="metric-desc">上海电信单校招批次</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🎓 硕士研究生</div>
+            <div class="metric-value">111</div>
+            <div class="metric-desc">占比62.7%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🏫 985/211院校</div>
+            <div class="metric-value">149</div>
+            <div class="metric-desc">占比84.2%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">🌍 海外/港澳台</div>
+            <div class="metric-value">25</div>
+            <div class="metric-desc">占比14.1%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">👨 男性比例</div>
+            <div class="metric-value">53.7%</div>
+            <div class="metric-desc">95人</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">👩 女性比例</div>
+            <div class="metric-value">46.3%</div>
+            <div class="metric-desc">82人</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📈 数据可视化分析</div>
+        <div class="charts-grid">
+            <div class="chart-container">
+                <canvas id="chart2"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart3"></canvas>
+            </div>
+            <div class="chart-container full-width">
+                <canvas id="chart5"></canvas>
+            </div>
+            <div class="chart-container full-width">
+                <canvas id="chart8"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart6"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart7"></canvas>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h3>🔍 关键数据洞察</h3>
+            <ul>
+                <li>📌 上海大学是绝对主力生源校，录用27人，占总人数的15.3%，体现本地市属211在上海电信校招中的突出优势<span class="tag tag-highlight">核心生源</span></li>
+                <li>📌 上海科技大学录用15人（8.5%），作为新兴双一流研究型大学，在信息科技领域认可度快速提升</li>
+                <li>📌 硕士及以上占比64.9%，本科35.0%，博士4人，整体学历层次较高，但本科仍有可观比例</li>
+                <li>📌 985/211/双一流生源占比84.2%，无普通双非院校，上海电信校招门槛显著高于多数省级运营商</li>
+                <li>📌 海外/港澳台院校25人（14.1%），以香港中文大学、香港理工大学、新南威尔士大学等为主</li>
+                <li>📌 计算机科学与技术专业录用38人（21.5%），通信工程、软件工程、信息与通信工程等专业紧随其后，IT类岗位需求旺盛</li>
+                <li>📌 男女性别比例相对均衡，男性53.7%、女性46.3%</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">📋 详细录用名单</div>
+        <div style="overflow-x:auto; max-height: 700px; overflow-y: auto;">
+            <table class="data-table">
+                <thead>
+                    <tr><th>序号</th><th>性别</th><th>毕业院校</th><th>专业</th><th>学历</th><th>院校层级</th></tr>
+                </thead>
+                <tbody id="tbody-all"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="advice-section">
+        <h2>🎯 控制类考研择校建议</h2>
+        <p style="text-align:center; opacity:0.9;">基于上海电信2025校招数据，为控制类考生提供以下择校参考</p>
+        <div class="advice-grid">
+            <div class="advice-card">
+                <h4>🏆 冲刺院校（985/顶尖211）</h4>
+                <ul>
+                    <li><strong>上海交通大学</strong>：录用7人，上海本地Top2，电子信息/通信学科顶尖</li>
+                    <li><strong>复旦大学</strong>：录用6人（含博士），综合名校，计算机/通信方向强</li>
+                    <li><strong>同济大学、华东师范大学</strong>：上海本地985，均有稳定录用</li>
+                    <li><strong>北京邮电大学</strong>：通信行业顶尖211，录用4人</li>
+                    <li><strong>东南大学</strong>：通信A类学科，录用5人</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>🎓 稳妥院校（上海本地/行业特色）</h4>
+                <ul>
+                    <li><strong>上海大学</strong>：录用27人！上海电信最大生源校，计算机/通信专业对口，性价比极高<span class="tag tag-highlight">强烈推荐</span></li>
+                    <li><strong>上海科技大学</strong>：录用15人，双一流，信息学科强势，产研结合紧密</li>
+                    <li><strong>东华大学</strong>：录用8人，211院校，计算机/人工智能专业受认可</li>
+                    <li><strong>南京邮电大学</strong>：录用5人，四电四邮之一，通信行业认可度高</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>🌏 海外/港澳台院校参考</h4>
+                <ul>
+                    <li><strong>香港中文大学</strong>：录用4人，QS前50，电子/系统工程方向</li>
+                    <li><strong>香港理工大学</strong>：录用3人，数据科学/人工智能方向</li>
+                    <li><strong>新南威尔士大学、纽约大学</strong>：QS前100，工科/数据科学强</li>
+                    <li><strong>南洋理工大学、新加坡国立大学</strong>：亚洲顶尖，通信/计算机认可度高</li>
+                </ul>
+            </div>
+            <div class="advice-card">
+                <h4>💡 择校策略建议</h4>
+                <ul>
+                    <li>目标上海电信就业：优先<strong>上海大学</strong>、<strong>上海科技大学</strong>，本地院校优势明显</li>
+                    <li>追求顶尖985：上海交大、复旦、同济、华东师大是首选，平台层次高</li>
+                    <li>通信专业方向：北邮、南邮、东南、西电等行业强校在上海电信也有稳定录用</li>
+                    <li>海外深造：关注QS前100院校，海外/港澳台学历在上海电信占比约14%</li>
+                    <li>专业选择：计算机科学与技术最热门，通信工程、软件工程、电子信息工程同样对口</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>📊 上海电信2025校园招聘数据分析报告 | 数据仅供参考</p>
+        <p style="margin-top:10px; font-size:0.85em;">数据来源：中国电信2025年校园招聘录用人员名单（按用户整理数据） | 生成时间：2026年7月</p>
+    </div>
+</div>
+
+<script>
+    const colors = { blue: '#3498db', red: '#e74c3c', orange: '#f39c12', green: '#2ecc71', purple: '#9b59b6', gray: '#95a5a6', pink: '#e91e63', teal: '#1abc9c', cyan: '#00bcd4' };
+    Chart.defaults.font.family = "'Segoe UI', 'Microsoft YaHei', sans-serif";
+    Chart.defaults.font.size = 12;
+
+    const records = [
+        {"idx":1,"gender":"女","edu":"硕士","school":"北京航空航天大学","major":"数学","tier":"985"},{"idx":2,"gender":"男","edu":"硕士","school":"北京交通大学","major":"信息与通信工程","tier":"211/双一流"},{"idx":3,"gender":"男","edu":"硕士","school":"北京交通大学","major":"信息与通信工程","tier":"211/双一流"},{"idx":4,"gender":"女","edu":"硕士","school":"北京理工大学","major":"信息与通信工程","tier":"985"},{"idx":5,"gender":"女","edu":"硕士","school":"北京理工大学","major":"应用统计","tier":"985"},{"idx":6,"gender":"男","edu":"硕士","school":"北京师范大学","major":"系统科学","tier":"985"},{"idx":7,"gender":"男","edu":"硕士","school":"北京师范大学","major":"应用统计","tier":"985"},{"idx":8,"gender":"女","edu":"硕士","school":"北京邮电大学","major":"数字媒体技术","tier":"211/双一流"},{"idx":9,"gender":"男","edu":"硕士","school":"北京邮电大学","major":"新一代电子信息技术","tier":"211/双一流"},{"idx":10,"gender":"男","edu":"硕士","school":"北京邮电大学","major":"电子科学与技术","tier":"211/双一流"},{"idx":11,"gender":"男","edu":"硕士","school":"波士顿大学","major":"计算机科学与技术","tier":"海外院校"},{"idx":12,"gender":"男","edu":"硕士","school":"东北大学","major":"软件工程","tier":"985"},{"idx":13,"gender":"男","edu":"硕士","school":"东华大学","major":"电气工程","tier":"211/双一流"},{"idx":14,"gender":"女","edu":"硕士","school":"东华大学","major":"应用统计","tier":"211/双一流"},{"idx":15,"gender":"男","edu":"硕士","school":"东华大学","major":"应用统计","tier":"211/双一流"},{"idx":16,"gender":"男","edu":"硕士","school":"东华大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":17,"gender":"男","edu":"硕士","school":"东南大学","major":"信息与通信工程","tier":"985"},{"idx":18,"gender":"男","edu":"硕士","school":"东南大学","major":"信息与通信工程","tier":"985"},{"idx":19,"gender":"女","edu":"硕士","school":"东南大学","major":"信息与通信工程","tier":"985"},{"idx":20,"gender":"男","edu":"硕士","school":"东南大学","major":"通信工程","tier":"985"},{"idx":21,"gender":"男","edu":"硕士","school":"复旦大学","major":"计算机技术","tier":"985"},{"idx":22,"gender":"男","edu":"硕士","school":"复旦大学","major":"通信工程","tier":"985"},{"idx":23,"gender":"女","edu":"硕士","school":"复旦大学","major":"通信工程","tier":"985"},{"idx":24,"gender":"女","edu":"硕士","school":"哈尔滨工业大学","major":"应用统计","tier":"985"},{"idx":25,"gender":"女","edu":"硕士","school":"湖南大学","major":"信息与通信工程","tier":"985"},{"idx":26,"gender":"女","edu":"硕士","school":"华东师范大学","major":"通信工程","tier":"985"},{"idx":27,"gender":"女","edu":"硕士","school":"华东师范大学","major":"应用统计","tier":"985"},{"idx":28,"gender":"女","edu":"硕士","school":"华东师范大学","major":"会计学","tier":"985"},{"idx":29,"gender":"女","edu":"硕士","school":"华东师范大学","major":"电子信息通信工程","tier":"985"},{"idx":30,"gender":"男","edu":"硕士","school":"华东师范大学","major":"统计学","tier":"985"},{"idx":31,"gender":"女","edu":"硕士","school":"华东师范大学","major":"信息与通信工程","tier":"985"},{"idx":32,"gender":"女","edu":"硕士","school":"华威大学","major":"网络安全工程","tier":"海外院校"},{"idx":33,"gender":"男","edu":"硕士","school":"马里兰大学帕克分校","major":"信息系统","tier":"海外院校"},{"idx":34,"gender":"女","edu":"硕士","school":"南加利福尼亚大学","major":"应用传媒研究","tier":"海外院校"},{"idx":35,"gender":"男","edu":"硕士","school":"南加州大学","major":"计算机科学与技术","tier":"海外院校"},{"idx":36,"gender":"女","edu":"硕士","school":"南京大学","major":"控制科学与智能工程","tier":"985"},{"idx":37,"gender":"女","edu":"硕士","school":"南京航空航天大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":38,"gender":"男","edu":"硕士","school":"南京邮电大学","major":"通信与信息系统","tier":"211/双一流"},{"idx":39,"gender":"男","edu":"硕士","school":"南京邮电大学","major":"电子信息","tier":"211/双一流"},{"idx":40,"gender":"女","edu":"硕士","school":"南京邮电大学","major":"计算机技术","tier":"211/双一流"},{"idx":41,"gender":"男","edu":"硕士","school":"南洋理工大学","major":"数字化通信工程（人工智能方向）","tier":"海外院校"},{"idx":42,"gender":"女","edu":"硕士","school":"牛津大学","major":"教育与社会变革（人工智能方向）","tier":"海外院校"},{"idx":43,"gender":"男","edu":"硕士","school":"纽约大学","major":"数据科学","tier":"海外院校"},{"idx":44,"gender":"男","edu":"硕士","school":"纽约大学","major":"电子工程","tier":"海外院校"},{"idx":45,"gender":"女","edu":"硕士","school":"清华大学","major":"数据科学和信息技术","tier":"985"},{"idx":46,"gender":"女","edu":"硕士","school":"清华大学","major":"电子信息","tier":"985"},{"idx":47,"gender":"女","edu":"硕士","school":"上海财经大学","major":"应用统计","tier":"211/双一流"},{"idx":48,"gender":"女","edu":"硕士","school":"上海财经大学","major":"管理科学与工程","tier":"211/双一流"},{"idx":49,"gender":"女","edu":"硕士","school":"上海大学","major":"通信与信息系统","tier":"211/双一流"},{"idx":50,"gender":"女","edu":"硕士","school":"上海大学","major":"通信与信息系统","tier":"211/双一流"},{"idx":51,"gender":"女","edu":"硕士","school":"上海大学","major":"控制科学与工程","tier":"211/双一流"},{"idx":52,"gender":"女","edu":"硕士","school":"上海大学","major":"信号与信息处理","tier":"211/双一流"},{"idx":53,"gender":"男","edu":"硕士","school":"上海大学","major":"电子信息","tier":"211/双一流"},{"idx":54,"gender":"女","edu":"硕士","school":"上海大学","major":"电子信息","tier":"211/双一流"},{"idx":55,"gender":"男","edu":"硕士","school":"上海大学","major":"信号与信息处理","tier":"211/双一流"},{"idx":56,"gender":"女","edu":"硕士","school":"上海大学","major":"信号与信息处理","tier":"211/双一流"},{"idx":57,"gender":"男","edu":"硕士","school":"上海大学","major":"通信与信息系统","tier":"211/双一流"},{"idx":58,"gender":"女","edu":"硕士","school":"上海大学","major":"电子信息工程","tier":"211/双一流"},{"idx":59,"gender":"男","edu":"硕士","school":"上海海事大学","major":"通信工程","tier":"211/双一流"},{"idx":60,"gender":"男","edu":"硕士","school":"上海海事大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":61,"gender":"男","edu":"硕士","school":"上海交通大学","major":"计算机技术","tier":"985"},{"idx":62,"gender":"女","edu":"硕士","school":"上海交通大学","major":"管理科学与工程","tier":"985"},{"idx":63,"gender":"女","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":64,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":65,"gender":"女","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":66,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":67,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":68,"gender":"女","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":69,"gender":"女","edu":"硕士","school":"上海科技大学","major":"电子科学与技术","tier":"211/双一流"},{"idx":70,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":71,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":72,"gender":"女","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":73,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":74,"gender":"男","edu":"硕士","school":"上海科技大学","major":"电子科学与技术","tier":"211/双一流"},{"idx":75,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":76,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":77,"gender":"男","edu":"硕士","school":"上海科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":78,"gender":"女","edu":"硕士","school":"天津大学","major":"通信工程","tier":"985"},{"idx":79,"gender":"女","edu":"硕士","school":"天津大学","major":"计算机技术","tier":"985"},{"idx":80,"gender":"女","edu":"硕士","school":"天津大学","major":"计算机技术","tier":"985"},{"idx":81,"gender":"女","edu":"硕士","school":"同济大学","major":"教育学","tier":"985"},{"idx":82,"gender":"女","edu":"硕士","school":"同济大学","major":"管理科学与工程","tier":"985"},{"idx":83,"gender":"男","edu":"硕士","school":"同济大学","major":"通信工程","tier":"985"},{"idx":84,"gender":"女","edu":"硕士","school":"武汉大学","major":"管理科学与工程","tier":"985"},{"idx":85,"gender":"女","edu":"硕士","school":"西安电子科技大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":86,"gender":"男","edu":"硕士","school":"西安交通大学","major":"会计学","tier":"985"},{"idx":87,"gender":"女","edu":"硕士","school":"香港城市大学","major":"计算机科学与技术","tier":"港澳台"},{"idx":88,"gender":"女","edu":"硕士","school":"香港城市大学","major":"电子信息工程","tier":"港澳台"},{"idx":89,"gender":"女","edu":"硕士","school":"香港大学","major":"计算机科学与技术","tier":"港澳台"},{"idx":90,"gender":"男","edu":"硕士","school":"香港科技大学","major":"电信学","tier":"港澳台"},{"idx":91,"gender":"男","edu":"硕士","school":"香港科技大学","major":"电信学","tier":"港澳台"},{"idx":92,"gender":"男","edu":"硕士","school":"香港理工大学","major":"人工智能与大数据计算","tier":"港澳台"},{"idx":93,"gender":"男","edu":"硕士","school":"香港理工大学","major":"数据科学与分析","tier":"港澳台"},{"idx":94,"gender":"男","edu":"硕士","school":"香港理工大学","major":"人工智能及大数据计算","tier":"港澳台"},{"idx":95,"gender":"女","edu":"硕士","school":"香港中文大学","major":"系统工程与工程管理","tier":"港澳台"},{"idx":96,"gender":"男","edu":"硕士","school":"香港中文大学","major":"电子工程","tier":"港澳台"},{"idx":97,"gender":"男","edu":"硕士","school":"香港中文大学","major":"管理科学与工程","tier":"港澳台"},{"idx":98,"gender":"女","edu":"硕士","school":"香港中文大学","major":"电子工程","tier":"港澳台"},{"idx":99,"gender":"男","edu":"硕士","school":"新加坡国立大学","major":"企业商业分析","tier":"海外院校"},{"idx":100,"gender":"女","edu":"硕士","school":"新加坡国立大学","major":"国际商法","tier":"海外院校"},{"idx":101,"gender":"女","edu":"硕士","school":"新南威尔士大学","major":"计算机科学与技术","tier":"海外院校"},{"idx":102,"gender":"男","edu":"硕士","school":"约翰斯霍普金斯大学","major":"信息系统","tier":"海外院校"},{"idx":103,"gender":"女","edu":"硕士","school":"浙江大学","major":"设计学","tier":"985"},{"idx":104,"gender":"女","edu":"硕士","school":"中国传媒大学","major":"信号与信息处理","tier":"211/双一流"},{"idx":105,"gender":"女","edu":"硕士","school":"中国科学技术大学","major":"金融学","tier":"985"},{"idx":106,"gender":"女","edu":"硕士","school":"中国科学技术大学","major":"计算机技术","tier":"985"},{"idx":107,"gender":"男","edu":"硕士","school":"中国科学院大学","major":"网络与信息安全","tier":"双一流"},{"idx":108,"gender":"男","edu":"硕士","school":"中国科学院大学","major":"资源与环境（地理信息工程）","tier":"双一流"},{"idx":109,"gender":"女","edu":"硕士","school":"中国科学院大学","major":"计算机科学与技术","tier":"双一流"},{"idx":110,"gender":"女","edu":"硕士","school":"中央民族大学","major":"计算机科学与技术","tier":"985"},{"idx":111,"gender":"男","edu":"硕士","school":"中央民族大学","major":"计算机技术","tier":"985"},{"idx":112,"gender":"男","edu":"博士","school":"复旦大学","major":"中共党史","tier":"985"},{"idx":113,"gender":"男","edu":"博士","school":"复旦大学","major":"网络空间安全","tier":"985"},{"idx":114,"gender":"男","edu":"博士","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":115,"gender":"女","edu":"博士","school":"上海交通大学","major":"网络空间安全","tier":"985"},{"idx":116,"gender":"男","edu":"本科","school":"北京邮电大学","major":"信息与计算科学","tier":"211/双一流"},{"idx":117,"gender":"男","edu":"本科","school":"大连理工大学","major":"大数据管理与应用","tier":"985"},{"idx":118,"gender":"男","edu":"本科","school":"电子科技大学","major":"软件工程","tier":"985"},{"idx":119,"gender":"女","edu":"本科","school":"东华大学","major":"管理科学与工程","tier":"211/双一流"},{"idx":120,"gender":"女","edu":"本科","school":"东华大学","major":"人工智能","tier":"211/双一流"},{"idx":121,"gender":"女","edu":"本科","school":"东华大学","major":"人工智能","tier":"211/双一流"},{"idx":122,"gender":"男","edu":"本科","school":"东华大学","major":"电子信息工程","tier":"211/双一流"},{"idx":123,"gender":"男","edu":"本科","school":"东南大学","major":"自动化","tier":"985"},{"idx":124,"gender":"女","edu":"本科","school":"复旦大学","major":"软件工程","tier":"985"},{"idx":125,"gender":"女","edu":"本科","school":"哈尔滨工业大学（威海）","major":"人工智能","tier":"985"},{"idx":126,"gender":"男","edu":"本科","school":"河海大学","major":"软件工程","tier":"211/双一流"},{"idx":127,"gender":"女","edu":"本科","school":"河海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":128,"gender":"男","edu":"本科","school":"华东理工大学","major":"软件工程","tier":"211/双一流"},{"idx":129,"gender":"女","edu":"本科","school":"华东师范大学","major":"计算机科学与技术","tier":"985"},{"idx":130,"gender":"女","edu":"本科","school":"华东师范大学","major":"软件工程","tier":"985"},{"idx":131,"gender":"女","edu":"本科","school":"华东师范大学","major":"统计学","tier":"985"},{"idx":132,"gender":"男","edu":"本科","school":"华中科技大学","major":"信息管理与信息系统","tier":"985"},{"idx":133,"gender":"女","edu":"本科","school":"吉林大学","major":"计算机科学与技术","tier":"985"},{"idx":134,"gender":"男","edu":"本科","school":"南昌大学","major":"软件工程","tier":"211/双一流"},{"idx":135,"gender":"男","edu":"本科","school":"南京邮电大学","major":"信息安全","tier":"211/双一流"},{"idx":136,"gender":"男","edu":"本科","school":"南京邮电大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":137,"gender":"女","edu":"本科","school":"厦门大学","major":"会计学","tier":"985"},{"idx":138,"gender":"男","edu":"本科","school":"山东大学","major":"电子科学与技术","tier":"985"},{"idx":139,"gender":"男","edu":"本科","school":"山东大学","major":"软件工程","tier":"985"},{"idx":140,"gender":"女","edu":"本科","school":"上海财经大学","major":"会计学","tier":"211/双一流"},{"idx":141,"gender":"女","edu":"本科","school":"上海大学","major":"通信工程","tier":"211/双一流"},{"idx":142,"gender":"男","edu":"本科","school":"上海大学","major":"电子信息工程","tier":"211/双一流"},{"idx":143,"gender":"男","edu":"本科","school":"上海大学","major":"信息管理与信息系统","tier":"211/双一流"},{"idx":144,"gender":"男","edu":"本科","school":"上海大学","major":"通信与信息系统","tier":"211/双一流"},{"idx":145,"gender":"男","edu":"本科","school":"上海大学","major":"通信工程","tier":"211/双一流"},{"idx":146,"gender":"女","edu":"本科","school":"上海大学","major":"通信工程","tier":"211/双一流"},{"idx":147,"gender":"女","edu":"本科","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":148,"gender":"女","edu":"本科","school":"上海大学","major":"电子信息工程","tier":"211/双一流"},{"idx":149,"gender":"男","edu":"本科","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":150,"gender":"男","edu":"本科","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":151,"gender":"女","edu":"本科","school":"上海大学","major":"网络空间安全","tier":"211/双一流"},{"idx":152,"gender":"女","edu":"本科","school":"上海大学","major":"通信工程","tier":"211/双一流"},{"idx":153,"gender":"男","edu":"本科","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":154,"gender":"男","edu":"本科","school":"上海大学","major":"电子信息工程","tier":"211/双一流"},{"idx":155,"gender":"男","edu":"本科","school":"上海大学","major":"通信工程","tier":"211/双一流"},{"idx":156,"gender":"女","edu":"本科","school":"上海大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":157,"gender":"男","edu":"本科","school":"上海海洋大学","major":"软件工程","tier":"211/双一流"},{"idx":158,"gender":"男","edu":"本科","school":"上海海洋大学","major":"数据科学与大数据技术","tier":"211/双一流"},{"idx":159,"gender":"男","edu":"本科","school":"上海交通大学","major":"信息工程","tier":"985"},{"idx":160,"gender":"男","edu":"本科","school":"上海交通大学","major":"自动化","tier":"985"},{"idx":161,"gender":"男","edu":"本科","school":"上海交通大学","major":"人工智能","tier":"985"},{"idx":162,"gender":"男","edu":"本科","school":"上海交通大学","major":"信息智能","tier":"985"},{"idx":163,"gender":"女","edu":"本科","school":"上海师范大学","major":"人工智能","tier":"双非"},{"idx":164,"gender":"女","edu":"本科","school":"四川大学","major":"电子信息工程","tier":"985"},{"idx":165,"gender":"男","edu":"本科","school":"苏州大学","major":"机械电子工程","tier":"211/双一流"},{"idx":166,"gender":"男","edu":"本科","school":"同济大学","major":"信息管理与信息系统","tier":"985"},{"idx":167,"gender":"男","edu":"本科","school":"同济大学","major":"软件工程","tier":"985"},{"idx":168,"gender":"男","edu":"本科","school":"同济大学","major":"人工智能","tier":"985"},{"idx":169,"gender":"女","edu":"本科","school":"武汉大学","major":"财务管理","tier":"985"},{"idx":170,"gender":"男","edu":"本科","school":"武汉理工大学","major":"信息管理与信息系统","tier":"211/双一流"},{"idx":171,"gender":"男","edu":"本科","school":"武汉理工大学","major":"信息管理与信息系统","tier":"211/双一流"},{"idx":172,"gender":"男","edu":"本科","school":"西安交通大学","major":"数学与应用数学","tier":"985"},{"idx":173,"gender":"女","edu":"本科","school":"西北农林科技大学","major":"计算机科学与技术","tier":"985"},{"idx":174,"gender":"女","edu":"本科","school":"西南大学","major":"数据科学与大数据技术","tier":"211/双一流"},{"idx":175,"gender":"男","edu":"本科","school":"中国矿业大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":176,"gender":"男","edu":"本科","school":"中国矿业大学","major":"计算机科学与技术","tier":"211/双一流"},{"idx":177,"gender":"男","edu":"本科","school":"重庆大学","major":"计算机科学与技术","tier":"985"}
+    ];
+
+    // 学历分布
+    new Chart(document.getElementById('chart2').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: ['本科 62人', '硕士研究生 111人', '博士 4人'],
+            datasets: [{ data: [62, 111, 4], backgroundColor: [colors.green, colors.orange, colors.red], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '学历分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // 院校层级分布
+    new Chart(document.getElementById('chart3').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: ['985 67人', '211/双一流 82人', '双一流 3人', '海外院校 13人', '港澳台 12人'],
+            datasets: [{ data: [67, 82, 3, 13, 12], backgroundColor: [colors.red, colors.blue, colors.teal, colors.purple, colors.green], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '院校层级分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // TOP10生源院校
+    new Chart(document.getElementById('chart5').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['上海大学', '上海科技大学', '华东师范大学', '东华大学', '上海交通大学', '复旦大学', '同济大学', '东南大学', '南京邮电大学', '北京邮电大学'],
+            datasets: [{
+                label: '录用人数',
+                data: [27, 15, 9, 8, 7, 6, 6, 5, 5, 4],
+                backgroundColor: [colors.red, colors.orange, colors.blue, colors.blue, colors.blue, colors.blue, colors.blue, colors.gray, colors.gray, colors.gray],
+                borderRadius: 8
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'TOP10 生源院校', font: { size: 16, weight: 'bold' } }, legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } } }
+    });
+
+    // TOP10专业
+    new Chart(document.getElementById('chart8').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['计算机科学与技术', '通信工程', '软件工程', '信息与通信工程', '应用统计', '计算机技术', '电子信息工程', '管理科学与工程', '人工智能', '通信与信息系统'],
+            datasets: [{
+                label: '录用人数',
+                data: [38, 12, 10, 8, 7, 7, 7, 6, 6, 5],
+                backgroundColor: [colors.purple, colors.blue, colors.cyan, colors.green, colors.orange, colors.orange, colors.orange, colors.gray, colors.gray, colors.gray],
+                borderRadius: 8
+            }]
+        },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'TOP10 热门专业', font: { size: 16, weight: 'bold' } }, legend: { display: false } }, scales: { x: { beginAtZero: true } } }
+    });
+
+    // 性别分布
+    new Chart(document.getElementById('chart6').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['男性 95人', '女性 82人'],
+            datasets: [{ data: [95, 82], backgroundColor: [colors.blue, colors.pink], borderWidth: 2, borderColor: '#fff' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '性别分布', font: { size: 14, weight: 'bold' } }, legend: { position: 'bottom' } } }
+    });
+
+    // 院校层级横向柱状图
+    new Chart(document.getElementById('chart7').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['985', '211/双一流', '双一流', '海外院校', '港澳台'],
+            datasets: [{
+                label: '录用人数',
+                data: [67, 82, 3, 13, 12],
+                backgroundColor: [colors.red, colors.blue, colors.teal, colors.purple, colors.green],
+                borderRadius: 8
+            }]
+        },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '院校层级横向分布', font: { size: 14, weight: 'bold' } }, legend: { display: false } }, scales: { x: { beginAtZero: true } } }
+    });
+
+    // 表格渲染
+    const tbody = document.getElementById('tbody-all');
+    records.forEach(r => {
+        const tr = document.createElement('tr');
+        let eduClass = 'edu-bachelor';
+        if (r.edu === '硕士') eduClass = 'edu-master';
+        if (r.edu === '博士') eduClass = 'edu-phd';
+        let tierClass = 'tier-shuangfei';
+        if (r.tier === '985') tierClass = 'tier-985';
+        else if (r.tier === '211/双一流') tierClass = 'tier-211';
+        else if (r.tier === '海外院校') tierClass = 'tier-haiwai';
+        else if (r.tier === '港澳台') tierClass = 'tier-gangao';
+        tr.innerHTML = `<td>${r.idx}</td><td>${r.gender}</td><td>${r.school}</td><td>${r.major}</td><td><span class="edu-tag ${eduClass}">${r.edu}</span></td><td><span class="tier-tag ${tierClass}">${r.tier}</span></td>`;
+        tbody.appendChild(tr);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no">
+<title>自动化大类 · 本科专业科普与提升指南</title>
+
+
+<link href="../vendor/fonts/387a0691407dd5886cfb0ca1454379b5.css" rel="stylesheet">
+<style>
+:root{
+  --pink:#fb7299; --pink-deep:#f45a6f; --pink-soft:#fff5f7; --sakura:#ffe4e9;
+  --ink:#18191c; --ink-2:#3a3a44; --muted:#9499a8; --line:#f3e4e8;
+  --gold:#ffb027; --bg:#fdf6f8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:'Noto Sans SC',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(251,114,153,.10), transparent 40%),
+    radial-gradient(circle at 88% 8%, rgba(255,176,39,.07), transparent 35%),
+    radial-gradient(circle at 50% 95%, rgba(251,114,153,.06), transparent 45%),
+    var(--bg);
+  color:var(--ink); font-size:13px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+  overflow-x:hidden;
+  padding-top:0;
+}
+@media(min-width:901px){body{background-attachment:fixed}}
+@media(max-width:900px){
+  body{background:var(--bg)!important;background-image:none!important;-webkit-filter:none!important;filter:none!important}
+}
+.petal{position:fixed;top:-30px;z-index:0;pointer-events:none;opacity:.4;
+  font-size:14px;animation:fall linear infinite;color:var(--pink)}
+@media(max-width:900px){.petal{display:none}}
+@keyframes fall{
+  0%{transform:translateY(-30px) rotate(0deg);opacity:0}
+  10%{opacity:.4} 90%{opacity:.4}
+  100%{transform:translateY(105vh) rotate(540deg);opacity:0}
+}
+
+/* 顶部栏 */
+.topbar{
+  position:sticky;top:0;z-index:100;height:50px;display:flex;align-items:center;
+  gap:16px;padding:0 20px;background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:8px;font-family:'Noto Serif SC',serif;
+  font-weight:900;font-size:17px;color:var(--pink-deep);white-space:nowrap}
+.brand .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;font-size:15px;
+  box-shadow:0 3px 10px rgba(244,90,111,.35)}
+.brand small{font-family:'Noto Sans SC';font-weight:400;font-size:10.5px;color:var(--muted);display:block;line-height:1.1;margin-top:1px}
+.search{flex:1;max-width:100px;position:relative}
+.search input{width:100%;height:30px;border:1px solid var(--line);border-radius:15px;
+  background:var(--pink-soft);padding:0 12px 0 30px;font-size:12px;color:var(--ink);
+  outline:none;transition:.2s}
+.search input:focus{border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(251,114,153,.12)}
+.search::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px}
+.topbar-meta{margin-left:auto;font-size:11px;color:var(--muted);display:flex;gap:12px;align-items:center;white-space:nowrap}
+.topbar-meta b{color:var(--pink-deep)}
+.topbar-guides{display:flex;gap:4px;align-items:center;margin-left:8px}
+.topbar-guide{font-size:11px;padding:4px 10px;border-radius:12px;text-decoration:none;
+  color:var(--ink-2);background:transparent;transition:.15s;white-space:nowrap;cursor:pointer;border:none;font-family:inherit}
+.topbar-guide:hover{background:var(--pink-soft);color:var(--pink-deep)}
+.topbar-guide.active{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff}
+.topbar-guide .tg-icon{margin-right:2px}
+.topbar-home{font-size:11px;padding:4px 12px;border-radius:12px;cursor:pointer;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border:none;
+  font-family:inherit;font-weight:600;transition:.15s}
+.topbar-home:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(244,90,111,.3)}
+.topbar-site{font-size:11.5px;padding:4px 12px;border-radius:12px;text-decoration:none;
+  color:var(--pink-deep);background:var(--sakura);border:1px solid var(--pink);transition:.15s;white-space:nowrap}
+.topbar-site:hover{background:var(--pink);color:#fff}
+
+/* 布局 */
+.layout{display:flex;min-height:calc(100vh - 50px)}
+
+/* 左侧专业目录 */
+.sidebar{width:200px;flex-shrink:0;background:rgba(255,255,255,.5);
+  border-right:1px solid var(--line);padding:10px 8px 40px;overflow-y:auto;
+  position:sticky;top:50px;height:calc(100vh - 50px)}
+.side-group{margin-bottom:10px}
+.side-title{font-family:'Noto Serif SC';font-weight:700;font-size:11.5px;
+  color:var(--pink-deep);padding:6px 8px;cursor:pointer;user-select:none;
+  display:flex;align-items:center;gap:4px;border-radius:6px;transition:.15s}
+.side-title:hover{background:var(--sakura)}
+.side-arrow{display:inline-block;transition:.2s;font-size:10px}
+.side-group.collapsed .side-arrow{transform:rotate(-90deg)}
+.side-group.collapsed ul{display:none}
+.side-cnt{font-size:10px;color:var(--muted);margin-left:auto;background:var(--pink-soft);padding:1px 6px;border-radius:8px}
+.side-group ul{list-style:none;padding-top:4px}
+.major-item{display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:6px;
+  cursor:pointer;transition:.15s;font-size:11.5px}
+.major-item:hover{background:var(--sakura)}
+.major-item.active{background:linear-gradient(90deg,var(--pink),var(--pink-deep));color:#fff}
+.major-item.active .mi-code{color:#fff;background:rgba(255,255,255,.25)}
+.mi-code{font-family:'JetBrains Mono';font-size:9px;color:var(--pink-deep);
+  background:var(--sakura);padding:1px 4px;border-radius:3px;flex-shrink:0}
+.mi-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* 中间内容 */
+.main{flex:1;padding:20px 24px 80px;max-width:820px;overflow-x:hidden}
+.welcome{padding:40px 10px;text-align:center}
+.welcome h1{font-family:'Noto Serif SC';font-weight:900;font-size:30px;
+  background:linear-gradient(120deg,var(--pink-deep),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px}
+.welcome p{color:var(--ink-2);font-size:13px;max-width:560px;margin:0 auto 20px;line-height:1.8}
+.welcome .stats{display:flex;gap:30px;justify-content:center;margin:24px 0;flex-wrap:wrap}
+.welcome .stat{text-align:center}
+.welcome .stat b{display:block;font-family:'Noto Serif SC';font-size:26px;color:var(--pink-deep)}
+.welcome .stat span{font-size:11px;color:var(--muted)}
+.hint{display:inline-block;font-size:12px;color:var(--pink-deep);
+  background:var(--sakura);padding:8px 18px;border-radius:18px;border:1px solid var(--pink)}
+
+.w-sep{height:1px;background:linear-gradient(90deg,transparent,var(--sakura),var(--pink),var(--sakura),transparent);
+  margin:28px 30px 18px;opacity:.6}
+.w-guides{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;
+  box-shadow:0 6px 24px rgba(244,90,111,.06);max-width:720px;margin:0 auto;text-align:left}
+.w-gtitle{font-family:'Noto Serif SC';font-weight:700;font-size:15px;color:var(--pink-deep);
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px dashed var(--line)}
+.w-gtitle span{font-size:16px}
+.w-gcards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.w-gcard{display:block;background:var(--pink-soft);border:1px solid transparent;
+  border-radius:12px;padding:14px 14px 12px;text-decoration:none;color:inherit;
+  transition:.2s;position:relative;overflow:hidden}
+.w-gcard::before{content:'';position:absolute;inset:0;opacity:0;transition:.3s;
+  background:linear-gradient(135deg,var(--pink) 0%,transparent 60%)}
+.w-gcard:hover{transform:translateY(-2px);border-color:var(--pink);
+  box-shadow:0 8px 20px rgba(244,90,111,.18)}
+.w-gcard:hover .w-gname{color:var(--pink-deep)}
+.w-gicon{font-size:24px;margin-bottom:6px;position:relative;z-index:1}
+.w-gname{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px;
+  transition:.15s;position:relative;z-index:1}
+.w-gdesc{font-size:11px;color:var(--muted);line-height:1.5;position:relative;z-index:1}
+
+/* 专业头部 */
+.m-header{background:#fff;border-radius:14px;padding:18px 22px;margin-bottom:16px;
+  border:1px solid var(--line);position:relative;overflow:hidden;
+  box-shadow:0 4px 18px rgba(244,90,111,.05)}
+.m-header::before{content:'❀';position:absolute;right:-8px;top:-16px;font-size:100px;
+  color:var(--sakura);opacity:.4;transform:rotate(15deg)}
+.m-header .kh-cloud{position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  width:48%;height:100%;pointer-events:none;overflow:hidden}
+.kh-item{position:absolute;display:inline-flex;align-items:center;gap:2px;padding:3px 9px;
+  background:rgba(255,255,255,.85);border:1px solid var(--pink);border-radius:14px;
+  font-size:11px;color:var(--pink-deep);font-weight:500;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(244,90,111,.08);
+  animation:khFloat linear infinite;pointer-events:auto;cursor:pointer;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,background .25s}
+.kh-item:hover{transform:scale(1.5);background:#fff;
+  box-shadow:0 6px 20px rgba(244,90,111,.3);z-index:10;
+  animation-play-state:paused}
+.kh-item:hover .kh-icon{font-size:16px}
+.kh-item:hover .kh-text{font-size:12px}
+.kh-item .kh-icon{font-size:12px;transition:font-size .25s}
+.kh-item .kh-text{font-size:10.5px;transition:font-size .25s}
+@keyframes khFloat{
+  0%{transform:translateX(0) translateY(0);opacity:0}
+  8%{opacity:1}
+  92%{opacity:1}
+  100%{transform:translateX(0) translateY(-220px);opacity:0}
+}
+.m-code{font-family:'JetBrains Mono';font-size:10.5px;color:var(--pink-deep);
+  background:var(--sakura);padding:3px 9px;border-radius:5px;display:inline-block;margin-bottom:6px;position:relative}
+.m-name{font-family:'Noto Serif SC';font-weight:900;font-size:26px;color:var(--ink);margin-bottom:4px;position:relative}
+.m-jobs{display:flex;gap:6px;flex-wrap:wrap;align-items:center;position:relative;margin-top:8px}
+.m-jobs .jl-label{font-size:10.5px;color:var(--muted)}
+.job-link{font-size:10.5px;color:#fff;background:var(--pink);padding:3px 9px;
+  border-radius:10px;text-decoration:none;transition:.15s}
+.job-link:hover{background:var(--pink-deep);transform:translateY(-1px)}
+
+/* 内容板块 */
+.section{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:12px;
+  border:1px solid var(--line);scroll-margin-top:66px}
+.sec-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.sec-icon{font-size:15px}
+.sec-title{font-family:'Noto Serif SC';font-weight:700;font-size:15px;color:var(--ink)}
+.sec-text{font-size:12.5px;color:var(--ink-2);line-height:1.8}
+
+/* 课程标签 */
+.course-tags{display:flex;flex-wrap:wrap;gap:6px}
+.course-tag{font-size:11.5px;color:var(--pink-deep);background:var(--sakura);
+  padding:4px 12px;border-radius:14px;text-decoration:none;transition:.15s;
+  border:1px solid transparent;cursor:pointer}
+.course-tag:hover{background:var(--pink);color:#fff;transform:translateY(-1px)}
+
+/* 考研方向链接 */
+.grad-dir-block{margin-top:16px;padding:14px 16px;background:var(--pink-soft);
+  border-radius:12px;border:1px dashed var(--pink)}
+.grad-dir-title{font-size:13px;font-weight:700;color:var(--pink-deep);margin-bottom:10px}
+.grad-dir-list{display:flex;flex-wrap:wrap;gap:8px}
+.grad-dir-link{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;
+  border-radius:10px;background:#fff;border:1px solid var(--pink);
+  font-size:12px;color:var(--pink-deep);text-decoration:none;transition:.15s}
+.grad-dir-link:hover{background:var(--pink);color:#fff;transform:translateY(-2px);box-shadow:0 4px 10px rgba(244,90,111,.25)}
+.gd-code{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pink)}
+.gd-arrow{opacity:.6;font-size:11px}
+.grad-dir-link:hover .gd-code,.grad-dir-link:hover .gd-arrow{color:#fff;opacity:1}
+
+/* 资源卡片 */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.res-card{background:var(--pink-soft);border-radius:8px;padding:8px 12px;
+  border-left:3px solid var(--pink);transition:.15s;text-decoration:none;color:inherit;display:block}
+.res-card:hover{background:var(--sakura);transform:translateX(2px)}
+.res-name{font-size:12px;font-weight:600;color:var(--pink-deep)}
+.res-desc{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.5}
+
+/* 比赛列表 */
+.comp-list{display:flex;flex-direction:column;gap:6px}
+.comp-item{display:flex;align-items:center;gap:10px;padding:8px 12px;
+  background:var(--pink-soft);border-radius:8px;transition:.15s;text-decoration:none;color:inherit;
+  cursor:pointer}
+.comp-item:hover{background:var(--sakura);transform:translateY(-1px);box-shadow:0 4px 10px rgba(244,90,111,.15)}
+.comp-tier{width:24px;height:24px;border-radius:6px;display:grid;place-items:center;
+  font-family:'JetBrains Mono';font-weight:700;font-size:11px;color:#fff;flex-shrink:0}
+.comp-tier.S{background:var(--pink-deep)}
+.comp-tier.A{background:var(--gold)}
+.comp-tier.B{background:var(--muted)}
+.comp-name{font-size:12px;font-weight:600;color:var(--ink);flex-shrink:0}
+.comp-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* 就业/城市卡片 */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.cat-card{background:var(--pink-soft);border-radius:8px;padding:8px 12px;
+  border-left:3px solid var(--pink);transition:.15s}
+.cat-card:hover{background:var(--sakura)}
+.cat-name{font-size:12px;font-weight:600;color:var(--pink-deep)}
+.cat-desc{font-size:11px;color:var(--ink-2);margin-top:2px;line-height:1.5}
+
+/* 建议列表 */
+.advice-list{list-style:none;counter-reset:adv}
+.advice-item{position:relative;padding:8px 8px 8px 30px;font-size:12.5px;color:var(--ink-2);
+  line-height:1.7;border-bottom:1px dashed var(--line)}
+.advice-item:last-child{border-bottom:none}
+.advice-item::before{counter-increment:adv;content:counter(adv);
+  position:absolute;left:0;top:8px;width:20px;height:20px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;
+  font-family:'JetBrains Mono';font-size:10px;font-weight:600;
+  display:grid;place-items:center}
+
+/* 前景分方向 */
+.prospect-text{font-size:12.5px;color:var(--ink-2);line-height:1.8}
+.prospect-text strong{color:var(--pink-deep)}
+
+/* 右侧导航 */
+.right-nav{width:168px;flex-shrink:0;padding:14px 10px 40px;
+  position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto}
+.rn-group{background:#fff;border:1px solid var(--line);border-radius:10px;
+  margin-bottom:10px;overflow:hidden}
+.rn-title{font-size:10.5px;color:var(--pink-deep);font-weight:700;
+  padding:8px 12px;cursor:pointer;user-select:none;display:flex;align-items:center;gap:4px;
+  border-bottom:1px solid var(--line);transition:.15s}
+.rn-title:hover{background:var(--pink-soft)}
+.rn-group.collapsed .rn-title{border-bottom:none}
+.rn-arrow{display:inline-block;transition:.2s;font-size:9px;margin-left:auto}
+.rn-group.collapsed .rn-arrow{transform:rotate(-90deg)}
+.rn-group.collapsed .rn-list{display:none}
+.rn-list{list-style:none;padding:4px 0}
+.rn-list a{display:flex;align-items:center;gap:6px;padding:5px 12px;font-size:11px;
+  color:var(--ink-2);text-decoration:none;transition:.15s;cursor:pointer}
+.rn-list a:hover{background:var(--sakura);color:var(--pink-deep)}
+.rn-list a.active{background:var(--sakura);color:var(--pink-deep);font-weight:600}
+.rn-icon{font-size:12px;width:14px;text-align:center}
+.rn-job-links{padding:6px 12px 8px;display:flex;flex-direction:column;gap:4px}
+.rn-job-link{font-size:10px;color:#fff;background:var(--pink);padding:3px 8px;
+  border-radius:8px;text-decoration:none;text-align:center;transition:.15s}
+.rn-job-link:hover{background:var(--pink-deep)}
+
+@media(max-width:1100px){.right-nav{display:none;overflow-y:visible}}
+@media(max-width:1100px){.w-gcards{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
+    will-change:auto!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+  html,body{overflow-y:visible;overflow-x:hidden;min-height:100%;height:auto}
+  body{padding-top:0 !important}
+  .topbar{position:static;padding:0 12px;gap:8px}
+  .sidebar{overflow-y:visible}
+  .main{overflow-x:hidden;overflow-y:visible}
+}
+@media(max-width:760px){.sidebar{display:none;overflow-y:visible}.main{padding:12px;overflow-x:hidden;overflow-y:visible}.m-name{font-size:20px}.w-gcards{grid-template-columns:repeat(2,1fr)}}
+
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-thumb{background:var(--sakura);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--pink)}
+::-webkit-scrollbar-track{background:transparent}
+</style>
+
+<style id="entry-responsive-adapt">
+html{overflow-x:hidden}
+body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,canvas,video{max-width:100%}
+a,button,input,.major-item,.side-title,.rn-title{touch-action:manipulation}
+a:focus-visible,button:focus-visible,input:focus-visible,.major-item:focus-visible,.side-title:focus-visible,.rn-title:focus-visible{outline:3px solid rgba(251,114,153,.36);outline-offset:3px}
+.topbar{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+.topbar-guides,.topbar{scrollbar-width:none}
+.topbar-guides::-webkit-scrollbar,.topbar::-webkit-scrollbar{display:none}
+.section,.m-header,.w-gcard,.res-card,.cat-card{min-width:0}
+@media (hover:none){.w-gcard:hover,.course-tag:hover,.grad-dir-link:hover,.comp-item:hover,.res-card:hover{transform:none;box-shadow:none}}
+@media (max-width:1100px){
+  .layout{display:block}
+  .main{max-width:none;width:100%;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  .topbar{position:sticky;overflow-x:auto}
+  .topbar-guides{overflow-x:auto;flex:0 0 auto;max-width:52vw}
+}
+@media (max-width:760px){
+  .topbar{height:auto;min-height:54px;gap:8px}
+  .brand{font-size:14px}
+  .brand small,.topbar-meta{display:none}
+  .search{max-width:130px;min-width:110px}
+  .topbar-home,.topbar-site,.topbar-guide{min-height:36px}
+  .topbar-guides{max-width:48vw}
+  .main{padding:12px max(12px,env(safe-area-inset-right)) 40px max(12px,env(safe-area-inset-left))}
+  .welcome{padding:28px 0}
+  .welcome h1{font-size:clamp(22px,8vw,28px)}
+  .w-guides{padding:16px 14px}
+  .w-gcards{grid-template-columns:1fr}
+  .m-header{padding:16px}
+  .m-header .kh-cloud{display:none}
+  .res-grid,.cat-grid{grid-template-columns:1fr}
+  .comp-item{align-items:flex-start}
+}
+</style>
+
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="logo">❀</div>
+    <div>电子信息大类·本科指南<small>专业科普 & 提升路径</small></div>
+  </div>
+  <div class="search"><input id="search" placeholder="搜索专业…"></div>
+  <button class="topbar-home" id="homeBtn" title="回到指南欢迎页">🏠 top</button>
+  <div class="topbar-guides">
+    <a class="topbar-guide" href="pages/about-up.html" style="font-weight:700;color:var(--pink-deep)"><span class="tg-icon">✨</span>关于up</a>
+    <a class="topbar-guide" href="pages/ee-overview.html"><span class="tg-icon">🌐</span>全景</a>
+    <a class="topbar-guide" href="pages/college-concepts.html"><span class="tg-icon">📚</span>扫盲</a>
+    <a class="topbar-guide" href="pages/freshman-planning.html"><span class="tg-icon">🌟</span>大一</a>
+    <a class="topbar-guide" href="pages/sophomore-planning.html"><span class="tg-icon">🌱</span>大二</a>
+    <a class="topbar-guide" href="pages/junior-planning.html"><span class="tg-icon">⚡</span>大三</a>
+    <a class="topbar-guide" href="pages/academy-management.html"><span class="tg-icon">📘</span>学业</a>
+    <a class="topbar-guide" href="pages/competition-certs.html"><span class="tg-icon">🏆</span>竞赛</a>
+    <a class="topbar-guide" href="pages/career-planning.html"><span class="tg-icon">💼</span>求职</a>
+    <a class="topbar-guide" href="pages/kaoyan-resources.html"><span class="tg-icon">🎓</span>考研</a>
+  </div>
+  <a class="topbar-site" href="../index.html" title="返回网站首页">🏡 网站首页</a>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><div class="side-group"><div class="side-title" onclick="this.parentElement.classList.toggle('collapsed')"><span class="side-arrow">▾</span>❀ 基础专业 <span class="side-cnt">6</span></div><ul><li class="major-item" data-code="080701" data-name="电子信息工程"><span class="mi-code">080701</span><span class="mi-name">电子信息工程</span></li><li class="major-item" data-code="080702" data-name="电子科学与技术"><span class="mi-code">080702</span><span class="mi-name">电子科学与技术</span></li><li class="major-item" data-code="080703" data-name="通信工程"><span class="mi-code">080703</span><span class="mi-name">通信工程</span></li><li class="major-item" data-code="080704" data-name="微电子科学与工程"><span class="mi-code">080704</span><span class="mi-name">微电子科学与工程</span></li><li class="major-item" data-code="080705" data-name="光电信息科学与工程"><span class="mi-code">080705</span><span class="mi-name">光电信息科学与工程</span></li><li class="major-item" data-code="080706" data-name="信息工程"><span class="mi-code">080706</span><span class="mi-name">信息工程</span></li></ul></div><div class="side-group"><div class="side-title" onclick="this.parentElement.classList.toggle('collapsed')"><span class="side-arrow">▾</span>✿ 特色专业（T） <span class="side-cnt">11</span></div><ul><li class="major-item" data-code="080707T" data-name="广播电视工程"><span class="mi-code">080707T</span><span class="mi-name">广播电视工程</span></li><li class="major-item" data-code="080708T" data-name="水声工程"><span class="mi-code">080708T</span><span class="mi-name">水声工程</span></li><li class="major-item" data-code="080709T" data-name="电子封装技术"><span class="mi-code">080709T</span><span class="mi-name">电子封装技术</span></li><li class="major-item" data-code="080710T" data-name="集成电路设计与集成系统"><span class="mi-code">080710T</span><span class="mi-name">集成电路设计与集成系统</span></li><li class="major-item" data-code="080711T" data-name="医学信息工程"><span class="mi-code">080711T</span><span class="mi-name">医学信息工程</span></li><li class="major-item" data-code="080712T" data-name="电磁场与无线技术"><span class="mi-code">080712T</span><span class="mi-name">电磁场与无线技术</span></li><li class="major-item" data-code="080713T" data-name="电波传播与天线"><span class="mi-code">080713T</span><span class="mi-name">电波传播与天线</span></li><li class="major-item" data-code="080714T" data-name="电子信息科学与技术"><span class="mi-code">080714T</span><span class="mi-name">电子信息科学与技术</span></li><li class="major-item" data-code="080715T" data-name="电信工程及管理"><span class="mi-code">080715T</span><span class="mi-name">电信工程及管理</span></li><li class="major-item" data-code="080716T" data-name="应用电子技术教育"><span class="mi-code">080716T</span><span class="mi-name">应用电子技术教育</span></li><li class="major-item" data-code="080717T" data-name="人工智能"><span class="mi-code">080717T</span><span class="mi-name">人工智能</span></li></ul></div></aside>
+  <main class="main" id="main"></main>
+  <aside class="right-nav" id="rightNav"></aside>
+</div>
+
+<script>
+const MAJORS = [{"code": "080701", "name": "电子信息工程", "category": "basic", "intro": "软硬兼修的万金油专业，学习从信号采集、传输、处理到控制的完整链路，覆盖电子电路、信号处理、嵌入式等方向，毕业后可从事硬件设计、软件开发、通信、芯片等多领域工作。", "courses": ["电路分析", "模拟电子技术", "数字电子技术", "信号与系统", "数字信号处理", "通信原理", "电磁场与电磁波", "单片机原理", "嵌入式系统", "C语言程序设计", "信息论基础", "高频电子线路"], "fitFor": "如果你对电子世界有好奇心，喜欢拆装电子产品、动手做实验，那么这个专业很适合你。它要求较好的数学物理基础和缜密的逻辑思维，因为信号、电磁场、电路分析都离不开数理推导。性格上要能坐得住冷板凳——基础课枯燥且难，调试代码和电路需要极强耐心，能承受高强度工作压力。如果你外向主动、动手能力强更佳，因为项目落地离不开沟通和实操。本专业软硬都学，适合既不想纯做软件、又对硬件有兴趣的同学；但若想专攻计算机，建议直接选计算机科学与技术。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "专业课宝库，模电郑益慧、数电王红、信号与系统郭宝龙、电磁场马西奎等优质课程"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "名校公开课，好的大学没有围墙"}, {"name": "GitHub", "url": "https://github.com", "desc": "全球最大开源社区，搜索项目代码和他人实现"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "国内开发者论坛，硬件电路项目和程序问题解答丰富"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "全球极客挚爱的技术成长平台，转码刷题必备"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "学的不仅是技术更是梦想，编程入门友好"}, {"name": "电子发烧友", "url": "https://www.elecfans.com", "desc": "电子工程师专属论坛，硬件资料和项目分享齐全"}, {"name": "立创EDA", "url": "https://lceda.cn", "desc": "在线PCB设计工具，嘉立创每月免费打板，立创商城元件库齐全"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电信类含金量最高赛事，四天三夜组队参赛，省赛每年一次国赛两年一次"}, {"name": "ACM国际大学生程序设计竞赛", "tier": "S", "desc": "计算机领域顶级赛事，转码同学含金量最高的加分项"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "检验理论基础和系统思维，培养解决工程问题能力"}, {"name": "挑战杯大学生课外学术科技作品竞赛", "tier": "A", "desc": "综合理论与实践动手能力的全国性赛事"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "培养市场感和创新创业能力"}, {"name": "全国大学生智能汽车竞赛", "tier": "A", "desc": "自动化方向重点赛事，学校多有专门实验室和培训"}, {"name": "全国大学生集成电路创新创业大赛", "tier": "A", "desc": "微电子方向重点赛事，近年新增门槛较高"}, {"name": "蓝桥杯", "tier": "B", "desc": "编程类赛事，适合锻炼编程能力，保研面试加分"}], "careers": [{"category": "研究所/国企/军工", "desc": "中电科、航天院所、国防单位等，稳定但看重学历和成绩单"}, {"category": "互联网/软件", "desc": "转码方向去BAT、字节、美团等大厂，薪资高但竞争激烈"}, {"category": "硬件/嵌入式", "desc": "硬件工程师、嵌入式开发、PCB设计、单片机开发等，越老越吃香"}, {"category": "运营商/通信", "desc": "移动、联通、电信等，家门口就业相对安稳"}, {"category": "芯片/集成电路", "desc": "数字IC、模拟IC设计，国产替代背景下前景好但门槛高"}, {"category": "继续深造", "desc": "考研升学是大多数人的选择，双非院校近半数考研"}], "cities": [{"name": "深圳", "desc": "华为等ICT产业链集中地，硬件和互联网岗位最多"}, {"name": "上海", "desc": "长三角核心，半导体和电子信息产业发达"}, {"name": "北京", "desc": "头部企业和研究院所集中，国防领域机会多"}, {"name": "杭州", "desc": "互联网大厂聚集，杭电等本地院校有就业buff"}, {"name": "成都", "desc": "就业机会多房价相对友好，西电成电辐射圈"}, {"name": "武汉", "desc": "光谷光电产业园，光电子方向岗位集中"}, {"name": "西安", "desc": "军工院所集中，西电辐射就业形势好"}, {"name": "苏州", "desc": "电子制造业发达，福利待遇较好"}], "gradSchool": "大多数答主强烈建议读研。本科阶段学的广而不精，软硬都碰但都不深入，研发岗门槛基本在硕士。数字IC等方向必须读研，硬件研发岗本科只是简历基本线。读研能接触前沿研究、提升专业深度，薪资也会有明显跃升。少数答主认为若有明确职业规划，工作经验带来的收益可能更大，但前提是有其他出路。总体结论：建议读研，尤其是想做技术或硬件方向的同学。", "salary": "本科应届6-12k/月，双非小城市5-7k，苏州深圳杭州8k以上；硕士年薪15-30万，名校IC方向可达20万+起。整体处于所有行业中上游水平，硬件岗方差较大，转码方向薪资更高。", "development": "分技术线和管理线两条路径。技术线在国企为技术员到一级工程师再到型号总师、首席工程师；私企从初级工程师到高级、技术主管、总工程师。硬件方向越老越吃香，需在细分领域深耕多年形成不可替代性。管理线需锻炼沟通和执行能力，从项目经理往上发展。电子专业转管理岗不易，多数走技术专家和带团队方向。跳槽是涨薪常见手段，但面临35岁中年危机时可能转管理或去压力较小的企业。", "prospect": "数字IC方向借国产替代东风薪资已接近计算机；5G、AI、大数据、物联网等技术演进带来第二春，市场空间广阔；嵌入式和智能硬件随智能化浪潮需求稳定；军工国防领域因中美摩擦持续受政策扶持。整体属国民经济战略性支柱产业，前景光明但自主创新挑战大。", "advice": ["基础课一定要扎实，高数、电路分析、信号与系统是地基，地基不牢后续寸步难行", "尽早进实验室参加电赛等项目，实践比课堂学习的价值更高，大一进去大二大三拿奖最佳", "在学的广度中尽早找到兴趣方向并深耕，做到某一方向顶尖水平才有竞争力", "多和优秀学长学姐及老师沟通，他们踩过的坑和掌握的资源比任何网站都有效", "不要盲目跟风考研或就业，结合自身职业规划做选择，第一份工作尽量选大平台", "学好C语言和编程，无论硬件还是软件方向都离不开代码能力，转码也是兜底出路"]}, {"code": "080702", "name": "电子科学与技术", "category": "basic", "intro": "研究电子材料、器件、集成电路与电磁场的基础型工科，覆盖半导体、光电子、微波等方向，培养电子领域研发与设计人才，偏理论研究。", "courses": ["半导体物理", "固体物理", "模拟电子技术", "数字电子技术", "信号与系统", "电磁场与电磁波", "微电子器件与IC设计", "CMOS模拟集成电路", "半导体器件与工艺", "微波技术基础", "单片机原理", "传感器原理"], "fitFor": "适合数理基础扎实、耐心有毅力、动手能力强的同学。课程涉及大量物理与数学推导，需要良好逻辑思维和自学能力。兴趣上偏好电子材料、器件原理或电路设计的同学更契合。专业方向较杂，需尽早确定细分方向并主动学习。性格上要细心沉稳，能承受实验反复失败的抗压能力也很重要。大类招生下若未被分到心仪方向（如集成电路），需评估能否接受其他方向再报考。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "江科大自化协51单片机、上交郑益慧模电、西电半导体物理等优质网课聚集地"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "各高校系统课程，专业性强且免费"}, {"name": "GitHub", "url": "https://github.com", "desc": "海量开源项目可用于学习练习"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "编程与单片机项目复现、问题检索"}, {"name": "EETOP论坛", "url": "https://bbs.eetop.cn", "desc": "电子工程师社区，电路设计与IC相关问题讨论"}, {"name": "学堂在线", "url": "https://www.xuetangx.com", "desc": "专业性较强的电子类课程自学平台"}, {"name": "实验楼", "url": "https://www.shiyanlou.com", "desc": "在线实践环境，配合仿真软件学习电路"}, {"name": "学长学姐旧书笔记", "url": "", "desc": "保研前辈的笔记是少走弯路的宝贵资源"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电赛，电子类最核心竞赛，锻炼电路设计与实操能力"}, {"name": "全国大学生集成电路创新创业大赛", "tier": "S", "desc": "集创赛，IC设计方向权威竞赛，求职保研加分明显"}, {"name": "全国大学生光电设计竞赛", "tier": "A", "desc": "光赛，光电子方向同学推荐参加"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "培养建模与学术写作能力，保研加分项"}, {"name": "挑战杯/互联网+", "tier": "A", "desc": "创新创业类三大赛，锻炼项目统筹与口才"}, {"name": "全国大学生数学竞赛", "tier": "B", "desc": "非专业组也可参加，夯实数学基础"}], "careers": [{"category": "集成电路设计", "desc": "数字IC前端、模拟版图、验证工程师，需硕士学历"}, {"category": "半导体器件与工艺", "desc": "传感器、存储器件、功率器件研发，工艺工程师"}, {"category": "硬件开发", "desc": "PCB板级电路、嵌入式、FPGA开发等岗位"}, {"category": "电磁与微波", "desc": "天线、射频电路、雷达相关研发，军工民企均有需求"}, {"category": "光电子技术", "desc": "硅基光电子芯片、光电器件设计，就业面相对窄"}, {"category": "科研院所与高校", "desc": "走学术路线，发文章留校或进研究所"}], "cities": [{"name": "上海", "desc": "IC设计公司聚集，产业链最完整，薪资最高"}, {"name": "深圳", "desc": "电子产业发达，硬件与IC岗位多"}, {"name": "北京", "desc": "研究所与高新技术企业密集"}, {"name": "苏州", "desc": "长三角集成电路重镇，产业链配套齐全"}, {"name": "杭州", "desc": "电子材料与器件企业较多"}, {"name": "武汉", "desc": "长江存储等半导体企业布局"}, {"name": "成都", "desc": "西部电子产业中心，研究所集中"}, {"name": "合肥", "desc": "长鑫存储等带动半导体产业"}, {"name": "无锡", "desc": "国家集成电路设计产业化基地"}, {"name": "广州", "desc": "老牌工业城市，电子岗位需求稳定"}], "gradSchool": "读研必要性非常高。本科实行宽口径培养，学得杂而不精，难以胜任核心研发岗。半导体和IC设计岗位多要求硕士起步，硕士薪资相比本科翻倍。读博适合走材料/器件/高校科研路线，该方向发文章相对容易，留校机会多。建议优先考取985或电子类双一流院校，否则设备与资源受限明显。", "salary": "本科一线10-15w、二线8-10w；硕士一线半导体工艺材料岗20-30w，电路方向25-45w；博士30-40w以上。整体处于工科前列，仅次于计算机，受政策和资本双重推动。", "development": "技术路线：工程师→高级工程师→资深工程师→专家顾问；管理路线：项目负责人→主管→部门经理→总监。也可走学术路线进高校或研究所。硬件岗越老越吃香，经验积累价值高。可根据细分方向深耕IC设计、器件研发，或转码转型。国企稳定加班少但薪资略低，私企薪资高但强度大。", "prospect": "分方向看：半导体与IC设计受国家战略支持，人才缺口大、薪资增长快；电磁微波方向应用稳定，军工民用均有需求；光电子方向学术易出成果但工程落地少、就业面窄；传感器/材料方向与AI、新能源结合前景好。整体行业前景向好，但能否像计算机一样长青尚待观察，需关注国家政策与中美博弈。", "advice": ["尽早确定细分方向并主动学习，校内课程可能滞后于行业实际发展", "数学和英语要扎实，是后续学习研究与查阅外文文献的基础", "多参加电赛、集创赛等专业竞赛，提升实操与项目经验", "大一大二课程宽松时自学单片机、Verilog、Python等技能", "不要被芯片热盲目驱动，需结合自身兴趣与抗压能力选择", "读研基本是必需，提前规划保研或考研，优先985与电子双一流"]}, {"code": "080703", "name": "通信工程", "category": "basic", "intro": "研究信号传输与通信系统的核心专业，覆盖无线通信、光通信、卫星通信等方向，学习信号处理、电磁场、通信原理等，毕业后可去运营商、华为中兴等设备商、互联网大厂或研究所。", "courses": ["信号与系统", "通信原理", "数字信号处理", "电磁场与电磁波", "信息论基础", "模拟电子技术", "数字电子技术", "高频电子电路", "计算机网络", "随机信号分析", "微波技术", "移动通信"], "fitFor": "通信工程对数学要求极高，被誉为研究通信本质就是研究数学，所以数学功底深厚、逻辑推理能力强的同学最有优势。你需要肯吃苦——课程数量多且难，实验密集，周末常在补实验。性格上要有极客精神和自驱力，对探索难题有热情。物理尤其是电路方向不能排斥，电磁场与波这门课涉及大量物理和数学。动手能力无论软硬件都很重要，因为理论和实践并行。如果喜欢编程又想把编程和硬件结合，通信工程是不错的选择；但纯理科思维弱的同学学起来会比较痛苦。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "网课补充首选，张宇考研数学有趣生动适合入门，专业课资源丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "清华于老师电路分析等名校公开课"}, {"name": "GitHub", "url": "https://github.com", "desc": "开源社区，锻炼技术实践的最佳平台"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "前人踩过的坑都能搜到答案"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "转码刷题必备，应聘阶段非常实用"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "编程语言入门友好教程"}, {"name": "IEEE Xplore", "url": "https://ieeexplore.ieee.org", "desc": "通信专业顶级论文数据库，理论研究首选"}, {"name": "Gitee", "url": "https://gitee.com", "desc": "国内开源社区，访问更稳定"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电信类含金量最高赛事，本科有必要参加一次能学到很多"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "matlab实操锻炼，培养项目能力和写报告能力"}, {"name": "RoboMaster机甲大师赛", "tier": "A", "desc": "大疆举办的新兴比赛，很好玩且锻炼能力"}, {"name": "全国大学生智能汽车竞赛", "tier": "A", "desc": "培养动手能力和项目能力的重点赛事"}, {"name": "挑战杯", "tier": "A", "desc": "综合理论与实践的全国性赛事"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "培养市场感和创新创业能力"}, {"name": "ACM国际大学生程序设计竞赛", "tier": "S", "desc": "转码方向顶级赛事，含金量最高"}, {"name": "FPGA创新竞赛", "tier": "B", "desc": "硬件方向专项赛事，转FPGA开发加分"}], "careers": [{"category": "运营商", "desc": "移动联通电信，相对安稳但工资被拉低，部分岗位限男性"}, {"category": "设备商", "desc": "华为中兴爱立信等通信大厂，对口就业方向薪资较高"}, {"category": "互联网/转码", "desc": "转码去BAT等大厂做开发、算法、测开，是大流方向"}, {"category": "研究所/国企", "desc": "高校研究所和电子类国企，偏研究性质看重学历"}, {"category": "硬件/射频", "desc": "射频工程师、微波工程师、FPGA开发，岗位窄但稳定"}, {"category": "考公/选调", "desc": "通信专业岗位少多三不限，竞争力较大"}], "cities": [{"name": "深圳", "desc": "华为中兴等通信设备商总部所在地，对口岗位最多"}, {"name": "北京", "desc": "通信大厂和研究所集中，技术研发前沿阵地"}, {"name": "上海", "desc": "长三角核心，通信和IC企业分部众多"}, {"name": "成都", "desc": "电子科技大学辐射圈，通信企业分部多"}, {"name": "南京", "desc": "东南大学等强校所在地，通信产业发达"}, {"name": "西安", "desc": "西电辐射，军工院所和通信企业集中"}, {"name": "武汉", "desc": "光谷光通信产业聚集地"}, {"name": "杭州", "desc": "互联网大厂聚集，转码方向机会多"}], "gradSchool": "绝大多数答主强烈建议读研。通信门槛较高，本科所学非常有限且脱离实际，双非院校本科生在通信行业很难找到合适工作。读研不仅提升专业深度，也是转方向的机会——可转CV、芯片设计、FPGA开发等。华为2012实验室等核心岗位基本只招硕士甚至博士。考研比保研不必过分执着，重要的是读上后好好学习而非混文凭。整体结论：想从事通信技术工作必须读研，转码方向可视个人情况而定。", "salary": "本科8-12k/月，双非转码可达1.2w+；硕士年薪20-40万，东南等强校硕士普遍40万+，985硕士进大厂可达60万。运营商稍低央国企信息技术约15万年薪。整体低于互联网但处于较高水准。", "development": "技术线和管理线两条路径。技术线从助理工程师到工程师、高级工程师、专家；管理线从一般员工到初级管理、高级管理。技术骨干在细分领域深耕可成为专家，薪资和环境都不错。转码方向遵循互联网发展路径。通信本身偏夕阳但射频微波因涉及军口不会被淘汰。整体看岗位选择多于专业本身限制，与城市、岗位、生活期望关系更大。", "prospect": "传统通信借5G、6G、物联网、车联网持续注入活力，国家大力发展下不会是夕阳行业；卫星通信、水声通信、可见光通信等新方向带来新鲜血液；空天地海通信一体化是当前主要研究趋势；转码作为对口方向比较容易，通信专业转计算机有基础优势。整体行业稳定发展，本一院校就业率95%以上。", "advice": ["信号与系统一定要学懂，学懂了后面课程都通，学不懂就考虑转方向", "数学物理英语等基础课非常关键，所有专业课都建立其上，不能掉以轻心", "尽早确定兴趣方向，通信工程课多，有一半课程可能根本用不到，针对性学习更高效", "多上手实践和参加电赛、智能车等比赛，理论联系实际才能真正掌握", "想从事通信技术工作建议读研深造，否则考虑转互联网或考公", "不适合本专业要尽早下决定转方向，通信薪资还不错会让人越来越难逃离"]}, {"code": "080704", "name": "微电子科学与工程", "category": "basic", "intro": "聚焦半导体器件与集成电路设计、工艺的全产业链学科，培养芯片设计与制造人才，是国家战略重点方向，对口半导体行业。", "courses": ["半导体物理", "半导体器件物理", "固体物理", "模拟集成电路设计", "数字集成电路设计", "模拟电子技术", "数字电子技术", "信号与系统", "电磁场与波", "微波工程", "集成电路工艺原理", "微处理器与嵌入式系统"], "fitFor": "适合数理基础扎实、对半导体和电路有浓厚兴趣、能耐住寂寞钻研的同学。专业课程偏难，需要较强逻辑思维和吃苦精神。芯片设计容错率极低，性格上要细心踏实、有工匠精神。建议对物理尤其是半导体物理、电路设计真正有兴趣的同学报考，跟风选专业者容易半途而废。本科所学偏基础，需做好读研深造的长期准备。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "拉扎维模集课、各类模电数电网课资源丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "高校系统课程，基础学习首选"}, {"name": "GitHub", "url": "https://github.com", "desc": "开源项目学习平台"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "开发者社区，编程与项目问题检索"}, {"name": "EETOP论坛", "url": "https://bbs.eetop.cn", "desc": "微电子与IC设计专业论坛，电路设计技巧讨论"}, {"name": "IEEE Xplore", "url": "https://ieeexplore.ieee.org", "desc": "集成电路领域顶刊文献检索"}, {"name": "ISSCC/JSSC", "url": "", "desc": "固态电路顶会顶刊，前沿研究必读"}], "competitions": [{"name": "全国大学生集成电路创新创业大赛", "tier": "S", "desc": "集创赛，集成电路设计方向权威竞赛，赛题细分各方向"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电赛，锻炼电路理解与设计能力，推免加分"}, {"name": "研究生创芯大赛", "tier": "A", "desc": "研究生阶段IC设计相关竞赛"}, {"name": "华为杯", "tier": "A", "desc": "华为主办的电子设计类竞赛，优秀者可获求职优先权"}, {"name": "复微杯", "tier": "B", "desc": "复旦大学与微电子企业合办的竞赛"}, {"name": "全国大学生数学建模竞赛", "tier": "B", "desc": "培养建模能力，保研加分项"}], "careers": [{"category": "数字IC设计", "desc": "前端设计、验证工程师，需求量大"}, {"category": "模拟/射频IC设计", "desc": "电路设计工程师，门槛高但天花板高"}, {"category": "半导体器件与工艺", "desc": "器件工程师、工艺工程师，FAB厂方向"}, {"category": "嵌入式系统开发", "desc": "结合芯片应用的软硬件开发"}, {"category": "EDA工具研发", "desc": "国产EDA方向受政策扶持"}, {"category": "科研院所与高校", "desc": "需博士学历，从事科研与教学"}], "cities": [{"name": "上海", "desc": "芯片设计公司聚集，行业密集度与产业链完整度全国第一"}, {"name": "北京", "desc": "IC企业与研究所密集"}, {"name": "深圳", "desc": "珠三角半导体中心，硬件产业链齐全"}, {"name": "南京", "desc": "长三角IC重镇，设计公司众多"}, {"name": "无锡", "desc": "国家集成电路设计产业化基地"}, {"name": "苏州", "desc": "半导体设计与制造企业集中"}, {"name": "武汉", "desc": "中西部IC产业发展迅速"}, {"name": "成都", "desc": "西部半导体产业基地"}, {"name": "西安", "desc": "高校资源带动IC产业发展"}, {"name": "合肥", "desc": "长鑫存储等带动产业崛起"}], "gradSchool": "读研基本是硬性要求。本科课程偏基础，难以胜任核心设计岗，硕士学历是IC行业门槛。版图岗位可本科入职但天花板低，从版图转模拟设计难度极大。建议有条件可读博，行业内学历门槛高，团队核心多为博士出身。非名校本科生读研几乎是必须。", "salary": "本科8-12k/月，年薪10w左右；硕士年薪30w起，顶尖名校可达40-50w。整体处于工科上游，仅次于计算机，受国家政策与资本双重推动，薪资增长快。", "development": "技术路线：助理工程师→工程师→高级工程师→资深专家；管理路线：项目负责人→部门经理→总监。也可走创业或行业投资咨询路线。器件/工艺岗越老越吃香，IC设计岗需持续学习跟进技术迭代。半导体一行凭能力与项目经验匹配薪资，无需资格证书。", "prospect": "集成电路是国家大力发展的领域，5-10年内前景较好。芯片设计岗位需求大、薪资高，但行业也面临产能过剩风险，黄金期过后可能洗牌。模拟IC门槛高、人才稀缺，长期看好；数字IC入门相对容易但竞争激烈。整体处于热火烹油状态，热钱较多。", "advice": ["基础课程（半导体物理、模电数电、模集数集）必须打牢，是后续一切研究的根基", "不要跟风报考，需确认对半导体和电路的真正兴趣与钻研耐心", "学有余力参加集创赛、电赛，提升实操与项目能力", "提前联系导师进入课题组，积累科研与流片经验", "争取流片机会，相关项目经验对求职非常加分", "做好读研甚至读博的长期规划，硕士是基本门槛"]}, {"code": "080705", "name": "光电信息科学与工程", "category": "basic", "intro": "光、机、电、算交叉的复合型专业，以光为核心学习光学、光电子、激光、光纤通信、图像处理等，毕业后可从事光学设计、光通信、显示技术、图像算法、半导体等方向，应用涵盖显示、照明、成像、通信、医疗等领域。", "courses": ["工程光学", "物理光学", "激光原理", "光电子技术", "光纤通信", "电磁场与电磁波", "信号与系统", "模拟电子技术", "数字电子技术", "电路分析", "数字图像处理", "量子力学"], "fitFor": "如果你对物理尤其光学有兴趣、数理功底较好，光电专业很适合你。它要求较强的数学物理基础和实验动手能力，因为光机电算什么都要学课程很杂，需要快速掌握陌生知识的能力。性格上要有钻研精神，能坐得住冷板凳——光学实验在暗室中进行，需要沉得下心来。适合高中阶段传统意义上的踏实学生。若高考物理低于及格线不建议选择。Geek和搞机爱好者会如鱼得水。本专业本科偏研究型，最少读研才能找到满意方向，所以适合有志深造的同学。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "网课学习首选，专业课和软件教程丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "名校公开课资源，深度学习自己感兴趣的课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "开源项目平台，转码方向资源丰富"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "技术问题和项目参考的国内开发者社区"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "转图像算法方向刷题必备"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "编程入门教程，python和C++学习友好"}, {"name": "光行天下", "url": "http://www.opticsky.cn", "desc": "光学专业论坛，业内人士分享干货和资源"}, {"name": "光学社区", "url": "https://www.opticsky.cn", "desc": "光学方向比较靠谱的学习取经平台"}], "competitions": [{"name": "全国大学生光电设计竞赛", "tier": "S", "desc": "与本专业最相关最权威的全国性赛事，光电专业专属"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电子类专业电赛，国赛省赛含金量极高"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "锻炼matlab和系统能力，光电方向加分项"}, {"name": "挑战杯", "tier": "A", "desc": "综合理论与实践的全国性赛事"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "培养创新创业能力，光电糅合多学科参与度广"}, {"name": "RoboMaster机甲大师赛", "tier": "A", "desc": "锻炼能力的比赛，机器人方向加分"}, {"name": "全国大学生物理实验竞赛", "tier": "B", "desc": "CUPT物理类赛事，锻炼实验能力"}, {"name": "美国大学生数学建模竞赛", "tier": "A", "desc": "美赛，国际视野加分项"}], "careers": [{"category": "研究所/高校", "desc": "光机所、高校教师等科研岗位，必须读到博士，相对稳定"}, {"category": "光学企业", "desc": "镜头厂、激光企业、光通信公司等光学工程师岗位，需硕士起步"}, {"category": "显示/照明", "desc": "京东方、华星光电等面板厂，LED显示照明企业工艺或研发"}, {"category": "半导体/集成电路", "desc": "芯片设计公司，提前熟悉cadence等软件，最好深造"}, {"category": "转码/图像算法", "desc": "数字图像处理、机器视觉、CV方向，与计算机行业接轨薪资较高"}, {"category": "考公/教师", "desc": "考教资当老师，但公务员岗位光电属于冷门多三不限"}], "cities": [{"name": "深圳", "desc": "中国光博会举办地，蔡司索雷博等大厂互动机会多"}, {"name": "武汉", "desc": "光谷和华科所在地，光电产业规模最大"}, {"name": "上海", "desc": "海外企业国内代理多，光电外企岗位集中"}, {"name": "北京", "desc": "科研院所和高校集中，量子方向研究重镇"}, {"name": "成都", "desc": "芯片设计公司多，川渝光电产业发展良好"}, {"name": "长春", "desc": "长春理工等光学强校所在地，光学传统基地"}, {"name": "苏州", "desc": "长三角光电产业配套齐全，薪资较高"}, {"name": "广州", "desc": "珠三角光电企业多，就业机会丰富"}], "gradSchool": "几乎所有答主都强烈建议读研。光电本科课程涉及面太广不利于就业，研发岗基本都是硕士起步。读研可在某一具体方向深造提升个人价值，且光电考研分数线相对较低（除华科浙大外）是机会。研究所等科研单位读研是硬门槛，硕士薪资相对本科增长50%-100%。放弃考研意味着几乎无法从事专业相关工作，只能做基础操作员。建议读研甚至读博，并提前联系导师。", "salary": "本科应届5-8k/月，普本长三角技术岗5.5-7k，985广东光学工程师8-12k；硕士年薪20-25万，博士30-35万。偏软件如图像处理薪资较高，偏材料器件较低。整体生化环材小于光电小于CS。", "development": "本科毕业多为基础岗位或转行，研究生阶段决定发展方向。工程类研究方向适合进企业或科研院所，硕士年薪20-25万；理论类研究方向适合进高校做科研。私企技术岗随经验积累在行业内反复横跳涨薪，但面临35岁中年危机可能转管理；研究所国企涨薪有限但稳定能干到退休。光学设计方向越老越吃香，需有人引进门积累项目经验。量子方向走科研路线可评选人才帽子。", "prospect": "量子光学方向成资本焦点，国盾量子等对口企业兴起，大厂纷纷布局量子研究；传统光学结合传感算法有新突破，光学计算和集成光芯片前景看好；显示、照明、成像、安防等应用领域广，光电专业就业面非常广；中美贸易争端下国内重视高精尖产业，造芯和无人驾驶急需光电人才。整体是朝阳专业，科研前景比工程应用前景高。", "advice": ["尽早找到自己感兴趣的方向并深挖，光机电算什么都学容易什么都不精", "数学和英语一定要打好基础，高等数学是工科工具，英文文献和资料必不可少", "做好读研准备，本科直接就业缺乏优势，部分岗位为工厂一线工程师较为艰苦", "学好Matlab或Python等工具软件，转图像处理方向薪资会高一截", "注意有些学校包着光电外衣做着材料的事情，选择导师时要了解清楚研究方向", "提前1-2年了解心仪企业需求，把自己往企业需要的方向培养"]}, {"code": "080706", "name": "信息工程", "category": "basic", "intro": "宽口径电子信息专业，研究信息获取、传输与处理，涵盖信号处理、通信、微波、电路等方向，软硬兼修，就业面广。", "courses": ["信号与系统", "数字信号处理", "通信原理", "模拟电子技术", "数字电子技术", "电路分析基础", "电磁场与波", "信息论", "随机信号分析", "数字图像处理", "自动控制原理", "计算机网络"], "fitFor": "适合数学功底扎实、有抽象思维、自学能力强的同学。专业覆盖面广，软硬兼修，需要找到感兴趣的细分方向深耕。性格上要耐得住寂寞，有研究热情和钻研精神。对编程、电路设计、信号处理有兴趣者更契合，能软硬通吃者发展空间大。专业像开瓶器，教会方法论，需与实际落地结合才能创造价值，因此内驱力强、兴趣广泛的同学更合适。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "3Blue1Brown傅立叶线代微积分、华成英模电等优质网课"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "清北等高校经典课程资源"}, {"name": "GitHub", "url": "https://github.com", "desc": "开源项目学习与代码参考"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "开发者社区，编程与算法问题检索"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "算法刷题平台，转码求职必备"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "编程语言与工具入门学习"}, {"name": "Coursera", "url": "https://www.coursera.org", "desc": "国外名校课程，如CS231n等AI相关课"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电赛，硬件方向核心竞赛，锻炼动手能力"}, {"name": "ACM-ICPC程序设计竞赛", "tier": "S", "desc": "软件算法方向最高含金量竞赛"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "培养建模与学术问题解决能力"}, {"name": "全国大学生智能汽车竞赛", "tier": "A", "desc": "嵌入式方向，锻炼软硬件结合能力"}, {"name": "互联网+/挑战杯", "tier": "A", "desc": "创新创业类竞赛，综测加分"}, {"name": "华为/思科网络工程师认证", "tier": "B", "desc": "网络方向求职敲门砖"}], "careers": [{"category": "信号处理算法", "desc": "通信、雷达、图像算法工程师，需硕士学历"}, {"category": "通信系统", "desc": "华为、中兴、三大运营商等企业"}, {"category": "硬件开发", "desc": "射频/基带电路设计，手机厂商或ODM"}, {"category": "互联网开发", "desc": "转码进入BAT等互联网大厂"}, {"category": "芯片算法岗", "desc": "IC算法工程师，结合信号处理与芯片设计"}, {"category": "科研院所与高校", "desc": "中电等研究所，从事科研工作"}], "cities": [{"name": "上海", "desc": "长三角科技创新中心，软硬件岗位丰富"}, {"name": "北京", "desc": "互联网与通信企业聚集，研发中心多"}, {"name": "深圳", "desc": "软硬件公司密集，大小企业均可选"}, {"name": "杭州", "desc": "互联网大厂分部，对口岗位多"}, {"name": "南京", "desc": "长三角通信与电子产业重镇"}, {"name": "合肥", "desc": "当地政策友好，行业机会较多"}, {"name": "西安", "desc": "西部研发中心集中，机会可观"}, {"name": "广州", "desc": "珠三角通信与电子产业"}], "gradSchool": "读研必要性高。本科宽口径培养学的杂而不精，难以满足用人单位对专业深度的要求。若想做芯片设计、算法岗，硕士基本是硬门槛。但若只想做硬件工程师，2-3年工作经验可能比读研更值，硬件岗非常吃经验。需根据职业规划决定是否读研及读研方向。", "salary": "本科一二线10k左右，四线6k起步；硕士进互联网大厂或运营商年薪15-20w起，算法岗更高。整体薪酬可观，经验越丰富越吃香，硬件工程师尤其看重经验积累。", "development": "技术路线：工程师→高级工程师→架构师；管理路线：高级工程师→部门主管→公司高管。也可转码或转算法方向。技术路径相对稳定，管理路径需机遇和能力兼备。建议进入公司后提升能力，见机行事，技术强的人走技术路径更稳妥。", "prospect": "信息产业整体前景向好，国家政策支持。通信和微波方向有基础设施政策支撑；信号处理与AI结合机会多；但传统通信可能趋于夕阳，需关注技术迭代。整体就业面广，发展空间大，但人算不如天算，需考虑退路问题。", "advice": ["数学是核心内功，要多学多练，触类旁通", "尽早确定细分方向（信号/通信/电路/微波）并深耕", "硬件方向多动手实践，掌握PADS、ADS、Cadence等EDA工具", "软件方向刷算法题、补计算机科班课程", "英语很重要，工作后技术文档基本为英文", "不要被GPA框住，多积累项目与实习经验"]}, {"code": "080707T", "name": "广播电视工程", "category": "special", "intro": "研究广播影视信号的传输、制作与处理，涵盖数字电视、视音频技术与媒体内容开发，是电子信息类与传媒行业交叉的窄口径专业。", "courses": ["高等数学", "电路分析基础", "模拟电子技术", "数字电子技术", "信号与系统", "数字信号处理", "通信原理", "信息论", "C++程序设计", "数据结构", "单片机原理与应用", "数据压缩", "数字视频处理", "电视原理", "数字电视技术", "媒体内容存储与管理"], "fitFor": "适合对编程与数码技术有一定兴趣、具备逻辑思维和理工基础的考生。若你是数码圈的硬核爱好者，色域、编码、色度采样等话题会令你学得更有兴致。专业分为电视中心（偏硬件）与融媒体（偏软件）两个方向，既可走传统广电设备的开发维护路线，也可走程序开发路线。本质上属于电子信息类的应用型分支，就业面广但不专精，需要学生在课余自主往感兴趣的方向深造。对传媒行业抱有热情、又不愿放弃工科背景的同学最为契合。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "专业课网课与数码硬核知识的主要自学阵地"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "可找到信号、通信、电子类系统课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "编程与算法项目学习平台"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "开发者社区，辅助编程与算法学习"}, {"name": "知乎", "url": "https://www.zhihu.com", "desc": "广电行业经验与择业方向讨论"}, {"name": "课本与课件", "url": "", "desc": "课内PPT与教材仍是掌握基础知识最不该忽视的来源"}], "competitions": [{"name": "全国大学生数学建模竞赛", "tier": "S", "desc": "国赛与美赛均可参加，综测加分高，培养建模与写作能力"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电子信息类核心竞赛，锻炼硬件与编程实践能力"}, {"name": "ACM-ICPC程序设计竞赛", "tier": "A", "desc": "面向编程方向同学，难度较高但含金量足"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "综测加分可观，培养项目与商业思维"}, {"name": "大学生创新创业训练计划", "tier": "B", "desc": "可加入老师课题组，积累科研经历"}], "careers": [{"category": "互联网/IT开发", "desc": "码农、算法岗等，薪酬较高，约15k起"}, {"category": "传统广电行业", "desc": "电视台、转播公司的设备开发、应用与维护，对口但趋于饱和"}, {"category": "融媒体/新媒体技术", "desc": "网络视频平台、新媒体公司的程序开发与音视频技术岗"}, {"category": "银行国企", "desc": "信息科、技术支持类岗位，稳定性强"}, {"category": "跨专业发散", "desc": "监控行业、图像处理等交叉领域"}], "cities": [{"name": "北京", "desc": "传媒与互联网机会最多，尤其适合进入广电行业"}, {"name": "长沙", "desc": "湖南卫视等地方卫视运营强势，对口就业选择"}, {"name": "杭州", "desc": "浙江卫视与互联网企业兼具"}, {"name": "南京", "desc": "江苏卫视所在地，广电对口就业可选"}], "gradSchool": "本专业偏应用型，本科读研比例相对不高。若希望从事开发、算法等技术岗，读研很有必要；若进入传媒行业，必要性较低，但跨考文科研究生反而可能在求职时更具优势。继续深造通常选择通信类或计算机类专业，也可根据兴趣跨考。", "salary": "互联网开发岗约15k/月，传媒行业约10k/月。地方电视台在当地属中等偏上水平，北方城市相对较低但仍可接受。整体薪酬在电子信息类中处于中等。", "development": "就业路径较为多元：电视中心方向可走硬件开发与设备维护工程师路线；融媒体方向可走软件开发工程师路线；也可进入银行国企从事技术支持。由于涉及行业职业较多，发展路径不固定，建议尽早确定方向并积累对应实习与项目经验。", "prospect": "互联网方向前景自然不用多说。传统电视行业长远看在与网络视频平台的竞争中处于下风，但二者界限逐渐模糊，电视台持续转型，网络平台仍需大量传统广电技术，整体问题不大。音视频、图像处理技术与监控行业关系密切，5G发展有望带来音视频技术的新突破。Top电视台已趋饱和，地方台仍是稳定选择。", "advice": ["每门课都要认真对待，课程之间环环相扣，不要相信挂科无用论", "重视英语，编程、文献查阅乃至传媒工作都需要，可从每天背少量单词做起", "尽早确定未来方向（工科/文科、就业/考研），有针对性做准备", "课余多学技能，如其他编程语言、算法、剪辑、摄影等，技多不压身", "多与专业老师交流，行业经验丰富的老师手上常有资源与机会", "专业不是限制，保持上进，在学习中培养自己的学习能力"]}, {"code": "080708T", "name": "水声工程", "category": "special", "intro": "研究声信号在水下的发射、传播与接收，从声纳技术发展而来，融合海洋物理、声学、信号处理与电子科学的交叉学科，国防特色鲜明。", "courses": ["高等数学", "线性代数", "概率论与数理统计", "数学物理方法", "大学物理", "声学基础", "水声学", "信号与系统", "数字信号处理", "声纳技术", "模拟电子技术", "数字电子技术", "通信原理", "阵列信号处理", "统计信号处理", "换能器设计与测量"], "fitFor": "适合数理基础扎实（尤其数学、电学、力学）、对国防与海洋建设有情怀、能吃苦耐劳且不晕船的考生。专业与军工关联紧密，需具备保密意识，可能对出国有限制。本科培养方案与通信电子大类接近，再加少量声学与海洋知识，跨转方便。就业率高但待遇差异大，想进研究所需读到硕士起步。如果只为高薪，建议直接选计算机或通信；若追求稳定事业与成就感，水声是不错的选择。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "信号处理、电子类课程的自学平台"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "控制类系统课程资源"}, {"name": "GitHub", "url": "https://github.com", "desc": "编程与算法项目学习"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "电子大类开发学习社区"}, {"name": "校内老师与实验室", "url": "", "desc": "因开设院校少、网络资源有限，老师与校内资料是最重要的学习渠道"}, {"name": "MATLAB", "url": "https://www.mathworks.com", "desc": "本专业最常用的仿真工具，本科掌握即可"}], "competitions": [{"name": "全国大学生数学建模竞赛", "tier": "S", "desc": "国赛与美赛均可，培养建模与写作能力"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电子类核心竞赛，提升硬件实践能力"}, {"name": "挑战杯", "tier": "A", "desc": "综合科创竞赛，培养创新与项目能力"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "综测加分较高，锻炼商业思维"}, {"name": "全国大学生水下航行器大赛", "tier": "B", "desc": "与本专业关联度高的特色竞赛"}, {"name": "全国大学生数学竞赛", "tier": "B", "desc": "巩固数理基础，加分项"}], "careers": [{"category": "军工单位", "desc": "中船、中电、中航等研究所，稳定但薪酬相对较低"}, {"category": "高校与科研院所", "desc": "需读到博士，从事水声相关科研"}, {"category": "声学企业", "desc": "华为、歌尔等公司的声学/音频方向"}, {"category": "通信与测绘企业", "desc": "中海达等测绘公司，或转通信方向"}, {"category": "互联网公司", "desc": "少数转码同学的去向，需自学算法或开发"}, {"category": "国家海洋局等事业单位", "desc": "稳定体制内岗位"}], "cities": [{"name": "青岛", "desc": "海洋科研机构集中，本专业对口岗位较多"}, {"name": "上海", "desc": "船舶与海洋研究单位布局城市"}, {"name": "杭州", "desc": "浙江大学等高校有相关团队"}, {"name": "武汉/宜昌", "desc": "内陆水域相关研究所与船厂聚集"}, {"name": "大连", "desc": "沿海城市，海洋工程单位分布"}, {"name": "北京", "desc": "中科院声学所等研究机构所在地"}], "gradSchool": "读研必要性很强。本科培养较浅，水声相关技术积累与待遇提升都需要深造。研究所学历门槛基本是硕士起步，想从事技术工作读研几乎是必选项。若不想继续水声方向，可方便地转入通信大类或电子科学技术；若对水声有兴趣，建议读到博士。考研初试科目通常为信号与系统、模拟电子技术、振动与声基础。", "salary": "军工单位薪酬相对较低，但在二三线城市生活无忧，一线城市压力较大。船舶方向研究所在军工中待遇一般最差。转通信或互联网可参照对应专业薪酬。整体来看，水声在小方向内是船舶与海洋里较好的，但在信息电子大类里属于偏低的。", "development": "本专业大多沿军工单位培养路径发展，国企研究所熬资历可逐步晋升，船舶方向在系统中算是好方向，适合心性踏实的同学。也可通过读研转向雷达、通信、光学、生医等方向，或转计算机进入互联网公司，路径较为灵活。语音处理/音频处理是声学背景学生相对不卷的算法方向，值得关注。", "prospect": "水声行业对国防安全十分重要，受海洋强国战略支持，经费投入多，相关院校和团队呈扩张趋势，发展前景好。短期内大幅涨薪可能性不大，但至少不会减少投入，属于低位买入的稳定选择。技术积累越深越值钱，适合长期发展。", "advice": ["扎实数理基础，高数、线代、概率统计是学好水声的根基", "尽早进实验室，了解声学物理、信号处理、嵌入式、换能器等不同方向，确定兴趣点", "思维不要局限，水声转通信电子大类没有门槛，跨保跨考相对容易", "若只为高薪，建议直接选计算机或通信，不要勉强", "做好吃苦准备，可能涉及出海试验和涉密工作，但成就感强", "在水声小方向做最优秀的一批人，还是在通信电子大方向奋斗，需结合自身性格权衡"]}, {"code": "080709T", "name": "电子封装技术", "category": "special", "intro": "研究将裸芯片封装成集成电路芯片并装联成模块与整机的工艺技术，融合材料、热力、机械、电气多学科知识，是半导体产业链后段的关键环节。", "courses": ["电子封装材料与工艺", "电子封装机械设计基础", "电子设备可靠性", "半导体物理", "集成电路制造工艺", "微电子封装与测试", "先进封装技术", "材料力学", "传热学", "电气互联技术", "失效分析", "电路与电子学"], "fitFor": "适合数理基础扎实、动手能力强、做事细致、具备多角度分析问题能力的学生。需要能在电学、力学、热力学、材料、机械、可靠性等多个领域间交叉思考，善于把握问题本质、构建模型并删繁就简。对半导体、芯片制造有兴趣，且不排斥工科实验室操作的同学较为契合。若仅希望从事纯软件方向，则不一定合适。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "可搜索半导体封装、集成电路制造工艺等公开课与厂商技术分享"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "学习半导体物理、微电子工艺、材料力学等基础课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "查阅EDA工具脚本、封装仿真相关开源项目"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "检索封装工艺、可靠性测试等技术博客与经验贴"}, {"name": "半导体行业观察", "url": "https://www.icbank.com", "desc": "跟踪封测产业动态、先进封装技术趋势"}, {"name": "企业实习", "url": "https://www.jiachip.com", "desc": "进入长电、通富、华天等封测企业实地学习工艺与设备操作"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "锻炼硬件设计与动手能力，对封装与电路实践帮助大"}, {"name": "互联网+大学生创新创业大赛", "tier": "S", "desc": "综合项目孵化平台，可结合封装相关课题参赛"}, {"name": "挑战杯课外学术科技作品竞赛", "tier": "A", "desc": "适合围绕封装材料、工艺等方向开展课题研究"}, {"name": "电子制造技术综合实践竞赛", "tier": "B", "desc": "与本专业贴合度较高的校际实践类赛事"}, {"name": "全国大学生集成电路创新创业大赛", "tier": "A", "desc": "聚焦IC设计与制造，可拓展先进封装视野"}], "careers": [{"category": "芯片封装企业", "desc": "进入沛顿、佰维、通富、长电、华天、晶方等封测公司，从事工艺、设备或研发岗"}, {"category": "晶圆制造企业", "desc": "进入长鑫、长江存储、三星、台积电等晶圆厂，需补充集成电路制造与先进封装知识"}, {"category": "集成电路设计公司", "desc": "如华为海思等，需自学IC设计知识并参加相关竞赛"}, {"category": "半导体设备与材料", "desc": "从事封装设备、键合线、基板材料等配套研发"}, {"category": "相关电子制造", "desc": "面向PCB、SMT、模组组装等泛电子制造业岗位"}], "cities": [{"name": "合肥", "desc": "沛顿、长鑫、颀中等企业聚集，封测产业快速崛起"}, {"name": "无锡", "desc": "长电、华润等封测龙头所在地，岗位密集"}, {"name": "南通", "desc": "通富微电总部所在，封测重镇"}, {"name": "苏州", "desc": "晶方、太极等封装企业集中，产业链完善"}, {"name": "深圳", "desc": "沛顿及多家半导体企业，电子产业生态丰富"}, {"name": "天水", "desc": "华天科技总部所在，西部封测基地"}, {"name": "宁波", "desc": "甬矽电子等新兴封测企业布局地"}, {"name": "东莞", "desc": "气派科技等封装企业，珠三角制造腹地"}], "gradSchool": "是否读研视个人目标而定。若仅希望在封装行业找一份更好的工作，三年工作经验往往优于读研后入职的起点；本专业目前硕士点较少，最先进封装技术主要集中在企业，本科进厂两到三年通常可晋升研发岗。若有科研志向或打算转向其他行业，读研乃至出国读博是合理选择。", "salary": "本科直接进入封装企业，起薪月薪约8000至10000元，随经验与岗位晋升逐步提升，行业内跳槽空间相对有限但稳定。", "development": "起步多为技术岗，从事工艺、设备或测试相关工作；积累两三年经验后可向研发岗转型，或转向管理岗。封装行业圈子较小，业内人员互相流动频繁，长期深耕者易在行业内形成知名度与口碑，发展更多依赖经验沉淀与人脉积累。", "prospect": "我国封装产业起步较晚，与国际先进水平存在差距，是半导体产业链中较为薄弱却急需发展的环节。未来将从芯片后段配套加速向独立封测产业生态转型，先进封装（如2.5D/3D、Chiplet）需求快速提升，长期看国产替代与技术升级将带来持续的人才需求与成长空间。", "advice": ["信息了解要趁早且主动，无论是保研、就业还是竞赛，提前跟踪相关要求并预留准备时间", "学有余力时主动学习先进封装技术，如2.5D/3D封装、Chiplet等前沿方向", "争取到封测企业实习，工艺与设备操作经验是入行的重要加分项", "数理与材料、力学基础要打牢，封装本质是多学科交叉问题", "认清行业圈子较小的特点，早期选好平台有利于长期发展"]}, {"code": "080710T", "name": "集成电路设计与集成系统", "category": "special", "intro": "聚焦IC芯片设计的应用型专业，培养掌握集成电路设计理论与EDA工具的高级工程师，是芯片卡脖子主战场，对口半导体全产业链。", "courses": ["模拟集成电路设计", "数字集成电路设计", "模拟电子技术", "数字电子技术", "半导体物理", "微电子器件", "Verilog硬件描述语言", "信号与系统", "半导体器件物理", "集成电路工艺基础", "EDA技术", "量子力学"], "fitFor": "适合对芯片设计有浓厚兴趣、思维缜密、细心踏实的同学。专业难度大，需要较强逻辑思维和持续学习能力。芯片设计容错率极低，流片后发现错误对企业是巨大损失，需具备工匠精神和高度责任心。性格理性客观、讲逻辑者更合适。建议对电路设计、半导体物理有兴趣并愿意深造的同学报考，跟风者容易半途而废。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "拉扎维模集课、东南大学吴金老师模集课等优质资源"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "模电数电系统课程学习"}, {"name": "GitHub", "url": "https://github.com", "desc": "数字方向与计算机相似，常用代码托管平台"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "开发者社区，数字方向常用网站"}, {"name": "EETOP论坛", "url": "https://bbs.eetop.cn", "desc": "电路设计技巧学习与交流"}, {"name": "HDLBits", "url": "https://hdlbits.01xz.net", "desc": "零基础上手Verilog语言的刷题网站"}, {"name": "电子发烧友论坛", "url": "https://www.elecfans.com", "desc": "电子工程师社区，资料丰富"}], "competitions": [{"name": "全国大学生集成电路创新创业大赛", "tier": "S", "desc": "集创赛，IC设计方向最对口竞赛"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电赛，提升实操能力，保研加分"}, {"name": "研究生创芯大赛", "tier": "A", "desc": "研电赛，研究生阶段IC相关竞赛"}, {"name": "TI杯电子设计竞赛", "tier": "A", "desc": "德州仪器主办的电子设计竞赛"}, {"name": "复微杯", "tier": "B", "desc": "复旦与微电子企业合办的竞赛"}, {"name": "全国大学生数学建模竞赛", "tier": "B", "desc": "保研常见加分项"}], "careers": [{"category": "数字IC", "desc": "前端设计、验证、后端工程师，需求量大"}, {"category": "模拟IC", "desc": "电路设计工程师，门槛高、天花板高、方差大"}, {"category": "半导体器件", "desc": "器件工程师，薪资略低于电路方向"}, {"category": "嵌入式开发", "desc": "使用芯片驱动电路实现功能"}, {"category": "EDA工具研发", "desc": "国产EDA方向受政策扶持"}, {"category": "科研院所与高校", "desc": "需博士学历，从事科研教学"}], "cities": [{"name": "上海", "desc": "大多数微电子公司总部所在地，张江是核心区"}, {"name": "深圳", "desc": "高薪岗位多，发展机会丰富"}, {"name": "北京", "desc": "海思、OPPO、字节等大厂研发部门集中"}, {"name": "成都", "desc": "新一线城市，IC产业发展不错"}, {"name": "西安", "desc": "高校资源带动，研发中心多"}, {"name": "武汉", "desc": "新一线，半导体产业成长中"}, {"name": "杭州", "desc": "长三角IC产业带，平头哥等企业"}, {"name": "苏州", "desc": "长三角半导体设计与制造重镇"}], "gradSchool": "读研几乎是必需。本科只能做版图或FAB一线岗，天花板低且倒班辛苦。IC设计岗硕士起步，读博回报率高于计算机。行业内学历门槛高，团队核心多为博士出身。建议有条件读到硕士甚至博士。近两年行业人员紧缺门槛稍降，本科进小公司再跳大厂也可行。", "salary": "本科刚毕业月薪1w左右；硕士器件方向20-30w，数字IC 28-40w，模拟IC 30-50w；一线高于新一线，大疆、平头哥等可达50w+。模拟方差大，大佬天花板极高。整体处于风口。", "development": "技术路线：初级工程师→中级→高级→架构师/技术专家；管理路线：项目负责人→部门经理→高管。也可走创业路线。从业前十年深耕技术，十年后可考虑转管理或合伙创业。器件/工艺越老越吃香，半导体一行凭能力与项目经验匹配薪资，无需资格证书。", "prospect": "当前行业热火烹油，国家政策加资本涌入，5年内会有大发展，会出现许多创业公司与互联网跨界。但半导体非新兴行业，工艺趋近物理极限，容易形成寡头垄断。黄金期过后政策红利褪去，大量公司会在大浪淘沙中消失，涌入的工程师去留是问题。模拟IC天花板高长期看好。", "advice": ["基础课（模电数电、模集数集、半导体物理）必须扎实，是后续研究根基", "争取流片机会和导师项目，实践经验最值钱", "英语六级必备，雅思托福加分，外企招聘有相关要求", "不要因高薪盲目入行，行业门槛高且可能趋于饱和", "建议本科读电子信息工程，研究生再转IC，进可攻退可守", "能深造一定深造，硕士是IC设计岗基本门槛"]}, {"code": "080711T", "name": "医学信息工程", "category": "special", "intro": "医学与信息技术交叉的新兴学科，研究医学信息处理、医院信息系统、医疗设备与智慧医疗算法开发，培养兼具医学背景与代码能力的复合型人才。", "courses": ["C语言程序设计", "Java语言程序设计", "数据结构", "操作系统", "计算机网络", "数字信号处理", "数字图像处理", "医学图像处理", "电子技术", "医学信息系统", "数据库原理", "生物医学基础"], "fitFor": "适合理工科思维严谨、兴趣广泛、思路开阔的学生。本专业涉及计算机、自动化、生理学等多个领域但深度有限，需要学生具备主动探索精神，在众多方向中找到自己擅长或感兴趣的领域深入下去。代码能力是核心竞争力，因此适合愿意持续练习编程、并希望借助医学背景形成差异化优势的同学。若仅因分数不够调剂、对代码与医学都无兴趣，则不太适合。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "学习编程、数据结构、医学图像处理等课程视频"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "系统学习计算机、信号处理等基础课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "查阅医学影像、信号处理、医疗信息系统开源项目"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "检索编程实战经验与医疗信息化技术文章"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "刷题提升代码能力，应对转码面试"}, {"name": "顶会Best Papers", "url": "https://paperswithcode.com", "desc": "跟踪MICCAI、EMBC等医学AI顶会的最新研究动态"}], "competitions": [{"name": "互联网+大学生创新创业大赛", "tier": "S", "desc": "组队参与综合项目孵化，可结合智慧医疗方向"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "锻炼数据分析与建模能力，契合医学数据场景"}, {"name": "ACM/ICPC程序设计竞赛", "tier": "S", "desc": "提升算法与代码能力，转码方向重要加分"}, {"name": "数学竞赛", "tier": "B", "desc": "巩固数理基础，对算法岗有帮助"}, {"name": "大数据挖掘类赛事", "tier": "B", "desc": "互联网大厂主办，契合医疗数据挖掘方向"}], "careers": [{"category": "互联网转码", "desc": "进入阿里、腾讯等大厂从事前后端开发、测试、运维，薪酬较高"}, {"category": "医疗器械研发", "desc": "进入飞利浦、迈瑞、联影等从事医疗仪器设计与算法开发"}, {"category": "医疗信息化", "desc": "为医院定制信息系统，典型企业如卫宁健康"}, {"category": "医疗+AI事业部", "desc": "进入腾讯依图、平安科技、阿里健康等部门从事算法与产品"}, {"category": "医院信息科", "desc": "在医院从事信息系统维护与数据管理，工作稳定"}, {"category": "公务员/读研", "desc": "考取医疗卫生相关公务员岗位或继续深造"}], "cities": [{"name": "北京", "desc": "大厂与医疗AI公司聚集，岗位丰富"}, {"name": "上海", "desc": "联影、医疗器械企业众多，产学研结合紧密"}, {"name": "广州", "desc": "医疗资源丰富，信息化与器械岗位较多"}, {"name": "深圳", "desc": "迈瑞总部所在，大厂与医疗科技企业集中"}, {"name": "杭州", "desc": "阿里健康等医疗AI事业部布局地"}], "gradSchool": "本专业本科涉及课程面广但深度有限，建议深造以明确擅长方向并提升竞争力。开设硕士点的学校全国较少，优质院校更稀缺，若有志从事对口工作或对学历有要求的岗位，读研很有必要。深造可在生物医学工程、计算机、电子信息等方向继续发展。", "salary": "薪酬跨度较大：转码进大厂起薪较高，可达万元以上；进入医疗行业或医院信息科相对偏低，整体在工科中处于中等偏下水平，想挣高薪需向互联网方向靠拢。", "development": "本科所学覆盖光机电算等领域但偏广而不深，建议通过深造或自学聚焦某一方向。转码方向可参照互联网行业的技术或管理晋升路径；医疗器械与信息化方向则按技术岗—资深工程师—技术管理路径发展，整体晋升空间有限，需靠个人能力与项目积累突破。", "prospect": "整体前景向好但现阶段处于中等偏下。医院与医疗机构对复合型人才需求存在，但常被计算机、信工等专业分流。随着医疗AI、智慧医疗、医疗大数据的发展，腾讯、阿里、平安等大厂纷纷设立医疗事业部，迈瑞、联影等器械厂商持续扩张，未来对懂医学又懂技术的人才需求有望增长，重视程度将逐步提升。", "advice": ["代码能力是核心竞争力，必须通过刷题与项目持续强化", "发挥医学知识背景优势，与纯计算机学生形成差异化竞争", "本科阶段就明确方向，避免泛而不精，决定转码或深耕医疗", "多关注MICCAI、EMBC等顶会论文，了解医疗AI前沿动态", "开设硕士点的院校较少，若计划读研需早做准备", "若非真心兴趣，仅作计算机调剂选项需慎重"]}, {"code": "080712T", "name": "电磁场与无线技术", "category": "special", "intro": "以电磁波与电磁场理论为基础，研究射频、微波电路与天线系统设计，是通信硬件的底层技术，属于传统工科专业。", "courses": ["高等数学", "概率论与数理统计", "线性代数", "电路分析基础", "信号与系统", "电磁场与电磁波", "微波技术基础", "微波网络", "射频电路设计", "天线原理", "微波有源与无源电路", "通信原理", "数字信号处理"], "fitFor": "适合喜欢数学和物理、有耐心细致性格、能坐得住的考生。专业涉及大量理论计算和公式推导，做器件设计时搭建模型、仿真、测试是长周期过程，需要平常心对待失败。考公和就业范围相对窄，若长期得不到正反馈可能后悔。男生偏多但不特别失衡。高中物理电磁部分不喜欢也不必太担心，大学学到实物测试时反而能体会其魅力。建议性格踏实、动手能力强的同学选择。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "学习软件和课程的第一选择，资源丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "电磁场、微波等系统课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "编程与算法学习平台"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "通用开发学习社区"}, {"name": "仿真软件论坛", "url": "", "desc": "HFSS、CST、ADS、FEKO、MATLAB等软件的官方与用户论坛"}, {"name": "实验室与合作工厂", "url": "", "desc": "暗室和仪器依赖实验室，可借合作工厂以客户身份蹭测"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "本专业最对口的竞赛，招聘中常写明获奖优先，含金量高"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "培养建模与团队协作能力"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "综测加分项"}, {"name": "挑战杯", "tier": "A", "desc": "科创竞赛，提升综合能力"}, {"name": "大学生英语四六级", "tier": "B", "desc": "最基础的证书，六级更好，趁高中英语底子尽早考"}], "careers": [{"category": "电磁计算（软件方向）", "desc": "理论电磁学+编程能力，前景好但偏小众"}, {"category": "射频及器件设计（硬件）", "desc": "壁垒高越老越吃香，企业需求量大，就业稳定"}, {"category": "天线设计", "desc": "壁垒高但需求量小于射频，行业趋近饱和"}, {"category": "通信企业非技术岗", "desc": "华为、中兴、烽火、紫光等企业的销售/管理岗"}, {"category": "运营商/事业单位", "desc": "三大运营商、银行医院信息科，稳定但薪酬一般"}, {"category": "军队文职/研究所", "desc": "对口岗位较多，部分研究所如54所、14所、20所等"}], "cities": [{"name": "北京", "desc": "通信企业与研究所聚集，发展机会多"}, {"name": "上海", "desc": "一线大城市，相关企业布局完善"}, {"name": "成都", "desc": "10所、29所、成飞等研究所集中"}, {"name": "西安", "desc": "20所、39所、504所、206所等研究所聚集"}, {"name": "南京", "desc": "14所等研究所布局"}, {"name": "深圳/武汉", "desc": "粤港澳地区企业集中，硬件产业链完善"}], "gradSchool": "做技术的话读研基本非读不可。本科去企业月薪约8k，研究生年薪可达20w起，差异巨大。本科阶段硬件设计投入大、学生负担不起，很多研究无法开展；读研后才有经济支撑接触前沿设计。本科教育偏广不深，读研才能真正体会专业魅力。不从事技术工作则读研与否影响不致命。专升本也必要，企业普遍以本科为第一道筛选线。", "salary": "本科去企业月薪约8k，研究所/国企更低但福利好。硕士去企业最低年薪20w起，研究所最低10w。运营商4-8k，企业非技术岗8-15k加项目奖，技术岗10-20k加奖励。南方城市高于北方，省会高于地市。", "development": "技术路径：助理工程师→普通工程师→工程师组长→技术部负责人→技术大牛，可按天线、微波、电路等方向细分前缀。非技术岗路径：客户经理→大客户经理→部门经理→高管。工程类不转管理岗的话，一般做到总工程师为止。国企和公务员升迁看个人加机遇。", "prospect": "电磁计算为国家十四五规划布局领域，针对HFSS、CST等国外软件垄断有较大国产替代机遇，前景较好。射频及器件设计行业壁垒高、需求量大、就业稳定，前景较好。天线设计行业壁垒高但需求量较小，趋近饱和，前景一般。5G通信和电磁波产业应用会持续发展，军转商转民可能催生新产业，但具体人才需求规模尚不确定。", "advice": ["不要因为一开始觉得难或不喜欢就放弃，深入了解并动手做实物后可能发现乐趣", "大学学习的快乐源于自主探索，主动做课外的设计与测试", "时刻学习，不局限在本专业课程内，多学东西是对自己的保障", "尽早考四六级，趁高中英语底子还在", "做硬件方向一定要参加电赛或加入老师项目，获得试错机会与经验指导", "想做技术就必须读研，本科知识流于表面"]}, {"code": "080713T", "name": "电波传播与天线", "category": "special", "intro": "理工结合的专业，研究电磁波从产生、复杂环境传播到接收系统的全过程，培养天线设计与电波传播应用人才，国家国防紧缺专业。", "courses": ["高等数学", "数值计算方法", "场论与复变函数", "数学物理方程", "电路分析基础", "信号与系统", "数字信号处理", "电磁场与电磁波", "微波技术基础", "通信原理", "射频电路基础", "微机原理与系统设计", "电波传播数值方法", "电波传播概论", "电离层传播", "对流层传播", "天线原理"], "fitFor": "适合专注、心细、逻辑思维强的考生。专业涉及繁杂的公式推导，变量复杂、计算量大，需要长时间保持专注。天线调优时需要仔细观察每一步对性能的影响，心细是必备素质。数理、计算机、外语基础扎实者更易胜任。本科理论与实际工作脱节较严重，需通过读研接触企业研发流程。性格踏实、愿意长期钻研的同学适合选择。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "推荐林丰涵老师特征模理论课程、西北工业大学微波技术与天线课程"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "电磁场、微波、天线等系统课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "编程与算法项目学习"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "仿真软件使用与开发学习"}, {"name": "IEEE TAP", "url": "https://ieeexplore.ieee.org", "desc": "IEEE Transactions on Antennas and Propagation，了解研究前沿"}, {"name": "公众号：射频学堂", "url": "", "desc": "射频与天线领域知识分享"}, {"name": "公众号：CST仿真专家之路", "url": "", "desc": "CST软件使用与仿真技巧"}, {"name": "Antenna Theory, Analysis and Design", "url": "", "desc": "经典英文教材，中期自学推荐"}], "competitions": [{"name": "全国大学生数学建模竞赛", "tier": "S", "desc": "培养建模与写作能力，综测加分高"}, {"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电子类核心竞赛，对口且含金量高"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "培养项目与商业思维"}, {"name": "挑战杯", "tier": "A", "desc": "科创竞赛，提升综合能力"}, {"name": "导师横向项目", "tier": "B", "desc": "虽非竞赛，但企业项目经历对就业极有帮助"}], "careers": [{"category": "手机厂天线工程师", "desc": "苹果、OPPO、vivo、小米等，薪酬较高但竞争激烈"}, {"category": "通信设备厂", "desc": "华为、中兴等被制裁设备商的电磁测试与天线岗"}, {"category": "研究所", "desc": "国防类研究所，看重论文与项目经历，年总包15-30w"}, {"category": "车载雷达/无人机", "desc": "新兴方向，无人机厂可开30-40w年薪"}, {"category": "高校与科研", "desc": "需读到博士，从事教学与科研工作"}, {"category": "跨专业发散", "desc": "毫米波成像、车载自动驾驶雷达、射频芯片等交叉方向"}], "cities": [{"name": "北京", "desc": "一线城市，研究所与企业布局完善"}, {"name": "上海", "desc": "通信与电子企业聚集"}, {"name": "深圳", "desc": "手机厂与通信设备厂集中地"}, {"name": "广州", "desc": "一线城市，相关产业分布"}, {"name": "西安", "desc": "本地研究所与西电等高校资源，发展机会多"}, {"name": "成都/南京/武汉", "desc": "新一线城市，天线配套产业布局"}], "gradSchool": "读研必要性很强，确定从事天线领域建议读到硕士甚至博士。本科知识过于理论基础，与实际工作完全脱节；硕士期间可通过导师项目接触企业研发流程，提升专业技能并拓展理论深度广度。每年保送硕士超10%，考研50%以上，深造比例高。读博可进高校或研究所。研究所学历门槛基本是硕士起步。", "salary": "本科薪酬中上水平，一次性签约率达98%。硕士：无人机厂30-40w，OPPO/vivo/造车厂28-35w，被制裁设备厂15-17k月薪+年终，预研部门20k月薪起；研究所年总包15-30w，按985/211划分；紫光、长江存储等给硕士白菜价。一线城市薪酬明显高于二三线。", "development": "技术路径：软硬件工程师→中级→高级→总工，天线设计越老越有成果，基本不存在35岁焦虑，与程序员不同。读博一般选择高校或研究所发展。需求量大，供不应求。也可跨向射频电路、毫米波成像、车载自动驾驶雷达等方向寻求突破。", "prospect": "天线工程师需求量大，新一代通信技术推动下前景良好。但天线设计可能已到瓶颈，样式基本定型，主要在小型化与5G适配上下功夫。车载雷达、AIP（片上天线）是下一热点。材料突破（介质基板等）可能是未来方向，但本专业与化学关联弱，难以涉足。整体看属于稳定但有转型压力的方向。", "advice": ["打好数理基础，工作后的工程师仍需经常翻看高数、电路等内容", "多实践操作，天线设计能力只有在不断设计与修改中提高", "天线方向较窄，建议同时学习射频电路，从整体系统角度理解天线", "学习MATLAB或Python结合CST联合仿真，提高科研效率", "关注车载雷达、毫米波成像、AIP等新兴方向，寻求跨界突破", "研究生多参与导师横向项目，企业项目经历比纯论文更受招聘方青睐"]}, {"code": "080714T", "name": "电子信息科学与技术", "category": "special", "intro": "偏理科基础的电子类特设专业，强调数理基础，研究电磁场、信号处理、电路系统等，从最硬的器件物理到最软的算法都有涉及，是电子信息大类中理论基础最扎实的专业，毕业后多继续深造或从事硬件、嵌入式、转码等方向。", "courses": ["电磁场与电磁波", "信号与系统", "数字信号处理", "通信原理", "模拟电子技术", "数字电子技术", "电路分析", "微波技术基础", "高频电子线路", "信息论基础", "微机原理", "单片机原理"], "fitFor": "如果你数学和物理稍好、能静下心来，这个偏理科的电子专业很适合你。它比一般电子信息类专业更强调数理基础，低年级数学课与数学系同内容只是考核稍低，对数学比较抵触的同学会学得痛苦。需要良好的逻辑思维、问题分析能力和动手能力，硬件方向需严谨的知识储备，代码方向需逻辑思维和耐心刷题。性格上要有创新能力和不断调试的耐心。本专业适合数理基础有优势、想打好理论基础再选择应用方向的同学；若是教学型高校且无专业分流，性价比可能不高。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "专业课不理解可在B站自学，培训视频非常丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "名校公开课，预习复习好帮手"}, {"name": "GitHub", "url": "https://github.com", "desc": "开源项目平台，代码方向学习资源"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "代码纠错和项目参考的国内开发者社区"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "应聘阶段刷题非常实用，转码必备"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "C语言和python编程入门友好教程"}, {"name": "学校图书馆", "url": "https://www.cnki.net", "desc": "CNKI、万方、ProQuest等电子资源，偏基础专业足够使用"}, {"name": "IEEE Xplore", "url": "https://ieeexplore.ieee.org", "desc": "电子电气领域顶级论文数据库，理论研究首选"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "三大赛之一，国一对升学就业大有裨益"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "三大赛之一，检验理论基础和系统思维"}, {"name": "全国大学生机器人大赛", "tier": "A", "desc": "三大赛之一，锻炼动手实践和团队能力"}, {"name": "全国大学生智能汽车竞赛", "tier": "A", "desc": "嵌入式方向重点赛事，恩智浦杯含金量高"}, {"name": "挑战杯", "tier": "A", "desc": "综合理论与实践的全国性赛事"}, {"name": "互联网+大学生创新创业大赛", "tier": "A", "desc": "培养创新创业能力"}, {"name": "蓝桥杯", "tier": "B", "desc": "编程类赛事，转码方向加分项"}, {"name": "ACM国际大学生程序设计竞赛", "tier": "S", "desc": "代码方向顶级赛事，难度较高"}], "careers": [{"category": "研究所/国企", "desc": "国防电子、无线电物理等对口研究所，看重学历和成绩"}, {"category": "硬件/嵌入式", "desc": "硬件工程师、嵌入式开发、单片机设计等，本专业对口岗位较多"}, {"category": "射频/天线", "desc": "射频工程师、天线工程师，微波技术方向对口"}, {"category": "互联网/转码", "desc": "软件开发、算法研究、IT运维，转码大流方向"}, {"category": "运营商/设备商", "desc": "移动联通电信或华为中兴大唐等设备商技术部门"}, {"category": "继续深造", "desc": "本专业偏向基础初衷就是鼓励深造，考研升学是主流"}], "cities": [{"name": "北京", "desc": "设备商和研究所集中，北大等高校辐射就业机会多"}, {"name": "深圳", "desc": "华为等设备商和电子企业总部所在地，对口岗位多"}, {"name": "上海", "desc": "长三角核心，大厂聚集IT机会多"}, {"name": "东莞", "desc": "华为等制造基地，硬件岗位集中"}, {"name": "成都", "desc": "成渝地区电子产业发展良好"}, {"name": "西安", "desc": "西电辐射，军工院所和电子企业集中"}, {"name": "南京", "desc": "长三角电子产业发达，临近强校"}, {"name": "杭州", "desc": "互联网产业发达，转码方向机会多"}], "gradSchool": "几乎所有答主都建议读研甚至读博。本专业偏向基础初衷就是鼓励深造，本科所学广而不精，凭课堂知识在工作上难体现优势。学历贬值年代拒绝提升学历的理由不多，技术性较强需要时间做项目找实习发文章。好的学校才有相应设备如频谱分析仪、矢量网络分析仪等，硬件方向尤其需要。研究生阶段可聚焦某一方向，与自动化、计算机、电子等方向沾边的实验室都愿意要本专业学生。整体结论：建议读研，尤其是想从事技术工作的同学。", "salary": "本科10-20万年薪，进厂约10万；硕士年薪25-50万，去设备商30万+；博士40-90万。好企业本科1万+，差一些大几千，研究生年薪30万左右有企业能给到50万。整体薪酬待遇较好，不存在找不到工作只有待遇不满意的情况。", "development": "技术线和管理线两条路径。技术线一直做技术成为专家，或转管理走架构师、算法专家、产品经理、营销经理等路线。本专业上限很高但很卷，大多数人都卷输了。硬件方向不如代码方向薪资高但稳定，国家大力发展的IC行业是对口方向之一。在大公司发展路径看能负责多大项目和带多少人。整体看个人性格、家庭境遇和机遇决定，跟专业关系不大。", "prospect": "5G后还有6G持续发展，国家战略层面重视度高；芯片行业受美国打压寻求突破决心大，上下游产业火热未来十年热闹；IC行业是国家大力发展的对口方向之一，人才缺口大；电子信息类整体上升期，性价比很高的学科群，对家庭无助力的情况是可凭自身努力看到阶级上升的行业。整体前景较好，舞台很大看个人。", "advice": ["数学课物理课和专业核心课一定要学扎实，这是本专业最大的优势和立身之本", "本科阶段尽早进实验室参与科研，良好的竞赛成绩或科研经历对升学是大加分项", "在学的广泛中找到自己感兴趣的方向专精，凭课堂知识在工作上难体现优势", "若想转码建议旁听或自学计算机课程，本专业作为转码跳板不算特别合适", "求职前跟着B站刷几个实战项目积累经验，刷LeetCode对应聘阶段非常实用", "成绩好才有更多选择权，所有成绩关系到专升本保研留学的基础"]}, {"code": "080715T", "name": "电信工程及管理", "category": "special", "intro": "通信工程与管理学交叉的复合型专业，工科部分以通信原理、信号处理、编程为核心，辅以企业管理、产品开发等英方合作课程，培养兼具技术基础与管理视野的人才。", "courses": ["通信原理", "数字信号处理", "模拟电子技术", "数字电子技术", "C语言程序设计", "Java语言程序设计", "计算机网络", "电磁场与电磁波", "企业管理", "产品开发", "移动通信", "数据结构与算法"], "fitFor": "只要对工科不排斥即可胜任，适合希望同时具备通信技术基础与管理学视野的学生。专业可选择方向较多，转码、通信、硬件、产品、算法等均有空间，因此适合尚未明确具体方向、希望保留多种可能性的同学。需要一定的数理与编程基础，若对通信或互联网行业感兴趣则更为契合。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "学习通信原理、数电模电、编程等课程视频"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "系统学习通信、电子、管理学基础课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "查阅通信仿真、算法实现等开源项目"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "检索通信工程、编程开发等技术博客"}, {"name": "牛客网", "url": "https://www.nowcoder.com", "desc": "刷题与求职准备，转码方向必备"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "硬件与通信实践能力的重要赛事"}, {"name": "互联网+大学生创新创业大赛", "tier": "S", "desc": "综合项目孵化平台，契合管理+技术复合背景"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "锻炼建模与分析能力，对算法与通信方向有帮助"}, {"name": "ACM/ICPC程序设计竞赛", "tier": "A", "desc": "转码方向加分项，提升算法与代码能力"}, {"name": "挑战杯课外学术科技作品竞赛", "tier": "B", "desc": "学术研究与创新项目的综合赛事"}], "careers": [{"category": "软件开发", "desc": "转码从事前后端、测试等开发岗位，门槛不高且需求大"}, {"category": "算法工程", "desc": "从事算法相关岗位，起薪高于一般开发"}, {"category": "通信方向", "desc": "进入运营商、手机厂商、通信基础设施企业"}, {"category": "硬件/微电子", "desc": "从事硬件开发与微电子方向研发"}, {"category": "产品经理", "desc": "适合不写代码但希望从事互联网产业的同学"}, {"category": "车企/制造业", "desc": "近年车企招聘需求旺盛，传统制造业也有较大需求"}], "cities": [{"name": "北京", "desc": "运营商总部、互联网大厂与通信企业聚集"}, {"name": "深圳", "desc": "华为、中兴等通信龙头及大厂集中"}, {"name": "上海", "desc": "通信、芯片、互联网企业众多，岗位丰富"}, {"name": "杭州", "desc": "互联网企业聚集，转码方向机会多"}, {"name": "成都", "desc": "一线制造业与通信企业布局，二线性价比高"}, {"name": "南京", "desc": "通信与电子企业较多，制造业岗位充足"}], "gradSchool": "在较大规模企业中，更高学历有助于提升起薪，但个人能力更为关键。有条件的话读研是不错选择，可在通信、计算机、电子信息等方向继续深造。本科就业也具备较强竞争力，是否读研取决于目标岗位对学历的要求与个人发展偏好。", "salary": "薪酬与城市和岗位强相关，难以一概而论。工科技术岗尤其看重个人能力，整体起薪在工科中表现不错，转码与算法方向起薪较高，通信与传统制造业起薪适中。", "development": "多数同学读研后选择就业，去向包括华为、小米、运营商及互联网企业，也有部分留校或继续深造。专业可选方向多，路径相对灵活：技术线可由初级工程师成长为资深工程师或架构师，也可转向产品、管理等岗位；通信方向可在运营商或设备商内沿技术或管理双线晋升。", "prospect": "通信行业已不如早年火热，目前处于不温不火状态，但作为重要基础设施，相关专业人才需求持续存在。工科转换方向壁垒较低，可灵活转向互联网、算法、硬件、产品、车企等多个领域，整体就业选择面广、抗风险能力较强。", "advice": ["在大二大三尽早明确感兴趣的方向，结合薪资综合考量", "保证均分的前提下，根据方向侧重代码或通信基础课程", "转码门槛不高，但需提前积累项目与刷题经验", "专业方向选择多，找到相对合适的方向坚定做下去", "任何专业内都存在较大个体差异，能力范围内做好眼前事", "有条件建议读研以提升起薪与平台"]}, {"code": "080716T", "name": "应用电子技术教育", "category": "special", "intro": "工科与教育学交叉的职教师范专业，工科侧涵盖应用电子技术（自动控制、机械臂、流水线等），教育侧面向职业教育，培养能胜任中高职院校教学的双师型教师。", "courses": ["模拟电子技术", "数字电子技术", "单片机原理", "自动控制原理", "传感器与检测技术", "电机与拖动", "C语言程序设计", "PLC可编程控制器", "机械臂与机器人", "教育学", "心理学", "职业教育学"], "fitFor": "适合理科逻辑思维与动手能力兼备、又有耐心与文字理解力的学生。本专业兼具工科与教育学，需要既能掌握电子技术原理，又能将其转化为教学语言传授给职校学生。性格上宜沉稳、有责任感、具备教书育人情怀。若仅想从事纯电子研发而对教育无兴趣，则不如选择普通电子信息类专业。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "电子技术、单片机、PLC等课程视频资源丰富"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "系统学习电子技术与教育学相关课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "查阅单片机、嵌入式、自动控制开源项目"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "检索电子技术实操经验与教学资源"}, {"name": "国家教育资源公共服务平台", "url": "https://www.eduyun.cn", "desc": "获取职教电子类教学课件与案例"}], "competitions": [{"name": "全国大学生电子设计竞赛", "tier": "S", "desc": "电子类核心赛事，锻炼动手与设计能力"}, {"name": "全国师范生教学技能大赛", "tier": "A", "desc": "教育类赛事，提升教学能力与求职竞争力"}, {"name": "挑战杯课外学术科技作品竞赛", "tier": "A", "desc": "综合创新赛事，可结合电子与教育方向"}, {"name": "互联网+大学生创新创业大赛", "tier": "B", "desc": "团队项目孵化平台"}, {"name": "职业教育技能大赛", "tier": "B", "desc": "面向职教师范生，与就业方向高度契合"}], "careers": [{"category": "中职专业课教师", "desc": "进入职业中专任电子类专业课教师，即双师型教师，工作稳定有寒暑假"}, {"category": "高职院校教师", "desc": "进入高职院校从事电子类教学与实践指导"}, {"category": "电子企业研发", "desc": "进入科技公司从事电子、自动化相关研发岗位"}, {"category": "教育培训机构", "desc": "从事电子技术、STEM等培训教学工作"}, {"category": "考公考编", "desc": "参加教育系统或其他事业单位编制考试"}], "cities": [{"name": "长沙", "desc": "科技公司较多，研发岗月薪约7000-8000元"}, {"name": "湖南省内各地市", "desc": "职业中专教师主要就业地，覆盖湖南各市州"}, {"name": "生源地所在城市", "desc": "本专业多面向省内中职，就业地域相对集中"}], "gradSchool": "本科所学内容相对较浅，建议读研以深化专业能力。读研可加深电子技术功底或转向教育学方向，对进入高职院校任教或提升职称竞争力都有帮助。若仅面向中职教师岗位，本科学历基本够用，但深造能拓宽就业层次与发展空间。", "salary": "在湖南省内职业中专任教师月薪约3000-5000元，福利稳定且有寒暑假；进入长沙等城市科技公司从事研发岗月薪约7000-8000元，但工作强度高于教师岗。", "development": "教师方向主要为考编入岗、评职称晋升，路径稳定但空间有限；企业研发方向则按技术岗—项目主管—技术管理路径发展，相对多元。整体发展受地域与编制影响较大，需结合个人对稳定与发展的偏好选择。", "prospect": "电子设备应用日益广泛，制造业对电子技术人才持续需求；同时国家大力扶持职业教育，职教师资缺口存在，行业前景整体向好。但需注意电子技术更新极快，教材相对滞后，从业者需持续学习；而教育学方向相对稳定，二者结合形成独特优势。", "advice": ["不要虚度时光，想当教师者多参加电子设计与教学技能比赛", "电子技术更新快，需主动学习课堂之外的新技术与新器件", "尽早考取教师资格证，这是入行的必备门槛", "教育学相对稳定，可将其作为长期职业护城河", "本科内容较浅，若有更高目标建议读研深造", "认清本专业主要面向职教师范的就业定位，提前规划"]}, {"code": "080717T", "name": "人工智能", "category": "special", "intro": "研究让机器模拟延伸人类智能的新工科专业，涵盖机器学习、深度学习、计算机视觉、自然语言处理等方向，是当下最热门的交叉学科。", "courses": ["机器学习", "深度学习", "计算机视觉", "自然语言处理", "线性代数", "概率论与数理统计", "凸优化", "程序设计", "数据结构", "算法设计与分析", "模式识别", "随机过程"], "fitFor": "适合数理基础扎实、热爱编程、对AI有强烈兴趣的同学。专业对数学要求极高，线性代数和概率论是核心工具，数学不好的同学慎选。需要较强自学能力和持续学习热情，知识更新极快。性格上要坐得住板凳，能耐住寂寞做实验。建议有一定编程基础、逻辑思维强的同学报考。AI本质是码农专业，对编程能力要求不极致但需熟练掌握。", "resources": [{"name": "B站", "url": "https://www.bilibili.com", "desc": "李沐动手学深度学习、李宏毅机器学习、CS231n等优质网课"}, {"name": "中国大学MOOC", "url": "https://www.icourse163.org", "desc": "高校AI与数学类系统课程"}, {"name": "GitHub", "url": "https://github.com", "desc": "多看多改别人代码，开源项目学习"}, {"name": "CSDN", "url": "https://www.csdn.net", "desc": "大牛博客与资源分享"}, {"name": "LeetCode", "url": "https://leetcode.cn", "desc": "算法刷题，工程岗求职必备"}, {"name": "菜鸟教程", "url": "https://www.runoob.com", "desc": "Python等编程语言入门"}, {"name": "Coursera", "url": "https://www.coursera.org", "desc": "吴恩达深度学习与机器学习课程"}, {"name": "Kaggle", "url": "https://www.kaggle.com", "desc": "数据竞赛平台，练习赛训练实践能力"}, {"name": "arXiv", "url": "https://arxiv.org", "desc": "获取未发表的前沿论文"}, {"name": "PyTorch官网", "url": "https://pytorch.org", "desc": "主流深度学习框架，官方文档学习"}], "competitions": [{"name": "Kaggle数据竞赛", "tier": "S", "desc": "国际顶级数据科学竞赛，获奖对求职深造加分极大"}, {"name": "ACM-ICPC程序设计竞赛", "tier": "S", "desc": "算法本质学习与实现能力锻炼"}, {"name": "阿里天池大数据竞赛", "tier": "A", "desc": "国内主流数据竞赛平台"}, {"name": "全国大学生数学建模竞赛", "tier": "A", "desc": "数学很重要，建模能力培养"}, {"name": "互联网+/挑战杯", "tier": "A", "desc": "创新创业类竞赛，综测加分"}, {"name": "机器人相关竞赛", "tier": "B", "desc": "想做智能机器人的同学可参加"}], "careers": [{"category": "算法工程师", "desc": "CV、NLP、推荐系统等方向，互联网大厂核心岗"}, {"category": "工程开发岗", "desc": "互联网大厂开发岗，更看重实践经验"}, {"category": "AI+行业应用", "desc": "智慧医疗、自动驾驶、量化交易等交叉领域"}, {"category": "AI产品研发", "desc": "人脸识别、无人驾驶等产品开发"}, {"category": "科研院所与高校", "desc": "需博士学历，顶会顶刊文章为核心竞争力"}, {"category": "公务员/体制内", "desc": "跨领域结合或技术支持类岗位"}], "cities": [{"name": "北京", "desc": "商汤、百度等AI企业聚集，机会最多"}, {"name": "上海", "desc": "互联网与AI企业研发中心密集"}, {"name": "深圳", "desc": "腾讯等大厂总部，AI岗位丰富"}, {"name": "杭州", "desc": "阿里等互联网企业带动AI产业"}, {"name": "合肥", "desc": "科大讯飞等AI企业所在地"}, {"name": "南京", "desc": "大厂分部与AI创业公司"}, {"name": "广州", "desc": "珠三角互联网与AI产业"}, {"name": "武汉", "desc": "中西部AI产业发展"}], "gradSchool": "读研非常必要，算法岗竞争激烈，硕士基本是门槛。本科偏基础，研究生才接触AI核心。若想做学术研究需读博，顶会顶刊文章是核心竞争力。工程开发岗读不读研区别不大，更看重实践经验。AI对学习能力要求高，文献以英文为主，专科同学慎重。整体建议至少读到硕士。", "salary": "算法岗年薪30w起步，985硕士进大厂30-40w，顶尖者50-60w；工程开发岗略低。整体处于CS行业收入天花板，但竞争激烈、风险高，知识更新快，掉队易被优化。", "development": "技术路线：算法工程师→高级算法工程师→技术专家/架构师；管理路线：项目负责人→部门经理→高管。也可走学术路线进高校或研究院。复合背景者（AI+金融/医疗等）就业方向更多元。知识更新快，需持续学习避免被淘汰，大厂赚钱后也可转化赛道。", "prospect": "AI是新兴产业和热点产业，政府与企业都在大力发展。但当前存在泡沫，部分方向（如CV）已严重内卷，热度高但实际价值创造有限。短期内热度高、薪资好，但长期看可能面临洗牌和裁员风险。基础研究（理论、模型）长期看好，应用层竞争激烈。也可选择计算机、电子或软件工程专业，选择面更大。", "advice": ["数学是核心，线性代数和概率论必须扎实，数学不好建议学纯计算机", "尽早进入实验室参与科研，发顶会文章对深造求职加分极大", "多实践多写代码，做项目比单纯刷题更重要", "大厂实习经历对求职非常加分，多参加Kaggle等竞赛", "本科至少读到研究生，AI核心知识研究生阶段才接触", "做好长期学习和应对行业波动的心理准备，热度退去时需有真本事"]}];
+const SECTIONS = [["intro", "专业介绍"], ["courses", "核心课程"], ["gradSchool", "读研必要性"], ["fitFor", "适合人群"], ["resources", "学习资源"], ["competitions", "比赛考证"], ["careers", "就业去向"], ["cities", "就业城市"], ["salary", "薪酬待遇"], ["development", "发展路径"], ["prospect", "行业前景"], ["advice", "后辈建议"]];
+const JOB_LINKS = [["BOSS直聘", "https://www.zhipin.com/web/geek/job?query="], ["智联招聘", "https://sou.zhaopin.com/?jl=0&kw="], ["前程无忧", "https://search.51job.com/list/000000,000000,0000,00,9,99,"], ["猎聘", "https://www.liepin.com/zhaopin/?key="]];
+const GRAD_DIRECTIONS = {"080701": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}, {"anchor": "major4", "code": "085402", "name": "通信工程"}], "080702": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major5", "code": "085403", "name": "集成电路工程"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080703": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major4", "code": "085402", "name": "通信工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}], "080704": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major5", "code": "085403", "name": "集成电路工程"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080705": [{"anchor": "major7", "code": "085408", "name": "光电信息工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major6", "code": "085407", "name": "仪器仪表工程"}], "080706": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080707T": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major4", "code": "085402", "name": "通信工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}], "080708T": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major7", "code": "085408", "name": "光电信息工程"}, {"anchor": "major6", "code": "085407", "name": "仪器仪表工程"}], "080709T": [{"anchor": "major5", "code": "085403", "name": "集成电路工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080710T": [{"anchor": "major5", "code": "085403", "name": "集成电路工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080711T": [{"anchor": "major8", "code": "085409", "name": "生物医学工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major2", "code": "0810", "name": "信息与通信工程"}], "080712T": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major7", "code": "085408", "name": "光电信息工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}], "080713T": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major7", "code": "085408", "name": "光电信息工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}], "080714T": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}, {"anchor": "major4", "code": "085402", "name": "通信工程"}], "080715T": [{"anchor": "major2", "code": "0810", "name": "信息与通信工程"}, {"anchor": "major4", "code": "085402", "name": "通信工程"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}], "080716T": [{"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}], "080717T": [{"anchor": "major3", "code": "085401", "name": "新一代电子信息技术"}, {"anchor": "major1", "code": "0809", "name": "电子科学与技术"}, {"anchor": "major2", "code": "0810", "name": "信息与通信工程"}]};
+const MAJOR_KEYWORDS = {"080701": [["📡", "信号"], ["🔌", "电路"], ["💻", "嵌入式"], ["📶", "通信"], ["⚡", "电子"], ["🔧", "硬件"], ["📟", "单片机"], ["🌐", "网络"], ["🔋", "电源"], ["🔬", "实验"], ["🎛️", "控制"], ["📊", "DSP"], ["💡", "LED"], ["📱", "终端"], ["🛰️", "卫星"], ["🌊", "滤波"], ["📐", "天线"], ["🔔", "蜂鸣器"], ["🎚️", "传感器"], ["🧪", "原型"]], "080702": [["🔬", "半导体"], ["💾", "存储器"], ["⚙️", "器件"], ["🔬", "量子"], ["📐", "光刻"], ["🧩", "芯片"], ["🔧", "EDA"], ["📊", "晶圆"], ["💡", "发光"], ["🔋", "功率"], ["🌊", "射频"], ["📱", "微电子"], ["🧪", "掺杂"], ["🎛️", "偏置"], ["📡", "微波"], ["🌀", "等离子"], ["💎", "晶体"], ["🔌", "引线"], ["🧲", "霍尔"], ["🌐", "MEMS"]], "080703": [["📡", "天线"], ["📶", "5G"], ["🌊", "电磁波"], ["🛰️", "卫星"], ["📡", "基站"], ["🔊", "调制"], ["📊", "信道"], ["💫", "光纤"], ["🌐", "协议"], ["📲", "手机"], ["🔌", "接口"], ["🎛️", "均衡"], ["📈", "频谱"], ["🧭", "导航"], ["📷", "雷达"], ["🔗", "物联网"], ["🔔", "振铃"], ["🌍", "GSM"], ["🔬", "射频"], ["⚡", "脉冲"]], "080704": [["🧩", "IC设计"], ["💾", "存储"], ["⚙️", "版图"], ["🔬", "EDA"], ["🔋", "功耗"], ["📊", "时序"], ["🌊", "模拟"], ["💡", "数字"], ["🔧", "验证"], ["🧪", "流片"], ["🎛️", "时钟"], ["📡", "射频IC"], ["💎", "SoC"], ["🔗", "IP核"], ["📐", "布局"], ["🌐", "总线"], ["⚡", "高速"], ["🧲", "封装"], ["🧫", "测试"], ["📈", "良率"]], "080705": [["💡", "激光"], ["🔦", "LED"], ["📷", "成像"], ["🔭", "光学"], ["🌊", "光谱"], ["📐", "透镜"], ["🔬", "光纤"], ["💎", "晶体"], ["📊", "CCD"], ["🔧", "光学设计"], ["🌀", "衍射"], ["🌈", "色散"], ["🪞", "反射"], ["🧲", "偏振"], ["📡", "光通信"], ["🌫️", "散射"], ["💫", "光子"], ["🔋", "光电转换"], ["🧪", "镀膜"], ["📈", "分辨率"]], "080706": [["🌐", "互联网"], ["💻", "信息系统"], ["🗄️", "数据库"], ["🔗", "网络"], ["📊", "数据"], ["🔒", "安全"], ["☁️", "云平台"], ["📱", "移动端"], ["🖥️", "服务器"], ["💡", "AI"], ["🧩", "ERP"], ["📐", "架构"], ["🔧", "运维"], ["📈", "大数据"], ["🎯", "推荐"], ["🗃️", "数据挖掘"], ["🌍", "分布式"], ["🔬", "算法"], ["💫", "可视化"], ["🧪", "测试"]], "080707T": [["📺", "电视"], ["📻", "广播"], ["🎬", "视频"], ["🎙️", "音频"], ["📡", "传输"], ["🎥", "摄像"], ["🖼️", "图像"], ["🔊", "制作"], ["🎨", "编导"], ["📰", "媒体"], ["🌐", "有线电视"], ["📲", "移动传媒"], ["💡", "LED屏"], ["🎛️", "调音台"], ["📷", "演播室"], ["🔗", "IPTV"], ["📊", "收视率"], ["🧭", "直播"], ["💻", "非线性编辑"], ["📈", "传播"]], "080708T": [["🌊", "声波"], ["🔊", "声纳"], ["🛥️", "水下"], ["📡", "探测"], ["🌊", "海洋"], ["🔬", "水声学"], ["📊", "频谱分析"], ["🔗", "定位"], ["🧭", "导航"], ["💧", "海试"], ["🌀", "混响"], ["📐", "换能器"], ["🧲", "压电"], ["💫", "声场"], ["🔋", "水下设备"], ["🌍", "深海"], ["🔧", "声呐系统"], ["📈", "探测距离"], ["🧪", "消声池"], ["📡", "回声"]], "080709T": [["📦", "封装"], ["🔧", "芯片"], ["💾", "存储"], ["📊", "PCB"], ["🔬", "贴装"], ["🧩", "模组"], ["🧲", "引线框"], ["💎", "基板"], ["💡", "COB"], ["🌊", "散热"], ["⚙️", "晶圆"], ["🔋", "封装工艺"], ["🔗", "SIP"], ["🎛️", "塑封"], ["🧪", "金线"], ["📈", "良率"], ["💫", "功率"], ["🧭", "热管理"], ["🗂️", "测试分选"], ["🎯", "可靠性"]], "080710T": [["🧩", "IC设计"], ["💾", "存储"], ["⚙️", "EDA"], ["🔬", "版图"], ["🔋", "功耗"], ["📊", "时序"], ["🌊", "模拟IC"], ["💡", "数字IC"], ["🔧", "验证"], ["🧪", "流片"], ["🎛️", "时钟树"], ["📡", "射频前端"], ["💎", "SoC"], ["🔗", "NoC"], ["📐", "Floorplan"], ["🌐", "AMBA"], ["⚡", "高性能"], ["🧲", "封装"], ["🧫", "ATPG"], ["📈", "PPA"]], "080711T": [["🏥", "医疗"], ["💉", "生物"], ["📷", "影像"], ["🩺", "诊断"], ["🧬", "基因"], ["🖥️", "电子病历"], ["🔬", "医学影像"], ["📊", "生物信号"], ["💡", "健康监测"], ["🔗", "IoT医疗"], ["🌐", "远程医疗"], ["📲", "可穿戴"], ["🧪", "生物材料"], ["🎛️", "植入设备"], ["📈", "医学AI"], ["🔧", "医疗器械"], ["🧲", "生物传感器"], ["💫", "精准医疗"], ["🗂️", "电子健康"], ["🧭", "医学成像"]], "080712T": [["🌊", "电磁波"], ["📡", "天线"], ["🔬", "微波"], ["🛰️", "卫星"], ["📊", "方向图"], ["🔗", "馈线"], ["💎", "波导"], ["🎛️", "调谐"], ["🌀", "极化"], ["📐", "阵列"], ["🌐", "雷达"], ["🧭", "GPS"], ["⚡", "高频"], ["🔧", "PCB"], ["💫", "毫米波"], ["📈", "增益"], ["🧪", "暗室"], ["📡", "辐射"], ["🔋", "射频前端"], ["🧲", "史密斯圆图"]], "080713T": [["📡", "天线"], ["🌊", "电磁波"], ["🛰️", "卫星"], ["📊", "方向图"], ["🔗", "传播"], ["💎", "馈源"], ["🎛️", "波束"], ["🌀", "绕射"], ["📐", "阵列"], ["🌐", "雷达"], ["🧭", "导航"], ["⚡", "高频"], ["🔧", "建模"], ["💫", "散射"], ["📈", "增益"], ["🧪", "仿真"], ["📡", "辐射场"], ["🔋", "EIRP"], ["🧲", "多径"], ["📊", "衰落"]], "080714T": [["💻", "计算"], ["🌐", "网络"], ["💡", "AI"], ["🔬", "算法"], ["🗄️", "数据库"], ["🔗", "分布式"], ["☁️", "云计算"], ["📊", "大数据"], ["🔒", "信息安全"], ["📱", "嵌入式"], ["🎛️", "模式识别"], ["💫", "机器学习"], ["🧭", "智能感知"], ["📈", "数据挖掘"], ["🧩", "系统集成"], ["🌍", "物联网"], ["🔧", "软硬件协同"], ["🖥️", "高性能计算"], ["🧪", "图像处理"], ["💎", "知识图谱"]], "080715T": [["📊", "管理"], ["💻", "信息系统"], ["🗄️", "数据库"], ["🔗", "网络"], ["💡", "决策"], ["📈", "数据"], ["☁️", "云"], ["🔒", "安全"], ["🧭", "商业分析"], ["🖥️", "ERP"], ["🌐", "电子商务"], ["📲", "信息化"], ["🎛️", "项目管理"], ["🧪", "系统设计"], ["💫", "运营优化"], ["🧩", "业务流程"], ["🔧", "IT治理"], ["🌍", "数字化转型"], ["📈", "BI"], ["💎", "数据资产"]], "080716T": [["📚", "教育"], ["💻", "电子技术"], ["🔬", "教学法"], ["💡", "教学"], ["📊", "课程设计"], ["🔗", "教育技术"], ["📐", "CAD"], ["⚙️", "实训"], ["🌐", "在线教学"], ["🎛️", "模拟电子"], ["🖥️", "数字电子"], ["🎨", "教学资源"], ["🧭", "教学评估"], ["🧪", "实验设计"], ["💫", "教学改革"], ["🧩", "课程体系"], ["🔧", "教具开发"], ["🌍", "双师型"], ["📈", "教学效果"], ["💎", "教育心理"]], "080717T": [["🤖", "AI"], ["🧠", "神经网络"], ["📊", "深度学习"], ["💻", "PyTorch"], ["🔬", "算法"], ["🖼️", "CV"], ["💬", "NLP"], ["🎙️", "语音"], ["🗂️", "大模型"], ["💡", "强化学习"], ["🔗", "Transformer"], ["🌐", "联邦学习"], ["🧪", "数据集"], ["🎛️", "特征工程"], ["📈", "指标"], ["🧭", "推荐系统"], ["💫", "多模态"], ["🧩", "Agent"], ["🔧", "MLOps"], ["💎", "LLM"]]};
+
+const SECTION_ICONS = {'intro':'❀','courses':'📚','fitFor':'🎯','resources':'🔗','competitions':'🏆','careers':'💼','cities':'📍','gradSchool':'🎓','salary':'💰','development':'📈','prospect':'🔮','advice':'💡'};
+
+let curMajor = null;
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function nl2br(s){return esc(s).replace(/\n/g,'<br>')}
+
+function renderWelcome(){
+  return `<div class="welcome">
+    <div class="w-guides">
+      <div class="w-gtitle"><span>🌳</span>大学生存指南 · 十大专题</div>
+      <div class="w-gcards">
+        <a class="w-gcard" href="pages/ee-overview.html">
+          <div class="w-gicon">🌐</div>
+          <div class="w-gname">专业全景解析</div>
+          <div class="w-gdesc">学科本质 · 底层逻辑 · 职业路径</div>
+        </a>
+        <a class="w-gcard" href="pages/college-concepts.html">
+          <div class="w-gicon">📚</div>
+          <div class="w-gname">大学基础扫盲</div>
+          <div class="w-gdesc">培养方案 · 学分 · 选课 · 绩点</div>
+        </a>
+        <a class="w-gcard" href="pages/freshman-planning.html">
+          <div class="w-gicon">🌟</div>
+          <div class="w-gname">大一规划提升</div>
+          <div class="w-gdesc">六条建议 · 底层能力 · 就业考研</div>
+        </a>
+        <a class="w-gcard" href="pages/sophomore-planning.html">
+          <div class="w-gicon">🌱</div>
+          <div class="w-gname">大二规划进阶</div>
+          <div class="w-gdesc">专业课 · 实验室 · 竞赛 · 技能树</div>
+        </a>
+        <a class="w-gcard" href="pages/junior-planning.html">
+          <div class="w-gicon">⚡</div>
+          <div class="w-gname">大三分水岭决策</div>
+          <div class="w-gdesc">保研 · 考研 · 就业 · 留学 四路分流</div>
+        </a>
+        <a class="w-gcard" href="pages/academy-management.html">
+          <div class="w-gicon">📘</div>
+          <div class="w-gname">学业 & 科研</div>
+          <div class="w-gdesc">平时分 · Pre · 期末 · 论文 · 课题组</div>
+        </a>
+        <a class="w-gcard" href="pages/competition-certs.html">
+          <div class="w-gicon">🏆</div>
+          <div class="w-gname">竞赛 & 证书</div>
+          <div class="w-gdesc">含金量排行 · 参赛策略 · 规划时间线</div>
+        </a>
+        <a class="w-gcard" href="pages/career-planning.html">
+          <div class="w-gicon">💼</div>
+          <div class="w-gname">实习 & 求职</div>
+          <div class="w-gdesc">简历 · 投递 · 企业选择 · 秋招时间线</div>
+        </a>
+        <a class="w-gcard" href="pages/kaoyan-resources.html">
+          <div class="w-gicon">🎓</div>
+          <div class="w-gname">考研资源大全</div>
+          <div class="w-gdesc">14个宝藏网站 · 公共课 · 专业课 · 择校</div>
+        </a>
+        <a class="w-gcard" href="pages/about-up.html">
+          <div class="w-gicon">✨</div>
+          <div class="w-gname">关于 UP</div>
+          <div class="w-gdesc">努力可以获得什么 · 真实成长故事</div>
+        </a>
+      </div>
+    </div>
+    <div class="hint" style="margin-top:22px">← 点左侧任意专业开始查阅</div>
+  </div>`;
+}
+
+function renderCourses(courses){
+  if(!courses||!courses.length) return '<div class="sec-text">暂无</div>';
+  return '<div class="course-tags">' + courses.map(c=>
+    `<a class="course-tag" href="https://www.baidu.com/s?wd=${encodeURIComponent(c+' 课程')}" target="_blank" rel="noopener">${esc(c)}</a>`
+  ).join('') + '</div>';
+}
+
+function renderResources(resources){
+  if(!resources||!resources.length) return '<div class="sec-text">暂无</div>';
+  return '<div class="res-grid">' + resources.map(r=>
+    `<a class="res-card" href="${esc(r.url)}" target="_blank" rel="noopener">
+      <div class="res-name">${esc(r.name)} ↗</div>
+      <div class="res-desc">${esc(r.desc)}</div>
+    </a>`
+  ).join('') + '</div>';
+}
+
+function renderCompetitions(comps){
+  if(!comps||!comps.length) return '<div class="sec-text">暂无</div>';
+  const sorted = [...comps].sort((a,b)=>{
+    const order={S:0,A:1,B:2};
+    return (order[a.tier]||3)-(order[b.tier]||3);
+  });
+  return '<div class="comp-list">' + sorted.map(c=>
+    `<a class="comp-item" href="https://www.baidu.com/s?wd=${encodeURIComponent(c.name+' 比赛')}" target="_blank" rel="noopener">
+      <span class="comp-tier ${esc(c.tier)}">${esc(c.tier)}</span>
+      <span class="comp-name">${esc(c.name)} ↗</span>
+      <span class="comp-desc">${esc(c.desc)}</span>
+    </a>`
+  ).join('') + '</div>';
+}
+
+function renderCategories(items, nameKey, descKey){
+  if(!items||!items.length) return '<div class="sec-text">暂无</div>';
+  return '<div class="cat-grid">' + items.map(it=>
+    `<div class="cat-card">
+      <div class="cat-name">${esc(it[nameKey])}</div>
+      <div class="cat-desc">${esc(it[descKey])}</div>
+    </div>`
+  ).join('') + '</div>';
+}
+
+function renderAdvice(advice){
+  if(!advice||!advice.length) return '<div class="sec-text">暂无</div>';
+  return '<ol class="advice-list">' + advice.map(a=>
+    `<li class="advice-item">${nl2br(a)}</li>`
+  ).join('') + '</ol>';
+}
+
+function renderSection(key, title, value, majorCode){
+  let content = '';
+  if(key==='courses') content = renderCourses(value);
+  else if(key==='resources') content = renderResources(value);
+  else if(key==='competitions') content = renderCompetitions(value);
+  else if(key==='careers') content = renderCategories(value,'category','desc');
+  else if(key==='cities') content = renderCategories(value,'name','desc');
+  else if(key==='advice') content = renderAdvice(value);
+  else content = `<div class="sec-text">${nl2br(value)}</div>`;
+
+  if(key==='gradSchool' && majorCode && GRAD_DIRECTIONS[majorCode]){
+    const dirs = GRAD_DIRECTIONS[majorCode];
+    content += `<div class="grad-dir-block">
+      <div class="grad-dir-title">🎓 适合考研方向</div>
+      <div class="grad-dir-list">`;
+    dirs.forEach(d => {
+      content += `<a class="grad-dir-link" href="../专业科普.html#${d.anchor}" target="_blank" rel="noopener">
+        <span class="gd-code">${esc(d.code)}</span>
+        <span class="gd-name">${esc(d.name)}</span>
+        <span class="gd-arrow">→</span>
+      </a>`;
+    });
+    content += `</div></div>`;
+  }
+
+  const icon = SECTION_ICONS[key]||'◆';
+  return `<div class="section" id="sec-${key}">
+    <div class="sec-head">
+      <span class="sec-icon">${icon}</span>
+      <span class="sec-title">${esc(title)}</span>
+    </div>
+    ${content}
+  </div>`;
+}
+
+function renderRightNav(major){
+  const navItems = SECTIONS.map(([key,title])=>
+    `<a data-sec="${key}"><span class="rn-icon">${SECTION_ICONS[key]}</span>${esc(title)}</a>`
+  ).join('');
+  const jobLinks = JOB_LINKS.map(([n,u])=>
+    `<a class="rn-job-link" href="${u}${encodeURIComponent(major.name)}" target="_blank" rel="noopener">${n} ↗</a>`
+  ).join('');
+  return `<div class="rn-group" id="rnMain">
+    <div class="rn-title" onclick="document.getElementById('rnMain').classList.toggle('collapsed')">
+      <span class="rn-arrow">▾</span>${esc(major.name)}
+    </div>
+    <ul class="rn-list">${navItems}</ul>
+  </div>
+  <div class="rn-group" id="rnJobs">
+    <div class="rn-title" onclick="document.getElementById('rnJobs').classList.toggle('collapsed')">
+      <span class="rn-arrow">▾</span>招聘直连
+    </div>
+    <div class="rn-job-links">${jobLinks}</div>
+  </div>`;
+}
+
+function renderMajor(major){
+  const jobLinks = JOB_LINKS.map(([n,u])=>
+    `<a class="job-link" href="${u}${encodeURIComponent(major.name)}" target="_blank" rel="noopener">${n} ↗</a>`
+  ).join('');
+
+  const sectionsHtml = SECTIONS.map(([key,title])=>
+    renderSection(key, title, major[key], major.code)
+  ).join('');
+
+  const kwData = MAJOR_KEYWORDS[major.code] || [];
+  const kwHtml = kwData.map((kw,i)=>{
+    const col = i % 4;
+    const left = 8 + col * 24 + Math.random() * 6;
+    const delay = (i * 0.8).toFixed(1);
+    const dur = (7 + Math.random() * 5).toFixed(1);
+    return `<span class="kh-item" style="left:${left}%;bottom:-30px;animation-duration:${dur}s;animation-delay:-${delay}s">
+      <span class="kh-icon">${kw[0]}</span><span class="kh-text">${kw[1]}</span></span>`;
+  }).join('');
+
+  return `<div class="m-header">
+    <span class="m-code">${esc(major.code)}</span>
+    <div class="m-name">${esc(major.name)}</div>
+    <div class="m-jobs">
+      <span class="jl-label">招聘直连：</span>
+      ${jobLinks}
+    </div>
+    <div class="kh-cloud">${kwHtml}</div>
+  </div>
+  ${sectionsHtml}`;
+}
+
+function selectMajor(code){
+  curMajor = MAJORS.find(m=>m.code===code);
+  if(!curMajor) return;
+  document.querySelectorAll('.major-item').forEach(el=>{
+    el.classList.toggle('active', el.dataset.code===code);
+  });
+  document.getElementById('main').innerHTML = renderMajor(curMajor);
+  document.getElementById('rightNav').innerHTML = renderRightNav(curMajor);
+  bindRightNav();
+  window.scrollTo(0,0);
+}
+
+function bindRightNav(){
+  document.querySelectorAll('.rn-list a').forEach(a=>{
+    a.onclick = ()=>{
+      const sec = a.dataset.sec;
+      const el = document.getElementById('sec-'+sec);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    };
+  });
+  const sections = [...document.querySelectorAll('.section')];
+  const navLinks = [...document.querySelectorAll('.rn-list a')];
+  if(!sections.length) return;
+  window.onscroll = ()=>{
+    const top = window.scrollY + 80;
+    let cur = sections[0];
+    for(const s of sections){ if(s.offsetTop<=top) cur=s; }
+    const idx = sections.indexOf(cur);
+    navLinks.forEach((a,i)=>a.classList.toggle('active',i===idx));
+  };
+}
+
+// 搜索
+document.getElementById('search').addEventListener('input',e=>{
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.major-item').forEach(el=>{
+    const t = (el.dataset.code+' '+el.dataset.name).toLowerCase();
+    el.style.display = (!q||t.includes(q))?'':'none';
+  });
+});
+
+// 侧边栏点击
+document.querySelectorAll('.major-item').forEach(el=>{
+  el.onclick = ()=>selectMajor(el.dataset.code);
+});
+
+// 初始
+document.getElementById('main').innerHTML = renderWelcome();
+document.getElementById('rightNav').innerHTML = '';
+
+function spawnPetals(){
+  if(window.innerWidth<=900)return;
+  const ua=navigator.userAgent||'';
+  if(/BiliDroid|BiliTV|MicroMessenger|MQQBrowser|QQBrowser|UCBrowser/i.test(ua))return;
+  const chars=['❀','✿','❁','✾'];
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.textContent=chars[i%chars.length];
+    p.style.left=Math.random()*100+'vw';
+    p.style.animationDuration=(10+Math.random()*10)+'s';
+    p.style.animationDelay=(-Math.random()*15)+'s';
+    p.style.fontSize=(10+Math.random()*8)+'px';
+    document.body.appendChild(p);
+  }
+}
+spawnPetals();
+
+// 首页按钮：回到欢迎页
+document.getElementById('homeBtn').onclick = ()=>{
+  curMajor = null;
+  document.querySelectorAll('.major-item').forEach(el=>el.classList.remove('active'));
+  document.getElementById('main').innerHTML = renderWelcome();
+  document.getElementById('rightNav').innerHTML = '';
+  window.scrollTo(0,0);
+};
+</script>
+
+<script id="entry-a11y-adapt-js">
+(function(){
+  function enhanceClickableKeyboard(){
+    document.querySelectorAll('[onclick]:not(button):not(a):not(input):not(select):not(textarea)').forEach(function(el){
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(el.dataset.keyEnhanced === '1') return;
+      el.dataset.keyEnhanced = '1';
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', enhanceClickableKeyboard);
+  }else{
+    enhanceClickableKeyboard();
+  }
+})();
+</script>
+
+</body>
+</html>

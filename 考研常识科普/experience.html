@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上岸经验贴 - 考研必知常识</title>
+  <meta name="description" content="收录各大院校控制类考研上岸经验贴，涵盖39所院校">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .exp-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 22px;
+      border: 1px solid #e3e5e7;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 3px solid #fb7299;
+      position: relative;
+    }
+    .exp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .exp-card-year {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .exp-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fb7299;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      padding-right: 50px;
+    }
+    .exp-card-tags {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .exp-card-tags .tag {
+      font-size: .75rem;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: #fff;
+      border-radius: 6px;
+      border: 1px solid #e3e5e7;
+    }
+    .filter-bar select, .filter-bar input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #e3e5e7;
+      font-size: .9rem;
+      background: #fff;
+    }
+    .filter-bar input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+    }
+    .school-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .school-tag {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 500;
+      background: #f1f2f3;
+      color: #61666d;
+      cursor: pointer;
+      transition: all .2s;
+      border: none;
+    }
+    .school-tag:hover { background: #e3e5e7; }
+    .school-tag.active { background: #fb7299; color: #fff; }
+    
+    .tag-orange { background: #fff3e0; color: #ff8f1f; }
+    .tag-green { background: #e8f5e9; color: #00b8a9; }
+    .tag-blue { background: #e8f4ff; color: #00aeec; }
+    .tag-purple { background: #f3e5f5; color: #9c27b0; }
+    .tag-pink { background: #fff0f3; color: #fb7299; }
+    .tag-red { background: #ffebee; color: #e53935; }
+    .tag-cyan { background: #e0f7fa; color: #00bcd4; }
+    
+    @media (max-width: 768px) {
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .filter-bar input { width: 100%; }
+    }
+  </style>
+
+</head>
+<body>
+<!-- 返回首页（固定） -->
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+  ← 返回首页
+</a>
+
+<main class="page-content">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">首页</a> / <span>上岸经验贴</span>
+      </div>
+      
+      <h1 class="section-title" style="margin-bottom:20px;"><span class="icon">📝</span> 上岸经验贴</h1>
+      
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <input type="text" id="search-input" placeholder="🔍 搜索院校、专业课、专业方向...">
+        <select id="filter-year">
+          <option value="">全部年份</option>
+          <option value="26考研">26考研</option>
+          <option value="25考研">25考研</option>
+          <option value="24考研">24考研</option>
+        </select>
+        <select id="filter-level">
+          <option value="">全部层级</option>
+          <option value="985">985</option>
+          <option value="211">211</option>
+          <option value="双一流">双一流</option>
+          <option value="双非">双非</option>
+        </select>
+        <select id="filter-category">
+          <option value="">全部专业课</option>
+          <option value="信号大类">信号大类</option>
+          <option value="通信原理大类">通信原理大类</option>
+          <option value="电子技术大类">电子技术大类</option>
+          <option value="其他">其他</option>
+        </select>
+      </div>
+      
+      <!-- School Tags -->
+      <div class="school-tags" id="school-tags">
+        <button class="school-tag active" data-school="">全部院校</button>
+        <button class="school-tag" data-school="上海大学">上海大学</button>
+        <button class="school-tag" data-school="东北大学">东北大学</button>
+        <button class="school-tag" data-school="东南大学">东南大学</button>
+        <button class="school-tag" data-school="中国地质大学">中国地质大学</button>
+        <button class="school-tag" data-school="中国海洋大学">中国海洋大学</button>
+        <button class="school-tag" data-school="中国矿业大学">中国矿业大学</button>
+        <button class="school-tag" data-school="中山大学">中山大学</button>
+        <button class="school-tag" data-school="北京大学">北京大学</button>
+        <button class="school-tag" data-school="北京理工大学">北京理工大学</button>
+        <button class="school-tag" data-school="北京航空航天大学">北京航空航天大学</button>
+        <button class="school-tag" data-school="北京邮电大学">北京邮电大学</button>
+        <button class="school-tag" data-school="南京理工大学">南京理工大学</button>
+        <button class="school-tag" data-school="南京航空航天大学">南京航空航天大学</button>
+        <button class="school-tag" data-school="南京邮电大学">南京邮电大学</button>
+        <button class="school-tag" data-school="南方科技大学">南方科技大学</button>
+        <button class="school-tag" data-school="南昌大学">南昌大学</button>
+        <button class="school-tag" data-school="厦门大学">厦门大学</button>
+        <button class="school-tag" data-school="吉林大学">吉林大学</button>
+        <button class="school-tag" data-school="哈尔滨工业大学">哈尔滨工业大学</button>
+        <button class="school-tag" data-school="哈尔滨工程大学">哈尔滨工程大学</button>
+        <button class="school-tag" data-school="大连海事大学">大连海事大学</button>
+        <button class="school-tag" data-school="大连理工大学">大连理工大学</button>
+        <button class="school-tag" data-school="天津大学">天津大学</button>
+        <button class="school-tag" data-school="宁夏大学">宁夏大学</button>
+        <button class="school-tag" data-school="杭州电子科技大学">杭州电子科技大学</button>
+        <button class="school-tag" data-school="桂林电子科技大学">桂林电子科技大学</button>
+        <button class="school-tag" data-school="江南大学">江南大学</button>
+        <button class="school-tag" data-school="河北工业大学">河北工业大学</button>
+        <button class="school-tag" data-school="河海大学">河海大学</button>
+        <button class="school-tag" data-school="湖南师范大学">湖南师范大学</button>
+        <button class="school-tag" data-school="电子科技大学">电子科技大学</button>
+        <button class="school-tag" data-school="福州大学">福州大学</button>
+        <button class="school-tag" data-school="西北工业大学">西北工业大学</button>
+        <button class="school-tag" data-school="西南交通大学">西南交通大学</button>
+        <button class="school-tag" data-school="西安交通大学">西安交通大学</button>
+        <button class="school-tag" data-school="西安电子科技大学">西安电子科技大学</button>
+        <button class="school-tag" data-school="西安邮电大学">西安邮电大学</button>
+        <button class="school-tag" data-school="重庆邮电大学">重庆邮电大学</button>
+        <button class="school-tag" data-school="长安大学">长安大学</button>
+      </div>
+      
+      <!-- Experience Grid -->
+      <div class="exp-grid" id="exp-grid"></div>
+      
+      <!-- Pagination or load more could go here -->
+      <div id="no-results" style="text-align:center; padding: 60px 20px; display:none;">
+  <div style="font-size:3rem; margin-bottom:12px;">🤔</div>
+  <div style="font-size:1.1rem; color:#18191c; font-weight:600; margin-bottom:8px;">没有找到符合条件的经验贴</div>
+  <div style="font-size:.9rem; color:#9499a0;">试试调整筛选条件，或者清除搜索关键词</div>
+</div>
+    </div>
+  </main>
+  <!-- Back to Top -->
+  <div id="back-to-top"><button>↑</button></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="01-basics.html">基础常识</a>
+        <a href="02-timeline.html">备考时间线</a>
+        <a href="03-public-courses.html">公共课备考</a>
+        <a href="04-major.html">专业课备考</a>
+        <a href="05-school-selection.html">考研择校</a>
+        <a href="06-mindset-career.html">心态与就业</a>
+        <a href="07-faq.html">常见问题</a>
+        <a href="08-methods.html">学习方法</a>
+        <a href="experience.html">上岸经验贴</a>
+      </div>
+      <p>内容由 <a href="#">@一只通信考研的er</a> 整理制作 | 仅供考研学习交流使用</p>
+      <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
+    </div>
+  </footer>
+<script>
+const POSTS = [{"id": "post-001", "title": "南京理工大学818通信工程学硕总分371", "school": "南京理工大学", "schoolShort": "南京理工", "code": "818", "total": "371", "subjectScore": "130", "author": "熊猫哥", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-002", "title": "本科双非→南京理工大学818总分372", "school": "南京理工大学", "schoolShort": "南京理工", "code": "818", "total": "372", "subjectScore": "130", "author": "", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-003", "title": "本科双非→南京理工大学818通信专硕总分412", "school": "南京理工大学", "schoolShort": "南京理工", "code": "818", "total": "412", "subjectScore": "133", "author": "", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "双非", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-004", "title": "南京理工大学891集成专硕总分392", "school": "南京理工大学", "schoolShort": "南京理工", "code": "891", "total": "392", "subjectScore": "143", "author": "", "year": "25考研", "level": "211", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-005", "title": "本科双非→南方科技大学808电子信息总分379", "school": "南方科技大学", "schoolShort": "南方科技", "code": "808", "total": "379", "subjectScore": "124", "author": "", "year": "25考研", "level": "双一流", "category": "通信原理大类", "undergrad": "双非", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#9c27b0"}, {"id": "post-006", "title": "南京航空航天大学878学硕总分392", "school": "南京航空航天大学", "schoolShort": "南京航空", "code": "878", "total": "392", "subjectScore": "129", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-007", "title": "大连理工大学852专硕总分370", "school": "大连理工大学", "schoolShort": "大连理工", "code": "852", "total": "370", "subjectScore": "120", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-008", "title": "本科双非→河海大学863学硕总分340", "school": "河海大学", "schoolShort": "河海大学", "code": "863", "total": "340", "subjectScore": "128", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-009", "title": "桂林电子科技大学806", "school": "桂林电子科技大学", "schoolShort": "桂林电子", "code": "806", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "双非", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-010", "title": "桂林电子科技大学817数字电路", "school": "桂林电子科技大学", "schoolShort": "桂林电子", "code": "817", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "双非", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-011", "title": "西安交通大学868模拟电路", "school": "西安交通大学", "schoolShort": "西安交通", "code": "868", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-012", "title": "本科双非→西安交通大学869", "school": "西安交通大学", "schoolShort": "西安交通", "code": "869", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-013", "title": "本科双非→西安交通大学874", "school": "西安交通大学", "schoolShort": "西安交通", "code": "874", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-014", "title": "西安邮电大学824通信工程", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "824", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "双非", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-015", "title": "上海大学829电子信息专硕总分384", "school": "上海大学", "schoolShort": "上海大学", "code": "829", "total": "384", "subjectScore": "147", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-016", "title": "本科双非→中国地质大学845", "school": "中国地质大学", "schoolShort": "中国地质", "code": "845", "total": "", "subjectScore": "144", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-017", "title": "本科双非→中国海洋大学810新一代电子信息", "school": "中国海洋大学", "schoolShort": "中国海洋", "code": "810", "total": "", "subjectScore": "120", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-018", "title": "西南交通大学824信号专硕总分415", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "415", "subjectScore": "141", "author": "余亮", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-019", "title": "本科211→西南交通大学824光电信息总分400", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "400", "subjectScore": "142", "author": "刘何", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "211", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-020", "title": "本科双非→西南交通大学824交通信息工程专硕总分384", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "384", "subjectScore": "140", "author": "刘超", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-021", "title": "本科211→西南交通大学824信号专硕总分407", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "407", "subjectScore": "127", "author": "刘逊", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "211", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-022", "title": "北京理工大学882专硕总分388", "school": "北京理工大学", "schoolShort": "北京理工", "code": "882", "total": "388", "subjectScore": "141", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-023", "title": "本科211→北京航空航天大学电子信息", "school": "北京航空航天大学", "schoolShort": "北京航空", "code": "", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "211", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-024", "title": "南昌大学811通信工程", "school": "南昌大学", "schoolShort": "南昌大学", "code": "811", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-025", "title": "厦门大学821新一代电子信息", "school": "厦门大学", "schoolShort": "厦门大学", "code": "821", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-026", "title": "本科双非→厦门大学847通信工程", "school": "厦门大学", "schoolShort": "厦门大学", "code": "847", "total": "", "subjectScore": "119", "author": "", "year": "25考研", "level": "985", "category": "通信原理大类", "undergrad": "双非", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-027", "title": "本科985→厦门大学847", "school": "厦门大学", "schoolShort": "厦门大学", "code": "847", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "通信原理大类", "undergrad": "985", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-028", "title": "吉林大学848集成电路专硕总分413", "school": "吉林大学", "schoolShort": "吉林大学", "code": "848", "total": "413", "subjectScore": "134", "author": "", "year": "25考研", "level": "985", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-029", "title": "本科985→哈尔滨工业大学803电子信息专硕", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "803", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "985", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-030", "title": "本科211→哈尔滨工业大学826", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "826", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "211", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-031", "title": "大连海事大学806", "school": "大连海事大学", "schoolShort": "大连海事", "code": "806", "total": "", "subjectScore": "119", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-032", "title": "大连海事大学通信工程", "school": "大连海事大学", "schoolShort": "大连海事", "code": "", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-033", "title": "大连海事大学806", "school": "大连海事大学", "schoolShort": "大连海事", "code": "806", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-034", "title": "本科双非→宁夏大学820电路", "school": "宁夏大学", "schoolShort": "宁夏大学", "code": "820", "total": "", "subjectScore": "118", "author": "", "year": "25考研", "level": "211", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-035", "title": "本科双非→西南交通大学861集成电路专硕总分407", "school": "西南交通大学", "schoolShort": "西南交通", "code": "861", "total": "407", "subjectScore": "144", "author": "朱硕", "year": "25考研", "level": "211", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-036", "title": "本科双非→西南交通大学824信号专硕总分406", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "406", "subjectScore": "146", "author": "李博奥", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-037", "title": "杭州电子科技大学841总分317", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "841", "total": "317", "subjectScore": "110", "author": "", "year": "25考研", "level": "双非", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-038", "title": "本科双非→杭州电子科技大学843通信工程总分360", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "843", "total": "360", "subjectScore": "140", "author": "", "year": "25考研", "level": "双非", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-039", "title": "杭州电子科技大学844数字电路专硕总分361", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "844", "total": "361", "subjectScore": "102", "author": "", "year": "25考研", "level": "双非", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-040", "title": "江南大学810", "school": "江南大学", "schoolShort": "江南大学", "code": "810", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-041", "title": "本科双一流→中国矿业大学811新一代电子信息总分391", "school": "中国矿业大学", "schoolShort": "中国矿业", "code": "811", "total": "391", "subjectScore": "111", "author": "", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "双一流", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-042", "title": "本科211→福州大学866新一代电子信息", "school": "福州大学", "schoolShort": "福州大学", "code": "866", "total": "", "subjectScore": "128", "author": "", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "211", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-043", "title": "本科双非→河北工业大学891通信工程", "school": "河北工业大学", "schoolShort": "河北工业", "code": "891", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "通信原理大类", "undergrad": "双非", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-044", "title": "福州大学866电路总分420", "school": "福州大学", "schoolShort": "福州大学", "code": "866", "total": "420", "subjectScore": "146", "author": "", "year": "25考研", "level": "211", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-045", "title": "本科双非→西北工业大学总分411", "school": "西北工业大学", "schoolShort": "西北工业", "code": "", "total": "411", "subjectScore": "", "author": "", "year": "25考研", "level": "985", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#e53935"}, {"id": "post-046", "title": "本科双非→西安电子科技大学821总分392", "school": "西安电子科技大学", "schoolShort": "西安电子", "code": "821", "total": "392", "subjectScore": "136", "author": "", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-047", "title": "本科双非→西安电子科技大学821总分392", "school": "西安电子科技大学", "schoolShort": "西安电子", "code": "821", "total": "392", "subjectScore": "136", "author": "", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-048", "title": "西安邮电大学823新一代电子信息", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "823", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "双非", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-049", "title": "西安邮电大学824新一代电子信息", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "824", "total": "", "subjectScore": "100", "author": "", "year": "25考研", "level": "双非", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-050", "title": "西安邮电大学824通信工程", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "824", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "双非", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-051", "title": "西安邮电大学824通信工程总分356", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "824", "total": "356", "subjectScore": "121", "author": "", "year": "25考研", "level": "双非", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-052", "title": "杭州电子科技大学844电路总分334", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "844", "total": "334", "subjectScore": "116", "author": "", "year": "25考研", "level": "双非", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-053", "title": "重庆邮电大学808总分409", "school": "重庆邮电大学", "schoolShort": "重庆邮电", "code": "808", "total": "409", "subjectScore": "144", "author": "", "year": "25考研", "level": "双非", "category": "通信原理大类", "undergrad": "", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#43a047"}, {"id": "post-054", "title": "本科双非→西南交通大学824交通信息工程专硕总分372", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "372", "subjectScore": "133", "author": "钟乐鸣", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-055", "title": "长安大学814信号", "school": "长安大学", "schoolShort": "长安大学", "code": "814", "total": "", "subjectScore": "", "author": "", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-056", "title": "本科双非→西南交通大学824信号专硕总分401", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "401", "subjectScore": "140", "author": "饶国栋", "year": "25考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#fb7299", "yc2": "#fff0f3", "lc": "#00aeec"}, {"id": "post-057", "title": "本科双非→东南大学微波专硕总分374", "school": "东南大学", "schoolShort": "东南大学", "code": "", "total": "374", "subjectScore": "117", "author": "", "year": "24考研", "level": "985", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#e53935"}, {"id": "post-058", "title": "本科211→哈尔滨工程大学810信号与系统总分356", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "810", "total": "356", "subjectScore": "127", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "211", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-059", "title": "本科双非→哈尔滨工程大学810电气跨考总分321", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "810", "total": "321", "subjectScore": "117", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-061", "title": "本科双非→上海大学通信专硕总分305", "school": "上海大学", "schoolShort": "上海大学", "code": "", "total": "305", "subjectScore": "78", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-062", "title": "本科双非→东北大学840信号与系统总分369", "school": "东北大学", "schoolShort": "东北大学", "code": "840", "total": "369", "subjectScore": "132", "author": "", "year": "24考研", "level": "985", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#e53935"}, {"id": "post-063", "title": "本科双非→中国地质大学852电路分析总分361", "school": "中国地质大学", "schoolShort": "中国地质", "code": "852", "total": "361", "subjectScore": "134", "author": "", "year": "24考研", "level": "211", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-064", "title": "本科双非→中山大学885微电子", "school": "中山大学", "schoolShort": "中山大学", "code": "885", "total": "", "subjectScore": "", "author": "", "year": "24考研", "level": "985", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#e53935"}, {"id": "post-065", "title": "本科双非→南京邮电大学801总分394", "school": "南京邮电大学", "schoolShort": "南京邮电", "code": "801", "total": "394", "subjectScore": "144", "author": "", "year": "24考研", "level": "双非", "category": "通信原理大类", "undergrad": "双非", "c1": "#00b8a9", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-066", "title": "本科双非→南京邮电大学电路分析总分369", "school": "南京邮电大学", "schoolShort": "南京邮电", "code": "", "total": "369", "subjectScore": "149", "author": "", "year": "24考研", "level": "双非", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-067", "title": "本科双非→厦门大学877半导体总分365", "school": "厦门大学", "schoolShort": "厦门大学", "code": "877", "total": "365", "subjectScore": "124", "author": "", "year": "24考研", "level": "985", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#e53935"}, {"id": "post-068", "title": "本科双非→哈尔滨工程大学810信号与系统总分346", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "810", "total": "346", "subjectScore": "119", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-069", "title": "本科211→哈尔滨工程大学信号与系统总分418", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "", "total": "418", "subjectScore": "132", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "211", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-070", "title": "本科双非→哈尔滨工程大学土木跨考总分319", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "", "total": "319", "subjectScore": "124", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-071", "title": "本科双非→大连海事大学806总分349", "school": "大连海事大学", "schoolShort": "大连海事", "code": "806", "total": "349", "subjectScore": "129", "author": "", "year": "24考研", "level": "211", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-072", "title": "本科双非→重庆邮电大学808机械跨考", "school": "重庆邮电大学", "schoolShort": "重庆邮电", "code": "808", "total": "", "subjectScore": "", "author": "", "year": "24考研", "level": "双非", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-073", "title": "本科双非→杭州电子科技大学843信号与系统总分343", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "843", "total": "343", "subjectScore": "125", "author": "", "year": "24考研", "level": "双非", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-075", "title": "本科双非→杭州电子科技大学841总分367", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "841", "total": "367", "subjectScore": "138", "author": "", "year": "24考研", "level": "双非", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-076", "title": "本科双非→杭州电子科技大学843信号与系统总分352", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "843", "total": "352", "subjectScore": "116", "author": "", "year": "24考研", "level": "双非", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-077", "title": "本科双非→湖南师范大学数电总分381", "school": "湖南师范大学", "schoolShort": "湖南师范", "code": "", "total": "381", "subjectScore": "133", "author": "", "year": "24考研", "level": "211", "category": "电子技术大类", "undergrad": "双非", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-078", "title": "本科双非→西安邮电大学电子信息总分347", "school": "西安邮电大学", "schoolShort": "西安邮电", "code": "", "total": "347", "subjectScore": "133", "author": "", "year": "24考研", "level": "双非", "category": "其他", "undergrad": "双非", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#43a047"}, {"id": "post-079", "title": "本科双非→西安电子科技大学信号与系统总分383", "school": "西安电子科技大学", "schoolShort": "西安电子", "code": "", "total": "383", "subjectScore": "136", "author": "", "year": "24考研", "level": "211", "category": "信号大类", "undergrad": "双非", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#00aeec", "yc2": "#e8f4ff", "lc": "#00aeec"}, {"id": "post-080", "title": "哈尔滨工业大学803", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "803", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-081", "title": "哈尔滨工业大学803", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "803", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-082", "title": "哈尔滨工业大学803", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "803", "total": "381", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-083", "title": "西安电子科技大学811", "school": "西安电子科技大学", "schoolShort": "西安电子", "code": "811", "total": "", "subjectScore": "136", "author": "", "year": "26考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-084", "title": "哈尔滨工业大学803", "school": "哈尔滨工业大学", "schoolShort": "哈尔滨工", "code": "803", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-085", "title": "厦门大学847", "school": "厦门大学", "schoolShort": "厦门大学", "code": "847", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-086", "title": "电子科技大学858", "school": "电子科技大学", "schoolShort": "电子科技", "code": "858", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-087", "title": "天津大学815", "school": "天津大学", "schoolShort": "天津大学", "code": "815", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-088", "title": "西安电子科技大学811", "school": "西安电子科技大学", "schoolShort": "西安电子", "code": "811", "total": "423", "subjectScore": "143", "author": "", "year": "26考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-089", "title": "中国海洋大学810", "school": "中国海洋大学", "schoolShort": "中国海洋", "code": "810", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-090", "title": "北京邮电大学801", "school": "北京邮电大学", "schoolShort": "北京邮电", "code": "801", "total": "395", "subjectScore": "", "author": "", "year": "26考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-091", "title": "吉林大学848", "school": "吉林大学", "schoolShort": "吉林大学", "code": "848", "total": "414", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-092", "title": "中山大学885", "school": "中山大学", "schoolShort": "中山大学", "code": "885", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-093", "title": "北京大学810", "school": "北京大学", "schoolShort": "北京大学", "code": "810", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "985", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#e53935"}, {"id": "post-094", "title": "南京理工大学818", "school": "南京理工大学", "schoolShort": "南京理工", "code": "818", "total": "420", "subjectScore": "", "author": "", "year": "26考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-095", "title": "南方科技大学808", "school": "南方科技大学", "schoolShort": "南方科技", "code": "808", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "双一流", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#9c27b0"}, {"id": "post-096", "title": "哈尔滨工程大学810", "school": "哈尔滨工程大学", "schoolShort": "哈尔滨工", "code": "810", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-097", "title": "杭州电子科技大学843", "school": "杭州电子科技大学", "schoolShort": "杭州电子", "code": "843", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "双非", "category": "电子技术大类", "undergrad": "", "c1": "#ff8f1f", "c2": "#fff3e0", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#43a047"}, {"id": "post-098", "title": "西南交通大学824", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "211", "category": "信号大类", "undergrad": "", "c1": "#fb7299", "c2": "#fff0f3", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}, {"id": "post-099", "title": "西南交通大学824", "school": "西南交通大学", "schoolShort": "西南交通", "code": "824", "total": "", "subjectScore": "", "author": "", "year": "26考研", "level": "211", "category": "其他", "undergrad": "", "c1": "#00bcd4", "c2": "#e0f7fa", "ct": "#fff", "yc1": "#ff8f1f", "yc2": "#fff3e0", "lc": "#00aeec"}];
+
+
+function renderPosts(posts) {
+  const container = document.getElementById('exp-grid');
+  const noResults = document.getElementById('no-results');
+  container.innerHTML = '';
+  if (posts.length === 0) {
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+  
+  const yearStyle = {
+    '25考研': 'background:#fff0f3;color:#fb7299;',
+    '24考研': 'background:#e8f4ff;color:#00aeec;',
+    '26考研': 'background:#fff3e0;color:#ff8f1f;',
+  };
+  
+  const levelClass = {
+    '985': 'tag-red',
+    '211': 'tag-blue',
+    '双一流': 'tag-purple',
+    '双非': 'tag-green',
+  };
+  
+  posts.forEach(p => {
+    const yearBadge = '<span class="exp-card-year" style="' + (yearStyle[p.year]||yearStyle["25考研"]) + '">' + p.year + '</span>';
+    const levelTag = '<span class="tag ' + (levelClass[p.level]||'tag-green') + '">' + p.level + '</span>';
+    const catTag = '<span class="tag">' + p.category + '</span>';
+    const scoreTag = p.total ? '<span class="tag tag-pink">总分' + p.total + '</span>' : '';
+    const subTag = p.subjectScore ? '<span class="tag tag-orange">专业课' + p.subjectScore + '</span>' : '';
+    const ugTag = p.undergrad ? '<span class="tag tag-cyan">本科' + p.undergrad + '</span>' : '';
+    
+    const card = document.createElement('a');
+    card.href = 'experience/' + p.id + '.html';
+    card.className = 'exp-card';
+    card.innerHTML = yearBadge +
+      '<div class="exp-card-title">' + p.title + '</div>' +
+      '<div class="exp-card-tags">' + levelTag + catTag + scoreTag + subTag + ugTag + '</div>' +
+      '<div style="margin-top:auto; font-size:.8rem; color:#9499a0;">' + (p.author ? '@' + p.author + ' · ' : '') + p.school + (p.code ? ' ' + p.code : '') + '</div>';
+    container.appendChild(card);
+  });
+}
+
+function getConditionFilters() {
+  const search = document.getElementById('search-input').value.toLowerCase();
+  const year = document.getElementById('filter-year').value;
+  const level = document.getElementById('filter-level').value;
+  const category = document.getElementById('filter-category').value;
+  return { search, year, level, category };
+}
+
+function applyFilters(opts) {
+  const { search, year, level, category, school } = opts;
+  return POSTS.filter(p => {
+    if (year && p.year !== year) return false;
+    if (level && p.level !== level) return false;
+    if (category && p.category !== category) return false;
+    if (school && p.school !== school) return false;
+    if (search) {
+      const text = (p.title + p.school + p.schoolShort + p.code + p.category + p.level).toLowerCase();
+      if (!text.includes(search)) return false;
+    }
+    return true;
+  });
+}
+
+// 根据当前筛选条件（不含院校），动态更新院校标签云
+function updateSchoolTags() {
+  const { search, year, level, category } = getConditionFilters();
+  // 先过滤出满足条件（不含院校）的结果
+  const filtered = applyFilters({ search, year, level, category, school: '' });
+  // 提取唯一院校并排序
+  const schools = [...new Set(filtered.map(p => p.school))].sort();
+  
+  const container = document.getElementById('school-tags');
+  let html = '<button class="school-tag active" data-school="">全部院校</button>';
+  schools.forEach(s => {
+    html += '<button class="school-tag" data-school="' + s + '">' + s + '</button>';
+  });
+  container.innerHTML = html;
+}
+
+// 条件筛选变化时：更新标签云 + 渲染卡片
+function onConditionChange() {
+  updateSchoolTags();
+  const { search, year, level, category } = getConditionFilters();
+  const filtered = applyFilters({ search, year, level, category, school: '' });
+  renderPosts(filtered);
+}
+
+// 院校标签点击时：只渲染卡片（不更新标签云）
+function onSchoolClick(school) {
+  const { search, year, level, category } = getConditionFilters();
+  const filtered = applyFilters({ search, year, level, category, school });
+  renderPosts(filtered);
+}
+
+// 事件绑定：条件筛选框
+['search-input', 'filter-year', 'filter-level', 'filter-category'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const eventType = (id === 'search-input') ? 'input' : 'change';
+  el.addEventListener(eventType, onConditionChange);
+});
+
+// 事件绑定：院校标签点击
+document.getElementById('school-tags').addEventListener('click', function(e) {
+  if (e.target.classList.contains('school-tag')) {
+    document.querySelectorAll('.school-tag').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+    onSchoolClick(e.target.dataset.school || '');
+  }
+});
+
+// 初始渲染
+updateSchoolTags();
+renderPosts(POSTS);
+</script>
+<script>
+(function(){
+  const btn=document.getElementById('back-to-top');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>300);
+  });
+  btn.querySelector('button').addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

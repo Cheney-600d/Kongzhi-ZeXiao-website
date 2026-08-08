@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27/28控制类考研与就业全链路指南</title>
+<meta name="description" content="27/28控制类考研择校数据总览，覆盖100+高校、500+学院子方向，提供院校筛选、院校PK、热度对比、生源地图、就业去向、改考信息、分数数据等一站式查询。">
+<meta name="keywords" content="控制考研,自动化考研,控制科学与工程,考研择校,考研院校,院校对比,考研数据,985,211,双一流">
+<meta property="og:title" content="27/28控制类考研与就业全链路指南">
+<meta property="og:description" content="覆盖100+高校的控制类考研择校数据，支持筛选、对比、热度、生源、就业等一站式查询。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="index.html">
+<meta property="og:image" content="专业课选择/images/平台图标/avatar_compressed.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="27/28控制类考研与就业全链路指南">
+<meta name="twitter:description" content="覆盖100+高校的控制类考研择校数据，支持筛选、对比、热度、生源、就业等一站式查询。">
+<link rel="canonical" href="index.html">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<!-- 早期广告状态同步：避免从子页面返回时QQ群广告闪现 -->
+<script>
+(function(){
+  try {
+    var val = localStorage.getItem('kaoyan_qr_ad_enabled');
+    var enabled = val === null ? true : (val === 'true');
+    if (!enabled) {
+      document.documentElement.classList.add('ad-disabled');
+    }
+  } catch(e) {}
+})();
+</script>
+
+<!-- Toy SDK 改由 toy-coin-gate.js 在 B站/Toy 环境中异步按需加载，避免自有服务器首页被外链阻塞 -->
+<script>
+(function(){
+  function normalizeProjectPath(path) {
+    return String(path || '').replace(/\\/g, '/').replace(/\/+$/, '').toLowerCase();
+  }
+  function getConfiguredProjectPath() {
+    var candidates = [
+      window.TXKYER_PROJECT_PATH,
+      window.__TXKYER_PROJECT_PATH__,
+      document.documentElement.getAttribute('data-project-path')
+    ];
+    var meta = document.querySelector('meta[name="txkyer-project-path"]');
+    if (meta) {
+      candidates.push(meta.getAttribute('content'));
+    }
+    for (var i = 0; i < candidates.length; i += 1) {
+      if (typeof candidates[i] === 'string' && candidates[i].trim()) {
+        return candidates[i].trim();
+      }
+    }
+    return '';
+  }
+  function isOwnServerProjectPath() {
+    var projectPath = normalizeProjectPath(getConfiguredProjectPath());
+    return projectPath === '/var/www/txkyer' || projectPath.indexOf('/var/www/txkyer/') === 0;
+  }
+  function isLocalPreviewHost() {
+    var host = location.hostname.toLowerCase();
+    return location.protocol === 'file:' ||
+      host === 'localhost' ||
+      host === '127.0.0.1' ||
+      host === '[::1]';
+  }
+  function isBilibiliToyRuntime() {
+    var host = location.hostname.toLowerCase();
+    var isBilibiliHost = /(^|\.)bilibili\.com$/.test(host) ||
+      /(^|\.)bilibili\.cn$/.test(host) ||
+      /(^|\.)b23\.tv$/.test(host) ||
+      /(^|\.)hdslb\.com$/.test(host);
+    return isBilibiliHost && location.pathname.indexOf('/toy/') !== -1;
+  }
+  var params = new URLSearchParams(location.search);
+  var disabled = params.get('coinGate') === 'off' ||
+    (params.get('coinGate') !== 'on' && (isOwnServerProjectPath() || isLocalPreviewHost() || !isBilibiliToyRuntime()));
+  if (!disabled) {
+    document.documentElement.classList.add('toy-coin-gate-preview');
+  }
+})();
+</script>
+
+<script src="vendor/tailwind.js"></script>
+<script src="vendor/echarts.min.js" defer></script>
+<script src="kaoyan_data.js" defer></script>
+<script src="school_distributions.js" defer></script>
+<script src="school_detail_data.js" defer></script>
+<script src="data/major_school_modal.js" defer></script>
+<style>
+@import url('vendor/fonts/fd7c59f8d290aab04d9d487b4c33ba39.css');
+body{font-family:'Noto Sans SC',sans-serif;background:#F5F0F7;font-weight:600;color:#2d2d3d;}
+html.toy-coin-gate-pending #homePage,
+html.toy-coin-gate-pending #detailPage,
+html.toy-coin-gate-pending #recentViewBar,
+html.toy-coin-gate-pending #compareBar,
+html.toy-coin-gate-pending #backToTop,
+html.toy-coin-gate-pending #adToggleBtn{filter:blur(8px);pointer-events:none;user-select:none;}
+.card{background:#FFFFFF;border-radius:12px;box-shadow:0 4px 12px rgba(184,164,216,0.2);transition:all .2s;}
+.card:hover{box-shadow:0 6px 18px rgba(184,164,216,0.35);}
+.stat-card{background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border-radius:12px;padding:20px;}
+.stat-card.green{background:linear-gradient(135deg,#1a5c52 0%,#2d8a6e 100%);}
+.stat-card.orange{background:linear-gradient(135deg,#8a4a7e 0%,#a24058 100%);}
+.stat-card.blue{background:linear-gradient(135deg,#2a5a8e 0%,#1a6a8e 100%);}
+.stat-card.purple{background:linear-gradient(135deg,#5a4a7e 0%,#8a5a8e 100%);}
+.btn-primary{background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:700;transition:opacity .2s,transform .2s;}
+.btn-primary:hover{opacity:.9;transform:scale(1.02);}
+.select-box{padding:10px 14px;border:1px solid #D4C8E0;border-radius:8px;background:#FFFFFF;color:#2d2d3d;font-size:14px;font-weight:600;min-width:160px;outline:none;transition:border .2s;}
+.select-box:focus{border-color:#B8A4D8;box-shadow:0 0 8px rgba(184,164,216,0.3);}
+.filter-sm{padding:3px 4px;font-size:11px;font-weight:600;width:70px;max-width:70px;border:1px solid #D4C8E0;border-radius:4px;background:#FFFFFF;color:#2d2d3d;outline:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
+.filter-sm:focus{border-color:#B8A4D8;box-shadow:0 0 6px rgba(184,164,216,0.3);}
+.filter-sm.wide{width:140px;max-width:140px;}
+.filter-col{width:70px;text-align:center;flex-shrink:0;color:#2d2d3d;}
+.filter-col label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+table thead .filter-sm{width:100%;max-width:none;}
+table thead .filter-sm.wide{width:100%;max-width:none;}
+.col-school{width:auto;white-space:nowrap;}
+.table-row:hover{background:#F0EBF3;}
+.chart-container{background:#FFFFFF;border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(184,164,216,0.2);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#FFFFFF;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:#6a6a7a;transition:all .2s;border:none;}
+.back-btn:hover{background:#E8E0E8;}
+.tag{display:inline-block;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600;letter-spacing:0.3px;}
+.clickable-tag{transition:all .2s ease;}
+.clickable-tag:hover{transform:scale(1.05);box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.tag-blue{background:#dbeafe;color:#1e40af;}
+.tag-green{background:#d1fae5;color:#166534;}
+.tag-orange{background:#ffedd5;color:#9a3412;}
+.tag-purple{background:#ede9fe;color:#6b21a8;}
+.ad-qq-group-desktop{display:flex;}
+.ad-qq-group-mobile{display:none;}
+@media(max-width:768px){
+.ad-qq-group-desktop{display:none !important;}
+.ad-qq-group-mobile{display:flex !important;}
+}
+/* 广告关闭时立即隐藏（避免闪现） */
+html.ad-disabled .ad-qq-group{display:none !important;}
+html.ad-disabled #posterCarousel{display:none !important;}
+html.ad-disabled #detailAds{display:none !important;}
+html.ad-disabled #qqGroupCard{display:none !important;}
+html.ad-disabled [id^="qr-link-"]{display:none !important;}
+html.ad-disabled [id^="qq-"]{display:none !important;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:50;display:none;align-items:center;justify-content:center;}
+.modal-overlay.active{display:flex;}
+.modal-card{background:#FFFFFF;border-radius:12px;padding:24px;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.modal-close{width:32px;height:32px;border-radius:50%;border:none;background:#E8E0E8;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6a6a7a;}
+.modal-close:hover{background:#B8A4D8;}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.modal-list{list-style:none;padding:0;margin:0;}
+.modal-list li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E0E8;font-size:13px;font-weight:600;color:#2d2d3d;}
+.modal-list li:last-child{border-bottom:none;}
+.modal-rank{display:inline-block;width:20px;height:20px;border-radius:50%;background:#B8A4D8;color:#fff;font-size:11px;text-align:center;line-height:20px;margin-right:8px;}
+.modal-rank.top3{background:#FF5252;}
+.hidden{display:none !important;}
+.page{padding:24px;max-width:1400px;margin:0 auto;}
+#homePage{display:block;}
+#detailPage{display:none;}
+.score-high{color:#FF5252;font-weight:700;}
+.score-mid{color:#FFB300;font-weight:700;}
+.score-low{color:#43A047;font-weight:700;}
+.tier-985{background:#e74c3c;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap;}
+.tier-211{background:#8b5cf6;color:#fff;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap;}
+.tier-syl{background:#0ea5e9;color:#fff;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;}
+.tier-sf{background:#e5e7eb;color:#6b7280;font-weight:600;padding:2px 8px;border-radius:4px;white-space:nowrap;}
+.school-name-985{color:#e74c3c;font-weight:700;}
+.school-name-211{color:#8b5cf6;font-weight:700;}
+.school-name-syl{color:#0ea5e9;font-weight:600;}
+.school-name-sf{color:#6b7280;font-weight:600;}
+.school-table,.school-table th,.school-table td{box-sizing:border-box !important;}
+.school-table{table-layout:fixed !important;border-collapse:collapse;}
+.puppy-thumb{transition:transform .3s ease;cursor:pointer;border-radius:8px;}
+.puppy-thumb:hover{transform:scale(2);z-index:20;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+.social-btn:hover{transform:scale(1.15);box-shadow:0 2px 8px rgba(0,0,0,0.25);}
+#schoolPagination .page-btn{padding:6px 12px;background:#fff;border:1px solid #ddd;border-radius:8px;cursor:pointer;font-size:13px;color:#555;transition:all .2s;}
+#schoolPagination .page-btn:hover{background:#f5f0f7;border-color:#B8A4D8;color:#9A8AC8;}
+#schoolPagination .page-btn.active{background:#B8A4D8;color:#fff;border-color:#B8A4D8;}
+#schoolPagination .page-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.nav-pill{display:inline-block;padding:5px 14px;border-radius:20px;color:#F0FFFA;font-size:12px;font-weight:600;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);border:none;cursor:pointer;text-shadow:2px 2px 0 #0B3D2E,-2px 2px 0 #0B3D2E,2px -2px 0 #0B3D2E,-2px -2px 0 #0B3D2E,0 2px 0 #0B3D2E,0 -2px 0 #0B3D2E,2px 0 0 #0B3D2E,-2px 0 0 #0B3D2E;letter-spacing:0.5px;}.nav-pill-lg{display:inline-block;padding:11px 24px;border-radius:55px;color:#F0FFFA;font-size:21px;font-weight:700;text-decoration:none;transition:all .2s ease;white-space:nowrap;box-shadow:0 4px 0 rgba(0,0,0,0.15),0 6px 12px rgba(0,0,0,0.15),inset 0 2px 4px rgba(255,255,255,0.4);border:none;cursor:pointer;text-shadow:2px 2px 0 #0B3D2E,-2px 2px 0 #0B3D2E,2px -2px 0 #0B3D2E,-2px -2px 0 #0B3D2E,0 2px 0 #0B3D2E,0 -2px 0 #0B3D2E,2px 0 0 #0B3D2E,-2px 0 0 #0B3D2E;letter-spacing:0.5px;position:relative;overflow:hidden;}.nav-pill-lg:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 6px 0 rgba(0,0,0,0.15),0 8px 20px rgba(0,0,0,0.2),inset 0 2px 4px rgba(255,255,255,0.4);}.nav-pill-lg:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,0.15),inset 0 2px 4px rgba(0,0,0,0.1);}.nav-pill-lg::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.35),rgba(255,255,255,0.05));border-radius:50px 50px 0 0;pointer-events:none;}
+.nav-pill:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,0.25);}
+.nav-pill-lg:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,0.25);}
+.nav-icon-btn{display:inline-flex;align-items:center;gap:9px;padding:15px 27px;border-radius:12px;color:#fff;font-size:21px;font-weight:700;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,0.15);border:none;cursor:pointer;}
+.nav-icon-btn:hover{transform:scale(1.25);z-index:10;position:relative;box-shadow:0 8px 24px rgba(0,0,0,0.3);filter:brightness(1.1);}
+.nav-icon-btn svg{transition:transform .25s ease;width:27px;height:27px;}
+.nav-icon-btn:hover svg{transform:scale(1.15);}
+.nav-icon-label{white-space:nowrap;}
+/* blingbling text glow effects */
+h1,h2,h3{font-weight:700;color:#2d2d3d;text-shadow:0 0 8px rgba(184,164,216,0.2);}
+.page h1{font-weight:900;text-shadow:0 0 12px rgba(184,164,216,0.3);}
+.pk-title{font-weight:700;text-shadow:0 0 8px rgba(184,164,216,0.2);}
+.number-glow{font-weight:700;color:#2d2d3d;text-shadow:0 0 8px rgba(184,164,216,0.3);}
+#techBg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.page{position:relative;z-index:1;}
+.card{position:relative;z-index:1;}
+.chart-container{position:relative;z-index:1;}
+.heart-burst{position:fixed;pointer-events:none;z-index:9999;font-size:28px;animation:heartBurst .8s ease-out forwards;}
+@keyframes heartBurst{0%{transform:scale(0) rotate(0deg);opacity:1;}50%{transform:scale(1.5) rotate(10deg);opacity:.9;}100%{transform:scale(2.2) rotate(-10deg) translateY(-40px);opacity:0;}}
+.heart-glow{position:fixed;pointer-events:none;z-index:9998;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,150,0.4) 0%,transparent 70%);animation:glowExpand .6s ease-out forwards;}
+@keyframes glowExpand{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
+.live-text{position:fixed;pointer-events:none;z-index:10000;font-size:16px;font-weight:700;color:#F48FB1;text-shadow:0 0 8px rgba(236,72,153,0.5);animation:textPop 1s ease-out forwards;white-space:nowrap;}
+@keyframes textPop{0%{transform:scale(0.5) translateY(0);opacity:0;}20%{transform:scale(1.2) translateY(-10px);opacity:1;}60%{transform:scale(1) translateY(-30px);opacity:1;}100%{transform:scale(0.8) translateY(-60px);opacity:0;}}
+.school-link { color: #9A8AC8; cursor: pointer; text-decoration: underline; font-weight: 600; }
+.school-link:hover { color: #B8A4D8; }
+.table-scroll-hint{position:relative;}
+.table-scroll-hint::after{content:'';position:absolute;top:0;right:0;bottom:0;width:30px;background:linear-gradient(to right,transparent,rgba(0,0,0,0.05));pointer-events:none;opacity:0;transition:opacity .3s;}
+.table-scroll-hint.can-scroll::after{opacity:1;}
+@media (min-width: 769px) {
+  .nav-btn-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+  .nav-btn-grid > div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 12px !important;
+    row-gap: 8px !important;
+    min-width: 300px !important;
+    padding: 14px 16px !important;
+  }
+  .nav-btn-grid > div > div:last-child {
+    grid-column: 1 / -1 !important;
+    text-align: center;
+  }
+  /* 单数个按钮时，最后一个按钮跨2列 */
+  .nav-btn-grid .nav-pill-lg {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.12), 0 5px 12px rgba(0,0,0,0.12), inset 0 1px 2px rgba(255,255,255,0.3) !important;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  }
+  .nav-btn-grid .nav-pill-lg:hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: 0 7px 0 rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.15), inset 0 1px 2px rgba(255,255,255,0.4), 0 0 16px rgba(184,164,216,0.2) !important;
+  }
+  .nav-btn-grid .nav-pill-lg:active {
+    transform: translateY(2px) scale(0.98) !important;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.12), inset 0 1px 2px rgba(255,255,255,0.3) !important;
+  }
+}
+
+@media(max-width:768px){
+  .table-scroll-hint::after{opacity:1;}
+}
+
+#detailPage{transition:opacity .25s ease,transform .25s ease;}
+#detailPage.hidden-detail{opacity:0;transform:translateY(20px);pointer-events:none;}
+#detailPage.visible-detail{opacity:1;transform:translateY(0);}
+
+.filter-bar{position:sticky;top:0;z-index:25;background:linear-gradient(to bottom,#F5F0F7 0%,#F5F0F7 95%,transparent 100%);padding:12px 0 8px;margin-bottom:12px;}
+@media(max-width:768px){.filter-bar{position:sticky;top:0;z-index:25;padding:8px 0;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;}}
+.qr-lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out;}
+.qr-lightbox-overlay.active{display:flex;}
+.qr-lightbox-overlay img{width:300px;height:300px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.5);border:4px solid #fff;}
+
+@media(max-width:768px){
+  #detailPage .container{padding:0 !important;}
+  #detailPage .card{border-radius:0 !important;margin:0 !important;}
+  #detailPage .modal-card{max-width:100vw !important;border-radius:0 !important;margin:0 !important;height:100vh;}
+}
+@media(max-width:768px){.qr-lightbox-overlay img{width:260px;height:260px;}}
+@media (max-width:768px){
+.page{padding:12px;max-width:100vw;}
+
+/* 全局缩放重置 - 手机端不使用 zoom */
+body{zoom:1 !important;}
+
+/* 标题区域 */
+header h1{font-size:1.8rem !important;letter-spacing:0 !important;line-height:1.2;}
+header p{font-size:.85rem !important;}
+
+/* Header 整体改为垂直堆叠 */
+#homePage header>div[style*="display:flex"]:nth-child(2){flex-direction:column !important;align-items:stretch !important;gap:12px !important;}
+
+/* 左侧头像区域：水平居中排列 */
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child{justify-content:center !important;gap:8px !important;flex-wrap:wrap !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child img{width:48px !important;height:48px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child img[src*="fans"]{width:50px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .social-btn{width:36px !important;height:36px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .social-btn img{width:24px !important;height:24px !important;}
+
+/* 中间导航按钮：三个竖列框，框内两列 */
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2){width:100% !important;order:0 !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>div{display:flex !important;flex-direction:row !important;flex-wrap:wrap !important;gap:8px !important;width:100% !important;justify-content:center !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>div>div{display:grid !important;grid-template-columns:1fr 1fr !important;column-gap:8px !important;row-gap:6px !important;min-width:220px !important;flex:1 1 calc(33.33% - 8px) !important;padding:10px 10px !important;border-width:1.5px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>div>div>a,
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>div>div>button{text-align:center !important;justify-content:center !important;width:100% !important;padding:5px 6px !important;font-size:11px !important;white-space:nowrap !important;border-radius:8px !important;box-shadow:0 2px 0 rgba(0,0,0,0.12),0 3px 6px rgba(0,0,0,0.12),inset 0 1px 2px rgba(255,255,255,0.3) !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>div>div>div{font-size:11px !important;margin-top:2px !important;grid-column:1 / -1 !important;text-align:center !important;}
+
+/* 右侧倒计时+水木logo：手机端上下堆叠 */
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child{flex-direction:column !important;justify-content:center !important;gap:6px !important;align-items:center !important;width:100% !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child .card{width:100% !important;max-width:unset !important;padding:6px 10px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard{flex-direction:row !important;display:flex !important;justify-content:center;gap:12px;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard>div:first-child{font-size:13px !important;letter-spacing:0 !important;margin-bottom:2px !important;white-space:nowrap !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard>div{flex-direction:row !important;gap:12px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard span{font-size:11px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownDays27,
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownDays28{font-size:16px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #cetCountdownCard>div:first-child{font-size:12px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCET{font-size:14px !important;}
+
+
+/* 热度榜：每行2个 */
+.heat-rank-wrap{gap:6px !important;}
+.heat-rank-btn{flex:0 0 calc(50% - 3px) !important;padding:8px 8px 8px 40px !important;}
+.heat-rank-name{font-size:12px !important;max-width:none !important;}
+.heat-rank-img{width:26px !important;height:26px !important;}
+.heat-rank-badge{width:20px !important;height:20px !important;font-size:11px !important;top:-4px !important;left:-4px !important;}
+
+/* 筛选区 + 广告条：垂直堆叠 */
+#homePage>div[style*="display:flex"][style*="gap:16px"]:nth-of-type(2){flex-direction:column !important;}
+#homePage>div[style*="display:flex"][style*="gap:16px"]:nth-of-type(2) .ad-course-link{width:100% !important;}
+#homePage>div[style*="display:flex"][style*="gap:16px"]:nth-of-type(2) .ad-course-link>div{min-width:unset !important;padding:10px !important;}
+
+/* 筛选器：更紧凑 */
+#homePage .card.p-4 .flex-wrap.gap-2.items-end{gap:4px !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div{width:calc(33.33% - 3px) !important;min-width:0 !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div select{width:100% !important;min-width:0 !important;padding:6px 8px !important;font-size:11px !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div label{font-size:10px !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div[style*="display:flex"]{width:calc(50% - 2px) !important;align-items:center !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>button{width:calc(50% - 2px) !important;padding:6px 10px !important;font-size:12px !important;}
+
+/* 主内容区：右侧图表隐藏 */
+#posterCarousel{display:none !important;}
+#adContainer{display:none !important;}
+#mainContentArea>div:last-child{flex-direction:column !important;}
+#mainContentArea>div:last-child>div:last-child{display:none !important;} /* 隐藏右侧图表栏 */
+#mainContentArea .chart-container{padding:10px !important;}
+#mainContentArea .chart-container h3{font-size:13px !important;}
+#mainContentArea .chart-container div[id^="chart"]{height:220px !important;}
+
+/* 学校列表 */
+#schoolList .flex.items-center.justify-between{flex-direction:column !important;align-items:flex-start !important;gap:6px !important;}
+#schoolList .flex.gap-2.items-center.flex-wrap{gap:4px !important;}
+#schoolList .text-xs.text-gray-500{display:none !important;}
+#schoolList .filter-sm{width:60px !important;font-size:10px !important;}
+#schoolList .select-box[style*="border-radius:20px"]{width:120px !important;min-width:0 !important;padding:5px 8px 5px 28px !important;}
+#schoolList .btn-primary.text-xs,
+#schoolList .back-btn.text-xs{padding:4px 10px !important;font-size:11px !important;}
+
+/* 表格 */
+.school-table th{font-size:9px !important;padding:4px 2px !important;}
+.school-table td{font-size:10px !important;padding:4px 2px !important;}
+.tag{font-size:9px !important;padding:2px 4px !important;}
+.btn-primary,.back-btn{padding:6px 12px !important;font-size:12px !important;}
+
+/* 详情页 */
+#detailPage .card.p-6{padding:12px !important;}
+#detailPage .card.p-6>div[style*="display:flex"]{flex-direction:column !important;gap:12px !important;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:first-child{width:100% !important;min-width:0 !important;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child{flex-direction:row !important;flex-wrap:wrap !important;gap:8px !important;justify-content:center !important;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child>div{width:calc(50% - 4px) !important;max-width:160px !important;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child>div img{width:100% !important;max-width:160px !important;}
+#detailPage .grid.grid-cols-1.lg\:grid-cols-3{grid-template-columns:1fr !important;}
+#detailPage .chart-container{padding:10px !important;}
+#detailPage .chart-container h3{font-size:13px !important;}
+#detailPage .chart-container div[id^="chartDetail"]{height:260px !important;}
+#detailPage .card.p-4{padding:10px !important;}
+#detailPage .card.p-4 .flex.items-center.justify-between{flex-direction:column !important;align-items:flex-start !important;gap:6px !important;}
+#detailPage .card.p-4 .flex.gap-2{gap:4px !important;}
+#detailPage .card.p-4 .btn-primary,
+#detailPage .card.p-4 .back-btn{padding:5px 10px !important;font-size:11px !important;}
+#detailPage .school-table th .block{font-size:9px !important;}
+#detailPage .school-table th .filter-sm{font-size:10px !important;width:100% !important;}
+#detailPage .school-table th input{width:100% !important;min-width:0 !important;}
+#detailPage .school-table td{font-size:9px !important;padding:3px 2px !important;}
+
+/* 对比栏 */
+#compareBar{flex-direction:column !important;gap:6px !important;align-items:flex-start !important;}
+#compareBar>div:first-child{flex-wrap:wrap !important;}
+#compareBar>div:last-child{width:100% !important;display:flex !important;gap:6px !important;}
+#compareBar>div:last-child button{flex:1 !important;}
+
+/* 弹窗 */
+.modal-card{padding:16px !important;max-width:95vw !important;max-height:85vh !important;}
+.modal-header h3{font-size:14px !important;}
+.modal-close{width:28px !important;height:28px !important;font-size:16px !important;}
+.modal-grid{grid-template-columns:1fr !important;gap:8px !important;}
+.modal-list li{font-size:12px !important;padding:4px 0 !important;}
+.qr-lightbox-overlay img{width:240px !important;height:240px !important;}
+#backToTop{width:40px !important;height:40px !important;font-size:16px !important;}
+
+/* 其他 */
+.social-btn{width:42px !important;height:42px !important;}
+.social-btn img{width:27px !important;height:27px !important;}
+.puppy-thumb{width:40px !important;height:40px !important;}
+.puppy-thumb:hover{transform:scale(1.8) !important;}
+.col-school{white-space:normal !important;}
+.fav-star{font-size:18px !important;}
+}
+@media(max-width:768px){
+.page{padding:12px;max-width:100vw;}
+header h1{font-size:2rem !important;letter-spacing:0 !important;line-height:1.2;}
+.col-school{white-space:normal !important;}
+.fav-star{font-size:18px !important;}
+}
+@media(max-width:768px){
+.page{padding:12px;max-width:100vw;}
+header h1{font-size:2rem !important;letter-spacing:0 !important;line-height:1.2;}
+header p{font-size:.85rem !important;}
+header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
+.nav-icon-btn{padding:15px 24px;font-size:18px;gap:9px;}
+.nav-icon-btn svg{width:16px;height:16px;}
+.card{padding:12px;}
+.select-box{min-width:unset;width:100%;padding:8px 10px;font-size:13px;}
+.filter-sm{width:60px;max-width:60px;}
+.school-table{table-layout:fixed !important;border-collapse:collapse;width:100%;}
+.school-table th,.school-table td{box-sizing:border-box !important;padding:4px 2px !important;text-align:center !important;}
+.school-table th,.school-table td{padding:4px 3px !important;text-align:center !important;vertical-align:middle !important;}
+.school-table th:nth-child(1),.school-table td:nth-child(1){width:42px !important;}
+.school-table th:nth-child(2),.school-table td:nth-child(2){width:48px !important;}
+.school-table th:nth-child(3),.school-table td:nth-child(3){width:100px !important;white-space:nowrap !important;text-align:left !important;}
+.school-table th:nth-child(4),.school-table td:nth-child(4){width:95px !important;white-space:nowrap !important;text-align:left !important;}
+.school-table th:nth-child(5),.school-table td:nth-child(5),.school-table th:nth-child(6),.school-table td:nth-child(6),.school-table th:nth-child(7),.school-table td:nth-child(7),.school-table th:nth-child(8),.school-table td:nth-child(8),.school-table th:nth-child(9),.school-table td:nth-child(9),.school-table th:nth-child(10),.school-table td:nth-child(10),.school-table th:nth-child(11),.school-table td:nth-child(11){width:38px !important;}
+.school-table th:nth-child(12),.school-table td:nth-child(12){width:48px !important;}
+.school-table th:nth-child(13),.school-table td:nth-child(13){width:30px !important;}
+.school-table th{font-size:9px !important;}
+.school-table td{font-size:10px !important;}
+.school-table td:nth-child(3),.school-table td:nth-child(4){text-align:left !important;}
+.tag{font-size:9px !important;padding:2px 4px !important;}
+.btn-primary,.back-btn{padding:6px 12px !important;font-size:12px !important;}
+.modal-grid{grid-template-columns:1fr;}
+.social-btn{width:42px !important;height:42px !important;}
+.social-btn img{width:27px !important;height:27px !important;}
+#schoolTable td:nth-child(4) .flex.gap-1{flex-wrap:nowrap;}
+#schoolTable td:nth-child(4) .flex.gap-1 a{font-size:9px !important;padding:1px 3px !important;}
+#schoolTable td:nth-child(4) span{font-size:11px;}
+.puppy-thumb{width:40px !important;height:40px !important;}
+.puppy-thumb:hover{transform:scale(1.8);}
+.col-school{white-space:normal !important;}
+.fav-star{font-size:18px !important;}
+#compareBar{padding:8px 12px !important;}
+#compareBar button{padding:6px 12px !important;font-size:12px !important;}
+.compare-table th,.compare-table td{padding:6px 8px !important;font-size:11px !important;}
+.nav-pill-lg{padding:4px 8px;font-size:11px;border-radius:50px;box-shadow:0 2px 0 rgba(0,0,0,0.1),0 3px 6px rgba(0,0,0,0.1),inset 0 1px 2px rgba(255,255,255,0.3);text-shadow:1px 1px 0 #0B3D2E,-1px 1px 0 #0B3D2E,1px -1px 0 #0B3D2E,-1px -1px 0 #0B3D2E,0 1px 0 #0B3D2E,0 -1px 0 #0B3D2E,1px 0 0 #0B3D2E,-1px 0 0 #0B3D2E;letter-spacing:0.3px;}
+.nav-pill-lg:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,0.25);}
+#adToggleBtn{top:8px;right:8px;width:36px;height:36px;font-size:16px;}
+#homePage header .text-center h1{font-size:1.6rem !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2){flex-direction:column;align-items:stretch;gap:8px;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child{justify-content:center;gap:8px;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child img{width:48px !important;height:48px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child img[src*="fans"]{width:50px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .social-btn{width:32px !important;height:32px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .social-btn img{width:22px !important;height:22px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2){order:3;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child{flex-direction:column !important;justify-content:center !important;gap:8px !important;align-items:center !important;width:100% !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child>a{width:100% !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child .card{width:100% !important;max-width:unset !important;padding:6px 8px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard{flex-direction:row !important;display:flex !important;justify-content:center;gap:12px;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard>div:first-child{font-size:14px !important;letter-spacing:0 !important;margin-bottom:2px !important;white-space:nowrap !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard>div{flex-direction:row !important;gap:12px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCard span{font-size:12px !important;}
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownDays27,
+#homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownDays28{font-size:18px !important;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end{gap:4px;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div{width:calc(33.33% - 3px);min-width:0;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div select{width:100%;min-width:0;padding:6px 8px;font-size:11px;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div label{font-size:10px;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>div[style*="display:flex"]{width:calc(50% - 2px);align-items:center;}
+#homePage .card.p-4 .flex-wrap.gap-2.items-end>button{width:calc(50% - 2px);padding:6px 10px;font-size:12px;}
+#posterCarousel{display:none !important;}
+#adContainer{display:none !important;}
+#mainContentArea>div:last-child{grid-template-columns:1fr !important;}
+#mainContentArea .chart-container{padding:10px;}
+#mainContentArea .chart-container h3{font-size:13px;}
+#mainContentArea .chart-container div[id^="chart"]{height:220px !important;}
+#schoolList .flex.items-center.justify-between{flex-direction:column;align-items:flex-start;gap:6px;}
+#schoolList .flex.gap-2.items-center.flex-wrap{gap:4px;}
+#schoolList .text-xs.text-gray-500{display:none;}
+#schoolList .filter-sm{width:60px;font-size:10px;}
+#schoolList .select-box[style*="border-radius:20px"]{width:120px;min-width:0;padding:5px 8px 5px 28px;}
+#schoolList .btn-primary.text-xs,
+#schoolList .back-btn.text-xs{padding:4px 10px;font-size:11px;}
+#detailPage .card.p-6{padding:12px;}
+#detailPage .card.p-6>div[style*="display:flex"]{flex-direction:column;gap:12px;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:first-child{width:100% !important;min-width:0 !important;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child{flex-direction:row !important;flex-wrap:wrap;gap:8px;justify-content:center;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child>div{width:calc(50% - 4px);max-width:160px;}
+#detailPage .card.p-6>div[style*="display:flex"]>div:last-child>div img{width:100% !important;max-width:160px !important;}
+#detailPage .grid.grid-cols-1.lg\\:grid-cols-2{grid-template-columns:1fr !important;}
+#detailPage .chart-container{padding:10px;}
+#detailPage .chart-container h3{font-size:13px;}
+#detailPage .chart-container div[id^="chartDetail"]{height:260px !important;}
+#detailPage .card.p-4{padding:10px;}
+#detailPage .card.p-4 .flex.items-center.justify-between{flex-direction:column;align-items:flex-start;gap:6px;}
+#detailPage .card.p-4 .flex.gap-2{gap:4px;}
+#detailPage .card.p-4 .btn-primary,
+#detailPage .card.p-4 .back-btn{padding:5px 10px;font-size:11px;}
+#detailPage .school-table th .block{font-size:9px;}
+#detailPage .school-table th .filter-sm{font-size:10px;width:100%;}
+#detailPage .school-table th input{width:100%;min-width:0;}
+#detailPage .school-table td{font-size:9px;padding:3px 2px !important;}
+#compareBar{flex-direction:column;gap:6px;align-items:flex-start;}
+#compareBar>div:first-child{flex-wrap:wrap;}
+#compareBar>div:last-child{width:100%;display:flex;gap:6px;}
+#compareBar>div:last-child button{flex:1;}
+.modal-card{padding:16px;max-width:95vw;max-height:85vh;}
+.modal-header h3{font-size:14px;}
+.modal-close{width:28px;height:28px;font-size:16px;}
+.modal-grid{grid-template-columns:1fr;gap:8px;}
+.modal-list li{font-size:12px;padding:4px 0;}
+.qr-lightbox-overlay img{width:240px !important;height:240px !important;}
+#backToTop{width:40px;height:40px;font-size:16px;}
+}
+.modal-box { background: #fff; border-radius: 12px; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
+.modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; cursor: pointer; color: #718096; }
+.modal-close:hover { color: #e53e3e; }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #2d2d3d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #D4C8E0; }
+.modal-section { margin-bottom: 18px; }
+.modal-section h4 { font-size: 0.95rem; color: #9A8AC8; margin-bottom: 8px; font-weight: 600; }
+.modal-section p, .modal-section li { font-size: 0.85rem; line-height: 1.7; color: #4a5568; }
+.modal-section ul { padding-left: 18px; margin: 0; }
+.modal-section table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+.modal-section table td, .modal-section table th { border: 1px solid #D4C8E0; padding: 6px 8px; text-align: left; }
+.modal-section table th { background: #F5F0F7; font-weight: 600; }
+
+.fav-star{font-size:16px;cursor:pointer;transition:transform .2s;line-height:1;}
+.fav-star:hover{transform:scale(1.3);}
+.fav-inactive{color:#bbb;}
+.fav-active{color:#FF6B6B;}
+#compareBar .compare-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:#f5f0f7;border-radius:12px;font-size:12px;color:#555;}
+#compareBar .compare-tag button{background:none;border:none;cursor:pointer;color:#999;font-size:11px;padding:0 2px;}
+#compareBar .compare-tag button:hover{color:#FF6B6B;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;}
+.compare-table th,.compare-table td{padding:10px 12px;border:1px solid #e5e7eb;text-align:center;}
+.compare-table th{background:#f8f9fa;font-weight:700;color:#555;position:sticky;top:0;}
+.compare-table td:first-child{font-weight:700;background:#fafafa;text-align:left;}
+.compare-table tr:hover td{background:#f5f5f5;}
+.compare-table .school-name{font-weight:700;color:#333;}
+.compare-remove-btn{background:none;border:none;cursor:pointer;color:#999;font-size:12px;margin-left:4px;}
+#adToggleBtn{position:fixed;top:20px;right:20px;z-index:46;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-size:20px;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .3s;}
+#adToggleBtn:hover{transform:scale(1.1);}
+#adToggleBtn.ad-on{background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;}
+#adToggleBtn.ad-off{background:linear-gradient(135deg,#999 0%,#bbb 100%);color:#fff;}
+@media(max-width:768px){#adToggleBtn{width:40px;height:40px;font-size:16px;top:12px;right:12px;}}
+.compare-remove-btn:hover{color:#FF6B6B;}
+
+/* 热度榜按钮样式 - 两排，每排5个，校徽在左 */
+.heat-rank-wrap{display:flex;flex-wrap:wrap;gap:8px;padding:4px 2px;}
+.heat-rank-btn{position:relative;flex:0 0 calc(20% - 7px);padding:8px 10px 8px 48px;border-radius:10px;border:2px solid #e0e0e0;background:#fff;cursor:pointer;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,0.05);display:flex;align-items:center;gap:8px;min-width:0;}
+.heat-rank-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.15);border-color:#B8A4D8;}
+.heat-rank-badge{position:absolute;top:-6px;left:-6px;width:24px;height:24px;border-radius:50%;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.2);z-index:2;}
+.heat-rank-badge.gold{background:linear-gradient(135deg, #FFD700, #FFA000);}
+.heat-rank-badge.silver{background:linear-gradient(135deg, #C0C0C0, #808080);}
+.heat-rank-badge.bronze{background:linear-gradient(135deg, #CD7F32, #8B4513);}
+.heat-rank-badge.normal{background:linear-gradient(135deg, #B8A4D8, #9A8AC8);}
+.heat-rank-img{width:28px;height:28px;border-radius:6px;object-fit:contain;flex-shrink:0;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+.heat-rank-info{display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:0;}
+.heat-rank-name{font-size:12px;font-weight:700;color:#2d2d3d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px;}
+.heat-rank-meta{display:flex;align-items:center;gap:4px;}
+.heat-rank-heat{font-size:10px;color:#ff7a45;font-weight:600;}
+.heat-rank-tier{font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600;white-space:nowrap;}
+.heat-rank-tier-985{background:#e74c3c;color:#fff;}
+.heat-rank-tier-211{background:#8b5cf6;color:#fff;}
+.heat-rank-tier-双非{background:#e5e7eb;color:#6b7280;}
+.heat-rank-tier-双一流{background:#0ea5e9;color:#fff;}
+.heat-rank-tier-四邮四电{background:#ede9fe;color:#6b21a8;}
+#recentViewBar{position:fixed;bottom:0;left:0;right:0;background:#FFFFFF;border-top:1px solid #D4C8E0;padding:10px 20px;box-shadow:0 -2px 10px rgba(184,164,216,0.15);display:none;align-items:center;gap:10px;z-index:38;flex-wrap:wrap;}
+#recentViewBar .recent-title{font-size:13px;font-weight:700;color:#9A8AC8;white-space:nowrap;}
+#recentViewBar .recent-tags{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+#recentViewBar .recent-tag{display:inline-flex;align-items:center;padding:4px 10px;background:#F5F0F7;border:1px solid #B8A4D8;border-radius:16px;font-size:12px;color:#9A8AC8;cursor:pointer;transition:all .2s;}
+#recentViewBar .recent-tag:hover{background:#B8A4D8;color:#fff;}
+@media(max-width:768px){#recentViewBar{padding:8px 12px;}#recentViewBar .recent-tag{font-size:11px;padding:3px 8px;}}
+.hero-title-wrap{position:relative;}
+.desktop-experience-tip{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;padding:4px 14px;border:2px solid rgba(183,28,28,0.55);border-radius:999px;background:rgba(255,255,255,0.72);color:#B71C1C;font-size:13px;font-weight:800;line-height:1.25;letter-spacing:0.3px;box-shadow:0 4px 12px rgba(183,28,28,0.08),inset 0 1px 0 rgba(255,255,255,0.75);backdrop-filter:blur(6px);white-space:nowrap;}
+@media(min-width:769px){.desktop-experience-tip{position:absolute;right:74px;bottom:-2px;margin-top:0;}}
+
+:root{--bottom-floating-space:0px;}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible{outline:3px solid rgba(183,28,28,0.52);outline-offset:3px;box-shadow:0 0 0 6px rgba(255,200,212,0.45);}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover{box-shadow:0 6px 18px rgba(184,164,216,0.35);}
+  .btn-primary:hover{opacity:.9;transform:scale(1.02);}
+  .nav-pill:hover,
+  .nav-pill-lg:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,0.25);}
+  .nav-icon-btn:hover{transform:scale(1.25);z-index:10;position:relative;box-shadow:0 8px 24px rgba(0,0,0,0.3);filter:brightness(1.1);}
+  .puppy-thumb:hover{transform:scale(2);z-index:20;position:relative;box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card:hover,
+  .btn-primary:hover,
+  .nav-pill:hover,
+  .nav-pill-lg:hover,
+  .nav-icon-btn:hover,
+  .puppy-thumb:hover,
+  .social-btn:hover,
+  .fav-star:hover{transform:none !important;filter:none !important;}
+  .btn-primary:active,
+  .back-btn:active,
+  .nav-pill-lg:active,
+  .clickable-tag:active{transform:scale(0.98) !important;}
+}
+
+@media (min-width:769px) and (max-width:1180px){
+  .page{max-width:100%;padding-left:16px;padding-right:16px;overflow-x:hidden;}
+  #homePage header>div[style*="display:flex"]:nth-child(2){flex-wrap:wrap !important;justify-content:center !important;gap:12px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child{margin-left:0 !important;align-items:center !important;order:0;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2){order:2;width:100% !important;margin-left:0 !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>.nav-btn-grid{width:100% !important;max-width:920px !important;margin:0 auto !important;display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>.nav-btn-grid>div{min-width:0 !important;width:100% !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>.nav-btn-grid>div:last-child{grid-column:1 / -1;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child{order:1;display:grid !important;grid-template-columns:1fr 1fr !important;width:min(360px,100%) !important;margin-left:0 !important;gap:8px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child .card{width:100% !important;}
+  .desktop-experience-tip{position:static !important;margin-top:6px !important;}
+}
+
+@media (max-width:768px) and (orientation:landscape){
+  #homePage header .text-center h1{font-size:clamp(1.25rem,5.8vw,1.8rem) !important;}
+  #homePage header .text-center p{font-size:.78rem !important;}
+  .desktop-experience-tip{font-size:11px !important;padding:3px 9px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child{display:none !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child{display:none !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>.nav-btn-grid{gap:6px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:nth-child(2)>.nav-btn-grid>div{padding:7px !important;}
+}
+
+/* frontend-design · mobile layout polish
+   仅修正手机端布局与横向溢出，不改动任何交互逻辑 */
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overscroll-behavior-x: none;
+  }
+
+  body *,
+  body *::before,
+  body *::after {
+    box-sizing: border-box;
+  }
+
+  #techBg {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  .page,
+  #homePage,
+  #detailPage {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: max(10px, env(safe-area-inset-left)) !important;
+    padding-right: max(10px, env(safe-area-inset-right)) !important;
+    padding-bottom: calc(var(--bottom-floating-space, 0px) + max(10px, env(safe-area-inset-bottom))) !important;
+    overflow-x: hidden !important;
+  }
+
+  #homePage header {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #homePage header .text-center {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  #homePage header .text-center h1 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: clamp(1.72rem, 8.2vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  #homePage header .text-center p {
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    line-height: 1.5 !important;
+  }
+
+  .desktop-experience-tip {
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 4px 10px !important;
+    font-size: 12px !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-items: stretch !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:first-child {
+    width: 100% !important;
+    margin-left: 0 !important;
+    align-items: center !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:first-child > div:first-child {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:first-child > a {
+    width: min(100%, 148px) !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:nth-child(2) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    order: 2 !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:nth-child(2) > .nav-btn-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:nth-child(2) > .nav-btn-grid > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+    column-gap: 8px !important;
+    row-gap: 7px !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:nth-child(2) > .nav-btn-grid .nav-pill-lg {
+    min-width: 0 !important;
+    min-height: 38px !important;
+    padding: 7px 6px !important;
+    font-size: clamp(11px, 3.25vw, 13px) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:last-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    order: 1 !important;
+  }
+
+  #homePage header > div[style*="display:flex"]:nth-child(2) > div:last-child .card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #heatRankSection,
+  #homePage > div[style*="display:flex"][style*="gap:16px"],
+  #mainContentArea,
+  #mainContentArea > div,
+  #mainContentArea > div > .card,
+  #mainContentArea > div > div:first-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #mainContentArea > div {
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  #mainContentArea > div > div:last-child {
+    display: none !important;
+  }
+
+  #mainContentArea .table-scroll-hint,
+  #detailPage .table-scroll-hint {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #mainContentArea .school-table {
+    width: max-content !important;
+    min-width: 620px !important;
+    max-width: none !important;
+  }
+
+  #mainContentArea .card.p-4.mb-6 > .flex.items-center.justify-between {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #mainContentArea .card.p-4.mb-6 > .flex.items-center.justify-between > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #mainContentArea .card.p-4.mb-6 > .flex.items-center.justify-between .flex.items-center.gap-1 {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex-wrap: wrap !important;
+  }
+
+  #schoolSearch {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #homePage > div[style*="display:flex"][style*="gap:16px"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  #favBtn,
+  .ad-course-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: stretch !important;
+  }
+
+  .ad-course-link > .card,
+  .ad-course-link > div,
+  .ad-course-link > div > div {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .heat-rank-btn {
+    min-width: 0 !important;
+  }
+
+  #recentViewBar {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding-left: max(10px, env(safe-area-inset-left)) !important;
+    padding-right: max(10px, env(safe-area-inset-right)) !important;
+  }
+
+  #compareBar,
+  #recentViewBar {
+    padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;
+  }
+
+  #compareBar {
+    bottom: 0 !important;
+  }
+
+  #backToTop {
+    right: max(14px, env(safe-area-inset-right)) !important;
+    bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+  }
+
+  #adToggleBtn {
+    top: max(12px, env(safe-area-inset-top)) !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
+  }
+
+  body.keyboard-open #recentViewBar,
+  body.keyboard-open #compareBar,
+  body.keyboard-open #backToTop {
+    display:none !important;
+  }
+}
+
+@supports (height: 100dvh) {
+  .modal-overlay,
+  .qr-lightbox-overlay,
+  #imgLightbox {
+    min-height:100dvh;
+  }
+  @media(max-width:768px){
+    #detailPage .modal-card{height:100dvh !important;max-height:100dvh !important;}
+    .modal-card{max-height:calc(100dvh - 24px) !important;}
+  }
+}
+</style>
+
+<style>
+/* 备案 Footer 样式 */
+.icp-footer {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: 16px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+  border-top: 1px solid rgba(102, 126, 234, 0.15);
+}
+.icp-footer .footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.icp-footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.icp-footer a:hover {
+  color: #667eea;
+}
+.icp-footer .divider {
+  color: #475569;
+}
+.icp-footer .icp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+.icp-footer .icp-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: #667eea;
+}
+.icp-footer .icp-badge a {
+  color: #667eea;
+  font-weight: 500;
+}
+@media (max-width: 480px) {
+  .icp-footer {
+    padding: 12px;
+    font-size: 12px;
+  }
+  .icp-footer .footer-row {
+    gap: 6px 10px;
+  }
+  .icp-footer .icp-badge {
+    padding: 3px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #homePage .up-media-row {
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  #homePage .up-fans-social-stack {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  #homePage .up-fans-social-stack .social-btn {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+  }
+
+  #homePage .up-fans-social-stack .social-btn img {
+    width: 23px !important;
+    height: 23px !important;
+  }
+}
+
+/* ===== UP主列：大头像 + B站左上角标 + 关于UP主，与导航框对齐 ===== */
+@media (min-width: 1181px) {
+  /* 与"本科提升与考研科普"框等高（180px）：头像顶=框顶、关于UP主底=框底 */
+  #homePage .up-profile-panel{height:180px;justify-content:space-between;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-avatar-wrap img{width:110px !important;height:110px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge{width:30px !important;height:30px !important;flex:0 0 30px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
+}
+
+@media (max-width: 768px) {
+  /* 手机端：头像缩小、角标保持比例、居中 */
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child{align-items:center !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-avatar-wrap{width:64px !important;height:64px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-avatar-wrap img{width:64px !important;height:64px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge{width:30px !important;height:30px !important;flex:0 0 30px !important;}
+  #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- 导航历史记录 -->
+<script>
+(function(){
+  const key = 'navHistory';
+  let history = [];
+  try {
+    const saved = sessionStorage.getItem(key);
+    if(saved) history = JSON.parse(saved);
+  }catch(e){}
+  const current = location.href;
+  if(history.length === 0 || history[history.length-1] !== current){
+    history.push(current);
+    sessionStorage.setItem(key, JSON.stringify(history));
+  }
+  window.goBack = function(){
+    if(history.length <= 1) return;
+    history.pop();
+    const prev = history[history.length-1];
+    if(prev){ sessionStorage.setItem(key, JSON.stringify(history)); location.href = prev; }
+  };
+  window.hasBack = function(){ return history.length > 1; };
+})();
+</script>
+
+<!-- 动态科技背景 -->
+<canvas id="techBg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+<!-- 首页 -->
+<div id="homePage" class="page">
+  <header class="mb-8">
+    <!-- 第一行：标题 -->
+    <div class="text-center hero-title-wrap" style="margin-bottom:8px;">
+      <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;color:#B71C1C;text-shadow:0 0 20px rgba(183,28,28,0.25);letter-spacing:1px;transition:transform .3s ease;display:inline-block;cursor:pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">27/28控制类考研与就业全链路指南</h1>
+      <p class="text-gray-500" style="font-size:1rem;">基于26考研数据 · 覆盖100+高校 · 500+学院子方向 <span style="color:#9A8AC8;font-weight:600;">designed by @控制考研阿祖</span></p>
+      <div class="desktop-experience-tip">ps：电脑端食用效果更佳！</div>
+    </div>
+
+    <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
+    <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
+      <!-- 左侧：头像（B站角标）+ 关于UP主 -->
+      <div class="up-profile-panel" style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;margin-left:20px;align-items:flex-start;">
+        <!-- 头像 + B站 左上角角标 -->
+        <div class="up-avatar-wrap" style="position:relative;width:110px;height:110px;flex-shrink:0;">
+          <img src="专业课选择/images/平台图标/avatar_azhu.jpg" alt="@控制考研阿祖" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #B8A4D8;box-shadow:0 2px 8px rgba(184,164,216,0.4);cursor:pointer;display:block;" title="@控制考研阿祖" onclick="window.open('https://space.bilibili.com/589801594?spm_id_from=333.337.0.0','_blank')">
+          <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="B站主页" class="up-badge" style="position:absolute;top:-4px;left:-4px;width:30px;height:30px;background:#FB7299;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(251,114,153,0.55);overflow:hidden;cursor:pointer;" rel="noopener noreferrer">
+            <img src="专业课选择/images/平台图标/B站.jpg" alt="B站" style="width:20px;height:20px;border-radius:50%;object-fit:cover;display:block;">
+          </a>
+        </div>
+        <!-- 关于UP主 -->
+        <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="关于UP主" style="display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#FFC8D4 0%,#FFB0C0 100%);color:#B71C1C;font-size:12px;font-weight:700;padding:6px 10px;border-radius:8px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(251,114,153,0.25);transition:all .25s ease;width:124px;">
+          <span>关于 UP 主</span>
+          <span style="font-size:11px;opacity:0.9;">→</span>
+        </a>
+      </div>
+      <!-- 中间：导航按钮 -->
+      <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-left:0;">
+        <div class="nav-btn-grid" style="display:flex;flex-direction:row;gap:4px;justify-content:flex-start;align-items:flex-start;width:auto;max-width:none;padding:0;transform:none;">
+          <!-- 本科提升与考研科普（5个）- 最左边 -->
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="考研常识科普/index.html" class="nav-pill-lg" title="28考研科普" style="background:linear-gradient(135deg,#A0C8E0 0%,#C0D8E8 100%);text-align:center;">📚 28考研常识扫盲</a>
+            <a href="复试全攻略/index.html" class="nav-pill-lg" title="考研复试备考" style="background:linear-gradient(135deg,#B0A0D8 0%,#D0C0E8 100%);text-align:center;">🎯 27考研复试</a>
+            <a href="专业科普.html" class="nav-pill-lg" title="专业大科普" style="background:linear-gradient(135deg,#80C0D8 0%,#A0D8E8 100%);text-align:center;">🔍 考研专业大科普</a>
+            <a href="考研常识科普/experience.html" class="nav-pill-lg" title="上岸经验贴" style="background:linear-gradient(135deg,#E8A0C0 0%,#F0C0D8 100%);text-align:center;">📝 考研上岸经验贴</a>
+            <a href="本科指南/index.html" class="nav-pill-lg" title="本科自我提升指南" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;grid-column:span 2;">🌱 大学生存与发展指南</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 本科提升与考研科普</div>
+          </div>
+          <!-- 考研择校（5个）- 中间 -->
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="专业课选择/考研专业课院校查询.html" class="nav-pill-lg" title="专业课选择" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;">📝 考研专业课选择</a>
+            <a href="院校PK.html" class="nav-pill-lg" title="院校PK" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;">⭐ 考研院校大PK</a>
+            <a href="通信电子院校生源地图.html" class="nav-pill-lg" title="院校生源" style="background:linear-gradient(135deg,#90B0E0 0%,#B0C8E8 100%);text-align:center;">🎓 考研院校生源</a>
+            <a href="heat_compare.html" class="nav-pill-lg" title="院校热度榜" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;">🔥 考研院校热度榜</a>
+            <a href="改考院校.html" class="nav-pill-lg" title="27改考院校" style="background:linear-gradient(135deg,#E8C880 0%,#F0E0A0 100%);text-align:center;grid-column:span 2;">📋 27改考院校</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 27考研择校指南</div>
+          </div>
+          <!-- 就业提升（5个）- 最右边 -->
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="就业相关/就业去向index.html" class="nav-pill-lg" title="就业大揭秘" style="background:linear-gradient(135deg,#C0A0C8 0%,#D8C0E0 100%);text-align:center;">📞 就业大揭秘</a>
+            <a href="AI课程/ai-course-overview/ai-course-overview.html" class="nav-pill-lg" title="AI提效指南" style="background:linear-gradient(135deg,#A0D8B0 0%,#C0E8D0 100%);text-align:center;">🤖 AI提效指南</a>
+            <a href="就业相关/job-listing/job-listing.html" class="nav-pill-lg" title="26校招信息" style="background:linear-gradient(135deg,#00A1D6 0%,#23ADE5 100%);text-align:center;" onclick="window.location.href=this.href;return false;">📢 26校招信息</a>
+            <a href="就业相关/career-analysis/career-analysis.html" class="nav-pill-lg" title="就业分析报告" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;">📊 就业分析报告</a>
+            <a href="就业相关/career-analysis/role-tech-stack.html" class="nav-pill-lg" title="职业规划全景" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;grid-column:span 2;">🗺️ 职业规划全景</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 就业信息与求职指南</div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧：倒计时 -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-left:4px;">
+        <!-- 考研倒计时 -->
+        <div id="countdownCard" class="card" style="padding:8px 12px;text-align:center;width:150px;">
+          <div style="font-size:13px;font-weight:700;color:#B71C1C;margin-bottom:2px;">⏳ 考研倒计时</div>
+          <div style="display:flex;flex-direction:column;gap:2px;align-items:center;">
+            <div style="display:flex;align-items:center;gap:3px;">
+              <span style="font-size:11px;color:#555;font-weight:600;">⏰ 27考研</span>
+              <span id="countdownDays27" style="font-size:15px;font-weight:700;color:#B71C1C;">--</span>
+              <span style="font-size:11px;color:#555;font-weight:600;">天</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;">
+              <span style="font-size:11px;color:#555;font-weight:600;">📅 28考研</span>
+              <span id="countdownDays28" style="font-size:15px;font-weight:700;color:#764ba2;">--</span>
+              <span style="font-size:11px;color:#555;font-weight:600;">天</span>
+            </div>
+          </div>
+        </div>
+        <!-- 四六级倒计时 -->
+        <div id="cetCountdownCard" class="card" style="padding:8px 12px;text-align:center;width:150px;">
+          <div style="font-size:12px;font-weight:700;color:#1a6a8e;margin-bottom:2px;">📝 四六级倒计时</div>
+          <div style="display:flex;align-items:center;gap:3px;justify-content:center;">
+            <span id="countdownCET" style="font-size:15px;font-weight:700;color:#1a6a8e;">--</span>
+            <span style="font-size:11px;color:#555;font-weight:600;">天</span>
+          </div>
+          <div style="font-size:9px;color:#888;font-weight:500;margin-top:1px;">CET-4/6 · 12月12日</div>
+        </div>
+      </div>
+    </div>
+<script>
+(function(){
+  var target27 = new Date('2026-12-19T00:00:00');
+  var target28 = new Date('2027-12-18T00:00:00');
+  var targetCET = new Date('2026-12-12T09:00:00');
+  var el27 = document.getElementById('countdownDays27');
+  var el28 = document.getElementById('countdownDays28');
+  var elCET = document.getElementById('countdownCET');
+  function update(){
+    var now = new Date();
+    var diff27 = Math.ceil((target27 - now) / (1000*60*60*24));
+    var diff28 = Math.ceil((target28 - now) / (1000*60*60*24));
+    var diffCET = Math.ceil((targetCET - now) / (1000*60*60*24));
+    if(diff27 < 0) diff27 = 0;
+    if(diff28 < 0) diff28 = 0;
+    if(diffCET < 0) diffCET = 0;
+    if(el27) el27.textContent = diff27;
+    if(el28) el28.textContent = diff28;
+    if(elCET) elCET.textContent = diffCET;
+  }
+  update();
+  setInterval(update, 60000);
+})();
+</script>
+  </header>
+
+  <!-- 热度榜 TOP10 -->
+  <div class="card p-4 mb-4" id="heatRankSection">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="font-bold text-gray-700" style="font-size:1.15rem;" id="heatRankTitle">🔥 热度榜 TOP10</h3>
+      <a href="heat_compare.html" id="heatRankLink" class="text-sm" style="color:#9A8AC8;font-weight:600;text-decoration:none;" onmouseover="this.style.color='#B71C1C'" onmouseout="this.style.color='#9A8AC8'">查看完整热度对比 →</a>
+    </div>
+    <div id="heatRankButtons"></div>
+  </div>
+
+  <!-- 筛选区 + 广告条 并排 -->
+  <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6">
+    <!-- 左侧：筛选区 -->
+    <div class="card p-4" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #B8A4D8;">
+      <div class="flex flex-wrap gap-2 items-end">
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">地区</label>
+          <select id="filterRegion" class="select-box" style="min-width:90px;width:90px;padding:8px 10px;font-size:13px;"><option value="">全部地区</option></select>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">院校层级</label>
+          <select id="filterTier" class="select-box" style="min-width:90px;width:90px;padding:8px 10px;font-size:13px;"><option value="">全部</option><option value="985">985</option><option value="211">211</option><option value="双一流">双一流</option><option value="双非">双非</option></select>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">省份/自治区</label>
+          <select id="filterProvince" class="select-box" style="min-width:90px;width:90px;padding:8px 10px;font-size:13px;"><option value="">全部省份</option></select>
+        </div>
+        <div>
+          <label class="block text-sm text-gray-600 mb-1">学校</label>
+          <select id="filterSchool" class="select-box" style="min-width:100px;width:100px;padding:8px 10px;font-size:13px;"><option value="">全部学校</option></select>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input id="filterMath2Eng2" type="checkbox" style="width:16px;height:16px;cursor:pointer;accent-color:#B8A4D8;">
+            <label for="filterMath2Eng2" class="text-sm text-gray-600" style="cursor:pointer;white-space:nowrap;">数二英二专项</label>
+          </div>
+        </div>
+        <div style="display:none;">
+          <select id="filterCollege"><option value="">全部学院</option></select>
+          <select id="filterTag"><option value="">全部标签</option></select>
+          <select id="filterMajor"><option value="">全部专业</option></select>
+          <input id="filter0854" type="checkbox">
+        </div>
+        <button class="btn-primary" style="padding:8px 14px;font-size:13px;" onclick="applyFilter()">应用筛选</button>
+        <button class="back-btn" style="padding:8px 14px;font-size:13px;" onclick="resetFilter()">重置</button>
+      </div>
+    </div>
+
+    <!-- 中间：目标院校按钮 -->
+    <button class="nav-pill-lg" title="目标院校" onclick="toggleFavoriteFilter()" id="favBtn" style="background:linear-gradient(135deg,#E89898 0%,#F0B8B0 100%);border:none;cursor:pointer;flex-shrink:0;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:12px 16px;font-size:16px;border-radius:16px;white-space:nowrap;">⭐目标院校</button>
+
+      <!-- 右侧：资料与课程广告 -->
+      <a href="专业课选择/资料和课程.html" style="text-decoration:none;display:block;flex-shrink:0;" class="ad-course-link">
+        <div class="card" style="padding:0;background:linear-gradient(135deg,#F8A862 0%,#FFB347 100%);border:none;transition:transform .2s,box-shadow .2s;cursor:pointer;height:100%;display:flex;align-items:center;justify-content:center;"
+             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(248,168,98,0.35)'"
+             onmouseout="this.style.transform='';this.style.boxShadow='none'">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 16px;text-align:center;min-width:170px;height:100%;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="font-size:18px;">📚</span>
+              <span style="font-size:24px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.18);letter-spacing:0.5px;">资料与课程</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px;align-items:center;">
+              <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">自动控制原理</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">现代控制理论</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">信号与系统</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电路原理</span>
+              </div>
+              <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">机器人学</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">计算机控制</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">检测技术</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电力电子</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  <!-- 考研交流群（移动端显示） -->
+  <div class="card p-4 mb-4 ad-qq-group ad-qq-group-mobile" style="gap:12px;justify-content:center;flex-wrap:wrap;">
+    <div style="flex:1;min-width:140px;max-width:260px;padding:10px;background:#fff;border:1px solid #E8E0E8;border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
+      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 27考研交流群</div>
+      <img src="专业课选择/images/27考研群/27.png" alt="27考研交流群" style="width:100%;max-width:200px;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/27.png')">
+    </div>
+    <div style="flex:1;min-width:140px;max-width:260px;padding:10px;background:#fff;border:1px solid #E8E0E8;border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
+      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 28考研交流群</div>
+      <img src="专业课选择/images/27考研群/28.png" alt="28考研交流群" style="width:100%;max-width:200px;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/28.png')">
+    </div>
+  </div>
+
+  <!-- 学校列表 + 海报轮播 + 广告 -->
+  <div style="display:flex;flex-direction:column;gap:16px;" id="mainContentArea">
+    <!-- 第一行：学校列表 + 右侧栏并排 -->
+    <div style="display:flex;gap:16px;align-items:flex-start;">
+      <!-- 学校列表 -->
+      <div class="card p-4 mb-6" style="flex:1;min-width:0;">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+          <h3 class="font-bold text-gray-700">学校列表 <span class="text-sm font-normal text-gray-500" id="schoolCount"></span></h3>
+          <div class="flex gap-2 items-center flex-wrap">
+            <div class="flex items-center gap-1 flex-shrink-0">
+              <label class="text-xs text-gray-500 whitespace-nowrap">📊 相关院校层级择校推荐（勾选你所在的院校层级）:</label>
+              <select id="sFilterRecommend" class="filter-sm" style="width:70px;padding:3px 4px;font-size:11px;"><option value="">全部</option><option value="民办院校">民办</option><option value="二本院校">二本</option><option value="一本院校">一本</option><option value="211院校">211</option><option value="985院校">985</option></select>
+            </div>
+            <div id="recommendCriteria" style="font-size:12px;color:#6a6a7a;white-space:nowrap;"></div>
+            <div style="position:relative;display:inline-block;">
+              <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#999;pointer-events:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input id="schoolSearch" type="text" placeholder="搜索院校名称..." class="select-box" style="min-width:160px;width:180px;font-size:13px;padding:6px 10px 6px 32px;border-radius:20px;border:2px solid #B8A4D8;" oninput="debounceSchoolSearch()">
+              <button onclick="clearSchoolSearch()" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#999;font-size:14px;padding:2px 4px;display:none;" id="searchClear">✕</button>
+            </div>
+            <button class="btn-primary text-xs px-3 py-1.5" onclick="applySchoolFilter()">应用筛选</button>
+            <button class="back-btn text-xs px-3 py-1.5" onclick="resetSchoolFilter()">重置</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto table-scroll-hint">
+          <table class="w-full text-sm school-table" style="white-space:nowrap;">
+            <colgroup>
+              <col style="width:54px">
+              <col style="width:85px">
+              <col style="width:170px">
+              <col style="width:105px">
+              <col style="width:112px">
+              <col style="width:160px">
+              <col style="width:42px">
+              <col style="width:42px">
+              <col style="width:42px">
+              <col style="width:42px">
+              <col style="width:42px">
+              <col style="width:48px">
+            </colgroup>
+            <thead>
+              <tr class="border-b">
+                <th class="pb-2 pr-2 align-bottom">层级</th>
+                <th class="pb-2 pr-2 align-bottom">省份</th>
+                <th class="pb-2 pr-2 align-bottom">学校</th>
+                <th id="thSchoolInfo" class="pb-2 pr-2 align-bottom" style="text-align:center;">院校信息</th>
+                <th class="pb-2 pr-2 align-bottom">学院</th>
+                <th class="pb-2 pr-2 align-bottom">专业方向</th>
+                <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">进复试</th>
+                <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">拟录取</th>
+                <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">复录比</th>
+                <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">录取均分</th>
+                <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">专业课均分</th>
+                <th class="pb-2 align-bottom" style="padding-right:4px;">⭐</th>
+              </tr>
+            </thead>
+            <tbody id="schoolTable"></tbody>
+          </table>
+          <div id="schoolPagination" class="flex justify-center items-center gap-2 mt-4 flex-wrap" style="display:none;"></div>
+          <!-- 备案信息 -->
+          <div style="margin-top:16px;padding:12px;background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border-radius:12px;color:#94a3b8;font-size:12px;text-align:center;line-height:1.6;">
+            <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 12px;">
+              <a href="https://www.txkyer.cn" target="_blank" style="color:#cbd5e1;text-decoration:none;">控制类考研择校数据</a>
+              <span style="color:#475569;">|</span>
+              <span>© 2026</span>
+              <span style="color:#475569;">|</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;background:rgba(102,126,234,0.1);padding:3px 10px;border-radius:20px;border:1px solid rgba(102,126,234,0.2);color:#667eea;font-weight:500;">
+                <svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:#667eea;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#667eea;text-decoration:none;font-weight:500;">蜀ICP备2026038183号</a>
+              </span>
+              <span style="color:#475569;">|</span>
+              <span>designed by <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" style="color:#cbd5e1;text-decoration:none;">@控制考研阿祖</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧栏：图表 -->
+      <div style="width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px;">
+        <!-- 考研交流群（电脑端显示） -->
+        <div class="ad-qq-group ad-qq-group-desktop" style="display:flex;gap:10px;">
+          <div class="card" style="flex:1;padding:10px;background:#fff;border:1px solid #E8E0E8;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
+            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 27考研交流群</div>
+            <img src="专业课选择/images/27考研群/27.png" alt="27考研交流群" style="width:100%;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/27.png')">
+          </div>
+          <div class="card" style="flex:1;padding:10px;background:#fff;border:1px solid #E8E0E8;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
+            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 28考研交流群</div>
+            <img src="专业课选择/images/27考研群/28.png" alt="28考研交流群" style="width:100%;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/28.png')">
+          </div>
+        </div>
+        <!-- 院校海报轮播 -->
+        <div class="chart-container" id="posterCarousel" style="padding:10px;display:none;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">院校海报</h3>
+          <a id="posterLink" href="" style="display:block;text-align:center;">
+            <img id="posterImg" src="" alt="" style="width:100%;border-radius:8px;cursor:pointer;">
+          </a>
+          <div id="posterTitle" style="font-size:12px;font-weight:600;color:#374151;text-align:center;margin-top:4px;"></div>
+          <div id="posterDots" style="display:flex;justify-content:center;gap:4px;margin-top:6px;"></div>
+        </div>
+        <div class="chart-container" style="padding:10px;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">各省份招生人数分布</h3>
+          <div id="chartProvinceSide" style="height:160px;"></div>
+        </div>
+        <div class="chart-container" style="padding:10px;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">热门专业招生人数</h3>
+          <div id="chartMajorSide" style="height:160px;"></div>
+        </div>
+        <div class="chart-container" style="padding:10px;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">录取平均分分数段</h3>
+          <div id="chartScoreSide" style="height:160px;"></div>
+        </div>
+        <div class="chart-container" style="padding:10px;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">复录比分布</h3>
+          <div id="chartRatioSide" style="height:160px;"></div>
+        </div>
+        <div class="chart-container" style="padding:10px;">
+          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">热门业务课二 TOP15</h3>
+          <div id="chartCourseSide" style="height:160px;"></div>
+        </div>
+        <!-- 数学/英语科目分布并排 -->
+        <div style="display:flex;gap:12px;">
+          <div class="chart-container" style="flex:1;padding:10px;">
+            <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">数学科目分布</h3>
+            <div id="chartMathSide" style="height:160px;"></div>
+          </div>
+          <div class="chart-container" style="flex:1;padding:10px;">
+            <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">英语科目分布</h3>
+            <div id="chartEnglishSide" style="height:160px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 二级页 -->
+<div id="detailPage" class="page">
+  <div class="flex gap-2 mb-4">
+    <button class="back-btn" onclick="goBackFromDetail()" id="detailBackBtn" style="display:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回上一级
+    </button>
+    <button class="back-btn" onclick="goHome()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回首页
+    </button>
+  </div>
+
+  <div id="detailHeader" class="mb-6"></div>
+
+  <div id="detailCharts" class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+    <div class="chart-container">
+      <h3 id="hDetailMajor" class="font-bold text-gray-700 mb-3">各专业复试/录取平均分对比</h3>
+      <div id="chartDetailMajor" style="height:360px;"></div>
+    </div>
+    <div class="chart-container">
+      <h3 id="hDetailPie" class="font-bold text-gray-700 mb-3">各专业招生人数占比</h3>
+      <div id="chartDetailPie" style="height:360px;"></div>
+    </div>
+    <div id="detailAds" class="card p-4" style="display:none;"></div>
+    <div class="chart-container">
+      <h3 id="hDetailCollege" class="font-bold text-gray-700 mb-3">各学院招生情况</h3>
+      <div id="chartDetailCollege" style="height:360px;"></div>
+    </div>
+    <div class="chart-container">
+      <h3 id="hDetailCourse" class="font-bold text-gray-700 mb-3">专业课分数分布</h3>
+      <div id="chartDetailCourse" style="height:360px;"></div>
+    </div>
+    <div id="qqGroupCard" class="card p-4" style="display:none;">
+      <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:8px;">📱 院校QQ群</h3>
+      <div id="qqGroupContent" style="text-align:center;"></div>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="font-bold text-gray-700">详细数据 <span class="text-sm font-normal text-gray-500" id="detailCount"></span></h3>
+      <div class="flex gap-2">
+        <button class="btn-primary text-xs px-3 py-1.5" onclick="applyDetailFilter()">应用筛选</button>
+        <button class="back-btn text-xs px-3 py-1.5" onclick="resetDetailFilter()">重置</button>
+      </div>
+    </div>
+    <div class="overflow-x-auto table-scroll-hint">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">学院</label>
+              <select id="dFilterCollege" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">专业代码</label>
+              <select id="dFilterMajorCode" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">专业名称</label>
+              <select id="dFilterMajorName" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">进复试≥</label>
+              <input id="dFilterEnterMin" type="number" class="filter-sm" placeholder="0">
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">拟录取≥</label>
+              <input id="dFilterAdmitMin" type="number" class="filter-sm" placeholder="0">
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">复录比≤</label>
+              <input id="dFilterRatioMax" type="number" class="filter-sm" placeholder="不限" step="0.1">
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">复试均分</label>
+              <select id="dFilterEnterAvg" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">录取均分</label>
+              <select id="dFilterAdmitAvg" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">专业课均分</label>
+              <select id="dFilterCourseAvg" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">数学</label>
+              <select id="dFilterMath" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 pr-3 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">外语</label>
+              <select id="dFilterEnglish" class="filter-sm"><option value="">全部</option></select>
+            </th>
+            <th class="pb-2 align-bottom">
+              <label class="block text-xs text-gray-500 mb-0.5">业务课二</label>
+              <select id="dFilterCourse2" class="filter-sm"><option value="">全部</option></select>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="detailTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="detailDistributions" class="card p-4 mb-6" style="display:none;">
+    <h3 style="font-size:16px;font-weight:700;color:#5a4a7e;margin:0 0 12px;">📊 各方向分数分布</h3>
+    <div id="detailDistributionsContent"></div>
+  </div>
+
+</div>
+
+<!-- 业务课二详情弹窗 -->
+<div id="courseModal" class="modal-overlay" onclick="closeCourseModal(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="font-bold text-gray-800" id="courseModalTitle">大类详情</h3>
+      <button class="modal-close" onclick="closeCourseModal()">&times;</button>
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-700 mb-2 text-sm">涉及院校及专业课</h4>
+      <ul class="modal-list" id="courseModalSchools"></ul>
+    </div>
+  </div>
+</div>
+
+    <script src="index.js" defer></script>
+    <script src="toy-coin-gate.js" defer></script>
+
+<!-- 未选方向提示弹窗 -->
+<div id="directionPromptModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-card" style="max-width:420px;text-align:center;" onclick="event.stopPropagation()">
+    <div style="font-size:56px;line-height:1;margin-bottom:12px;">🎓</div>
+    <div class="modal-header" style="justify-content:center;border-bottom:none;margin-bottom:8px;">
+      <h3 style="font-size:1.15rem;font-weight:700;color:#5a4a7e;line-height:1.7;">准研究生，你还没选择方向呢<br>选择方向后即可查看该方向下的所有信息</h3>
+    </div>
+    <button onclick="closeDirectionPrompt()" style="display:inline-block;margin:0 auto;padding:10px 36px;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;border:none;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(154,138,200,0.35);">好的，去选方向</button>
+  </div>
+</div>
+<!-- 最近浏览栏 -->
+<div id="recentViewBar">
+  <span class="recent-title">📋 最近浏览</span>
+  <div id="recentViewTags" class="recent-tags"></div>
+</div>
+
+<!-- 对比浮条 -->
+<div id="compareBar" style="position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #B8A4D8;padding:12px 20px;box-shadow:0 -4px 16px rgba(0,0,0,0.15);display:none;align-items:center;justify-content:space-between;z-index:40;gap:12px;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+    <span style="font-weight:700;color:#333;font-size:14px;">已选 <span id="compareCount" style="color:#B8A4D8;font-size:16px;">0</span> 所院校</span>
+    <div id="compareTags" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button onclick="clearCompare()" style="padding:8px 16px;background:#f0f0f0;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:#555;">清空</button>
+    <button onclick="openCompareModal()" style="padding:8px 20px;background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;">开始对比</button>
+  </div>
+</div>
+
+<!-- 对比Modal -->
+<div id="compareModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-card" style="max-width:900px;" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 style="font-size:1.2rem;font-weight:700;">📊 院校对比分析</h3>
+      <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('active')">✕</button>
+    </div>
+    <div id="compareContent" style="overflow-x:auto;"></div>
+  </div>
+</div>
+<!-- 返回顶部按钮 -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:88px;right:20px;z-index:45;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.2);display:none;align-items:center;justify-content:center;transition:transform .2s,opacity .3s;" title="返回顶部">↑</button>
+<script>(function(){var btn=document.getElementById('backToTop');window.addEventListener('scroll',function(){if(window.scrollY>300){btn.style.display='flex';btn.style.opacity='1';}else{btn.style.opacity='0';setTimeout(function(){btn.style.display='none';},300);}});})();</script>
+
+<!-- 广告开关按钮 -->
+<button id="adToggleBtn" class="ad-on" onclick="toggleQrAd()" title="点击关闭/显示考研群二维码">📢</button>
+
+
+<!-- 图片放大弹窗 -->
+<div id="imgLightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;align-items:center;justify-content:center;cursor:zoom-out;" onclick="closeImageLightbox()">
+  <img id="imgLightboxImg" src="" style="width:65vw;max-width:65vw;height:65vh;max-height:65vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5);cursor:default;" onclick="event.stopPropagation()">
+  <div style="position:absolute;top:20px;right:30px;color:#fff;font-size:36px;cursor:pointer;font-weight:300;" onclick="closeImageLightbox()">&times;</div>
+</div>
+
+</body>
+</html>

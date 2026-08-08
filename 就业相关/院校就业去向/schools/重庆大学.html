@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆大学 - 控制类考研就业去向</title>
+        <style>
+        :root {
+            --primary-color: #C5CAE9;
+            --secondary-color: #9FA8DA;
+            --accent-color: #D1C4E9;
+            --bg-light: #F8FAFC;
+            --border-color: #e0e0e0;
+        }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, #C5CAE9 0%, #D1C4E9 100%);
+            color: #1a1a2e;
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 4px solid #D1C4E9;
+        }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 28px;
+            border: 1px solid #e8e8e8;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .info-card h3 {
+            color: #1a1a2e;
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #C5CAE9 0%, #D1C4E9 100%);
+            color: #1a1a2e;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .company-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-4e4y { background: #C5CAE9; color: #1a1a2e; }
+        .tip-box {
+            background: #FCE4EC;
+            border: 1px solid #D1C4E9;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 0.95em;
+        }
+        .tip-box strong { color: #1a1a2e; }
+        .offer-list { margin-top: 16px; }
+        .offer-item {
+            background: white;
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
+        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
+        .offer-highlight { color: #d63031; font-weight: 600; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .year-section {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .year-section h4 {
+            color: #1a1a2e;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } }
+    
+        .chart-container { background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 16px; margin-bottom: 20px; }
+    </style>
+    <script src="../../../vendor/echarts.min.js"></script>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>重庆大学 <span class="badge badge-4e4y">985强校</span></h1>
+        <p>985强校 / 通信电子强校 / 通信学院硕士生2019-2025届就业去向</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+<div class="info-card full-width">
+<h3>📊 就业数据洞察（2026/6/21更新）</h3>
+<p style="margin-bottom:16px;color:#555;">以下数据已可视化展示，交互图表可查看详细数据。</p>
+<div class='chart-container' id='yearly-chart' style='width:100%;height:450px;margin-bottom:20px;'></div><div class='chart-container' id='size-chart' style='width:100%;height:300px;margin-bottom:20px;'></div>
+    <script>
+    (function() {
+        var chart1 = echarts.init(document.getElementById('yearly-chart'));
+        var option1 = {
+            title: { text: 'TOP用人单位历年招聘人数', left: 'center' },
+            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            legend: { data: ['成都华为技术有限公司', '中电科技集团重庆声光电有限公司', '中电科芯片技术（集团）有限公司（沙坪坝）', '招银网络科技（深圳）有限公司（成都分公司）', '中国星网网络应用有限公司', '紫光展锐（重庆）科技有限公司', '重庆长安汽车股份有限公司', '中国电子科技集团公司（10所）', '上海浦东发展银行股份有限公司（成都分行）', '重庆星网网络系统研究院有限公司', '选调及机关部门（中共重庆市委组织部）', '华为技术有限公司'], top: 30, type: 'scroll' },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: 80, containLabel: true },
+            xAxis: { type: 'category', data: ['2019届（95人）', '2020届（117人）', '2021届（130人）', '2022届（134人）', '2023届（114人）', '2024届（144人）', '2025届（145人）'] },
+            yAxis: { type: 'value', name: '人数' },
+            series: [{name: '成都华为技术有限公司', type: 'bar', data: [13, 10, 7, 11, 0, 0, 4], emphasis: {focus: 'series'}},{name: '中电科技集团重庆声光电有限公司', type: 'bar', data: [2, 2, 3, 5, 9, 0, 0], emphasis: {focus: 'series'}},{name: '中电科芯片技术（集团）有限公司（沙坪坝）', type: 'bar', data: [0, 0, 0, 0, 2, 12, 4], emphasis: {focus: 'series'}},{name: '招银网络科技（深圳）有限公司（成都分公司）', type: 'bar', data: [6, 6, 5, 0, 0, 0, 0], emphasis: {focus: 'series'}},{name: '中国星网网络应用有限公司', type: 'bar', data: [1, 4, 3, 0, 2, 3, 0], emphasis: {focus: 'series'}},{name: '紫光展锐（重庆）科技有限公司', type: 'bar', data: [0, 2, 6, 5, 0, 0, 0], emphasis: {focus: 'series'}},{name: '重庆长安汽车股份有限公司', type: 'bar', data: [0, 0, 0, 0, 2, 6, 2], emphasis: {focus: 'series'}},{name: '中国电子科技集团公司（10所）', type: 'bar', data: [0, 0, 0, 0, 0, 3, 7], emphasis: {focus: 'series'}},{name: '上海浦东发展银行股份有限公司（成都分行）', type: 'bar', data: [1, 4, 4, 0, 0, 0, 0], emphasis: {focus: 'series'}},{name: '重庆星网网络系统研究院有限公司', type: 'bar', data: [0, 0, 0, 0, 1, 8, 0], emphasis: {focus: 'series'}},{name: '选调及机关部门（中共重庆市委组织部）', type: 'bar', data: [5, 0, 0, 0, 0, 3, 0], emphasis: {focus: 'series'}},{name: '华为技术有限公司', type: 'bar', data: [4, 0, 0, 0, 0, 0, 4], emphasis: {focus: 'series'}}]
+        };
+        chart1.setOption(option1);
+        
+        var chart2 = echarts.init(document.getElementById('size-chart'));
+        var option2 = {
+            title: { text: '历届毕业生人数趋势', left: 'center' },
+            tooltip: { trigger: 'axis' },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: 60, containLabel: true },
+            xAxis: { type: 'category', data: ['2019届（95人）', '2020届（117人）', '2021届（130人）', '2022届（134人）', '2023届（114人）', '2024届（144人）', '2025届（145人）'] },
+            yAxis: { type: 'value', name: '人数' },
+            series: [{name: '毕业生人数', type: 'line', data: [0, 0, 0, 0, 0, 0, 0], smooth: true, itemStyle: {color: '#C5CAE9'}, areaStyle: {opacity: 0.3}}]
+        };
+        chart2.setOption(option2);
+    })();
+    </script>
+    
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：重庆大学通信学院硕士生2019-2025届就业去向 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

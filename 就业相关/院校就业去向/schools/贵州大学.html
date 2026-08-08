@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贵州大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .rank-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; margin-right: 12px; flex-shrink: 0; }
+        .rank-1 { background: #F8C3CD; color: #1a1a2e; }
+        .rank-2 { background: #C5CAE9; color: #1a1a2e; }
+        .rank-3 { background: #FFCCBC; color: #1a1a2e; }
+        .rank-other { background: #E8F5E9; color: #1a1a2e; }
+        .rank-name { font-weight: 600; color: #2d3436; }
+        .rank-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-left: 8px; }
+        .tag-telecom { background: #A8E6CF; color: #1a1a2e; }
+        .tag-bank { background: #C5CAE9; color: #1a1a2e; }
+        .tag-grid { background: #FFCCBC; color: #1a1a2e; }
+        .tag-aviation { background: #D1C4E9; color: #1a1a2e; }
+        .tag-data { background: #B5EADD; color: #1a1a2e; }
+        .tag-media { background: #F8C3CD; color: #1a1a2e; }
+        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
+        .industry-name { width: 220px; color: #2d3436; font-weight: 500; }
+        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
+        .industry-percent { color: #5a5a5a; font-weight: 600; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .industry-name { width: 160px; font-size: 0.85em; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>贵州大学 <span class="badge badge-211">211</span></h1>
+        <p>211高校 / 贵州唯一211 / 国企为主 / 就业率高</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">36%</div><div class="stat-label">信息传输/IT</div></div>
+                        <div class="stat-item"><div class="stat-number">20.29%</div><div class="stat-label">金融业</div></div>
+                        <div class="stat-item"><div class="stat-number">6.90%</div><div class="stat-label">制造业</div></div>
+                        <div class="stat-item"><div class="stat-number">国企为主</div><div class="stat-label">就业单位性质</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 就业单位 TOP10</h3>
+                <div class="rank-item">
+                    <span class="rank-num rank-1">1</span>
+                    <span class="rank-name">中国电信股份有限公司贵州分公司 <span class="rank-tag tag-telecom">运营商</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-2">2</span>
+                    <span class="rank-name">交通银行股份有限公司贵州省分行 <span class="rank-tag tag-bank">银行</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-3">3</span>
+                    <span class="rank-name">中国建设银行股份有限公司贵州省分行 <span class="rank-tag tag-bank">银行</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">4</span>
+                    <span class="rank-name">中国联合网络通信有限公司贵州省分公司 <span class="rank-tag tag-telecom">运营商</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">5</span>
+                    <span class="rank-name">贵州电网有限责任公司贵安供电局 <span class="rank-tag tag-grid">电网</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">6</span>
+                    <span class="rank-name">中国工商银行股份有限公司贵州省分行 <span class="rank-tag tag-bank">银行</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">7</span>
+                    <span class="rank-name">中国民用航空西南地区空中交通管理局贵州分局 <span class="rank-tag tag-aviation">民航</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">8</span>
+                    <span class="rank-name">毕节市大数据产业发展中心 <span class="rank-tag tag-data">大数据</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">9</span>
+                    <span class="rank-name">多彩贵州网有限责任公司 <span class="rank-tag tag-media">媒体</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">10</span>
+                    <span class="rank-name">贵阳银行股份有限公司 <span class="rank-tag tag-bank">银行</span></span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📈 就业单位行业 TOP5</h3>
+                <div class="industry-bar">
+                    <span class="industry-name">信息传输/软件/IT</span>
+                    <div class="industry-bar-fill" style="width: 200px;"></div>
+                    <span class="industry-percent">36%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">金融业</span>
+                    <div class="industry-bar-fill" style="width: 113px;"></div>
+                    <span class="industry-percent">20.29%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">制造业</span>
+                    <div class="industry-bar-fill" style="width: 38px;"></div>
+                    <span class="industry-percent">6.90%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">科学研究和技术服务</span>
+                    <div class="industry-bar-fill" style="width: 32px;"></div>
+                    <span class="industry-percent">5.75%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">电力/热力/燃气/水</span>
+                    <div class="industry-bar-fill" style="width: 26px;"></div>
+                    <span class="industry-percent">4.60%</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 就业单位性质</h3>
+                <div class="tip-box">
+                    <strong>国有企业：</strong>占比最大，中国电信、交通银行、建设银行、中国联通、贵州电网、工商银行、贵阳银行、民航西南空管局等均为国企/央企。
+                </div>
+                <div class="tip-box">
+                    <strong>其他企业：</strong>多彩贵州网等，占比较小。
+                </div>
+                <div class="tip-box">
+                    <strong>事业单位/科研设计：</strong>毕节市大数据产业发展中心（事业单位）、高等教育单位等占一定比例。
+                </div>
+                <div class="tip-box">
+                    <strong>整体特征：</strong>研究生毕业去向大部分均为去企业就业，其中基本以<strong>国企为主</strong>，就业质量好，就业率高。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_贵州大学.png" alt="贵州大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📡 电信运营商</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">中国电信贵州</div><div class="company-count">TOP1</div></div>
+                    <div class="company-card"><div class="company-name">中国联通贵州</div><div class="company-count">TOP4</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏦 银行/金融</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">交通银行贵州</div><div class="company-count">TOP2</div></div>
+                    <div class="company-card"><div class="company-name">建设银行贵州</div><div class="company-count">TOP3</div></div>
+                    <div class="company-card"><div class="company-name">工商银行贵州</div><div class="company-count">TOP6</div></div>
+                    <div class="company-card"><div class="company-name">贵阳银行</div><div class="company-count">TOP10</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>⚡ 电网/能源/交通</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">贵州电网贵安供电局</div><div class="company-count">TOP5</div></div>
+                    <div class="company-card"><div class="company-name">民航西南空管局贵州</div><div class="company-count">TOP7</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>💻 大数据/互联网</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">毕节市大数据产业发展中心</div><div class="company-count">TOP8</div></div>
+                    <div class="company-card"><div class="company-name">多彩贵州网</div><div class="company-count">TOP9</div></div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>🏛️ 国企 dominance：</strong>TOP10中100%为国有企业/央企/事业单位。中国电信TOP1、交通银行TOP2、建设银行TOP3、中国联通TOP4、贵州电网TOP5、工商银行TOP6、民航西南空管局TOP7、贵阳银行TOP10，国企是绝对主导。这与贵州大学作为省属211、贵州本地国企招聘规模大、学生体制内就业偏好强高度相关。
+                </div>
+                <div class="tip-box">
+                    <strong>🏦 银行/金融 dominance：</strong>金融业占20.29%，TOP10中银行占4席（交通银行、建设银行、工商银行、贵阳银行），银行是贵州大学控制类硕士就业的第一大去向。金融科技岗位（系统开发、数据分析、风控）是主要通道。
+                </div>
+                <div class="tip-box">
+                    <strong>📡 电信运营商：</strong>信息传输/IT占36%为第一大行业，TOP10中运营商占2席（电信贵州TOP1、联通贵州TOP4），运营商是IT行业的主要吸纳方。贵州电信、联通分公司对本地211毕业生需求稳定。
+                </div>
+                <div class="tip-box">
+                    <strong>⚡ 电网/能源：</strong>贵州电网贵安供电局TOP5，电力/热力/燃气及水生产和供应业占4.60%。电网是贵州大学控制类硕士进入能源行业的主要通道。
+                </div>
+                <div class="tip-box">
+                    <strong>✈️ 民航/交通：</strong>民航西南空管局贵州分局TOP7，属于民航系统事业单位。空管系统对通信/电子/导航专业人才有稳定需求，是特色就业方向。
+                </div>
+                <div class="tip-box">
+                    <strong>💻 大数据/地方平台：</strong>毕节市大数据产业发展中心TOP8（事业单位）、多彩贵州网TOP9（省属媒体/互联网平台），体现贵州大数据产业发展对本地高校人才的吸纳。贵州作为国家大数据综合试验区，大数据产业是本地特色就业方向。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域：贵州本地100%：</strong>所有TOP10雇主均位于贵州省（贵阳、毕节、贵安），100%留本地。这与贵州大学作为省内唯一211、本地学生占比高、贵州省国企/事业单位招聘本地化倾向强高度相关。几乎没有省外就业去向。
+                </div>
+                <div class="tip-box">
+                    <strong>🎓 就业质量好/就业率高：</strong>文字说明"研究生就业去向大部分均为去企业就业，基本以国企为主，就业质量好，就业率高"。贵州大学控制类硕士就业率有保障，国企稳定性强。
+                </div>
+                <div class="tip-box">
+                    <strong>🏭 制造业占比低：</strong>制造业仅占6.90%，TOP10中无制造业企业。贵州本地制造业/半导体/互联网大型企业较少，毕业生以进入体制内（国企/银行/运营商/事业单位）为主，市场化企业就业占比较低。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：贵州大学就业质量报告（硕士） | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

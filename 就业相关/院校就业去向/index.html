@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制类硕士就业去向大全</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #F8C3CD 0%, #A8E6CF 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: #1a1a2e;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 20px auto 40px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+        
+        .search-box input::placeholder {
+            color: #8a8a8a;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.2);
+            color: #1a1a2e;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-tab:hover, .filter-tab.active {
+            background: white;
+            color: #1a1a2e;
+        }
+        
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .reviewed-dot {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            width: 10px;
+            height: 10px;
+            background: #FFAB91;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255, 171, 145, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 171, 145, 0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 171, 145, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 171, 145, 0); }
+        }
+        
+        .school-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+        
+        .school-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .school-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .badge-985 {
+            background: #F8C3CD;
+            color: #1a1a2e;
+        }
+        
+        .badge-211 {
+            background: #E8F5E9;
+            color: #1a1a2e;
+        }
+        
+        .badge-defense {
+            background: #FFF0E0;
+            color: #1a1a2e;
+        }
+        
+        .badge-4e4y {
+            background: #EDE7F6;
+            color: #1a1a2e;
+        }
+        
+        .badge-other {
+            background: #F8FAFC;
+            color: #1a1a2e;
+        }
+        
+        .school-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+        
+        .school-info {
+            font-size: 0.85rem;
+            color: #5a5a5a;
+            line-height: 1.5;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #8a8a8a;
+            margin-top: 2px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 1.2rem;
+            padding: 40px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>控制类硕士就业去向大全</h1>
+            <p>涵盖73所高校及科研院所，提供详细的就业数据与薪资参考</p>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索学校名称..." onkeyup="filterSchools()">
+        </div>
+        
+        <div class="filter-tabs">
+            <div class="filter-tab active" onclick="filterByCategory('all')">全部</div>
+            <div class="filter-tab" onclick="filterByCategory('985')">985高校</div>
+            <div class="filter-tab" onclick="filterByCategory('211')">211高校</div>
+            <div class="filter-tab" onclick="filterByCategory('defense')">国防七子</div>
+            <div class="filter-tab" onclick="filterByCategory('4e4y')">四电四邮</div>
+            <div class="filter-tab" onclick="filterByCategory('other')">其他高校</div>
+        </div>
+        
+        <div class="schools-grid" id="schoolsGrid">
+            <!-- 学校卡片将通过JavaScript动态生成 -->
+        </div>
+        
+        <div class="no-results" id="noResults">
+            未找到匹配的学校
+        </div>
+        
+        <footer>
+            <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
+            <p>仅供参考，数据可能存在时效性差异</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 学校数据
+        const schoolsData = [
+            { name: "清华大学", category: "985", badge: "985", page: 6, info: "博士就业去向", reviewed: true },
+            { name: "北京邮电大学", category: "211", badge: "211", page: 7, info: "就业单位TOP10：比亚迪、华为、天翼云等", reviewed: true },
+            { name: "国防科技大学", category: "985", badge: "985", page: 8, info: "就业TOP10：比亚迪、华为、天翼云、美团、阿里等", reviewed: true },
+            { name: "大连理工大学", category: "985", badge: "985", page: 9, info: "500强TOP30：华为139人、航空工业137人、船舶109人", reviewed: true },
+            { name: "浙江大学", category: "985", badge: "985", page: 10, info: "IT行业60.55%、华为/比亚迪/阿里云TOP3、留杭40.20%", reviewed: true },
+            { name: "北京航空航天大学", category: "defense", badge: "国防七子", page: 11, info: "就业TOP10：美团、阿里、腾讯、字节、华为、百度等", reviewed: true },
+            { name: "中国科学院成都光电技术研究所", category: "other", badge: "科研院所", page: 12, info: "科研院所就业去向", reviewed: true },
+            { name: "东南大学", category: "985", badge: "985", page: 14, info: "IT业46.8%、华为/中兴TOP3、留宁23.88%", reviewed: true },
+            { name: "哈尔滨工业大学", category: "985", badge: "985/国防七子", page: 15, info: "就业率90%+，华为签约467人全国第三", reviewed: true },
+            { name: "西安交通大学", category: "985", badge: "985", page: 16, info: "24届953人签约、华为系76人、IT/金融/科研/制造四业并进", reviewed: true },
+            { name: "西北工业大学", category: "985", badge: "985/国防七子", page: 17, info: "华为19人TOP1、航空/航天/国防特色、大厂+国企央企双轨", reviewed: true },
+            { name: "电子科技大学", category: "985", badge: "985", page: 18, info: "985重点高校", reviewed: true },
+            { name: "天津大学", category: "985", badge: "985", page: 19, info: "24家主要单位：华为/阿里/腾讯/中兴+国家电网/中航/航天", reviewed: true },
+            { name: "北京理工大学", category: "defense", badge: "国防七子", page: 19, info: "航天科技165人TOP1、四大军工集团554人、就业率99.55%", reviewed: true },
+            { name: "厦门大学", category: "985", badge: "985", page: 20, info: "985重点高校" },
+            { name: "武汉大学", category: "985", badge: "985", page: 21, info: "IT业66%+、华为/腾讯/美团/字节TOP10、留武汉27%", reviewed: true },
+            { name: "华中科技大学", category: "985", badge: "985", page: 22, info: "央企1167人、国防军工399人/电力338人、选调生315人", reviewed: true },
+            { name: "中山大学", category: "985", badge: "985", page: 23, info: "IT业73.9%、华为/腾讯/头条/虾皮TOP10、留广东78人", reviewed: true },
+            { name: "华东师范大学", category: "985", badge: "985", page: 24, info: "IT约55%、华为/合见各7人TOP、上海本地70%+", reviewed: true },
+            { name: "湖南大学", category: "985", badge: "985", page: 26, info: "985重点高校" },
+            { name: "东北大学", category: "985", badge: "985", page: 27, info: "985重点高校" },
+            { name: "吉林大学", category: "985", badge: "985", page: 27, info: "华为42W总包、新凯来2人、江苏无线电厂28K×16", reviewed: true },
+            { name: "中国海洋大学", category: "985", badge: "985", page: 28, info: "小米39/歌尔36/比亚迪23人TOP、青岛本地就业主导", reviewed: true },
+            { name: "大连海事大学", category: "other", badge: "其他", page: 29, info: "28家单位BAT/华为/中兴/字节、全国就业不限东北", reviewed: true },
+            { name: "苏州大学", category: "211", badge: "211", page: 34, info: "连续五年就业率100%、86%年薪超20万、IT业61人", reviewed: true },
+            { name: "合肥工业大学", category: "211", badge: "211", page: 35, info: "安徽省薪酬No.1、国企49%、华为/中兴/烽火/长鑫/联发科", reviewed: true },
+            { name: "西安电子科技大学", category: "211", badge: "211", page: 36, info: "华为558人/电科326人/航天172人TOP、IT业48%、30w不是问题", reviewed: true },
+            { name: "北京工业大学", category: "211", badge: "211", page: 38, info: "北方华创50人TOP、中建35/电信32/移动25人、央企国企为主", reviewed: true },
+            { name: "南京理工大学", category: "defense", badge: "国防七子", page: 34, info: "中兴221/电科193/华为190人TOP、32.63%进500强、军工超500人", reviewed: true },
+            { name: "南京航空航天大学", category: "defense", badge: "国防七子", page: 34, info: "华为南京16人/中兴14人/展讯9人TOP、国防+电子信息+集成电路", reviewed: true },
+            { name: "中国石油大学（华东）", category: "211", badge: "211", page: 40, info: "电子科技总包30w/船舶22w/石油20K×14/海信20w/海尔18w", reviewed: true },
+            { name: "西安邮电大学", category: "other", badge: "其他", page: 41, info: "中航工业20+/中兴15+/电信8+人TOP、留西安45%、就业率近100%", reviewed: true },
+            { name: "南京邮电大学", category: "4e4y", badge: "四电四邮", page: 42, info: "中兴356/华为225/电信216/移动182/烽火100/联通90，年薪18-30万", reviewed: true },
+            { name: "福州大学", category: "211", badge: "211", page: 45, info: "IT 38%+ / 制造业 30.37% / 金融 14.51% | 锐捷/比亚迪/工行TOP3 | 福州29%+ 深圳12.36% | 瑞芯微19k/百度24k/宁德25-35w", reviewed: true },
+            { name: "河北工业大学", category: "211", badge: "211", page: 45, info: "中建211/铁路44/一汽41/联通31/电网29/长城25, 天津就业杠杠", reviewed: true },
+            { name: "中国矿业大学", category: "211", badge: "211", page: 46, info: "中建239/电网193/比亚迪53/铁路48/能源44, 央企国企 dominance", reviewed: true },
+            { name: "河海大学", category: "211", badge: "211", page: 47, info: "国企121/民企94, 江浙沪90.9%, 思源电气22w/天合光能16.5k", reviewed: true },
+            { name: "华北电力大学", category: "211", badge: "211", page: 48, info: "电力25.81%/IT25.35%/制造22.58%, 超聚变20k/歌尔17k/许继15k", reviewed: true },
+            { name: "华北电力（北京）", category: "211", badge: "211", page: 48, info: "电力35.6%/IT18.98%/制造14.81%, 北京35.19%, 国网系 dominance", reviewed: true },
+            { name: "西南交通大学", category: "211", badge: "211", page: 49, info: "IT51.88%/金融18.75%/制造17.50%, 成都37.19%, 四川农信/工行/比亚迪", reviewed: true },
+            { name: "哈尔滨工程大学", category: "defense", badge: "国防七子", page: 51, info: "IT43.95%/科研40%/制造11.40%, 华为/中电科54所/10所/36所/28所", reviewed: true },
+            { name: "武汉理工大学", category: "211", badge: "211", page: 52, info: "华为103/中国船舶66/中兴69/紫光68/TCL62, 华为30-35w/南网20-25w", reviewed: true },
+            { name: "暨南大学", category: "211", badge: "211", page: 53, info: "华为/虾皮/字节/腾讯/多益/4399, 互联网游戏大厂dominance", reviewed: true },
+            { name: "上海大学", category: "211", badge: "211", page: 55, info: "移动26/商飞25/电网24/电信21, 荣耀42.4w/中兴37.8w/华为35w", reviewed: true },
+            { name: "安徽大学", category: "211", badge: "211", page: 56, info: "比亚迪225/长鑫存储94/晶合45, 留安徽63.72%/合肥47.97%", reviewed: true },
+            { name: "南昌大学", category: "211", badge: "211", page: 58, info: "建筑204/比亚迪95/电网93/移动65/电信41，汽车+运营商+电网+电器+银行居多", reviewed: true },
+            { name: "华南师范大学", category: "211", badge: "211", page: 59, info: "比亚迪TOP1+TOP4/广发银行TOP2/交行TOP3/电信设计院TOP6/华星光电TOP8/天翼云TOP10，大湾区100%", reviewed: true },
+            { name: "华中师范大学", category: "211", badge: "211", page: 60, info: "IT 47%+ / 科研 22.22% / 制造 13.89% | 联发科TOP1/虾皮TOP3/百度TOP6/小米TOP7 | 深圳27.78%/武汉19.44%", reviewed: true },
+            { name: "东北林业大学", category: "211", badge: "211", page: 61, info: "IT 31.51% / 金融 30.14% / 制造 27.40% | 比亚迪TOP1/渤海银行TOP2/沃东天骏TOP3 | 就业率100%", reviewed: true },
+            { name: "江南大学", category: "211", badge: "211", page: 62, info: "211重点高校" },
+            { name: "海南大学", category: "211", badge: "211", page: 62, info: "制造 47%+ / IT 26.60% / 金融 7.39% | 比亚迪TOP1/芯原微海南TOP2/联通TOP3/云箭TOP6 | 深圳30.54%/海口11.82%", reviewed: true },
+            { name: "长安大学", category: "211", badge: "211", page: 63, info: "世界500强514人/中国500强768人 | 百度20-35K/阿里14K/中行转正20W+/比亚迪13K | 不歧视双非", reviewed: true },
+            { name: "中国地质大学", category: "211", badge: "211", page: 64, info: "211重点高校" },
+            { name: "贵州大学", category: "211", badge: "211", page: 65, info: "IT 36% / 金融 20.29% / 制造 6.90% | 电信TOP1/交行TOP2/建行TOP3/联通TOP4/电网TOP5 | 国企100%", reviewed: true },
+            { name: "杭州电子科技大学", category: "other", badge: "其他", page: 66, info: "IT 60.42% / 制造 15.16% / 金融 11.34% | 华为194/海康131/字节84/阿里32/腾讯33 | 华为36-40W/字节35-50W+/阿里34-50W+/大疆36-50W+", reviewed: true },
+            { name: "重庆邮电大学", category: "other", badge: "其他", page: 70, info: "IT 61.41% / 制造 17.97% / 金融 8.18% | 中移物联网TOP1/长安汽车TOP2/比亚迪TOP3/中兴TOP4 | 览山22K/深信服18K/建行18K", reviewed: true },
+            { name: "沈阳航空航天大学", category: "other", badge: "其他", page: 72, info: "IT 40.91% / 制造 31.82% / 科研 20.45% | 成飞TOP1/航天电子TOP2/海康威视TOP3/百度TOP6 | 北京18.18%/南京11.36%", reviewed: true },
+            { name: "南京信息工程大学", category: "other", badge: "其他", page: 73, info: "特色高校" },
+            { name: "南方科技大学", category: "other", badge: "其他", page: 74, info: "IT 54.93% / 制造 22.54% / 教育 14.08% | 华为TOP1/留校TOP2/头条TOP3/大疆TOP4/腾讯TOP5/阿里TOP6 | 深圳59.15%", reviewed: true },
+            { name: "成都理工大学", category: "other", badge: "其他", page: 75, info: "IT 53.54% / 制造 20.47% / 教育 5.51% | 经纬恒润TOP1/长川科技TOP2/记忆科技TOP3/华力创通TOP7 | 四川~60%", reviewed: true },
+            { name: "黑龙江大学", category: "other", badge: "其他", page: 75, info: "特色高校" },
+            { name: "成都信息工程大学", category: "other", badge: "其他", page: 76, info: "IT 53.9% / 制造 18.75% / 教育 8.20% | 天奥电子TOP1/卫士通TOP2/电信成都TOP3/九洲电器TOP7/忆芯科技TOP10 | 成都55.08%", reviewed: true },
+            { name: "广东工业大学", category: "other", badge: "其他", page: 77, info: "IT 43.18% / 制造 14.55% / 电信 5.01% | 就业率100% | 华为/腾讯/移动/电信/电网/比亚迪", reviewed: true },
+            { name: "桂林电子科技大学", category: "other", badge: "其他", page: 78, info: "深圳20.3%/桂林8.9%/南宁8.7% | 移远通信TOP1/vivo TOP2/可立克TOP3 | 满意度100%", reviewed: true },
+            { name: "宁波大学", category: "other", badge: "其他", page: 78, info: "宁波本地6席 | 奥克斯TOP1/联通宁波TOP2/海康威视TOP4 | 制造/IT/通信/金融多元", reviewed: true },
+            { name: "天津工业大学", category: "other", badge: "其他", page: 79, info: "年薪12-45万 | 民企47%/事业21%/国企14% | 工程技术58% | 华为/小米/抖音/海康", reviewed: true },
+            { name: "西安理工大学", category: "other", badge: "其他", page: 80, info: "特色高校" },
+            { name: "浙江工业大学", category: "other", badge: "其他", page: 80, info: "控制工程就业率>98% | 500强占比23.27%(104人) | 移动15人/比亚迪14人/中控11人/海康10人", reviewed: true },
+            { name: "西华大学", category: "other", badge: "其他", page: 82, info: "通信+电子双方向 | 川内为主 | 京东方/华虹/芯源/英杰电气/航空军工/能源/银行", reviewed: true },
+            { name: "上海电力大学", category: "other", badge: "其他", page: 84, info: "特色高校" },
+            { name: "河北大学", category: "other", badge: "其他", page: 85, info: "22届电子与通信工程 | 移动河北3人/新风航天/小米/奕斯伟 | 京津冀为主", reviewed: true },
+            { name: "华南农业大学", category: "other", badge: "其他", page: 85, info: "省内就业85.35% | 硕士企业63.56%/国家机关11.70% | 博士高校+科研", reviewed: true },
+            { name: "西安工程大学", category: "other", badge: "其他", page: 86, info: "特色高校" }
+        ];
+        
+        // 生成学校卡片
+        function generateSchoolCards(schools) {
+            const grid = document.getElementById('schoolsGrid');
+            grid.innerHTML = '';
+            
+            schools.forEach(school => {
+                const card = document.createElement('a');
+                card.className = 'school-card';
+                card.href = `schools/${school.name.replace(/[\/\\]/g, '_')}.html`;
+                
+                const badgeClass = {
+                    '985': 'badge-985',
+                    '211': 'badge-211',
+                    '国防七子': 'badge-defense',
+                    '四电四邮': 'badge-4e4y',
+                    '其他': 'badge-other',
+                    '科研院所': 'badge-other'
+                }[school.badge] || 'badge-other';
+                
+                card.innerHTML = `
+                    <span class="school-badge ${badgeClass}">${school.badge}</span>
+                    <div class="school-name">${school.name}</div>
+                    <div class="school-info">${school.info}</div>
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <div class="stat-value">查看</div>
+                            <div class="stat-label">详细数据</div>
+                        </div>
+                    </div>
+                    ${school.reviewed ? '<div class="reviewed-dot" title="已审核"></div>' : ''}
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+        
+        // 搜索过滤
+        function filterSchools() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const activeCategory = document.querySelector('.filter-tab.active').textContent;
+            
+            let filtered = schoolsData;
+            
+            // 按类别过滤
+            if (activeCategory !== '全部') {
+                const categoryMap = {
+                    '985高校': '985',
+                    '211高校': '211',
+                    '国防七子': 'defense',
+                    '四电四邮': '4e4y',
+                    '其他高校': 'other'
+                };
+                filtered = filtered.filter(s => s.category === categoryMap[activeCategory]);
+            }
+            
+            // 按搜索词过滤
+            if (searchTerm) {
+                filtered = filtered.filter(s => s.name.toLowerCase().includes(searchTerm));
+            }
+            
+            generateSchoolCards(filtered);
+            
+            // 显示/隐藏无结果提示
+            document.getElementById('noResults').style.display = filtered.length === 0 ? 'block' : 'none';
+        }
+        
+        // 按类别过滤
+        function filterByCategory(category) {
+            // 更新标签状态
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            filterSchools();
+        }
+        
+        // 初始化
+        generateSchoolCards(schoolsData);
+    </script>
+</body>
+</html>

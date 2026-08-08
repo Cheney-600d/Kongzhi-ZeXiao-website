@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈阳航空航天大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-other { background: #C5CAE9; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .rank-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+        .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; margin-right: 12px; flex-shrink: 0; }
+        .rank-1 { background: #F8C3CD; color: #1a1a2e; }
+        .rank-2 { background: #C5CAE9; color: #1a1a2e; }
+        .rank-3 { background: #FFCCBC; color: #1a1a2e; }
+        .rank-other { background: #E8F5E9; color: #1a1a2e; }
+        .rank-name { font-weight: 600; color: #2d3436; }
+        .rank-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-left: 8px; }
+        .tag-aviation { background: #A8E6CF; color: #1a1a2e; }
+        .tag-space { background: #C5CAE9; color: #1a1a2e; }
+        .tag-security { background: #FFCCBC; color: #1a1a2e; }
+        .tag-ai { background: #D1C4E9; color: #1a1a2e; }
+        .tag-internet { background: #F8C3CD; color: #1a1a2e; }
+        .tag-chem { background: #B5EADD; color: #1a1a2e; }
+        .tag-auto { background: #E8F5E9; color: #1a1a2e; }
+        .tag-comm { background: #FFD1A9; color: #1a1a2e; }
+        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
+        .industry-name { width: 220px; color: #2d3436; font-weight: 500; }
+        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
+        .industry-percent { color: #5a5a5a; font-weight: 600; }
+        .region-bar { display: flex; align-items: center; margin: 6px 0; font-size: 0.9em; }
+        .region-name { width: 160px; color: #2d3436; font-weight: 500; }
+        .region-bar-fill { height: 18px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 20px; }
+        .region-percent { color: #5a5a5a; font-weight: 600; width: 60px; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .industry-name { width: 160px; font-size: 0.85em; } .region-name { width: 120px; font-size: 0.85em; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>沈阳航空航天大学 <span class="badge badge-other">其他</span></h1>
+        <p>航空特色 / 沈阳 / 成飞TOP1/航天电子TOP2/海康威视TOP3</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">40.91%</div><div class="stat-label">信息传输/IT</div></div>
+                        <div class="stat-item"><div class="stat-number">31.82%</div><div class="stat-label">制造业</div></div>
+                        <div class="stat-item"><div class="stat-number">20.45%</div><div class="stat-label">科研技术服务</div></div>
+                        <div class="stat-item"><div class="stat-number">18.18%</div><div class="stat-label">留北京</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 就业单位 TOP10</h3>
+                <div class="rank-item">
+                    <span class="rank-num rank-1">1</span>
+                    <span class="rank-name">成都飞机工业（集团）有限责任公司 <span class="rank-tag tag-aviation">航空军工</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-2">2</span>
+                    <span class="rank-name">贵州航天电子科技有限公司 <span class="rank-tag tag-space">航天电子</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-3">3</span>
+                    <span class="rank-name">杭州海康威视数字技术股份有限公司武汉研发中心 <span class="rank-tag tag-security">安防电子</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">4</span>
+                    <span class="rank-name">沈阳航盛科技有限责任公司 <span class="rank-tag tag-aviation">航空科技</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">5</span>
+                    <span class="rank-name">安徽聆思智能科技有限公司 <span class="rank-tag tag-ai">AI芯片</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">6</span>
+                    <span class="rank-name">百度在线网络技术（北京）有限公司 <span class="rank-tag tag-internet">互联网</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">7</span>
+                    <span class="rank-name">北方华锦化学工业集团有限公司 <span class="rank-tag tag-chem">化工央企</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">8</span>
+                    <span class="rank-name">北京经纬恒润科技股份有限公司 <span class="rank-tag tag-auto">汽车电子</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">9</span>
+                    <span class="rank-name">北京六分科技有限公司 <span class="rank-tag tag-comm">通信导航</span></span>
+                </div>
+                <div class="rank-item">
+                    <span class="rank-num rank-other">10</span>
+                    <span class="rank-name">北京三星通信技术研究有限公司 <span class="rank-tag tag-comm">通信研发</span></span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📈 就业单位行业 TOP5</h3>
+                <div class="industry-bar">
+                    <span class="industry-name">信息传输/软件/IT</span>
+                    <div class="industry-bar-fill" style="width: 200px;"></div>
+                    <span class="industry-percent">40.91%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">制造业</span>
+                    <div class="industry-bar-fill" style="width: 156px;"></div>
+                    <span class="industry-percent">31.82%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">科学研究和技术服务</span>
+                    <div class="industry-bar-fill" style="width: 100px;"></div>
+                    <span class="industry-percent">20.45%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">水利/环境/公共设施</span>
+                    <div class="industry-bar-fill" style="width: 11px;"></div>
+                    <span class="industry-percent">2.27%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">教育</span>
+                    <div class="industry-bar-fill" style="width: 11px;"></div>
+                    <span class="industry-percent">2.27%</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏢 就业单位性质</h3>
+                <div class="tip-box">
+                    <strong>其他企业：</strong>占比最大，海康威视、百度、聆思智能、经纬恒润、六分科技、三星通信等民企/外企是主要吸纳方。
+                </div>
+                <div class="tip-box">
+                    <strong>国有企业：</strong>成都飞机工业、贵州航天电子、北方华锦化学、沈阳航盛科技等央企/国企占相当比例。
+                </div>
+                <div class="tip-box">
+                    <strong>三资企业：</strong>北京三星通信技术研究（三星子公司）等，外资/合资企业占比中等。
+                </div>
+                <div class="tip-box">
+                    <strong>机关/其他：</strong>机关、其他事业单位、高等教育单位等占比较小。
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🗺️ 就业地区分布</h3>
+                <div class="region-bar">
+                    <span class="region-name">北京市</span>
+                    <div class="region-bar-fill" style="width: 200px;"></div>
+                    <span class="region-percent">18.18%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">江苏省南京市</span>
+                    <div class="region-bar-fill" style="width: 125px;"></div>
+                    <span class="region-percent">11.36%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">辽宁省沈阳市</span>
+                    <div class="region-bar-fill" style="width: 100px;"></div>
+                    <span class="region-percent">9.09%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">广东省深圳市</span>
+                    <div class="region-bar-fill" style="width: 75px;"></div>
+                    <span class="region-percent">6.82%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">四川省成都市</span>
+                    <div class="region-bar-fill" style="width: 75px;"></div>
+                    <span class="region-percent">6.82%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">浙江省杭州市</span>
+                    <div class="region-bar-fill" style="width: 50px;"></div>
+                    <span class="region-percent">4.55%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">湖北省武汉市</span>
+                    <div class="region-bar-fill" style="width: 50px;"></div>
+                    <span class="region-percent">4.55%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">贵州省贵阳市</span>
+                    <div class="region-bar-fill" style="width: 50px;"></div>
+                    <span class="region-percent">4.55%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">天津市</span>
+                    <div class="region-bar-fill" style="width: 25px;"></div>
+                    <span class="region-percent">2.27%</span>
+                </div>
+                <div class="region-bar">
+                    <span class="region-name">辽宁省大连市</span>
+                    <div class="region-bar-fill" style="width: 25px;"></div>
+                    <span class="region-percent">2.27%</span>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_沈阳航空航天大学.png" alt="沈阳航空航天大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>✈️ 航空/航天/军工</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">成都飞机工业</div><div class="company-count">TOP1 航空</div></div>
+                    <div class="company-card"><div class="company-name">贵州航天电子</div><div class="company-count">TOP2 航天</div></div>
+                    <div class="company-card"><div class="company-name">沈阳航盛科技</div><div class="company-count">TOP4 航空</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>💻 IT/互联网/安防</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">海康威视武汉</div><div class="company-count">TOP3</div></div>
+                    <div class="company-card"><div class="company-name">百度</div><div class="company-count">TOP6</div></div>
+                    <div class="company-card"><div class="company-name">安徽聆思智能</div><div class="company-count">TOP5 AI</div></div>
+                    <div class="company-card"><div class="company-name">北京六分科技</div><div class="company-count">TOP9 导航</div></div>
+                    <div class="company-card"><div class="company-name">北京三星通信</div><div class="company-count">TOP10</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🚗 汽车/化工/其他</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">北京经纬恒润</div><div class="company-count">TOP8 汽车电子</div></div>
+                    <div class="company-card"><div class="company-name">北方华锦化学</div><div class="company-count">TOP7 化工</div></div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>✈️ 航空/航天 dominance：</strong>制造业占31.82%且TOP1为成都飞机工业（航空军工）、TOP2为贵州航天电子（航天电子），航空/航天/军工是沈航控制类硕士就业的最大特色。这与沈航"航空航天"的校名和学科特色高度匹配，航空工业集团（成飞、沈飞系）是稳定吸纳方。
+                </div>
+                <div class="tip-box">
+                    <strong>💻 IT/互联网/安防：</strong>信息传输/IT占40.91%为第一大行业。海康威视武汉TOP3、百度TOP6、聆思智能TOP5（AI芯片）、六分科技TOP9（高精度定位/导航），IT/科技/安防企业是第一大行业。沈航毕业生在安防电子、AI芯片、导航定位等技术领域也有竞争力。
+                </div>
+                <div class="tip-box">
+                    <strong>🔬 科研技术服务：</strong>占20.45%为第三大行业。成都飞机工业、贵州航天电子、沈阳航盛科技、北京三星通信等均涉及研发/技术服务，体现沈航硕士在技术研发岗位上的竞争力，尤其在航空航天领域的研发实力。
+                </div>
+                <div class="tip-box">
+                    <strong>🚗 汽车电子：</strong>北京经纬恒润TOP8，汽车电子是沈航毕业生进入智能网联/汽车电子领域的主要通道。经纬恒润在沈阳/北京有研发中心，与沈航有地缘合作。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域：北京+南京+沈阳+成都+深圳：</strong>北京18.18%（百度、三星通信、六分科技、经纬恒润等）、南京11.36%（海康威视南京中心、部分航空航天研究所）、沈阳9.09%（本地基本盘：航盛科技等）、成都6.82%（成飞）、深圳6.82%（部分科技企业）。地域分布较广，一线城市+航空航天产业城市是主要去向。
+                </div>
+                <div class="tip-box">
+                    <strong>🏢 单位性质：国企+民企并重：</strong>成都飞机工业（央企）、贵州航天电子（央企）、北方华锦化学（央企）与百度（民企）、海康威视（国企控股）、聆思智能（民企）、经纬恒润（民企）并重。体制内（航空航天央企）与市场化（互联网/科技）双轮驱动，既可以去稳定的军工央企，也可以去高薪的科技企业。
+                </div>
+                <div class="tip-box">
+                    <strong>🌐 航空航天产业链完整：</strong>从航空主机厂（成飞）、航天电子（贵州航天电子）、航空科技（沈阳航盛）、到导航定位（六分科技）、通信技术（三星通信），沈航毕业生的就业覆盖航空航天全产业链。这也是沈航作为航空航天特色高校的核心竞争力。
+                </div>
+                <div class="tip-box">
+                    <strong>🎓 深造比例：</strong>就业去向饼图中"研究生"占一定比例，说明部分沈航硕士毕业生选择继续攻读博士学位，航空航天领域对高学历人才有持续需求。
+                </div>
+                <div class="tip-box">
+                    <strong>🏭 制造业/化工：</strong>北方华锦化学TOP7（化工央企）进入TOP10，说明沈航毕业生的就业面不限于航空航天和IT，也覆盖到传统制造业/化工行业的技术岗位。制造业31.82%的占比中，航空制造、电子制造、化工等均有涉及。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：沈阳航空航天大学就业质量报告（硕士） | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

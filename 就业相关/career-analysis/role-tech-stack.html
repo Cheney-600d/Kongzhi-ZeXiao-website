@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给应届生的技术全景科普：十大行业的技术架构、岗位角色与协作方式</title>
+<style>
+/* ====== Reset & Variables ====== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* Bilibili Sakura Pink theme */
+  --bg:#f4f5f7;--bg-soft:#fff0f5;--card-bg:#ffffff;--card-soft:#fff5f8;--text:#18191c;--text2:#61666d;--text3:#9499a0;--border:#e3e5e7;--border-strong:#fb7299;
+  --shadow:0 2px 8px rgba(251,114,153,0.08);--shadow-lg:0 8px 24px rgba(251,114,153,0.12);
+  --radius:12px;--radius-sm:8px;
+  /* sakura pink accents */
+  --c-cyan:#00aeec;--c-blue:#00aeec;--c-purple:#7c3aed;--c-green:#02b340;
+  --c-orange:#ff8536;--c-pink:#fb7299;--c-amber:#ffb027;
+  /* theme aliases */
+  --c-pink-deep:#e0587c;--c-pink-soft:#ffc6d4;
+  /* industry colors */
+  --c-internet:#fb7299;--c-bank:#00aeec;--c-telco:#ff8536;
+  --c-grid:#02b340;--c-auto:#7c3aed;--c-device:#0ea5e9;
+  --c-chip:#eab308;--c-soe:#14b8a6;--c-research:#8b5cf6;--c-other:#f43f5e;
+  /* role colors */
+  --c-mgmt:#00aeec;--c-product:#ff8536;--c-dev:#02b340;--c-qa:#7c3aed;
+  --c-algo:#fb7299;--c-ops:#0ea5e9;--c-hw:#64748b;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding-left:220px;background-image:
+  radial-gradient(ellipse at 0% 0%,rgba(251,114,153,0.06) 0%,transparent 50%),
+  radial-gradient(ellipse at 100% 0%,rgba(251,114,153,0.04) 0%,transparent 40%),
+  radial-gradient(ellipse at 50% 100%,rgba(0,174,236,0.04) 0%,transparent 50%);
+background-attachment:fixed;}
+
+/* Pink scrollbar */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:#f0f0f0}
+::-webkit-scrollbar-thumb{background:rgba(251,114,153,0.3);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:rgba(251,114,153,0.5)}
+::selection{background:rgba(251,114,153,0.2);color:var(--text)}
+:target{scroll-margin-top:80px}
+
+/* ====== Left Sidebar Nav ====== */
+.nav{position:fixed;top:0;left:0;z-index:100;width:220px;height:100vh;background:linear-gradient(180deg,#fff 0%,#fff5f8 100%);backdrop-filter:blur(16px);border-right:1px solid var(--border);padding:20px 0;display:flex;flex-direction:column;gap:2px;overflow-y:auto;overflow-x:hidden;box-shadow:2px 0 12px rgba(251,114,153,0.06)}
+.nav .brand{font-weight:800;font-size:14px;color:var(--c-pink);margin:0 0 18px 0;padding:0 20px;display:flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--c-pink),var(--c-pink-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav a{text-decoration:none;color:var(--text2);font-size:12px;font-weight:500;padding:9px 20px;border-radius:0;border-left:3px solid transparent;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:8px}
+.nav a:hover{background:rgba(251,114,153,0.08);color:var(--c-pink);border-left-color:var(--c-pink)}
+.nav a.active{background:rgba(251,114,153,0.10);color:var(--c-pink);border-left-color:var(--c-pink);font-weight:600}
+.nav-home{margin-top:auto !important;background:linear-gradient(135deg,var(--c-pink),var(--c-pink-deep)) !important;color:#fff !important;border-left:none !important;border-radius:10px !important;font-weight:700 !important;text-align:center;justify-content:center;margin:14px 16px 16px !important;padding:10px 16px !important;transition:all .2s}
+.nav-home:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(251,114,153,0.35);color:#fff !important}
+
+/* Section */
+.section{max-width:85vw;margin:0 auto;padding:44px 24px}
+.section-title{font-size:24px;font-weight:800;margin-bottom:8px}
+.section-desc{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.8}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#fff5f8 0%,#ffe4ed 40%,#ffd6e5 80%,#fff0f5 100%);color:var(--text);text-align:center;padding:50px 24px 40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(251,114,153,0.10) 0%,transparent 40%),radial-gradient(circle at 70%,30%,rgba(0,174,236,0.06) 0%,transparent 35%);pointer-events:none}
+.hero h1{font-size:44px;font-weight:900;margin:0;letter-spacing:-1px;background:linear-gradient(90deg,var(--c-pink) 0%,var(--c-pink-deep) 50%,var(--c-blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.hero-title-row{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:10px;flex-wrap:wrap}
+.hero .subtitle{font-size:14px;color:#dc2626;font-weight:600;max-width:700px;margin:0 auto;line-height:1.8}
+.hero .subtitle span{color:var(--c-pink-deep)}
+.hero-aboutup{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:linear-gradient(135deg,var(--c-pink),var(--c-pink-deep));color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:700;box-shadow:0 3px 12px rgba(251,114,153,0.35);transition:all .25s;white-space:nowrap}
+.hero-aboutup:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(251,114,153,0.45);color:#fff}
+.hero-aboutup .aboutup-icon{font-size:15px}
+.hero-aboutup .aboutup-arrow{font-size:14px;transition:transform .25s}
+.hero-aboutup:hover .aboutup-arrow{transform:translateX(3px)}
+/* Floating animated icons */
+.hero-icons{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.hero-icon{position:absolute;font-size:36px;opacity:0.25;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(251,114,153,0.3))}
+.hero-icon:nth-child(1){top:15%;left:8%;animation-delay:0s;font-size:48px}
+.hero-icon:nth-child(2){top:25%;right:12%;animation-delay:1s;font-size:42px}
+.hero-icon:nth-child(3){top:65%;left:5%;animation-delay:2s;font-size:40px}
+.hero-icon:nth-child(4){top:70%;right:8%;animation-delay:3s;font-size:46px}
+.hero-icon:nth-child(5){top:45%;left:3%;animation-delay:1.5s;font-size:34px}
+.hero-icon:nth-child(6){top:50%;right:3%;animation-delay:2.5s;font-size:38px}
+.hero-icon:nth-child(7){top:80%;left:30%;animation-delay:0.5s;font-size:32px}
+.hero-icon:nth-child(8){top:10%;left:40%;animation-delay:3.5s;font-size:30px}
+.hero-icon:nth-child(9){bottom:15%;right:25%;animation-delay:1.8s;font-size:36px}
+.hero-icon:nth-child(10){top:20%;right:35%;animation-delay:4s;font-size:28px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(5deg)}}
+.hero-content{position:relative;z-index:1}
+
+/* Industry Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab-btn{flex:1 1 calc(20% - 8px);padding:10px 8px;border-radius:10px;border:1.5px solid var(--border);background:var(--card-bg);font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;color:var(--text2);backdrop-filter:blur(8px);text-align:center;white-space:nowrap}
+.tab-btn:hover{border-color:var(--c-pink);color:var(--c-pink);box-shadow:0 0 12px rgba(251,114,153,0.15)}
+.tab-btn.active{color:#fff;border-color:transparent}
+.tab-btn.i1.active{background:linear-gradient(135deg,var(--c-internet),#dc2626);color:#fff;box-shadow:0 4px 14px rgba(239,68,68,0.3)}
+.tab-btn.i2.active{background:linear-gradient(135deg,var(--c-bank),#2563eb);color:#fff;box-shadow:0 4px 14px rgba(59,130,246,0.3)}
+.tab-btn.i3.active{background:linear-gradient(135deg,var(--c-telco),#d97706);color:#fff;box-shadow:0 4px 14px rgba(245,158,11,0.3)}
+.tab-btn.i4.active{background:linear-gradient(135deg,var(--c-grid),#16a34a);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,0.3)}
+.tab-btn.i5.active{background:linear-gradient(135deg,var(--c-auto),#9333ea);color:#fff;box-shadow:0 4px 14px rgba(168,85,247,0.3)}
+.tab-btn.i6.active{background:linear-gradient(135deg,var(--c-device),#0891b2);color:#fff;box-shadow:0 4px 14px rgba(6,182,212,0.3)}
+.tab-btn.i7.active{background:linear-gradient(135deg,var(--c-chip),#ca8a04);color:#fff;box-shadow:0 4px 14px rgba(234,179,8,0.3)}
+.tab-btn.i8.active{background:linear-gradient(135deg,var(--c-soe),#0d9488);color:#fff;box-shadow:0 4px 14px rgba(20,184,166,0.3)}
+.tab-btn.i9.active{background:linear-gradient(135deg,var(--c-research),#7c3aed);color:#fff;box-shadow:0 4px 14px rgba(139,92,246,0.3)}
+.tab-btn.i10.active{background:linear-gradient(135deg,var(--c-other),#e11d48);color:#fff;box-shadow:0 4px 14px rgba(244,63,94,0.3)}
+
+/* Industry Panel */
+.ind-panel{display:none;animation:fadeIn .3s ease}
+.ind-panel.active{display:block}
+.ind-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.ind-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0}
+.ind-header h3{font-size:17px;font-weight:800;color:var(--text)}
+.ind-header .ind-tagline{font-size:12px;color:var(--text2)}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:12px}
+.ind-card{background:var(--card-bg);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border-top:3px solid;border:1px solid var(--border)}
+.ind-card h4{font-size:13px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;color:var(--text)}
+.ind-card p,.ind-card li{font-size:12px;color:var(--text2);line-height:1.75}
+.ind-card ul{padding-left:18px}
+.ind-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ind-tag{font-size:10px;padding:3px 8px;border-radius:4px;font-weight:500}
+
+/* Compare Table */
+.compare-wrap{overflow-x:auto}
+.compare-table-v-wrap .compare-wrap{overflow-x:visible}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);font-size:12px;border:1px solid var(--border);backdrop-filter:blur(8px)}
+.compare-table td,.compare-table th{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;color:var(--text)}
+.compare-table thead th{background:rgba(251,114,153,0.08);font-weight:700;font-size:12px;position:sticky;top:50px;z-index:5;text-align:center;color:var(--c-pink);border-bottom:2px solid var(--border-strong)}
+.compare-table tbody td:first-child{font-weight:700;text-align:left;background:rgba(251,114,153,0.04);min-width:100px;color:var(--text)}
+.compare-table-v tbody td:first-child{background:transparent}
+.compare-table-v tbody tr:nth-child(even) td{background:rgba(251,114,153,0.03)}
+.compare-table-v tbody tr:nth-child(odd) td{background:transparent}
+.compare-table tbody tr:hover td{background:rgba(251,114,153,0.08)}
+/* Rate pills */
+.rate{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;line-height:1.3}
+.rate-high{background:rgba(34,197,94,0.12);color:#16a34a}
+.rate-mid{background:rgba(245,158,11,0.12);color:#d97706}
+.rate-low{background:rgba(239,68,68,0.12);color:#dc2626}
+.compare-table-v tbody tr:first-child td{padding-top:56px}
+/* Vertical compare table */
+.compare-table-v{width:100%;border-collapse:separate;border-spacing:0}
+.compare-table-v thead th{font-size:13px;padding:14px 10px;white-space:nowrap}
+.compare-table-v tbody td{padding:14px 12px;font-size:13px;vertical-align:middle;text-align:center;word-break:normal;white-space:normal;line-height:1.5}
+.compare-table-v .ind-cell{font-weight:700;text-align:left !important;font-size:14px;white-space:nowrap}
+.compare-table-v tbody tr{border-left:4px solid var(--row-color,var(--c-pink));transition:background .2s}
+.compare-table-v tbody tr:hover td{background:rgba(251,114,153,0.05)}
+.compare-table-v tbody tr:nth-child(even) td.ind-cell{background:transparent}
+
+/* Role System */
+.role-tier{margin-bottom:14px}
+.tier-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:3px 10px;border-radius:4px;color:var(--text)}
+.tier-label .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.role-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.role-card{background:var(--card-bg);border-radius:var(--radius-sm);padding:12px;box-shadow:var(--shadow);border-left:3px solid;transition:transform .15s,box-shadow .15s;cursor:default;border:1px solid var(--border)}
+.role-card:hover{transform:translateY(-2px);box-shadow:0 5px 16px rgba(251,114,153,0.12)}
+.role-card .role-name{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--text)}
+.role-card .role-en{font-size:10px;color:var(--text3);margin-bottom:4px}
+.role-card .role-desc{font-size:11px;color:var(--text2);line-height:1.6}
+.role-card .role-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
+.role-card .role-tags span{font-size:10px;padding:2px 6px;border-radius:6px;background:var(--card-soft);color:var(--c-pink)}
+
+/* Tech */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.tech-cat{background:var(--card-bg);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border-top:3px solid;border:1px solid var(--border)}
+.tech-cat h3{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--text)}
+.tech-cat .cat-desc{font-size:11px;color:var(--text2);margin-bottom:10px}
+.tech-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tech-tag{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;transition:transform .12s;color:var(--text)}
+.tech-tag:hover{transform:scale(1.05);box-shadow:0 2px 6px rgba(251,114,153,0.1)}
+.tech-tag.core{font-weight:700}
+
+/* Flow */
+.flow-phase{margin-bottom:16px}
+.phase-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.phase-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
+.phase-info h4{font-size:14px;font-weight:700;color:var(--text)}
+.phase-info p{font-size:11px;color:var(--text2)}
+.phase-roles{display:flex;flex-wrap:wrap;gap:5px;padding-left:38px;margin-bottom:5px}
+.phase-role{font-size:11px;padding:2px 9px;border-radius:12px;font-weight:600;border:1px solid;display:flex;align-items:center;gap:5px;color:var(--text)}
+.phase-role .dot-inline{width:7px;height:7px;border-radius:50%;display:inline-block}
+.phase-detail{padding-left:38px;font-size:12px;color:var(--text2);line-height:1.75}
+
+/* Matrix (统一浅色，修复对比) */
+.matrix-wrap{overflow-x:auto}
+.matrix-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);font-size:12px;border:1px solid var(--border)}
+.matrix-table td,.matrix-table th{padding:8px 10px;text-align:center;border-bottom:1px solid var(--border);color:var(--text)}
+.matrix-table thead th{background:var(--card-soft);font-weight:700;position:sticky;top:50px;z-index:5;font-size:11px;color:var(--c-pink-deep);border-bottom:2px solid var(--border-strong)}
+.matrix-table tbody td:first-child{text-align:left;font-weight:600;padding-left:16px;background:var(--bg-soft)}
+.matrix-table tbody tr:nth-child(even) td{background:rgba(251,114,153,0.03)}
+.matrix-table tbody tr:nth-child(odd) td{background:transparent}
+.matrix-table tbody tr:hover td{background:var(--card-soft)}
+.cell-main{color:var(--c-pink-deep);font-weight:700;font-size:15px}
+.cell-support{color:var(--c-purple)}
+.cell-partial{color:var(--text2);font-size:10px}
+
+/* Guide */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.guide-card{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.guide-card h4{font-size:14px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.guide-card .gc-sub{font-size:11px;color:var(--text2);margin-bottom:8px}
+.guide-card ul{padding-left:18px}
+.guide-card li{font-size:12px;color:var(--text2);line-height:1.75}
+
+/* Diagram */
+.diagram-section{background:var(--card-bg);padding:24px 20px;border:1px solid var(--border);border-radius:var(--radius);margin:0 auto;max-width:1000px}
+.diagram-inner{max-width:900px;margin:0 auto;text-align:center}
+.diagram-inner svg{max-width:100%;height:auto}
+
+/* Legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+
+/* Footer */
+.footer{text-align:center;padding:20px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);background:var(--bg-soft)}
+
+/* Anim */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeInUp .5s ease forwards}
+
+/* Career Path */
+.career-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.career-tab{padding:5px 12px;border-radius:14px;border:1.5px solid var(--border);background:var(--card-bg);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text2)}
+.career-tab:hover{border-color:var(--c-pink);color:var(--c-pink)}
+.career-tab.active{background:linear-gradient(135deg,var(--c-pink),var(--c-pink-deep));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(251,114,153,0.25)}
+.career-panel{display:none;animation:fadeIn .3s ease}
+.career-panel.active{display:block}
+.career-timeline{display:flex;gap:10px;overflow-x:auto;padding:8px 0}
+.career-stage{flex:1;min-width:150px;max-width:200px;background:var(--card-bg);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);text-align:center;position:relative;border:1px solid var(--border)}
+.career-stage::after{content:'';position:absolute;top:50%;right:-10px;width:10px;height:2px;background:var(--c-pink)}
+.career-stage:last-child::after{display:none}
+.career-stage .stage-icon{font-size:24px;margin-bottom:6px}
+.career-stage .stage-title{font-weight:700;font-size:12px;margin-bottom:2px;color:var(--text)}
+.career-stage .stage-years{font-size:10px;color:var(--text3);margin-bottom:5px}
+.career-stage .stage-salary{font-size:11px;font-weight:600;color:var(--c-pink);margin-bottom:4px}
+.career-stage .stage-desc{font-size:10px;color:var(--text2);line-height:1.5}
+.career-legend{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.career-legend-item{font-size:10px;color:var(--text2);display:flex;align-items:center;gap:4px}
+.career-legend-item .l-dot{width:8px;height:8px;border-radius:2px}
+
+/* Salary (重点：修复黑白块对比度问题 - 统一浅粉白渐变底色) */
+.salary-wrap{overflow-x:auto}
+.salary-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);font-size:12px;border:1px solid var(--border)}
+.salary-table td,.salary-table th{padding:8px 10px;border-bottom:1px solid var(--border);text-align:center;line-height:1.6;color:var(--text)}
+.salary-table thead th{background:var(--card-soft);font-weight:700;font-size:11px;position:sticky;top:50px;z-index:5;color:var(--c-pink-deep);border-bottom:2px solid var(--border-strong)}
+.salary-table tbody td:first-child{text-align:left;font-weight:700;background:var(--bg-soft);min-width:110px;color:var(--text)}
+.salary-table tbody tr:nth-child(even) td{background:rgba(251,114,153,0.03)}
+.salary-table tbody tr:nth-child(odd) td{background:transparent}
+.salary-table tbody tr:hover td{background:var(--card-soft)}
+.salary-high{color:var(--c-green);font-weight:700}
+.salary-mid{color:var(--c-pink);font-weight:600}
+.salary-note{font-size:10px;color:var(--text2)}
+
+/* AI Impact (樱花粉配色版，修复暗色看不清问题) */
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.ai-card{background:var(--card-bg);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border-left:4px solid;border:1px solid var(--border)}
+.ai-card .ai-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.ai-card .ai-icon{font-size:24px}
+.ai-card .ai-name{font-weight:700;font-size:14px;color:var(--text)}
+.ai-card .ai-risk{font-size:11px;padding:2px 9px;border-radius:10px;font-weight:600}
+.ai-card .ai-desc{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:6px}
+.ai-card .ai-advice{font-size:11px;padding:8px 10px;border-radius:6px;line-height:1.6}
+.risk-critical{border-left-color:#ef4444}.risk-critical .ai-risk{background:#ffe4ea;color:#ef4444}
+.risk-critical .ai-advice{background:#fff0f3;color:#b71c52}
+.risk-high{border-left-color:#f97316}.risk-high .ai-risk{background:#fff0e6;color:#f97316}
+.risk-high .ai-advice{background:#fff8f0;color:#8a4a10}
+.risk-medium{border-left-color:var(--c-amber)}.risk-medium .ai-risk{background:#fff8e6;color:var(--c-amber)}
+.risk-medium .ai-advice{background:#fffbf0;color:#8a6300}
+.risk-low{border-left-color:var(--c-green)}.risk-low .ai-risk{background:#e8f8ee;color:var(--c-green)}
+.risk-low .ai-advice{background:#f0f8f3;color:#2e7a52}
+.risk-safe{border-left-color:var(--c-pink)}.risk-safe .ai-risk{background:#ffe4ed;color:var(--c-pink)}
+.risk-safe .ai-advice{background:#fff0f5;color:var(--c-pink-deep)}
+
+/* ====== Career Paths (五大职业发展路线) ====== */
+.career-overview{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.career-paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.path-card{background:var(--card-bg);border-radius:var(--radius-sm);padding:14px;border-left:4px solid;transition:transform .15s,box-shadow .15s;border:1px solid var(--border)}
+.path-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(251,114,153,0.15)}
+.path-card.mgmt{border-left-color:var(--c-mgmt)}
+.path-card.tech{border-left-color:var(--c-dev)}
+.path-card.expert{border-left-color:var(--c-algo)}
+.path-card.transition{border-left-color:var(--c-product)}
+.path-card.gov{border-left-color:var(--c-grid)}
+.path-card h3{font-size:14px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:6px;color:var(--text)}
+.path-card>p{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.path-requirements{background:var(--bg-soft);border-radius:6px;padding:10px;border:1px solid var(--border)}
+.path-requirements h4{font-size:12px;font-weight:700;margin:6px 0 3px;color:var(--c-pink-deep)}
+.path-requirements h4:first-child{margin-top:0}
+.path-requirements ul{font-size:11px;color:var(--text2);padding-left:16px;line-height:1.7}
+.path-requirements li{margin-bottom:2px}
+
+/* ====== Flow Chart (职业发展流程图) ====== */
+.flow-chart-wrap{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);overflow-x:auto;border:1px solid var(--border)}
+.flow-diagram{min-width:880px;position:relative;margin:10px 0;background:var(--bg-soft);border-radius:var(--radius-sm);border:1px solid var(--border);padding:20px 20px 30px;}
+.flow-phase{position:relative;padding:38px 14px 14px 14px;margin-bottom:8px;border-radius:12px;border:2px dashed var(--border);background:rgba(255,255,255,0.6)}
+.flow-phase-title{position:absolute;right:14px;top:10px;font-size:12px;font-weight:800;color:#fff;background:var(--c-pink);padding:4px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 6px rgba(251,114,153,0.3)}
+.flow-phase-desc{font-size:11px;color:var(--text2);margin-bottom:10px;line-height:1.5}
+.flow-phase-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.flow-node{background:var(--card-bg);border:2px solid var(--border);border-radius:10px;padding:8px 14px;min-width:100px;text-align:center;font-size:12px;font-weight:700;box-shadow:0 2px 6px rgba(251,114,153,0.08);color:var(--text);line-height:1.3}
+.flow-node.start{background:#e8f8ee;border-color:#16a34a;color:#166534}
+.flow-node.decision{background:#fff8e6;border-color:#f59e0b;color:#92400e}
+.flow-node.process{background:#ffe4ed;border-color:var(--c-pink);color:var(--c-pink-deep)}
+.flow-node.end{background:linear-gradient(135deg,#fb7299,#e63980);color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(251,114,153,0.4)}
+.flow-arrow{display:inline-block;position:relative;align-self:center;flex-shrink:0}
+.flow-arrow-h{width:30px;height:2px;background:var(--c-pink);position:relative}
+.flow-arrow-h::after{content:'';position:absolute;right:-1px;top:-4px;width:0;height:0;border-left:8px solid var(--c-pink);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.flow-branch-label{font-size:10px;color:var(--text2);background:rgba(255,255,255,0.9);padding:2px 6px;border-radius:6px;white-space:nowrap}
+.flow-branch-group{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-left:28px;margin-top:10px;padding:10px 14px;background:rgba(168,85,247,0.05);border:1.5px dashed #c4b5fd;border-radius:12px}
+.flow-branch-title{font-size:11px;font-weight:700;color:#7c3aed;margin-bottom:2px}
+.flow-branch-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.flow-branch-end{display:flex;align-items:center;gap:8px;margin-top:10px;margin-left:60px}
+.flow-branch-end .flow-node.end{font-size:13px;padding:10px 18px}
+.flow-connector{display:flex;flex-direction:column;align-items:center;margin:4px 0 4px 20px}
+.flow-connector-line{width:2px;height:16px;background:var(--c-pink);position:relative}
+.flow-connector-label{font-size:10px;color:var(--text2);margin-top:2px;background:#fff;padding:1px 6px;border-radius:6px;border:1px solid var(--border)}
+.flow-phase-1{border-color:#16a34a;background:rgba(22,163,74,0.05)}
+.flow-phase-1 .flow-phase-title{background:#16a34a}
+.flow-phase-2{border-color:#a855f7;background:rgba(168,85,247,0.05)}
+.flow-phase-2 .flow-phase-title{background:#a855f7}
+.flow-phase-3{border-color:#0ea5e9;background:rgba(14,165,233,0.05)}
+.flow-phase-3 .flow-phase-title{background:#0ea5e9}
+.flow-phase-4{border-color:#f59e0b;background:rgba(245,158,11,0.05)}
+.flow-phase-4 .flow-phase-title{background:#f59e0b}
+
+/* ====== Decision Tree (职业选择决策树) ====== */
+.tree-wrap{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.tree-container{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tree-node{background:var(--card-bg);border:2px solid var(--border);border-radius:10px;padding:10px;min-width:120px;text-align:center;position:relative;font-size:12px;font-weight:600;box-shadow:var(--shadow);color:var(--text)}
+.tree-node.root{background:linear-gradient(135deg,var(--c-pink) 0%,var(--c-pink-deep) 100%);color:#fff;border-color:transparent}
+.tree-node.branch{background:rgba(251,114,153,0.12);border-color:var(--c-pink);color:var(--c-pink)}
+.tree-node.leaf{background:rgba(245,158,11,0.15);border-color:var(--c-amber);color:var(--text)}
+.tree-branch{width:2px;height:16px;background:var(--c-pink);margin:0 auto}
+.tree-branches{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* ====== Timeline (职业发展时间轴) ====== */
+.timeline-wrap{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.timeline-container{position:relative;padding:10px 0 0;overflow-x:auto}
+.timeline-track{position:relative;min-width:900px;padding:40px 10px 0}
+.timeline-line-h{position:absolute;top:18px;left:10px;right:10px;height:3px;background:linear-gradient(90deg,#16a34a 0%,#a855f7 25%,#0ea5e9 50%,#0ea5e9 75%,#f59e0b 100%);border-radius:2px}
+.timeline-line-h::before,.timeline-line-h::after{content:'';position:absolute;top:-5px;width:0;height:0}
+.timeline-line-h::before{left:-2px;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:10px solid #16a34a}
+.timeline-line-h::after{right:-2px;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid #f59e0b}
+.timeline-item-h{position:relative;flex:1;min-width:170px;padding:0 10px}
+.timeline-dot-h{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--c-pink);box-shadow:0 0 8px rgba(251,114,153,0.5);z-index:2}
+.timeline-dot-h.dot-1{border-color:#16a34a;box-shadow:0 0 8px rgba(22,163,74,0.5)}
+.timeline-dot-h.dot-2{border-color:#a855f7;box-shadow:0 0 8px rgba(168,85,247,0.5)}
+.timeline-dot-h.dot-3{border-color:#0ea5e9;box-shadow:0 0 8px rgba(14,165,233,0.5)}
+.timeline-dot-h.dot-4{border-color:#0ea5e9;box-shadow:0 0 8px rgba(14,165,233,0.5)}
+.timeline-dot-h.dot-5{border-color:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,0.5)}
+.timeline-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 12px;margin-top:36px;box-shadow:0 2px 8px rgba(251,114,153,0.08);position:relative}
+.timeline-card::before{content:'';position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:2px;height:18px;background:var(--c-pink);opacity:0.5}
+.timeline-card.card-1::before{background:#16a34a}
+.timeline-card.card-2::before{background:#a855f7}
+.timeline-card.card-3::before{background:#0ea5e9}
+.timeline-card.card-4::before{background:#0ea5e9}
+.timeline-card.card-5::before{background:#f59e0b}
+.timeline-card h4{font-size:13px;font-weight:800;margin-bottom:4px;color:var(--text);line-height:1.3}
+.timeline-card p{font-size:11px;color:var(--text2);margin-bottom:8px;line-height:1.4}
+.timeline-card ul{font-size:11px;color:var(--text2);padding-left:16px;line-height:1.7}
+.timeline-card .tl-stage{display:inline-block;font-size:10px;font-weight:700;color:#fff;padding:2px 8px;border-radius:6px;margin-bottom:6px}
+.timeline-card .tl-stage.st-1{background:#16a34a}
+.timeline-card .tl-stage.st-2{background:#a855f7}
+.timeline-card .tl-stage.st-3{background:#0ea5e9}
+.timeline-card .tl-stage.st-4{background:#0ea5e9}
+.timeline-card .tl-stage.st-5{background:#f59e0b}
+
+/* ====== Skill Tree (技能发展树) ====== */
+.skill-container{display:flex;flex-direction:column;align-items:center;gap:14px}
+.skill-level{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.skill-node{border:2px solid;border-radius:var(--radius-sm);padding:12px;min-width:130px;text-align:center;font-size:12px;font-weight:600;color:#fff}
+.skill-node.core{background:linear-gradient(135deg,var(--c-green) 0%,#16a34a 100%);border-color:var(--c-green)}
+.skill-node.advanced{background:linear-gradient(135deg,var(--c-pink) 0%,var(--c-pink-deep) 100%);border-color:var(--c-pink)}
+.skill-node.expert{background:linear-gradient(135deg,var(--c-purple) 0%,#7c3aed 100%);border-color:var(--c-purple)}
+
+/* ====== Career Matrix (职业发展能力矩阵) ====== */
+.career-matrix-wrap{overflow-x:auto}
+.career-matrix-intro{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
+.career-matrix-legend{display:inline-flex;gap:6px;flex-wrap:wrap;}
+.cml-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;}
+.cml-high{background:#ffe4ea;color:#e11d48;border:1px solid #fecdd3;}
+.cml-mid{background:#f3e8ff;color:#7c3aed;border:1px solid #e9d5ff;}
+.cml-base{background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0;}
+.career-matrix-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);font-size:12px;border:1px solid var(--border);overflow:hidden;}
+.career-matrix-table th,.career-matrix-table td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;}
+/* 第一行分组表头 */
+.career-matrix-table thead tr:nth-child(1) th{font-size:11px;font-weight:700;padding:8px 6px;border-bottom:1px dashed var(--border);letter-spacing:0.5px;}
+.cm-group-mgmt{background:rgba(251,114,153,0.12);color:#be123c;}
+.cm-group-tech{background:rgba(168,85,247,0.10);color:#7c3aed;}
+.cm-group-gov{background:rgba(34,197,94,0.10);color:#15803d;}
+.cm-group-blank{background:transparent;border-bottom:1px solid transparent !important;}
+/* 第二行列名表头 */
+.career-matrix-table thead tr:nth-child(2) th{font-weight:700;font-size:12px;color:#18191c;padding:10px 6px 6px;border-bottom:2px solid var(--border-strong);}
+.career-matrix-table thead tr:nth-child(2) th .cm-col-title{font-weight:800;font-size:13px;display:block;margin-bottom:2px;}
+.career-matrix-table thead tr:nth-child(2) th .cm-col-sub{font-weight:500;font-size:10px;color:#9499a0;display:block;line-height:1.35;}
+/* 数据行 */
+.career-matrix-table tbody td:first-child{text-align:left;font-weight:700;padding-left:14px;background:var(--bg-soft);font-size:12.5px;color:#18191c;width:130px;min-width:130px;white-space:nowrap;}
+.career-matrix-table tbody tr:nth-child(even) td{background:rgba(251,114,153,0.03)}
+.career-matrix-table tbody tr:nth-child(even) td:first-child{background:rgba(251,114,153,0.06)}
+.career-matrix-table tbody tr:nth-child(odd) td:first-child{background:var(--bg-soft)}
+.career-matrix-table tbody tr:hover td{background:rgba(251,114,153,0.06) !important}
+.career-matrix-table tbody tr:hover td:first-child{background:rgba(251,114,153,0.10) !important}
+/* 徽章样式 */
+.cm-badge{display:inline-flex;align-items:center;justify-content:center;gap:3px;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;line-height:1.2;white-space:nowrap;}
+.cm-badge.high{background:linear-gradient(135deg,#fb7299,#e63980);color:#fff;box-shadow:0 1px 4px rgba(251,114,153,0.35);}
+.cm-badge.mid{background:linear-gradient(135deg,#c4b5fd,#a78bfa);color:#fff;box-shadow:0 1px 4px rgba(167,139,250,0.3);}
+.cm-badge.base{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;}
+
+/* ====== Radar Chart (能力雷达图) ====== */
+.radar-wrap{background:var(--card-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);text-align:center;border:1px solid var(--border)}
+.radar-svg{max-width:520px;width:100%;height:auto;margin:0 auto;display:block}
+
+/* ====== AI Enhancement (AI时代职业提升) ====== */
+.ai-enhance-section{background:linear-gradient(135deg,#fff5f8 0%,#ffe4ed 50%,#ffd6e5 100%);color:var(--text);border-radius:var(--radius);padding:22px 18px;border:1px solid var(--border-strong);position:relative;overflow:hidden}
+.ai-enhance-section::before{content:'';position:absolute;top:-30%;right:-20%;width:60%;height:150%;background:radial-gradient(circle,rgba(251,114,153,0.10) 0%,transparent 60%);pointer-events:none}
+.ai-enhance-section .section-title{color:var(--text)}
+.ai-enhance-section .section-desc{color:var(--text2)}
+.ai-enhance-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.ai-enhance-card{background:var(--card-bg);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
+.ai-enhance-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(251,114,153,0.12)}
+.ai-enhance-card h4{font-size:13px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:6px;color:var(--c-pink-deep)}
+.ai-enhance-card p{font-size:12px;line-height:1.6;color:var(--text2);margin-bottom:6px}
+.ai-enhance-skills{display:flex;flex-wrap:wrap;gap:5px}
+.ai-enhance-skills .skill-tag{display:inline-block;background:var(--card-soft);padding:3px 10px;border-radius:12px;font-size:11px;color:var(--c-pink-deep)}
+
+@media(max-width:768px){
+  body{padding-left:0}
+  .nav{position:relative;width:100%;height:auto;flex-direction:row;overflow-x:auto;padding:10px 12px;gap:4px;border-right:none;border-bottom:1px solid var(--border)}
+  .nav .brand{margin:0 12px 0 0;white-space:nowrap;font-size:13px}
+  .nav a{padding:5px 10px;border-left:none;border-radius:16px;white-space:nowrap;font-size:11px}
+  .nav a:hover,.nav a.active{border-left:none;border-radius:16px}
+  .nav-home{margin:0 0 0 auto !important;padding:5px 14px !important;border-radius:16px !important}
+  .section{max-width:100vw;padding:22px 12px}
+  .career-paths{grid-template-columns:1fr}
+  .ai-enhance-grid{grid-template-columns:1fr}
+  .flow-diagram{min-width:100%}
+  .timeline-track{min-width:700px}
+  .timeline-item-h{min-width:140px;padding:0 6px}
+  .timeline-card{padding:10px 8px;margin-top:32px}
+  .timeline-card h4{font-size:12px}
+  .timeline-card p{font-size:10px}
+  .timeline-card ul{font-size:10px;padding-left:14px}
+}
+
+/* ====== 原有响应式 ====== */
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .hero{padding:36px 20px 28px}
+  .hero-title-row{gap:12px}
+  .hero-aboutup{padding:6px 14px;font-size:11px}
+  .hero-icon{font-size:24px !important;opacity:0.18}
+  .hero-icon:nth-child(7),.hero-icon:nth-child(8),.hero-icon:nth-child(10){display:none}
+  .role-cards{grid-template-columns:1fr}
+  .tech-grid{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .section{padding:22px 12px}
+  .tab-btn{flex:1 1 calc(50% - 8px)}
+  .compare-table-v thead th{font-size:11px;padding:10px 4px}
+  .compare-table-v tbody td{font-size:11px;padding:10px 6px}
+  .compare-table-v .ind-cell{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav class="nav">
+  <span class="brand">⚡ 技术全景</span>
+  <a href="#hero">📡 概览</a>
+  <a href="#industries">🏢 十大行业</a>
+  <a href="#compare">📊 行业对比</a>
+  <a href="#roles">👥 角色体系</a>
+  <a href="#tech">🛠️ 技术栈</a>
+  <a href="#flow">🔄 协作流程</a>
+  <a href="#guide">🎯 选择指南</a>
+  <a href="#career-paths">🗺️ 职业路线</a>
+  <a href="#career">📈 技术栈发展</a>
+  <a href="#timeline">⏰ 时间轴</a>
+  <a href="#career-matrix">🔗 能力矩阵</a>
+  <a href="#salary">💰 薪资涨幅</a>
+  <a href="#ai-impact">🤖 AI冲击</a>
+  <a href="#ai-enhancement">🚀 AI提升</a>
+  <a href="#matrix">📐 角色矩阵</a>
+  <a href="../../index.html" class="nav-home">🏠 返回首页</a>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <div class="hero-icons">
+    <span class="hero-icon">🌐</span>
+    <span class="hero-icon">🏦</span>
+    <span class="hero-icon">📡</span>
+    <span class="hero-icon">⚡</span>
+    <span class="hero-icon">🚗</span>
+    <span class="hero-icon">📱</span>
+    <span class="hero-icon">💾</span>
+    <span class="hero-icon">🏛️</span>
+    <span class="hero-icon">🔬</span>
+    <span class="hero-icon">🏢</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-title-row">
+      <h1>给应届生的技术全景科普</h1>
+      <a href="../../本科指南/pages/about-up.html" class="hero-aboutup" target="_blank">
+        <span class="aboutup-icon">👤</span>
+        <span class="aboutup-text">关于UP主</span>
+        <span class="aboutup-arrow">→</span>
+      </a>
+    </div>
+    <p class="subtitle">
+      <span>十大行业</span>的技术架构、岗位角色与协作方式，一页讲清楚。<br>
+      帮你搞懂"不同公司到底在做什么技术"以及"我该往哪个方向走"。
+    </p>
+  </div>
+</section>
+
+<!-- ====== TEN INDUSTRIES ====== -->
+<section class="section" id="industries">
+  <h2 class="section-title">🏭 十大行业技术架构详解</h2>
+  <p class="section-desc">不同行业的公司，技术栈、岗位设置、工作节奏差异巨大。点击下方标签切换查看每个行业的详细技术架构。（信息来源：各公司 2024-2026 校招要求 + 行业公开资料）</p>
+
+  <div class="tabs">
+    <button class="tab-btn i1 active" onclick="switchIndustry('internet')">🌐 互联网大厂</button>
+    <button class="tab-btn i2" onclick="switchIndustry('bank')">🏦 银行/金融科技</button>
+    <button class="tab-btn i3" onclick="switchIndustry('telco')">📡 运营商/通信</button>
+    <button class="tab-btn i4" onclick="switchIndustry('grid')">⚡ 电网/能源</button>
+    <button class="tab-btn i5" onclick="switchIndustry('auto')">🚗 智能车企</button>
+    <button class="tab-btn i6" onclick="switchIndustry('device')">📱 设备厂商</button>
+    <button class="tab-btn i7" onclick="switchIndustry('chip')">💾 芯片半导体</button>
+    <button class="tab-btn i8" onclick="switchIndustry('soe')">🏛️ 国企/央企</button>
+    <button class="tab-btn i9" onclick="switchIndustry('research')">🔬 科研院所</button>
+    <button class="tab-btn i10" onclick="switchIndustry('other')">🏢 其他行业</button>
+  </div>
+
+  <!-- Internet -->
+  <div class="ind-panel active" id="panel-internet">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-internet);">🌐</div>
+      <div>
+        <h3>互联网大厂</h3>
+        <p class="ind-tagline">代表公司：字节跳动/腾讯/阿里/百度/美团/快手/拼多多 · 技术驱动、快速迭代、高薪高压</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-internet);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>C端产品：</b>抖音/微信/淘宝/美团等亿级用户App</li>
+          <li><b>推荐系统：</b>信息流推荐、搜索排序、广告投放</li>
+          <li><b>大模型/AI：</b>LLM、AIGC、多模态（文生图/视频）</li>
+          <li><b>基础架构：</b>K8s管理千万容器、EB级存储、自研数据库</li>
+          <li><b>云计算：</b>阿里云/火山引擎/腾讯云 对外输出技术能力</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-internet);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>追求前沿：</b>Go/Rust + 微服务 + Service Mesh</li>
+          <li><b>高并发架构：</b>分布式缓存、消息队列削峰、读写分离</li>
+          <li><b>数据驱动：</b>大数据平台（Hadoop/Spark/Flink）+ AB实验</li>
+          <li><b>AI渗透：</b>PyTorch + Transformer + 大模型 + RAG</li>
+          <li><b>DevOps成熟：</b>CI/CD全自动化，每日多次发布</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-internet);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>前端：</b>React/Vue + TypeScript + 跨端(小程序/RN)</li>
+          <li><b>后端：</b>Go/Java/C++ + 微服务 + 分布式系统</li>
+          <li><b>算法：</b>推荐/搜索/NLP/CV/大模型训练与推理</li>
+          <li><b>数据：</b>数据仓库/数据平台/数据科学/AB实验</li>
+          <li><b>基础架构：</b>K8s/存储/网络/数据库内核/SRE</li>
+          <li><b>客户端：</b>iOS/Android/跨端框架</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">校招薪资高</span><span class="ind-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">技术成长快</span><span class="ind-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">加班多</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-internet);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>热爱技术、追求技术深度和前沿探索</li>
+          <li>能接受高强度节奏（995/大小周）</li>
+          <li>希望通过跳槽和技术积累快速提升薪资</li>
+          <li>对 C 端产品有热情，想做"亿级用户"的产品</li>
+          <li><b>不适合：</b>追求工作生活平衡、求稳定、不想频繁变动</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>最看重算法/数据结构 + 项目经验，学历门槛相对灵活（双非也能进大厂，看实力）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bank -->
+  <div class="ind-panel" id="panel-bank">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-bank);">🏦</div>
+      <div>
+        <h3>银行 / 金融科技</h3>
+        <p class="ind-tagline">代表：招行/工行/建行 等科技子公司 + 建信金科/兴业数金/北银金科 · 稳定+合规+福利好</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-bank);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>核心银行系统：</b>存贷汇、账务核心、清算结算（Java + Oracle）</li>
+          <li><b>渠道系统：</b>手机银行App、网银、微信银行、ATM</li>
+          <li><b>风控系统：</b>反欺诈、信用评分、实时风控引擎</li>
+          <li><b>数据平台：</b>大数据分析、监管报送、反洗钱(AML)</li>
+          <li><b>AI应用：</b>智能客服、OCR识别、RPA自动化、大模型试点</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-bank);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>语言：</b>Java 是绝对主流，部分 Go/Python</li>
+          <li><b>框架：</b>Spring Boot/Cloud/Spring MVC</li>
+          <li><b>数据库：</b>Oracle、DB2、MySQL、GaussDB(国产化)</li>
+          <li><b>中间件：</b>Redis、Kafka、Zookeeper</li>
+          <li><b>云化趋势：</b>容器化逐步推广，信创国产化加速</li>
+          <li><b>特点：</b>技术栈相对保守，追求稳定 > 追新</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-bank);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>Java后端：</b>核心业务系统开发、接口对接</li>
+          <li><b>前端：</b>银行Web系统 + 手机银行前端</li>
+          <li><b>数据开发：</b>Hadoop/Spark数仓建设、ETL</li>
+          <li><b>算法：</b>风控模型、智能营销、NLP应用</li>
+          <li><b>测试：</b>功能测试 + 自动化测试</li>
+          <li><b>运维：</b>系统运维、数据库管理(DBA)</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">稳定</span><span class="ind-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">福利好</span><span class="ind-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6;">技术偏保守</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-bank);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>追求稳定、不想 35 岁焦虑</li>
+          <li>能接受流程规范、审批多、上线节奏慢</li>
+          <li>Java 技术栈扎实，对金融业务有兴趣</li>
+          <li><b>不适合：</b>想追前沿技术、追求快速成长和高薪</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>学历门槛高（偏好985/211硕士），技术面试相对互联网简单，但综合能力要求高。建议考软考/证书加分。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Telco -->
+  <div class="ind-panel" id="panel-telco">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-telco);">📡</div>
+      <div>
+        <h3>运营商 / 通信</h3>
+        <p class="ind-tagline">代表：中国移动/电信/联通 + 旗下子公司（天翼云/联通数科/移动云）· 央企稳定+体量巨大</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-telco);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>BSS（业务支撑系统）：</b>计费/营账/CRM/客服 — 全球最大单体业务系统，支撑4亿+用户</li>
+          <li><b>OSS（运营支撑系统）：</b>网络管理/故障监控/资源调度</li>
+          <li><b>MSS（管理支撑系统）：</b>ERP/OA/人力/财务</li>
+          <li><b>云计算：</b>天翼云/移动云/联通云 — 政企上云市场</li>
+          <li><b>5G/物联网：</b>5G核心网、边缘计算、IoT平台</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-telco);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>语言：</b>Java 为主（后端系统），Python（运维/数据处理）</li>
+          <li><b>数据库：</b>Oracle/MySQL + Hadoop 大数据平台</li>
+          <li><b>云平台：</b>自研"天宫"云平台(CKE+CCS)，K8s国产化</li>
+          <li><b>中台架构：</b>业务中台+数据中台+AI中台（央企领先）</li>
+          <li><b>信创：</b>率先获华为鲲鹏+中电子PK体系兼容认证</li>
+          <li><b>特点：</b>技术栈统一、自主可控、规模化建设</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-telco);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>后端开发：</b>Java + 微服务 + BSS/OSS系统</li>
+          <li><b>大数据：</b>Hadoop/Spark 数据处理与分析</li>
+          <li><b>云计算：</b>K8s/虚拟化/云平台开发</li>
+          <li><b>网络开发：</b>SDN/NFV/5G核心网</li>
+          <li><b>前端：</b>政企系统前端、移动端</li>
+          <li><b>AI：</b>智能客服、网络智能运维</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">央企编制</span><span class="ind-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">福利全面</span><span class="ind-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">体量巨大</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-telco);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>想要央企稳定性 + 相对不错的技术环境</li>
+          <li>对通信/网络/云计算底层感兴趣</li>
+          <li>能接受流程规范和比互联网慢的迭代节奏</li>
+          <li><b>注意：</b>去省/市公司容易偏运维和项目管理；去研究院/云公司/软研院才是真正的研发岗</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>学历要求较高（硕士优先），六险三金、全额缴纳，隐性福利多。联通软研院/移动研究院/天翼云是技术含量较高的选择。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="ind-panel" id="panel-grid">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-grid);">⚡</div>
+      <div>
+        <h3>电网 / 能源央企</h3>
+        <p class="ind-tagline">代表：国家电网/南方电网 + 国网信通产业集团/南瑞集团 · 最稳定+数字化转型快</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-grid);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>电力营销系统：</b>用电采集、电费核算、95598客服</li>
+          <li><b>ERP/管理系统：</b>SAP、物资管理、项目管理</li>
+          <li><b>企业中台：</b>数据中台、业务中台（国网数字化战略）</li>
+          <li><b>电网数字孪生：</b>电网仿真、设备数字化建模</li>
+          <li><b>AI应用：</b>电网智能巡检、负荷预测、无人机巡检</li>
+          <li><b>通信网络：</b>电力通信专网、网络安全防护</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-grid);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>语言：</b>Java（主要）、Python（AI/数据分析）、C/C++（嵌入式）</li>
+          <li><b>框架：</b>Spring Boot/Cloud、Netty</li>
+          <li><b>数据库：</b>Oracle/MySQL/MongoDB/Redis</li>
+          <li><b>云化：</b>Docker/K8s 逐步推广，私有云为主</li>
+          <li><b>前沿方向：</b>AI+电网、量子技术、空天信息技术</li>
+          <li><b>特点：</b>信创国产化 → 去Oracle化，转向国产数据库</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-grid);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>后端开发：</b>Java + 电力业务系统</li>
+          <li><b>前端：</b>Web系统前端 + 移动端</li>
+          <li><b>算法/AI：</b>电网AI应用、大数据分析</li>
+          <li><b>嵌入式：</b>智能终端、电力采集设备</li>
+          <li><b>网络安全：</b>电力监控系统安全防护</li>
+          <li><b>通信：</b>电力通信网络规划与运维</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(34,197,94,0.15);color:#22c55e;">最稳定</span><span class="ind-tag" style="background:rgba(34,197,94,0.15);color:#22c55e;">落户优势</span><span class="ind-tag" style="background:rgba(34,197,94,0.15);color:#22c55e;">技术岗偏少</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-grid);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>把"稳定"放在第一位的同学</li>
+          <li>对能源/电力行业数字化转型有兴趣</li>
+          <li>想在北京/上海等一线城市落户</li>
+          <li>能接受较多流程、文档和审批环节</li>
+          <li><b>注意：</b>去国网信通产业集团/南瑞才是做软件开发；去省市电力公司更多是运维+项目管理</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>硕士及以上学历，电工类+电子信息类为主。国网统一考试是第一关，专业对口最重要。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto -->
+  <div class="ind-panel" id="panel-auto">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-auto);">🚗</div>
+      <div>
+        <h3>智能车企 / 新能源</h3>
+        <p class="ind-tagline">代表：比亚迪/蔚来/小鹏/理想/小米汽车/华为车BU · AI+汽车，增长最快赛道</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-auto);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>自动驾驶：</b>感知→决策→控制全栈、端到端大模型(VLA)、高精地图</li>
+          <li><b>智能座舱：</b>车载OS、语音交互、车载娱乐、HMI</li>
+          <li><b>车联网(V2X)：</b>车云通信、OTA升级、远程诊断</li>
+          <li><b>三电系统：</b>BMS电池管理、电驱控制、热管理</li>
+          <li><b>智能制造：</b>MES/工业互联网/数字工厂</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-auto);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>算法：</b>PyTorch + Transformer/Diffusion + 强化学习(PPO/DQN)</li>
+          <li><b>车载软件：</b>C/C++ + Linux/QNX RTOS + ROS/ROS2</li>
+          <li><b>嵌入式：</b>C语言 + ARM + AUTOSAR + CAN/LIN总线</li>
+          <li><b>云服务：</b>Go/Java + 大数据 + 车云数据平台</li>
+          <li><b>前端：</b>车载HMI（Qt/Kanzi/Android Automotive）</li>
+          <li><b>特点：</b>软硬结合，AI与传统汽车工程交叉</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-auto);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>自动驾驶算法：</b>感知/规划/控制/端到端模型（薪资最高）</li>
+          <li><b>车载软件：</b>操作系统/中间件/数据闭环</li>
+          <li><b>嵌入式：</b>BMS/VCU/MCU底层驱动</li>
+          <li><b>智能座舱：</b>HMI开发/语音AI/车载App</li>
+          <li><b>后端/数据：</b>车云平台/大数据分析</li>
+          <li><b>仿真：</b>场景仿真/数字孪生/虚拟验证</li>
+          <li><b>测试：</b>自动驾驶路测/仿真测试/HIL测试</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:#f4ecf7;color:#7d3c98;">赛道火热</span><span class="ind-tag" style="background:#f4ecf7;color:#7d3c98;">薪资暴涨</span><span class="ind-tag" style="background:#f4ecf7;color:#7d3c98;">复合型人才稀缺</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-auto);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>对"AI+硬件"交叉领域感兴趣</li>
+          <li>C++/Python扎实，愿意学汽车领域知识</li>
+          <li><b>最值钱的复合人才：</b>既懂车辆动力学又能写控制算法的，供需比 1:8</li>
+          <li>智驾算法工程师年薪可达 80-200万（顶尖硕博）</li>
+          <li><b>注意：</b>行业发展快但竞争也激烈，部分新势力有盈利压力</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>计算机/自动化/车辆工程/电子专业最对口；Momenta/小鹏等校招给百万年薪抢算法人才；2025年人才缺口超百万。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Device -->
+  <div class="ind-panel" id="panel-device">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-device);">📱</div>
+      <div>
+        <h3>通信设备厂商</h3>
+        <p class="ind-tagline">代表：华为/中兴/新华三/烽火 · 硬核技术、软硬一体、全球业务</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-device);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>基站/网络设备：</b>5G基站、路由器、交换机（嵌入式软件+协议栈）</li>
+          <li><b>芯片设计：</b>基带芯片/转发芯片 SoC 设计与验证</li>
+          <li><b>通信协议栈：</b>3GPP协议实现（RRC/PDCP/RLC等）</li>
+          <li><b>光通信：</b>光模块控制、光纤传输系统</li>
+          <li><b>终端设备：</b>手机/CPE/物联网终端</li>
+          <li><b>云/算力：</b>华为昇腾AI芯片+MindSpore框架</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-device);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>语言：</b>C 是灵魂语言（底层驱动/协议栈），C++（应用层），Python（测试/工具）</li>
+          <li><b>操作系统：</b>Linux内核开发、RTOS、自研OS(LiteOS/鸿蒙)</li>
+          <li><b>硬件：</b>Verilog/VHDL + FPGA + ASIC + ARM架构</li>
+          <li><b>通信协议：</b>3GPP/5G NR/LTE/TCP/IP深度理解</li>
+          <li><b>特点：</b>软硬协同、协议深度、对计算机底层功底要求极高</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-device);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>嵌入式开发：</b>C语言 + Linux驱动 + BSP开发</li>
+          <li><b>协议软件：</b>5G/LTE协议栈开发（RRC/PDCP等）</li>
+          <li><b>芯片：</b>数字IC设计/验证、FPGA开发</li>
+          <li><b>系统软件：</b>操作系统内核、AI框架（MindSpore等）</li>
+          <li><b>硬件：</b>PCB设计/射频/天线</li>
+          <li><b>测试：</b>通信协议测试/自动化测试/场测</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:#ffe4ed;color:#fb7299;">技术壁垒极高</span><span class="ind-tag" style="background:#ffe4ed;color:#fb7299;">软硬通吃</span><span class="ind-tag" style="background:#ffe4ed;color:#fb7299;">越老越吃香</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-device);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>对计算机底层（OS/编译原理/体系结构）有真兴趣</li>
+          <li>C语言功底扎实，喜欢和硬件打交道</li>
+          <li>不追求"快速出产品"，享受攻克底层技术难题</li>
+          <li>技术壁垒极高——越老越吃香，年龄焦虑最小</li>
+          <li><b>不适合：</b>想快速看到产品效果、不喜欢底层技术</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>通信/电子/计算机专业最对口；中兴校招规模大、门槛比华为稍低；华为偏好985/211 + 竞赛经历；嵌入式赛道近年回温明显。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chip / Semiconductor -->
+  <div class="ind-panel" id="panel-chip">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-chip);">💾</div>
+      <div>
+        <h3>芯片 / 半导体行业</h3>
+        <p class="ind-tagline">代表：中芯国际、长电科技、韦尔股份、紫光展锐、兆易创新、寒武纪、海光信息 · 国家战略赛道、硬核技术、高壁垒</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-chip);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>芯片设计（Fabless）：</b>数字IC/模拟IC/射频IC设计，EDA工具链</li>
+          <li><b>芯片制造（Foundry）：</b>晶圆代工、光刻/刻蚀/薄膜工艺控制</li>
+          <li><b>封装测试（OSAT）：</b>先进封装(CoWoS/2.5D/3D)、CP/FT测试</li>
+          <li><b>存储芯片：</b>DRAM/NAND Flash设计与制造控制</li>
+          <li><b>EDA/IP：</b>国产EDA工具开发、IP核授权与定制</li>
+          <li><b>半导体设备：</b>刻蚀机/PVD/CVD/光刻机 软件与控制系统</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-chip);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>设计前端：</b>Verilog/SystemVerilog + UVM验证 + Python脚本</li>
+          <li><b>设计后端：</b>Synopsys/Cadence EDA工具 + TCL脚本 + 物理设计</li>
+          <li><b>制造端：</b>C/C++ + 工艺仿真 + 机器视觉 + 工业控制</li>
+          <li><b>嵌入式/固件：</b>C + ARM/RISC-V + Linux驱动 + 固件开发</li>
+          <li><b>EDA开发：</b>C++/Python + 算法(布局布线/静态时序分析)</li>
+          <li><b>特点：</b>技术壁垒极高、学习曲线陡峭、人才缺口大</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-chip);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>数字IC设计工程师：</b>RTL编码 + 逻辑综合 + 时序收敛</li>
+          <li><b>数字IC验证工程师：</b>UVM/SystemVerilog + 覆盖率驱动验证</li>
+          <li><b>模拟IC设计：</b>电路设计 + Spectre仿真 + 版图(layout)</li>
+          <li><b>FPGA工程师：</b>Vivado/Quartus + HLS + 算法加速实现</li>
+          <li><b>半导体设备软件：</b>运动控制 + 机器视觉 + 工业通信</li>
+          <li><b>测试工程师：</b>ATE测试 + 芯片特性分析 + 良率提升</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">国家战略</span><span class="ind-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">人才缺口大</span><span class="ind-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">薪资涨幅快</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-chip);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>微电子/集成电路/电子信息/通信专业科班出身优先</li>
+          <li>有耐心、能沉下心啃硬核技术，不追求短期"出活"</li>
+          <li>数学物理基础好，对半导体物理/电路有兴趣</li>
+          <li>看好国产替代长期趋势，愿意深耕一个领域</li>
+          <li><b>不适合：</b>想快速入门、喜欢做互联网C端产品、缺乏耐心</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>目前IC验证缺口最大、入门门槛比设计稍低；海光/寒武纪/兆易创新等薪资对标互联网；中芯国际/长电等制造端稳定性强；建议早积累项目(CPU/RISC-V/数字前端项目)。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOE (State-Owned Enterprises) -->
+  <div class="ind-panel" id="panel-soe">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-soe);">🏛️</div>
+      <div>
+        <h3>国企 / 央企（非垄断类）</h3>
+        <p class="ind-tagline">代表：中粮/五矿/中建/中铁/中车/招商局/华润 等集团的信息化部门 · 稳定编制、甲方地位、福利全面</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-soe);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>ERP/MES系统：</b>SAP/用友/金蝶 等大型管理系统运维与二次开发</li>
+          <li><b>集团信息化：</b>OA/HR/财务系统、数据中台、统一门户</li>
+          <li><b>工业互联网：</b>生产监控系统、SCADA、物联网数据采集</li>
+          <li><b>网络与安全：</b>等保合规、内网安全、VPN/堡垒机管理</li>
+          <li><b>数字化转型：</b>采购平台、供应链系统、客户管理CRM</li>
+          <li><b>数据中心：</b>机房运维、服务器/存储管理、虚拟化平台</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-soe);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>开发语言：</b>Java为主（Spring Boot）、少量 .NET、前端Vue/React</li>
+          <li><b>基础设施：</b>VMware虚拟化 + Oracle数据库 + 小型机（部分）</li>
+          <li><b>项目模式：</b>甲方主导+乙方外包实施，自研比例不高</li>
+          <li><b>特点：</b>技术偏保守、求稳为主、变更审批流程长</li>
+          <li><b>系统集成多：</b>多系统接口对接、数据打通、单点登录SSO</li>
+          <li><b>安全合规：</b>等保三级、密评、国产化替代（鲲鹏/飞腾/鸿蒙）</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-soe);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>信息化开发岗：</b>Java后端开发、内部系统二次开发</li>
+          <li><b>系统运维岗：</b>服务器运维、网络管理、数据库DBA</li>
+          <li><b>信息安全岗：</b>等保合规、安全运营、渗透测试</li>
+          <li><b>项目经理：</b>IT项目管理、乙方供应商管理</li>
+          <li><b>数据岗：</b>BI报表、数据仓库、经营分析系统</li>
+          <li><b>工业互联网：</b>MES系统实施、PLC/SCADA集成</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(20,184,166,0.15);color:#14b8a6;">编制稳定</span><span class="ind-tag" style="background:rgba(20,184,166,0.15);color:#14b8a6;">甲方地位</span><span class="ind-tag" style="background:rgba(20,184,166,0.15);color:#14b8a6;">福利全面</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-soe);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>追求极致稳定、不担心裁员，希望"干到退休"</li>
+          <li>家庭/生活优先，接受955作息和较低的技术成长速度</li>
+          <li>喜欢甲方地位，主导项目而不是被压榨加班</li>
+          <li>考公/考研未上岸的备选方案（部分国企有事业编制）</li>
+          <li><b>不适合：</b>追求高薪、希望快速成长、想做前沿技术</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>优先选总部/二级总部信息化岗，避免基层分公司；央企国企校招有严格的专业对口要求；关注"夏招""秋招"提前批；党员/学生干部/计算机二级等证书是加分项。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Institutes -->
+  <div class="ind-panel" id="panel-research">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-research);">🔬</div>
+      <div>
+        <h3>科研院所 / 研究院</h3>
+        <p class="ind-tagline">代表：中科院各研究所、电科/航天/航空/兵器 下属研究院、企业中央研究院 · 事业编制、技术前沿、硕博为主</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-research);">
+        <h4>🏗️ 核心业务系统</h4>
+        <ul>
+          <li><b>国家级科研项目：</b>973/863/重点研发计划、基金委项目</li>
+          <li><b>军工/涉密项目：</b>雷达/声纳/电子对抗/卫星 相关系统研发</li>
+          <li><b>前沿技术预研：</b>量子计算、6G通信、类脑计算、先进封装</li>
+          <li><b>企业研究院：</b>华为2012实验室、阿里达摩院、腾讯AI Lab</li>
+          <li><b>工程化落地：</b>科研成果转化、原型系统开发、样机研制</li>
+          <li><b>仿真计算平台：</b>HPC超算集群、GPU集群、仿真软件研发</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-research);">
+        <h4>🛠️ 技术栈特点</h4>
+        <ul>
+          <li><b>算法与仿真：</b>MATLAB + Python + C++ 混合编程</li>
+          <li><b>高性能计算：</b>MPI/OpenMP + CUDA/HIP + Fortran/C++</li>
+          <li><b>嵌入式/实时：</b>RTOS + VxWorks + DSP/FPGA实时处理</li>
+          <li><b>数学建模：</b>复杂物理系统建模、数值计算、信号处理算法</li>
+          <li><b>特点：</b>学术+工程结合，论文+专利产出，对理论深度要求高</li>
+          <li><b>工具链：</b>专业仿真软件(ANSYS/HFSS/CST)+自研工具</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-research);">
+        <h4>👨‍💻 典型技术岗位</h4>
+        <ul>
+          <li><b>算法研究岗：</b>信号处理/通信算法/图像处理/AI算法</li>
+          <li><b>系统工程师：</b>需求分析、架构设计、系统仿真验证</li>
+          <li><b>FPGA/嵌入式：</b>算法硬件加速、实时嵌入式系统开发</li>
+          <li><b>软件研发：</b>科研软件平台、数据处理管道、可视化系统</li>
+          <li><b>仿真工程师：</b>电磁/热/力学仿真、模型校准与验证</li>
+          <li><b>科研助理/博士后：</b>独立课题、论文发表、基金申请</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">事业编制</span><span class="ind-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">硕博为主</span><span class="ind-tag" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">技术前沿</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-research);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>有读博计划或已拿到博士学位，想走学术/工业界结合路线</li>
+          <li>数学物理功底扎实，喜欢做"难而正确"的事</li>
+          <li>对科研有热情，能接受长期投入、短期产出不明显的工作</li>
+          <li>军工类院所适合想报效国家、能接受保密限制的同学</li>
+          <li><b>不适合：</b>本科学历竞争力弱、耐不住寂寞、追求快速变现</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>中科院系统待遇偏低但学术环境好，博士优先；电科14/28/38所、航天五院等是军工类顶流；企业研究院(达摩院/2012)薪资对标大厂SP以上，门槛极高(顶会论文/竞赛金牌)；提前进组实习是拿到offer的最佳路径。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Industries -->
+  <div class="ind-panel" id="panel-other">
+    <div class="ind-header">
+      <div class="ind-icon" style="background:var(--c-other);">🏗️</div>
+      <div>
+        <h3>其他行业（房地产 / 医院 / 传统制造等）</h3>
+        <p class="ind-tagline">甲方信息化部门、信息技术岗、设备与系统维护 · 甲方身份、工作轻松、技术需求以采购+运维为主</p>
+      </div>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card" style="border-top-color:var(--c-other);">
+        <h4>🏥 医院信息科(HIS)</h4>
+        <ul>
+          <li><b>核心系统：</b>HIS(医院信息系统)、EMR(电子病历)、LIS(检验)、PACS(影像)</li>
+          <li><b>工作内容：</b>系统运维、接口对接(HIS厂商)、数据备份、权限管理</li>
+          <li><b>技术栈：</b>Oracle/SQL Server + .NET/Java + 桌面程序维护</li>
+          <li><b>特点：</b>7×24小时待命但频率低，不直接研发以采购+运维为主</li>
+          <li><b>岗位：</b>信息科工程师、医学影像信息(PACS)、医疗数据统计</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-other);">
+        <h4>🏗️ 房地产 / 建筑信息化</h4>
+        <ul>
+          <li><b>核心系统：</b>BIM协作平台、智慧工地(视频监控+IoT)、ERP成本管理</li>
+          <li><b>工作内容：</b>IT项目管控(采购实施)、内部系统运维、数字化推进</li>
+          <li><b>技术栈：</b>Java + Oracle + 项目管理(乙方管理为主)</li>
+          <li><b>特点：</b>行业近年不景气，信息化投入缩减，稳定性不如前几年</li>
+          <li><b>岗位：</b>信息化经理、BIM工程师(偏技术)、智慧工地项目主管</li>
+        </ul>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-other);">
+        <h4>🏭 传统制造业（钢铁/石化/纺织）</h4>
+        <ul>
+          <li><b>核心系统：</b>MES生产执行、PLC/SCADA工业控制、DCS集散控制</li>
+          <li><b>工作内容：</b>生产线信息化、设备数据采集(传感器/IoT)、自动化升级</li>
+          <li><b>技术栈：</b>C#/WinCC + 西门子PLC + 工业以太网 + Oracle/SQL</li>
+          <li><b>特点：</b>工业互联网趋势下机会多，现场办公可能倒班/去工厂</li>
+          <li><b>岗位：</b>自动化工程师、MES实施、工业数据采集、IT运维</li>
+        </ul>
+        <div class="ind-tags"><span class="ind-tag" style="background:rgba(244,63,94,0.15);color:#f43f5e;">甲方身份</span><span class="ind-tag" style="background:rgba(244,63,94,0.15);color:#f43f5e;">工作轻松</span><span class="ind-tag" style="background:rgba(244,63,94,0.15);color:#f43f5e;">采购+运维</span></div>
+      </div>
+      <div class="ind-card" style="border-top-color:var(--c-other);">
+        <h4>🎯 适合什么人？</h4>
+        <ul>
+          <li>追求"钱多事少离家近"中的"事少"，接受薪资中等偏低</li>
+          <li>家乡三四线城市/小地方的就业选择（当地不错的体面工作）</li>
+          <li>女生友好：医院信息科/学校信息中心 工作稳定环境好</li>
+          <li>想考公/考编，找个轻松工作过渡备考的同学</li>
+          <li><b>不适合：</b>追求技术成长、想要高薪、担心被裁员但没真技术</li>
+        </ul>
+        <p style="margin-top:6px;font-size:11px;color:var(--text2);">💡 <b>校招建议：</b>医院/学校 信息科通常是事业编制，需参加事业单位招考；传统制造类岗位看地域，长三角珠三角机会多；甲方岗位面试考察综合能力不考算法；建议顺便考软考中级/系统集成项目管理证书提升竞争力。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== COMPARE TABLE ====== -->
+<section class="section" id="compare">
+  <h2 class="section-title">📊 十大行业横向对比</h2>
+  <p class="section-desc">一张表看明白十大行业的核心差异，帮你在 offer 选择时做出更理性的判断。</p>
+
+  <div class="compare-wrap">
+    <table class="compare-table compare-table-v">
+      <thead>
+        <tr>
+          <th style="min-width:180px;">行业</th>
+          <th>技术前沿度</th>
+          <th>工作稳定性</th>
+          <th>校招薪资</th>
+          <th>工作强度</th>
+          <th>核心语言</th>
+          <th>数据库</th>
+          <th>云原生</th>
+          <th>学历门槛</th>
+          <th>35岁危机</th>
+          <th>成长速度</th>
+          <th>跳槽灵活性</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="--row-color:#fb7299;"><td class="ind-cell">🌐 互联网大厂</td><td><span class="rate rate-high">极高</span></td><td><span class="rate rate-low">低</span></td><td>30-50万+</td><td>高<br>(995/大小周)</td><td>Go / Java / C++ / Python</td><td>MySQL / Redis<br>/ 自研NewSQL</td><td>极高</td><td>本科起<br>看实力</td><td>较明显</td><td>极快</td><td>高<br>(行业通用)</td></tr>
+        <tr style="--row-color:#00aeec;"><td class="ind-cell">🏦 银行/金融科技</td><td><span class="rate rate-low">低</span></td><td><span class="rate rate-high">极高</span></td><td>20-35万</td><td>中低<br>(955居多)</td><td>Java<br>(绝对主流)</td><td>Oracle / DB2<br>/ GaussDB</td><td>中</td><td>高<br>(偏好985硕)</td><td>几乎无</td><td>慢</td><td>中<br>(银行圈子)</td></tr>
+        <tr style="--row-color:#ff8536;"><td class="ind-cell">📡 运营商</td><td><span class="rate rate-mid">中</span></td><td><span class="rate rate-high">极高</span></td><td>20-30万</td><td>中低</td><td>Java / Python</td><td>Oracle / MySQL<br>/ Hadoop</td><td>高</td><td>较高<br>(硕优先)</td><td>几乎无</td><td>中等</td><td>中</td></tr>
+        <tr style="--row-color:#02b340;"><td class="ind-cell">⚡ 电网/能源</td><td><span class="rate rate-low">低</span></td><td><span class="rate rate-high">极高</span></td><td>18-30万</td><td>低</td><td>Java / Python / C</td><td>Oracle / MySQL<br>/ MongoDB</td><td>中低</td><td>高<br>(硕为主)</td><td>无</td><td>慢</td><td>低</td></tr>
+        <tr style="--row-color:#7c3aed;"><td class="ind-cell">🚗 智能车企</td><td><span class="rate rate-high">高</span></td><td><span class="rate rate-mid">中</span></td><td>25-100万+</td><td>中高</td><td>C++ / Python / C</td><td>MySQL / TiDB<br>/ 时序库</td><td>中高</td><td>硕博吃香<br>本科也可</td><td>中等</td><td>快</td><td>高<br>(热门赛道)</td></tr>
+        <tr style="--row-color:#0ea5e9;"><td class="ind-cell">📱 设备厂商</td><td><span class="rate rate-high">高</span></td><td><span class="rate rate-high">高</span></td><td>25-45万</td><td>中高</td><td>C / C++ / Verilog</td><td>自研<br>/ 嵌入式数据库</td><td>中</td><td>高<br>(偏好985)</td><td>较小</td><td>快<br>(深度方向)</td><td>中<br>(专业壁垒)</td></tr>
+        <tr style="--row-color:#eab308;"><td class="ind-cell">💾 芯片半导体</td><td><span class="rate rate-high">极高</span></td><td><span class="rate rate-high">高</span></td><td>25-60万+</td><td>中高</td><td>Verilog / C / C++<br>/ TCL</td><td>自研<br>/ EDA专用库</td><td>低</td><td>极高<br>(硕起步)</td><td>极小</td><td>快<br>(极深方向)</td><td>低<br>(行业闭环)</td></tr>
+        <tr style="--row-color:#14b8a6;"><td class="ind-cell">🏛️ 国企/央企</td><td><span class="rate rate-low">低</span></td><td><span class="rate rate-high">极高</span></td><td>15-25万</td><td>低-中</td><td>Java / .NET</td><td>Oracle<br>/ SQL Server</td><td>中低</td><td>较高<br>(专业对口)</td><td>无</td><td>慢</td><td>中低</td></tr>
+        <tr style="--row-color:#8b5cf6;"><td class="ind-cell">🔬 科研院所</td><td><span class="rate rate-high">高</span></td><td><span class="rate rate-high">极高</span></td><td>15-40万</td><td>中<br>(节点忙)</td><td>MATLAB / C++<br>/ Python</td><td>科研专用<br>/ 超算存储</td><td>低</td><td>极高<br>(博士主力)</td><td>无</td><td>中等</td><td>低</td></tr>
+        <tr style="--row-color:#f43f5e;"><td class="ind-cell">🏢 其他行业</td><td><span class="rate rate-low">极低</span></td><td><span class="rate rate-high">高</span></td><td>10-20万</td><td>低<br>(医院除外)</td><td>.NET / Java / C#</td><td>Oracle<br>/ SQL Server</td><td>极低</td><td>中等<br>(本科为主)</td><td>无</td><td>极慢</td><td>低</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ====== DIAGRAM ====== -->
+<section class="diagram-section">
+  <div class="diagram-inner">
+    <h2 style="text-align:center;margin-bottom:24px;font-size:22px;">🏗️ 通用项目协作架构总览</h2>
+    <svg viewBox="0 0 1120 570" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="sd"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/></filter>
+        <marker id="ab" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#fb7299"/></marker>
+        <marker id="ag" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#9499a0"/></marker>
+        <linearGradient id="lg-1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fb7299" stop-opacity="0.18"/><stop offset="1" stop-color="#fb7299" stop-opacity="0.05"/></linearGradient>
+        <linearGradient id="lg-2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#22c55e" stop-opacity="0.15"/><stop offset="1" stop-color="#22c55e" stop-opacity="0.04"/></linearGradient>
+        <linearGradient id="lg-3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#06b6d4" stop-opacity="0.15"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0.04"/></linearGradient>
+        <linearGradient id="lg-4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fb7299" stop-opacity="0.22"/><stop offset="1" stop-color="#fb7299" stop-opacity="0.08"/></linearGradient>
+      </defs>
+
+      <!-- ============ GROUP 1: 需求输入 (管理+产品线) ============ -->
+      <rect x="295" y="8" width="460" height="160" rx="14" fill="url(#lg-1)" stroke="#fb7299" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <!-- Management -->
+      <rect x="310" y="15" width="430" height="55" rx="10" fill="#e8f1fb" stroke="#fb7299" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="525" y="38" text-anchor="middle" fill="#fb7299" font-size="13" font-weight="700">📊 管理层（PL · DM · PMO · Tech Lead）</text>
+      <text x="525" y="56" text-anchor="middle" fill="#61666d" font-size="10">战略决策 · 资源调配 · 风险管理 · 架构把关</text>
+      <!-- Product -->
+      <rect x="310" y="100" width="430" height="55" rx="10" fill="#fef5ec" stroke="#f97316" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="525" y="123" text-anchor="middle" fill="#f97316" font-size="13" font-weight="700">📋 产品线（PM · UX · UI · BA）</text>
+      <text x="525" y="141" text-anchor="middle" fill="#61666d" font-size="10">需求定义 · 交互设计 · 视觉设计 · 业务分析</text>
+      <line x1="525" y1="70" x2="525" y2="100" stroke="#fb7299" stroke-width="1.5" marker-end="url(#ab)" stroke-dasharray="4,2"/>
+
+      <!-- ============ GROUP 2: 技术实现 (开发团队) ============ -->
+      <rect x="40" y="185" width="910" height="100" rx="14" fill="url(#lg-2)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <!-- Dev -->
+      <rect x="55" y="195" width="170" height="75" rx="10" fill="#edf8f1" stroke="#22c55e" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="140" y="220" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="700">🎨 前端开发</text>
+      <text x="140" y="240" text-anchor="middle" fill="#61666d" font-size="9">React/Vue · TS · 小程序 · Flutter</text>
+      <text x="140" y="255" text-anchor="middle" fill="#61666d" font-size="9">Web/H5/跨端 · 用户体验</text>
+      <rect x="260" y="195" width="170" height="75" rx="10" fill="#edf8f1" stroke="#22c55e" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="345" y="220" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="700">⚡ 后端开发</text>
+      <text x="345" y="240" text-anchor="middle" fill="#61666d" font-size="9">Java/Go/Python/C++ · 微服务</text>
+      <text x="345" y="255" text-anchor="middle" fill="#61666d" font-size="9">数据库 · 消息队列 · API</text>
+      <rect x="465" y="195" width="170" height="75" rx="10" fill="#fdecea" stroke="#ef4444" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="550" y="220" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="700">🤖 算法 & 数据</text>
+      <text x="550" y="240" text-anchor="middle" fill="#61666d" font-size="9">ML/DL · NLP · CV · 大模型</text>
+      <text x="550" y="255" text-anchor="middle" fill="#61666d" font-size="9">推荐 · 搜索 · 数据管道</text>
+      <rect x="670" y="195" width="150" height="75" rx="10" fill="#f5eef9" stroke="#a855f7" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="745" y="220" text-anchor="middle" fill="#a855f7" font-size="12" font-weight="700">🧪 质量保障</text>
+      <text x="745" y="240" text-anchor="middle" fill="#61666d" font-size="9">QA · SDET · 自动化</text>
+      <text x="745" y="255" text-anchor="middle" fill="#61666d" font-size="9">性能测试 · 安全测试</text>
+      <rect x="855" y="195" width="150" height="75" rx="10" fill="#f0f3f4" stroke="#64748b" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="930" y="220" text-anchor="middle" fill="#64748b" font-size="12" font-weight="700">🔧 硬件/嵌入式</text>
+      <text x="930" y="240" text-anchor="middle" fill="#61666d" font-size="9">嵌入式 · IoT · 芯片</text>
+      <text x="930" y="255" text-anchor="middle" fill="#61666d" font-size="9">FPGA · PCB · 驱动</text>
+      <!-- arrows -->
+      <line x1="370" y1="155" x2="200" y2="195" stroke="#f97316" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="450" y1="155" x2="370" y2="195" stroke="#f97316" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="550" y1="155" x2="550" y2="195" stroke="#f97316" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="600" y1="155" x2="720" y2="195" stroke="#f97316" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="200" y1="197" x2="950" y2="197" stroke="rgba(139,155,180,0.3)" stroke-width="0.5" stroke-dasharray="8,4"/>
+
+      <!-- ============ GROUP 3: 部署运维 ============ -->
+      <rect x="255" y="300" width="540" height="75" rx="14" fill="url(#lg-3)" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <rect x="270" y="310" width="510" height="50" rx="10" fill="#e8f8f5" stroke="#06b6d4" stroke-width="1.5" filter="url(#sd)"/>
+      <text x="525" y="332" text-anchor="middle" fill="#06b6d4" font-size="13" font-weight="700">⚙️ 运维 & 基础设施（SRE · DevOps · DBA · 安全工程师）</text>
+      <text x="525" y="350" text-anchor="middle" fill="#61666d" font-size="10">Docker · K8s · CI/CD · 云服务 · 监控告警 · 数据库管理</text>
+      <line x1="300" y1="270" x2="380" y2="310" stroke="#9499a0" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="525" y1="270" x2="525" y2="310" stroke="#9499a0" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+      <line x1="700" y1="270" x2="650" y2="310" stroke="#9499a0" stroke-width="1" marker-end="url(#ag)" stroke-dasharray="4,2"/>
+
+      <!-- ============ GROUP 4: 价值交付 ============ -->
+      <rect x="325" y="385" width="400" height="65" rx="14" fill="url(#lg-4)" stroke="#fb7299" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <rect x="340" y="395" width="370" height="42" rx="21" fill="#fb7299" filter="url(#sd)"/>
+      <text x="525" y="421" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">🚀 项目交付 & 持续迭代</text>
+      <line x1="525" y1="360" x2="525" y2="395" stroke="#fb7299" stroke-width="1.5" marker-end="url(#ab)"/>
+
+      <!-- ============ VERTICAL LABELS (right side) ============ -->
+      <!-- Label 1: 需求输入 -->
+      <rect x="1018" y="20" width="26" height="140" rx="13" fill="#fb7299" opacity="0.12"/>
+      <text x="1031" y="92" fill="#e0587c" font-size="13" font-weight="700" text-anchor="middle" writing-mode="tb">需求输入</text>
+
+      <!-- Label 2: 技术实现 -->
+      <rect x="1018" y="197" width="26" height="82" rx="13" fill="#22c55e" opacity="0.12"/>
+      <text x="1031" y="247" fill="#15803d" font-size="13" font-weight="700" text-anchor="middle" writing-mode="tb">技术实现</text>
+
+      <!-- Label 3: 部署运维 -->
+      <rect x="1018" y="312" width="26" height="52" rx="13" fill="#06b6d4" opacity="0.14"/>
+      <text x="1031" y="345" fill="#0e7490" font-size="13" font-weight="700" text-anchor="middle" writing-mode="tb">部署运维</text>
+
+      <!-- Label 4: 价值交付 -->
+      <rect x="1018" y="397" width="26" height="45" rx="13" fill="#fb7299" opacity="0.18"/>
+      <text x="1031" y="426" fill="#be185d" font-size="13" font-weight="700" text-anchor="middle" writing-mode="tb">价值交付</text>
+      <!-- legend -->
+      <rect x="22" y="455" width="220" height="100" rx="8" fill="#fafbfc" stroke="#e8ecf1" stroke-width="1"/>
+      <text x="38" y="477" fill="#2c3e50" font-size="10" font-weight="700">图例</text>
+      <line x1="38" y1="492" x2="58" y2="492" stroke="#fb7299" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+      <text x="65" y="496" fill="#61666d" font-size="9">管理/需求流向</text>
+      <line x1="38" y1="510" x2="58" y2="510" stroke="#9499a0" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#ag)"/>
+      <text x="65" y="514" fill="#61666d" font-size="9">技术协作关系</text>
+      <rect x="38" y="525" width="8" height="8" rx="2" fill="#fb7299"/><text x="52" y="533" fill="#61666d" font-size="9">管理/交付层</text>
+      <rect x="38" y="540" width="8" height="8" rx="2" fill="#22c55e"/><text x="52" y="548" fill="#61666d" font-size="9">技术实现层</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ====== ROLES ====== -->
+<section class="section" id="roles">
+  <h2 class="section-title">🏢 通用岗位角色体系</h2>
+  <p class="section-desc">跨行业的通用技术团队角色，不同行业侧重不同（银行偏Java后端+数据，车企偏算法+嵌入式，互联网全栈覆盖）。</p>
+
+  <!-- Management -->
+  <div class="role-tier">
+    <div class="tier-label" style="background:rgba(251,114,153,0.12);color:var(--c-mgmt);"><span class="dot" style="background:var(--c-mgmt);"></span>管理层</div>
+    <div class="role-cards">
+      <div class="role-card" style="border-left-color:var(--c-mgmt);"><div class="role-name">PL</div><div class="role-en">Project Leader · 项目负责人</div><div class="role-desc">项目总负责人，对进度/质量/成本全面负责，协调资源、把控节点。</div><div class="role-tags"><span>进度管理</span><span>资源协调</span><span>风险管理</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-mgmt);"><div class="role-name">DM</div><div class="role-en">Delivery Manager · 交付经理</div><div class="role-desc">聚焦交付环节，确保按时按质按量交付，对接业务方管理验收。</div><div class="role-tags"><span>交付计划</span><span>客户对接</span><span>验收管理</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-mgmt);"><div class="role-name">PMO</div><div class="role-en">项目管理办公室</div><div class="role-desc">制定项目管理规范和流程，提供工具和方法论支持，进行项目组合管理。</div><div class="role-tags"><span>流程规范</span><span>效能度量</span><span>组合管理</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-mgmt);"><div class="role-name">Tech Lead</div><div class="role-en">技术负责人 / 架构师</div><div class="role-desc">技术总负责人，负责技术选型、架构设计、方案评审、代码质量把控。</div><div class="role-tags"><span>架构设计</span><span>技术选型</span><span>Code Review</span></div></div>
+    </div>
+  </div>
+
+  <!-- Product -->
+  <div class="role-tier">
+    <div class="tier-label" style="background:rgba(249,115,22,0.15);color:var(--c-product);"><span class="dot" style="background:var(--c-product);"></span>产品线</div>
+    <div class="role-cards">
+      <div class="role-card" style="border-left-color:var(--c-product);"><div class="role-name">PM</div><div class="role-en">Product Manager · 产品经理</div><div class="role-desc">产品定义者，需求调研、PRD撰写、需求优先级排序，业务与技术的桥梁。</div><div class="role-tags"><span>需求分析</span><span>PRD</span><span>竞品调研</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-product);"><div class="role-name">UX / UI</div><div class="role-en">体验 & 视觉设计师</div><div class="role-desc">UX负责用户研究、交互原型；UI负责视觉设计、组件库维护。</div><div class="role-tags"><span>交互原型</span><span>视觉设计</span><span>设计系统</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-product);"><div class="role-name">BA</div><div class="role-en">Business Analyst · 业务分析师</div><div class="role-desc">将业务需求转化为技术需求，梳理业务流程，B端/企业级项目作用尤为突出。</div><div class="role-tags"><span>业务建模</span><span>流程梳理</span><span>数据字典</span></div></div>
+    </div>
+  </div>
+
+  <!-- Dev -->
+  <div class="role-tier">
+    <div class="tier-label" style="background:rgba(34,197,94,0.15);color:var(--c-dev);"><span class="dot" style="background:var(--c-dev);"></span>开发团队</div>
+    <div class="role-cards">
+      <div class="role-card" style="border-left-color:var(--c-dev);"><div class="role-name">前端开发</div><div class="role-en">Frontend Engineer</div><div class="role-desc">用户界面开发实现，Web/H5/小程序/跨端App，与设计+后端紧密配合。</div><div class="role-tags"><span>React/Vue</span><span>TS</span><span>小程序</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-dev);"><div class="role-name">后端开发</div><div class="role-en">Backend Engineer</div><div class="role-desc">服务端业务逻辑、API接口、数据处理和系统架构，Java/Go/Python/C++为主，高性能场景用C++。</div><div class="role-tags"><span>Java/Go/C++</span><span>微服务</span><span>数据库</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-dev);"><div class="role-name">客户端开发</div><div class="role-en">Mobile Engineer</div><div class="role-desc">iOS/Android原生应用开发，系统API、性能优化、应用商店发布。</div><div class="role-tags"><span>Swift/Kotlin</span><span>Flutter</span><span>RN</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-dev);"><div class="role-name">数据开发</div><div class="role-en">Data Engineer</div><div class="role-desc">数据管道建设与维护，数据采集、ETL、数仓建设、数据质量治理。</div><div class="role-tags"><span>Spark/Flink</span><span>ETL</span><span>Hive</span></div></div>
+    </div>
+  </div>
+
+  <!-- QA + Algo + Ops + HW (compact) -->
+  <div class="role-tier">
+    <div class="tier-label" style="background:rgba(168,85,247,0.15);color:var(--c-qa);"><span class="dot" style="background:var(--c-qa);"></span>测试 + 算法 + 运维 + 硬件 + 安全</div>
+    <div class="role-cards">
+      <div class="role-card" style="border-left-color:var(--c-qa);"><div class="role-name">QA / SDET</div><div class="role-en">测试 + 测试开发</div><div class="role-desc">功能测试、自动化测试框架、CI/CD质量门禁、性能测试。</div><div class="role-tags"><span>自动化框架</span><span>性能测试</span><span>缺陷管理</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-algo);"><div class="role-name">算法工程师</div><div class="role-en">ML / Algorithm Engineer</div><div class="role-desc">ML/DL模型研发、推荐系统、NLP/CV、大模型训练与部署。</div><div class="role-tags"><span>PyTorch</span><span>推荐</span><span>NLP</span><span>大模型</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-ops);"><div class="role-name">SRE / DevOps</div><div class="role-en">运维 & 发布工程师</div><div class="role-desc">服务可靠性保障、CI/CD流水线、监控告警、容器化部署。</div><div class="role-tags"><span>K8s</span><span>CI/CD</span><span>监控</span><span>IaC</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-ops);"><div class="role-name">DBA</div><div class="role-en">Database Administrator</div><div class="role-desc">数据库架构设计、性能调优、备份恢复、主从集群、分库分表。</div><div class="role-tags"><span>MySQL/PG</span><span>Redis</span><span>分库分表</span></div></div>
+      <div class="role-card" style="border-left-color:var(--c-hw);"><div class="role-name">嵌入式/硬件</div><div class="role-en">Embedded / HW Engineer</div><div class="role-desc">固件开发、MCU编程、RTOS、驱动、PCB设计、FPGA验证。</div><div class="role-tags"><span>C/C++</span><span>RTOS</span><span>ARM</span><span>PCB</span></div></div>
+      <div class="role-card" style="border-left-color:#e0587c;"><div class="role-name">安全工程师</div><div class="role-en">Security Engineer</div><div class="role-desc">应用安全、渗透测试、代码审计、安全合规、应急响应。</div><div class="role-tags"><span>渗透测试</span><span>代码审计</span><span>等保合规</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TECH STACK ====== -->
+<section class="section" id="tech">
+  <h2 class="section-title">🛠️ 技术栈全景图</h2>
+  <p class="section-desc">7大技术栈领域——不同行业侧重点不同（银行偏Java/数据，车企偏C++/算法，互联网全覆盖）。</p>
+  <div class="tech-grid">
+    <div class="tech-cat" style="border-top-color:#61DAFB;"><h3>🎨 前端技术栈</h3><p class="cat-desc">面向用户界面的技术体系</p><div class="tech-tags"><span class="tech-tag core" style="background:#ffe4ed;color:#fb7299;">HTML5/CSS3/JS</span><span class="tech-tag core" style="background:rgba(59,130,246,0.15);color:#60a5fa;">TypeScript</span><span class="tech-tag" style="background:rgba(6,182,212,0.15);color:#22d3ee;">React/Next.js</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">Vue/Nuxt</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">Webpack/Vite</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">RN/Flutter</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF8F00;">Tailwind/AntDesign</span><span class="tech-tag" style="background:rgba(251,114,153,0.15);color:#fb7299;">小程序/跨端</span><span class="tech-tag" style="background:rgba(30,64,175,0.15);color:#818cf8;">Node.js/BFF</span></div></div>
+    <div class="tech-cat" style="border-top-color:#68A063;"><h3>⚡ 后端技术栈</h3><p class="cat-desc">服务端核心逻辑与数据处理</p><div class="tech-tags"><span class="tech-tag core" style="background:rgba(34,197,94,0.15);color:#4ade80;">Java/SpringBoot</span><span class="tech-tag core" style="background:rgba(34,197,94,0.15);color:#4ade80;">Go/Gin</span><span class="tech-tag core" style="background:#ffe4ed;color:#fb7299;">C++/muduo</span><span class="tech-tag" style="background:rgba(30,64,175,0.2);color:#818cf8;">Python/FastAPI</span><span class="tech-tag" style="background:rgba(6,182,212,0.15);color:#22d3ee;">Dubbo/gRPC</span><span class="tech-tag" style="background:rgba(251,114,153,0.15);color:#fb7299;">MySQL/PG</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF6F00;">Redis/MongoDB/ES</span><span class="tech-tag" style="background:#ffe4ed;color:#fb7299;">Kafka/RocketMQ</span><span class="tech-tag" style="background:rgba(34,197,94,0.12);color:#4ade80;">Nacos/Apollo</span><span class="tech-tag" style="background:rgba(71,85,105,0.15);color:#94a3b8;">Netty/gRPC-Go</span></div></div>
+    <div class="tech-cat" style="border-top-color:#FF6F00;"><h3>🤖 算法 & 数据</h3><p class="cat-desc">数据驱动和智能化能力</p><div class="tech-tags"><span class="tech-tag core" style="background:rgba(245,158,11,0.15);color:#fbbf24;">PyTorch/TF</span><span class="tech-tag core" style="background:rgba(251,114,153,0.15);color:#fb7299;">Sklearn/XGBoost</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">Spark/Flink</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">MLflow/Kubeflow</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF8F00;">LangChain/LlamaIndex</span><span class="tech-tag" style="background:rgba(71,85,105,0.2);color:#a5b4fc;">Transformers/vLLM</span><span class="tech-tag" style="background:rgba(6,182,212,0.15);color:#22d3ee;">推荐/搜索/NLP/CV</span><span class="tech-tag" style="background:#ffe4ed;color:#fb7299;">Hadoop/Hive</span><span class="tech-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24;">Airflow/DolphinScheduler</span></div></div>
+    <div class="tech-cat" style="border-top-color:#C21325;"><h3>🧪 测试技术栈</h3><p class="cat-desc">保障软件质量和稳定性</p><div class="tech-tags"><span class="tech-tag core" style="background:rgba(251,114,153,0.15);color:#fb7299;">JUnit/TestNG</span><span class="tech-tag core" style="background:rgba(245,158,11,0.15);color:#fbbf24;">Jest/Vitest</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">Pytest</span><span class="tech-tag" style="background:rgba(59,130,246,0.15);color:#60a5fa;">Selenium/Playwright</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">Cypress</span><span class="tech-tag" style="background:#ffe4ed;color:#fb7299;">JMeter/Locust</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF6F00;">Appium</span><span class="tech-tag" style="background:rgba(34,197,94,0.12);color:#4ade80;">SonarQube</span><span class="tech-tag" style="background:rgba(168,85,247,0.12);color:#c084fc;">Postman/RestAssured</span></div></div>
+    <div class="tech-cat" style="border-top-color:#326CE5;"><h3>⚙️ 基础设施</h3><p class="cat-desc">支撑系统运行和持续交付</p><div class="tech-tags"><span class="tech-tag core" style="background:rgba(59,130,246,0.15);color:#60a5fa;">Docker/K8s</span><span class="tech-tag core" style="background:rgba(34,197,94,0.15);color:#4ade80;">CI/CD</span><span class="tech-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24;">Terraform</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">AWS/阿里云/腾讯云</span><span class="tech-tag" style="background:rgba(251,114,153,0.15);color:#fb7299;">Prometheus/Grafana</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">ELK/Loki</span><span class="tech-tag" style="background:rgba(6,182,212,0.15);color:#22d3ee;">Nginx/Istio</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF8F00;">Helm</span><span class="tech-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa;">Ansible/Puppet</span></div></div>
+    <div class="tech-cat" style="border-top-color:#00979D;"><h3>🔧 硬件/嵌入式</h3><p class="cat-desc">软硬结合、底层驱动和芯片</p><div class="tech-tags"><span class="tech-tag core" style="background:#ffe4ed;color:#fb7299;">C/C++</span><span class="tech-tag core" style="background:rgba(71,85,105,0.2);color:#a5b4fc;">Rust</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">ARM/RISC-V</span><span class="tech-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24;">FreeRTOS/Zephyr</span><span class="tech-tag" style="background:rgba(251,114,153,0.15);color:#fb7299;">MQTT/BLE/Zigbee</span><span class="tech-tag" style="background:rgba(59,130,246,0.15);color:#60a5fa;">PCB/Altium</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">Verilog/FPGA</span><span class="tech-tag" style="background:rgba(34,197,94,0.12);color:#4ade80;">Linux内核/驱动</span><span class="tech-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24;">STM32/ESP32</span></div></div>
+    <div class="tech-cat" style="border-top-color:#e0587c;"><h3>🛡️ 安全技术栈</h3><p class="cat-desc">应用安全、数据安全、基础设施安全</p><div class="tech-tags"><span class="tech-tag core" style="background:rgba(251,114,153,0.15);color:#fb7299;">OWASP Top10</span><span class="tech-tag" style="background:rgba(168,85,247,0.15);color:#c084fc;">BurpSuite</span><span class="tech-tag" style="background:rgba(59,130,246,0.15);color:#60a5fa;">Nessus/OpenVAS</span><span class="tech-tag" style="background:rgba(34,197,94,0.15);color:#4ade80;">WAF/ModSecurity</span><span class="tech-tag" style="background:rgba(245,158,11,0.12);color:#FF8F00;">KMS/HashiCorp Vault</span><span class="tech-tag" style="background:#ffe4ed;color:#fb7299;">等保2.0/ISO27001</span></div></div>
+  </div>
+</section>
+
+<!-- ====== FLOW ====== -->
+<section class="section" id="flow">
+  <h2 class="section-title">🔄 通用协作流程</h2>
+  <p class="section-desc">项目从 0 到 1 再到持续迭代的 6 个阶段，以及各阶段谁在主导、谁在配合。</p>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:var(--c-product);">1</div><div class="phase-info"><h4>需求阶段</h4><p>明确要做什么、为什么做</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-product);color:var(--c-product);"><span class="dot-inline" style="background:var(--c-product);"></span>PM · 需求主导</span><span class="phase-role" style="border-color:var(--c-mgmt);color:var(--c-mgmt);"><span class="dot-inline" style="background:var(--c-mgmt);"></span>PL · 可行性评估</span><span class="phase-role" style="border-color:var(--c-mgmt);color:var(--c-mgmt);"><span class="dot-inline" style="background:var(--c-mgmt);"></span>TechLead</span><span class="phase-role" style="border-color:var(--c-dev);color:var(--c-dev);"><span class="dot-inline" style="background:var(--c-dev);"></span>开发 · 估时</span></div><div class="phase-detail">PM调研用户需求→撰写PRD→PL组织可行性评估→TechLead技术预研→开发给工时→PMO制定计划→DM确认节点</div></div>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:#F39C12;">2</div><div class="phase-info"><h4>设计阶段</h4><p>将需求转化为可落地的方案</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-product);color:var(--c-product);"><span class="dot-inline" style="background:var(--c-product);"></span>UX/UI · 设计</span><span class="phase-role" style="border-color:var(--c-mgmt);color:var(--c-mgmt);"><span class="dot-inline" style="background:var(--c-mgmt);"></span>TechLead · 架构</span><span class="phase-role" style="border-color:var(--c-dev);color:var(--c-dev);"><span class="dot-inline" style="background:var(--c-dev);"></span>前后端 · 技术方案</span></div><div class="phase-detail">UX交互原型→UI高保真稿→TechLead确定架构→后端设计API+DB Schema→前端组件树→技术方案评审</div></div>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:var(--c-dev);">3</div><div class="phase-info"><h4>开发阶段</h4><p>编码实现、联调集成</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-dev);color:var(--c-dev);"><span class="dot-inline" style="background:var(--c-dev);"></span>前后端 · 编码</span><span class="phase-role" style="border-color:var(--c-algo);color:var(--c-algo);"><span class="dot-inline" style="background:var(--c-algo);"></span>算法 · 训练</span><span class="phase-role" style="border-color:var(--c-hw);color:var(--c-hw);"><span class="dot-inline" style="background:var(--c-hw);"></span>硬件 · 固件</span></div><div class="phase-detail">每日站会→前后端联调→Code Review→CI自动构建→提测（不同行业开发周期差异大：互联网几天，银行几个月）</div></div>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:var(--c-qa);">4</div><div class="phase-info"><h4>测试阶段</h4><p>全面验证、缺陷修复</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-qa);color:var(--c-qa);"><span class="dot-inline" style="background:var(--c-qa);"></span>QA · 功能测试</span><span class="phase-role" style="border-color:var(--c-qa);color:var(--c-qa);"><span class="dot-inline" style="background:var(--c-qa);"></span>SDET · 自动化</span><span class="phase-role" style="border-color:var(--c-dev);color:var(--c-dev);"><span class="dot-inline" style="background:var(--c-dev);"></span>开发 · 修Bug</span></div><div class="phase-detail">QA执行用例→提交Bug→开发修复→自动化回归→性能/安全测试→发布评审</div></div>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:var(--c-ops);">5</div><div class="phase-info"><h4>上线阶段</h4><p>安全平稳交付到生产</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-ops);color:var(--c-ops);"><span class="dot-inline" style="background:var(--c-ops);"></span>DevOps · 发布</span><span class="phase-role" style="border-color:var(--c-ops);color:var(--c-ops);"><span class="dot-inline" style="background:var(--c-ops);"></span>SRE · 监控</span><span class="phase-role" style="border-color:var(--c-mgmt);color:var(--c-mgmt);"><span class="dot-inline" style="background:var(--c-mgmt);"></span>DM · 验收</span></div><div class="phase-detail">灰度/蓝绿发布→先发预发布→灰度放量1%→10%→50%→100%→SRE实时监控→快速验证→确认交付</div></div>
+  <div class="flow-phase"><div class="phase-header"><div class="phase-num" style="background:var(--c-mgmt);">6</div><div class="phase-info"><h4>运维 & 迭代</h4><p>持续运行+数据驱动优化</p></div></div><div class="phase-roles"><span class="phase-role" style="border-color:var(--c-ops);color:var(--c-ops);"><span class="dot-inline" style="background:var(--c-ops);"></span>SRE · 日常运维</span><span class="phase-role" style="border-color:var(--c-algo);color:var(--c-algo);"><span class="dot-inline" style="background:var(--c-algo);"></span>数据 · 效果分析</span><span class="phase-role" style="border-color:var(--c-product);color:var(--c-product);"><span class="dot-inline" style="background:var(--c-product);"></span>PM · 迭代规划</span></div><div class="phase-detail">监控告警→故障处理→用户反馈→数据分析→PM规划下个迭代→技术债清理→进入下一轮</div></div>
+</section>
+
+<!-- ====== GUIDE ====== -->
+<section class="section" id="guide">
+  <h2 class="section-title">🎯 给应届生的选择指南</h2>
+  <p class="section-desc">没有"最好"的行业，只有"最适合你"的方向。下面从 4 个维度帮你做判断。</p>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h4>💰 想拿高薪、快速成长</h4>
+      <p class="gc-sub">推荐：互联网大厂 / 智能车企（算法方向）</p>
+      <ul>
+        <li>互联网校招 30-50万+，算法 SSP 可达 80 万+</li>
+        <li>智能车企智驾算法 年薪 80-200万（顶尖硕博）</li>
+        <li>技术成长快、晋升通道明确</li>
+        <li><b>代价：</b>工作强度大、有年龄焦虑、稳定性一般</li>
+        <li><b>准备：</b>刷力扣+做项目+实习，双非也能进大厂</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <h4>🏠 追求稳定、不想卷</h4>
+      <p class="gc-sub">推荐：银行/金融科技 · 电网 · 运营商 · 研究所</p>
+      <ul>
+        <li>银行科技子公司：六险二金、955、几乎无35岁危机</li>
+        <li>国网/南网信通：最稳定，部分岗位可落户</li>
+        <li>运营商软研院：央企编制+相对不错的技术环境</li>
+        <li><b>代价：</b>薪资天花板低、技术偏保守、流程多</li>
+        <li><b>准备：</b>学历是硬门槛（偏好硕+名校），Java 是核心</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <h4>🔬 想做底层技术、技术壁垒高</h4>
+      <p class="gc-sub">推荐：设备厂商（华为/中兴）· 芯片/嵌入式方向</p>
+      <ul>
+        <li>C语言+Linux内核+通信协议+芯片设计</li>
+        <li>技术壁垒极高，越老越吃香，年龄焦虑最小</li>
+        <li>华为/中兴校招规模大，薪资 25-45万</li>
+        <li><b>代价：</b>学习曲线陡峭、工作强度不低</li>
+        <li><b>准备：</b>通信/电子/计算机专业，C语言+OS+体系结构功底要扎实</li>
+      </ul>
+    </div>
+    <div class="guide-card">
+      <h4>🚗 看好 AI+垂直行业风口</h4>
+      <p class="gc-sub">推荐：智能车企 · AI芯片 · 机器人</p>
+      <ul>
+        <li>智能驾驶是当前最热赛道，人才缺口超百万</li>
+        <li>既懂车辆工程又懂算法的"复合人才"供需比 1:8</li>
+        <li>小鹏/蔚来/Momenta 等校招大量扩招 AI 方向</li>
+        <li><b>代价：</b>行业竞争激烈、部分新势力有盈利压力</li>
+        <li><b>准备：</b>PyTorch+强化学习+ROS，硕士以上更吃香</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:20px;padding:20px;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);">
+    <h4 style="font-size:15px;font-weight:700;margin-bottom:8px;">📝 应届生技术岗求职核心 Checklist</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;font-size:12px;color:var(--text2);line-height:1.8;">
+      <div>✅ <b>算法与数据结构</b>：力扣 200+ 题是底线，剑指 Offer 必刷</div>
+      <div>✅ <b>1-2个深度项目</b>：不是 CRUD demo，要有实际技术挑战</div>
+      <div>✅ <b>核心语言精通</b>：Java/C++/Go/Python 至少一门深入</div>
+      <div>✅ <b>计算机基础</b>：OS、网络、数据库原理不能只是"了解"</div>
+      <div>✅ <b>实习经历</b>：有实习 >> 没实习，大厂实习 >> 小厂实习</div>
+      <div>✅ <b>行业认知</b>：面试前搞清楚目标公司的业务和技术栈</div>
+      <div>✅ <b>简历打磨</b>：STAR法则写项目（背景-任务-行动-结果）</div>
+      <div>✅ <b>学历策略</b>：互联网看实力，央企/银行看学历，对症下药</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CAREER PATHS (五大职业发展路线) ====== -->
+<section class="section" id="career-paths">
+  <h2 class="section-title">🗺️ 五大职业发展路线</h2>
+  <p class="section-desc">应届生进入技术行业后,主要有五条发展路径——管理、技术专家、转岗、考公。每条路径的能力要求和前景不同,选择比努力更重要。</p>
+  <div class="career-overview">
+    <div class="career-paths">
+      <div class="path-card mgmt">
+        <h3>📊 部门经理(纯管理岗)</h3>
+        <p>从技术专家转型为纯管理岗位,负责团队管理、资源协调、业务决策。</p>
+        <div class="path-requirements">
+          <h4>🎯 发展路径</h4>
+          <ul>
+            <li>技术专家 → Tech Lead → 部门经理 → 高层管理</li>
+            <li>需要5-8年技术积累 + 3-5年管理经验</li>
+            <li>通常30-35岁开始转型管理</li>
+          </ul>
+          <h4>💼 核心能力</h4>
+          <ul>
+            <li>团队建设与人才培养</li>
+            <li>项目资源调配与预算管理</li>
+            <li>业务战略规划与执行</li>
+            <li>跨部门沟通与协调</li>
+          </ul>
+          <h4>🎁 适合人群</h4>
+          <ul>
+            <li>擅长人际沟通与协调</li>
+            <li>对管理有兴趣,对技术保持了解</li>
+            <li>具备战略思维和商业敏感度</li>
+          </ul>
+        </div>
+      </div>
+      <div class="path-card tech">
+        <h3>🎯 项目经理(技术管理)</h3>
+        <p>技术背景的项目管理者,既懂技术又懂管理,负责项目全生命周期管理。</p>
+        <div class="path-requirements">
+          <h4>🎯 发展路径</h4>
+          <ul>
+            <li>高级工程师 → Tech Lead → 项目经理 → 项目总监</li>
+            <li>需要3-5年技术经验 + 2-3年项目管理经验</li>
+            <li>通常28-35岁担任项目经理</li>
+          </ul>
+          <h4>💼 核心能力</h4>
+          <ul>
+            <li>项目规划与进度控制</li>
+            <li>风险管理问题解决</li>
+            <li>技术方案评审与决策</li>
+            <li>敏捷开发与Scrum精通</li>
+          </ul>
+          <h4>🎁 适合人群</h4>
+          <ul>
+            <li>技术扎实且具备全局视野</li>
+            <li>擅长项目规划和风险控制</li>
+            <li>具备良好的沟通协调能力</li>
+          </ul>
+        </div>
+      </div>
+      <div class="path-card expert">
+        <h3>🔬 技术专家</h3>
+        <p>在特定技术领域深耕成为技术权威,专注技术深度和专业能力。</p>
+        <div class="path-requirements">
+          <h4>🎯 发展路径</h4>
+          <ul>
+            <li>高级工程师 → 技术专家 → 首席专家 → Fellow</li>
+            <li>需要8-10年以上技术深耕</li>
+            <li>通常35-45岁达到技术巅峰</li>
+          </ul>
+          <h4>💼 核心能力</h4>
+          <ul>
+            <li>深厚的技术功底和系统设计能力</li>
+            <li>技术架构设计与优化</li>
+            <li>技术创新与前沿研究</li>
+            <li>技术布道与知识传承</li>
+          </ul>
+          <h4>🎁 适合人群</h4>
+          <ul>
+            <li>对技术有浓厚兴趣和热情</li>
+            <li>具备钻研精神和学习能力</li>
+            <li>喜欢解决技术难题</li>
+          </ul>
+        </div>
+      </div>
+      <div class="path-card transition">
+        <h3>🔄 转岗其他领域</h3>
+        <p>利用技术背景转型到产品、运营、销售、咨询等非技术岗位。</p>
+        <div class="path-requirements">
+          <h4>🎯 发展路径</h4>
+          <ul>
+            <li>技术工程师 → 产品经理/运营/销售 → 领导者</li>
+            <li>需要3-5年技术经验 + 1-2年转型适应</li>
+            <li>通常25-35岁完成转型</li>
+          </ul>
+          <h4>💼 核心能力</h4>
+          <ul>
+            <li>业务理解和需求分析</li>
+            <li>沟通表达和客户管理</li>
+            <li>市场分析和商业思维</li>
+            <li>行业洞察和趋势判断</li>
+          </ul>
+          <h4>🎁 适合人群</h4>
+          <ul>
+            <li>对业务更感兴趣</li>
+            <li>具备良好的沟通能力</li>
+            <li>希望工作生活平衡</li>
+          </ul>
+        </div>
+      </div>
+      <div class="path-card gov">
+        <h3>🏛️ 考公/事业单位</h3>
+        <p>进入政府部门、事业单位或国企,享受稳定性和社会地位。</p>
+        <div class="path-requirements">
+          <h4>🎯 发展路径</h4>
+          <ul>
+            <li>技术工程师 → 公务员/事业单位技术人员 → 管理岗</li>
+            <li>需要通过公务员考试/事业单位招聘</li>
+            <li>通常22-30岁完成转型</li>
+          </ul>
+          <h4>💼 核心能力</h4>
+          <ul>
+            <li>政策理解和执行能力</li>
+            <li>公文写作和处理能力</li>
+            <li>公共服务意识和责任感</li>
+            <li>组织协调和沟通能力</li>
+          </ul>
+          <h4>🎁 适合人群</h4>
+          <ul>
+            <li>追求稳定性和安全感</li>
+            <li>有服务社会的理想</li>
+            <li>重视工作生活平衡</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CAREER PATH ====== -->
+<section class="section" id="career">
+  <h2 class="section-title">📈 各技术栈职业发展路线</h2>
+  <p class="section-desc">不同技术方向的发展路径差异很大——有的"越老越吃香"，有的需要快速冲击管理岗。以下按主流方向逐一拆解，标注了各阶段的典型年限、核心能力和薪资锚点（一线城市互联网大厂基准）。</p>
+
+  <div class="career-tabs">
+    <button class="career-tab active" onclick="switchCareer('fe')">🎨 前端</button>
+    <button class="career-tab" onclick="switchCareer('be')">⚡ 后端</button>
+    <button class="career-tab" onclick="switchCareer('algo')">🤖 算法/AI</button>
+    <button class="career-tab" onclick="switchCareer('qa')">🧪 测试/QA</button>
+    <button class="career-tab" onclick="switchCareer('ops')">⚙️ 运维/SRE</button>
+    <button class="career-tab" onclick="switchCareer('embed')">🔧 嵌入式/硬件</button>
+    <button class="career-tab" onclick="switchCareer('data')">📊 数据开发</button>
+    <button class="career-tab" onclick="switchCareer('mobile')">📱 客户端</button>
+  </div>
+
+  <!-- 前端 -->
+  <div class="career-panel active" id="cp-fe">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级前端</div><div class="stage-years">0-2年 / P4-P5</div><div class="stage-salary">15-30万年薪</div><div class="stage-desc">HTML/CSS/JS基础、掌握React或Vue、能独立完成页面开发、会调接口联调。重点积累组件化思维。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">中级前端</div><div class="stage-years">2-4年 / P5-P6</div><div class="stage-salary">25-45万年薪</div><div class="stage-desc">深入框架原理(虚拟DOM/响应式)、性能优化、工程化(Webpack/Vite)、开始接触Node.js全栈。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">高级前端</div><div class="stage-years">4-7年 / P6-P7</div><div class="stage-salary">45-80万年薪</div><div class="stage-desc">架构设计（微前端/SSR/跨端方案）、性能监控体系、带领小团队、技术方案评审。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">前端架构师</div><div class="stage-years">7年+ / P7-P8</div><div class="stage-salary">80-150万年薪</div><div class="stage-desc">制定前端技术规范、基础设施搭建（脚手架/组件库/CI）、跨团队技术决策。P7是多数人的天花板。</div></div>
+      <div class="career-stage"><div class="stage-icon">🚀</div><div class="stage-title">技术总监/前端负责人</div><div class="stage-years">10年+ / P8+</div><div class="stage-salary">150-300万+年薪</div><div class="stage-desc">管理30+人团队、技术战略规划、业务+技术双驱动。极少数人能到达。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>关键提醒：</b>纯切图前端正在被AI快速替代，必须往全栈（Next.js/Nuxt + 后端能力）或架构方向发展。前端+AI Agent开发是新兴方向。</p>
+  </div>
+
+  <!-- 后端 -->
+  <div class="career-panel" id="cp-be">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级后端</div><div class="stage-years">0-2年 / P4-P5</div><div class="stage-salary">18-35万年薪</div><div class="stage-desc">Java/Go基础、Spring Boot/微服务、MySQL/Redis、能独立开发CRUD业务模块。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">中级后端</div><div class="stage-years">2-4年 / P5-P6</div><div class="stage-salary">30-50万年薪</div><div class="stage-desc">分布式系统设计、MQ/Kafka、缓存策略、数据库优化（索引/分库分表）、参与架构讨论。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">高级后端</div><div class="stage-years">4-7年 / P6-P7</div><div class="stage-salary">50-90万年薪</div><div class="stage-desc">高并发架构设计、DDD领域建模、技术选型、跨系统方案设计、带领3-5人小组。此阶段是分叉点。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">架构师/技术专家</div><div class="stage-years">7年+ / P7-P8</div><div class="stage-salary">90-200万年薪</div><div class="stage-desc">全局架构设计、技术规划1-2年、多团队协作。大厂P8≈小公司CTO。Java架构师年薪50-80万(非大厂)。</div></div>
+      <div class="career-stage"><div class="stage-icon">🚀</div><div class="stage-title">技术总监/CTO</div><div class="stage-years">10年+ / P8-P9</div><div class="stage-salary">200-500万+年薪</div><div class="stage-desc">技术战略、组织建设、业务决策。P9是打工人的巅峰。可选择技术线或管理线深耕。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>分叉路口：</b>4-7年经验是后端开发最关键的转折点——往架构师（技术深度）还是技术经理（管理）？选技术线要求持续深耕底层原理和分布式系统。</p>
+  </div>
+
+  <!-- 算法 -->
+  <div class="career-panel" id="cp-algo">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">算法工程师</div><div class="stage-years">0-2年 / P5-P6</div><div class="stage-salary">30-80万年薪</div><div class="stage-desc">PyTorch熟练、推荐/CV/NLP方向之一、模型训练与评估、AB实验。顶级硕博+大厂可达80万+。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">高级算法工程师</div><div class="stage-years">2-5年 / P6-P7</div><div class="stage-salary">50-120万年薪</div><div class="stage-desc">独立负责模型方向、特征工程体系、模型部署与优化。供需缺口最大——3-5年的大模型工程师供不应求。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">算法专家</div><div class="stage-years">5-8年 / P7-P8</div><div class="stage-salary">80-200万年薪</div><div class="stage-desc">大模型训练/微调/对齐、千亿参数模型经验、定义技术路线。从Senior到Lead薪酬中位数从130万跳到250万。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">首席科学家/AI负责人</div><div class="stage-years">8年+ / P8-P9</div><div class="stage-salary">200-600万+年薪</div><div class="stage-desc">从0到1搭建大模型团队、技术战略、行业影响力。全中国具备此经验的人不超过500人。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>核心趋势：</b>传统算法工程师薪资增速放缓（+12%），大模型方向薪资年增幅30%+。应届生竞争激烈——市场已出现"算法岗饱和"信号，建议掌握大模型微调+RAG+Agent开发才有溢价。</p>
+  </div>
+
+  <!-- 测试 -->
+  <div class="career-panel" id="cp-qa">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级测试</div><div class="stage-years">0-2年</div><div class="stage-salary">10-20万年薪</div><div class="stage-desc">功能测试、用例设计、缺陷管理、基本SQL。纯手工测试，AI自动化工具正在大量替代这个层级。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">测试开发SDET</div><div class="stage-years">2-4年</div><div class="stage-salary">20-40万年薪</div><div class="stage-desc">自动化框架搭建(Selenium/Playwright)、CI/CD质量门禁、接口测试。必须转——不转就out。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">高级测试开发</div><div class="stage-years">4-7年</div><div class="stage-salary">35-60万年薪</div><div class="stage-desc">性能测试(JMeter/Locust)、安全测试、测试架构设计、测试平台搭建、质量度量体系建设。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">测试架构/质量总监</div><div class="stage-years">7年+</div><div class="stage-salary">60-100万年薪</div><div class="stage-desc">质量战略、AI测试体系搭建、混沌工程。岗位少但不可替代——需要深厚业务+技术+管理能力。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">⚠️ <b>危机预警：</b>纯手工测试员岗位已下降60%，但SDET/测试开发需求仍在增长。AI可以自动生成测试用例，但无法做探索性测试和业务逻辑判断。不转自动化的测试工程师3年内将面临严重危机。</p>
+  </div>
+
+  <!-- Ops -->
+  <div class="career-panel" id="cp-ops">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级运维/DevOps</div><div class="stage-years">0-2年</div><div class="stage-salary">15-30万年薪</div><div class="stage-desc">Linux基础、Docker、Nginx、简单CI/CD、监控脚本。重心是"会用工具"。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">高级SRE/DevOps</div><div class="stage-years">2-5年</div><div class="stage-salary">30-60万年薪</div><div class="stage-desc">K8s深入(CKA级别)、Terraform/IaC、Prometheus+Grafana、SLO/SLI体系、on-call经验。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">平台工程师/架构师</div><div class="stage-years">5-8年</div><div class="stage-salary">60-120万年薪</div><div class="stage-desc">内部开发者平台(IDP)搭建、自服务基础设施、多集群管理。"平台工程"是2026年最热的DevOps分支。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">基础设施负责人</div><div class="stage-years">8年+</div><div class="stage-salary">120-250万+年薪</div><div class="stage-desc">云原生战略、成本优化、组织级可靠性工程。AI基础设施工程师（GPU集群管理）薪资溢价20-35%。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>AI时代的机会：</b>SRE是AI最难替代的岗位——处理分布式系统的底层Bug和突发故障需要深厚经验和判断力。MLOps/AI Infra方向是目前DevOps领域薪资最爆炸的分支。</p>
+  </div>
+
+  <!-- Embedded -->
+  <div class="career-panel" id="cp-embed">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级嵌入式</div><div class="stage-years">0-3年</div><div class="stage-salary">15-25万年薪</div><div class="stage-desc">C语言精通、STM32/MCU、GPIO/UART/I2C/SPI、FreeRTOS、示波器/逻辑分析仪。华为天才少年可达30-50万。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">高级嵌入式</div><div class="stage-years">3-5年</div><div class="stage-salary">25-50万年薪</div><div class="stage-desc">Linux内核驱动、系统移植(Uboot/Kernel)、复杂协议栈(TCP/IP/MQTT)、实时性与低功耗优化。新能源/自动驾驶领域50-80万。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">系统架构师</div><div class="stage-years">5-10年</div><div class="stage-salary">50-80万年薪</div><div class="stage-desc">异构计算(CPU+FPGA)、功能安全(ISO 26262)、AI边缘计算(TensorFlow Lite)。车规级芯片方向薪资最高。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">首席技术专家/CTO</div><div class="stage-years">10年+</div><div class="stage-salary">80-200万+年薪</div><div class="stage-desc">技术战略、行业标准制定。嵌入式是"越老越吃香"的典型——技术壁垒极高，年龄焦虑最小。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>黄金赛道：</b>嵌入式+AI（TinyML、边缘推理）是未来5年最被低估的方向。芯片设计(Verilog/FPGA)人才极度稀缺，薪资增速远超纯软件开发。</p>
+  </div>
+
+  <!-- Data -->
+  <div class="career-panel" id="cp-data">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">数据开发</div><div class="stage-years">0-2年</div><div class="stage-salary">18-30万年薪</div><div class="stage-desc">SQL/Hive、ETL流程、数据仓库建模(星型/雪花)、Spark基础。数据开发比数据分析薪资更高。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">高级数据开发</div><div class="stage-years">2-5年</div><div class="stage-salary">30-55万年薪</div><div class="stage-desc">Flink实时计算、数据湖(Iceberg/Hudi)、数据血缘治理、大规模数据管道。掌握实时流是分水岭。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">数据架构师</div><div class="stage-years">5-8年</div><div class="stage-salary">55-100万年薪</div><div class="stage-desc">数据中台架构、数据治理体系、Lambda/Kappa架构。数据平台整体设计，跨多业务线协同。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">数据负责人/CDO</div><div class="stage-years">8年+</div><div class="stage-salary">100-200万+年薪</div><div class="stage-desc">数据战略、数据产品化、AI+数据融合。数据团队管理者——需要懂技术+懂业务+懂管理。</div></div>
+    </div>
+  </div>
+
+  <!-- Mobile -->
+  <div class="career-panel" id="cp-mobile">
+    <div class="career-timeline">
+      <div class="career-stage"><div class="stage-icon">🌱</div><div class="stage-title">初级客户端</div><div class="stage-years">0-2年</div><div class="stage-salary">18-35万年薪</div><div class="stage-desc">Swift/Kotlin基础、UI布局、网络请求、基本性能优化。iOS和Android原生开发门槛不低。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌿</div><div class="stage-title">高级客户端</div><div class="stage-years">2-5年</div><div class="stage-salary">30-60万年薪</div><div class="stage-desc">性能调优(内存/启动/包大小)、跨端方案(RN/Flutter)、平台特性(ARKit/厂商推送)。纯UI开发在下降。</div></div>
+      <div class="career-stage"><div class="stage-icon">🌳</div><div class="stage-title">客户端架构师</div><div class="stage-years">5-8年</div><div class="stage-salary">60-100万年薪</div><div class="stage-desc">端架构设计(组件化/插件化)、大前端技术体系、跨端统一方案、带领iOS+Android团队。</div></div>
+      <div class="career-stage"><div class="stage-icon">🏗️</div><div class="stage-title">大前端负责人</div><div class="stage-years">8年+</div><div class="stage-salary">100-200万+年薪</div><div class="stage-desc">前端+客户端统一管理、移动端技术战略。客户端天花板较高，但岗位总量在萎缩。</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px;">💡 <b>信号：</b>纯客户端开发岗位在下降，AI生成SwiftUI/Compose代码的能力越来越强。建议向"大前端"（跨端+性能底层）或车载HMI方向拓展。</p>
+  </div>
+</section>
+
+<!-- ====== TIMELINE (职业发展时间轴) ====== -->
+<section class="section" id="timeline">
+  <h2 class="section-title">⏰ 职业发展时间轴</h2>
+  <p class="section-desc">技术职业发展的关键时间节点和里程碑——从应届生到职业巅峰的完整路径，按时间顺序从左到右排列。</p>
+  <div class="timeline-wrap">
+    <div class="timeline-container">
+      <div class="timeline-track">
+        <!-- 渐变轨道线 -->
+        <div class="timeline-line-h"></div>
+
+        <div style="display:flex">
+          <!-- 阶段 1 -->
+          <div class="timeline-item-h">
+            <div class="timeline-dot-h dot-1"></div>
+            <div class="timeline-card card-1">
+              <span class="tl-stage st-1">0-2 年</span>
+              <h4>🌱 技术积累期</h4>
+              <p>掌握基础技术栈，完成从学生到职场人的转变</p>
+              <ul>
+                <li>学习公司技术栈和业务</li>
+                <li>完成 1-2 个完整项目</li>
+                <li>建立技术基础和编码规范</li>
+                <li>熟悉团队协作流程</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 阶段 2 -->
+          <div class="timeline-item-h">
+            <div class="timeline-dot-h dot-2"></div>
+            <div class="timeline-card card-2">
+              <span class="tl-stage st-2">2-5 年</span>
+              <h4>🌿 快速发展期</h4>
+              <p>技术能力快速提升，开始承担重要责任</p>
+              <ul>
+                <li>成为团队技术骨干</li>
+                <li>主导重要功能模块</li>
+                <li>开始技术深度探索</li>
+                <li>考虑职业发展方向</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 阶段 3 -->
+          <div class="timeline-item-h">
+            <div class="timeline-dot-h dot-3"></div>
+            <div class="timeline-card card-3">
+              <span class="tl-stage st-3">5-8 年</span>
+              <h4>🌳 职业分叉点</h4>
+              <p>关键转折期，选择管理/技术/专家路线</p>
+              <ul>
+                <li>管理路线：带 3-5 人团队</li>
+                <li>技术路线：高级工程师</li>
+                <li>专家路线：技术专家</li>
+                <li>薪资大幅提升期</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 阶段 4 -->
+          <div class="timeline-item-h">
+            <div class="timeline-dot-h dot-4"></div>
+            <div class="timeline-card card-4">
+              <span class="tl-stage st-4">8-10 年</span>
+              <h4>🏗️ 职业成熟期</h4>
+              <p>成为领域专家或高级管理者</p>
+              <ul>
+                <li>技术专家：架构师 / Fellow</li>
+                <li>管理路线：部门经理</li>
+                <li>行业影响力建立</li>
+                <li>指导新人成长</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 阶段 5 -->
+          <div class="timeline-item-h">
+            <div class="timeline-dot-h dot-5"></div>
+            <div class="timeline-card card-5">
+              <span class="tl-stage st-5">10 年+</span>
+              <h4>🌟 职业巅峰期</h4>
+              <p>达到职业巅峰，成为行业领袖</p>
+              <ul>
+                <li>技术总监 / CTO</li>
+                <li>首席科学家</li>
+                <li>行业影响力</li>
+                <li>战略决策者</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FLOW CHART (职业发展流程图) ====== -->
+<section class="section" id="flow-chart">
+  <h2 class="section-title">📊 职业发展流程图</h2>
+  <p class="section-desc">控制类应届生从入行到职业巅峰的完整路径，分 4 个阶段，每个阶段有明确的核心任务和分叉选择。</p>
+  <div class="flow-chart-wrap">
+    <div class="flow-diagram">
+
+      <!-- 阶段 1：入行（0-2 年） -->
+      <div class="flow-phase flow-phase-1">
+        <div class="flow-phase-title">阶段 1 · 入行期（0-2年）</div>
+        <div class="flow-phase-desc">拿到第一份 offer，在实践中补齐学校没教的东西，从"能写代码"变成"能交付项目"。</div>
+        <div class="flow-phase-row">
+          <div class="flow-node start">应届生 🎓</div>
+          <div class="flow-arrow-h"></div>
+          <div class="flow-node process">入职第一家公司 🏢</div>
+          <div class="flow-arrow-h"></div>
+          <div class="flow-node process">技术积累 🔧</div>
+          <span class="flow-branch-label">核心任务：熟悉业务 + 掌握开发流程 + 独立完成模块</span>
+        </div>
+      </div>
+
+      <!-- 阶段 2：选方向（2-5 年）—— 四条分叉 -->
+      <div class="flow-phase flow-phase-2">
+        <div class="flow-phase-title">阶段 2 · 选方向期（2-5年）</div>
+        <div class="flow-phase-desc">技术积累到一定程度后，必须做出路线选择。不同路线决定了 35 岁之后的竞争力。</div>
+        <div class="flow-phase-row">
+          <div class="flow-node decision">选择发展方向 🎯</div>
+          <div class="flow-branch-label">↓ 四条路，选一条深扎</div>
+        </div>
+        <!-- 四条分叉 -->
+        <div class="flow-branch-group">
+          <div class="flow-branch-title">🔀 四条核心路线（选一条走到黑）</div>
+          <div class="flow-branch-row">
+            <div class="flow-node process">① 管理路线 📊</div>
+            <div class="flow-branch-label">走 PM → TL → 部门经理</div>
+          </div>
+          <div class="flow-branch-row">
+            <div class="flow-node process">② 技术路线 🔬</div>
+            <div class="flow-branch-label">走高级 → 架构师 → 首席工程师</div>
+          </div>
+          <div class="flow-branch-row">
+            <div class="flow-node process">③ 专家路线 🎖️</div>
+            <div class="flow-branch-label">深耕细分领域（算法/芯片/安全），成为领域专家</div>
+          </div>
+          <div class="flow-branch-row">
+            <div class="flow-node process">④ 转型路线 🔄</div>
+            <div class="flow-branch-label">转产品/运营/销售/创业，技术是加分项</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 阶段 3：深耕（5-10 年） -->
+      <div class="flow-phase flow-phase-3">
+        <div class="flow-phase-title">阶段 3 · 深耕期（5-10年）</div>
+        <div class="flow-phase-desc">选定方向后持续打磨核心竞争力，拉开与同龄人的差距。</div>
+        <div class="flow-phase-row">
+          <div class="flow-node process">能力提升 ⬆️</div>
+          <div class="flow-arrow-h"></div>
+          <div class="flow-node process">持续学习 📚</div>
+          <div class="flow-arrow-h"></div>
+          <div class="flow-node process">行业影响力 🌟</div>
+          <span class="flow-branch-label">核心任务：成为细分领域不可替代的人</span>
+        </div>
+      </div>
+
+      <!-- 阶段 4：收获（10 年+） -->
+      <div class="flow-phase flow-phase-4">
+        <div class="flow-phase-title">阶段 4 · 收获期（10年+）</div>
+        <div class="flow-phase-desc">前期积累变现，走向职业巅峰。不同路线的终点形态完全不同。</div>
+        <div class="flow-phase-row">
+          <div class="flow-node end">职业巅峰 🏆</div>
+          <div class="flow-branch-label">
+            管理路线 → 总监/VP · 
+            技术路线 → 技术总监/CTO · 
+            专家路线 → 行业权威/首席科学家 · 
+            转型路线 → 产品总监/创业者
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 读图指引 -->
+  <div style="margin-top:12px;padding:12px 16px;background:linear-gradient(135deg,#f0fdf4 0%,#f0f9ff 100%);border-radius:10px;border:1px solid #bbf7d0;font-size:12px;line-height:1.75;color:#475569;">
+    <div style="font-weight:800;color:#16a34a;margin-bottom:4px;">💡 怎么读这张流程图？</div>
+    <div>
+      <b>① 入行期（0-2年）</b> 不用想太多，先把活干明白。<br>
+      <b>② 选方向期（2-5年）</b> 关键岔路口！结合性格/追求选管理/技术/专家/转型，选错了后面会非常痛苦。<br>
+      <b>③ 深耕期（5-10年）</b> 选定方向后不能再摇摆，持续学习 + 积累行业影响力。<br>
+      <b>④ 收获期（10年+）</b> 前面的积累在此变现，不同路线对应不同的终点形态。
+    </div>
+  </div>
+</section>
+
+<!-- ====== DECISION TREE (职业选择决策树) ====== -->
+<section class="section" id="decision-tree">
+  <h2 class="section-title">🌳 职业选择决策树</h2>
+  <p class="section-desc">根据个人特点和目标,选择最适合的职业发展路径。</p>
+  <div class="tree-wrap">
+    <div class="tree-container">
+      <div class="tree-node root">🎯<br>选择职业路径</div>
+      <div class="tree-branch"></div>
+      <div class="tree-branches">
+        <div class="tree-node branch">📊<br>追求管理</div>
+        <div class="tree-node branch">🔬<br>技术深度</div>
+        <div class="tree-node branch">💰<br>高薪回报</div>
+        <div class="tree-node branch">🔄<br>多元发展</div>
+        <div class="tree-node branch">🏛️<br>稳定安全</div>
+      </div>
+      <div class="tree-branch"></div>
+      <div class="tree-branches">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="tree-node leaf">部门经理 📈</div>
+          <div class="tree-node leaf">项目总监 🎯</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="tree-node leaf">技术专家 🔧</div>
+          <div class="tree-node leaf">架构师 🏗️</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="tree-node leaf">互联网大厂 🚀</div>
+          <div class="tree-node leaf">智能车企 🚗</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="tree-node leaf">产品经理 📱</div>
+          <div class="tree-node leaf">技术销售 💼</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div class="tree-node leaf">公务员 🏛️</div>
+          <div class="tree-node leaf">事业单位 🏢</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SKILL TREE (技能发展树) ====== -->
+<section class="section" id="skill-tree">
+  <h2 class="section-title">🌲 技能发展树</h2>
+  <p class="section-desc">技术人才需要掌握的核心技能体系——从基础到专家的进阶路径。</p>
+  <div class="tree-wrap">
+    <div class="skill-container">
+      <div class="skill-level">
+        <div class="skill-node core">💻<br>编程基础</div>
+        <div class="skill-node core">🗃️<br>数据结构</div>
+        <div class="skill-node core">🌐<br>算法思维</div>
+        <div class="skill-node core">📡<br>网络基础</div>
+      </div>
+      <div class="skill-level">
+        <div class="skill-node advanced">🏗️<br>系统设计</div>
+        <div class="skill-node advanced">🗄️<br>数据库</div>
+        <div class="skill-node advanced">☁️<br>云原生</div>
+        <div class="skill-node advanced">🔒<br>安全知识</div>
+        <div class="skill-node advanced">📊<br>业务理解</div>
+      </div>
+      <div class="skill-level">
+        <div class="skill-node expert">🎯<br>架构设计</div>
+        <div class="skill-node expert">🤖<br>AI技术</div>
+        <div class="skill-node expert">📈<br>管理能力</div>
+        <div class="skill-node expert">🌍<br>行业洞察</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CAREER MATRIX (职业发展能力矩阵) ====== -->
+<section class="section" id="career-matrix">
+  <h2 class="section-title">🔗 职业发展能力矩阵</h2>
+  <p class="section-desc">同一控制类背景下，走<strong style="color:#be123c;">管理路线</strong> / <strong style="color:#7c3aed;">技术/转岗路线</strong> / <strong style="color:#15803d;">体制内路线</strong>对 8 项核心能力的要求差异对比，帮你判断自己更适合哪条路。</p>
+
+  <!-- 图例 + 快速说明 -->
+  <div class="career-matrix-intro">
+    <div style="font-weight:700;font-size:12px;color:#18191c;">📌 能力等级：</div>
+    <div class="career-matrix-legend">
+      <span class="cml-badge cml-high">🔴 精通 = 核心竞争力，必须非常强</span>
+      <span class="cml-badge cml-mid">🟣 良好 = 够用就行，不用追求极致</span>
+      <span class="cml-badge cml-base">⚪ 基础 = 懂常识、不踩坑即可</span>
+    </div>
+  </div>
+
+  <div class="career-matrix-wrap">
+    <table class="career-matrix-table" style="min-width:760px;">
+      <thead>
+        <!-- 第一行：三大路线分类 -->
+        <tr>
+          <th class="cm-group-blank"></th>
+          <th class="cm-group-mgmt" colspan="2">📊 管理路线（管人/管项目）</th>
+          <th class="cm-group-tech" colspan="2">💻 技术路线（深耕技术/跨界转岗）</th>
+          <th class="cm-group-gov">🏛️ 体制内路线（考公/事业编）</th>
+        </tr>
+        <!-- 第二行：具体岗位 + 一句话说明 -->
+        <tr>
+          <th><span class="cm-col-title" style="color:#475569;">能力维度 ↓</span></th>
+          <th>
+            <span class="cm-col-title">部门经理</span>
+            <span class="cm-col-sub">管一整个部门的<br>纯管理岗 / 资源调配</span>
+          </th>
+          <th>
+            <span class="cm-col-title">项目经理</span>
+            <span class="cm-col-sub">管具体项目交付的<br>PM岗 / 乙方项目</span>
+          </th>
+          <th>
+            <span class="cm-col-title">技术专家</span>
+            <span class="cm-col-sub">走架构师/首席工程师<br>技术深度决定上限</span>
+          </th>
+          <th>
+            <span class="cm-col-title">转岗发展</span>
+            <span class="cm-col-sub">转产品/运营/销售等<br>跨界发展路线</span>
+          </th>
+          <th>
+            <span class="cm-col-title">考公/事业单位</span>
+            <span class="cm-col-sub">求稳定、注重合规<br>人际沟通决定晋升</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🔬 技术深度</td>
+          <td><span class="cm-badge base">基础</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge base">基础</span></td>
+          <td><span class="cm-badge base">基础</span></td>
+        </tr>
+        <tr>
+          <td>👔 管理能力</td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge base">基础</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+        </tr>
+        <tr>
+          <td>🗣️ 沟通协调</td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+        </tr>
+        <tr>
+          <td>📈 业务理解</td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge base">基础</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+        </tr>
+        <tr>
+          <td>💡 创新能力</td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge base">基础</span></td>
+        </tr>
+        <tr>
+          <td>🛡️ 风险控制</td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+        </tr>
+        <tr>
+          <td>📚 学习能力</td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+        </tr>
+        <tr>
+          <td>💪 抗压能力</td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge high">精通</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+          <td><span class="cm-badge mid">良好</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 阅读指引 -->
+  <div style="margin-top:14px;padding:12px 16px;background:linear-gradient(135deg,#fff5f8 0%,#f3e8ff 100%);border-radius:10px;border:1px solid #fbcfe8;font-size:12px;line-height:1.75;color:#475569;">
+    <div style="font-weight:800;color:#be123c;margin-bottom:4px;">💡 怎么读这张表？</div>
+    <div>① <b>选管理岗</b>：技术可以一般，但沟通/管理/业务必须强，抗压要拉满。② <b>走技术专家</b>：技术深度和学习能力是核心，沟通管理够用就行。③ <b>转岗跨界</b>：沟通协调+业务理解+创新能力三个都得猛，技术只是加分项。④ <b>考公求稳</b>：管理沟通业务风险四个要硬，技术和创新反而不重要。</div>
+  </div>
+</section>
+
+<!-- ====== RADAR CHART (能力雷达图) ====== -->
+<section class="section" id="radar-chart">
+  <h2 class="section-title">🎯 能力雷达图</h2>
+  <p class="section-desc">不同职业发展路线(管理/技术/专家)的能力要求对比。</p>
+  <div class="radar-wrap">
+    <svg class="radar-svg" viewBox="0 0 500 400">
+      <g stroke="rgba(251,114,153,0.15)" stroke-width="1" fill="none">
+        <polygon points="250,80 350,130 350,230 250,280 150,230 150,130"/>
+        <polygon points="250,110 320,150 320,210 250,250 180,210 180,150"/>
+        <polygon points="250,140 290,170 290,190 250,220 210,190 210,170"/>
+      </g>
+      <g stroke="rgba(251,114,153,0.25)" stroke-width="1">
+        <line x1="250" y1="80" x2="250" y2="280"/>
+        <line x1="150" y1="130" x2="350" y2="230"/>
+        <line x1="150" y1="230" x2="350" y2="130"/>
+      </g>
+      <g font-size="12" fill="#9499a0" text-anchor="middle" font-family="-apple-system,sans-serif">
+        <text x="250" y="70">技术能力</text>
+        <text x="370" y="135">管理能力</text>
+        <text x="370" y="240">沟通能力</text>
+        <text x="130" y="240">创新能力</text>
+        <text x="130" y="135">业务能力</text>
+      </g>
+      <g fill="rgba(251,114,153,0.25)" stroke="#fb7299" stroke-width="2">
+        <polygon points="250,120 320,160 320,220 250,250 180,200 180,140"/>
+      </g>
+      <g fill="rgba(251,114,153,0.2)" stroke="#fb7299" stroke-width="2">
+        <polygon points="250,100 340,140 340,200 250,240 160,180 160,120"/>
+      </g>
+      <g fill="rgba(0,174,236,0.15)" stroke="#00aeec" stroke-width="2">
+        <polygon points="250,90 330,130 330,190 250,230 170,170 170,110"/>
+      </g>
+      <g font-size="11" fill="#9499a0" font-family="-apple-system,sans-serif">
+        <rect x="60" y="320" width="14" height="14" fill="#fb7299" rx="2"/>
+        <text x="80" y="332">管理路线</text>
+        <rect x="160" y="320" width="14" height="14" fill="#22c55e" rx="2"/>
+        <text x="180" y="332">技术路线</text>
+        <rect x="260" y="320" width="14" height="14" fill="#a855f7" rx="2"/>
+        <text x="280" y="332">专家路线</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ====== SALARY ====== -->
+<section class="section" id="salary">
+  <h2 class="section-title">💰 各技术栈薪资涨幅总览</h2>
+  <p class="section-desc">以下为一线城市（北上广深杭）互联网/科技行业中位数年薪（单位：万元人民币）。数据综合自 2025-2026 年多份行业薪资报告（<a href="https://maimai.cn/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">脉脉高聘</a>、<a href="https://www.zhaopin.com/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">智联招聘</a>、科锐国际、<a href="https://www.liepin.com/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">猎聘</a> 等），实际薪资受公司规模、个人能力和市场行情影响。</p>
+
+  <div class="salary-wrap">
+    <table class="salary-table" style="min-width:1000px;">
+      <thead>
+        <tr>
+          <th>技术方向</th>
+          <th>校招/0-1年</th>
+          <th>1-3年</th>
+          <th>3-5年</th>
+          <th>5-8年</th>
+          <th>8-10年+</th>
+          <th>天花板</th>
+          <th>跳槽涨幅</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🎨 前端开发</td>
+          <td>15-30</td><td>20-35</td><td>30-50</td><td>45-80</td><td>80-150</td>
+          <td class="salary-mid">150-300</td>
+          <td class="salary-note">20-35%</td>
+        </tr>
+        <tr>
+          <td>⚡ 后端开发(Java/Go)</td>
+          <td>18-35</td><td>25-45</td><td>35-60</td><td>50-90</td><td>90-200</td>
+          <td class="salary-high">200-500</td>
+          <td class="salary-note">25-40%</td>
+        </tr>
+        <tr>
+          <td>🤖 传统算法(CV/NLP/推荐)</td>
+          <td>20-35</td><td>28-50</td><td>35-70</td><td>50-100</td><td>80-150</td>
+          <td class="salary-mid">150-300</td>
+          <td class="salary-note">20-30%</td>
+        </tr>
+        <tr>
+          <td>🔥 大模型/AI算法</td>
+          <td class="salary-high">40-80</td><td class="salary-high">50-100</td><td class="salary-high">60-150</td><td class="salary-high">100-250</td><td class="salary-high">200-500+</td>
+          <td class="salary-high">500-1000+</td>
+          <td class="salary-note">30-50%</td>
+        </tr>
+        <tr>
+          <td>📱 客户端(iOS/Android)</td>
+          <td>18-35</td><td>25-45</td><td>35-60</td><td>50-90</td><td>80-150</td>
+          <td class="salary-mid">150-250</td>
+          <td class="salary-note">20-30%</td>
+        </tr>
+        <tr>
+          <td>📊 数据开发</td>
+          <td>18-30</td><td>25-40</td><td>35-55</td><td>50-80</td><td>80-150</td>
+          <td class="salary-mid">150-200</td>
+          <td class="salary-note">20-35%</td>
+        </tr>
+        <tr>
+          <td>🧪 测试开发(SDET)</td>
+          <td>12-25</td><td>20-35</td><td>30-50</td><td>45-70</td><td>60-100</td>
+          <td class="salary-mid">100-150</td>
+          <td class="salary-note">20-30%</td>
+        </tr>
+        <tr>
+          <td>⚙️ SRE/DevOps/平台工程</td>
+          <td>15-30</td><td>25-45</td><td>35-65</td><td>55-100</td><td>80-180</td>
+          <td class="salary-high">180-350</td>
+          <td class="salary-note">25-40%</td>
+        </tr>
+        <tr>
+          <td>🔧 嵌入式/硬件</td>
+          <td>15-25</td><td>20-35</td><td>25-50</td><td>40-80</td><td>60-150</td>
+          <td class="salary-mid">150-200</td>
+          <td class="salary-note">15-25%</td>
+        </tr>
+        <tr>
+          <td>🔒 安全工程师</td>
+          <td>18-30</td><td>25-45</td><td>35-70</td><td>55-120</td><td>80-200</td>
+          <td class="salary-high">200-400</td>
+          <td class="salary-note">25-40%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;">
+    <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:14px;box-shadow:var(--shadow);">
+      <h4 style="font-size:13px;font-weight:700;margin-bottom:6px;">📊 薪资增长规律</h4>
+      <ul style="font-size:11px;color:var(--text2);padding-left:16px;line-height:1.8;">
+        <li><b>0-3年：</b>年均增长15-20%，主要靠能力和项目经验积累</li>
+        <li><b>3-5年：</b>关键跃迁期，跳槽涨幅可达30-50%</li>
+        <li><b>5-8年：</b>增速放缓，靠晋升和股票期权拉开差距</li>
+        <li><b>8年+：</b>两极分化——架构师/管理者爆发 vs 资深工程师停滞</li>
+      </ul>
+    </div>
+    <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:14px;box-shadow:var(--shadow);">
+      <h4 style="font-size:13px;font-weight:700;margin-bottom:6px;">🏢 不同行业薪资系数</h4>
+      <ul style="font-size:11px;color:var(--text2);padding-left:16px;line-height:1.8;">
+        <li><b>互联网大厂：</b>基准 × 1.0 ~ 1.5（字节/拼多多/top AI公司）</li>
+        <li><b>银行/金融科技：</b>基准 × 0.6 ~ 0.8（但隐形福利多）</li>
+        <li><b>央企/运营商/电网：</b>基准 × 0.5 ~ 0.7（稳定性换溢价）</li>
+        <li><b>智能车企（算法）：</b>基准 × 1.2 ~ 2.0（当前薪资最爆炸赛道）</li>
+        <li><b>非一线城市：</b>在基准上 × 0.6 ~ 0.8</li>
+      </ul>
+    </div>
+    <div style="background:var(--card-bg);border-radius:var(--radius-sm);padding:14px;box-shadow:var(--shadow);">
+      <h4 style="font-size:13px;font-weight:700;margin-bottom:6px;">⚠️ 2026年薪资趋势警示</h4>
+      <ul style="font-size:11px;color:var(--text2);padding-left:16px;line-height:1.8;">
+        <li><b>初级岗位薪资下滑：</b>初级前端/后端校招起薪下降28%（相比2022年），AI压缩了初级工作量</li>
+        <li><b>AI技能溢价：</b>会大模型微调+RAG+Agent开发的工程师，薪资比同资历传统工程师高30-45%</li>
+        <li><b>传统开发薪资停滞：</b>中级纯开发（3-8年经验）薪资基本停滞，部分大厂降薪10-15%</li>
+        <li><b>算法岗结构性分化：</b>大模型算法供需比1:12（抢人），传统算法供需接近平衡</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AI IMPACT ====== -->
+<section class="section" id="ai-impact">
+  <h2 class="section-title">🤖 AI 对各技术栈的冲击分析</h2>
+  <p class="section-desc">AI正在重塑整个技术岗位市场。以下基于2025-2026年招聘数据和行业报告，对各技术栈的AI替代风险、增强效应和应对策略进行量化评估。数据来源：<a href="https://www.zhaopin.com/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">智联招聘</a>2026Q1、<a href="https://maimai.cn/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">脉脉高聘</a>、<a href="https://www.zhipin.com/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">BOSS直聘</a>、各大厂公开信息。</p>
+
+  <div class="ai-grid">
+    <!-- 初级前端 -->
+    <div class="ai-card risk-critical">
+      <div class="ai-header"><span class="ai-icon">🎨</span><span class="ai-name">初级前端开发</span><span class="ai-risk">🔴 极高风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>85% · 岗位需求同比下降65%<br>
+        <b>为什么：</b>Cursor/V0/Bolt等工具能根据截图直接生成80-90%还原度的前端代码。标准UI页面搭建几乎完全自动化。<br>
+        <b>还有多久：</b>已经在发生——传统切图前端岗2024-2026年间消失了52%。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ea;color:#ef4444;">
+        <b>👉 生存策略：</b>往Next.js/Nuxt全栈方向转，学会用AI提高效率而不是被AI替代。纯前端岗护城河太浅，必须+后端能力或+AI应用开发。
+      </div>
+    </div>
+
+    <!-- 初级后端 -->
+    <div class="ai-card risk-critical">
+      <div class="ai-header"><span class="ai-icon">⚡</span><span class="ai-name">初级CRUD后端</span><span class="ai-risk">🔴 极高风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>80% · 岗位需求同比下降58%<br>
+        <b>为什么：</b>AI一分钟内生成完整RESTful API接口+数据库Schema。标准化增删改查是AI最擅长的领域。<br>
+        <b>还有多久：</b>已在大幅缩减——<a href="https://www.zhaopin.com/" target="_blank" style="color:var(--c-pink-deep);font-weight:600;text-decoration:underline;">智联招聘</a>2026Q1报告初级后端需求下降52%。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ea;color:#ef4444;">
+        <b>👉 生存策略：</b>立即从中"能写CRUD"升级到"懂分布式架构+高并发设计"，否则1-3年内将被AI+资深工程师组合替代。
+      </div>
+    </div>
+
+    <!-- 手工测试 -->
+    <div class="ai-card risk-critical">
+      <div class="ai-header"><span class="ai-icon">🧪</span><span class="ai-name">手工测试(QA)</span><span class="ai-risk">🔴 极高风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>70% · 岗位需求同比下降60%<br>
+        <b>为什么：</b>AI可自动生成80%以上测试用例，Playwright+AI组合替代了大量手动回归测试。测试智能体(Testing Agent)已接管50%+重复测试工作。<br>
+        <b>大厂动作：</b>原本10人测试团队→1人+AI平台，效率反升3倍。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ea;color:#ef4444;">
+        <b>👉 生存策略：</b>立刻转SDET/测试开发——必须掌握自动化框架(Selenium/Playwright)+CI/CD+性能测试。纯手工测试3年内消失。
+      </div>
+    </div>
+
+    <!-- 中级前端 -->
+    <div class="ai-card risk-high">
+      <div class="ai-header"><span class="ai-icon">🖥️</span><span class="ai-name">中级前端/全栈</span><span class="ai-risk">🟠 高风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>40%部分工作 · 岗位稳定但竞争加剧<br>
+        <b>影响：</b>React/Vue开发岗位数量稳定，但入行人数多导致竞争激烈。AI可辅助写组件代码但无法做架构决策。<br>
+        <b>增速方向：</b>Next.js/Nuxt全栈岗增长20-30%，企业需要能独立负责前后端的前端开发者。
+      </div>
+      <div class="ai-advice" style="background:rgba(245,158,11,0.12);color:#f59e0b;">
+        <b>👉 策略：</b>AI是你的加速器，不是替代品。用AI写80%代码，省下时间做架构设计和业务理解——这才是护城河。
+      </div>
+    </div>
+
+    <!-- 中级后端 -->
+    <div class="ai-card risk-high">
+      <div class="ai-header"><span class="ai-icon">💻</span><span class="ai-name">纯业务后端(5-10年)</span><span class="ai-risk">🟠 高风险</span></div>
+      <div class="ai-desc">
+        <b>一个反常识的数据：</b>5-10年纯后端开发招聘量同比下降52%，供需比1:37（37人抢1个岗），6个月再就业率仅32%——甚至低于初级程序员的68%。<br>
+        <b>原因：</b>资深但只会写业务代码的工程师，薪资高但产出可被AI+中级工程师替代。企业更愿培养年轻+会AI的人。
+      </div>
+      <div class="ai-advice" style="background:rgba(245,158,11,0.12);color:#f59e0b;">
+        <b>👉 策略：</b>如果工作5年+还在写业务CRUD，必须马上转型——要么深造分布式架构/高并发，要么往AI应用集成方向转。
+      </div>
+    </div>
+
+    <!-- 客户端 -->
+    <div class="ai-card risk-medium">
+      <div class="ai-header"><span class="ai-icon">📱</span><span class="ai-name">客户端开发</span><span class="ai-risk">🟡 中风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>纯UI开发下降中 · 核心原生开发稳定<br>
+        <b>影响：</b>AI生成SwiftUI/Compose代码能力越来越强，但深度原生能力（性能调优、硬件适配、平台API）AI替代不了。<br>
+        <b>跨端方向：</b>Flutter/RN稳定增长，小团队偏好跨端方案。
+      </div>
+      <div class="ai-advice" style="background:rgba(245,158,11,0.12);color:#f59e0b;">
+        <b>👉 策略：</b>不要只学UI框架。深入性能优化、设备适配、平台特有API（ARKit、App Intents等）。深度决定不可替代性。
+      </div>
+    </div>
+
+    <!-- 数据分析 -->
+    <div class="ai-card risk-medium">
+      <div class="ai-header"><span class="ai-icon">📊</span><span class="ai-name">初级数据分析</span><span class="ai-risk">🟡 中风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>SQL查询+可视化制作约80%被替代<br>
+        <b>影响：</b>ChatGPT直接写SQL给业务人员用，初级BI岗位被大量替代。但"数据洞察+业务判断"能力AI做不了。<br>
+        <b>转型方向：</b>数据分析师→数据科学家/数据产品经理，需要不止写SQL。
+      </div>
+      <div class="ai-advice" style="background:rgba(245,158,11,0.12);color:#f59e0b;">
+        <b>👉 策略：</b>从"我会跑数据"升级到"我能用数据讲故事并驱动业务决策"。掌握AB实验设计、因果推断等高阶技能。
+      </div>
+    </div>
+
+    <!-- 算法 -->
+    <div class="ai-card risk-low">
+      <div class="ai-header"><span class="ai-icon">🤖</span><span class="ai-name">算法工程师/AI工程师</span><span class="ai-risk">🟢 低风险</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>几乎为0% · AI相关岗位同比增长1400%<br>
+        <b>影响：</b>AI工具在"造AI"方面仍处于早期——模型训练、调优、部署需要深厚的领域知识。<br>
+        <b>但注意分化：</b>传统算法（推荐/CV/NLP）岗位薪资增速放缓至+12%，大模型方向+30%以上。市场在快速细分。
+      </div>
+      <div class="ai-advice" style="background:#e8f8ee;color:#22c55e;">
+        <b>👉 策略：</b>AI时代最安全的岗位之一——但要跟上速度。掌握大模型微调+RAG+Agent，而不是只做传统模型调参。
+      </div>
+    </div>
+
+    <!-- SRE -->
+    <div class="ai-card risk-safe">
+      <div class="ai-header"><span class="ai-icon">⚙️</span><span class="ai-name">SRE/基础设施工程师</span><span class="ai-risk">🔵 最安全</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b><5% · AI反而增加了基础设施需求<br>
+        <b>为什么安全：</b>分布式系统的底层Bug排查需要深厚经验+系统思维，AI处理不了。K8s集群管理、GPU集群运维在AI时代需求暴增。<br>
+        <b>AI增强：</b>AI辅助故障诊断和自动Runbook执行，让SRE从繁琐中解放出来做更高级的可靠性工程。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ed;color:#fb7299;">
+        <b>👉 策略：</b>这是AI时代最被需要的基础岗位。往MLOps/AI Infra方向走（GPU集群管理、ML训练管道可靠），薪资溢价20-35%。
+      </div>
+    </div>
+
+    <!-- 嵌入式 -->
+    <div class="ai-card risk-safe">
+      <div class="ai-header"><span class="ai-icon">🔧</span><span class="ai-name">嵌入式/硬件工程师</span><span class="ai-risk">🔵 最安全</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>几乎为0% · AI无法替代物理世界的工程能力<br>
+        <b>为什么安全：</b>嵌入式开发需要软硬协同——写驱动、调时序、看示波器、处理真实硬件Bug。AI能生成代码片段但无法替代示波器前的调试。<br>
+        <b>新兴机会：</b>边缘AI部署(TinyML)让嵌入式工程师的价值进一步提升。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ed;color:#fb7299;">
+        <b>👉 策略：</b>越老越吃香的底层岗位。拥抱AI不是拥抱替代——而是学会用AI辅助开发（如用Copilot写驱动代码），把精力放在更复杂的系统级问题上。
+      </div>
+    </div>
+
+    <!-- 安全 -->
+    <div class="ai-card risk-safe">
+      <div class="ai-header"><span class="ai-icon">🔒</span><span class="ai-name">安全工程师</span><span class="ai-risk">🔵 最安全</span></div>
+      <div class="ai-desc">
+        <b>替代率：</b>极低 · AI攻防战创造更多岗位<br>
+        <b>为什么安全：</b>AI能扫描已知漏洞模式，但真正的安全攻防是创造性工作——攻击者总能找到AI未见过的攻击方式。<br>
+        <b>新增长点：</b>AI模型安全审计（Prompt注入、模型投毒、对抗样本检测）是全新岗位类别。
+      </div>
+      <div class="ai-advice" style="background:#ffe4ed;color:#fb7299;">
+        <b>👉 策略：</b>安全工程师在AI时代需求暴涨——每个大模型应用都需要安全审计。AI安全的复合型人才（安全+ML）是最稀缺的组合之一。
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div style="margin-top:20px;padding:20px;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);">
+    <h4 style="font-size:15px;font-weight:700;margin-bottom:10px;">📊 AI冲击全景——一句话总结</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;font-size:12px;color:var(--text2);line-height:1.8;">
+      <div>🔴 <b>正在被替代：</b>初级CRUD后端/切图前端/手工测试/纯BI数据分析 → 规则明确、不需要创造性判断的工作</div>
+      <div>🟡 <b>在转型中：</b>中级开发/全栈/客户端/数据分析 → AI能替代"写代码"，但不能替代"理解-判断-沟通"</div>
+      <div>🟢 <b>被增强：</b>算法/AI工程 → AI工具让工程师效率提升5-10倍，但核心创造力不可替代</div>
+      <div>🔵 <b>几乎免疫：</b>SRE/嵌入式/安全/架构师 → 核心价值是"判断"和"创造"而非"实现"，AI只是工具</div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--c-bank);font-weight:600;">
+      🎯 <b>核心结论：AI 替代的不是程序员，而是"只有编码能力"的程序员。你会用 AI + 你懂业务 + 你有判断力 = 你最安全。</b>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AI ENHANCEMENT (AI时代职业提升专题) ====== -->
+<section class="section" id="ai-enhancement">
+  <div class="ai-enhance-section">
+    <h2 class="section-title">🤖 AI时代职业提升专题</h2>
+    <p class="section-desc">在AI时代,技术人员需要不断升级技能栈。以下是结合AI技术的职业提升方向——用AI增强自己,而不是被AI替代。</p>
+    <div class="ai-enhance-grid">
+      <div class="ai-enhance-card">
+        <h4>🎯 AI+编程能力</h4>
+        <p>掌握AI辅助编程工具,提升开发效率和代码质量。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">GitHub Copilot</span>
+          <span class="skill-tag">Cursor</span>
+          <span class="skill-tag">Code Generation</span>
+          <span class="skill-tag">AI Review</span>
+        </div>
+      </div>
+      <div class="ai-enhance-card">
+        <h4>🏗️ AI+系统设计</h4>
+        <p>利用AI进行架构设计、性能优化和系统规划。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">Architecture AI</span>
+          <span class="skill-tag">Performance Analysis</span>
+          <span class="skill-tag">Auto-scaling</span>
+          <span class="skill-tag">Cost Optimization</span>
+        </div>
+      </div>
+      <div class="ai-enhance-card">
+        <h4>📊 AI+数据分析</h4>
+        <p>结合AI进行深度数据挖掘和智能决策支持。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">ML Operations</span>
+          <span class="skill-tag">Predictive Analytics</span>
+          <span class="skill-tag">NLP Analysis</span>
+          <span class="skill-tag">AutoML</span>
+        </div>
+      </div>
+      <div class="ai-enhance-card">
+        <h4>🚀 AI+产品开发</h4>
+        <p>利用AI加速产品迭代,提升用户体验。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">A/B Testing AI</span>
+          <span class="skill-tag">Personalization</span>
+          <span class="skill-tag">Chatbot Development</span>
+          <span class="skill-tag">Recommendation Systems</span>
+        </div>
+      </div>
+      <div class="ai-enhance-card">
+        <h4>⚙️ AI+运维管理</h4>
+        <p>智能运维和自动化运维,提升系统可靠性。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">AIOps</span>
+          <span class="skill-tag">Predictive Maintenance</span>
+          <span class="skill-tag">Auto-remediation</span>
+          <span class="skill-tag">Monitoring AI</span>
+        </div>
+      </div>
+      <div class="ai-enhance-card">
+        <h4>🔒 AI+安全管理</h4>
+        <p>AI驱动的安全防护和威胁检测。</p>
+        <div class="ai-enhance-skills">
+          <span class="skill-tag">Threat Detection</span>
+          <span class="skill-tag">Anomaly Detection</span>
+          <span class="skill-tag">Security Analytics</span>
+          <span class="skill-tag">Compliance AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MATRIX ====== -->
+<section class="section" id="matrix">
+  <h2 class="section-title">📊 角色 × 技术栈 关系矩阵</h2>
+  <p class="section-desc">每个角色对不同技术栈的掌握程度：★ 核心掌握 · ● 需要了解 · — 可选</p>
+  <div class="matrix-wrap">
+    <table class="matrix-table">
+      <thead><tr><th>角色 \ 技术栈</th><th style="color:#61DAFB;">🎨前端</th><th style="color:#68A063;">⚡后端</th><th style="color:#FF6F00;">🤖算法数据</th><th style="color:#C21325;">🧪测试</th><th style="color:#326CE5;">⚙️基础设施</th><th style="color:#00979D;">🔧硬件嵌入</th></tr></thead>
+      <tbody>
+        <tr><td>PL / 项目负责人</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-support">●</td></tr>
+        <tr><td>Tech Lead / 架构师</td><td class="cell-main">★</td><td class="cell-main">★</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-main">★</td><td class="cell-partial">—</td></tr>
+        <tr><td>PM / 产品经理</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td></tr>
+        <tr><td>UX / UI 设计师</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-partial">—</td></tr>
+        <tr><td>前端开发</td><td class="cell-main">★</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-partial">—</td></tr>
+        <tr><td>后端开发</td><td class="cell-partial">—</td><td class="cell-main">★</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-partial">—</td></tr>
+        <tr><td>客户端开发</td><td class="cell-main">★</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-partial">—</td></tr>
+        <tr><td>数据开发</td><td class="cell-partial">—</td><td class="cell-main">★</td><td class="cell-main">★</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td></tr>
+        <tr><td>QA / SDET</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-main">★</td><td class="cell-support">●</td><td class="cell-partial">—</td></tr>
+        <tr><td>算法工程师</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-main">★</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td></tr>
+        <tr><td>SRE / DevOps</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-partial">—</td><td class="cell-main">★</td><td class="cell-partial">—</td></tr>
+        <tr><td>安全工程师</td><td class="cell-support">●</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-main">★</td><td class="cell-partial">—</td></tr>
+        <tr><td>嵌入式工程师</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-support">●</td><td class="cell-partial">—</td><td class="cell-main">★</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="legend"><div class="legend-item"><span class="legend-dot" style="background:#2ecc71;"></span>★ 核心掌握</div><div class="legend-item"><span class="legend-dot" style="background:var(--c-bank);"></span>● 需要了解</div><div class="legend-item"><span class="legend-dot" style="background:#ccc;"></span>— 可选/较少涉及</div></div>
+</section>
+
+<footer class="footer"><p>给应届生的技术全景科普 · 数据来源：各公司2024-2026校招公告、行业公开资料 · 持续更新中</p></footer>
+
+<script>
+function switchIndustry(name){
+  document.querySelectorAll('.ind-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  const btns=document.querySelectorAll('.tab-btn');
+  const idx={internet:0,bank:1,telco:2,grid:3,auto:4,device:5,chip:6,soe:7,research:8,other:9};
+  btns[idx[name]].classList.add('active');
+}
+// scroll nav highlight
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',e=>{
+  document.querySelectorAll('.nav a').forEach(l=>l.classList.remove('active'));
+  a.classList.add('active');
+}));
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('section[id],.hero[id],.diagram-section').forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100)cur=s.getAttribute('id')||'';
+  });
+  document.querySelectorAll('.nav a[href^="#"]').forEach(l=>{
+    l.classList.remove('active');
+    if(l.getAttribute('href')==='#'+cur)l.classList.add('active');
+  });
+});
+// smooth scroll with sidebar offset
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      const top=target.getBoundingClientRect().top+window.scrollY-20;
+      window.scrollTo({top,behavior:'smooth'});
+    }
+  });
+});
+// career tabs
+function switchCareer(name){
+  document.querySelectorAll('.career-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.career-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('cp-'+name).classList.add('active');
+  const tabs=document.querySelectorAll('.career-tab');
+  const idx={fe:0,be:1,algo:2,qa:3,ops:4,embed:5,data:6,mobile:7};
+  if(tabs[idx[name]])tabs[idx[name]].classList.add('active');
+}
+</script>
+</body>
+</html>

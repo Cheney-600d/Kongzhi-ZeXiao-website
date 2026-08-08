@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>考研择校指南 - 考研必知常识</title>
+  <meta name="description" content="考研择校三大核心原则、关键指标解析、复试公平性、信息搜集渠道、菜鸟择校建议，帮你科学选择目标院校">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .danger-signal {
+      background: linear-gradient(135deg, #fff0f3, #ffebee);
+      border-left: 3px solid #fb7299;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 8px 0;
+    }
+    .danger-signal .signal-title {
+      color: #fb7299;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .comparison-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px;
+      border: 1px solid #e3e5e7;
+      margin-bottom: 16px;
+    }
+    .comparison-card .vs-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #fb7299;
+    }
+    .comparison-card .vs-badge {
+      background: #fb7299;
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: .75rem;
+    }
+    .principle-card {
+      background: linear-gradient(135deg, #fff8f5, #fff0f3);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 3px solid #fb7299;
+    }
+    .principle-card .principle-num {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: #fb7299;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .principle-card .principle-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fb7299;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .metric-item {
+      background: #fff;
+      border-radius: 6px;
+      padding: 16px;
+      border: 1px solid #e3e5e7;
+      text-align: center;
+    }
+    .metric-item .metric-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fb7299;
+    }
+    .metric-item .metric-label {
+      font-size: .9rem;
+      color: #666;
+      margin-top: 4px;
+    }
+    .toc {
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px;
+      border: 1px solid #e3e5e7;
+      margin-bottom: 30px;
+    }
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fb7299;
+      margin-bottom: 12px;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+    .toc-list li a {
+      color: #555;
+      font-size: .9rem;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 14px;
+      transition: background .2s;
+    }
+    .toc-list li a:hover {
+      background: #fff0f3;
+      color: #fb7299;
+    }
+    .toc-list li a::before {
+      content: '› ';
+      color: #fb7299;
+      font-weight: 700;
+    }
+    .strategy-card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid #e3e5e7;
+      border-top: 3px solid #fb7299;
+    }
+    .strategy-card .strategy-title {
+      font-weight: 700;
+      color: #fb7299;
+      margin-bottom: 6px;
+    }
+  </style>
+
+</head>
+<body>
+<!-- 返回首页（固定） -->
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+  ← 返回首页
+</a>
+
+<main class="page-content">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">首页</a> › 考研择校指南
+      </div>
+
+      <!-- TOC -->
+      <div class="toc">
+        <div class="toc-title">📋 本章导航</div>
+        <ul class="toc-list">
+          <li><a href="#principles">择校三大核心原则</a></li>
+          <li><a href="#indicators">择校关键指标</a></li>
+          <li><a href="#scores">各类分数线解析</a></li>
+          <li><a href="#fairness">复试公平性</a></li>
+          <li><a href="#strategy">初期择校策略</a></li>
+          <li><a href="#big-small">分数线大小年</a></li>
+          <li><a href="#explode">学校会不会"炸"</a></li>
+          <li><a href="#211-vs-double">末流211 vs 强双非</a></li>
+          <li><a href="#tier23">三本/二本怎么择校</a></li>
+          <li><a href="#black-school">识别"黑校"</a></li>
+          <li><a href="#ratio">初复试占比</a></li>
+          <li><a href="#factors">难度影响因素</a></li>
+          <li><a href="#weak">基础差选校策略</a></li>
+          <li><a href="#elec-vs-cs">电子信息 vs 计算机</a></li>
+          <li><a href="#info">信息搜集渠道</a></li>
+          <li><a href="#newbie">菜鸟择校指南</a></li>
+        </ul>
+      </div>
+
+      <!-- 择校三大核心原则 -->
+      <section class="section" id="principles">
+        <h2 class="section-title">🎯 择校三大核心原则</h2>
+
+        <div class="principle-card">
+          <span class="principle-num">1</span>
+          <span class="principle-title">兴趣导向 — 动力源泉</span>
+          <p style="margin-top:10px; color:#555;">选择真正感兴趣的专业，是长期坚持的动力源泉。兴趣是最好的老师，能让你在漫长的备考过程中保持热情和专注。</p>
+          <ul class="check-list" style="margin-top:10px;">
+            <li>回顾本科学习，哪些课程最感兴趣</li>
+            <li>了解专业研究方向和就业前景</li>
+            <li>与学长学姐交流，了解真实的学习内容</li>
+          </ul>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">2</span>
+          <span class="principle-title">能力匹配 — 量力而行</span>
+          <p style="margin-top:10px; color:#555;">客观评估自身实力，选择"跳一跳够得着"的学校。既不要好高骛远，也不要过于保守。</p>
+          <ul class="check-list" style="margin-top:10px;">
+            <li>本科院校层次和学习基础</li>
+            <li>学习能力和自律性评估</li>
+            <li>备考时间和投入程度</li>
+            <li>竞赛、奖学金、项目经历等加分项</li>
+          </ul>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">3</span>
+          <span class="principle-title">未来规划 — 面向就业</span>
+          <p style="margin-top:10px; color:#555;">结合职业规划，选择目标行业/地区有影响力的学校。考虑就业城市、行业认可度、导师资源等因素。</p>
+          <ul class="check-list" style="margin-top:10px;">
+            <li>明确职业方向（学术/企业/公务员）</li>
+            <li>考虑地域因素（一线城市/新一线/家乡）</li>
+            <li>了解目标学校在行业的认可度</li>
+          </ul>
+        </div>
+
+        <div class="tip-box info">
+          <div class="tip-title">💡 核心建议</div>
+          <p>择校是长期过程，需要不断调整。<strong>10月才报名，有足够时间评估。</strong>想不清楚就使劲学，有了资本才有选择的权力！先学起来，等9-10月根据自己的模考成绩再最终确定学校。</p>
+        </div>
+      </section>
+
+      <!-- 择校关键指标 -->
+      <section class="section" id="indicators">
+        <h2 class="section-title">📊 择校关键指标解析</h2>
+
+        <h3 class="section-subtitle">招生人数与报录比</h3>
+        <div class="metric-grid">
+          <div class="metric-item">
+            <div class="metric-value">≥10人</div>
+            <div class="metric-label">招生人数相对稳妥</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">5-10人</div>
+            <div class="metric-label">有一定风险，需谨慎</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">≤5人</div>
+            <div class="metric-label">高风险，尽量避开</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">＞50%</div>
+            <div class="metric-label">推免占比高需警惕</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📊 报录比参考标准</div>
+          <div class="card-body">
+            <table class="compare-table">
+              <tr><th>报录比</th><th>竞争程度</th><th>建议</th></tr>
+              <tr><td>≤ 3:1</td><td>竞争较小</td><td>相对容易上岸</td></tr>
+              <tr><td>3:1 ~ 8:1</td><td>中等竞争</td><td>正常水平，努力可及</td></tr>
+              <tr><td>8:1 ~ 15:1</td><td>竞争激烈</td><td>需要全力以赴</td></tr>
+              <tr><td>＞ 15:1</td><td>极度激烈</td><td>谨慎选择，评估实力</td></tr>
+            </table>
+            <p style="margin-top:10px;"><strong>数据来源：</strong>研招网、学校官网招生简章、学长学姐、考研机构整理数据、知乎/考研帮等平台。</p>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">复录比 — 复试淘汰率</h3>
+        <div class="card">
+          <div class="card-body">
+            <p><strong>复录比 = 进入复试人数 / 实际录取人数</strong></p>
+            <p>正常复录比应 <span class="key-point">≤ 1.2:1</span>，即招10人让12人进复试。如果复录比达到 2:1 甚至更高，说明复试淘汰率极高，需要警惕！</p>
+            <div class="tip-box warning" style="margin-top:12px;">
+              <div class="tip-title">⚠️ 注意</div>
+              <p>有些学校故意放大批人进复试，然后刷掉一志愿招调剂生，这就是典型的"黑校"操作！</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 各类分数线 -->
+      <section class="section" id="scores">
+        <h2 class="section-title">📈 各类分数线解析</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-title">国家线</div>
+            <p>最低门槛，不过线无法读研。分A区线和B区线，B区低10分左右。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-title">34所自划线</div>
+            <p>顶尖高校自主划定分数线，通常高于国家线，公布时间也最早。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-title">校线/复试线</div>
+            <p>院校入场券，达到才能进入复试名单。热门学校校线远高于国家线。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-title">院线/专业线</div>
+            <p>热门专业加码线，同一学校不同学院/专业分数线差异很大。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-title">录取线</div>
+            <p>最终上岸标尺！<strong>实际录取均分</strong>比分数线更有参考价值。</p>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">💡 重要提醒</div>
+          <p><strong>分数线只是参考，录取均分才是真实难度！</strong>有些学校分数线350，但380才稳，400也可能被刷。不要只看一年的分数线，至少看近3-5年的趋势。</p>
+        </div>
+      </section>
+
+      <!-- 复试公平性 -->
+      <section class="section" id="fairness">
+        <h2 class="section-title">⚖️ 复试公平性与初复试占比</h2>
+
+        <h3 class="section-subtitle">如何判断复试公平性？</h3>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">✅ 保护一志愿</div>
+            <div class="card-body">
+              <p>优先录取一志愿考生，不故意刷一志愿招调剂。这是最基础也是最重要的公平体现。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">✅ 流程透明</div>
+            <div class="card-body">
+              <p>有明确的评分标准和复试细则，面试过程规范，不搞"暗箱操作"。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">✅ 不歧视双非</div>
+            <div class="card-body">
+              <p>看往年录取名单是否有大量双非生源。如果全是985/211本科，双非需谨慎。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">✅ 信息公开</div>
+            <div class="card-body">
+              <p>及时公布复试名单、成绩、拟录取名单，不遮遮掩掩。</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">初复试常见占比</h3>
+        <div class="card">
+          <div class="card-body">
+            <table class="compare-table">
+              <tr><th>占比</th><th>说明</th><th>适合人群</th></tr>
+              <tr><td>7:3</td><td>初试70% + 复试30%</td><td>初试高分选手，复试求稳</td></tr>
+              <tr><td>6:4</td><td>初试60% + 复试40%</td><td>比较常见，相对平衡</td></tr>
+              <tr><td>5:5</td><td>初试50% + 复试50%</td><td>复试权重高，不确定性大</td></tr>
+            </table>
+            <div class="tip-box info" style="margin-top:12px;">
+              <div class="tip-title">📌 真相</div>
+              <p>复试占比低 ≠ 好考！复试水分不一样。面试主观性强，存在不确定性。<strong>好考+就业好是扯淡，两者折中考虑！</strong>适合自己的才是最好的。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 初期择校策略 -->
+      <section class="section" id="strategy">
+        <h2 class="section-title">📋 初期择校策略</h2>
+
+        <h3 class="section-subtitle">阶梯型目标法（强烈推荐）</h3>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">冲</div>
+            <div class="step-title">冲刺校</div>
+            <p>理想目标，需要全力拼搏（如985/顶尖211）。踮起脚尖才能够到。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">稳</div>
+            <div class="step-title">稳妥校</div>
+            <p>与自身实力匹配，大概率能考上（如普通211/强双非）。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">保</div>
+            <div class="step-title">保底校</div>
+            <p>确保有学上，万一发挥失常也能录取（如双非/本校）。</p>
+          </div>
+        </div>
+
+        <div class="tip-box success">
+          <div class="tip-title">✅ 核心原则</div>
+          <p>定一个阶梯型目标（冲-稳-保），<strong>实在不行报最后一个保底校！</strong>10月才报名，先学起来，等9-10月根据自己的模考成绩再最终确定学校。</p>
+        </div>
+
+        <h3 class="section-subtitle">择校需要考虑的七大因素</h3>
+        <div class="card">
+          <div class="card-body">
+            <div class="number-list">
+              <li><strong>学校层级</strong>：985 > 211 > 双一流 > 双非</li>
+              <li><strong>学科评估</strong>：A+ > A > A- > B+，评估越高越难</li>
+              <li><strong>专业课难度</strong>：自命题差异大，有些学校题目很难</li>
+              <li><strong>招生人数</strong>：招得越少越难，个位数要慎重</li>
+              <li><strong>地理位置</strong>：一线城市更卷，北京上海 > 其他城市</li>
+              <li><strong>机构宣传</strong>：舆论影响报考，机构猛推的会热</li>
+              <li><strong>历史口碑</strong>：黑校一直黑，看往年评价</li>
+            </div>
+            <p style="margin-top:12px;"><strong>总结：</strong>七大因素综合决定难度，不要只看单一指标，要全面分析！</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分数线大小年 -->
+      <section class="section" id="big-small">
+        <h2 class="section-title">📉 分数线大小年现象</h2>
+
+        <div class="card">
+          <div class="card-title">📈 什么是大小年？</div>
+          <div class="card-body">
+            <p>前一年分低 → 第二年扎堆报考 → 分高 → 第三年大家不敢报 → 分低，如此循环。这就是考研的"大小年"现象。</p>
+            <div style="margin-top:16px;">
+              <span class="tag tag-blue">热门院校</span> 一直热门，分数线相对稳定在高位（如北邮、西电、成电）
+            </div>
+            <div style="margin-top:8px;">
+              <span class="tag tag-orange">冷门院校</span> 前一年爆冷 → 大家以为好考 → 第二年扎堆 → 分数线暴涨
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">应对策略</h3>
+        <ul class="check-list">
+          <li><strong>看多年数据</strong>：不要只看一年的分数线，至少看近3-5年的趋势</li>
+          <li><strong>自己分析数据</strong>：不要被机构或网络舆论误导，机构推的学校往往已经热了</li>
+          <li><strong>关注录取均分</strong>：分数线只是参考，录取均分更能反映真实难度</li>
+          <li><strong>历史是重复的</strong>：黑校一直黑，热门一直热，看具体数据自己分析</li>
+        </ul>
+      </section>
+
+      <!-- 学校会不会炸 -->
+      <section class="section" id="explode">
+        <h2 class="section-title">💥 学校会不会"炸"？怎么判断？</h2>
+
+        <h3 class="section-subtitle">"炸"的前兆信号</h3>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号一：多个机构同时推荐某所学校</div>
+          <p>机构猛推的学校往往已经热了，等你报考时可能已经"炸"了。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号二：社交平台突然涌现大量经验贴</div>
+          <p>小红书/知乎突然涌现大量"这所学校好考"的经验贴，说明热度在飙升。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号三：前一年分数线异常低</div>
+          <p>前一年分数线异常低，但学校本身不错，第二年大概率会扎堆暴涨。</p>
+        </div>
+
+        <h3 class="section-subtitle">如何避免"炸"校？</h3>
+        <ul class="check-list">
+          <li>选择连续几年分数线稳定的学校</li>
+          <li>不要跟风报考前一年爆冷的学校</li>
+          <li>多准备几个备选学校，随时调整策略</li>
+          <li>看往年报录比和分数线趋势，自己判断</li>
+        </ul>
+
+        <div class="tip-box">
+          <div class="tip-title">💡 核心原则</div>
+          <p><strong>没有绝对的"好考"的学校，只有相对适合自己的选择！</strong>历史是重复的，不要人云亦云，要有自己的判断。</p>
+        </div>
+      </section>
+
+      <!-- 末流211 vs 强双非 -->
+      <section class="section" id="211-vs-double">
+        <h2 class="section-title">🏫 末流211 vs 强双非 怎么选？</h2>
+
+
+        <div class="comparison-card">
+          <div class="vs-header">
+            <span>西南大学（211）</span>
+            <span class="vs-badge">VS</span>
+            <span>重庆邮电（双非）</span>
+          </div>
+          <p><strong>结论：</strong>走技术选重邮。重邮在通信/电子行业认可度极高，就业质量不输末流211。</p>
+        </div>
+
+        <div class="comparison-card">
+          <div class="vs-header">
+            <span>长安大学（211）</span>
+            <span class="vs-badge">VS</span>
+            <span>西安邮电（双非）</span>
+          </div>
+          <p><strong>结论：</strong>走技术选西邮。西邮在西北地区的通信行业就业有很强优势。</p>
+        </div>
+
+        <div class="comparison-card">
+          <div class="vs-header">
+            <span>东华大学（211）</span>
+            <span class="vs-badge">VS</span>
+            <span>杭州电子科大（双非）</span>
+          </div>
+          <p><strong>结论：</strong>走技术选杭电。杭电在IT/互联网行业认可度极高，有"小清华"之称。</p>
+        </div>
+
+        <div class="comparison-card">
+          <div class="vs-header">
+            <span>广西大学（211）</span>
+            <span class="vs-badge">VS</span>
+            <span>深圳大学（双非）</span>
+          </div>
+          <p><strong>结论：</strong>走技术选深大。深大地理位置绝佳，实习和就业机会远超偏远211。</p>
+        </div>
+
+        <div class="tip-box info">
+          <div class="tip-title">📌 决策法则</div>
+          <p><strong>走技术路线就业</strong> → 优先选强双非理工类（如重邮、杭电、深大、南邮）<br>
+          <strong>考公/进国企/看重学历标签</strong> → 优先选211/985</p>
+        </div>
+      </section>
+
+      <!-- 三本/二本择校 -->
+      <section class="section" id="tier23">
+        <h2 class="section-title">📚 三本/二本怎么择校？</h2>
+
+        <div class="card">
+          <div class="card-title">📐 择校公式</div>
+          <div class="card-body">
+            <p style="font-size:1.2rem; color:#fb7299; font-weight:700;">考研难度 = 初试分数 + 个人能力 + 学校层次</p>
+            <p style="margin-top:10px;">本科出身不能决定你的上限，<strong>初试分数才是你最好的证明！</strong></p>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">择校建议</h3>
+        <ul class="check-list">
+          <li><strong>优先选择不歧视本科出身的学校</strong>：看往年录取名单是否有大量双非</li>
+          <li><strong>选择初试占比高的学校</strong>：如7:3或6:4，用初试成绩说话</li>
+          <li><strong>避开有"本科歧视"黑历史的学校</strong>：知乎/小红书搜"XX学校+歧视"</li>
+          <li><strong>从三本/二本逆袭到211甚至985完全有可能</strong>：每年都有大量逆袭案例</li>
+        </ul>
+
+        <div class="tip-box success">
+          <div class="tip-title">💪 鼓励</div>
+          <p>本科出身不能决定你的上限，初试分数才是你最好的证明！<strong>每年都有大量双非逆袭985/211的成功案例。</strong>关键是初试分数要高，复试表现要好。</p>
+        </div>
+      </section>
+
+      <!-- 识别黑校 -->
+      <section class="section" id="black-school">
+        <h2 class="section-title">🚨 识别"黑校" — 五大危险信号</h2>
+
+
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号一：专业课压分</div>
+          <p>专业课普遍只有80分左右，导致考生总分偏低，调剂都困难。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号二：复录比过高</div>
+          <p>如2:1，50人录100人进复试，故意放大批人进复试再刷掉。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号三：分数线虚高</div>
+          <p>分数线350，但380才稳，400也可能被刷。分数线只是"诱饵"。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号四：不保护一志愿</div>
+          <p>故意刷一志愿考生，留出名额招调剂生（尤其青睐985调剂生源）。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">🚨 信号五：历史口碑差</div>
+          <p>黑校一直黑！看往年评价，慎重选择。一旦被贴上"黑校"标签，很难翻身。</p>
+        </div>
+
+        <h3 class="section-subtitle">如何查询这些信息？</h3>
+        <div class="number-list">
+          <li>学校官网查<strong>复试名单</strong>和<strong>录取名单</strong>，计算复录比</li>
+          <li>考研论坛/知乎/小红书搜索"XX学校+黑校/压分/歧视"</li>
+          <li>加目标院校的考研QQ群，问学长学姐真实体验</li>
+          <li>关注公众号"考研斯基""小白考研"等，有黑校名单整理</li>
+        </div>
+      </section>
+
+      <!-- 初复试占比 -->
+      <section class="section" id="ratio">
+        <h2 class="section-title">📊 复试占比与学校评价</h2>
+
+        <div class="card">
+          <div class="card-title">📊 评价学校四维度</div>
+          <div class="card-body">
+            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px;">
+              <div style="background:#fff0f3; padding:12px; border-radius: 6px;">
+                <strong style="color:#fb7299;">① 考研难度</strong><br>
+                <span style="font-size:.9rem; color:#555;">分数线、报录比、专业课难度</span>
+              </div>
+              <div style="background:#fff0f3; padding:12px; border-radius: 6px;">
+                <strong style="color:#e65100;">② 就业质量</strong><br>
+                <span style="font-size:.9rem; color:#555;">毕业生去向、平均薪资、就业地域</span>
+              </div>
+              <div style="background:#e8f5e9; padding:12px; border-radius: 6px;">
+                <strong style="color:#2e7d32;">③ 读研需求</strong><br>
+                <span style="font-size:.9rem; color:#555;">导师方向、科研资源、实习机会</span>
+              </div>
+              <div style="background:#f3e5f5; padding:12px; border-radius: 6px;">
+                <strong style="color:#7b1fa2;">④ 学校位置</strong><br>
+                <span style="font-size:.9rem; color:#555;">一线城市>二线城市，影响就业和实习</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">💡 真相</div>
+          <p><strong>好考+就业好是扯淡，两者折中考虑！</strong>适合自己的才是最好的。不要盲目追求名校，也不要过于保守。</p>
+        </div>
+      </section>
+
+      <!-- 难度影响因素 -->
+      <section class="section" id="factors">
+        <h2 class="section-title">📋 考研难度影响因素总结</h2>
+
+        <div class="metric-grid">
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">学校层级</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">985 > 211 > 双非</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">学科评估</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">A+ > A > A- > B+</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">专业课</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">自命题差异大</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">招生人数</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">越少越难</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">地理位置</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">一线更卷</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label" style="font-weight:700; color:#fb7299;">舆论热度</div>
+            <div class="metric-value" style="font-size:1rem; color:#555;">机构推的会热</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🎯 择校建议</div>
+          <div class="card-body">
+            <ul class="check-list">
+              <li><strong>专业课 > 学校层级 > 方向</strong>（专业课最重要，决定你能考多少分）</li>
+              <li><strong>确定自身实力量力而行</strong>（用模考成绩说话，不要凭感觉）</li>
+              <li><strong>最后三个月尽力就行</strong>（不要纠结学校会不会爆，无意义）</li>
+              <li><strong>不纠结学校会不会爆</strong>（爆不爆是概率问题，实力才是确定性）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 基础差选校 -->
+      <section class="section" id="weak">
+        <h2 class="section-title">🐣 基础差/菜鸟选校策略</h2>
+
+        <h3 class="section-subtitle">五大"捡漏"策略</h3>
+
+        <div class="strategy-card">
+          <div class="strategy-title">策略一：同学校的边缘学院</div>
+          <p>如电科的资环院，分数线比主流学院低很多，但毕业证相同。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-title">策略二：同学院的边缘专业</div>
+          <p>交通运输、光电信息、仪器仪表、生物医学工程等，竞争相对较小。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-title">策略三：联合培养/定向招生</div>
+          <p>与企业联合培养，分数线相对较低，就业也有保障。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-title">策略四：偏远地区的211</div>
+          <p>如广西大学、海南大学、贵州大学、云南大学等，211头衔但分数线友好。</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-title">策略五：新增硕士点的院校</div>
+          <p>首次招生的专业往往知道的人少，竞争小，是"捡漏"的好机会！关注教育部每年公布的新增硕士点名单。</p>
+        </div>
+
+        <div class="tip-box success">
+          <div class="tip-title">💪 核心</div>
+          <p>基础差不代表考不上好学校，选对策略和方法，逆袭完全有可能！</p>
+        </div>
+      </section>
+
+      <!-- 电子信息 vs 计算机 -->
+      <section class="section" id="elec-vs-cs">
+        <h2 class="section-title">💻 电子信息 vs 计算机 怎么抉择？</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <table class="compare-table">
+              <tr><th>维度</th><th>电子信息</th><th>计算机</th></tr>
+              <tr><td>考试形式</td><td>各校自命题为主</td><td>统考408为主</td></tr>
+              <tr><td>分数波动</td><td>较大，易爆冷或爆热</td><td>全国稳定，波动较小</td></tr>
+              <tr><td>择校灵活性</td><td>9月前可换学校，200+院校考信号</td><td>统考通用，可动态择校</td></tr>
+              <tr><td>专业课资料</td><td>自命题资料分散，机构可系统获取</td><td>统考资料丰富且标准化</td></tr>
+              <tr><td>零基础备考</td><td>需从头学习，报班可系统补足</td><td>内容多但资料全，系统复习可掌握</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="tip-box info">
+          <div class="tip-title">📌 核心决策建议</div>
+          <p><strong>选什么专业不重要，考上最重要。</strong>电子信息和计算机就业其实都差不多，不管计算机还是通信。零基础现在开始复习完全来得及，关键是根据自身情况选择适合的方向，并坚持到底。</p>
+        </div>
+      </section>
+
+      <!-- 信息搜集渠道 -->
+      <section class="section" id="info">
+        <h2 class="section-title">🔍 择校信息搜集渠道</h2>
+
+        <h3 class="section-subtitle">五大信息渠道</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-title">直系学长学姐</div>
+            <p>最可靠的信息来源！建立利益关系，不要白嫖。可通过购买资料、请教学费等方式建立联系。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-title">官方网站</div>
+            <p>研招网、院校官网、学院官网。获取招生简章、专业目录、复试细则等最权威信息。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-title">机构总结</div>
+            <p>择校宝典、院校分析报告，节省时间。但要注意辨别真伪，不要完全依赖。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-title">QQ群/论坛</div>
+            <p>目标院校专业群、考研论坛。获取最新动态和一手消息，但要甄别信息真假。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-title">公众号/知乎</div>
+            <p>经验贴、方法论，学习他人经验。但不要盲目跟风，要结合自身情况。</p>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">择校信息搜集清单</h3>
+        <div class="card">
+          <div class="card-body">
+            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px;">
+              <div>
+                <strong style="color:#fb7299;">📊 基础数据</strong>
+                <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
+                  <li>招生人数</li>
+                  <li>报录比</li>
+                  <li>分数线</li>
+                  <li>复录比</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color:#fb7299;">⚠️ 公平性问题</strong>
+                <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
+                  <li>是否保护一志愿</li>
+                  <li>初复试占比</li>
+                  <li>是否压分</li>
+                  <li>本科歧视</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color:#2e7d32;">📈 客观事实</strong>
+                <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
+                  <li>录取生源</li>
+                  <li>专业排名</li>
+                  <li>学科评估</li>
+                  <li>就业情况</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color:#7b1fa2;">🏠 其他因素</strong>
+                <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
+                  <li>住宿条件</li>
+                  <li>地理位置</li>
+                  <li>奖学金政策</li>
+                  <li>导师水平</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 菜鸟择校 -->
+      <section class="section" id="newbie">
+        <h2 class="section-title">📖 菜鸟择校指南</h2>
+
+        <h3 class="section-subtitle">给考研菜鸟的三点建议</h3>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">🎯 选择双非院校</div>
+            <div class="card-body">
+              <p>竞争小、上岸几率大。双非院校虽然名气不如985/211，但很多专业实力很强，就业也不错。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">🎯 选择B区院校</div>
+            <div class="card-body">
+              <p>国家线低、调剂机会多。B区院校分数线通常比A区低10分左右，调剂时选择更多。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">🎯 避开热门</div>
+            <div class="card-body">
+              <p>避开热门专业和热门城市。热门专业（如金融、计算机）竞争激烈，热门城市报考人数多。</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-subtitle">菜鸟择校常见误区</h3>
+        <div class="danger-signal">
+          <div class="signal-title">❌ 误区一：好高骛远</div>
+          <p>盲目追求名校，不考虑自身实力。择校要脚踏实地，先上岸再谈理想。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">❌ 误区二：盲目跟风</div>
+          <p>看别人报什么就报什么，没有主见。每个人的情况不同，适合自己的才是最好的。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">❌ 误区三：信息闭塞</div>
+          <p>不搜集信息，盲目选择。信息不对称是考研大忌，充分调研才能做出正确选择。</p>
+        </div>
+        <div class="danger-signal">
+          <div class="signal-title">❌ 误区四：犹豫不决</div>
+          <p>迟迟不定目标院校，浪费时间。10月才报名，但前期也要有大致方向才能安心复习。</p>
+        </div>
+
+        <div class="tip-box success">
+          <div class="tip-title">💡 核心建议</div>
+          <p>作为考研菜鸟，首要目标是<strong>上岸</strong>！不要好高骛远，要脚踏实地。选择双非院校、B区院校、避开热门专业和热门城市，能大幅提高上岸几率。<strong>先上岸，再谈理想！</strong>等你有了研究生学历，未来还有更多的机会和选择。</p>
+        </div>
+      </section>
+
+      <!-- 择校现状 -->
+      <section class="section" id="status">
+        <h2 class="section-title">📊 考研择校常见现状</h2>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">😵 不清楚自己实力型</div>
+            <div class="card-body">
+              <p>模考没做过，不知道自己的真实水平。</p>
+              <p><strong>建议：</strong>做几套真题模拟，量化自己的实力。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">🔄 院校选择不坚定型</div>
+            <div class="card-body">
+              <p>今天想考这个，明天想考那个。</p>
+              <p><strong>建议：</strong>设定阶梯目标，不要频繁更换。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">😰 怕这怕哪型</div>
+            <div class="card-body">
+              <p>怕学校爆、怕考不上、怕复试被刷。</p>
+              <p><strong>建议：</strong>尽力就行，不去想结果。实力是消除焦虑的唯一解药。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">📉 不知道数据型</div>
+            <div class="card-body">
+              <p>不了解报录比、分数线、复录比。</p>
+              <p><strong>建议：</strong>去学校官网和论坛收集数据，数据是消除恐惧的最好武器。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10月报名常见问题 -->
+      <section class="section" id="oct-faq">
+        <h2 class="section-title">📝 10月报名常见问题</h2>
+
+        <div class="qa-item">
+          <div class="qa-question"><span class="q-icon">Q</span>扩招后会变简单吗？</div>
+          <div class="qa-answer">
+            <p><strong>不一定！</strong>扩招可能吸引更多考生报考，竞争反而更激烈。</p>
+          </div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-question"><span class="q-icon">Q</span>缩招了还能报吗？</div>
+          <div class="qa-answer">
+            <p>看具体情况！如果只缩招1-2个名额影响不大，如果缩招一半以上要慎重。</p>
+          </div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-question"><span class="q-icon">Q</span>第一年新开的专业可以报吗？</div>
+          <div class="qa-answer">
+            <p>有机会也有风险！好处是知道的人少，风险是没有历年真题参考。</p>
+          </div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-question"><span class="q-icon">Q</span>报考点、档案、信息填写问题？</div>
+          <div class="qa-answer">
+            <p>应届生一般在学校考，往届生在户籍地或工作地考；档案填学校或人才市场地址。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 考研·竞赛·就业抉择 -->
+      <section class="section" id="choice">
+        <h2 class="section-title">🤔 考研、竞赛、就业怎么抉择？</h2>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">📚 考研</div>
+            <div class="card-body">
+              <p>提升学历和就业竞争力，换专业/换方向的机会，进入更大平台。需要1年备考时间。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">🏆 竞赛</div>
+            <div class="card-body">
+              <p><strong>大三不建议竞赛</strong>，时间成本太高。除非能直接保研，否则性价比低。</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">💼 就业</div>
+            <div class="card-body">
+              <p>直接工作积累经验，适合实践能力强的人。后期可再考在职研。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-title">💡 建议</div>
+          <p>考研与就业，<strong>重心放在一个上面</strong>，不要两头摇摆。选定一条路就全力以赴，每条路都有成功案例。<strong>没有绝对正确的选择，只有全力以赴才能把选择变成正确！</strong></p>
+        </div>
+      </section>
+
+      <!-- 页脚导航 -->
+      <div style="display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid #e0e0e0;">
+        <a href="04-major.html" style="color:#fb7299;">← 上一章：专业课备考</a>
+        <a href="06-mindset-career.html" style="color:#fb7299;">下一章：心态调整 & 就业规划 →</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <!-- Back to Top -->
+  <div id="back-to-top"><button>↑</button></div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="01-basics.html">基础常识</a>
+        <a href="02-timeline.html">备考时间线</a>
+        <a href="03-public-courses.html">公共课备考</a>
+        <a href="04-major.html">专业课备考</a>
+        <a href="05-school-selection.html">考研择校</a>
+        <a href="06-mindset-career.html">心态与就业</a>
+        <a href="07-faq.html">常见问题</a>
+        <a href="08-methods.html">学习方法</a>
+        <a href="experience.html">上岸经验贴</a>
+      </div>
+      <p>内容由 <a href="#">@一只通信考研的er</a> 整理制作 | 仅供考研学习交流使用</p>
+      <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
+    </div>
+  </footer>
+<script>
+(function(){
+  const btn=document.getElementById('back-to-top');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>300);
+  });
+  btn.querySelector('button').addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>

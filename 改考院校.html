@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>27控制类考研改考院校大汇总</title>
+<meta name="description" content="27控制类考研改考院校汇总，及时了解专业课改考动态。">
+<meta name="keywords" content="通信考研,电子考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:#F5F0E4;color:#1A1A2E;line-height:1.6}
+
+.header{background:#fff;padding:30px 0 20px;text-align:center;border-bottom:1px solid #D9CFB8}
+.header h1{font-size:1.8rem;font-weight:700;color:#1A1A2E;margin-bottom:6px}
+.header .subtitle{font-size:13px;color:#7A7A85}
+
+.container{width:85%;max-width:1400px;margin:0 auto;padding:0 0 60px}
+@media(max-width:768px){.container{width:95%}}
+
+.controls{background:#fff;padding:16px 24px;margin:16px 0;border-radius:8px;box-shadow:0 1px 4px rgba(26, 26, 46, 0.06);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.filter-group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filter-label{font-size:13px;color:#3A3A4E;font-weight:600}
+.filter-btn{padding:6px 16px;border:1px solid #1a1a2e;background:#fff;border-radius:4px;color:#3A3A4E;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit}
+.filter-btn:hover{border-color:#8B1538;color:#8B1538}
+.filter-btn.active{background:#8B1538;border-color:#8B1538;color:#fff}
+.search-box{position:relative;min-width:240px}
+.search-box input{width:100%;padding:8px 12px 8px 32px;border:1px solid #1a1a2e;border-radius:4px;font-size:13px;font-family:inherit;outline:none;transition:all .2s}
+.search-box input:focus{border-color:#8B1538;box-shadow:0 0 0 2px rgba(139, 21, 56, 0.1)}
+.search-box input::placeholder{color:#A5A0A8}
+.search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:#A5A0A8;pointer-events:none}
+.result-count{font-size:13px;color:#7A7A85}
+
+.table-wrap{overflow-x:auto;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(26, 26, 46, 0.06)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{background:#FCF9F1;color:#3A3A4E;font-weight:600;padding:14px 16px;text-align:left;font-size:13px;white-space:nowrap;border-bottom:2px solid #D9CFB8}
+tbody tr{border-bottom:1px solid #E8DFC8;transition:background .15s}
+tbody tr:hover{background:#FCF9F1}
+tbody td{padding:14px 16px;vertical-align:top}
+
+.date-cell{font-size:13px;color:#3A3A4E;font-weight:500;white-space:nowrap}
+
+.level-tag{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:700;white-space:nowrap;color:#fff}
+.level-985{background:#8B1538}
+.level-211{background:#A8324F}
+.level-双一流{background:#1e3a5f}
+.level-四邮四电{background:#9C6B2F}
+.level-普通院校,.level-普通本科{background:#2d6e4e}
+
+.school-name{font-weight:700;color:#8B1538;font-size:14.5px}
+.school-name:hover{color:#A8324F}
+
+.college-text{font-size:12.5px;color:#7A7A85;margin-top:4px;line-height:1.5}
+
+.major-text{color:#1A1A2E;font-size:13.5px;font-weight:500}
+
+.before-text{color:#A5A0A8;font-size:13.5px;text-decoration:line-through;text-decoration-color:#8B1538;text-decoration-thickness:2px;line-height:1.5}
+
+.after-text{color:#8B1538;font-size:13.5px;font-weight:700;line-height:1.5}
+.after-text.stop{color:#8B1538;background:#FCF9F1;padding:3px 10px;border-radius:4px;display:inline-block;border:1px solid rgba(139,21,56,0.25)}
+.after-text.s408{color:#2d6e4e;background:#E8F3E8;padding:3px 10px;border-radius:4px;display:inline-block;border:1px solid #C8E0C8}
+
+.public-tag{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;background:#E8EEF8;color:#1e3a5f;border-radius:4px;font-size:11px;font-weight:600;border:1px solid #C8D5EC;margin-bottom:4px}
+
+.note-text{font-size:12px;color:#9C6B2F;background:#FBEED9;padding:4px 10px;border-radius:4px;margin-top:6px;display:inline-block;border:1px solid #E8D5B0;line-height:1.5}
+
+.source-link{color:#1e3a5f;font-size:12.5px;text-decoration:none;word-break:break-all;line-height:1.5;display:block;margin-top:2px}
+.source-link:hover{color:#1e3a5f;text-decoration:underline}
+
+.empty{text-align:center;padding:60px 20px;color:#7A7A85}
+.empty-icon{font-size:48px;margin-bottom:12px}
+
+.footer{text-align:center;padding:30px;color:#7A7A85;font-size:12.5px;line-height:1.8}
+
+@media(max-width:768px){
+  .header h1{font-size:1.4rem}
+  .controls{padding:12px;flex-direction:column;align-items:stretch}
+  .search-box{min-width:auto}
+  table{font-size:12px}
+  tbody td{padding:10px 12px}
+  thead th{padding:10px 12px}
+}
+</style>
+
+
+<style id="entry-responsive-adapt">
+html{overflow-x:hidden}
+body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,canvas,video{max-width:100%}
+a,button,input{touch-action:manipulation}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid rgba(139,21,56,.34);outline-offset:3px}
+.table-wrap{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.table-wrap table{min-width:980px}
+.back-to-home{top:calc(16px + env(safe-area-inset-top,0px))!important;left:calc(16px + env(safe-area-inset-left,0px))!important}
+@media (hover:none){.filter-btn:hover,.school-name:hover{transform:none;text-decoration:none}}
+@media (max-width:900px){
+  .header{padding:72px 16px 18px}
+  .header h1{font-size:clamp(1.2rem,5.6vw,1.55rem);line-height:1.35}
+  .container{width:100%;padding:0 max(10px,env(safe-area-inset-right)) 42px max(10px,env(safe-area-inset-left))}
+  .controls{margin:12px 0;padding:12px;border-radius:12px}
+  .filter-group{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none}
+  .filter-group::-webkit-scrollbar{display:none}
+  .filter-label,.filter-btn{flex:0 0 auto}
+  .filter-btn{min-height:40px;padding:7px 14px}
+  .controls > div[style]{width:100%;display:flex!important;flex-direction:column;align-items:stretch!important;gap:8px!important}
+  .search-box{width:100%}
+  .search-box input{min-height:44px;font-size:16px}
+}
+</style>
+
+</head>
+<body>
+
+<a href="index.html" class="back-to-home" style="position:fixed;top:16px;left:16px;z-index:1000;padding:10px 18px;background:linear-gradient(135deg,#8B1538 0%,#A8324F 100%);color:#fff;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(139, 21, 56, 0.2);transition:transform .2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">← 返回首页</a>
+
+<div class="header">
+  <h1>📋 27控制类考研改考院校大汇总</h1>
+  <p class="subtitle">数据来源：各校官方通知 | 持续更新中</p>
+</div>
+
+<div class="container">
+  <div class="controls">
+    <div class="filter-group">
+      <span class="filter-label">层次：</span>
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="985">985</button>
+      <button class="filter-btn" data-filter="211">211</button>
+      <button class="filter-btn" data-filter="双一流">双一流</button>
+      <button class="filter-btn" data-filter="四邮四电">四邮四电</button>
+      <button class="filter-btn" data-filter="普通">普通院校</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="搜索学校、专业或科目...">
+      </div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th style="width:80px">发布日期</th>
+          <th style="width:60px">层次</th>
+          <th style="width:100px">改考学校</th>
+          <th style="min-width:140px">学院名称</th>
+          <th style="min-width:160px">改考专业</th>
+          <th style="min-width:140px">改考前</th>
+          <th style="min-width:140px">改考后</th>
+          <th style="min-width:200px">信息来源</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="empty" id="emptyState" style="display:none;">
+      <div class="empty-icon">🔍</div>
+      <p>未找到匹配的改考信息</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>数据整理：@一只通信考研的er | 信息来源：各校研究生院官网公告</p>
+    <p>仅供参考，请以各校官方最新通知为准</p>
+  </div>
+</div>
+
+<script>
+const examData=[{"level":"985","school":"南京大学","college":"物理学院","major":"085400电子信息","before":"数学二、英语二","after":"数学一、英语一","date":"2026.7.10","source":"https://physics.nju.edu.cn/rcpy/yjs/zs/20260710/i401459.html","note":""},{"level":"211","school":"合肥工业大学","college":"微电子学院","major":"《865电子科学与技术综合》相关专业","before":"包含电路、数电、模电、模集","after":"删除了模集相关内容","date":"2026.7.10","source":"https://wdzxy.hfut.edu.cn/2026/0710/c5630a322516/page.htm","note":""},{"level":"普通院校","school":"北方工业大学","college":"人工智能与计算机学院","major":"085402通信工程","before":"871信号与系统","after":"873通信原理","date":"2026.6.10","source":"https://yjsy.ncut.edu.cn/info/1185/4885.htm","note":""},{"level":"普通院校","school":"嘉兴大学","college":"信息科学与工程学院","major":"085400电子信息","before":"812电子信息专业综合","after":"813信号与系统","date":"2026.7.10","source":"https://yzw.zjxu.edu.cn/info/1212/1944.htm","note":""},{"level":"普通院校","school":"安徽农业大学","college":"工学院","major":"085400电子信息","before":"820电路原理","after":"信号与系统","date":"2026.7.3","source":"https://yjs.ahau.edu.cn/info/1005/59044.htm","note":""},{"level":"普通院校","school":"安徽农业大学","college":"信息与人工智能学院","major":"085400电子信息","before":"859信号与线性系统分析","after":"信号与系统","date":"2026.7.3","source":"https://yjs.ahau.edu.cn/info/1005/59044.htm","note":""},{"level":"普通院校","school":"武汉工程大学","college":"电气信息学院","major":"081002信号与信息处理","before":"846数字图像处理","after":"834信号与系统","date":"2026.6.8","source":"https://yjs.wit.edu.cn/info/1020/12644.htm","note":""},{"level":"211","school":"中国矿业大学","college":"信息与控制工程学院","major":"081000信息与通信工程","before":"824专业基础综合（信号与系统，通信原理）","after":"822信号与系统","date":"2026.7.16","source":"https://yz.cumt.edu.cn/info/1003/2586.htm","note":""},{"level":"211","school":"中国矿业大学","college":"信息与控制工程学院","major":"085401新一代电子信息技术","before":"824专业基础综合（信号与系统，通信原理）","after":"822信号与系统","date":"2026.7.16","source":"https://yz.cumt.edu.cn/info/1003/2586.htm","note":""},{"level":"211","school":"中国矿业大学","college":"信息与控制工程学院","major":"085402通信工程","before":"824专业基础综合（信号与系统，通信原理）","after":"822信号与系统","date":"2026.7.16","source":"https://yz.cumt.edu.cn/info/1003/2586.htm","note":""},{"level":"211","school":"中国矿业大学","college":"信息与控制工程学院","major":"085403集成电路工程","before":"811专业基础综合（电路、电磁场与电磁波）","after":"899电路理论","date":"2026.7.16","source":"https://yz.cumt.edu.cn/info/1003/2586.htm","note":""},{"level":"985","school":"华中科技大学","college":"集成电路学院","major":"080900电子科学与技术（02、03方向）","before":"831电子技术基础","after":"该专业统考838固态电子学基础","date":"2026.7.8","source":"https://ic.hust.edu.cn/info/1242/5865.htm","note":""},{"level":"985","school":"华中科技大学","college":"集成电路学院","major":"140100集成电路科学与工程（01、02方向）","before":"838固态电子学基础","after":"该专业统考831电子技术基础","date":"2026.7.8","source":"https://ic.hust.edu.cn/info/1242/5865.htm","note":""},{"level":"985","school":"北京理工大学","college":"信息与电子学院","major":"081000信息与通信工程","before":"826信号处理导论（信号+数处）","after":"826信息与通信工程基础 （信号+数处+通信原理）","date":"2026.7.7","source":"https://grd.bit.edu.cn/zsgz/zsxx/7544dc112636429aab24e3b0646419d1.htm","note":""},{"level":"985","school":"北京理工大学","college":"信息与电子学院","major":"080900电子科学与技术","before":"826信号处理导论（信号+数处）","after":"826信息与通信工程基础 （信号+数处+通信原理）","date":"2026.7.7","source":"https://grd.bit.edu.cn/zsgz/zsxx/7544dc112636429aab24e3b0646419d1.htm","note":""},{"level":"985","school":"北京理工大学","college":"信息与电子学院","major":"085401新一代电子信息技术","before":"826信号处理导论（信号+数处）","after":"826信息与通信工程基础 （信号+数处+通信原理）","date":"2026.7.7","source":"https://grd.bit.edu.cn/zsgz/zsxx/7544dc112636429aab24e3b0646419d1.htm","note":""},{"level":"985","school":"北京理工大学","college":"信息与电子学院","major":"085402通信工程","before":"826信号处理导论（信号+数处）","after":"826信息与通信工程基础 （信号+数处+通信原理）","date":"2026.7.7","source":"https://grd.bit.edu.cn/zsgz/zsxx/7544dc112636429aab24e3b0646419d1.htm","note":""},{"level":"985","school":"北京理工大学","college":"信息与电子学院","major":"082400船舶与海洋工程","before":"826信号处理导论（信号+数处）","after":"826信息与通信工程基础 （信号+数处+通信原理）","date":"2026.7.7","source":"https://grd.bit.edu.cn/zsgz/zsxx/7544dc112636429aab24e3b0646419d1.htm","note":""},{"level":"普通院校","school":"黑龙江大学","college":"电子工程学院","major":"085401新一代电子信息技术","before":"888信号与系统","after":"835数字电子技术II","date":"2026.7.7","source":"https://yjsy.hlju.edu.cn/info/1009/10233.htm","note":""},{"level":"普通院校","school":"黑龙江大学","college":"电子工程学院","major":"085403集成电路工程","before":"889CMOS模拟集成电路设计","after":"835数字电子技术II","date":"2026.7.7","source":"https://yjsy.hlju.edu.cn/info/1009/10233.htm","note":""},{"level":"普通院校","school":"黑龙江大学","college":"电子工程学院","major":"085406控制工程","before":"890自控原理","after":"835数字电子技术II","date":"2026.7.7","source":"https://yjsy.hlju.edu.cn/info/1009/10233.htm","note":""},{"level":"普通院校","school":"黑龙江大学","college":"电子工程学院","major":"085408光电信息工程","before":"876数字电子技术","after":"835数字电子技术II","date":"2026.7.7","source":"https://yjsy.hlju.edu.cn/info/1009/10233.htm","note":""},{"level":"普通院校","school":"黑龙江大学","college":"电子工程学院","major":"077401物理电子学、081000信息与通信工程 077403微电子学与固体电子学、077402电路与系统","before":"829数字电子技术","after":"833数字电子技术I","date":"2026.7.7","source":"https://yjsy.hlju.edu.cn/info/1009/10233.htm","note":""},{"level":"985","school":"天津大学","college":"医学院","major":"089908脑机接口（新增专业）","before":"\\","after":"(02方向)811电路","date":"2026.6.23","source":"http://mstu.tju.edu.cn/info/1061/8061.htm","note":""},{"level":"985","school":"天津大学","college":"医学院","major":"","before":"\\","after":"(03方向)815信号与系统","date":"2026.6.23","source":"http://mstu.tju.edu.cn/info/1061/8061.htm","note":""},{"level":"211","school":"长安大学","college":"机器人与具身智能学院（原电控学院）","major":"080900电子科学与技术（新增专业）","before":"\\","after":"814信号与系统","date":"2026.7.8","source":"https://yzb.chd.edu.cn/2026/0708/c2769a261818/pagem.htm","note":""},{"level":"211","school":"长安大学","college":"机器人与具身智能学院、信息工程学院","major":"考察小语种的全部专业","before":"小语种（俄语、日语）取消","after":"统一考察英语","date":"2026.7.8","source":"https://yzb.chd.edu.cn/2026/0708/c2769a261818/pagem.htm","note":""},{"level":"211","school":"福州大学","college":"先进制造学院","major":"085401新一代电子信息技术","before":"数二+英二","after":"数一+英一","date":"2026.7.3","source":"https://xjzz.fzu.edu.cn/home/#/notice_announcement/33/9223","note":""},{"level":"211","school":"东北林业大学","college":"智能科学与工程学院","major":"085400电子信息","before":"822数字逻辑电路","after":"408计算机学科专业基础","date":"2026.7.3","source":"https://yjs.neau.edu.cn/info/1146/4502.htm","note":""},{"level":"211","school":"河北工业大学","college":"电子信息工程学院","major":"080900电子科学与技术 01方向","before":"890半导体物理学","after":"892模拟与数字电路","date":"2026.7.3","source":"https://yjs.hebut.edu.cn/zsgz/ssyjszszl/tzgg3_0/b179259247a342298b098dc6eb57fcce.htm","note":"复试由信号与线性系统调整为半导体物理学"},{"level":"211","school":"河北工业大学","college":"","major":"080900电子科学与技术 03方向","before":"激光原理","after":"","date":"2026.7.3","source":"https://yjs.hebut.edu.cn/zsgz/ssyjszszl/tzgg3_0/b179259247a342298b098dc6eb57fcce.htm","note":"复试由信号与线性系统调整为激光原理"},{"level":"211","school":"安徽大学","college":"集成电路学院","major":"080903微电子学与固体电子学","before":"843半导体物理","after":"停止招生","date":"2026.7.2","source":"http://graschool.ahu.edu.cn/2026/0702/c9539a396630/page.htm","note":""},{"level":"211","school":"海南大学","college":"生物医学工程学院","major":"085409生物医学工程","before":"888信号与系统B","after":"838信号与系统","date":"2026.7.2","source":"https://gs.hainanu.edu.cn/info/1024/8892.htm","note":""},{"level":"211","school":"福州大学","college":"物理与信息工程学院","major":"085401新一代电子信息技术","before":"数二+英二","after":"数一+英一","date":"2026.7.2","source":"https://wx.fzu.edu.cn/info/1077/4546.htm","note":""},{"level":"211","school":"华北电力大学","college":"电气与电子工程学院","major":"081000信息与通信工程","before":"复试科目《通信原理及现代交换技术》《电子综合技术》二选一","after":"电子与通信技术综合（两科目各占50%）","date":"2026.6.30","source":"https://yjsy.ncepu.edu.cn/zsxx/sszsxx/deed572a6d934d428c9d99da5a8e85d5.htm","note":""},{"level":"211","school":"西南大学","college":"物理科学与技术学院","major":"085400电子信息变更为085401新一代电子信息技术","before":"891计算机基础与数字电路","after":"844信号与系统","date":"2026.6.29","source":"https://physics.swu.edu.cn/info/1059/6101.htm","note":""},{"level":"211","school":"西南大学","college":"电子信息工程学院","major":"","before":"","after":"","date":"2026.6.29","source":"https://ceie.swu.edu.cn/info/1058/6119.htm","note":""},{"level":"双一流","school":"南京林业大学","college":"信息科学技术学院、人工智能学院","major":"080900电子科学与技术","before":"882电路A","after":"882数字电子技术","date":"2026.6.29","source":"https://yz.njfu.edu.cn//tzgg/20260629/i360601.html","note":""},{"level":"四邮四电","school":"西安邮电大学","college":"电子工程学院、集成电路学院","major":"080300光学工程","before":"821光学","after":"836数字电路逻辑设计","date":"2026.6.29","source":"https://gr.xupt.edu.cn/info/1118/9450.htm","note":""},{"level":"四邮四电","school":"西安邮电大学","college":"","major":"080900电子科学与技术","before":"823电子技术基础","after":"","date":"2026.6.29","source":"https://gr.xupt.edu.cn/info/1118/9450.htm","note":"电路变成①电路分析基础②模拟电子技术基础，以上科目二选一"},{"level":"四邮四电","school":"杭州电子科技大学","college":"电子信息学院","major":"080900电子科学与技术","before":"845信号与系统分析","after":"843信号与系统","date":"2026.6.29","source":"https://ee.hdu.edu.cn/2026/0629/c13579a298162/page.htm","note":""},{"level":"985","school":"哈尔滨工业大学","college":"电子与信息工程学院","major":"081000信息与通信工程","before":"803信号与系统和数字逻辑电路","after":"803信号与系统+数字信号处理","date":"2026.6.25","source":"https://seie.hit.edu.cn/2026/0625/c17148a394951/page.htm","note":""},{"level":"985","school":"厦门大学","college":"电子科学与技术学院","major":"085401新一代电子信息技术（含量子技术等）","before":"847信号与系统","after":"821电子电路","date":"2026.6.25","source":"https://ese.xmu.edu.cn/info/1018/34631.htm","note":""},{"level":"211","school":"中国地质大学（北京）","college":"人工智能学院","major":"081000信息与通信工程","before":"860数字电子技术","after":"844电子技术基础","date":"2026.6.24","source":"https://bm.cugb.edu.cn/yjsyzsb/c/2026-06-24/852582.shtml","note":""},{"level":"211","school":"中国地质大学（北京）","college":"地球物理与信息技术学院","major":"081000控制科学与工程","before":"845信号与系统","after":"","date":"2026.6.24","source":"https://bm.cugb.edu.cn/yjsyzsb/c/2026-06-24/852582.shtml","note":""},{"level":"985","school":"华南理工大学","college":"物理与光电学院","major":"080900电子科学与技术","before":"824普通物理","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"985","school":"华南理工大学","college":"物理与光电学院","major":"085400电子信息","before":"824普通物理","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"985","school":"华南理工大学","college":"自动化学院","major":"081100控制科学与工程","before":"814自动化信号综合","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"985","school":"华南理工大学","college":"自动化学院","major":"085400电子信息","before":"814自动化信号综合","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"985","school":"华南理工大学","college":"吴贤铭智能工程学院","major":"081100控制科学与工程","before":"814自动化信号综合","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"985","school":"华南理工大学","college":"吴贤铭智能工程学院","major":"085400电子信息","before":"814自动化信号综合","after":"811信号与系统","date":"2026.6.22","source":"https://yz.scut.edu.cn/2026/0622/c30108a630533/page.htm","note":""},{"level":"211","school":"西南交通大学","college":"集成电路学院","major":"140100集成电路科学与工程","before":"861电子技术基础（数模电）","after":"半导体物理","date":"2026.6.22","source":"https://yz.swjtu.edu.cn/vatuu/WebAction?setAction=newsDetail&viewType=web&newsId=9BD588485D18E39F","note":""},{"level":"普通院校","school":"中国计量大学","college":"光学与电子科技学院","major":"080900电子科学与技术","before":"808电子技术基础","after":"831数字电子技术基础","date":"2026.6.22","source":"http://yjszs.cjlu.edu.cn/info/1016/5330.htm","note":""},{"level":"双一流","school":"南京信息工程大学","college":"人工智能学院","major":"0810J2人工智能","before":"408计算机学科专业基础","after":"811信号与系统","date":"2026.6.18","source":"https://yzb.nuist.edu.cn/info/1006/3007.htm","note":""},{"level":"985","school":"东南大学","college":"仪器科学与工程学院","major":"080400仪器科学与技术","before":"864电路","after":"864电路分析基础","date":"2026.6.17","source":"https://ins.seu.edu.cn/2026/0617/c26759a572222/page.htm","note":""},{"level":"双一流","school":"天津工业大学","college":"电子与信息工程学院","major":"081000信息与通信工程（学硕01方向）","before":"814通信原理","after":"812信号与系统","date":"2026.6.15","source":"https://yjsb.tiangong.edu.cn/2026/0615/c2714a115783/page.htm","note":""},{"level":"985","school":"浙江大学","college":"信息与电子工程学院","major":"080900电子科学与技术","before":"842信号系统与数字电路/879半导体物理","after":"停止招生","date":"2026.6.15","source":"http://www.isee.zju.edu.cn/2026/0615/c21109a3178614/page.htm","note":""},{"level":"985","school":"浙江大学","college":"","major":"081000信息与通信工程","before":"844信号与电路基础","after":"","date":"2026.6.15","source":"http://www.isee.zju.edu.cn/2026/0615/c21109a3178614/page.htm","note":""},{"level":"211","school":"北京林业大学","college":"工学院","major":"085400电子信息","before":"855自动控制原理","after":"808电子技术","date":"2026.6.11","source":"https://mp.weixin.qq.com/s/imRFYh7TbKXynopf14X2gQ","note":""},{"level":"双一流","school":"宁波大学","college":"集成电路学院","major":"085408光电信息工程","before":"829信号与系统","after":"673普通物理","date":"2026.6.10","source":"https://graduate.nbu.edu.cn/info/1073/28221.htm","note":""},{"level":"985","school":"华东师范大学","college":"信息与电子工程学院","major":"085402通信工程","before":"801数字电路","after":"883信号与系统","date":"2026.5.21","source":"https://ieeic.ecnu.edu.cn/9e/a3/c4170a761507/page.htm","note":"复试考数字电路与通信原理（数字通信）"},{"level":"211","school":"南京理工大学","college":"微电子学院","major":"080903微电子学与固体电子学","before":"890固体物理","after":"890半导体物理","date":"2026.5.20","source":"https://ic.njust.edu.cn/90/1b/c17822a364571/page.htm","note":"复试考模拟电子线路"},{"level":"211","school":"南京理工大学","college":"","major":"085403集成电路工程","before":"891信号+电磁场","after":"","date":"2026.5.20","source":"https://ic.njust.edu.cn/90/1b/c17822a364571/page.htm","note":""},{"level":"211","school":"东北林业大学","college":"控制与信息工程学院","major":"085401新一代电子信息技术（含量子技术等）","before":"829信号系统和数字电路","after":"408计算机学科专业基础","date":"2026.5.8","source":"https://yz.nefu.edu.cn/info/1025/4206.htm","note":""},{"level":"211","school":"东北林业大学","college":"","major":"081100控制科学与工程","before":"828自动控制理论（含现代部分）","after":"879电路和模拟电子技术","date":"2026.5.8","source":"https://yz.nefu.edu.cn/info/1025/4206.htm","note":""},{"level":"985","school":"吉林大学","college":"通信工程学院","major":"081000信息与通信工程","before":"806电路与数字信号处理","after":"模拟与数字电子技术","date":"2026.4.29","source":"https://dce.jlu.edu.cn/info/1032/11314.htm","note":"复试考电路与数字信号处理"},{"level":"985","school":"吉林大学","college":"通信工程学院","major":"085402通信工程","before":"","after":"","date":"2026.4.29","source":"https://dce.jlu.edu.cn/info/1032/11314.htm","note":""},{"level":"985","school":"吉林大学","college":"电子科学与工程学院、集成电路学院","major":"080900电子科学与技术","before":"893模拟与数字电路","after":"电路原理与模拟电子技术","date":"2026.4.28","source":"http://ee.jlu.edu.cn/info/1273/9496.htm","note":"电子科学与技术、新一代电子信息、集成电路工程三个专业复试调整统一为数字电子技术"},{"level":"985","school":"吉林大学","college":"电子科学与工程学院、集成电路学院","major":"083100生物医学工程","before":"","after":"","date":"2026.4.28","source":"http://ee.jlu.edu.cn/info/1273/9496.htm","note":""},{"level":"985","school":"吉林大学","college":"电子科学与工程学院、集成电路学院","major":"085401新一代电子信息技术","before":"848电路原理","after":"","date":"2026.4.28","source":"http://ee.jlu.edu.cn/info/1273/9496.htm","note":""},{"level":"985","school":"吉林大学","college":"电子科学与工程学院、集成电路学院","major":"085403集成电路工程","before":"","after":"","date":"2026.4.28","source":"http://ee.jlu.edu.cn/info/1273/9496.htm","note":""},{"level":"985","school":"西北工业大学","college":"集成电路学院（微电子学院）","major":"140100集成电路科学与工程","before":"882半导体物理与器件","after":"827信号与系统","date":"2026.4.28","source":"https://weidianzi.nwpu.edu.cn/info/1138/17603.htm","note":""},{"level":"985","school":"中央民族大学","college":"信息工程学院","major":"0854电子信息（01新一代方向）","before":"852电子信息综合（C语言|电路或C语言|数据结构二选一）","after":"855电磁场与电磁波","date":"2026.4.24","source":"https://grs.muc.edu.cn/info/1178/8004.htm","note":""},{"level":"普通本科","school":"浙江师范大学","college":"数理医学院","major":"0854电子信息（09生物医学工程方向）","before":"826信号与系统","after":"408计算机学科专业基础","date":"2026.3.5","source":"https://slyx.zjnu.edu.cn/2026/0305/c18361a547678/page.htm","note":""},{"level":"普通本科","school":"绍兴大学","college":"数理信息学院","major":"070200物理学（04集成电路方向）","before":"863半导体物理","after":"809数字电子技术","date":"2026.1.30","source":"https://yjsc.usx.edu.cn/info/1186/5673.htm","note":""},{"level":"普通本科","school":"绍兴大学","college":"智能工程学院","major":"0854电子信息（03感知与控制方向）","before":"807自动控制原理","after":"","date":"2026.1.30","source":"https://yjsc.usx.edu.cn/info/1186/5673.htm","note":""},{"level":"普通院校","school":"云南民族大学","college":"电气信息工程学院","major":"081000信息与通信工程","before":"信号与系统","after":"408计算机学科专业基础","date":"2026.7.17","source":"https://web.ymu.edu.cn/yjsy/info/1201/4041.htm","note":""},{"level":"普通院校","school":"云南民族大学","college":"电气信息工程学院","major":"085400电子信息（专业学位）","before":"信号与系统","after":"408计算机学科专业基础","date":"2026.7.17","source":"https://web.ymu.edu.cn/yjsy/info/1201/4041.htm","note":""},{"level":"四邮四电","school":"南京邮电大学","college":"电子与光学工程学院","major":"080300光学工程","before":"805光学","after":"807普通物理","date":"2026.7.25","source":"https://yzb.njupt.edu.cn/2026/0722/c7795a306725/page.htm","note":""},{"level":"四邮四电","school":"南京邮电大学","college":"集成电路科学与工程学院","major":"080903微电子学与固体电子学","before":"820半导体物理","after":"813电路","date":"2026.7.25","source":"https://yzb.njupt.edu.cn/2026/0722/c7795a306725/page.htm","note":"复试由模电改考半导体物理"},{"level":"四邮四电","school":"南京邮电大学","college":"集成电路科学与工程学院","major":"140100集成电路科学与工程","before":"","after":"","date":"2026.7.25","source":"https://yzb.njupt.edu.cn/2026/0722/c7795a306725/page.htm","note":"复试由模电改考数模电"},{"level":"四邮四电","school":"南京邮电大学","college":"卓越工程师学院(红枫科技园)","major":"","before":"","after":"通信学院，电光院均有招生计划","date":"2026.7.25","source":"https://yzb.njupt.edu.cn/2026/0722/c7795a306725/page.htm","note":"新增"},{"level":"四邮四电","school":"南京邮电大学","college":"未来信息学科交叉中心","major":"","before":"","after":"通信学院与集成电路学院均有招生计划！","date":"2026.7.25","source":"https://yzb.njupt.edu.cn/2026/0722/c7795a306725/page.htm","note":"专项计划 新增"},{"level":"普通院校","school":"集美大学","college":"海洋信息工程学院","major":"0823J2低空技术与工程","before":"","after":"823信号与系统","date":"2026.7.24","source":"https://mp.weixin.qq.com/s/t2cMIvS2qtL_crfHRq3_0g","note":"新增"},{"level":"普通院校","school":"集美大学","college":"轮机工程学院","major":"085801电气工程（原轮机工程学院085800能源动力）","before":"813工程热力学","after":"","date":"2026.7.24","source":"https://mp.weixin.qq.com/s/t2cMIvS2qtL_crfHRq3_0g","note":"新增"},{"level":"普通院校","school":"上海工程技术大学","college":"电子电气工程学院","major":"085400电子信息（04电子与通信工程）","before":"803程序设计基础","after":"802电路","date":"2026.7.23","source":"https://ge.sues.edu.cn/90/7a/c19716a299130/page.htm","note":""},{"level":"普通院校","school":"上海工程技术大学","college":"电子电气工程学院","major":"085400电子信息（05控制工程）","before":"","after":"","date":"2026.7.23","source":"https://ge.sues.edu.cn/90/7a/c19716a299130/page.htm","note":""},{"level":"普通院校","school":"上海工程技术大学","college":"电子电气工程学院","major":"085400电子信息（06电气工程）","before":"","after":"","date":"2026.7.23","source":"https://ge.sues.edu.cn/90/7a/c19716a299130/page.htm","note":""},{"level":"普通院校","school":"齐鲁工业大学","college":"光电科学与技术学部","major":"085408光电信息工程","before":"881电路","after":"883数字电子技术基础","date":"2026.7.27","source":"https://yjszs.qlu.edu.cn/2026/0727/c6601a281696/page.htm","note":""},{"level":"普通院校","school":"河北地质大学","college":"信息工程学院","major":"085401新一代电子信息技术（含量子技术等）","before":"408计算机学科专业基础","after":"信号与系统","date":"2026.7.27","source":"https://www.hgu.edu.cn/yzw/info/1102/2044.htm","note":""},{"level":"四邮四电","school":"重庆邮电大学","college":"集成电路学院","major":"140100集成电路科学与工程","before":"808数字电路与逻辑设计","after":"804数字逻辑与数字集成电路设计","date":"2026.7.27","source":"https://yjs.cqupt.edu.cn/info/1180/14954.htm","note":""},{"level":"四邮四电","school":"重庆邮电大学","college":"集成电路学院","major":"085403集成电路工程","before":"808数字电路与逻辑设计","after":"804数字逻辑与数字集成电路设计","date":"2026.7.27","source":"https://yjs.cqupt.edu.cn/info/1180/14954.htm","note":""},{"level":"普通院校","school":"天津理工大学","college":"电气工程与自动化学院","major":"080800电气工程","before":"电路","after":"电路原理","date":"2026.7.15","source":"https://yjs.tjut.edu.cn/info/1012/3554.htm","note":"周守昌主编《电路原理》"},{"level":"普通院校","school":"天津理工大学","college":"电气工程与自动化学院","major":"081100控制科学与工程","before":"电路","after":"电路原理","date":"2026.7.15","source":"https://yjs.tjut.edu.cn/info/1012/3554.htm","note":""},{"level":"普通院校","school":"天津理工大学","college":"电气工程与自动化学院","major":"085400电子信息","before":"电路","after":"电路原理","date":"2026.7.15","source":"https://yjs.tjut.edu.cn/info/1012/3554.htm","note":""},{"level":"普通院校","school":"天津理工大学","college":"电气工程与自动化学院","major":"085801电气工程","before":"电路","after":"电路原理","date":"2026.7.15","source":"https://yjs.tjut.edu.cn/info/1012/3554.htm","note":""},{"level":"普通院校","school":"天津理工大学","college":"海运学院","major":"085400电子信息","before":"电路","after":"电路原理","date":"2026.7.15","source":"https://yjs.tjut.edu.cn/info/1012/3554.htm","note":""},{"level":"普通院校","school":"四川师范大学","college":"物理与电子工程学院","major":"085400电子信息（01新一代、02通信、03人工智能、04网安）","before":"832数字电子技术","after":"C语言程序设计","date":"2025.9.28","source":"https://yjsc.sicnu.edu.cn/p/0/?StId=st_app_news_i_x638946466144493527","note":"26招生目录"},{"level":"普通院校","school":"新疆农业大学","college":"机电工程学院(新能源学院)","major":"农业电气化与自动化","before":"815电子技术","after":"408计算机学科专业基础","date":"2026.7.9","source":"关于调整我校2027年硕士研究生招生考试初试科目的通知","note":""},{"level":"普通院校","school":"浙江海洋大学","college":"信息工程学院","major":"085401新一代电子信息技术","before":"809数字电子技术","after":"847电子信息专业综合","date":"2026.7.10","source":"http://yjsyzs.zjou.edu.cn/info/1013/2614.htm","note":""},{"level":"普通院校","school":"中国民航大学","college":"电子信息与自动化学院","major":"081000信息与通信工程","before":"806信号与系统","after":"812信号与系统（考纲更详细）","date":"2026.7.15","source":"https://www.cauc.edu.cn/yjsy/info/1124/2459.htm","note":""},{"level":"普通院校","school":"中国民航大学","college":"电子信息与自动化学院","major":"085401新一代电子信息技术","before":"806信号与系统","after":"812信号与系统（考纲更详细）","date":"2026.7.15","source":"https://www.cauc.edu.cn/yjsy/info/1124/2459.htm","note":""}];
+
+function parseDate(d){const [y,m,day]=d.split('.');return parseInt(y,10)*10000+parseInt(m,10)*100+parseInt(day||'0',10);}
+examData.sort((a,b)=>parseDate(b.date)-parseDate(a.date));
+
+function getLevelClass(l){return'level-'+l.replace(/[（）]/g,'')}
+function getLevelShort(l){if(l==='普通院校'||l==='普通本科')return'普通';return l}
+
+function getAfterClass(after){
+  if(!after)return'';
+  if(after.includes('停止招生'))return'stop';
+  if(after.includes('408'))return's408';
+  return'';
+}
+
+function isPublicChange(before,after){
+  const p=/数一|数二|英一|英二|数学一|数学二|英语一|英语二/;
+  return p.test(before)||p.test(after);
+}
+
+function renderTable(data){
+  const tbody=document.getElementById('tableBody');
+  const empty=document.getElementById('emptyState');
+  const countEl=document.getElementById('resultCount');
+  if(data.length===0){
+    tbody.innerHTML='';
+    empty.style.display='block';
+    countEl.textContent='';
+    return;
+  }
+  empty.style.display='none';
+  countEl.textContent='共 '+data.length+' 条';
+  
+  var prevSchool='';
+  var schoolBefore='';
+  var schoolAfter='';
+  var schoolDate='';
+  var schoolLevel='';
+  
+  tbody.innerHTML=data.map(function(r,i){
+    var levelCls=getLevelClass(r.level);
+    var levelShort=getLevelShort(r.level);
+    var afterCls=getAfterClass(r.after);
+    
+    var isNewSchool=r.school!==prevSchool;
+    if(isNewSchool){
+      prevSchool=r.school;
+      schoolBefore=r.before||'';
+      schoolAfter=r.after||'';
+      schoolDate=r.date||'';
+      schoolLevel=r.level||'';
+    }
+    
+    var beforeVal=r.before||schoolBefore||'—';
+    var afterVal=r.after||schoolAfter||'—';
+    var dateVal=r.date||schoolDate||'待确认';
+    var levelVal=r.level||schoolLevel;
+    var levelCls2=getLevelClass(levelVal);
+    var levelShort2=getLevelShort(levelVal);
+    
+    var sourceUrl=r.source||'';
+    var collegeDisplay=r.college||'—';
+    var majorDisplay=r.major||'—';
+    var publicTag=isPublicChange(r.before,r.after)?'<div class="public-tag">🎓 公共课改考</div>':'';
+    
+    return '<tr>'+
+      '<td class="date-cell">'+dateVal+'</td>'+
+      '<td><span class="level-tag '+levelCls2+'">'+levelShort2+'</span></td>'+
+      '<td><a href="index.html?school='+encodeURIComponent(r.school)+'&from='+encodeURIComponent('改考院校.html')+'" class="school-name" style="text-decoration:none;cursor:pointer;" title="点击跳转到'+r.school+'详情">'+r.school+'</a></td>'+
+      '<td><div class="college-text">'+collegeDisplay+'</div></td>'+
+      '<td><div class="major-text">'+majorDisplay+'</div></td>'+
+      '<td><div class="before-text">'+beforeVal+'</div></td>'+
+      '<td>'+publicTag+'<div class="after-text '+afterCls+'">'+afterVal+'</div>'+(r.note?'<div class="note-text">💡 '+r.note+'</div>':'')+'</td>'+
+      '<td>'+(sourceUrl?'<a href="'+sourceUrl+'" target="_blank" class="source-link">🔗 戳我到院校官网</a>':'<span style="font-size:12px;color:#A5A0A8">暂无链接</span>')+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+var currentFilter='all';
+var searchQuery='';
+
+function filterData(){
+  var filtered=examData;
+  if(currentFilter!=='all'){
+    if(currentFilter==='普通')filtered=filtered.filter(function(d){return d.level==='普通院校'||d.level==='普通本科';});
+    else filtered=filtered.filter(function(d){return d.level===currentFilter;});
+  }
+  if(searchQuery){
+    var q=searchQuery.toLowerCase();
+    filtered=filtered.filter(function(d){
+      return d.school.toLowerCase().includes(q)||
+        (d.major&&d.major.toLowerCase().includes(q))||
+        (d.before&&d.before.toLowerCase().includes(q))||
+        (d.after&&d.after.toLowerCase().includes(q))||
+        (d.college&&d.college.toLowerCase().includes(q));
+    });
+  }
+  renderTable(filtered);
+}
+
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    currentFilter=btn.dataset.filter;
+    filterData();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input',function(e){
+  searchQuery=e.target.value.trim();
+  filterData();
+});
+
+renderTable(examData);
+</script>
+
+
+<script id="entry-a11y-adapt-js">
+(function(){
+  function enhanceClickableKeyboard(){
+    document.querySelectorAll('[onclick]:not(button):not(a):not(input):not(select):not(textarea)').forEach(function(el){
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');
+      if(!el.hasAttribute('role')) el.setAttribute('role','button');
+      if(el.dataset.keyEnhanced === '1') return;
+      el.dataset.keyEnhanced = '1';
+      el.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', enhanceClickableKeyboard);
+  }else{
+    enhanceClickableKeyboard();
+  }
+})();
+</script>
+
+</body>
+</html>

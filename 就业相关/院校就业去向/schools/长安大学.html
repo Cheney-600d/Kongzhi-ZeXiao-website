@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长安大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .offer-list { margin-top: 16px; }
+        .offer-item { background: white; border-left: 4px solid var(--accent-color); padding: 14px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
+        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
+        .offer-highlight { color: #d63031; font-weight: 600; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } }
+    </style>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>长安大学 <span class="badge badge-211">211</span></h1>
+        <p>211高校 / 西安 / 信息学院招生近100人 / 复录比1.3</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">514</div><div class="stat-label">世界500强</div></div>
+                        <div class="stat-item"><div class="stat-number">20.61%</div><div class="stat-label">占签约企业</div></div>
+                        <div class="stat-item"><div class="stat-number">768</div><div class="stat-label">中国500强</div></div>
+                        <div class="stat-item"><div class="stat-number">30.79%</div><div class="stat-label">占签约企业</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 重点单位招录</h3>
+                <div class="tip-box">
+                    <strong>世界500强：</strong>58家企业录用514人，占签约企业毕业研究生总数的<strong>20.61%</strong>。
+                </div>
+                <div class="tip-box">
+                    <strong>中国500强：</strong>111家企业录用768人，占签约企业毕业研究生总数的<strong>30.79%</strong>。
+                </div>
+                <div class="tip-box">
+                    <strong>央国企吸纳强：</strong>有相当一部分同学可以去到央国企，就业质量良好。
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📝 考研信息</h3>
+                <div class="tip-box">
+                    <strong>地理位置：</strong>地处西安市，热门211院校。
+                </div>
+                <div class="tip-box">
+                    <strong>公平性：</strong>不歧视本科院校，每年双非院校上岸能占到<strong>40%</strong>，没有压分情况。
+                </div>
+                <div class="tip-box">
+                    <strong>招生规模：</strong>信息学院招生人数将近<strong>100人</strong>，复录比<strong>1.3</strong>左右。
+                </div>
+                <div class="tip-box">
+                    <strong>分数建议：</strong>学长建议均分至少考到<strong>360-370</strong>左右会比较稳，有345分的同学复试被淘汰，说明复试比较严格，知识储备扎实的同学有逆袭可能。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💼 真实Offer案例</h3>
+                <div class="offer-list">
+                    <div class="offer-item">
+                        <div class="offer-company">比亚迪第十五事业部产品一部</div>
+                        <div class="offer-detail">产品工程师 · <span class="offer-highlight">13K × 1.36 × 12</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">联通数科西部创新研究院</div>
+                        <div class="offer-detail">后端开发 · <span class="offer-highlight">总包21W</span> · 月11K · 五险一金</div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">百度</div>
+                        <div class="offer-detail">SRE工程师 · <span class="offer-highlight">20-35K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">中国银行软件中心</div>
+                        <div class="offer-detail">目标检测方向 · 实习前六个月约6万 · <span class="offer-highlight">转正后第一年税前20W+</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">中兴通讯第三营销事业部</div>
+                        <div class="offer-detail">测试岗位 · <span class="offer-highlight">月薪10K</span> · 年终奖 · 五险一金</div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">阿里巴巴菜鸟网络产品技术部</div>
+                        <div class="offer-detail">技术岗 · <span class="offer-highlight">14K × 16薪</span> · 餐补 · 搬家费</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_长安大学.png" alt="长安大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>🏢 500强吸纳力强：</strong>世界500强占签约企业20.61%（514人/58家），中国500强占30.79%（768人/111家），合计超50%的签约毕业生进入500强企业，就业质量高。
+                </div>
+                <div class="tip-box">
+                    <strong>🏛️ 央国企 dominance：</strong>中国银行、中国联通、比亚迪等大型国企/央企是主要吸纳方，体制内就业偏好明显，适合追求稳定的考生。
+                </div>
+                <div class="tip-box">
+                    <strong>💻 互联网/科技高薪：</strong>百度（20-35K×15薪）、阿里巴巴（14K×16薪）等头部互联网企业提供高薪岗位，技术能力强的学生可以冲击高薪。
+                </div>
+                <div class="tip-box">
+                    <strong>📡 通信/运营商：</strong>联通数科、中兴通讯等通信/运营商企业提供稳定的技术岗位，月薪10-11K水平。
+                </div>
+                <div class="tip-box">
+                    <strong>🚗 汽车/新能源：</strong>比亚迪（13K×1.36×12）提供产品工程师岗位，汽车电子/新能源方向是重要就业通道。
+                </div>
+                <div class="tip-box">
+                    <strong>🏦 银行金融科技：</strong>中国银行软件中心（转正20W+）提供金融科技岗位，目标检测等AI方向在银行有应用需求。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域：西安+全国各地：</strong>长安大学地处西安，本地就业以西安企业为主，但500强企业分布全国各地，毕业生去向地域广泛。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：长安大学就业质量报告 + 真实Offer案例 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>

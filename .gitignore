@@ -1,0 +1,16 @@
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 临时文件
+_tmp_*
+
+# 历史备份(日期命名, 由git版本管理替代)
+_backup_*/
+
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# 日志
+*.log

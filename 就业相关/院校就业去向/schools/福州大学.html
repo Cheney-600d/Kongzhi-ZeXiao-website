@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福州大学 - 控制类考研就业去向</title>
+        <style>
+        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
+        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
+        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 1.15em; opacity: 1; }
+        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
+        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
+        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
+        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
+        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
+        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
+        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
+        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
+        .tip-box strong { color: #1a1a2e; }
+        .offer-list { margin-top: 16px; }
+        .offer-item { background: white; border-left: 4px solid var(--accent-color); padding: 14px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
+        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
+        .offer-highlight { color: #d63031; font-weight: 600; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .full-width { grid-column: 1 / -1; }
+        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
+        .industry-name { width: 200px; color: #2d3436; font-weight: 500; }
+        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
+        .industry-percent { color: #5a5a5a; font-weight: 600; }
+        .company-detail-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.82em; }
+        .company-detail-table th, .company-detail-table td { padding: 8px 10px; border-bottom: 1px solid #e0e0e0; text-align: left; }
+        .company-detail-table th { background: #E8F5E9; font-weight: 600; color: #1a1a2e; }
+        .company-detail-table td { background: white; }
+        .company-detail-table tr:hover td { background: #f5f5f5; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .company-detail-table { font-size: 0.75em; } .industry-name { width: 140px; font-size: 0.85em; } }
+    
+        .chart-container { background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 16px; margin-bottom: 20px; }
+    </style>
+    <script src="../../../vendor/echarts.min.js"></script>
+
+<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+</head>
+<body>
+    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
+    <div class="hero">
+        <h1>福州大学 <span class="badge badge-211">211</span></h1>
+        <p>211高校 / 电子信息强校 / 硕士就业去向</p>
+    </div>
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+        <div class="content-grid">
+            <div class="info-card full-width">
+                <h3>📊 核心数据概览</h3>
+                <div class="highlight-box">
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-number">38%+</div><div class="stat-label">信息传输/IT</div></div>
+                        <div class="stat-item"><div class="stat-number">30.37%</div><div class="stat-label">制造业</div></div>
+                        <div class="stat-item"><div class="stat-number">14.51%</div><div class="stat-label">金融业</div></div>
+                        <div class="stat-item"><div class="stat-number">29.XX%</div><div class="stat-label">留福州</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🏆 就业单位 TOP10</h3>
+                <div class="company-grid">
+                    <div class="company-card"><div class="company-name">锐捷网络</div><div class="company-count">TOP1</div></div>
+                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">TOP2</div></div>
+                    <div class="company-card"><div class="company-name">工行福建分行</div><div class="company-count">TOP3</div></div>
+                    <div class="company-card"><div class="company-name">国网福建电力</div><div class="company-count">TOP4</div></div>
+                    <div class="company-card"><div class="company-name">晋华集成电路</div><div class="company-count">TOP5</div></div>
+                    <div class="company-card"><div class="company-name">兴业证券</div><div class="company-count">TOP6</div></div>
+                    <div class="company-card"><div class="company-name">福州立芯科技</div><div class="company-count">TOP7</div></div>
+                    <div class="company-card"><div class="company-name">移动福建</div><div class="company-count">TOP8</div></div>
+                    <div class="company-card"><div class="company-name">星网锐捷通讯</div><div class="company-count">TOP9</div></div>
+                    <div class="company-card"><div class="company-name">科华数据</div><div class="company-count">TOP10</div></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📈 就业单位行业 TOP5</h3>
+                <div class="industry-bar">
+                    <span class="industry-name">信息传输/软件/IT</span>
+                    <div class="industry-bar-fill" style="width: 200px;"></div>
+                    <span class="industry-percent">38%+</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">制造业</span>
+                    <div class="industry-bar-fill" style="width: 158px;"></div>
+                    <span class="industry-percent">30.37%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">金融业</span>
+                    <div class="industry-bar-fill" style="width: 76px;"></div>
+                    <span class="industry-percent">14.51%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">电力/热力/燃气/水</span>
+                    <div class="industry-bar-fill" style="width: 28px;"></div>
+                    <span class="industry-percent">5.22%</span>
+                </div>
+                <div class="industry-bar">
+                    <span class="industry-name">教育</span>
+                    <div class="industry-bar-fill" style="width: 12px;"></div>
+                    <span class="industry-percent">2.32%</span>
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🏢 近年电子信息研究生就业去向详表</h3>
+                <table class="company-detail-table">
+                    <tr><th>序号</th><th>公司名称</th><th>业务领域</th><th>总部</th><th>性质</th><th>行业</th></tr>
+                    <tr><td>1</td><td>兴业银行</td><td>金融服务</td><td>福州</td><td>上市公司</td><td>商业银行</td></tr>
+                    <tr><td>2</td><td>星网视易信息</td><td>智能终端</td><td>福州</td><td>上市公司子公司</td><td>电子设备</td></tr>
+                    <tr><td>3</td><td>渊亭信息科技</td><td>人工智能</td><td>厦门</td><td>民营企业</td><td>软件服务</td></tr>
+                    <tr><td>4</td><td>解放军73636部队</td><td>国防军事</td><td>福建</td><td>军队单位</td><td>国防科技</td></tr>
+                    <tr><td>5</td><td>兴业国际信托</td><td>金融服务</td><td>福州</td><td>上市公司子公司</td><td>金融信托</td></tr>
+                    <tr><td>6</td><td>中国移动福建</td><td>电信服务</td><td>福州</td><td>国有企业</td><td>电信运营</td></tr>
+                    <tr><td>7</td><td>安凯微电子</td><td>半导体设计</td><td>广州</td><td>上市公司</td><td>集成电路</td></tr>
+                    <tr><td>8</td><td>睿能科技</td><td>工业自动化</td><td>福州</td><td>上市公司</td><td>智能制造</td></tr>
+                    <tr><td>9</td><td>海康威视</td><td>安防监控</td><td>杭州</td><td>上市公司</td><td>电子硬件</td></tr>
+                    <tr><td>10</td><td>友达光电（厦门）</td><td>显示面板</td><td>厦门</td><td>外资企业</td><td>电子制造</td></tr>
+                    <tr><td>11</td><td>紫光展锐（厦门）</td><td>半导体设计</td><td>厦门</td><td>民营企业</td><td>集成电路</td></tr>
+                    <tr><td>12</td><td>锐捷网络</td><td>网络设备</td><td>福州</td><td>上市公司子公司</td><td>通信设备</td></tr>
+                    <tr><td>13</td><td>苏宁软件</td><td>软件开发</td><td>南京</td><td>上市公司子公司</td><td>软件服务</td></tr>
+                    <tr><td>14</td><td>长崎大学</td><td>高等教育</td><td>日本</td><td>公立机构</td><td>教育科研</td></tr>
+                    <tr><td>15</td><td>湖南大学</td><td>高等教育</td><td>长沙</td><td>公立机构</td><td>教育科研</td></tr>
+                    <tr><td>16</td><td>网龙网络</td><td>软件/游戏</td><td>福州</td><td>上市公司</td><td>互联网软件</td></tr>
+                    <tr><td>17</td><td>中国电信福州</td><td>电信服务</td><td>福州</td><td>国有企业</td><td>电信运营</td></tr>
+                    <tr><td>18</td><td>浙江大华技术</td><td>安防监控</td><td>杭州</td><td>上市公司</td><td>电子硬件</td></tr>
+                    <tr><td>19</td><td>美团（三快在线）</td><td>生活服务</td><td>北京</td><td>上市公司</td><td>互联网平台</td></tr>
+                    <tr><td>20</td><td>福州大学（留校）</td><td>高等教育</td><td>福州</td><td>公立机构</td><td>教育科研</td></tr>
+                </table>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>🎨 企业雇主词云</h3>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="../wordclouds/wordcloud_福州大学.png" alt="福州大学雇主词云" class="wordcloud-img">
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>💼 高薪Offer案例</h3>
+                <div class="offer-list">
+                    <div class="offer-item">
+                        <div class="offer-company">瑞捷网络</div>
+                        <div class="offer-detail">软件开发工程师 · <span class="offer-highlight">16K × 14薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">宁德时代</div>
+                        <div class="offer-detail">未来能源研究院（上海） · <span class="offer-highlight">25-35万总包</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">百度（中国）</div>
+                        <div class="offer-detail">后端开发工程师 · <span class="offer-highlight">24K × 16薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">瑞芯微</div>
+                        <div class="offer-detail">数字IC工程师 · <span class="offer-highlight">19K × 15薪</span> · 公积金12%</div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">顺丰科技</div>
+                        <div class="offer-detail">Java开发工程师 · <span class="offer-highlight">20K × 15薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">厦门天马显示</div>
+                        <div class="offer-detail">电路设计工程师 · <span class="offer-highlight">12K × 14薪</span></div>
+                    </div>
+                    <div class="offer-item">
+                        <div class="offer-company">浪潮集团</div>
+                        <div class="offer-detail">软件开发工程师 · <span class="offer-highlight">12K × 14-16薪</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🗺️ 就业地域分布</h3>
+                <div class="tip-box">
+                    <strong>福建省福州市：</strong>29.XX%，占比最高，锐捷网络、星网视易、兴业信托、网龙、福州大学（留校）等本地企业是主要吸纳方。
+                </div>
+                <div class="tip-box">
+                    <strong>广东省深圳市：</strong>12.36%，比亚迪、安凯微电子等吸引南下就业。
+                </div>
+                <div class="tip-box">
+                    <strong>福建省厦门市：</strong>10.81%，渊亭科技、友达光电、紫光展锐等厦门企业吸纳不少毕业生。
+                </div>
+                <div class="tip-box">
+                    <strong>上海市：</strong>8.69%，宁德时代、上海银行、美团等吸引部分毕业生。
+                </div>
+                <div class="tip-box">
+                    <strong>浙江省杭州市：</strong>5.21%，海康威视、浙江大华等安防企业。
+                </div>
+                <div class="tip-box">
+                    <strong>其他：</strong>北京3.09%（美团）、泉州3.09%、广州2.70%、武汉1.93%、合肥1.74%、日本长崎（留学深造）等，地域分布较广但福建 dominance 明显。
+                </div>
+            </div>
+
+            <div class="info-card full-width">
+                <h3>💡 就业特点分析</h3>
+                <div class="tip-box">
+                    <strong>💻 IT/通信 dominance：</strong>信息传输/软件/IT服务业占38%+，是第一大行业。锐捷网络TOP1、移动福建、电信福州、渊亭科技、网龙、苏宁软件、美团等IT/通信/互联网企业合计占比最高。
+                </div>
+                <div class="tip-box">
+                    <strong>🏭 制造业/半导体强势：</strong>制造业占30.37%，比亚迪TOP2、晋华集成电路TOP5、福州立芯科技TOP7、安凯微电子、友达光电、紫光展锐、睿能科技等制造/半导体企业合计占比高。福州/厦门半导体产业（晋华、立芯、展锐）对毕业生需求旺盛。
+                </div>
+                <div class="tip-box">
+                    <strong>🏦 金融/证券：</strong>金融业占14.51%，兴业银行、工行福建分行、兴业证券、上海银行、招商银行等金融机构是重要去向。
+                </div>
+                <div class="tip-box">
+                    <strong>⚡ 能源/电力：</strong>国网福建电力TOP4、科华数据TOP10，电力/能源行业占5.22%。
+                </div>
+                <div class="tip-box">
+                    <strong>🎓 深造/高校：</strong>教育占2.32%，长崎大学（日本）、湖南大学（985）、福州大学（留校）等，部分毕业生选择继续攻读博士学位或海外深造。
+                </div>
+                <div class="tip-box">
+                    <strong>🏛️ 国防/军工：</strong>解放军73636部队进入就业去向表，体现部分毕业生进入国防科技领域。
+                </div>
+                <div class="tip-box">
+                    <strong>📍 地域：福州+厦门+深圳+上海：</strong>福州29%+、厦门10.81%、深圳12.36%、上海8.69%，合计超60%。福建本地（福州+厦门）占比约40%，是核心就业圈。
+                </div>
+                <div class="tip-box">
+                    <strong>🏢 单位性质：</strong>国有企业、上市公司、上市公司子公司、民营企业并存，体制内（国企+银行）和市场化（IT/互联网/半导体）双轮驱动。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="info-card full-width">
+<h3>📊 就业数据洞察（2026/6/21更新）</h3>
+<p style="margin-bottom:16px;color:#555;">以下数据已可视化展示，交互图表可查看详细数据。</p>
+<div class='chart-container' id='yearly-chart' style='width:100%;height:400px;margin-bottom:20px;'></div>
+    <script>
+    (function() {
+        var chart1 = echarts.init(document.getElementById('yearly-chart'));
+        var option1 = {
+            title: { text: 'TOP企业历年出现频次', left: 'center' },
+            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            legend: { data: ['福州大学', '中国移动通信集团福建有限公司', '锐捷网络股份有限公司', '百度（中国）有限公司', '星宸科技股份有限公司', '兴业银行股份有限公司', '福建星网视易信息系统有限公司', '厦门渊亭信息科技有限公司', '中国人民解放军73636部队', '兴业国际信托有限公司'], top: 30, type: 'scroll' },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: 80, containLabel: true },
+            xAxis: { type: 'category', data: ['2021届', '2022届', '2024届'] },
+            yAxis: { type: 'value', name: '出现频次' },
+            series: [{name: '福州大学', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '中国移动通信集团福建有限公司', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '锐捷网络股份有限公司', type: 'bar', data: [1, 0, 1], emphasis: {focus: 'series'}},{name: '百度（中国）有限公司', type: 'bar', data: [0, 1, 1], emphasis: {focus: 'series'}},{name: '星宸科技股份有限公司', type: 'bar', data: [0, 1, 1], emphasis: {focus: 'series'}},{name: '兴业银行股份有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}},{name: '福建星网视易信息系统有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}},{name: '厦门渊亭信息科技有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}},{name: '中国人民解放军73636部队', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}},{name: '兴业国际信托有限公司', type: 'bar', data: [1, 0, 0], emphasis: {focus: 'series'}}]
+        };
+        chart1.setOption(option1);
+    })();</script>
+    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
+        <p>数据来源：福州大学近年电子信息研究生就业去向统计 + 就业质量报告 | 整理：@一只通信考研的er</p>
+        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
+    </div>
+</body>
+</html>
