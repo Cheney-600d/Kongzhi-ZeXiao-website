@@ -1019,6 +1019,7 @@ textarea:focus-visible,
   #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
 }
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -1047,20 +1048,78 @@ textarea:focus-visible,
 </script>
 
 <!-- 动态科技背景 -->
-<canvas id="techBg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<canvas id="themeAtmosphere" data-motifs="blueprint-grid feedback-signal scanline" aria-hidden="true"></canvas>
 
 <!-- 首页 -->
 <div id="homePage" class="page">
-  <header class="mb-8">
+  <header id="homeHero" class="mb-8 theme-hero" data-theme="blueprint-system">
+    <span class="blueprint-scanline" aria-hidden="true"></span>
     <!-- 第一行：标题 -->
     <div class="text-center hero-title-wrap" style="margin-bottom:8px;">
+      <div class="hero-eyebrow"><span></span> CONTROL · POSTGRADUATE · CAREER</div>
       <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;color:#B71C1C;text-shadow:0 0 20px rgba(183,28,28,0.25);letter-spacing:1px;transition:transform .3s ease;display:inline-block;cursor:pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">27/28控制类考研与就业全链路指南</h1>
       <p class="text-gray-500" style="font-size:1rem;">基于26考研数据 · 覆盖100+高校 · 500+学院子方向 <span style="color:#9A8AC8;font-weight:600;">designed by @控制考研阿祖</span></p>
       <div class="desktop-experience-tip">ps：电脑端食用效果更佳！</div>
     </div>
 
+    <section id="feedbackRibbon" class="feedback-ribbon" aria-label="闭环反馈控制系统示意图">
+      <canvas id="heroSignalCanvas" data-motifs="directional-signal-particles node-glow feedback-loop" aria-hidden="true"></canvas>
+      <div class="feedback-ribbon-heading" aria-hidden="true">
+        <span>闭环导航系统</span>
+        <strong>FEEDBACK CONTROL</strong>
+        <em>实时校正 · 稳态前进</em>
+      </div>
+      <svg id="controlSchematic" class="control-schematic" viewBox="0 0 1000 168" role="img" aria-label="目标输入经过比较、控制器和被控对象产生结果，再由反馈支路返回比较节点">
+        <defs>
+          <filter id="controlSignalGlow" x="-200%" y="-200%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <marker id="feedbackArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10Z"/>
+          </marker>
+        </defs>
+        <g class="control-schematic-lines">
+          <path class="forward-path" d="M72 66H171M199 66H286M426 66H506M656 66H810" marker-end="url(#feedbackArrow)"/>
+          <path class="control-feedback-line" d="M850 82V135H185V82" marker-end="url(#feedbackArrow)"/>
+        </g>
+        <g class="feedback-node feedback-input">
+          <circle cx="54" cy="66" r="8"/>
+          <text x="54" y="41">目标输入</text>
+          <text x="54" y="98">r(t)</text>
+        </g>
+        <g class="feedback-node feedback-sum">
+          <circle cx="185" cy="66" r="15"/>
+          <path d="M176 66H194M185 57V75"/>
+          <text x="185" y="39">比较</text>
+        </g>
+        <g class="feedback-node feedback-controller">
+          <rect x="286" y="38" width="140" height="56" rx="12"/>
+          <text class="node-title" x="356" y="61">控制器</text>
+          <text class="node-symbol" x="356" y="80">C(s) · PID</text>
+        </g>
+        <g class="feedback-node feedback-plant">
+          <rect x="506" y="38" width="150" height="56" rx="12"/>
+          <text class="node-title" x="581" y="61">被控对象</text>
+          <text class="node-symbol" x="581" y="80">G(s)</text>
+        </g>
+        <g class="feedback-node feedback-output">
+          <circle cx="834" cy="66" r="16"/>
+          <text x="834" y="39">结果输出</text>
+          <text x="834" y="99">y(t)</text>
+        </g>
+        <text class="feedback-return-label" x="510" y="157">测量反馈 H(s) · 依据数据持续修正路径</text>
+        <circle class="control-signal-dot signal-forward" r="5" filter="url(#controlSignalGlow)">
+          <animateMotion dur="5.5s" repeatCount="indefinite" path="M72 66H810"/>
+        </circle>
+        <circle class="control-signal-dot signal-return" r="4" filter="url(#controlSignalGlow)">
+          <animateMotion dur="7.5s" repeatCount="indefinite" path="M850 82V135H185V82"/>
+        </circle>
+      </svg>
+    </section>
+
     <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
-    <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
+    <div class="hero-console" style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
       <!-- 左侧：头像（B站角标）+ 关于UP主 -->
       <div class="up-profile-panel" style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;margin-left:20px;align-items:flex-start;">
         <!-- 头像 + B站 左上角角标 -->
@@ -1077,10 +1136,10 @@ textarea:focus-visible,
         </a>
       </div>
       <!-- 中间：导航按钮 -->
-      <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-left:0;">
-        <div class="nav-btn-grid" style="display:flex;flex-direction:row;gap:4px;justify-content:flex-start;align-items:flex-start;width:auto;max-width:none;padding:0;transform:none;">
+      <div class="content-hub-shell" style="display:flex;justify-content:flex-start;align-items:flex-start;margin-left:0;">
+        <div id="contentHub" class="nav-btn-grid content-hub" style="display:flex;flex-direction:row;gap:4px;justify-content:flex-start;align-items:flex-start;width:auto;max-width:none;padding:0;transform:none;">
           <!-- 本科提升与考研科普（5个）- 最左边 -->
-          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+          <div class="content-channel channel-learn" aria-label="本科成长与考研认知" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
             <a href="考研常识科普/index.html" class="nav-pill-lg" title="28考研科普" style="background:linear-gradient(135deg,#A0C8E0 0%,#C0D8E8 100%);text-align:center;">📚 28考研常识扫盲</a>
             <a href="复试全攻略/index.html" class="nav-pill-lg" title="考研复试备考" style="background:linear-gradient(135deg,#B0A0D8 0%,#D0C0E8 100%);text-align:center;">🎯 27考研复试</a>
             <a href="专业科普.html" class="nav-pill-lg" title="专业大科普" style="background:linear-gradient(135deg,#80C0D8 0%,#A0D8E8 100%);text-align:center;">🔍 考研专业大科普</a>
@@ -1089,7 +1148,7 @@ textarea:focus-visible,
             <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 本科提升与考研科普</div>
           </div>
           <!-- 考研择校（5个）- 中间 -->
-          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+          <div class="content-channel channel-select" aria-label="择校决策与数据工具" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
             <a href="专业课选择/考研专业课院校查询.html" class="nav-pill-lg" title="专业课选择" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;">📝 考研专业课选择</a>
             <a href="院校PK.html" class="nav-pill-lg" title="院校PK" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;">⭐ 考研院校大PK</a>
             <a href="通信电子院校生源地图.html" class="nav-pill-lg" title="院校生源" style="background:linear-gradient(135deg,#90B0E0 0%,#B0C8E8 100%);text-align:center;">🎓 考研院校生源</a>
@@ -1098,7 +1157,7 @@ textarea:focus-visible,
             <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 27考研择校指南</div>
           </div>
           <!-- 就业提升（5个）- 最右边 -->
-          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+          <div class="content-channel channel-career" aria-label="读研发展与就业路径" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
             <a href="就业相关/就业去向index.html" class="nav-pill-lg" title="就业大揭秘" style="background:linear-gradient(135deg,#C0A0C8 0%,#D8C0E0 100%);text-align:center;">📞 就业大揭秘</a>
             <a href="AI课程/ai-course-overview/ai-course-overview.html" class="nav-pill-lg" title="AI提效指南" style="background:linear-gradient(135deg,#A0D8B0 0%,#C0E8D0 100%);text-align:center;">🤖 AI提效指南</a>
             <a href="就业相关/job-listing/job-listing.html" class="nav-pill-lg" title="26校招信息" style="background:linear-gradient(135deg,#00A1D6 0%,#23ADE5 100%);text-align:center;" onclick="window.location.href=this.href;return false;">📢 26校招信息</a>
@@ -1164,18 +1223,32 @@ textarea:focus-visible,
   </header>
 
   <!-- 热度榜 TOP10 -->
-  <div class="card p-4 mb-4" id="heatRankSection">
+  <section class="insight-grid">
+  <div class="card p-4 mb-4 insight-card" id="heatRankSection" data-theme="decision-console">
+    <div class="decision-console-content heat-rank-content">
     <div class="flex items-center justify-between mb-3">
       <h3 class="font-bold text-gray-700" style="font-size:1.15rem;" id="heatRankTitle">🔥 热度榜 TOP10</h3>
       <a href="heat_compare.html" id="heatRankLink" class="text-sm" style="color:#9A8AC8;font-weight:600;text-decoration:none;" onmouseover="this.style.color='#B71C1C'" onmouseout="this.style.color='#9A8AC8'">查看完整热度对比 →</a>
     </div>
     <div id="heatRankButtons"></div>
+    </div>
   </div>
+  <aside id="featuredPanel" class="card featured-panel">
+    <div class="section-kicker">本周精选 · WEEKLY PICK</div>
+    <h2>先看懂，再做选择</h2>
+    <p>从常识、院校对比到专业课，把最常用的决策入口放在同一条路径上。</p>
+    <div class="featured-actions">
+      <a href="考研常识科普/index.html">新手扫盲 <span>→</span></a>
+      <a href="院校PK.html">院校对比 <span>→</span></a>
+      <a href="专业课选择/考研专业课院校查询.html">专业课查询 <span>→</span></a>
+    </div>
+  </aside>
+  </section>
 
   <!-- 筛选区 + 广告条 并排 -->
-  <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6">
+  <div id="selectionWorkbench" data-theme="decision-console" style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6 selection-workbench">
     <!-- 左侧：筛选区 -->
-    <div class="card p-4" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #B8A4D8;">
+    <div class="card p-4 decision-console-content" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #B8A4D8;">
       <div class="flex flex-wrap gap-2 items-end">
         <div>
           <label class="block text-sm text-gray-600 mb-1">地区</label>
@@ -1214,27 +1287,25 @@ textarea:focus-visible,
     <button class="nav-pill-lg" title="目标院校" onclick="toggleFavoriteFilter()" id="favBtn" style="background:linear-gradient(135deg,#E89898 0%,#F0B8B0 100%);border:none;cursor:pointer;flex-shrink:0;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:12px 16px;font-size:16px;border-radius:16px;white-space:nowrap;">⭐目标院校</button>
 
       <!-- 右侧：资料与课程广告 -->
-      <a href="专业课选择/资料和课程.html" style="text-decoration:none;display:block;flex-shrink:0;" class="ad-course-link">
-        <div class="card" style="padding:0;background:linear-gradient(135deg,#F8A862 0%,#FFB347 100%);border:none;transition:transform .2s,box-shadow .2s;cursor:pointer;height:100%;display:flex;align-items:center;justify-content:center;"
-             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(248,168,98,0.35)'"
-             onmouseout="this.style.transform='';this.style.boxShadow='none'">
-          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 16px;text-align:center;min-width:170px;height:100%;">
-            <div style="display:flex;align-items:center;gap:6px;">
-              <span style="font-size:18px;">📚</span>
-              <span style="font-size:24px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.18);letter-spacing:0.5px;">资料与课程</span>
+      <a id="courseResourcesCard" href="专业课选择/资料和课程.html" data-theme="control-signal-gold" style="text-decoration:none;display:block;flex-shrink:0;" class="ad-course-link">
+        <div class="card course-entry-card" style="padding:0;cursor:pointer;height:100%;display:flex;align-items:center;justify-content:center;">
+          <div class="course-entry-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 16px;text-align:center;min-width:170px;height:100%;">
+            <div class="course-entry-heading" style="display:flex;align-items:center;gap:8px;">
+              <span class="course-entry-icon">📚</span>
+              <span class="course-entry-title">资料 <i>·</i> 课程</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:2px;align-items:center;">
               <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">自动控制原理</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">现代控制理论</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">信号与系统</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电路原理</span>
+                <span class="course-entry-tag">自动控制原理</span>
+                <span class="course-entry-tag">现代控制理论</span>
+                <span class="course-entry-tag">信号与系统</span>
+                <span class="course-entry-tag">电路原理</span>
               </div>
               <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">机器人学</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">计算机控制</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">检测技术</span>
-                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电力电子</span>
+                <span class="course-entry-tag">机器人学</span>
+                <span class="course-entry-tag">计算机控制</span>
+                <span class="course-entry-tag">检测技术</span>
+                <span class="course-entry-tag">电力电子</span>
               </div>
             </div>
           </div>
@@ -1255,11 +1326,12 @@ textarea:focus-visible,
   </div>
 
   <!-- 学校列表 + 海报轮播 + 广告 -->
-  <div style="display:flex;flex-direction:column;gap:16px;" id="mainContentArea">
+  <div style="display:flex;flex-direction:column;gap:16px;" id="mainContentArea" class="data-command-center" data-theme="school-data-bay">
+    <canvas id="schoolDataField" data-motifs="data-stream split-nodes radar-glow vertical-data-bus" aria-hidden="true"></canvas>
     <!-- 第一行：学校列表 + 右侧栏并排 -->
     <div style="display:flex;gap:16px;align-items:flex-start;">
       <!-- 学校列表 -->
-      <div class="card p-4 mb-6" style="flex:1;min-width:0;">
+      <div class="card p-4 mb-6 school-list-card" style="flex:1;min-width:0;">
         <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
           <h3 class="font-bold text-gray-700">学校列表 <span class="text-sm font-normal text-gray-500" id="schoolCount"></span></h3>
           <div class="flex gap-2 items-center flex-wrap">
@@ -1515,6 +1587,7 @@ textarea:focus-visible,
   </div>
 </div>
 
+    <script src="theme-background.js" defer></script>
     <script src="index.js" defer></script>
     <script src="toy-coin-gate.js" defer></script>
 
