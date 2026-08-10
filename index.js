@@ -406,7 +406,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:provArr.map(x=>x.name),axisLabel:{rotate:25,fontSize:9}},
     yAxis:[{type:'value',axisLabel:{fontSize:8}}],
     series:[
-      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#B8A4D8'},barMaxWidth:14}
+      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#B71C1C'},barMaxWidth:14}
     ]
   });
 
@@ -426,7 +426,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:majorArr.map(x=>x.code),axisLabel:{rotate:30,fontSize:9}},
     yAxis:[{type:'value',axisLabel:{fontSize:8}}],
     series:[
-      {name:'专业方向数',type:'bar',data:majorArr.map(x=>x.n),itemStyle:{color:'#f5576c'},barMaxWidth:14}
+      {name:'专业方向数',type:'bar',data:majorArr.map(x=>x.n),itemStyle:{color:'#B71C1C'},barMaxWidth:14}
     ]
   });
 
@@ -444,7 +444,7 @@ function renderHomeCharts(){
     else scoreMap['<300']++;
   });
   const scoreData = Object.entries(scoreMap).filter(([k,v])=>v>0).map(([k,v])=>({name:k,value:v}));
-  const scoreColors = ['#FF5252','#FFB300','#f59e0b','#84cc16','#43A047','#0891b2','#6366f1','#8b949e'];
+  const scoreColors = ['#B71C1C','#D94F4F','#E57373','#EF9A9A','#C62828','#A31515','#F2B8B8','#8B1A1A'];
 
   // charts.score = echarts.init(document.getElementById('chartScore', null, {renderer: 'canvas'})); // 已移到右侧栏
   charts.scoreSide = echarts.init(document.getElementById('chartScoreSide', null, {renderer: 'canvas'}));
@@ -454,7 +454,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:scoreData.map(x=>x.name),axisLabel:{rotate:30,fontSize:9}},
     yAxis:{type:'value',axisLabel:{fontSize:8}},
     series:[{
-      type:'bar',data:scoreData.map(x=>x.value),itemStyle:{color:'#B8A4D8',borderRadius:[4,4,0,0]},barMaxWidth:16
+      type:'bar',data:scoreData.map(x=>x.value),itemStyle:{color:'#B71C1C',borderRadius:[4,4,0,0]},barMaxWidth:16
     }],
     color:scoreColors
   });
@@ -471,7 +471,7 @@ function renderHomeCharts(){
     else ratioMap['2.0+']++;
   });
   const ratioData = Object.entries(ratioMap).filter(([k,v])=>v>0).map(([k,v])=>({name:k,value:v}));
-  const ratioColors = ['#43A047','#84cc16','#f59e0b','#FFB300','#FF5252','#8b949e'];
+  const ratioColors = ['#B71C1C','#D94F4F','#E57373','#C62828','#EF9A9A','#8B1A1A'];
 
   // charts.ratio = echarts.init(document.getElementById('chartRatio', null, {renderer: 'canvas'})); // 已移到右侧栏
   charts.ratioSide = echarts.init(document.getElementById('chartRatioSide', null, {renderer: 'canvas'}));
@@ -503,7 +503,7 @@ function renderHomeCharts(){
       label:{show:false},
       labelLine:{show:false},
       data:mathData,
-      color:['#B8A4D8','#C5B4D8','#f093fb','#f5576c','#4facfe']
+      color:['#B71C1C','#D94F4F','#E57373','#EF9A9A','#C62828']
     }]
   });
 
@@ -525,7 +525,7 @@ function renderHomeCharts(){
       label:{show:false},
       labelLine:{show:false},
       data:engData,
-      color:['#11998e','#38ef7d','#f59e0b','#FFB300']
+      color:['#B71C1C','#D94F4F','#E57373','#C62828']
     }]
   });
 

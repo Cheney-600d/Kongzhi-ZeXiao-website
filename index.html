@@ -1019,10 +1019,8 @@ textarea:focus-visible,
   #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
 }
 </style>
-<link rel="stylesheet" href="theme.css">
 </head>
 <body>
-
 <!-- 导航历史记录 -->
 <script>
 (function(){
@@ -1048,78 +1046,75 @@ textarea:focus-visible,
 </script>
 
 <!-- 动态科技背景 -->
-<canvas id="themeAtmosphere" data-motifs="blueprint-grid feedback-signal scanline" aria-hidden="true"></canvas>
+<canvas id="techBg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
 
 <!-- 首页 -->
 <div id="homePage" class="page">
-  <header id="homeHero" class="mb-8 theme-hero" data-theme="blueprint-system">
-    <span class="blueprint-scanline" aria-hidden="true"></span>
+  <header class="mb-8">
     <!-- 第一行：标题 -->
     <div class="text-center hero-title-wrap" style="margin-bottom:8px;">
-      <div class="hero-eyebrow"><span></span> CONTROL · POSTGRADUATE · CAREER</div>
       <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;color:#B71C1C;text-shadow:0 0 20px rgba(183,28,28,0.25);letter-spacing:1px;transition:transform .3s ease;display:inline-block;cursor:pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">27/28控制类考研与就业全链路指南</h1>
       <p class="text-gray-500" style="font-size:1rem;">基于26考研数据 · 覆盖100+高校 · 500+学院子方向 <span style="color:#9A8AC8;font-weight:600;">designed by @控制考研阿祖</span></p>
       <div class="desktop-experience-tip">ps：电脑端食用效果更佳！</div>
     </div>
 
-    <section id="feedbackRibbon" class="feedback-ribbon" aria-label="闭环反馈控制系统示意图">
-      <canvas id="heroSignalCanvas" data-motifs="directional-signal-particles node-glow feedback-loop" aria-hidden="true"></canvas>
-      <div class="feedback-ribbon-heading" aria-hidden="true">
-        <span>闭环导航系统</span>
-        <strong>FEEDBACK CONTROL</strong>
-        <em>实时校正 · 稳态前进</em>
-      </div>
-      <svg id="controlSchematic" class="control-schematic" viewBox="0 0 1000 168" role="img" aria-label="目标输入经过比较、控制器和被控对象产生结果，再由反馈支路返回比较节点">
-        <defs>
-          <filter id="controlSignalGlow" x="-200%" y="-200%" width="400%" height="400%">
-            <feGaussianBlur stdDeviation="5" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <marker id="feedbackArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-            <path d="M0 0L10 5L0 10Z"/>
-          </marker>
-        </defs>
-        <g class="control-schematic-lines">
-          <path class="forward-path" d="M72 66H171M199 66H286M426 66H506M656 66H810" marker-end="url(#feedbackArrow)"/>
-          <path class="control-feedback-line" d="M850 82V135H185V82" marker-end="url(#feedbackArrow)"/>
-        </g>
-        <g class="feedback-node feedback-input">
-          <circle cx="54" cy="66" r="8"/>
-          <text x="54" y="41">目标输入</text>
-          <text x="54" y="98">r(t)</text>
-        </g>
-        <g class="feedback-node feedback-sum">
-          <circle cx="185" cy="66" r="15"/>
-          <path d="M176 66H194M185 57V75"/>
-          <text x="185" y="39">比较</text>
-        </g>
-        <g class="feedback-node feedback-controller">
-          <rect x="286" y="38" width="140" height="56" rx="12"/>
-          <text class="node-title" x="356" y="61">控制器</text>
-          <text class="node-symbol" x="356" y="80">C(s) · PID</text>
-        </g>
-        <g class="feedback-node feedback-plant">
-          <rect x="506" y="38" width="150" height="56" rx="12"/>
-          <text class="node-title" x="581" y="61">被控对象</text>
-          <text class="node-symbol" x="581" y="80">G(s)</text>
-        </g>
-        <g class="feedback-node feedback-output">
-          <circle cx="834" cy="66" r="16"/>
-          <text x="834" y="39">结果输出</text>
-          <text x="834" y="99">y(t)</text>
-        </g>
-        <text class="feedback-return-label" x="510" y="157">测量反馈 H(s) · 依据数据持续修正路径</text>
-        <circle class="control-signal-dot signal-forward" r="5" filter="url(#controlSignalGlow)">
-          <animateMotion dur="5.5s" repeatCount="indefinite" path="M72 66H810"/>
-        </circle>
-        <circle class="control-signal-dot signal-return" r="4" filter="url(#controlSignalGlow)">
-          <animateMotion dur="7.5s" repeatCount="indefinite" path="M850 82V135H185V82"/>
-        </circle>
-      </svg>
-    </section>
+    <!-- 数据亮点条（方向A：数据工具风，数字即装饰） -->
+    <style>
+      .hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:2px 0 14px;}
+      .stat{display:flex;flex-direction:column;align-items:center;min-width:118px;padding:10px 22px 9px;background:rgba(255,255,255,0.86);border:1px solid rgba(183,28,28,0.16);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+      .stat-num{font-size:1.65rem;font-weight:800;color:#B71C1C;line-height:1.15;letter-spacing:.5px;}
+      .stat-label{font-size:.78rem;color:#6b7280;margin-top:1px;letter-spacing:.3px;}
+      @media(max-width:768px){.hero-stats{gap:8px;margin-top:2px;}.stat{min-width:90px;padding:7px 12px 6px;}.stat-num{font-size:1.25rem;}}
+    </style>
+            <!-- Ditto 式配色+排版覆盖：浅色底 + 单一强调色 + 干净排版 -->
+    <style>
+      /* 1) 底色：淡紫 -> 近白 */
+      body{background:#F8F8F6 !important;}
+      .filter-bar{background:linear-gradient(to bottom,#F8F8F6 0%,#F8F8F6 95%,transparent 100%) !important;}
+      /* 2) 排版层级：正文 400，标题 800 */
+      body{font-weight:400 !important;}
+      h1,h2,h3{font-weight:800 !important;}
+      h1{letter-spacing:0 !important;}
+      /* 3) hero 标题去红光晕 */
+      .hero-title-wrap h1{text-shadow:none !important;}
+      /* 4) 卡片/图表阴影：紫调 -> 中性灰 */
+      .card,.chart-container{box-shadow:0 1px 2px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.05) !important;}
+      /* 5) 15 个彩虹渐变药丸 -> 统一白底深字，hover 红强调 */
+      .nav-pill-lg{background:#FFFFFF !important;color:#1f2430 !important;border:1px solid #E5E7EB !important;text-shadow:none !important;box-shadow:0 1px 3px rgba(0,0,0,0.05) !important;}
+      .nav-pill-lg::before{display:none !important;}
+      .nav-pill-lg:hover{color:#B71C1C !important;border-color:#B71C1C !important;box-shadow:0 4px 12px rgba(183,28,28,0.12) !important;}
+      /* 6) 分组虚线框：紫 -> 中性浅边 */
+      .nav-btn-grid>div[style*="dashed"]{border-color:#E5E7EB !important;background:#FFFFFF !important;}
+      .nav-btn-grid>div[style*="dashed"]>div:last-child{color:#6b7280 !important;}
+      /* 7) 按钮/输入框/链接：紫 -> 红 */
+      .btn-primary{background:#B71C1C !important;box-shadow:0 2px 8px rgba(183,28,28,0.25) !important;}
+      .btn-primary:hover{background:#A31515 !important;}
+      .back-btn{color:#374151 !important;border:1px solid #E5E7EB !important;}
+      .select-box{border-color:#E5E7EB !important;}
+      .select-box:focus{border-color:#B71C1C !important;box-shadow:0 0 0 3px rgba(183,28,28,0.12) !important;}
+      input[type="checkbox"]{accent-color:#B71C1C !important;}
+      #heatRankLink{color:#B71C1C !important;}
+      div[style*="border-top:2px solid #B8A4D8"]{border-top-color:#B71C1C !important;}
+      /* 8) 交流群标题/弹窗按钮 紫 -> 红 */
+      div[style*="#6B21A8"]{color:#B71C1C !important;}
+      h3[style*="#5a4a7e"]{color:#B71C1C !important;}
+      .modal-card button[style*="#B8A4D8 0%"]{background:#B71C1C !important;}
+    </style>
+<!-- Lucide 线性图标系统（去 emoji / 去AI味） -->
+    <style>
+      .li-ico{display:inline-block;width:1.1em;height:1.1em;vertical-align:-0.15em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+      .nav-pill-lg{color:#2d2d3d !important;text-shadow:none !important;}
+      .nav-pill-lg svg{width:1em;height:1em;vertical-align:-0.12em;margin-right:5px;}
+    </style>
+<div class="hero-stats" aria-label="数据规模">
+      <div class="stat"><span class="stat-num">129</span><span class="stat-label">所高校</span></div>
+      <div class="stat"><span class="stat-num">491</span><span class="stat-label">条录取记录</span></div>
+      <div class="stat"><span class="stat-num">27</span><span class="stat-label">个省份</span></div>
+      <div class="stat"><span class="stat-num">105</span><span class="stat-label">个专业方向</span></div>
+    </div>
 
     <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
-    <div class="hero-console" style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
+    <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
       <!-- 左侧：头像（B站角标）+ 关于UP主 -->
       <div class="up-profile-panel" style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;margin-left:20px;align-items:flex-start;">
         <!-- 头像 + B站 左上角角标 -->
@@ -1136,34 +1131,34 @@ textarea:focus-visible,
         </a>
       </div>
       <!-- 中间：导航按钮 -->
-      <div class="content-hub-shell" style="display:flex;justify-content:flex-start;align-items:flex-start;margin-left:0;">
-        <div id="contentHub" class="nav-btn-grid content-hub" style="display:flex;flex-direction:row;gap:4px;justify-content:flex-start;align-items:flex-start;width:auto;max-width:none;padding:0;transform:none;">
+      <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-left:0;">
+        <div class="nav-btn-grid" style="display:flex;flex-direction:row;gap:4px;justify-content:flex-start;align-items:flex-start;width:auto;max-width:none;padding:0;transform:none;">
           <!-- 本科提升与考研科普（5个）- 最左边 -->
-          <div class="content-channel channel-learn" aria-label="本科成长与考研认知" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
-            <a href="考研常识科普/index.html" class="nav-pill-lg" title="28考研科普" style="background:linear-gradient(135deg,#A0C8E0 0%,#C0D8E8 100%);text-align:center;">📚 28考研常识扫盲</a>
-            <a href="复试全攻略/index.html" class="nav-pill-lg" title="考研复试备考" style="background:linear-gradient(135deg,#B0A0D8 0%,#D0C0E8 100%);text-align:center;">🎯 27考研复试</a>
-            <a href="专业科普.html" class="nav-pill-lg" title="专业大科普" style="background:linear-gradient(135deg,#80C0D8 0%,#A0D8E8 100%);text-align:center;">🔍 考研专业大科普</a>
-            <a href="考研常识科普/experience.html" class="nav-pill-lg" title="上岸经验贴" style="background:linear-gradient(135deg,#E8A0C0 0%,#F0C0D8 100%);text-align:center;">📝 考研上岸经验贴</a>
-            <a href="本科指南/index.html" class="nav-pill-lg" title="本科自我提升指南" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;grid-column:span 2;">🌱 大学生存与发展指南</a>
-            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 本科提升与考研科普</div>
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="考研常识科普/index.html" class="nav-pill-lg" title="28考研科普" style="background:linear-gradient(135deg,#A0C8E0 0%,#C0D8E8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>28考研常识扫盲</a>
+            <a href="复试全攻略/index.html" class="nav-pill-lg" title="考研复试备考" style="background:linear-gradient(135deg,#B0A0D8 0%,#D0C0E8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>27考研复试</a>
+            <a href="专业科普.html" class="nav-pill-lg" title="专业大科普" style="background:linear-gradient(135deg,#80C0D8 0%,#A0D8E8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>考研专业大科普</a>
+            <a href="考研常识科普/experience.html" class="nav-pill-lg" title="上岸经验贴" style="background:linear-gradient(135deg,#E8A0C0 0%,#F0C0D8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>考研上岸经验贴</a>
+            <a href="本科指南/index.html" class="nav-pill-lg" title="本科自我提升指南" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;grid-column:span 2;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>大学生存与发展指南</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>本科提升与考研科普</div>
           </div>
           <!-- 考研择校（5个）- 中间 -->
-          <div class="content-channel channel-select" aria-label="择校决策与数据工具" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
-            <a href="专业课选择/考研专业课院校查询.html" class="nav-pill-lg" title="专业课选择" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;">📝 考研专业课选择</a>
-            <a href="院校PK.html" class="nav-pill-lg" title="院校PK" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;">⭐ 考研院校大PK</a>
-            <a href="通信电子院校生源地图.html" class="nav-pill-lg" title="院校生源" style="background:linear-gradient(135deg,#90B0E0 0%,#B0C8E8 100%);text-align:center;">🎓 考研院校生源</a>
-            <a href="heat_compare.html" class="nav-pill-lg" title="院校热度榜" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;">🔥 考研院校热度榜</a>
-            <a href="改考院校.html" class="nav-pill-lg" title="27改考院校" style="background:linear-gradient(135deg,#E8C880 0%,#F0E0A0 100%);text-align:center;grid-column:span 2;">📋 27改考院校</a>
-            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 27考研择校指南</div>
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="专业课选择/考研专业课院校查询.html" class="nav-pill-lg" title="专业课选择" style="background:linear-gradient(135deg,#88C9A8 0%,#B0E0C8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>考研专业课选择</a>
+            <a href="院校PK.html" class="nav-pill-lg" title="院校PK" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" x2="9" y1="14" y2="18"/><line x1="7" x2="4" y1="17" y2="20"/><line x1="3" x2="5" y1="19" y2="21"/></svg>考研院校大PK</a>
+            <a href="通信电子院校生源地图.html" class="nav-pill-lg" title="院校生源" style="background:linear-gradient(135deg,#90B0E0 0%,#B0C8E8 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>考研院校生源</a>
+            <a href="heat_compare.html" class="nav-pill-lg" title="院校热度榜" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>考研院校热度榜</a>
+            <a href="改考院校.html" class="nav-pill-lg" title="27改考院校" style="background:linear-gradient(135deg,#E8C880 0%,#F0E0A0 100%);text-align:center;grid-column:span 2;"><svg class="li-ico" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>27改考院校</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>27考研择校指南</div>
           </div>
           <!-- 就业提升（5个）- 最右边 -->
-          <div class="content-channel channel-career" aria-label="读研发展与就业路径" style="border:2px dashed #9A8AC8;border-radius:10px;padding:46px 12px 12px !important;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
-            <a href="就业相关/就业去向index.html" class="nav-pill-lg" title="就业大揭秘" style="background:linear-gradient(135deg,#C0A0C8 0%,#D8C0E0 100%);text-align:center;">📞 就业大揭秘</a>
-            <a href="AI课程/ai-course-overview/ai-course-overview.html" class="nav-pill-lg" title="AI提效指南" style="background:linear-gradient(135deg,#A0D8B0 0%,#C0E8D0 100%);text-align:center;">🤖 AI提效指南</a>
-            <a href="就业相关/job-listing/job-listing.html" class="nav-pill-lg" title="26校招信息" style="background:linear-gradient(135deg,#00A1D6 0%,#23ADE5 100%);text-align:center;" onclick="window.location.href=this.href;return false;">📢 26校招信息</a>
-            <a href="就业相关/career-analysis/career-analysis.html" class="nav-pill-lg" title="就业分析报告" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;">📊 就业分析报告</a>
-            <a href="就业相关/career-analysis/role-tech-stack.html" class="nav-pill-lg" title="职业规划全景" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;grid-column:span 2;">🗺️ 职业规划全景</a>
-            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;">📌 就业信息与求职指南</div>
+          <div style="border:2px dashed #9A8AC8;border-radius:10px;padding:6px 8px;display:grid;grid-template-columns:1fr 1fr;gap:4px 6px;background:rgba(184,164,216,0.08);min-width:220px;">
+            <a href="就业相关/就业去向index.html" class="nav-pill-lg" title="就业大揭秘" style="background:linear-gradient(135deg,#C0A0C8 0%,#D8C0E0 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>就业大揭秘</a>
+            <a href="AI课程/ai-course-overview/ai-course-overview.html" class="nav-pill-lg" title="AI提效指南" style="background:linear-gradient(135deg,#A0D8B0 0%,#C0E8D0 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>AI提效指南</a>
+            <a href="就业相关/job-listing/job-listing.html" class="nav-pill-lg" title="26校招信息" style="background:linear-gradient(135deg,#00A1D6 0%,#23ADE5 100%);text-align:center;" onclick="window.location.href=this.href;return false;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>26校招信息</a>
+            <a href="就业相关/career-analysis/career-analysis.html" class="nav-pill-lg" title="就业分析报告" style="background:linear-gradient(135deg,#E8A0B8 0%,#F0C0D0 100%);text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>就业分析报告</a>
+            <a href="就业相关/career-analysis/role-tech-stack.html" class="nav-pill-lg" title="职业规划全景" style="background:linear-gradient(135deg,#F0C080 0%,#F8D8A0 100%);text-align:center;grid-column:span 2;"><svg class="li-ico" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" x2="8" y1="2" y2="18"/><line x1="16" x2="16" y1="6" y2="22"/></svg>职业规划全景</a>
+            <div style="font-weight:700;color:#6b5b95;font-size:11px;margin-top:1px;grid-column:1/-1;text-align:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>就业信息与求职指南</div>
           </div>
         </div>
       </div>
@@ -1171,15 +1166,15 @@ textarea:focus-visible,
       <div style="flex-shrink:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-left:4px;">
         <!-- 考研倒计时 -->
         <div id="countdownCard" class="card" style="padding:8px 12px;text-align:center;width:150px;">
-          <div style="font-size:13px;font-weight:700;color:#B71C1C;margin-bottom:2px;">⏳ 考研倒计时</div>
+          <div style="font-size:13px;font-weight:700;color:#B71C1C;margin-bottom:2px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>考研倒计时</div>
           <div style="display:flex;flex-direction:column;gap:2px;align-items:center;">
             <div style="display:flex;align-items:center;gap:3px;">
-              <span style="font-size:11px;color:#555;font-weight:600;">⏰ 27考研</span>
+              <span style="font-size:11px;color:#555;font-weight:600;"><svg class="li-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>27考研</span>
               <span id="countdownDays27" style="font-size:15px;font-weight:700;color:#B71C1C;">--</span>
               <span style="font-size:11px;color:#555;font-weight:600;">天</span>
             </div>
             <div style="display:flex;align-items:center;gap:3px;">
-              <span style="font-size:11px;color:#555;font-weight:600;">📅 28考研</span>
+              <span style="font-size:11px;color:#555;font-weight:600;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>28考研</span>
               <span id="countdownDays28" style="font-size:15px;font-weight:700;color:#764ba2;">--</span>
               <span style="font-size:11px;color:#555;font-weight:600;">天</span>
             </div>
@@ -1187,7 +1182,7 @@ textarea:focus-visible,
         </div>
         <!-- 四六级倒计时 -->
         <div id="cetCountdownCard" class="card" style="padding:8px 12px;text-align:center;width:150px;">
-          <div style="font-size:12px;font-weight:700;color:#1a6a8e;margin-bottom:2px;">📝 四六级倒计时</div>
+          <div style="font-size:12px;font-weight:700;color:#1a6a8e;margin-bottom:2px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>四六级倒计时</div>
           <div style="display:flex;align-items:center;gap:3px;justify-content:center;">
             <span id="countdownCET" style="font-size:15px;font-weight:700;color:#1a6a8e;">--</span>
             <span style="font-size:11px;color:#555;font-weight:600;">天</span>
@@ -1223,32 +1218,18 @@ textarea:focus-visible,
   </header>
 
   <!-- 热度榜 TOP10 -->
-  <section class="insight-grid">
-  <div class="card p-4 mb-4 insight-card" id="heatRankSection" data-theme="decision-console">
-    <div class="decision-console-content heat-rank-content">
+  <div class="card p-4 mb-4" id="heatRankSection">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="font-bold text-gray-700" style="font-size:1.15rem;" id="heatRankTitle">🔥 热度榜 TOP10</h3>
+      <h3 class="font-bold text-gray-700" style="font-size:1.15rem;" id="heatRankTitle"><svg class="li-ico" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>热度榜 TOP10</h3>
       <a href="heat_compare.html" id="heatRankLink" class="text-sm" style="color:#9A8AC8;font-weight:600;text-decoration:none;" onmouseover="this.style.color='#B71C1C'" onmouseout="this.style.color='#9A8AC8'">查看完整热度对比 →</a>
     </div>
     <div id="heatRankButtons"></div>
-    </div>
   </div>
-  <aside id="featuredPanel" class="card featured-panel">
-    <div class="section-kicker">本周精选 · WEEKLY PICK</div>
-    <h2>先看懂，再做选择</h2>
-    <p>从常识、院校对比到专业课，把最常用的决策入口放在同一条路径上。</p>
-    <div class="featured-actions">
-      <a href="考研常识科普/index.html">新手扫盲 <span>→</span></a>
-      <a href="院校PK.html">院校对比 <span>→</span></a>
-      <a href="专业课选择/考研专业课院校查询.html">专业课查询 <span>→</span></a>
-    </div>
-  </aside>
-  </section>
 
   <!-- 筛选区 + 广告条 并排 -->
-  <div id="selectionWorkbench" data-theme="decision-console" style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6 selection-workbench">
+  <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6">
     <!-- 左侧：筛选区 -->
-    <div class="card p-4 decision-console-content" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #B8A4D8;">
+    <div class="card p-4" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #B8A4D8;">
       <div class="flex flex-wrap gap-2 items-end">
         <div>
           <label class="block text-sm text-gray-600 mb-1">地区</label>
@@ -1284,28 +1265,30 @@ textarea:focus-visible,
     </div>
 
     <!-- 中间：目标院校按钮 -->
-    <button class="nav-pill-lg" title="目标院校" onclick="toggleFavoriteFilter()" id="favBtn" style="background:linear-gradient(135deg,#E89898 0%,#F0B8B0 100%);border:none;cursor:pointer;flex-shrink:0;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:12px 16px;font-size:16px;border-radius:16px;white-space:nowrap;">⭐目标院校</button>
+    <button class="nav-pill-lg" title="目标院校" onclick="toggleFavoriteFilter()" id="favBtn" style="background:linear-gradient(135deg,#E89898 0%,#F0B8B0 100%);border:none;cursor:pointer;flex-shrink:0;align-self:stretch;display:flex;align-items:center;justify-content:center;padding:12px 16px;font-size:16px;border-radius:16px;white-space:nowrap;"><svg class="li-ico" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>目标院校</button>
 
       <!-- 右侧：资料与课程广告 -->
-      <a id="courseResourcesCard" href="专业课选择/资料和课程.html" data-theme="control-signal-gold" style="text-decoration:none;display:block;flex-shrink:0;" class="ad-course-link">
-        <div class="card course-entry-card" style="padding:0;cursor:pointer;height:100%;display:flex;align-items:center;justify-content:center;">
-          <div class="course-entry-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 16px;text-align:center;min-width:170px;height:100%;">
-            <div class="course-entry-heading" style="display:flex;align-items:center;gap:8px;">
-              <span class="course-entry-icon">📚</span>
-              <span class="course-entry-title">资料 <i>·</i> 课程</span>
+      <a href="专业课选择/资料和课程.html" style="text-decoration:none;display:block;flex-shrink:0;" class="ad-course-link">
+        <div class="card" style="padding:0;background:linear-gradient(135deg,#F8A862 0%,#FFB347 100%);border:none;transition:transform .2s,box-shadow .2s;cursor:pointer;height:100%;display:flex;align-items:center;justify-content:center;"
+             onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(248,168,98,0.35)'"
+             onmouseout="this.style.transform='';this.style.boxShadow='none'">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 16px;text-align:center;min-width:170px;height:100%;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="font-size:18px;display:inline-flex;align-items:center;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></span>
+              <span style="font-size:24px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.18);letter-spacing:0.5px;">资料与课程</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:2px;align-items:center;">
               <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
-                <span class="course-entry-tag">自动控制原理</span>
-                <span class="course-entry-tag">现代控制理论</span>
-                <span class="course-entry-tag">信号与系统</span>
-                <span class="course-entry-tag">电路原理</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">自动控制原理</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">现代控制理论</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">信号与系统</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电路原理</span>
               </div>
               <div style="display:flex;gap:2px;flex-wrap:wrap;justify-content:center;">
-                <span class="course-entry-tag">机器人学</span>
-                <span class="course-entry-tag">计算机控制</span>
-                <span class="course-entry-tag">检测技术</span>
-                <span class="course-entry-tag">电力电子</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">机器人学</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">计算机控制</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">检测技术</span>
+                <span style="font-size:8px;font-weight:600;color:#2d2d3d;background:rgba(255,255,255,0.55);padding:1px 3px;border-radius:6px;white-space:nowrap;">电力电子</span>
               </div>
             </div>
           </div>
@@ -1316,27 +1299,26 @@ textarea:focus-visible,
   <!-- 考研交流群（移动端显示） -->
   <div class="card p-4 mb-4 ad-qq-group ad-qq-group-mobile" style="gap:12px;justify-content:center;flex-wrap:wrap;">
     <div style="flex:1;min-width:140px;max-width:260px;padding:10px;background:#fff;border:1px solid #E8E0E8;border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
-      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 27考研交流群</div>
+      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>27考研交流群</div>
       <img src="专业课选择/images/27考研群/27.png" alt="27考研交流群" style="width:100%;max-width:200px;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/27.png')">
     </div>
     <div style="flex:1;min-width:140px;max-width:260px;padding:10px;background:#fff;border:1px solid #E8E0E8;border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
-      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 28考研交流群</div>
+      <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>28考研交流群</div>
       <img src="专业课选择/images/27考研群/28.png" alt="28考研交流群" style="width:100%;max-width:200px;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/28.png')">
     </div>
   </div>
 
   <!-- 学校列表 + 海报轮播 + 广告 -->
-  <div style="display:flex;flex-direction:column;gap:16px;" id="mainContentArea" class="data-command-center" data-theme="school-data-bay">
-    <canvas id="schoolDataField" data-motifs="data-stream split-nodes radar-glow vertical-data-bus" aria-hidden="true"></canvas>
+  <div style="display:flex;flex-direction:column;gap:16px;" id="mainContentArea">
     <!-- 第一行：学校列表 + 右侧栏并排 -->
     <div style="display:flex;gap:16px;align-items:flex-start;">
       <!-- 学校列表 -->
-      <div class="card p-4 mb-6 school-list-card" style="flex:1;min-width:0;">
+      <div class="card p-4 mb-6" style="flex:1;min-width:0;">
         <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
           <h3 class="font-bold text-gray-700">学校列表 <span class="text-sm font-normal text-gray-500" id="schoolCount"></span></h3>
           <div class="flex gap-2 items-center flex-wrap">
             <div class="flex items-center gap-1 flex-shrink-0">
-              <label class="text-xs text-gray-500 whitespace-nowrap">📊 相关院校层级择校推荐（勾选你所在的院校层级）:</label>
+              <label class="text-xs text-gray-500 whitespace-nowrap"><svg class="li-ico" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>相关院校层级择校推荐（勾选你所在的院校层级）:</label>
               <select id="sFilterRecommend" class="filter-sm" style="width:70px;padding:3px 4px;font-size:11px;"><option value="">全部</option><option value="民办院校">民办</option><option value="二本院校">二本</option><option value="一本院校">一本</option><option value="211院校">211</option><option value="985院校">985</option></select>
             </div>
             <div id="recommendCriteria" style="font-size:12px;color:#6a6a7a;white-space:nowrap;"></div>
@@ -1378,7 +1360,7 @@ textarea:focus-visible,
                 <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">复录比</th>
                 <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">录取均分</th>
                 <th class="pb-2 pr-2 align-bottom" style="white-space:normal;font-size:12px;line-height:1.25;">专业课均分</th>
-                <th class="pb-2 align-bottom" style="padding-right:4px;">⭐</th>
+                <th class="pb-2 align-bottom" style="padding-right:4px;"><svg class="li-ico" viewBox="0 0 24 24" style="width:14px;height:14px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></th>
               </tr>
             </thead>
             <tbody id="schoolTable"></tbody>
@@ -1407,11 +1389,11 @@ textarea:focus-visible,
         <!-- 考研交流群（电脑端显示） -->
         <div class="ad-qq-group ad-qq-group-desktop" style="display:flex;gap:10px;">
           <div class="card" style="flex:1;padding:10px;background:#fff;border:1px solid #E8E0E8;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
-            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 27考研交流群</div>
+            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>27考研交流群</div>
             <img src="专业课选择/images/27考研群/27.png" alt="27考研交流群" style="width:100%;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/27.png')">
           </div>
           <div class="card" style="flex:1;padding:10px;background:#fff;border:1px solid #E8E0E8;text-align:center;display:flex;flex-direction:column;align-items:center;" title="点击查看大图">
-            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;">🎓 28考研交流群</div>
+            <div style="font-size:13px;font-weight:700;color:#6B21A8;margin-bottom:6px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>28考研交流群</div>
             <img src="专业课选择/images/27考研群/28.png" alt="28考研交流群" style="width:100%;border-radius:8px;cursor:pointer;object-fit:contain;" loading="lazy" onclick="openImageLightbox('专业课选择/images/27考研群/28.png')">
           </div>
         </div>
@@ -1494,7 +1476,7 @@ textarea:focus-visible,
       <div id="chartDetailCourse" style="height:360px;"></div>
     </div>
     <div id="qqGroupCard" class="card p-4" style="display:none;">
-      <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:8px;">📱 院校QQ群</h3>
+      <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:8px;"><svg class="li-ico" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>院校QQ群</h3>
       <div id="qqGroupContent" style="text-align:center;"></div>
     </div>
   </div>
@@ -1567,7 +1549,7 @@ textarea:focus-visible,
   </div>
 
   <div id="detailDistributions" class="card p-4 mb-6" style="display:none;">
-    <h3 style="font-size:16px;font-weight:700;color:#5a4a7e;margin:0 0 12px;">📊 各方向分数分布</h3>
+    <h3 style="font-size:16px;font-weight:700;color:#5a4a7e;margin:0 0 12px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>各方向分数分布</h3>
     <div id="detailDistributionsContent"></div>
   </div>
 
@@ -1587,14 +1569,13 @@ textarea:focus-visible,
   </div>
 </div>
 
-    <script src="theme-background.js" defer></script>
     <script src="index.js" defer></script>
     <script src="toy-coin-gate.js" defer></script>
 
 <!-- 未选方向提示弹窗 -->
 <div id="directionPromptModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-card" style="max-width:420px;text-align:center;" onclick="event.stopPropagation()">
-    <div style="font-size:56px;line-height:1;margin-bottom:12px;">🎓</div>
+    <div style="font-size:56px;line-height:1;margin-bottom:12px;"><svg class="li-ico" viewBox="0 0 24 24" style="width:56px;height:56px;"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
     <div class="modal-header" style="justify-content:center;border-bottom:none;margin-bottom:8px;">
       <h3 style="font-size:1.15rem;font-weight:700;color:#5a4a7e;line-height:1.7;">准研究生，你还没选择方向呢<br>选择方向后即可查看该方向下的所有信息</h3>
     </div>
@@ -1603,7 +1584,7 @@ textarea:focus-visible,
 </div>
 <!-- 最近浏览栏 -->
 <div id="recentViewBar">
-  <span class="recent-title">📋 最近浏览</span>
+  <span class="recent-title"><svg class="li-ico" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>最近浏览</span>
   <div id="recentViewTags" class="recent-tags"></div>
 </div>
 
@@ -1623,18 +1604,18 @@ textarea:focus-visible,
 <div id="compareModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="modal-card" style="max-width:900px;" onclick="event.stopPropagation()">
     <div class="modal-header">
-      <h3 style="font-size:1.2rem;font-weight:700;">📊 院校对比分析</h3>
+      <h3 style="font-size:1.2rem;font-weight:700;"><svg class="li-ico" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>院校对比分析</h3>
       <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('active')">✕</button>
     </div>
     <div id="compareContent" style="overflow-x:auto;"></div>
   </div>
 </div>
 <!-- 返回顶部按钮 -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:88px;right:20px;z-index:45;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.2);display:none;align-items:center;justify-content:center;transition:transform .2s,opacity .3s;" title="返回顶部">↑</button>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:88px;right:20px;z-index:45;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.2);display:none;align-items:center;justify-content:center;transition:transform .2s,opacity .3s;" title="返回顶部"><svg class="li-ico" viewBox="0 0 24 24" style="width:22px;height:22px;"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
 <script>(function(){var btn=document.getElementById('backToTop');window.addEventListener('scroll',function(){if(window.scrollY>300){btn.style.display='flex';btn.style.opacity='1';}else{btn.style.opacity='0';setTimeout(function(){btn.style.display='none';},300);}});})();</script>
 
 <!-- 广告开关按钮 -->
-<button id="adToggleBtn" class="ad-on" onclick="toggleQrAd()" title="点击关闭/显示考研群二维码">📢</button>
+<button id="adToggleBtn" class="ad-on" onclick="toggleQrAd()" title="点击关闭/显示考研群二维码"><svg class="li-ico" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></button>
 
 
 <!-- 图片放大弹窗 -->
