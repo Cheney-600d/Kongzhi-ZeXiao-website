@@ -124,6 +124,7 @@ function toggleFavorite(name){
 .fav-star-detail:hover{transform:scale(1.3);}
 .fav-inactive{color:#ddd;}
 .fav-active{color:#FF6B6B;}
+@media (max-width:768px){.card{overflow-x:auto}}
 </style>
 <script>(function(){var el=document.getElementById("favBtnDetail");if(el)el.className="fav-star-detail "+(isFavorite("浙江海洋大学")?"fav-active":"fav-inactive");})();</script>
 </body>

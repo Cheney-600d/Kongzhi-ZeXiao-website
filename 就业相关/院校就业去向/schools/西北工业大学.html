@@ -5,388 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>西北工业大学 - 控制类硕士就业去向</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: #F8FAFC;
-            color: #2d3436;
-            line-height: 1.7;
-        }
-        
-        .header {
-            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-            background: linear-gradient(135deg, #C5CAE9 0%, #C5CAE9 100%);
-            color: #1a1a2e;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 4px 14px;
-            background: rgba(255,255,255,0.25);
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin: 0 4px;
-            backdrop-filter: blur(4px);
-        }
-        
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #C5CAE9;
-            border-radius: 25px;
-            cursor: pointer;
-            margin: 20px;
-            font-size: 1em;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .back-btn:hover {
-            background: #C5CAE9;
-            color: #1a1a2e;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            border-left: 4px solid #C5CAE9;
-        }
-        
-        .stat-value {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #1a1a2e;
-            margin-bottom: 4px;
-        }
-        
-        .stat-label {
-            color: #7a7a7a;
-            font-size: 0.85em;
-        }
-        
-        .section {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-        
-        .section h2 {
-            font-size: 1.2em;
-            margin-bottom: 16px;
-            color: #1a1a2e;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #E1BEE7;
-        }
-        
-        .offers-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .offers-table th {
-            text-align: left;
-            padding: 12px;
-            background: #E1BEE7;
-            color: #1a1a2e;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-        
-        .offers-table td {
-            padding: 12px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9em;
-        }
-        
-        .offers-table tr:hover {
-            background: #F8FAFC;
-        }
-        
-        .company-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            white-space: nowrap;
-        }
-        
-        .company-detail {
-            color: #5a5a5a;
-        }
-        
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .content-grid .section {
-            margin-bottom: 0;
-        }
-        
-        .full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .wordcloud-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .wordcloud-section h3 {
-            font-size: 1.15em;
-            color: #C5CAE9;
-            margin-bottom: 12px;
-        }
-        .wordcloud-img {
-            max-width: 70%;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .bar-chart { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
-        .bar-track { flex: 1; height: 22px; background: #f0f0f0; border-radius: 11px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, #C5CAE9, #C5CAE9); }
-        .bar-label { min-width: 160px; font-size: 0.85em; color: #5a5a5a; }
-        .bar-value { min-width: 60px; font-size: 0.85em; font-weight: 600; color: #C5CAE9; text-align: right; }
-        .top10-list { list-style: none; padding: 0; }
-        .top10-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
-        .top10-list li:last-child { border-bottom: none; }
-        .rank-num { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #C5CAE9; color: #1a1a2e; border-radius: 50%; font-size: 0.8em; font-weight: 600; margin-right: 10px; }
-        .employer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
-        .employer-item { padding: 8px 12px; background: #F8FAFC; border-radius: 8px; font-size: 0.85em; display: flex; align-items: center; gap: 8px; }
-        .employer-rank { width: 20px; height: 20px; line-height: 20px; text-align: center; background: #C5CAE9; color: #1a1a2e; border-radius: 50%; font-size: 0.75em; font-weight: 600; flex-shrink: 0; }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #8a8a8a;
-            font-size: 0.85em;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.4em; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .content-grid { grid-template-columns: 1fr; }
-            .offers-table th, .offers-table td { padding: 8px; font-size: 0.85em; }
-            .company-name { white-space: normal; }
-        }
-    </style>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background:#FFF5F5; color:#2d3436; line-height:1.7;
+}
+.header {
+    background: linear-gradient(135deg, #FFAB91 0%, #FFCCBC 100%);
+    color:#1a1a2e; padding:30px 20px; text-align:center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header h1 { font-size:2em; margin-bottom:10px; font-weight:600; }
+.badge {
+    display:inline-block; padding:4px 14px; background:rgba(255,255,255,0.25);
+    border-radius:20px; font-size:0.85em; margin:0 4px; backdrop-filter:blur(4px);
+}
+.back-btn {
+    display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+    background:white; border:2px solid #FFAB91; border-radius:25px; cursor:pointer;
+    margin:20px; font-size:1em; text-decoration:none; transition:all 0.3s; font-weight:500;
+}
+.back-btn:hover { background:#FFAB91; color:#1a1a2e; }
+.container { width:80%; margin:0 auto; padding:0 20px 40px; }
+.content-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-bottom:20px; }
+.content-grid .section { margin-bottom:0; }
+.full-width { grid-column:1 / -1; }
+.section { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section h2 { font-size:1.2em; color:#B71C1C; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.section p { font-size:0.95em; color:#3d3d3d; }
+.source-note { margin-top:10px; font-size:0.82em; color:#8a8a8a; }
+.college-list { list-style:none; padding:0; }
+.college-list li {
+    padding:10px 14px; background:#FFF5F5; border-radius:8px; margin-bottom:8px;
+    font-size:0.95em; border-left:3px solid #FFAB91;
+}
+.college-list li:last-child { margin-bottom:0; }
+.eval-badge {
+    display:inline-block; padding:10px 24px; border-radius:12px; font-size:1.6em;
+    font-weight:700; letter-spacing:2px;
+    background:#FFF1F2; color:#B71C1C; border:2px solid #FECDD3;
+}
+.eval-empty { color:#8a8a8a; font-size:0.9em; }
+.employer-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px; }
+.employer-item {
+    padding:8px 12px; background:#FFF5F5; border-radius:8px; font-size:0.85em;
+    display:flex; align-items:center; gap:8px;
+}
+.employer-rank {
+    width:20px; height:20px; line-height:20px; text-align:center; background:#FFAB91;
+    color:#1a1a2e; border-radius:50%; font-size:0.75em; font-weight:600; flex-shrink:0;
+}
+footer { text-align:center; padding:30px; color:#8a8a8a; font-size:0.85em; }
+@media (max-width:768px) {
+    .header h1 { font-size:1.4em; }
+    .content-grid { grid-template-columns:1fr; }
+    .container { width:100%; }
+}
+</style>
 </head>
 <body>
     <div class="header">
         <h1>西北工业大学</h1>
         <div>
-            <span class="badge">985</span>
-            <span class="tag">985</span><span class="tag">国防七子</span>
+            <span class="badge" style="background:#FECDD3;color:#B71C1C;">985</span>
         </div>
     </div>
-    
+
     <a href="javascript:history.back()" class="back-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
         返回上一级
     </a>
-    
+
     <div class="container">
         <div class="content-grid">
             <div class="section full-width">
-                <h2>📊 就业数据概览</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value">19人</div>
-                        <div class="stat-label">华为系（25届）TOP1</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">航空/航天/国防</div>
-                        <div class="stat-label">核心就业方向</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">98%</div>
-                        <div class="stat-label">整体就业率</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">40人</div>
-                        <div class="stat-label">信息与通信工程去向</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section full-width wordcloud-section">
-                <h3>🏢 主要就业单位词云</h3>
-                <img src="../wordclouds/wordcloud_西北工业大学.png" alt="西北工业大学就业单位词云" class="wordcloud-img">
+                <h2>📘 院校简介</h2>
+                <p>位于陕西西安，双一流A+ “211工程”“985工程”重点建设高校；是一所以发展航空、航天、航海（三航）等领域人才培养和科学研究为特色的多科性、研究型、开放式大学。</p>
+                <p class="source-note">数据来源：《西北工业大学2021届毕业生就业质量年度报告》、《25考研择校宝典》</p>
             </div>
 
             <div class="section">
-                <h2>🏆 用人单位TOP20（25届）</h2>
-                <ul class="top10-list">
-                    <li><span class="rank-num">1</span>华为技术有限公司（上海/西安/海思/引望/终端） <strong>19人</strong></li>
-                    <li><span class="rank-num">2</span>中国航空工业雷华电子技术研究所 <strong>10人</strong></li>
-                    <li><span class="rank-num">3</span>中兴（长沙/西安/南京/上海） <strong>9人</strong></li>
-                    <li><span class="rank-num">4</span>国家电网（各市/分公司） <strong>5人</strong></li>
-                    <li><span class="rank-num">5</span>陕西航空电气有限责任公司 <strong>5人</strong></li>
-                    <li><span class="rank-num">6</span>陕西千山航空电子有限责任公司 <strong>5人</strong></li>
-                    <li><span class="rank-num">7</span>中国航空工业洛阳电光设备研究所 <strong>5人</strong></li>
-                    <li><span class="rank-num">8</span>西安爱生技术集团有限公司 <strong>5人</strong></li>
-                    <li><span class="rank-num">9</span>OPPO <strong>4人</strong></li>
-                    <li><span class="rank-num">10</span>中航工业成都飞机设计研究所 <strong>4人</strong></li>
-                    <li><span class="rank-num">11</span>中航光电科技股份有限公司 <strong>4人</strong></li>
-                    <li><span class="rank-num">12</span>VIVO <strong>4人</strong></li>
-                    <li><span class="rank-num">13</span>中国电子科技集团公司第二十研究所 <strong>4人</strong></li>
-                    <li><span class="rank-num">14</span>许继集团有限公司 <strong>3人</strong></li>
-                    <li><span class="rank-num">15</span>上海飞机设计研究院有限公司 <strong>3人</strong></li>
-                    <li><span class="rank-num">16</span>中国航天科技集团五院西安分院 <strong>3人</strong></li>
-                    <li><span class="rank-num">17</span>美团（成都/北京） <strong>3人</strong></li>
-                    <li><span class="rank-num">18</span>比亚迪（汽车/股份/汽车工业） <strong>3人</strong></li>
-                    <li><span class="rank-num">19</span>中国空空导弹研究院 <strong>3人</strong></li>
-                    <li><span class="rank-num">20</span>中国航天时代电子有限公司 <strong>2人</strong></li>
-                </ul>
+                <h2>🏛️ 控制相关学院</h2>
+                <ul class="college-list">
+<li>自动化学院、航海学院、动力与能源学院、无人系统技术研究院</li>
+<li>第五轮控制学科评估排名</li>
+<li>A-</li>
+<li>毕业生去向落实率</li>
+<li>西北工业大学2021届毕业生总体毕业去向落实率为96.04%。其中，硕士毕业生毕业去向落实率为99.48%。</li>
+</ul>
             </div>
 
             <div class="section">
-                <h2>🏆 软件学院就业TOP10（25届）</h2>
-                <ul class="top10-list">
-                    <li><span class="rank-num">1</span>西安华为技术有限公司</li>
-                    <li><span class="rank-num">2</span>上海华为技术有限公司</li>
-                    <li><span class="rank-num">3</span>比亚迪汽车有限公司</li>
-                    <li><span class="rank-num">4</span>西安中兴新软件有限责任公司</li>
-                    <li><span class="rank-num">5</span>中国航空工业集团公司第六三一研究所</li>
-                    <li><span class="rank-num">6</span>华为技术有限公司</li>
-                    <li><span class="rank-num">7</span>中国航空工业集团公司洛阳电光设备研究所</li>
-                    <li><span class="rank-num">8</span>中国银行股份有限公司陕西省分行</li>
-                    <li><span class="rank-num">9</span>北方自动控制技术研究所</li>
-                    <li><span class="rank-num">10</span>中国电子科技集团公司第二十八研究所</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>📡 信息与通信工程就业去向（40人）</h2>
-                <ul class="top10-list">
-                    <li><span class="rank-num">1</span>中国航空工业雷华电子技术研究所 <strong>4人</strong></li>
-                    <li><span class="rank-num">2</span>西安中兴新软件有限责任公司 <strong>2人</strong></li>
-                    <li><span class="rank-num">3</span>中国航天时代电子有限公司 <strong>2人</strong></li>
-                    <li><span class="rank-num">4</span>中国航天科技集团五院西安分院 <strong>2人</strong></li>
-                    <li><span class="rank-num">5</span>上海华为技术有限公司 <strong>2人</strong></li>
-                    <li><span class="rank-num">6</span>中航工业成都飞机设计研究所 <strong>2人</strong></li>
-                    <li><span class="rank-num">7</span>西安维沃软件技术有限公司 <strong>2人</strong></li>
-                    <li><span class="rank-num">8</span>国营长虹机械厂 <strong>1人</strong></li>
-                    <li><span class="rank-num">9</span>国网山西省电力公司太原供电公司 <strong>1人</strong></li>
-                    <li><span class="rank-num">10</span>联咏电子科技（西安）有限公司 <strong>1人</strong></li>
-                    <li><span class="rank-num">11</span>南方电网数字电网集团 <strong>1人</strong></li>
-                    <li><span class="rank-num">12</span>杭州阿里云飞天信息技术 <strong>1人</strong></li>
-                    <li><span class="rank-num">13</span>华为技术有限公司南京研究所 <strong>1人</strong></li>
-                    <li><span class="rank-num">14</span>海思技术有限公司 <strong>1人</strong></li>
-                    <li><span class="rank-num">15</span>上海飞机设计研究院有限公司 <strong>1人</strong></li>
-                    <li><span class="rank-num">16</span>中国航空工业洛阳电光设备研究所 <strong>1人</strong></li>
-                    <li><span class="rank-num">17</span>中电科39所/38所/723所 <strong>各1人</strong></li>
-                    <li><span class="rank-num">18</span>中国商用飞机试飞中心 <strong>1人</strong></li>
-                    <li><span class="rank-num">19</span>重庆赛力斯凤凰智创 <strong>1人</strong></li>
-                    <li><span class="rank-num">20</span>北京云圣智能科技 <strong>1人</strong></li>
-                </ul>
+                <h2>⭐ 控制学科评估排名</h2>
+                <p class="eval-empty">宝典未提供该项数据</p>
             </div>
 
             <div class="section full-width">
-                <h2>💰 典型Offer案例（国防科研院所）</h2>
-                <table class="offers-table">
-                    <thead>
-                        <tr>
-                            <th>单位</th>
-                            <th>薪资</th>
-                            <th>福利/备注</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="company-name">中电10所</td>
-                            <td class="salary">基本薪资20万<br>福利补贴2万</td>
-                            <td>合计25万，研发岗，安家费3万</td>
-                        </tr>
-                        <tr>
-                            <td class="company-name">中电29所</td>
-                            <td class="salary">年总包25万-30万</td>
-                            <td>签字费1万</td>
-                        </tr>
-                        <tr>
-                            <td class="company-name">成飞611所</td>
-                            <td class="salary">总包20万</td>
-                            <td>安家费12万，分5年发</td>
-                        </tr>
-                        <tr>
-                            <td class="company-name">绵阳九院</td>
-                            <td class="salary">事业编制年薪25万</td>
-                            <td>安家费10万一次性付清</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="section full-width">
-                <h2>📋 就业特色总结</h2>
-                <p style="margin-bottom: 16px; color: #5a5a5a;">西北工业大学作为<strong>国防七子</strong>之一，毕业生就业呈现鲜明的<strong>航空航天国防特色</strong>。华为系（19人）是最大的单一雇主，但同时大量毕业生进入航空工业、航天科技、中电科等国防科研院所，体现了"大厂+国企央企"双轨并进的就业格局。</p>
+                <h2>🏢 部分就业单位</h2>
                 <div class="employer-grid">
-                    <div class="employer-item">华为系（19人）</div>
-                    <div class="employer-item">航空工业（雷华10人）</div>
-                    <div class="employer-item">中兴（9人）</div>
-                    <div class="employer-item">国家电网（5人）</div>
-                    <div class="employer-item">航空电气/千山（各5人）</div>
-                    <div class="employer-item">洛阳电光设备所（5人）</div>
-                    <div class="employer-item">西安爱生（5人）</div>
-                    <div class="employer-item">OPPO/VIVO（各4人）</div>
-                    <div class="employer-item">中航光电（4人）</div>
-                    <div class="employer-item">成都飞机设计所（4人）</div>
-                    <div class="employer-item">中电科20所/28所</div>
-                    <div class="employer-item">航天科技五院</div>
-                </div>
+<div class="employer-item"><span class="employer-rank">1</span>中国航空工业集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">2</span>中国电子科技集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">3</span>中国航天科技集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">4</span>中国航天科工集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">5</span>技术有限公司</div>
+<div class="employer-item"><span class="employer-rank">6</span>中兴通讯股份有限公司</div>
+</div>
             </div>
         </div>
     </div>
-    
+
     <footer>
-        <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
-        <p>仅供参考，数据可能存在时效性差异</p>
+        <p>数据来源：《26就业宝典》 | 制作：@一只通信考研的er</p>
+        <p>以下分析基于学校整体就业情况，并非是对控制相关专业就业情况的精准分析，故所有内容仅供参考。</p>
     </footer>
 </body>
 </html>

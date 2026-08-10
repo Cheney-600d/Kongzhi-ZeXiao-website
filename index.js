@@ -1121,7 +1121,6 @@ const SCHOOL_TAGS = {
   '国防七子': new Set(['北京航空航天大学','北京理工大学','哈尔滨工业大学','西北工业大学','哈尔滨工程大学','南京航空航天大学','南京理工大学']),
   '军工六校': new Set(['中国人民解放军国防科技大学','哈尔滨工程大学','南京理工大学','中国人民解放军陆军工程大学','中国人民解放军陆军装甲兵学院','中国人民解放军陆军防化学院']),
   '兵工七子': new Set(['北京理工大学','南京理工大学','中北大学','长春理工大学','沈阳理工大学','西安工业大学','重庆理工大学']),
-  '四电四邮': new Set(['北京邮电大学','南京邮电大学','重庆邮电大学','西安邮电大学','电子科技大学','西安电子科技大学','杭州电子科技大学','桂林电子科技大学']),
   '两电一邮': new Set(['电子科技大学','西安电子科技大学','北京邮电大学']),
   'C9联盟': new Set(['北京大学','清华大学','浙江大学','复旦大学','上海交通大学','南京大学','中国科学技术大学','哈尔滨工业大学','西安交通大学'])
 };
@@ -1242,7 +1241,6 @@ const TAG_STYLES = {
   '国防七子':{bg:'#d1fae5',color:'#166534',border:'#86efac'},
   '军工六校':{bg:'#ffedd5',color:'#9a3412',border:'#fed7aa'},
   '兵工七子':{bg:'#fef3c7',color:'#92400e',border:'#fde68a'},
-  '四电四邮':{bg:'#ede9fe',color:'#6b21a8',border:'#c4b5fd'},
   '两电一邮':{bg:'#fce7f3',color:'#9d174d',border:'#f9a8d4'},
   'C9联盟':{bg:'#dbeafe',color:'#1e40af',border:'#93c5fd'}
 };
@@ -1338,7 +1336,8 @@ function goDetail(schoolName){
   dp.style.transform = '';
   dp.classList.remove('hidden-detail');
   dp.classList.add('visible-detail');
-  hp.style.display='none';
+  // 隐藏首页：必须用 !important，否则手机端适配的 #homePage{display:flex !important} 会覆盖此隐藏
+  hp.style.setProperty('display', 'none', 'important');
   dp.style.setProperty('display', 'block', 'important');
   console.log('dp display:', dp.style.display, 'dp className:', dp.className);
   window.scrollTo(0,0);
@@ -1388,7 +1387,8 @@ function goHome(){
   dp.classList.add('hidden-detail');
   setTimeout(function(){
     dp.style.setProperty('display', 'none', 'important');
-    hp.style.setProperty('display', 'block', 'important');
+    // 恢复首页显示：清空内联样式回落 CSS（手机端 #homePage{display:flex} 布局保留，桌面为 block）
+    hp.style.removeProperty('display');
     window.scrollTo(0,0);
     Object.values(charts).forEach(c=>c&&c.resize());
     updateHomeQqGroupAds(isQrAdEnabled());

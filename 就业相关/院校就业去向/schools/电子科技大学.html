@@ -5,415 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>电子科技大学 - 控制类硕士就业去向</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: #F5F5F5;
-            color: #2d3436;
-            line-height: 1.7;
-        }
-        
-        .header {
-            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-            background: linear-gradient(135deg, #00ACC1 0%, #C5E8D8 100%);
-            color: #1a1a2e;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 4px 14px;
-            background: rgba(255,255,255,0.25);
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin: 0 4px;
-            backdrop-filter: blur(4px);
-        }
-        
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #00ACC1;
-            border-radius: 25px;
-            cursor: pointer;
-            margin: 20px;
-            font-size: 1em;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .back-btn:hover {
-            background: #00ACC1;
-            color: #1a1a2e;
-        }
-        
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 0 20px 40px;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .content-grid .section {
-            margin-bottom: 0;
-        }
-        
-        .full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            border-left: 4px solid #00ACC1;
-        }
-        
-        .stat-value {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #1a1a2e;
-            margin-bottom: 4px;
-        }
-        
-        .stat-label {
-            color: #7a7a7a;
-            font-size: 0.85em;
-        }
-        
-        .section {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-        
-        .section h2 {
-            font-size: 1.2em;
-            margin-bottom: 16px;
-            color: #1a1a2e;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #F5F5F5;
-        }
-        
-        .offers-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .offers-table th {
-            text-align: left;
-            padding: 12px;
-            background: #F5F5F5;
-            color: #1a1a2e;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-        
-        .offers-table td {
-            padding: 12px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9em;
-        }
-        
-        .offers-table tr:hover {
-            background: #F5F5F5;
-        }
-        
-        .company-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            white-space: nowrap;
-        }
-        
-        .company-detail {
-            color: #5a5a5a;
-        }
-        
-        .wordcloud-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .wordcloud-section h3 {
-            font-size: 1.15em;
-            color: #00ACC1;
-            margin-bottom: 12px;
-        }
-        .wordcloud-img {
-            max-width: 70%;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .pdf-image {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            margin-bottom: 16px;
-        }
-        
-        .bar-chart { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
-        .bar-track { flex: 1; height: 22px; background: #f0f0f0; border-radius: 11px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, #00ACC1, #C5E8D8); }
-        .bar-label { min-width: 70px; font-size: 0.85em; color: #5a5a5a; text-align: right; }
-        .bar-value { min-width: 50px; font-size: 0.85em; font-weight: 600; color: #00ACC1; text-align: right; }
-        .year-table th { text-align: center; }
-        .year-table td { text-align: center; font-size: 0.85em; }
-        .rank-num { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #00ACC1; color: #1a1a2e; border-radius: 50%; font-size: 0.8em; font-weight: 600; margin-right: 6px; }
-        .top10-list { list-style: none; padding: 0; }
-        .top10-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
-        .top10-list li:last-child { border-bottom: none; }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #8a8a8a;
-            font-size: 0.85em;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.4em;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .offers-table th,
-            .offers-table td {
-                padding: 8px;
-                font-size: 0.85em;
-            }
-            
-            .company-name {
-                white-space: normal;
-            }
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.4em; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .content-grid { grid-template-columns: 1fr; }
-            .offers-table th, .offers-table td { padding: 8px; font-size: 0.85em; }
-            .company-name { white-space: normal; }
-        }
-    </style>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background:#FFF5F5; color:#2d3436; line-height:1.7;
+}
+.header {
+    background: linear-gradient(135deg, #FFAB91 0%, #FFCCBC 100%);
+    color:#1a1a2e; padding:30px 20px; text-align:center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header h1 { font-size:2em; margin-bottom:10px; font-weight:600; }
+.badge {
+    display:inline-block; padding:4px 14px; background:rgba(255,255,255,0.25);
+    border-radius:20px; font-size:0.85em; margin:0 4px; backdrop-filter:blur(4px);
+}
+.back-btn {
+    display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+    background:white; border:2px solid #FFAB91; border-radius:25px; cursor:pointer;
+    margin:20px; font-size:1em; text-decoration:none; transition:all 0.3s; font-weight:500;
+}
+.back-btn:hover { background:#FFAB91; color:#1a1a2e; }
+.container { width:80%; margin:0 auto; padding:0 20px 40px; }
+.content-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-bottom:20px; }
+.content-grid .section { margin-bottom:0; }
+.full-width { grid-column:1 / -1; }
+.section { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section h2 { font-size:1.2em; color:#B71C1C; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.section p { font-size:0.95em; color:#3d3d3d; }
+.source-note { margin-top:10px; font-size:0.82em; color:#8a8a8a; }
+.college-list { list-style:none; padding:0; }
+.college-list li {
+    padding:10px 14px; background:#FFF5F5; border-radius:8px; margin-bottom:8px;
+    font-size:0.95em; border-left:3px solid #FFAB91;
+}
+.college-list li:last-child { margin-bottom:0; }
+.eval-badge {
+    display:inline-block; padding:10px 24px; border-radius:12px; font-size:1.6em;
+    font-weight:700; letter-spacing:2px;
+    background:#FFF1F2; color:#B71C1C; border:2px solid #FECDD3;
+}
+.eval-empty { color:#8a8a8a; font-size:0.9em; }
+.employer-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px; }
+.employer-item {
+    padding:8px 12px; background:#FFF5F5; border-radius:8px; font-size:0.85em;
+    display:flex; align-items:center; gap:8px;
+}
+.employer-rank {
+    width:20px; height:20px; line-height:20px; text-align:center; background:#FFAB91;
+    color:#1a1a2e; border-radius:50%; font-size:0.75em; font-weight:600; flex-shrink:0;
+}
+footer { text-align:center; padding:30px; color:#8a8a8a; font-size:0.85em; }
+@media (max-width:768px) {
+    .header h1 { font-size:1.4em; }
+    .content-grid { grid-template-columns:1fr; }
+    .container { width:100%; }
+}
+</style>
 </head>
 <body>
     <div class="header">
         <h1>电子科技大学</h1>
         <div>
-            <span class="badge">985</span>
-            <span class="tag">985</span><span class="tag">四电四邮</span>
+            <span class="badge" style="background:#FECDD3;color:#B71C1C;">985</span><span class="badge" style="background:#fde68a;color:#b45309;">控制学科 B</span>
         </div>
     </div>
-    
+
     <a href="javascript:history.back()" class="back-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
         返回上一级
     </a>
-    
+
     <div class="container">
-        <div class="stats-grid full-width">
-            <div class="stat-card">
-                <div class="stat-value">28-45万</div>
-                <div class="stat-label">平均薪资</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">华为、腾讯、字节、大疆</div>
-                <div class="stat-label">主要雇主</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">99%+</div>
-                <div class="stat-label">就业率</div>
-            </div>
-        </div>
-        
-        <div class="section wordcloud-section full-width">
-            <h3>🔥 热门就业单位词云</h3>
-            <img src="../wordclouds/wordcloud_电子科技大学.png" alt="电子科技大学热门就业单位词云" class="wordcloud-img">
-        </div>
-        
-        <div class="section full-width">
-            <h2>📋 就业去向详情</h2>
-            <table class="offers-table">
-                <thead>
-                    <tr>
-                        <th style="width: 30%">就业单位</th>
-                        <th>薪资/岗位详情</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                <tr>
-                    <td class="company-name">大疆（深圳）</td>
-                    <td class="company-detail">硬件工程师，年薪42w，月薪2.8w，15薪，公积金10%</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">华为</td>
-                    <td class="company-detail">FPGA设计，18k×(14-16)薪；数字能源15k×(14-16)薪；软件开发，20k×(14-16)薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">新华三</td>
-                    <td class="company-detail">数字IC，18k×14+1.5×12薪；C/C++，27W薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">滴滴</td>
-                    <td class="company-detail">算法，32k×15薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">海康威视</td>
-                    <td class="company-detail">感知算法，30k×15薪；java，22k×15薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">中兴</td>
-                    <td class="company-detail">IC设计，18k×15薪；IC算法，17.5k×15薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">成都芯原</td>
-                    <td class="company-detail">IC验证，18k×14+1×12薪；算法，18k×14+1×12薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">京东</td>
-                    <td class="company-detail">后端，25k×15.5薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">字节跳动</td>
-                    <td class="company-detail">算法，30k×15薪；后端开发，29k×15+1W薪</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">腾讯</td>
-                    <td class="company-detail">30-50K*16薪，计算机视觉算法研究员</td>
-                </tr>
-            
-                <tr>
-                    <td class="company-name">百度</td>
-                    <td class="company-detail">35-65K*16薪，自动驾驶基础架构部_数据闭环后端</td>
-                </tr>
-            
-                </tbody>
-            </table>
-        </div>
-        
         <div class="content-grid">
-        <div class="section">
-            <h2>🏭 就业单位行业分布 TOP5</h2>
-            <div class="bar-chart"><span class="bar-label">信息传输/软件/IT</span><div class="bar-track"><div class="bar-fill" style="width:61.95%"></div></div><span class="bar-value">61.95%</span></div>
-            <div class="bar-chart"><span class="bar-label">科学研究/技术服务</span><div class="bar-track"><div class="bar-fill" style="width:15.51%"></div></div><span class="bar-value">15.51%</span></div>
-            <div class="bar-chart"><span class="bar-label">制造业</span><div class="bar-track"><div class="bar-fill" style="width:11.03%"></div></div><span class="bar-value">11.03%</span></div>
-            <div class="bar-chart"><span class="bar-label">金融业</span><div class="bar-track"><div class="bar-fill" style="width:6.70%"></div></div><span class="bar-value">6.70%</span></div>
-            <div class="bar-chart"><span class="bar-label">电力/热力/燃气/水</span><div class="bar-track"><div class="bar-fill" style="width:1.25%"></div></div><span class="bar-value">1.25%</span></div>
+            <div class="section full-width">
+                <h2>📘 院校简介</h2>
+                <p>位于四川省成都市，是中华人民共和国教育部直属高校，由教育部、工业和信息化部、四川省和成都市共建；位列国家“双一流”、“985工程”、“211工程”。</p>
+                <p class="source-note">数据来源：《电子科技大学2022届毕业生就业质量年度报告》、《25考研择校宝典》</p>
+            </div>
+
+            <div class="section">
+                <h2>🏛️ 控制相关学院</h2>
+                <ul class="college-list">
+<li>006自动化工程学院</li>
+<li>010航空航天学院</li>
+<li>028电子科技大学（深圳）高等研究院</li>
+</ul>
+            </div>
+
+            <div class="section">
+                <h2>⭐ 控制学科评估排名</h2>
+                <div class="eval-badge" style="color:#b45309;border-color:#fde68a;">B</div>
+            </div>
+
+            <div class="section full-width">
+                <h2>🏢 部分就业单位</h2>
+                <div class="employer-grid">
+<div class="employer-item"><span class="employer-rank">1</span>华为技术有限公司</div>
+<div class="employer-item"><span class="employer-rank">2</span>中国电子科技集团公司</div>
+<div class="employer-item"><span class="employer-rank">3</span>中兴通讯股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">4</span>普联技术有限公司</div>
+<div class="employer-item"><span class="employer-rank">5</span>腾讯控股有限公司</div>
+<div class="employer-item"><span class="employer-rank">6</span>阿里巴巴集团</div>
+<div class="employer-item"><span class="employer-rank">7</span>海光信息技术股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">8</span>中国航空工业集团公司</div>
+<div class="employer-item"><span class="employer-rank">9</span>电子科技大学</div>
+<div class="employer-item"><span class="employer-rank">10</span>中国航天科工集团公司</div>
+</div>
+            </div>
         </div>
-        
-        <div class="section">
-            <h2>🌏 就业地区分布 TOP10</h2>
-            <div class="bar-chart"><span class="bar-label">四川省成都市</span><div class="bar-track"><div class="bar-fill" style="width:35.21%"></div></div><span class="bar-value">35.21%</span></div>
-            <div class="bar-chart"><span class="bar-label">广东省深圳市</span><div class="bar-track"><div class="bar-fill" style="width:12.28%"></div></div><span class="bar-value">12.28%</span></div>
-            <div class="bar-chart"><span class="bar-label">北京市</span><div class="bar-track"><div class="bar-fill" style="width:12.04%"></div></div><span class="bar-value">12.04%</span></div>
-            <div class="bar-chart"><span class="bar-label">上海市</span><div class="bar-track"><div class="bar-fill" style="width:8.77%"></div></div><span class="bar-value">8.77%</span></div>
-            <div class="bar-chart"><span class="bar-label">浙江省杭州市</span><div class="bar-track"><div class="bar-fill" style="width:5.92%"></div></div><span class="bar-value">5.92%</span></div>
-            <div class="bar-chart"><span class="bar-label">重庆市</span><div class="bar-track"><div class="bar-fill" style="width:3.56%"></div></div><span class="bar-value">3.56%</span></div>
-            <div class="bar-chart"><span class="bar-label">江苏省南京市</span><div class="bar-track"><div class="bar-fill" style="width:2.26%"></div></div><span class="bar-value">2.26%</span></div>
-            <div class="bar-chart"><span class="bar-label">湖北省武汉市</span><div class="bar-track"><div class="bar-fill" style="width:2.07%"></div></div><span class="bar-value">2.07%</span></div>
-            <div class="bar-chart"><span class="bar-label">陕西省西安市</span><div class="bar-track"><div class="bar-fill" style="width:1.83%"></div></div><span class="bar-value">1.83%</span></div>
-            <div class="bar-chart"><span class="bar-label">广东省广州市</span><div class="bar-track"><div class="bar-fill" style="width:1.54%"></div></div><span class="bar-value">1.54%</span></div>
-        </div>
-        
-        <div class="section">
-            <h2>🏢 就业单位 TOP10</h2>
-            <ol class="top10-list">
-                <li><span class="rank-num">1</span>成都华为技术有限公司</li>
-                <li><span class="rank-num">2</span>中兴通讯股份有限公司</li>
-                <li><span class="rank-num">3</span>芯原微电子（成都）有限公司</li>
-                <li><span class="rank-num">4</span>西南电子设备研究所（中国电子科技集团公司第二十九研究所）</li>
-                <li><span class="rank-num">5</span>比亚迪股份有限公司</li>
-                <li><span class="rank-num">6</span>海光信息技术股份有限公司</li>
-                <li><span class="rank-num">7</span>中国电子科技集团公司第十研究所</li>
-                <li><span class="rank-num">8</span>成都市联洲国际技术有限公司</li>
-                <li><span class="rank-num">9</span>成都芯源系统有限公司</li>
-                <li><span class="rank-num">10</span>矽力杰半导体技术（杭州）有限公司</li>
-            </ol>
-        </div>
-        
-        </div>
-        
-        <div class="section full-width">
-            <h2>📈 历年就业单位 TOP10 对比</h2>
-            <table class="offers-table year-table">
-                <thead>
-                    <tr>
-                        <th>排名</th>
-                        <th>2020届</th>
-                        <th>2021届</th>
-                        <th>2022届</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><span class="rank-num">1</span></td><td>中兴通讯股份有限公司</td><td>中兴通讯股份有限公司</td><td>华为技术有限公司</td></tr>
-                    <tr><td><span class="rank-num">2</span></td><td>华为技术有限公司</td><td>中国电子科技集团公司</td><td>中国电子科技集团公司</td></tr>
-                    <tr><td><span class="rank-num">3</span></td><td>中国电子科技集团公司</td><td>华为技术有限公司</td><td>中兴通讯股份有限公司</td></tr>
-                    <tr><td><span class="rank-num">4</span></td><td>招银网络科技有限公司</td><td>电子科技大学</td><td>普联技术有限公司</td></tr>
-                    <tr><td><span class="rank-num">5</span></td><td>电子科技大学</td><td>北京三快在线科技有限公司</td><td>腾讯控股有限公司</td></tr>
-                    <tr><td><span class="rank-num">6</span></td><td>芯原微电子(成都)有限公司</td><td>腾讯控股有限公司</td><td>阿里巴巴集团</td></tr>
-                    <tr><td><span class="rank-num">7</span></td><td>腾讯控股有限公司</td><td>中国航空工业集团公司</td><td>海光信息技术股份有限公司</td></tr>
-                    <tr><td><span class="rank-num">8</span></td><td>中国航空工业集团公司</td><td>中国航天科工集团公司</td><td>中国航空工业集团公司</td></tr>
-                    <tr><td><span class="rank-num">9</span></td><td>深圳市汇顶科技股份有限公司</td><td>芯原微电子(成都)有限公司</td><td>电子科技大学</td></tr>
-                    <tr><td><span class="rank-num">10</span></td><td>上海浦东发展银行</td><td>中共成都市委组织部（选调生）</td><td>中国航天科工集团公司</td></tr>
-                </tbody>
-            </table>
-        </div>
-        
-        </div>
-    
+    </div>
+
     <footer>
-        <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
-        <p>仅供参考，数据可能存在时效性差异</p>
+        <p>数据来源：《26就业宝典》 | 制作：@一只通信考研的er</p>
+        <p>以下分析基于学校整体就业情况，并非是对控制相关专业就业情况的精准分析，故所有内容仅供参考。</p>
     </footer>
 </body>
 </html>

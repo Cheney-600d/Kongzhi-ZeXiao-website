@@ -5,197 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北京理工大学 - 控制类硕士就业去向</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #2d3436; line-height: 1.7; }
-        .header { background: linear-gradient(135deg, #FFAB91 0%, #FFF0E0 100%); color: #1a1a2e; padding: 30px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .header h1 { font-size: 2em; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-        .badge { display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.25); color: #1a1a2e; border-radius: 20px; font-size: 0.85em; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); }
-        .container { width: 80%; margin: 0 auto; padding: 20px; }
-        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; }
-        .content-grid .section { margin-bottom: 0; }
-        .full-width { grid-column: 1 / -1; }
-        .wordcloud-section { text-align: center; margin-bottom: 20px; }
-        .wordcloud-section h3 { font-size: 1.15em; color: #FFAB91; margin-bottom: 12px; }
-        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .bar-chart { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
-        .bar-track { flex: 1; height: 22px; background: #f0f0f0; border-radius: 11px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, #FFAB91, #FFD1A9); }
-        .bar-label { min-width: 160px; font-size: 0.85em; color: #5a5a5a; }
-        .bar-value { min-width: 60px; font-size: 0.85em; font-weight: 600; color: #FFAB91; text-align: right; }
-        .top10-list { list-style: none; padding: 0; }
-        .top10-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
-        .top10-list li:last-child { border-bottom: none; }
-        .rank-num { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #FFAB91; color: #1a1a2e; border-radius: 50%; font-size: 0.8em; font-weight: 600; margin-right: 10px; }
-        .employer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
-        .employer-item { padding: 8px 12px; background: #FFF0E0; border-radius: 8px; font-size: 0.85em; display: flex; align-items: center; gap: 8px; }
-        .employer-rank { width: 20px; height: 20px; line-height: 20px; text-align: center; background: #FFAB91; color: #1a1a2e; border-radius: 50%; font-size: 0.75em; font-weight: 600; flex-shrink: 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .stat-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1); border-left: 4px solid #FFAB91; }
-        .stat-value { font-size: 1.4em; font-weight: 600; color: #FFAB91; margin-bottom: 4px; }
-        .stat-label { color: #7a7a7a; font-size: 0.85em; }
-        .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-        .section h2 { font-size: 1.3em; margin-bottom: 16px; color: #FFAB91; padding-bottom: 10px; border-bottom: 2px solid #FFF0E0; }
-        .section h3 { font-size: 1.15em; margin: 16px 0 10px; color: #444; }
-        .pdf-page { margin-bottom: 20px; }
-        .page-label { font-size: 0.85em; color: #7a7a7a; margin-bottom: 8px; text-align: center; }
-        .pdf-page img { width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .image-cropper { width: 100%; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .image-cropper img { width: 100%; display: block; }
-        .crop-top img { clip-path: inset(0 0 50% 0); }
-        .crop-bottom img { clip-path: inset(50% 0 0 0); }
-        .info-list { list-style: none; padding: 0; }
-        .info-list li { padding: 10px 14px; background: #FFF0E0; border-radius: 8px; margin-bottom: 8px; font-size: 1em; }
-        .info-note { padding: 14px; background: #fff8e1; border-left: 4px solid #ffc107; border-radius: 8px; font-size: 0.9em; color: #5a5a5a; }
-        footer { text-align: center; padding: 30px 20px; color: #8a8a8a; font-size: 0.85em; }
-        @media (max-width: 768px) { .header h1 { font-size: 1.4em; } .section { padding: 16px; } .content-grid { grid-template-columns: 1fr; } }
-    </style>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background:#FFF5F5; color:#2d3436; line-height:1.7;
+}
+.header {
+    background: linear-gradient(135deg, #FFAB91 0%, #FFCCBC 100%);
+    color:#1a1a2e; padding:30px 20px; text-align:center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header h1 { font-size:2em; margin-bottom:10px; font-weight:600; }
+.badge {
+    display:inline-block; padding:4px 14px; background:rgba(255,255,255,0.25);
+    border-radius:20px; font-size:0.85em; margin:0 4px; backdrop-filter:blur(4px);
+}
+.back-btn {
+    display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+    background:white; border:2px solid #FFAB91; border-radius:25px; cursor:pointer;
+    margin:20px; font-size:1em; text-decoration:none; transition:all 0.3s; font-weight:500;
+}
+.back-btn:hover { background:#FFAB91; color:#1a1a2e; }
+.container { width:80%; margin:0 auto; padding:0 20px 40px; }
+.content-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-bottom:20px; }
+.content-grid .section { margin-bottom:0; }
+.full-width { grid-column:1 / -1; }
+.section { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section h2 { font-size:1.2em; color:#B71C1C; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.section p { font-size:0.95em; color:#3d3d3d; }
+.source-note { margin-top:10px; font-size:0.82em; color:#8a8a8a; }
+.college-list { list-style:none; padding:0; }
+.college-list li {
+    padding:10px 14px; background:#FFF5F5; border-radius:8px; margin-bottom:8px;
+    font-size:0.95em; border-left:3px solid #FFAB91;
+}
+.college-list li:last-child { margin-bottom:0; }
+.eval-badge {
+    display:inline-block; padding:10px 24px; border-radius:12px; font-size:1.6em;
+    font-weight:700; letter-spacing:2px;
+    background:#FFF1F2; color:#B71C1C; border:2px solid #FECDD3;
+}
+.eval-empty { color:#8a8a8a; font-size:0.9em; }
+.employer-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px; }
+.employer-item {
+    padding:8px 12px; background:#FFF5F5; border-radius:8px; font-size:0.85em;
+    display:flex; align-items:center; gap:8px;
+}
+.employer-rank {
+    width:20px; height:20px; line-height:20px; text-align:center; background:#FFAB91;
+    color:#1a1a2e; border-radius:50%; font-size:0.75em; font-weight:600; flex-shrink:0;
+}
+footer { text-align:center; padding:30px; color:#8a8a8a; font-size:0.85em; }
+@media (max-width:768px) {
+    .header h1 { font-size:1.4em; }
+    .content-grid { grid-template-columns:1fr; }
+    .container { width:100%; }
+}
+</style>
 </head>
 <body>
     <div class="header">
         <h1>北京理工大学</h1>
-        <span class="badge">国防七子</span>
+        <div>
+            <span class="badge" style="background:#FECDD3;color:#B71C1C;">985</span><span class="badge" style="background:#FECDD3;color:#B71C1C;">控制学科 A+</span>
+        </div>
     </div>
+
+    <a href="javascript:history.back()" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回上一级
+    </a>
+
     <div class="container">
-        <a href="javascript:history.back()" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            返回上一级
-        </a>
         <div class="content-grid">
             <div class="section full-width">
-                <h2>📊 2022届就业概览</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value">220人</div>
-                        <div class="stat-label">硕士毕业生总数</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">99.55%</div>
-                        <div class="stat-label">硕士就业率</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">165人</div>
-                        <div class="stat-label">航天科技集团</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">军工+大厂</div>
-                        <div class="stat-label">双轨就业格局</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section full-width wordcloud-section">
-                <h3>🏢 主要就业单位词云</h3>
-                <img src="../wordclouds/wordcloud_北京理工大学.png" alt="北京理工大学就业单位词云" class="wordcloud-img">
+                <h2>📘 院校简介</h2>
+                <p>位于北京市，是隶属于中华人民共和国工业和信息化部的全国重点大学，中管高校，位列国家“双一流”、“211工程”、“985工程”重点建设高校。</p>
+                <p class="source-note">数据来源：《2022年北京理工大学毕业生就业质量年度报告》、《25考研择校宝典》</p>
             </div>
 
             <div class="section">
-                <h2>🏆 研究生集中就业单位TOP10</h2>
-                <ul class="top10-list">
-                    <li><span class="rank-num">1</span>中国航天科技集团有限公司 <strong>165人</strong></li>
-                    <li><span class="rank-num">2</span>中国航天科工集团有限公司 <strong>149人</strong></li>
-                    <li><span class="rank-num">3</span>中国电子科技集团有限公司 <strong>138人</strong></li>
-                    <li><span class="rank-num">4</span>中国兵器工业集团有限公司 <strong>102人</strong></li>
-                    <li><span class="rank-num">5</span>上海汽车集团股份有限公司 <strong>93人</strong></li>
-                    <li><span class="rank-num">6</span>华为技术有限公司 <strong>67人</strong></li>
-                    <li><span class="rank-num">7</span>中国航空工业集团有限公司 <strong>61人</strong></li>
-                    <li><span class="rank-num">8</span>京东方科技集团股份有限公司 <strong>57人</strong></li>
-                    <li><span class="rank-num">9</span>中国科学院 <strong>57人</strong></li>
-                    <li><span class="rank-num">10</span>百度 <strong>46人</strong></li>
-                </ul>
+                <h2>🏛️ 控制相关学院</h2>
+                <ul class="college-list">
+<li>206自动化学院</li>
+<li>315前沿交叉科学研究院</li>
+</ul>
             </div>
 
             <div class="section">
-                <h2>📈 硕士就业去向分布</h2>
-                <div class="bar-chart">
-                    <span class="bar-label">民营企业</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 33.94%"></div></div>
-                    <span class="bar-value">33.94%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">国有企业</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 29.41%"></div></div>
-                    <span class="bar-value">29.41%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">科研设计单位</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 11.76%"></div></div>
-                    <span class="bar-value">11.76%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">三资企业</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 8.60%"></div></div>
-                    <span class="bar-value">8.60%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">国内升学</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 7.69%"></div></div>
-                    <span class="bar-value">7.69%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">其他事业单位</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 2.26%"></div></div>
-                    <span class="bar-value">2.26%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">出国深造</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 1.81%"></div></div>
-                    <span class="bar-value">1.81%</span>
-                </div>
-                <div class="bar-chart">
-                    <span class="bar-label">机关/部队/其他</span>
-                    <div class="bar-track"><div class="bar-fill" style="width: 4.53%"></div></div>
-                    <span class="bar-value">4.53%</span>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>🔬 国防军工类就业（TOP4）</h2>
-                <div class="employer-grid">
-                    <div class="employer-item"><span class="employer-rank">1</span>航天科技 165人</div>
-                    <div class="employer-item"><span class="employer-rank">2</span>航天科工 149人</div>
-                    <div class="employer-item"><span class="employer-rank">3</span>中电科 138人</div>
-                    <div class="employer-item"><span class="employer-rank">4</span>兵器工业 102人</div>
-                </div>
-                <p style="margin-top: 12px; font-size: 0.85em; color: #5a5a5a;">四大军工集团合计554人，是北理工最核心的就业去向</p>
-            </div>
-
-            <div class="section">
-                <h2>💻 互联网/科技企业</h2>
-                <div class="employer-grid">
-                    <div class="employer-item">华为 67人</div>
-                    <div class="employer-item">上汽集团 93人</div>
-                    <div class="employer-item">京东方 57人</div>
-                    <div class="employer-item">中科院 57人</div>
-                    <div class="employer-item">百度 46人</div>
-                    <div class="employer-item">航空工业 61人</div>
-                </div>
+                <h2>⭐ 控制学科评估排名</h2>
+                <div class="eval-badge" style="color:#B71C1C;border-color:#FECDD3;">A+</div>
             </div>
 
             <div class="section full-width">
-                <h2>📋 就业特色总结</h2>
-                <p style="margin-bottom: 16px; color: #5a5a5a;">北理工的雷达所在其领域的名声和实力都不弱，通信专业的研究生很多都会研究与合成孔径雷达相关的方向，偏军工类，对口的就业单位主要是各种<strong>航天院、研究所</strong>。当然也有像<strong>华为、百度</strong>这样的大厂，总的来说，北理的就业还是很不错的！</p>
-                <p style="margin-bottom: 16px; color: #5a5a5a;">2022届硕士毕业生220人，其中17人读博深造，4人出国出境，182人以签订就业协议或劳动合同形式直接就业，整体就业率达到<strong>99.55%</strong>。主要从事雷达卫星导航、信号处理、无线电技术、图像识别、计算及通信、信息系统安全等有关的研究、应用、开发、管理、教学等岗位工作。</p>
+                <h2>🏢 部分就业单位</h2>
                 <div class="employer-grid">
-                    <div class="employer-item">航天科技/科工</div>
-                    <div class="employer-item">中电科</div>
-                    <div class="employer-item">兵器工业</div>
-                    <div class="employer-item">华为</div>
-                    <div class="employer-item">百度</div>
-                    <div class="employer-item">上汽</div>
-                    <div class="employer-item">京东方</div>
-                    <div class="employer-item">中科院</div>
-                    <div class="employer-item">航空工业</div>
-                    <div class="employer-item">雷达/卫星导航</div>
-                    <div class="employer-item">信号处理</div>
-                    <div class="employer-item">信息系统安全</div>
-                </div>
+<div class="employer-item"><span class="employer-rank">1</span>中国航天科工集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">2</span>中国航天科技集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">3</span>中国兵器工业集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">4</span>华为技术有限公司</div>
+<div class="employer-item"><span class="employer-rank">5</span>中国航空工业集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">6</span>中国电子科技集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">7</span>中国兵器装备集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">8</span>中国船舶集团有限公司</div>
+<div class="employer-item"><span class="employer-rank">9</span>腾讯科技(深圳)有限公司</div>
+<div class="employer-item"><span class="employer-rank">10</span>北京字节跳动科技有限公司</div>
+</div>
             </div>
         </div>
     </div>
+
     <footer>
-        <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
+        <p>数据来源：《26就业宝典》 | 制作：@一只通信考研的er</p>
+        <p>以下分析基于学校整体就业情况，并非是对控制相关专业就业情况的精准分析，故所有内容仅供参考。</p>
     </footer>
 </body>
 </html>

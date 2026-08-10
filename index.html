@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>27/28控制类考研与就业全链路指南</title>
 <meta name="description" content="27/28控制类考研择校数据总览，覆盖100+高校、500+学院子方向，提供院校筛选、院校PK、热度对比、生源地图、就业去向、改考信息、分数数据等一站式查询。">
 <meta name="keywords" content="控制考研,自动化考研,控制科学与工程,考研择校,考研院校,院校对比,考研数据,985,211,双一流">
@@ -268,7 +268,7 @@ h1,h2,h3{font-weight:700;color:#2d2d3d;text-shadow:0 0 8px rgba(184,164,216,0.2)
 }
 @media(max-width:768px){.qr-lightbox-overlay img{width:260px;height:260px;}}
 @media (max-width:768px){
-.page{padding:12px;max-width:100vw;}
+.page{padding:12px;max-width:100vw;padding-top:max(12px, env(safe-area-inset-top));}
 
 /* 全局缩放重置 - 手机端不使用 zoom */
 body{zoom:1 !important;}
@@ -397,13 +397,13 @@ header p{font-size:.85rem !important;}
 .fav-star{font-size:18px !important;}
 }
 @media(max-width:768px){
-.page{padding:12px;max-width:100vw;}
+.page{padding:12px;max-width:100vw;padding-top:max(12px, env(safe-area-inset-top));}
 header h1{font-size:2rem !important;letter-spacing:0 !important;line-height:1.2;}
 .col-school{white-space:normal !important;}
 .fav-star{font-size:18px !important;}
 }
 @media(max-width:768px){
-.page{padding:12px;max-width:100vw;}
+.page{padding:12px;max-width:100vw;padding-top:max(12px, env(safe-area-inset-top));}
 header h1{font-size:2rem !important;letter-spacing:0 !important;line-height:1.2;}
 header p{font-size:.85rem !important;}
 header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
@@ -417,7 +417,7 @@ header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
 .school-table th,.school-table td{padding:4px 3px !important;text-align:center !important;vertical-align:middle !important;}
 .school-table th:nth-child(1),.school-table td:nth-child(1){width:42px !important;}
 .school-table th:nth-child(2),.school-table td:nth-child(2){width:48px !important;}
-.school-table th:nth-child(3),.school-table td:nth-child(3){width:100px !important;white-space:nowrap !important;text-align:left !important;}
+.school-table th:nth-child(3),.school-table td:nth-child(3){width:100px !important;white-space:normal !important;text-align:left !important;}
 .school-table th:nth-child(4),.school-table td:nth-child(4){width:95px !important;white-space:nowrap !important;text-align:left !important;}
 .school-table th:nth-child(5),.school-table td:nth-child(5),.school-table th:nth-child(6),.school-table td:nth-child(6),.school-table th:nth-child(7),.school-table td:nth-child(7),.school-table th:nth-child(8),.school-table td:nth-child(8),.school-table th:nth-child(9),.school-table td:nth-child(9),.school-table th:nth-child(10),.school-table td:nth-child(10),.school-table th:nth-child(11),.school-table td:nth-child(11){width:38px !important;}
 .school-table th:nth-child(12),.school-table td:nth-child(12){width:48px !important;}
@@ -899,6 +899,104 @@ textarea:focus-visible,
   body.keyboard-open #compareBar,
   body.keyboard-open #backToTop {
     display:none !important;
+  }
+
+  /* ============================================================
+     header 第二行手机端适配（修正）
+     根因：header 内夹有 <style>×3 + .hero-stats + <script> 元素，
+     旧选择器 #homePage header>div[style*="display:flex"]:nth-child(2)
+     已失配（flex 容器实际是 header 第 6 个子元素）。此处改用结构
+     无关的选择器，确保第二行布局与导航网格在手机端正确堆叠。
+     ============================================================ */
+  /* 第二行整体：纵向堆叠、水平居中 */
+  #homePage header > div[style*="margin-bottom:16px"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* 中间导航容器：占满整行 */
+  #homePage header > div[style*="margin-bottom:16px"] > div:nth-child(2) {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 0 !important;
+  }
+  /* 导航网格：2 列，不再横排溢出（内联 flex-direction:row 被覆盖） */
+  #homePage header .nav-btn-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* 第三个分组跨整行（原本 2 列时只占半宽） */
+  #homePage header .nav-btn-grid > div:last-child {
+    grid-column: 1 / -1 !important;
+  }
+  #homePage header .nav-btn-grid > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+    column-gap: 8px !important;
+    row-gap: 7px !important;
+  }
+  #homePage header .nav-btn-grid .nav-pill-lg {
+    min-width: 0 !important;
+    min-height: 38px !important;
+    padding: 7px 6px !important;
+    font-size: clamp(11px, 3.25vw, 13px) !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  /* 左侧头像区：水平居中 */
+  #homePage header > div[style*="margin-bottom:16px"] > div:first-child {
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-left: 0 !important;
+  }
+  /* 右侧倒计时区：居中、横向排布 */
+  #homePage header > div[style*="margin-bottom:16px"] > div:last-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ============================================================
+     广告/交流群移到筛选区上方：让筛选后直接衔接学校数据。
+     #homePage 手机端改为 flex column，用 order 重排直接子元素：
+     header → 热度榜 → 交流群 → [筛选容器: 资料广告→筛选→目标院校] → 学校列表
+     ============================================================ */
+  #homePage {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #homePage > header { order: 0; }
+  #homePage > #heatRankSection { order: 1; }
+  #homePage > .ad-qq-group-mobile { order: 2; }
+  #homePage > .mb-6 { order: 3; }
+  #homePage > #mainContentArea { order: 4; }
+  /* 资料与课程广告（筛选容器内部）：移到筛选卡片上方 */
+  #homePage > .mb-6 > .ad-course-link {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /* 目标院校按钮紧随筛选卡片之后 */
+  #homePage > .mb-6 > #favBtn {
+    order: 0 !important;
+    width: 100% !important;
   }
 }
 

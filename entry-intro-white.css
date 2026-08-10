@@ -445,6 +445,31 @@ html.entry-intro-running body { overflow: hidden !important; }
   .entry-intro__progress span { align-items: flex-start; font-size: 7px; letter-spacing: 0; }
 }
 
+/* 更窄视口（≤520px）：收敛三层卡片宽度与横向位置，避免第三层溢出视口。
+   三层 base width 142px + left 2%/33%/62%，经 3D 动画 z 缩放后第三层
+   视觉 right 可达 400px+，超出 390px 视口被截断。 */
+@media (max-width: 520px) {
+  .entry-layer {
+    width: 118px;
+    min-height: 60px;
+    padding: 8px 10px;
+    border-radius: 9px;
+  }
+  .entry-layer--input { left: 0; }
+  .entry-layer--model { left: 24%; }
+  .entry-layer--target { left: 48%; }
+  .entry-layer strong { font-size: 11.5px; }
+  .entry-layer p { font-size: 7px; }
+  .entry-layer small { margin-bottom: 5px; letter-spacing: .08em; }
+  .entry-layer__index { font-size: 12px; }
+  /* 目标锁定框：缩回视口内，不再贴边 */
+  .entry-target-lock { width: 58px; height: 58px; right: 0; }
+  .entry-target-lock span:nth-child(2) { inset: 8px; }
+  .entry-target-lock i { inset: 16px; }
+  .entry-target-lock b { font-size: 7px; }
+  .entry-target-lock small { font-size: 5px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .entry-intro *,
   .entry-intro *::before,

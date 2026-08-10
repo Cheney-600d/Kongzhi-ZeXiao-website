@@ -14,7 +14,11 @@
     hasPlayed = window.sessionStorage.getItem(storageKey) === '1';
   } catch (error) {}
 
-  if ((!forceReplay && hasPlayed) || reducedMotion) {
+  // 带 school/from 参数 = 从专业课查询等子页面跳转回来的详情页场景，用户已在站内，跳过开场动画
+  var isDetailEntry = window.location.search.indexOf('school=') !== -1 ||
+                      window.location.search.indexOf('from=') !== -1;
+
+  if ((!forceReplay && hasPlayed) || reducedMotion || isDetailEntry) {
     intro.remove();
     return;
   }

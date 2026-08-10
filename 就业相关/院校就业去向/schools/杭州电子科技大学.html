@@ -3,467 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>杭州电子科技大学 - 控制类考研就业去向</title>
-        <style>
-        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
-        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
-        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
-        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
-        .hero p { font-size: 1.15em; opacity: 1; }
-        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
-        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
-        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
-        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
-        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
-        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
-        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
-        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
-        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
-        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
-        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
-        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
-        .badge-other { background: #C5CAE9; color: #1a1a2e; }
-        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
-        .tip-box strong { color: #1a1a2e; }
-        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .full-width { grid-column: 1 / -1; }
-        .rank-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
-        .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; margin-right: 12px; flex-shrink: 0; }
-        .rank-1 { background: #F8C3CD; color: #1a1a2e; }
-        .rank-2 { background: #C5CAE9; color: #1a1a2e; }
-        .rank-3 { background: #FFCCBC; color: #1a1a2e; }
-        .rank-other { background: #E8F5E9; color: #1a1a2e; }
-        .rank-name { font-weight: 600; color: #2d3436; }
-        .rank-count { color: #5a5a5a; font-size: 0.85em; margin-left: auto; }
-        .offer-list { margin-top: 16px; }
-        .offer-item { background: white; border-left: 4px solid var(--accent-color); padding: 14px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-        .offer-company { font-weight: 700; color: #1a1a2e; font-size: 1.1em; }
-        .offer-detail { color: #555; margin-top: 4px; font-size: 0.95em; }
-        .offer-highlight { color: #d63031; font-weight: 600; }
-        .salary-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85em; }
-        .salary-table th, .salary-table td { padding: 8px 10px; border-bottom: 1px solid #e0e0e0; text-align: left; }
-        .salary-table th { background: #E8F5E9; font-weight: 600; color: #1a1a2e; }
-        .salary-table td { background: white; }
-        .salary-table tr:hover td { background: #f5f5f5; }
-        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
-        .industry-name { width: 220px; color: #2d3436; font-weight: 500; }
-        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
-        .industry-percent { color: #5a5a5a; font-weight: 600; }
-        .region-bar { display: flex; align-items: center; margin: 6px 0; font-size: 0.9em; }
-        .region-name { width: 160px; color: #2d3436; font-weight: 500; }
-        .region-bar-fill { height: 18px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 20px; }
-        .region-percent { color: #5a5a5a; font-weight: 600; width: 60px; }
-        .key-unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
-        .key-unit-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 12px; text-align: center; }
-        .key-unit-logo { font-weight: 700; color: #1a1a2e; font-size: 1em; }
-        .key-unit-count { color: #d63031; font-weight: 600; font-size: 1.1em; margin-top: 4px; }
-        .bonus-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; font-weight: 600; background: #FFCCBC; color: #1a1a2e; margin-left: 4px; }
-        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .salary-table { font-size: 0.75em; } .industry-name { width: 160px; font-size: 0.85em; } .region-name { width: 120px; font-size: 0.85em; } }
-    
-        .chart-container { background: white; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); padding: 16px; margin-bottom: 20px; }
-    </style>
-    <script src="../../../vendor/echarts.min.js"></script>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+    <title>杭州电子科技大学 - 控制类硕士就业去向</title>
+    <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background:#FFF5F5; color:#2d3436; line-height:1.7;
+}
+.header {
+    background: linear-gradient(135deg, #FFAB91 0%, #FFCCBC 100%);
+    color:#1a1a2e; padding:30px 20px; text-align:center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header h1 { font-size:2em; margin-bottom:10px; font-weight:600; }
+.badge {
+    display:inline-block; padding:4px 14px; background:rgba(255,255,255,0.25);
+    border-radius:20px; font-size:0.85em; margin:0 4px; backdrop-filter:blur(4px);
+}
+.back-btn {
+    display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+    background:white; border:2px solid #FFAB91; border-radius:25px; cursor:pointer;
+    margin:20px; font-size:1em; text-decoration:none; transition:all 0.3s; font-weight:500;
+}
+.back-btn:hover { background:#FFAB91; color:#1a1a2e; }
+.container { width:80%; margin:0 auto; padding:0 20px 40px; }
+.content-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-bottom:20px; }
+.content-grid .section { margin-bottom:0; }
+.full-width { grid-column:1 / -1; }
+.section { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section h2 { font-size:1.2em; color:#B71C1C; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.section p { font-size:0.95em; color:#3d3d3d; }
+.source-note { margin-top:10px; font-size:0.82em; color:#8a8a8a; }
+.college-list { list-style:none; padding:0; }
+.college-list li {
+    padding:10px 14px; background:#FFF5F5; border-radius:8px; margin-bottom:8px;
+    font-size:0.95em; border-left:3px solid #FFAB91;
+}
+.college-list li:last-child { margin-bottom:0; }
+.eval-badge {
+    display:inline-block; padding:10px 24px; border-radius:12px; font-size:1.6em;
+    font-weight:700; letter-spacing:2px;
+    background:#FFF1F2; color:#B71C1C; border:2px solid #FECDD3;
+}
+.eval-empty { color:#8a8a8a; font-size:0.9em; }
+.employer-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px; }
+.employer-item {
+    padding:8px 12px; background:#FFF5F5; border-radius:8px; font-size:0.85em;
+    display:flex; align-items:center; gap:8px;
+}
+.employer-rank {
+    width:20px; height:20px; line-height:20px; text-align:center; background:#FFAB91;
+    color:#1a1a2e; border-radius:50%; font-size:0.75em; font-weight:600; flex-shrink:0;
+}
+footer { text-align:center; padding:30px; color:#8a8a8a; font-size:0.85em; }
+@media (max-width:768px) {
+    .header h1 { font-size:1.4em; }
+    .content-grid { grid-template-columns:1fr; }
+    .container { width:100%; }
+}
+</style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
-    <div class="hero">
-        <h1>杭州电子科技大学 <span class="badge badge-other">其他</span></h1>
-        <p>IT强校 / 杭州 / 华为194/海康131/字节84/阿里32/腾讯33</p>
+    <div class="header">
+        <h1>杭州电子科技大学</h1>
+        <div>
+            <span class="badge" style="background:#e5e7eb;color:#6b7280;">普通高校</span><span class="badge" style="background:#fde68a;color:#b45309;">控制学科 B+</span>
+        </div>
     </div>
-    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
+
+    <a href="javascript:history.back()" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        返回上一级
+    </a>
+
+    <div class="container">
         <div class="content-grid">
-            <div class="info-card full-width">
-                <h3>📊 核心数据概览</h3>
-                <div class="highlight-box">
-                    <div class="stat-row">
-                        <div class="stat-item"><div class="stat-number">60.42%</div><div class="stat-label">信息传输/IT</div></div>
-                        <div class="stat-item"><div class="stat-number">15.16%</div><div class="stat-label">制造业</div></div>
-                        <div class="stat-item"><div class="stat-number">11.34%</div><div class="stat-label">金融业</div></div>
-                        <div class="stat-item"><div class="stat-number">50.23%</div><div class="stat-label">留杭州</div></div>
-                    </div>
-                </div>
+            <div class="section full-width">
+                <h2>📘 院校简介</h2>
+                <p>位于杭州市，是浙江省人民政府与国防科技工业局共建的教学研究型大学，是浙江省首批重点建设的5所高校之一，是省属高校中唯一拥有国防特色重点专业的高校</p>
+                <p class="source-note">数据来源：《杭州电子科技大学2023年度毕业生就业质量报告》、《25考研择校宝典》</p>
             </div>
 
-            <div class="info-card">
-                <h3>🏆 2023届就业人数 TOP10</h3>
-                <div class="rank-item">
-                    <span class="rank-num rank-1">1</span>
-                    <span class="rank-name">杭州华为企业通信技术</span>
-                    <span class="rank-count">61人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-2">2</span>
-                    <span class="rank-name">杭州海康威视数字技术</span>
-                    <span class="rank-count">28人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-3">3</span>
-                    <span class="rank-name">新华三技术</span>
-                    <span class="rank-count">27人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">4</span>
-                    <span class="rank-name">宁波银行</span>
-                    <span class="rank-count">25人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">5</span>
-                    <span class="rank-name">杭州银行</span>
-                    <span class="rank-count">22人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">6</span>
-                    <span class="rank-name">比亚迪</span>
-                    <span class="rank-count">21人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">7</span>
-                    <span class="rank-name">恒生电子</span>
-                    <span class="rank-count">20人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">8</span>
-                    <span class="rank-name">华为技术</span>
-                    <span class="rank-count">19人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">9</span>
-                    <span class="rank-name">易企银（杭州）科技</span>
-                    <span class="rank-count">17人</span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">10</span>
-                    <span class="rank-name">中移（苏州）软件技术</span>
-                    <span class="rank-count">16人</span>
-                </div>
+            <div class="section">
+                <h2>🏛️ 控制相关学院</h2>
+                <ul class="college-list">
+<li>040自动化学院</li>
+<li>162杭电圣光机智能系统和机器人研究中心</li>
+</ul>
             </div>
 
-            <div class="info-card">
-                <h3>🎯 重点单位录用人数</h3>
-                <div class="key-unit-grid">
-                    <div class="key-unit-card"><div class="key-unit-logo">华为</div><div class="key-unit-count">194人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">海康威视</div><div class="key-unit-count">131人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">字节跳动</div><div class="key-unit-count">84人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">中国移动</div><div class="key-unit-count">78人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">大华</div><div class="key-unit-count">60人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">网易</div><div class="key-unit-count">49人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">恒生电子</div><div class="key-unit-count">42人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">中兴通讯</div><div class="key-unit-count">39人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">腾讯</div><div class="key-unit-count">33人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">阿里巴巴</div><div class="key-unit-count">32人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">新华三</div><div class="key-unit-count">28人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">同花顺</div><div class="key-unit-count">24人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">锦盟云</div><div class="key-unit-count">19人</div></div>
-                    <div class="key-unit-card"><div class="key-unit-logo">宇视</div><div class="key-unit-count">17人</div></div>
-                </div>
+            <div class="section">
+                <h2>⭐ 控制学科评估排名</h2>
+                <div class="eval-badge" style="color:#b45309;border-color:#fde68a;">B+</div>
             </div>
 
-            <div class="info-card">
-                <h3>📈 就业单位行业 TOP5</h3>
-                <div class="industry-bar">
-                    <span class="industry-name">信息传输/软件/IT</span>
-                    <div class="industry-bar-fill" style="width: 200px;"></div>
-                    <span class="industry-percent">60.42%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">制造业</span>
-                    <div class="industry-bar-fill" style="width: 50px;"></div>
-                    <span class="industry-percent">15.16%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">金融业</span>
-                    <div class="industry-bar-fill" style="width: 38px;"></div>
-                    <span class="industry-percent">11.34%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">科学研究和技术服务</span>
-                    <div class="industry-bar-fill" style="width: 18px;"></div>
-                    <span class="industry-percent">5.44%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">公共管理/社会保障</span>
-                    <div class="industry-bar-fill" style="width: 7px;"></div>
-                    <span class="industry-percent">2.08%</span>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🗺️ 就业地区分布</h3>
-                <div class="region-bar">
-                    <span class="region-name">浙江省杭州市</span>
-                    <div class="region-bar-fill" style="width: 200px;"></div>
-                    <span class="region-percent">50.23%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">上海市</span>
-                    <div class="region-bar-fill" style="width: 33px;"></div>
-                    <span class="region-percent">8.22%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">浙江省宁波市</span>
-                    <div class="region-bar-fill" style="width: 20px;"></div>
-                    <span class="region-percent">4.98%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">广东省深圳市</span>
-                    <div class="region-bar-fill" style="width: 18px;"></div>
-                    <span class="region-percent">4.51%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">江苏省南京市</span>
-                    <div class="region-bar-fill" style="width: 17px;"></div>
-                    <span class="region-percent">4.28%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">江苏省苏州市</span>
-                    <div class="region-bar-fill" style="width: 15px;"></div>
-                    <span class="region-percent">3.70%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">北京市</span>
-                    <div class="region-bar-fill" style="width: 14px;"></div>
-                    <span class="region-percent">3.47%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">浙江省嘉兴市</span>
-                    <div class="region-bar-fill" style="width: 10px;"></div>
-                    <span class="region-percent">2.43%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">安徽省合肥市</span>
-                    <div class="region-bar-fill" style="width: 8px;"></div>
-                    <span class="region-percent">1.97%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">浙江省金华市</span>
-                    <div class="region-bar-fill" style="width: 7px;"></div>
-                    <span class="region-percent">1.74%</span>
-                </div>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>💰 杭州地区24秋招Offer待遇汇总</h3>
-                <table class="salary-table">
-                    <tr><th>公司</th><th>待遇</th><th>公司</th><th>待遇</th></tr>
-                    <tr><td>华为杭研所</td><td><strong>25W+</strong></td><td>字节跳动</td><td><strong>35-50W+</strong></td></tr>
-                    <tr><td>海康威视</td><td><strong>23-33W+</strong></td><td>小米</td><td><strong>30-40W+</strong></td></tr>
-                    <tr><td>TP-Link</td><td><strong>27-50W+</strong></td><td>光原科技</td><td>(17-19k)*13</td></tr>
-                    <tr><td>聚光科技</td><td>(14-15k)*15</td><td>富特科技</td><td>(18-22k)*14</td></tr>
-                    <tr><td>新华三</td><td>(13-22k)*14</td><td>比亚迪</td><td><strong>19W-33W</strong></td></tr>
-                    <tr><td>恒生电子</td><td><strong>20-30W+</strong></td><td>宁波银行</td><td>第一年保底15W</td></tr>
-                    <tr><td>招银网络</td><td><strong>23-28W</strong></td><td>杭州银行</td><td>第一年保底13-18W</td></tr>
-                    <tr><td>中兴</td><td><strong>24W+</strong></td><td>长传高科技</td><td>(17-19k)*(13-14)</td></tr>
-                    <tr><td>光线云</td><td>(19-21k)*(14-15)</td><td>宏杉科技</td><td><strong>20W</strong></td></tr>
-                    <tr><td>数梦工场</td><td><strong>15-26W</strong></td><td>阿里</td><td><strong>34W-50W+</strong></td></tr>
-                    <tr><td>行芯科技</td><td>(20-23k)*(14-15)</td><td>晶盛</td><td><strong>20-28W</strong></td></tr>
-                    <tr><td></td><td></td><td>大疆</td><td><strong>36-50W+</strong></td></tr>
-                    <tr><td></td><td></td><td>大华股份</td><td><strong>22-30W</strong></td></tr>
-                </table>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>💼 真实Offer案例（17个）</h3>
-                <div class="offer-list">
-                    <div class="offer-item">
-                        <div class="offer-company">华为 <span class="bonus-tag">base上海</span></div>
-                        <div class="offer-detail">软件开发 · <span class="offer-highlight">总包36W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">华为 <span class="bonus-tag">base上海</span></div>
-                        <div class="offer-detail">测试开发 · <span class="offer-highlight">总包30W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">华为 <span class="bonus-tag">base上海</span></div>
-                        <div class="offer-detail">软件开发 · <span class="offer-highlight">总包33W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">华为</div>
-                        <div class="offer-detail">销售岗 · <span class="offer-highlight">总包30W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">华为</div>
-                        <div class="offer-detail">开发岗 · <span class="offer-highlight">总包40W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">中国移动</div>
-                        <div class="offer-detail">科技岗 · <span class="offer-highlight">总包18W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">浪潮 <span class="bonus-tag">base青岛</span></div>
-                        <div class="offer-detail">前端开发 · <span class="offer-highlight">12K × 15薪</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">上海银行 <span class="bonus-tag">base上海</span></div>
-                        <div class="offer-detail">软件开发 · <span class="offer-highlight">总包22W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">泰隆银行 <span class="bonus-tag">base杭州</span></div>
-                        <div class="offer-detail">技术岗 · <span class="offer-highlight">总包27W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">美团</div>
-                        <div class="offer-detail">开发岗 · <span class="offer-highlight">总包36W</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">北京卓半导体</div>
-                        <div class="offer-detail">模拟IC · <span class="offer-highlight">20K × 12薪</span> · 双休不加班</div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">上海光伏新能源</div>
-                        <div class="offer-detail">嵌入式开发 · <span class="offer-highlight">19.5K × 14薪</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">字节跳动</div>
-                        <div class="offer-detail">算法工程师 · <span class="offer-highlight">26K × 15薪</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">TP-Link</div>
-                        <div class="offer-detail">嵌入式工程师 · <span class="offer-highlight">23K × 16薪</span> · 996</div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">深圳大疆</div>
-                        <div class="offer-detail">硬件工程师 · <span class="offer-highlight">28K × 15薪</span> · 加班严重</div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">杭州某半导体公司</div>
-                        <div class="offer-detail">模拟IC工程师 · <span class="offer-highlight">23K × 14薪</span></div>
-                    </div>
-                    <div class="offer-item">
-                        <div class="offer-company">杭州某集成电路公司</div>
-                        <div class="offer-detail">模拟IC设计 · <span class="offer-highlight">23K × 12薪</span> · 双休不加班</div>
-                    </div>
-                </div>
-                <div class="tip-box" style="margin-top: 16px;">
-                    <strong>💰 杭州补贴福利：</strong>若在杭州就业，一次性生活补贴<strong>3W</strong>，租房补贴每年<strong>1W</strong>发三年。合计额外补贴6W，进一步提升了杭电毕业生留杭的吸引力。
-                </div>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>🎨 企业雇主词云</h3>
-                <div style="text-align: center; padding: 20px;">
-                    <img src="../wordclouds/wordcloud_杭州电子科技大学.png" alt="杭州电子科技大学雇主词云" class="wordcloud-img">
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>💻 互联网/科技大厂</h3>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">华为</div><div class="company-count">194人</div></div>
-                    <div class="company-card"><div class="company-name">字节跳动</div><div class="company-count">84人</div></div>
-                    <div class="company-card"><div class="company-name">腾讯</div><div class="company-count">33人</div></div>
-                    <div class="company-card"><div class="company-name">阿里巴巴</div><div class="company-count">32人</div></div>
-                    <div class="company-card"><div class="company-name">美团</div><div class="company-count">案例36W</div></div>
-                    <div class="company-card"><div class="company-name">网易</div><div class="company-count">49人</div></div>
-                    <div class="company-card"><div class="company-name">小米</div><div class="company-count">30-40W+</div></div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🔒 安防/通信/网络</h3>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">海康威视</div><div class="company-count">131人</div></div>
-                    <div class="company-card"><div class="company-name">大华</div><div class="company-count">60人</div></div>
-                    <div class="company-card"><div class="company-name">新华三</div><div class="company-count">28人</div></div>
-                    <div class="company-card"><div class="company-name">宇视</div><div class="company-count">17人</div></div>
-                    <div class="company-card"><div class="company-name">中兴通讯</div><div class="company-count">39人</div></div>
-                    <div class="company-card"><div class="company-name">大疆</div><div class="company-count">28K×15薪</div></div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🏦 银行/金融科技</h3>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">宁波银行</div><div class="company-count">25人/保底15W</div></div>
-                    <div class="company-card"><div class="company-name">杭州银行</div><div class="company-count">22人/保底13-18W</div></div>
-                    <div class="company-card"><div class="company-name">招银网络</div><div class="company-count">23-28W</div></div>
-                    <div class="company-card"><div class="company-name">上海银行</div><div class="company-count">22W</div></div>
-                    <div class="company-card"><div class="company-name">泰隆银行</div><div class="company-count">27W</div></div>
-                    <div class="company-card"><div class="company-name">同花顺</div><div class="company-count">24人</div></div>
-                    <div class="company-card"><div class="company-name">恒生电子</div><div class="company-count">42人/20-30W+</div></div>
-                    <div class="company-card"><div class="company-name">易企银</div><div class="company-count">17人</div></div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🔬 半导体/芯片/新能源</h3>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">北京卓半导体</div><div class="company-count">20K×12薪</div></div>
-                    <div class="company-card"><div class="company-name">杭州某半导体</div><div class="company-count">23K×14薪</div></div>
-                    <div class="company-card"><div class="company-name">杭州集成电路</div><div class="company-count">23K×12薪</div></div>
-                    <div class="company-card"><div class="company-name">上海光伏新能源</div><div class="company-count">19.5K×14薪</div></div>
-                    <div class="company-card"><div class="company-name">行芯科技</div><div class="company-count">(20-23k)*(14-15)</div></div>
-                    <div class="company-card"><div class="company-name">光线云</div><div class="company-count">(19-21k)*(14-15)</div></div>
-                    <div class="company-card"><div class="company-name">晶盛</div><div class="company-count">20-28W</div></div>
-                    <div class="company-card"><div class="company-name">爱旭太阳能</div><div class="company-count">TOP10</div></div>
-                </div>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>💡 就业特点分析</h3>
-                <div class="tip-box">
-                    <strong>💻 IT/互联网 dominance：</strong>信息传输/软件/IT占60.42%，是绝对第一大行业。华为194人、字节84人、腾讯33人、阿里32人、网易49人、美团36W总包，头部互联网/科技企业是杭电最大雇主。杭电作为IT强校，在互联网/科技领域就业竞争力堪比部分985。
-                </div>
-                <div class="tip-box">
-                    <strong>🔒 安防/通信集群：</strong>海康威视131人、大华60人、新华三28人、宇视17人、中兴通讯39人，安防/通信/网络设备企业合计超270人。杭州作为"安防之都"（海康、大华、宇视总部），杭电毕业生在地缘优势上无可匹敌。
-                </div>
-                <div class="tip-box">
-                    <strong>🏦 银行/金融科技：</strong>金融业占11.34%，宁波银行25人、杭州银行22人、招银网络、同花顺24人、恒生电子42人、易企银17人，金融科技/银行IT是重要就业方向。宁波银行/杭州银行第一年保底13-18W，金融科技岗位薪资稳定。
-                </div>
-                <div class="tip-box">
-                    <strong>🔬 半导体/芯片高薪：</strong>模拟IC工程师20-23K×12-14薪（总包28-35W），且部分企业<strong>双休不加班</strong>（北京卓半导体、杭州集成电路公司）。杭电在集成电路/半导体方向的就业质量提升明显，芯片设计成为高薪新通道。
-                </div>
-                <div class="tip-box">
-                    <strong>🚗 汽车/新能源：</strong>比亚迪21人（TOP6）、上海光伏新能源（19.5K×14薪）、爱旭太阳能（TOP10），新能源/汽车电子占制造业15.16%的一部分。比亚迪在杭电招聘规模不小，新能源方向持续增长。
-                </div>
-                <div class="tip-box">
-                    <strong>📍 地域：杭州 dominance：</strong>杭州50.23%（华为杭研所、海康、大华、阿里、网易、字节杭州部等），上海8.22%、宁波4.98%、深圳4.51%、南京4.28%、苏州3.70%、北京3.47%。杭州+上海+宁波+嘉兴+金华合计超65%，浙江省内就业是绝对主流。
-                </div>
-                <div class="tip-box">
-                    <strong>💰 薪资水平高：</strong>华为25-40W、字节35-50W+、阿里34-50W+、大疆36-50W+、TP-Link 27-50W+、小米30-40W+、美团36W，头部企业薪资与985硕士相当。半导体模拟IC 28-35W且双休不加班，性价比极高。银行金融科技13-27W保底，稳定型就业也有竞争力。
-                </div>
-                <div class="tip-box">
-                    <strong>🏠 杭州补贴加码：</strong>留杭就业一次性生活补贴3W+租房补贴3W（1W×3年），合计6W额外补贴。这进一步强化了杭电毕业生留杭的意愿，也提升了实际收入水平。
-                </div>
-                <div class="tip-box">
-                    <strong>🏢 单位性质：民企/大厂主导：</strong>华为、字节、阿里、腾讯、网易、海康、大华、美团、大疆、小米等均为头部民企/大厂，国有企业（中国移动78人）占一定比例。杭电就业以市场化高薪企业为主，体制内占比不高，适合追求高薪技术岗位的考生。
-                </div>
-                <div class="tip-box">
-                    <strong>🎓 特色高校性价比：</strong>杭电虽非211/985，但作为"IT四校"之一，在通信电子/计算机/软件领域的就业质量远超很多211高校。华为194人、字节84人、阿里32人的数据说明头部企业对杭电认可度高。对于目标是互联网/科技/安防大厂的考生，杭电是极高性价比的选择。
-                </div>
+            <div class="section full-width">
+                <h2>🏢 部分就业单位</h2>
+                <div class="employer-grid">
+<div class="employer-item"><span class="employer-rank">1</span>华为技术有限公司</div>
+<div class="employer-item"><span class="employer-rank">2</span>中国工商银行股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">3</span>恒生电子股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">4</span>中国工商银行股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">5</span>中国移动通信集团</div>
+<div class="employer-item"><span class="employer-rank">6</span>海康威视数字技术股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">7</span>网易（杭州）网络有限公司</div>
+<div class="employer-item"><span class="employer-rank">8</span>中兴通讯股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">9</span>比亚迪股份有限公司</div>
+<div class="employer-item"><span class="employer-rank">10</span>阿里巴巴集团控股有限公司</div>
+</div>
             </div>
         </div>
     </div>
-    
-<div class="info-card full-width">
-<h3>📊 就业数据洞察（2026/6/21更新）</h3>
-<p style="margin-bottom:16px;color:#555;">以下数据已可视化展示，交互图表可查看详细数据。</p>
-<div class='chart-container' id='yearly-chart' style='width:100%;height:450px;margin-bottom:20px;'></div>
-    <script>
-    (function() {
-        var chart = echarts.init(document.getElementById('yearly-chart'));
-        var option = {
-            title: { text: 'TOP用人单位历年招聘人数', left: 'center' },
-            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-            legend: { data: ['华为技术有限公司', '杭州海康威视数字技术股份有限公司', '华为投资控股有限公司', '浙江大华技术股份有限公司', '恒生电子股份有限公司', '中国移动通信集团', '中国移动通信集团有限公司', '杭州银行股份有限公司', '海康威视数字技术股份有限公司', '中国工商银行股份有限公司'], top: 30, type: 'scroll' },
-            grid: { left: '3%', right: '4%', bottom: '3%', top: 80, containLabel: true },
-            xAxis: { type: 'category', data: ['2021届', '2022届', '2023届', '2024届', '2025届'] },
-            yAxis: { type: 'value', name: '人数' },
-            series: [{name: '华为技术有限公司', type: 'bar', data: [0, 194, 124, 0, 318], emphasis: {focus: 'series'}},{name: '杭州海康威视数字技术股份有限公司', type: 'bar', data: [97, 131, 0, 0, 47], emphasis: {focus: 'series'}},{name: '华为投资控股有限公司', type: 'bar', data: [0, 0, 0, 258, 0], emphasis: {focus: 'series'}},{name: '浙江大华技术股份有限公司', type: 'bar', data: [86, 60, 21, 42, 21], emphasis: {focus: 'series'}},{name: '恒生电子股份有限公司', type: 'bar', data: [71, 42, 42, 0, 0], emphasis: {focus: 'series'}},{name: '中国移动通信集团', type: 'bar', data: [0, 78, 76, 0, 0], emphasis: {focus: 'series'}},{name: '中国移动通信集团有限公司', type: 'bar', data: [0, 0, 0, 98, 56], emphasis: {focus: 'series'}},{name: '杭州银行股份有限公司', type: 'bar', data: [0, 29, 39, 30, 20], emphasis: {focus: 'series'}},{name: '海康威视数字技术股份有限公司', type: 'bar', data: [0, 0, 43, 68, 0], emphasis: {focus: 'series'}},{name: '中国工商银行股份有限公司', type: 'bar', data: [0, 17, 37, 26, 27], emphasis: {focus: 'series'}}]
-        };
-        chart.setOption(option);
-    })();
-    </script>
-    
-    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
-        <p>数据来源：杭电2023届就业质量报告 + 24秋招待遇汇总 + 真实Offer案例 | 整理：@一只通信考研的er</p>
-        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
-    </div>
+
+    <footer>
+        <p>数据来源：《26就业宝典》 | 制作：@一只通信考研的er</p>
+        <p>以下分析基于学校整体就业情况，并非是对控制相关专业就业情况的精准分析，故所有内容仅供参考。</p>
+    </footer>
 </body>
 </html>
