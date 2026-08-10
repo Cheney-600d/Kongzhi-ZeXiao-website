@@ -1019,8 +1019,79 @@ textarea:focus-visible,
   #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
 }
 </style>
+<link rel="stylesheet" href="entry-intro-white.css">
 </head>
 <body>
+<!-- 控制择校入场动画（Codex entry-intro-white，Ditto 浅色红配色） -->
+<div id="entryIntro" class="entry-intro" role="dialog" aria-modal="true" aria-label="控制择校入场动画">
+  <div class="entry-intro__veil" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <button id="entryIntroSkip" class="entry-intro__skip" type="button" aria-label="跳过开场动画">跳过动画</button>
+
+  <div class="entry-intro__stage">
+    <div class="entry-intro__meta" aria-hidden="true">
+      <span>CONTROL / ADMISSION</span>
+      <span>MODEL 27—28</span>
+    </div>
+
+    <section class="entry-intro__copy">
+      <p class="entry-intro__kicker"><i></i> CONTROL SCHOOL SELECTOR</p>
+      <h1>控制择校<em>从变量，到答案</em></h1>
+      <p class="entry-intro__lead">输入你的条件，让院校范围逐步收敛。</p>
+    </section>
+
+    <div class="entry-layer-stack" aria-hidden="true">
+      <div class="entry-layer entry-layer--input">
+        <span class="entry-layer__index">01</span><small>INPUT PROFILE</small>
+        <strong>考生画像</strong><p>分数 · 地区 · 本科层级</p>
+      </div>
+      <div class="entry-layer entry-layer--model">
+        <span class="entry-layer__index">02</span><small>DECISION MODEL</small>
+        <strong>择校模型</strong><p>K(s) · 专业课 · 招录数据</p>
+      </div>
+      <div class="entry-layer entry-layer--target">
+        <span class="entry-layer__index">03</span><small>TARGET SET</small>
+        <strong>目标院校集</strong><p>冲刺 · 稳妥 · 保底</p>
+      </div>
+
+      <svg class="entry-control-map" viewBox="0 0 760 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="entry-control-map__grid">
+          <path d="M42 85H718M42 160H718M42 235H718M42 310H718M42 385H718"/>
+          <path d="M110 45V425M220 45V425M330 45V425M440 45V425M550 45V425M660 45V425"/>
+        </g>
+        <path class="entry-control-map__baseline" d="M58 256H704"/>
+        <path class="entry-control-map__feedback" d="M658 256V392H180V286"/>
+        <path id="entrySignalTrace" class="entry-control-map__signal" d="M58 256H154M206 256H310M430 256H522M642 256H704"/>
+        <circle class="entry-control-map__sum" cx="180" cy="256" r="26"/>
+        <path class="entry-control-map__sum-mark" d="M171 247H183M177 241V253M171 268H183"/>
+        <rect class="entry-control-map__block" x="310" y="206" width="120" height="100" rx="10"/>
+        <rect class="entry-control-map__block" x="522" y="206" width="120" height="100" rx="10"/>
+        <text class="entry-control-map__code" x="370" y="251" text-anchor="middle">K(s)</text>
+        <text class="entry-control-map__label" x="370" y="276" text-anchor="middle">筛选模型</text>
+        <text class="entry-control-map__code" x="582" y="251" text-anchor="middle">G(s)</text>
+        <text class="entry-control-map__label" x="582" y="276" text-anchor="middle">院校数据</text>
+        <text class="entry-control-map__utility" x="58" y="238">条件输入 r(t)</text>
+        <text class="entry-control-map__utility" x="530" y="416">反馈校正 H(s)</text>
+        <path class="entry-control-map__setpoint" d="M474 116H704"/>
+        <path class="entry-control-map__axis" d="M474 75V146H704"/>
+        <path class="entry-control-map__response" d="M480 139C505 139 503 84 531 84C559 84 556 126 583 126C610 126 608 98 635 98C663 98 656 113 700 113"/>
+      </svg>
+
+      <div id="entryTargetLock" class="entry-target-lock">
+        <span></span><span></span><i></i><b>目标院校</b><small>RANGE LOCKED</small>
+      </div>
+      <div class="entry-signal-pulse"></div>
+    </div>
+
+    <div class="entry-intro__progress" aria-live="polite">
+      <span><i></i>读取条件</span><span><i></i>建立模型</span>
+      <span><i></i>校正范围</span><span><i></i>锁定院校</span>
+    </div>
+  </div>
+</div>
+<script src="entry-intro-white.js"></script>
+
 <!-- 导航历史记录 -->
 <script>
 (function(){
