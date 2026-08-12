@@ -128,13 +128,16 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
 <div class="container">
 <header>
 <h1>控制类考研热度数据对比分析</h1>
-<p>2026年7月 · 控制类考研热度总榜 · 985 / 211 / 双非 层级筛选</p>
+<p>2026年4-7月 · 控制类考研热度总榜 · 985 / 211 / 双非 层级筛选 · 逐月切换看排名趋势</p>
 </header>
 
 <div class="controls">
 <div class="control-row">
 <span class="control-label">月份切换：</span>
 <div class="btn-group" id="month-btns">
+<button class="month-btn" data-month="4" onclick="switchMonth('4')">4月</button>
+<button class="month-btn" data-month="5" onclick="switchMonth('5')">5月</button>
+<button class="month-btn" data-month="6" onclick="switchMonth('6')">6月</button>
 <button class="month-btn active" data-month="7" onclick="switchMonth('7')">7月</button>
 </div>
 </div>
@@ -151,14 +154,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(
 
 <div id="compare-container"></div>
 
-<div class="footer">数据来源：2026年7月控制类考研热度总榜</div>
+<div class="footer">数据来源：2026年4-7月控制类考研热度总榜（万人教育/控制考研）</div>
 </div>
 
 <script>
-var HEAT_DATA = {"202607":[{"rank":"1","school":"华北电力大学","heat":77.2,"tier":"211"},{"rank":"2","school":"上海大学","heat":77.16,"tier":"211"},{"rank":"3","school":"哈尔滨工业大学","heat":73.3,"tier":"985"},{"rank":"4","school":"南京理工大学","heat":71.32,"tier":"211"},{"rank":"5","school":"中国计量大学","heat":69.65,"tier":"双非"},{"rank":"6","school":"华东理工大学","heat":66.83,"tier":"211"},{"rank":"7","school":"天津大学","heat":66.44,"tier":"985"},{"rank":"8","school":"哈尔滨工程大学","heat":65.43,"tier":"211"},{"rank":"9","school":"北京邮电大学","heat":63.26,"tier":"211"},{"rank":"10","school":"中国科学院大学","heat":61.3,"tier":"双非"}]};
+var HEAT_DATA = {"202604":[{"rank":"1","school":"南京理工大学","heat":85.54,"tier":"211"},{"rank":"2","school":"哈尔滨工程大学","heat":75.33,"tier":"211"},{"rank":"3","school":"华北电力大学","heat":68.63,"tier":"211"},{"rank":"4","school":"电子科技大学","heat":66.71,"tier":"985"},{"rank":"5","school":"北京工业大学","heat":65.51,"tier":"211"},{"rank":"6","school":"中国科学技术大学","heat":64.17,"tier":"985"},{"rank":"7","school":"北京科技大学","heat":62.42,"tier":"211"},{"rank":"8","school":"浙江大学","heat":60.46,"tier":"985"},{"rank":"9","school":"哈尔滨工业大学","heat":60.26,"tier":"985"},{"rank":"10","school":"华东理工大学","heat":58.26,"tier":"211"}],"202605":[{"rank":"1","school":"上海大学","heat":86.28,"tier":"211"},{"rank":"2","school":"上海交通大学","heat":83.43,"tier":"985"},{"rank":"3","school":"南京理工大学","heat":80.58,"tier":"211"},{"rank":"4","school":"东南大学","heat":77.14,"tier":"985"},{"rank":"5","school":"华东理工大学","heat":73.7,"tier":"211"},{"rank":"6","school":"大连理工大学","heat":72.44,"tier":"985"},{"rank":"7","school":"安徽大学","heat":67.47,"tier":"211"},{"rank":"8","school":"浙江大学","heat":66.62,"tier":"985"},{"rank":"9","school":"北京理工大学","heat":65.78,"tier":"985"},{"rank":"10","school":"哈尔滨工程大学","heat":63.8,"tier":"211"}],"202606":[{"rank":"1","school":"同济大学","heat":81.96,"tier":"985"},{"rank":"2","school":"上海大学","heat":76.36,"tier":"211"},{"rank":"3","school":"西安电子科技大学","heat":72.98,"tier":"211"},{"rank":"4","school":"华东理工大学","heat":66.71,"tier":"211"},{"rank":"5","school":"哈尔滨工业大学","heat":66.1,"tier":"985"},{"rank":"6","school":"上海交通大学","heat":65.7,"tier":"985"},{"rank":"7","school":"南京理工大学","heat":65.7,"tier":"211"},{"rank":"8","school":"中国科学技术大学","heat":63.71,"tier":"985"},{"rank":"9","school":"南京邮电大学","heat":63.14,"tier":"双非"},{"rank":"10","school":"长安大学","heat":62.73,"tier":"211"}],"202607":[{"rank":"1","school":"华北电力大学","heat":77.2,"tier":"211"},{"rank":"2","school":"上海大学","heat":77.16,"tier":"211"},{"rank":"3","school":"哈尔滨工业大学","heat":73.3,"tier":"985"},{"rank":"4","school":"南京理工大学","heat":71.32,"tier":"211"},{"rank":"5","school":"中国计量大学","heat":69.65,"tier":"双非"},{"rank":"6","school":"华东理工大学","heat":66.83,"tier":"211"},{"rank":"7","school":"天津大学","heat":66.44,"tier":"985"},{"rank":"8","school":"哈尔滨工程大学","heat":65.43,"tier":"211"},{"rank":"9","school":"北京邮电大学","heat":63.26,"tier":"211"},{"rank":"10","school":"中国科学院大学","heat":61.3,"tier":"双非"}]};
 
 var activeTier = 'all';
 var activeMonth = '7';
+
+function monthKey(month) {
+    return '2026' + (String(month).length === 1 ? '0' + month : month);
+}
 
 function switchMonth(month) {
     activeMonth = month;
@@ -255,12 +262,15 @@ function render() {
     var container = document.getElementById('compare-container');
     var html = '';
 
-    var data = getSchoolsByTier('202607');
+    var data = getSchoolsByTier(monthKey(activeMonth));
+    // 上月排名做趋势对比（4月无上月则显示 "-"）
+    var prevMonth = String(parseInt(activeMonth) - 1);
+    var compareMap = HEAT_DATA[monthKey(prevMonth)] ? getSchoolMap(monthKey(prevMonth)) : null;
     html += '<div class="compare-section">';
-    html += '<div class="section-title"><span>2026年7月 · 控制类考研热度总榜</span></div>';
+    html += '<div class="section-title"><span>2026年' + activeMonth + '月 · 控制类考研热度总榜</span></div>';
     html += renderStats(data, '上榜');
     html += '<div class="compare-grid">';
-    html += '<div class="compare-panel"><div class="panel-title">热度总榜 TOP10</div>' + renderTable(data, null) + '</div>';
+    html += '<div class="compare-panel"><div class="panel-title">热度总榜 TOP10</div>' + renderTable(data, compareMap) + '</div>';
     html += '</div></div>';
 
     container.innerHTML = html;
@@ -273,7 +283,7 @@ render();
   var urlParams = new URLSearchParams(window.location.search);
   var monthParam = urlParams.get('month');
   if(monthParam) {
-    var validMonths = ['7'];
+    var validMonths = ['4', '5', '6', '7'];
     if(validMonths.indexOf(monthParam) >= 0) {
       switchMonth(monthParam);
     }

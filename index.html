@@ -30,6 +30,20 @@
 })();
 </script>
 
+<!-- 带 school 参数进入时提前隐藏首页，避免加载阶段先闪现首页再进入择校数据详情（与 index.js 同步 goDetail 配合） -->
+<script>
+(function(){
+  try {
+    if (new URLSearchParams(location.search).get('school')) {
+      var s = document.createElement('style');
+      s.id = 'noHomeFlashStyle';
+      s.textContent = '#homePage{display:none !important;}#detailPage{display:block !important;}';
+      document.head.appendChild(s);
+    }
+  } catch(e) {}
+})();
+</script>
+
 <!-- Toy SDK 改由 toy-coin-gate.js 在 B站/Toy 环境中异步按需加载，避免自有服务器首页被外链阻塞 -->
 <script>
 (function(){
@@ -1223,7 +1237,7 @@ textarea:focus-visible,
     <!-- 第一行：标题 -->
     <div class="text-center hero-title-wrap" style="margin-bottom:8px;">
       <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;color:#B71C1C;text-shadow:0 0 20px rgba(183,28,28,0.25);letter-spacing:1px;transition:transform .3s ease;display:inline-block;cursor:pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">27/28控制类考研与就业全链路指南</h1>
-      <p class="text-gray-500" style="font-size:1rem;">基于26考研数据 · 覆盖100+高校 · 500+学院子方向 <span style="color:#9A8AC8;font-weight:600;">designed by @控制考研阿祖</span></p>
+      <p class="text-gray-500" style="font-size:1rem;">基于27考研数据 · 覆盖132所高校 · 500+学院子方向 <span style="color:#9A8AC8;font-weight:600;">designed by @控制考研阿祖</span></p>
       <div class="desktop-experience-tip">ps：电脑端食用效果更佳！</div>
     </div>
 
@@ -1276,10 +1290,10 @@ textarea:focus-visible,
       .nav-pill-lg svg{width:1em;height:1em;vertical-align:-0.12em;margin-right:5px;}
     </style>
 <div class="hero-stats" aria-label="数据规模">
-      <div class="stat"><span class="stat-num">129</span><span class="stat-label">所高校</span></div>
-      <div class="stat"><span class="stat-num">491</span><span class="stat-label">条录取记录</span></div>
+      <div class="stat"><span class="stat-num">132</span><span class="stat-label">所高校</span></div>
+      <div class="stat"><span class="stat-num">529</span><span class="stat-label">条录取记录</span></div>
       <div class="stat"><span class="stat-num">27</span><span class="stat-label">个省份</span></div>
-      <div class="stat"><span class="stat-num">105</span><span class="stat-label">个专业方向</span></div>
+      <div class="stat"><span class="stat-num">154</span><span class="stat-label">个专业方向</span></div>
     </div>
 
     <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
@@ -1591,21 +1605,6 @@ textarea:focus-visible,
           <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">复录比分布</h3>
           <div id="chartRatioSide" style="height:160px;"></div>
         </div>
-        <div class="chart-container" style="padding:10px;">
-          <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">热门业务课二 TOP15</h3>
-          <div id="chartCourseSide" style="height:160px;"></div>
-        </div>
-        <!-- 数学/英语科目分布并排 -->
-        <div style="display:flex;gap:12px;">
-          <div class="chart-container" style="flex:1;padding:10px;">
-            <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">数学科目分布</h3>
-            <div id="chartMathSide" style="height:160px;"></div>
-          </div>
-          <div class="chart-container" style="flex:1;padding:10px;">
-            <h3 style="font-size:12px;font-weight:700;color:#374151;margin-bottom:4px;">英语科目分布</h3>
-            <div id="chartEnglishSide" style="height:160px;"></div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1748,7 +1747,8 @@ textarea:focus-visible,
     <div class="modal-header" style="justify-content:center;border-bottom:none;margin-bottom:8px;">
       <h3 style="font-size:1.15rem;font-weight:700;color:#5a4a7e;line-height:1.7;">准研究生，你还没选择方向呢<br>选择方向后即可查看该方向下的所有信息</h3>
     </div>
-    <button onclick="closeDirectionPrompt()" style="display:inline-block;margin:0 auto;padding:10px 36px;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;border:none;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(154,138,200,0.35);">好的，去选方向</button>
+    <button onclick="closeDirectionPrompt()" style="display:block;margin:0 auto;padding:10px 36px;background:linear-gradient(135deg,#B8A4D8 0%,#9A8AC8 100%);color:#fff;border:none;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(154,138,200,0.35);">好的，去选方向</button>
+    <button onclick="goSchoolDetailNoDirection()" style="display:block;margin:12px auto 0;padding:10px 36px;background:#fff;color:#9A8AC8;border:1.5px solid #9A8AC8;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(154,138,200,0.15);">不选方向，看学校详情</button>
   </div>
 </div>
 <!-- 最近浏览栏 -->

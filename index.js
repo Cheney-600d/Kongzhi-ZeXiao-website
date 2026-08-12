@@ -82,6 +82,9 @@ function initFilters(){
 
 // ===================== 热度榜 TOP10 数据（按月份） =====================
 var HEAT_DATA_BY_MONTH = {
+  '202604': [{rank:1, school:'南京理工大学', heat:85.54, tier:'211'}, {rank:2, school:'哈尔滨工程大学', heat:75.33, tier:'211'}, {rank:3, school:'华北电力大学', heat:68.63, tier:'211'}, {rank:4, school:'电子科技大学', heat:66.71, tier:'985'}, {rank:5, school:'北京工业大学', heat:65.51, tier:'211'}, {rank:6, school:'中国科学技术大学', heat:64.17, tier:'985'}, {rank:7, school:'北京科技大学', heat:62.42, tier:'211'}, {rank:8, school:'浙江大学', heat:60.46, tier:'985'}, {rank:9, school:'哈尔滨工业大学', heat:60.26, tier:'985'}, {rank:10, school:'华东理工大学', heat:58.26, tier:'211'}],
+  '202605': [{rank:1, school:'上海大学', heat:86.28, tier:'211'}, {rank:2, school:'上海交通大学', heat:83.43, tier:'985'}, {rank:3, school:'南京理工大学', heat:80.58, tier:'211'}, {rank:4, school:'东南大学', heat:77.14, tier:'985'}, {rank:5, school:'华东理工大学', heat:73.7, tier:'211'}, {rank:6, school:'大连理工大学', heat:72.44, tier:'985'}, {rank:7, school:'安徽大学', heat:67.47, tier:'211'}, {rank:8, school:'浙江大学', heat:66.62, tier:'985'}, {rank:9, school:'北京理工大学', heat:65.78, tier:'985'}, {rank:10, school:'哈尔滨工程大学', heat:63.8, tier:'211'}],
+  '202606': [{rank:1, school:'同济大学', heat:81.96, tier:'985'}, {rank:2, school:'上海大学', heat:76.36, tier:'211'}, {rank:3, school:'西安电子科技大学', heat:72.98, tier:'211'}, {rank:4, school:'华东理工大学', heat:66.71, tier:'211'}, {rank:5, school:'哈尔滨工业大学', heat:66.1, tier:'985'}, {rank:6, school:'上海交通大学', heat:65.7, tier:'985'}, {rank:7, school:'南京理工大学', heat:65.7, tier:'211'}, {rank:8, school:'中国科学技术大学', heat:63.71, tier:'985'}, {rank:9, school:'南京邮电大学', heat:63.14, tier:'双非'}, {rank:10, school:'长安大学', heat:62.73, tier:'211'}],
   '202607': [{rank:1, school:'华北电力大学', heat:77.2, tier:'211'}, {rank:2, school:'上海大学', heat:77.16, tier:'211'}, {rank:3, school:'哈尔滨工业大学', heat:73.3, tier:'985'}, {rank:4, school:'南京理工大学', heat:71.32, tier:'211'}, {rank:5, school:'中国计量大学', heat:69.65, tier:'双非'}, {rank:6, school:'华东理工大学', heat:66.83, tier:'211'}, {rank:7, school:'天津大学', heat:66.44, tier:'985'}, {rank:8, school:'哈尔滨工程大学', heat:65.43, tier:'211'}, {rank:9, school:'北京邮电大学', heat:63.26, tier:'211'}, {rank:10, school:'中国科学院大学', heat:61.3, tier:'双非'}]
 };
 
@@ -289,8 +292,8 @@ function restoreHomeFilterState(){
     // 恢复学校列表筛选区
     if(state.search != null) document.getElementById('schoolSearch').value = state.search;
     if(state.sTier != null) document.getElementById('filterTier').value = state.sTier;
-    // 恢复标签筛选
-    if(state.currentTagFilter != null) currentTagFilter = state.currentTagFilter;
+    // 恢复标签筛选（仅当标签仍存在时恢复，避免已删除/失效的标签把列表过滤到空）
+    if(state.currentTagFilter != null && TAG_TO_SCHOOLS[state.currentTagFilter]) currentTagFilter = state.currentTagFilter;
     return true;
   }catch(e){ return false; }
 }
@@ -302,7 +305,7 @@ function applyFilter(){
   const grouped = {};
   filteredRecords.forEach(r=>{
     const k = r.province+'|'+r.school;
-    if(!grouped[k]) grouped[k] = {province:r.province, school:r.school, tier: r.tier||'双非', college:new Set(), n:0, e:0, a:0, avg_e:0, avg_a:0, avg_p:0, se:0, sa:0, sp:0, ratios:[], ne:0, na:0, np:0};
+    if(!grouped[k]) grouped[k] = {province:r.province, school:r.school, tier: r.tier||'双非', college:new Set(), n:0, e:0, a:0, avg_e:0, avg_a:0, avg_p:0, we:0, wa:0, wp:0, se:0, sa:0, sp:0, ratios:[], ne:0, na:0, np:0};
     grouped[k].college.add(r.college);
     grouped[k].n++;
     grouped[k].e += r.enterNum||0;
@@ -310,6 +313,10 @@ function applyFilter(){
     grouped[k].avg_e += (r.enterAvg||0) * (r.enterNum||0);
     grouped[k].avg_a += (r.admitAvg||0) * (r.admitNum||0);
     grouped[k].avg_p += (r.courseAvg||0) * (r.admitNum||0);
+    // 加权均分分母：只累计有均分记录的人数，避免无均分专业人数虚增分母
+    if(r.enterAvg != null) grouped[k].we += r.enterNum||0;
+    if(r.admitAvg != null) grouped[k].wa += r.admitNum||0;
+    if(r.courseAvg != null) grouped[k].wp += r.admitNum||0;
     grouped[k].se += r.enterAvg||0;
     grouped[k].sa += r.admitAvg||0;
     grouped[k].sp += r.courseAvg||0;
@@ -321,7 +328,7 @@ function applyFilter(){
   filteredSchoolStats = Object.values(grouped).map(g=>({
     '省份/自治区': g.province, '学校': g.school, tier: g.tier,
     college: g.college.size, count: g.n, enter: g.e, admit: g.a,
-    avgEnter: g.e?g.avg_e/g.e:(g.ne?g.se/g.ne:null), avgAdmit: g.a?g.avg_a/g.a:(g.na?g.sa/g.na:null), avgCourse: g.a?g.avg_p/g.a:(g.np?g.sp/g.np:null),
+    avgEnter: g.we?g.avg_e/g.we:(g.ne?g.se/g.ne:null), avgAdmit: g.wa?g.avg_a/g.wa:(g.na?g.sa/g.na:null), avgCourse: g.wp?g.avg_p/g.wp:(g.np?g.sp/g.np:null),
     ratio: (g.e&&g.a)?(g.e/g.a).toFixed(2):(g.ratios.length?(g.ratios.reduce(function(x,y){return x+y;},0)/g.ratios.length).toFixed(2):null)
   }));
 
@@ -485,70 +492,6 @@ function renderHomeCharts(){
     }]
   });
 
-  // 数学科目分布（饼图）
-  const mathMap = {};
-  filteredRecords.forEach(r=>{
-    if(!r.math) return;
-    if(!mathMap[r.math]) mathMap[r.math]=0;
-    mathMap[r.math]++;
-  });
-  const mathData = Object.entries(mathMap).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({name:k,value:v}));
-
-  charts.mathSide = echarts.init(document.getElementById('chartMathSide', null, {renderer: 'canvas'}));
-  charts.mathSide.setOption({
-    tooltip:{trigger:'item',formatter:function(p){return p.name+': '+p.value+' ('+Math.round(p.percent)+'%)';}},
-    series:[{
-      type:'pie',radius:['25%','55%'],
-      itemStyle:{borderRadius:4,borderColor:'#fff',borderWidth:2},
-      label:{show:false},
-      labelLine:{show:false},
-      data:mathData,
-      color:['#B71C1C','#D94F4F','#E57373','#EF9A9A','#C62828']
-    }]
-  });
-
-  // 英语科目分布（饼图）
-  const engMap = {};
-  filteredRecords.forEach(r=>{
-    if(!r.english) return;
-    if(!engMap[r.english]) engMap[r.english]=0;
-    engMap[r.english]++;
-  });
-  const engData = Object.entries(engMap).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({name:k,value:v}));
-
-  charts.englishSide = echarts.init(document.getElementById('chartEnglishSide', null, {renderer: 'canvas'}));
-  charts.englishSide.setOption({
-    tooltip:{trigger:'item',formatter:function(p){return p.name+': '+p.value+' ('+Math.round(p.percent)+'%)';}},
-    series:[{
-      type:'pie',radius:['25%','55%'],
-      itemStyle:{borderRadius:4,borderColor:'#fff',borderWidth:2},
-      label:{show:false},
-      labelLine:{show:false},
-      data:engData,
-      color:['#B71C1C','#D94F4F','#E57373','#C62828']
-    }]
-  });
-
-  // 业务课二分布 - 按大类统计
-  const catMap = {};
-  filteredRecords.forEach(r=>{
-    const cat = classifyCourse(r.course2);
-    if(!catMap[cat]) catMap[cat]=0;
-    catMap[cat]++;
-  });
-  const catData = Object.entries(catMap).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({name:k,value:v}));
-
-  // charts.course = echarts.init(document.getElementById('chartCourse', null, {renderer: 'canvas'})); // 已移到右侧栏
-  charts.courseSide = echarts.init(document.getElementById('chartCourseSide', null, {renderer: 'canvas'}));
-  charts.courseSide.setOption({
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-    grid:{left:'2%',right:'2%',bottom:'2%',top:'8%',containLabel:true},
-    xAxis:{type:'value',axisLabel:{fontSize:8}},
-    yAxis:{type:'category',data:catData.map(x=>x.name).reverse(),axisLabel:{fontSize:9}},
-    series:[{
-      type:'bar',data:catData.map(x=>x.value).reverse(),itemStyle:{color:'#a18cd1',borderRadius:[0,4,4,0]},barMaxWidth:14
-    }]
-  });
 }
 
 // 显示业务课二大类详情弹窗
@@ -590,6 +533,14 @@ function closeCourseModal(event){
 }
 function closeDirectionPrompt(){
   document.getElementById('directionPromptModal').classList.remove('active');
+}
+// 未选方向时直接看学校详情：不设方向过滤 → 详情页展示该校所有学院、所有方向数据
+function goSchoolDetailNoDirection(){
+  const school = window.directionPromptSchool;
+  if(!school) return;
+  document.getElementById('directionPromptModal').classList.remove('active');
+  window.pendingDetailFilter = null;
+  goDetail(school);
 }
 
 // 当前标签筛选（全局）
@@ -670,7 +621,7 @@ function renderClickableTags(schoolName, tier) {
       return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}')" title="点击查看生源分布">${t.name}</span>`;
     }
     if (t.type === 'eval') {
-      const subject = t.name.startsWith('电子科学与技术') ? '0809' : '0810';
+      const subject = '0810';
       return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','${subject}')" title="点击查看${t.name}研究方向">${t.name}</span>`;
     }
     return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
@@ -1118,15 +1069,14 @@ function goSchoolPage(page){
 // ===================== 院校标签定义 =====================
 const SCHOOL_TAGS = {
   '28所': new Set(['清华大学','北京大学','中国科学院大学','北京航空航天大学','北京理工大学','北京工业大学','复旦大学','上海交通大学','同济大学','东南大学','南京大学','浙江大学','中国科学技术大学','合肥工业大学','西安交通大学','西北工业大学','西安电子科技大学','电子科技大学','华中科技大学','中山大学','华南理工大学','天津大学','大连理工大学','山东大学','国防科学技术大学','福州大学','厦门大学','南方科技大学']),
-  '国防七子': new Set(['北京航空航天大学','北京理工大学','哈尔滨工业大学','西北工业大学','哈尔滨工程大学','南京航空航天大学','南京理工大学']),
   '军工六校': new Set(['中国人民解放军国防科技大学','哈尔滨工程大学','南京理工大学','中国人民解放军陆军工程大学','中国人民解放军陆军装甲兵学院','中国人民解放军陆军防化学院']),
   '兵工七子': new Set(['北京理工大学','南京理工大学','中北大学','长春理工大学','沈阳理工大学','西安工业大学','重庆理工大学']),
   '两电一邮': new Set(['电子科技大学','西安电子科技大学','北京邮电大学']),
   'C9联盟': new Set(['北京大学','清华大学','浙江大学','复旦大学','上海交通大学','南京大学','中国科学技术大学','哈尔滨工业大学','西安交通大学'])
 };
 
-// 有生源数据的院校（169所）
-const SHENGYUAN_SCHOOLS = new Set(['上海交通大学','上海大学','上海海事大学','上海理工大学','上海电力大学','东北农业大学','东北大学','东北师范大学','东北林业大学','东华大学','东华理工大学','东南大学','东莞理工学院','中北大学','中南大学','中南林业科技大学','中南民族大学','中国人民公安大学','中国传媒大学','中国地质大学(北京)','中国地质大学(武汉)','中国民航大学','中国海洋大学','中国石油大学(北京)','中国石油大学(华东)','中国矿业大学','中国科学技术大学','中国科学院大学','中国计量大学','中央民族大学','中山大学','云南大学','兰州大学','内蒙古工业大学','北京交通大学','北京信息科技大学','北京化工大学','北京大学','北京工业大学','北京林业大学','北京理工大学','北京电子科技学院','北京科技大学','北京航空航天大学','北京邮电大学','北方工业大学','华东交通大学','华东师范大学','华东理工大学','华中师范大学','华中科技大学','华侨大学','华北电力大学','华北电力大学(保定)','华南农业大学','华南师范大学','华南理工大学','南京信息工程大学','南京农业大学','南京大学','南京工业大学','南京工程学院','南京师范大学','南京理工大学','南京航空航天大学','南京邮电大学','南开大学','南方科技大学','南昌大学','南昌航空大学','厦门大学','合肥工业大学','吉林大学','哈尔滨工业大学','哈尔滨工程大学','哈尔滨理工大学','四川大学','国防科技大学','复旦大学','大连工业大学','大连海事大学','大连理工大学','天津大学','天津工业大学','天津理工大学','天津科技大学','太原理工大学','宁夏大学','宁波大学','安徽农业大学','安徽大学','安徽师范大学','安徽理工大学','山东大学','山东师范大学','山东科技大学','山西大学','广东工业大学','广州大学','广西大学','成都信息工程大学','成都理工大学','新疆大学','昆明理工大学','暨南大学','杭州电子科技大学','桂林电子科技大学','武汉大学','武汉工程大学','武汉理工大学','武汉科技大学','江南大学','江苏科技大学','江西师范大学','沈阳理工大学','沈阳航空航天大学','河北工业大学','河北科技大学','河南大学','河南工业大学','河南理工大学','河海大学','济南大学','浙江大学','浙江工业大学','浙江工商大学','浙江理工大学','海南大学','深圳大学','温州大学','湖北大学','湖北工业大学','湖南大学','湖南师范大学','湘潭大学','电子科技大学','石家庄铁道大学','福州大学','福建师范大学','苏州大学','西北大学','西北工业大学','西南交通大学','西南大学','西南石油大学','西南科技大学','西安交通大学','西安工业大学','西安工程大学','西安理工大学','西安电子科技大学','西安石油大学','西安科技大学','西安邮电大学','贵州大学','郑州大学','重庆大学','重庆理工大学','重庆邮电大学','长安大学','长春工业大学','长春理工大学','长江大学','长沙理工大学','陕西师范大学','集美大学','青岛理工大学','黑龙江大学','齐鲁工业大学']);
+// 有生源数据的院校（172所）
+const SHENGYUAN_SCHOOLS = new Set(['上海交通大学','上海大学','上海海事大学','上海理工大学','上海电力大学','东北农业大学','东北大学','东北师范大学','东北林业大学','东华大学','东华理工大学','东南大学','东莞理工学院','中北大学','中南大学','中南林业科技大学','中南民族大学','中国人民公安大学','中国传媒大学','中国地质大学(北京)','中国地质大学(武汉)','中国民航大学','中国海洋大学','中国石油大学(北京)','中国石油大学(华东)','中国矿业大学','中国科学技术大学','中国科学院大学','中国计量大学','中央民族大学','中山大学','云南大学','兰州大学','内蒙古工业大学','北京交通大学','北京信息科技大学','北京化工大学','北京大学','北京工业大学','北京林业大学','北京理工大学','北京电子科技学院','北京科技大学','北京航空航天大学','北京邮电大学','北方工业大学','华东交通大学','华东师范大学','华东理工大学','华中师范大学','华中科技大学','华侨大学','华北电力大学','华北电力大学(保定)','华南农业大学','华南师范大学','华南理工大学','南京信息工程大学','南京农业大学','南京大学','南京工业大学','南京工程学院','南京师范大学','南京理工大学','南京航空航天大学','南京邮电大学','南开大学','南方科技大学','南昌大学','南昌航空大学','厦门大学','合肥工业大学','吉林大学','哈尔滨工业大学','哈尔滨工程大学','哈尔滨理工大学','四川大学','国防科技大学','复旦大学','大连工业大学','大连海事大学','大连理工大学','天津大学','天津工业大学','天津理工大学','天津科技大学','太原理工大学','宁夏大学','宁波大学','安徽农业大学','安徽大学','安徽师范大学','安徽理工大学','山东大学','山东师范大学','山东科技大学','山西大学','广东工业大学','广州大学','广西大学','成都信息工程大学','成都理工大学','新疆大学','昆明理工大学','暨南大学','杭州电子科技大学','桂林电子科技大学','武汉大学','武汉工程大学','武汉理工大学','武汉科技大学','江南大学','江苏科技大学','江西师范大学','沈阳理工大学','沈阳航空航天大学','河北工业大学','河北科技大学','河南大学','河南工业大学','河南理工大学','河海大学','济南大学','浙江大学','浙江工业大学','浙江工商大学','浙江理工大学','海南大学','深圳大学','温州大学','湖北大学','湖北工业大学','湖南大学','湖南师范大学','湘潭大学','电子科技大学','石家庄铁道大学','福州大学','福建师范大学','苏州大学','西北大学','西北工业大学','西南交通大学','西南大学','西南石油大学','西南科技大学','西安交通大学','西安工业大学','西安工程大学','西安理工大学','西安电子科技大学','西安石油大学','西安科技大学','西安邮电大学','贵州大学','郑州大学','重庆大学','重庆理工大学','重庆邮电大学','长安大学','长春工业大学','长春理工大学','长江大学','长沙理工大学','陕西师范大学','集美大学','青岛理工大学','黑龙江大学','齐鲁工业大学','燕山大学','同济大学','内蒙古大学']);
 
 const EVAL_TAGS = {};
 // 有就业数据的院校（73所）
@@ -1151,30 +1101,17 @@ const EMPLOYMENT_MAP = {
   '中国石油大学(华东)': '就业相关/院校就业去向/schools/中国石油大学（华东）.html',
   '中国科学院大学': '就业相关/院校就业去向/schools/中国科学院成都光电技术研究所.html'
 };
-// 电子科学与技术
+// 控制科学与工程（第四轮学科评估评级，无评级或"其他"不写）
 [
-  ['电子科学与技术A+',['电子科技大学','西安电子科技大学']],
-  ['电子科学与技术A',['北京大学','清华大学','东南大学']],
-  ['电子科学与技术A-',['北京邮电大学','复旦大学','上海交通大学','南京大学','浙江大学','西安交通大学']],
-  ['电子科学与技术B+',['北京航空航天大学','北京理工大学','天津大学','吉林大学','南京邮电大学','杭州电子科技大学','华中科技大学','西北工业大学','国防科技大学','空军工程大学']],
-  ['电子科学与技术B',['北京工业大学','南开大学','哈尔滨工业大学','华东师范大学','南京理工大学','中国科学技术大学','厦门大学','武汉大学','中山大学','华南理工大学']],
-  ['电子科学与技术B-',['北京交通大学','大连理工大学','安徽大学','合肥工业大学','福州大学','山东大学','湖南大学','重庆大学','西南交通大学','西安理工大学','解放军理工大学']],
-  ['电子科学与技术C+',['中国传媒大学','河北工业大学','太原理工大学','长春理工大学','黑龙江大学','燕山大学','上海大学','中南大学']],
-  ['电子科学与技术C',['重庆邮电大学','兰州大学','解放军信息工程大学']],
-  ['电子科学与技术C-',['天津工业大学','天津理工大学','南京航空航天大学','湖北大学','长沙理工大学','桂林电子科技大学','四川大学','贵州大学','西安邮电大学','海军航空工程学院','北方工业大学','河北大学','华北电力大学','中北大学','哈尔滨工程大学','苏州大学','中国计量大学','郑州大学','武汉理工大学','深圳大学','西北大学']]
-].forEach(([tag,schools])=> schools.forEach(s=>{ if(!EVAL_TAGS[s]) EVAL_TAGS[s]=[]; EVAL_TAGS[s].push(tag); }));
-
-// 信息与通信工程
-[
-  ['信息与通信工程A+',['北京邮电大学','电子科技大学']],
-  ['信息与通信工程A',['清华大学','上海交通大学','西安电子科技大学','国防科技大学']],
-  ['信息与通信工程A-',['北京交通大学','北京航空航天大学','北京理工大学','哈尔滨工业大学','东南大学','解放军信息工程大学','解放军理工大学']],
-  ['信息与通信工程B+',['北京大学','天津大学','大连理工大学','哈尔滨工程大学','南京邮电大学','浙江大学','中国科学技术大学','华中科技大学','华南理工大学','西南交通大学','重庆邮电大学','西安交通大学','海军航空工程学院','空军工程大学']],
-  ['信息与通信工程B',['中国传媒大学','中北大学','东北大学','上海大学','南京大学','南京航空航天大学','南京理工大学','厦门大学','山东大学','武汉大学','武汉理工大学','深圳大学','四川大学','西北工业大学']],
-  ['信息与通信工程B-',['大连海事大学','吉林大学','苏州大学','中国矿业大学','河海大学','合肥工业大学','中山大学','桂林电子科技大学','重庆大学','宁波大学','西安邮电大学','装备学院','海军工程大学']],
-  ['信息与通信工程C+',['北京工业大学','北京科技大学','华北电力大学','长春理工大学','同济大学','华东师范大学','南京信息工程大学','南通大学','福州大学','郑州大学','湖南大学','海南大学','成都信息工程大学','云南大学']],
-  ['信息与通信工程C',['南开大学','天津工业大学','中国民航大学','黑龙江大学','复旦大学','上海海事大学','杭州电子科技大学','浙江工业大学','浙江工商大学','南昌大学','华东交通大学','中国海洋大学','中南大学','暨南大学']],
-  ['信息与通信工程C-',['天津理工大学','沈阳航空航天大学','燕山大学','东华大学','山东科技大学','中国地质大学','中国地质大学(北京)','中国地质大学(武汉)','西北大学','西安理工大学','西安科技大学','兰州大学','兰州交通大学','广东工业大学','火箭军工程大学']]
+  ['控制A+',['浙江大学','北京理工大学','东北大学']],
+  ['控制A',['哈尔滨工业大学','北京航空航天大学','上海交通大学','山东大学']],
+  ['控制A-',['中南大学','西安交通大学','华中科技大学','北京科技大学','南京航空航天大学','华东理工大学']],
+  ['控制B+',['大连理工大学','华南理工大学','天津大学','同济大学','西北工业大学','中国科学技术大学','北京工业大学','江南大学','南京理工大学','西安电子科技大学','杭州电子科技大学','西安理工大学','北京化工大学']],
+  ['控制B',['电子科技大学','湖南大学','吉林大学','南开大学','重庆大学','华北电力大学（北京）','华北电力大学（保定）','东华大学','上海大学','武汉科技大学','浙江工业大学','燕山大学','空军工程大学']],
+  ['控制B-',['武汉大学','厦门大学','北京交通大学','北京邮电大学','大连海事大学','合肥工业大学','中国石油大学（华东）','中国石油大学（北京）','中国矿业大学（徐州）','重庆邮电大学','河南科技大学','中国计量大学','兰州理工大学','华东交通大学']],
+  ['控制C+',['武汉理工大学','郑州大学','南京邮电大学','天津工业大学','中国民航大学','上海理工大学','东北电力大学','北方工业大学','南京工业大学','哈尔滨理工大学','安徽工程大学','山西大学','辽宁工业大学','辽宁石油化工大学']],
+  ['控制C',['四川大学','南京大学','河海大学','渤海大学','北京建筑大学','江苏科技大学','济南大学','长春工业大学','青岛大学','青岛科技大学']],
+  ['控制C-',['中国海洋大学','太原理工大学','深圳大学','昆明理工大学','陕西科技大学','西安工业大学','浙江理工大学','北京信息科技大学','南通大学','太原科技大学','黑龙江大学']],
 ].forEach(([tag,schools])=> schools.forEach(s=>{ if(!EVAL_TAGS[s]) EVAL_TAGS[s]=[]; EVAL_TAGS[s].push(tag); }));
 
 // 构建标签到学校的反向映射（用于点击标签筛选）
@@ -1208,7 +1145,7 @@ const TIER_RECOMMEND_CRITERIA = {
   '985院校': '985院校 + 西安电子科技大学 + 北京邮电大学',
 };
 
-function getSchoolTags(schoolName, tier, province){
+function getSchoolTags(schoolName, tier, province, noGroup){
   const tags = [];
   // 院校生源放第一个
   if(SHENGYUAN_SCHOOLS.has(schoolName)) tags.push({type:'shengyuan', name:'院校生源'});
@@ -1227,8 +1164,10 @@ function getSchoolTags(schoolName, tier, province){
   const region = REGION_MAP[province];
   if(region) tags.push({type:'region', name:region});
   if(province) tags.push({type:'province', name:province});
-  // 添加学校特色标签
-  Object.entries(SCHOOL_TAGS).forEach(([name,set])=>{ if(set.has(schoolName)) tags.push({type:'group',name}); });
+  // 添加学校特色标签（详情页传 noGroup=true 时去掉"28所"等群体标签）
+  if(!noGroup){
+    Object.entries(SCHOOL_TAGS).forEach(([name,set])=>{ if(set.has(schoolName)) tags.push({type:'group',name}); });
+  }
   // 添加学科评估标签
   if(EVAL_TAGS[schoolName]){
     EVAL_TAGS[schoolName].forEach(tag=> tags.push({type:'eval',name:tag}));
@@ -1238,7 +1177,6 @@ function getSchoolTags(schoolName, tier, province){
 
 const TAG_STYLES = {
   '28所':{bg:'#fee2e2',color:'#991b1b',border:'#fecaca'},
-  '国防七子':{bg:'#d1fae5',color:'#166534',border:'#86efac'},
   '军工六校':{bg:'#ffedd5',color:'#9a3412',border:'#fed7aa'},
   '兵工七子':{bg:'#fef3c7',color:'#92400e',border:'#fde68a'},
   '两电一邮':{bg:'#fce7f3',color:'#9d174d',border:'#f9a8d4'},
@@ -1256,24 +1194,15 @@ function getTagStyle(tagName, type){
   if(type === 'region') return {bg:'#e0e7ff',color:'#3730a3',border:'#c7d2fe'};
   if(type === 'province') return {bg:'#fef3c7',color:'#92400e',border:'#fde68a'};
   if(TAG_STYLES[tagName]) return TAG_STYLES[tagName];
-  if(tagName.startsWith('电子科学与技术A+')) return {bg:'#15803d',color:'#fff',border:'#166534'};
-  if(tagName.startsWith('电子科学与技术A')) return {bg:'#2563eb',color:'#fff',border:'#1e40af'};
-  if(tagName.startsWith('电子科学与技术A-')) return {bg:'#60a5fa',color:'#fff',border:'#3b82f6'};
-  if(tagName.startsWith('电子科学与技术B+')) return {bg:'#22c55e',color:'#fff',border:'#16a34a'};
-  if(tagName.startsWith('电子科学与技术B')) return {bg:'#16a34a',color:'#fff',border:'#15803d'};
-  if(tagName.startsWith('电子科学与技术B-')) return {bg:'#bbf7d0',color:'#166534',border:'#86efac'};
-  if(tagName.startsWith('电子科学与技术C+')) return {bg:'#facc15',color:'#713f12',border:'#fde047'};
-  if(tagName.startsWith('电子科学与技术C')) return {bg:'#f97316',color:'#fff',border:'#ea580c'};
-  if(tagName.startsWith('电子科学与技术C-')) return {bg:'#d1d5db',color:'#374151',border:'#9ca3af'};
-  if(tagName.startsWith('信息与通信工程A+')) return {bg:'#15803d',color:'#fff',border:'#166534'};
-  if(tagName.startsWith('信息与通信工程A')) return {bg:'#2563eb',color:'#fff',border:'#1e40af'};
-  if(tagName.startsWith('信息与通信工程A-')) return {bg:'#60a5fa',color:'#fff',border:'#3b82f6'};
-  if(tagName.startsWith('信息与通信工程B+')) return {bg:'#22c55e',color:'#fff',border:'#16a34a'};
-  if(tagName.startsWith('信息与通信工程B')) return {bg:'#16a34a',color:'#fff',border:'#15803d'};
-  if(tagName.startsWith('信息与通信工程B-')) return {bg:'#bbf7d0',color:'#166534',border:'#86efac'};
-  if(tagName.startsWith('信息与通信工程C+')) return {bg:'#facc15',color:'#713f12',border:'#fde047'};
-  if(tagName.startsWith('信息与通信工程C')) return {bg:'#f97316',color:'#fff',border:'#ea580c'};
-  if(tagName.startsWith('信息与通信工程C-')) return {bg:'#d1d5db',color:'#374151',border:'#9ca3af'};
+  if(tagName.startsWith('控制A+')) return {bg:'#15803d',color:'#fff',border:'#166534'};
+  if(tagName.startsWith('控制A')) return {bg:'#2563eb',color:'#fff',border:'#1e40af'};
+  if(tagName.startsWith('控制A-')) return {bg:'#60a5fa',color:'#fff',border:'#3b82f6'};
+  if(tagName.startsWith('控制B+')) return {bg:'#22c55e',color:'#fff',border:'#16a34a'};
+  if(tagName.startsWith('控制B')) return {bg:'#16a34a',color:'#fff',border:'#15803d'};
+  if(tagName.startsWith('控制B-')) return {bg:'#bbf7d0',color:'#166534',border:'#86efac'};
+  if(tagName.startsWith('控制C+')) return {bg:'#facc15',color:'#713f12',border:'#fde047'};
+  if(tagName.startsWith('控制C')) return {bg:'#f97316',color:'#fff',border:'#ea580c'};
+  if(tagName.startsWith('控制C-')) return {bg:'#d1d5db',color:'#374151',border:'#9ca3af'};
   return {bg:'#f3f4f6',color:'#374151',border:'#2d2d3d'};
 }
 
@@ -1306,6 +1235,7 @@ function goRowDetail(el){
   const college = colSel ? colSel.value : '';
   // 需主动选择具体方向(非"全部")：dirChosen标记主动选过 + 当前值是具体方向，二者缺一即弹提示
   if(tr.dataset.dirChosen !== '1' || dirIdx === ''){
+    window.directionPromptSchool = school; // 供"不选方向，看学校详情"跳转
     document.getElementById('directionPromptModal').classList.add('active');
     return;
   }
@@ -1564,13 +1494,13 @@ function renderDetail(schoolName){
   if(!window.currentSchoolRecs.length){
     // 无数据时渲染简化页面
     const province = '';
-    const tags = getSchoolTags(schoolName, '', province);
+    const tags = getSchoolTags(schoolName, '', province, true);
     const tagsHtml = `<div class="flex flex-wrap gap-2 items-center">${tags.map(t => {
       const s = getTagStyle(t.name, t.type);
       const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;font-size:14px;padding:6px 14px;border-radius:16px;`;
       if (t.type === 'tier') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
       if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}')" title="点击查看生源分布">${t.name}</span>`;
-      if (t.type === 'eval') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','${t.name.startsWith('电子科学与技术') ? '0809' : '0810'}')" title="点击查看${t.name}研究方向">${t.name}</span>`;
+      if (t.type === 'eval') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')" title="点击查看${t.name}研究方向">${t.name}</span>`;
       return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }).join('')}</div>`;
     
@@ -1629,11 +1559,14 @@ function renderDetail(schoolName){
   const totalAdmit = schoolRecs.reduce((s,r)=>s+(r.admitNum||0),0);
   const naCnt = schoolRecs.filter(r=>r.admitAvg!=null).length;
   const npCnt = schoolRecs.filter(r=>r.courseAvg!=null).length;
-  const avgAdmit = totalAdmit? schoolRecs.reduce((s,r)=>s+(r.admitAvg||0)*(r.admitNum||0),0)/totalAdmit : (naCnt? schoolRecs.reduce((s,r)=>s+(r.admitAvg||0),0)/naCnt : null);
-  const avgCourse = totalAdmit? schoolRecs.reduce((s,r)=>s+(r.courseAvg||0)*(r.admitNum||0),0)/totalAdmit : (npCnt? schoolRecs.reduce((s,r)=>s+(r.courseAvg||0),0)/npCnt : null);
+  // 加权均分：分母只统计有均分记录的人数，避免无均分专业的人数虚增分母
+  const admitW = schoolRecs.filter(r=>r.admitAvg!=null&&(r.admitNum||0)).reduce((s,r)=>s+(r.admitNum||0),0);
+  const courseW = schoolRecs.filter(r=>r.courseAvg!=null&&(r.admitNum||0)).reduce((s,r)=>s+(r.admitNum||0),0);
+  const avgAdmit = admitW? schoolRecs.filter(r=>r.admitAvg!=null).reduce((s,r)=>s+r.admitAvg*(r.admitNum||0),0)/admitW : (naCnt? schoolRecs.reduce((s,r)=>s+(r.admitAvg||0),0)/naCnt : null);
+  const avgCourse = courseW? schoolRecs.filter(r=>r.courseAvg!=null).reduce((s,r)=>s+r.courseAvg*(r.admitNum||0),0)/courseW : (npCnt? schoolRecs.reduce((s,r)=>s+(r.courseAvg||0),0)/npCnt : null);
   const colleges = [...new Set(schoolRecs.map(r=>r.college))];
 
-  const tags = getSchoolTags(schoolName, schoolRecs[0].tier, province);
+  const tags = getSchoolTags(schoolName, schoolRecs[0].tier, province, true);
   
   function renderTagGroup(tagList) {
     return tagList.map(t => {
@@ -1652,7 +1585,7 @@ function renderDetail(schoolName){
         return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByProvince('${t.name.replace(/'/g, "\\'")}')" title="点击筛选${t.name}省份院校">${t.name}</span>`;
       }
       if (t.type === 'eval') {
-        const subject = t.name.startsWith('电子科学与技术') ? '0809' : '0810';
+        const subject = '0810';
         return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','${subject}')" title="点击查看${t.name}研究方向">${t.name}</span>`;
       }
       return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
@@ -1790,13 +1723,16 @@ function renderDetail(schoolName){
   const majorGroups = {};
   schoolRecs.forEach(r=>{
     const k = r.majorCode+' '+r.majorName;
-    if(!majorGroups[k]) majorGroups[k]={name:k, enterAvg:0, admitAvg:0, courseAvg:0, n:0, enter:0, admit:0, se:0, sa:0, sp:0, ne:0, na:0, np:0};
+    if(!majorGroups[k]) majorGroups[k]={name:k, enterAvg:0, admitAvg:0, courseAvg:0, n:0, enter:0, admit:0, we:0, wa:0, wp:0, se:0, sa:0, sp:0, ne:0, na:0, np:0};
     majorGroups[k].enterAvg += (r.enterAvg||0) * (r.enterNum||0);
     majorGroups[k].admitAvg += (r.admitAvg||0) * (r.admitNum||0);
     majorGroups[k].courseAvg += (r.courseAvg||0) * (r.admitNum||0);
     majorGroups[k].n++;
     majorGroups[k].enter += r.enterNum||0;
     majorGroups[k].admit += r.admitNum||0;
+    if(r.enterAvg != null) majorGroups[k].we += r.enterNum||0;
+    if(r.admitAvg != null) majorGroups[k].wa += r.admitNum||0;
+    if(r.courseAvg != null) majorGroups[k].wp += r.admitNum||0;
     majorGroups[k].se += r.enterAvg||0;
     majorGroups[k].sa += r.admitAvg||0;
     majorGroups[k].sp += r.courseAvg||0;
@@ -1807,20 +1743,25 @@ function renderDetail(schoolName){
   const majorArr = Object.values(majorGroups).map(g=>({
     name:g.name,
     shortName: g.name.substring(0, 18) + (g.name.length > 18 ? '...' : ''),
-    enterAvg: g.enter?g.enterAvg/g.enter:(g.ne?g.se/g.ne:null),
-    admitAvg: g.admit?g.admitAvg/g.admit:(g.na?g.sa/g.na:null),
-    courseAvg: g.admit?g.courseAvg/g.admit:(g.np?g.sp/g.np:null),
+    enterAvg: g.we?g.enterAvg/g.we:(g.ne?g.se/g.ne:null),
+    admitAvg: g.wa?g.admitAvg/g.wa:(g.na?g.sa/g.na:null),
+    courseAvg: g.wp?g.courseAvg/g.wp:(g.np?g.sp/g.np:null),
     enter:g.enter, admit:g.admit
   })).sort((a,b)=>b.admit-a.admit);
 
-  // 无人数数据时，饼图/学院图按专业方向数统计（保留原有人数逻辑）
+  // 各专业招生人数占比：按具体方向(majorName)分组，人数=拟录取人数(admitNum)，无拟录取用进复试人数(enterNum)兜底
   const pieMap = {};
   schoolRecs.forEach(r=>{
-    const pk = r.majorCode || r.majorName || '未知';
-    if(!pieMap[pk]) pieMap[pk]={name:pk, n:0};
+    const pk = r.majorName || r.majorCode || '未知';
+    if(!pieMap[pk]) pieMap[pk]={name:pk, n:0, admit:0, enter:0};
     pieMap[pk].n++;
+    pieMap[pk].admit += (r.admitNum||0);
+    pieMap[pk].enter += (r.enterNum||0);
   });
-  const pieArr = Object.values(pieMap).sort((a,b)=>b.n-a.n);
+  const pieArr = Object.values(pieMap).map(x=>({
+    name:x.name, n:x.n,
+    num: x.admit>0 ? x.admit : (x.enter>0 ? x.enter : 0)
+  })).sort((a,b)=>b.num-a.num);
 
   charts.detailMajor = echarts.init(document.getElementById('chartDetailMajor', null, {renderer: 'canvas'}));
   charts.detailMajor.setOption({
@@ -1836,72 +1777,97 @@ function renderDetail(schoolName){
     ]
   });
 
-  // 各专业招生人数占比(哈工大为柱状图, 其余学校保持饼图)
+  // 各专业招生人数占比(哈工大为柱状图, 其余学校保持饼图)——标注具体方向名+人数
+  const pieShort = function(n){
+    let s = cleanDirName(n);
+    if(!s) s = String(n||'');
+    return s.length>14 ? s.substring(0,14)+'…' : s;
+  };
   charts.detailPie = echarts.init(document.getElementById('chartDetailPie', null, {renderer: 'canvas'}));
   if(schoolName === '哈尔滨工业大学'){
-    const pieTotal = pieArr.reduce((s,x)=>s+(x.n||0),0);
+    const pieTotal = pieArr.reduce((s,x)=>s+(x.num||0),0);
     charts.detailPie.setOption({
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},
         formatter:function(ps){
           return ps.map(p=>{
-            const nm = p.name.length>20 ? p.name.substring(0,20)+'...' : p.name;
+            const nm = pieShort(p.name);
             const pct = pieTotal ? (p.value/pieTotal*100).toFixed(1) : '0';
-            return nm + '<br/>方向数 <b>' + p.value + '</b> 个 (' + pct + '%)';
+            return nm + '<br/>招生人数 <b>' + p.value + '</b> 人 (' + pct + '%)';
           }).join('<br/>');
         }},
       grid:{left:'3%',right:'4%',bottom:'8%',top:'10%',containLabel:true},
-      xAxis:{type:'category',data:majorArr.map(x=>x.name.length>12?x.name.substring(0,12)+'...':x.name),axisLabel:{rotate:55,fontSize:9,interval:0}},
+      xAxis:{type:'category',data:pieArr.map(x=>pieShort(x.name)),axisLabel:{rotate:55,fontSize:9,interval:0}},
       yAxis:{type:'value',name:'人数'},
       series:[{
-        name:'方向数',type:'bar',
-        data:pieArr.map(x=>x.n),
+        name:'招生人数',type:'bar',
+        data:pieArr.map(x=>x.num||0),
         itemStyle:{color:'#38ef7d'},barMaxWidth:26,
-        label:{show:true,position:'top',fontSize:9,color:'#2d2d3d',formatter:function(p){return p.value || '';}}
+        label:{show:true,position:'top',fontSize:9,color:'#2d2d3d',formatter:function(p){return p.value ? p.value : '';}}
       }]
     });
   } else {
     charts.detailPie.setOption({
-      tooltip:{trigger:'item',formatter:function(p){const name=p.name.length>20?p.name.substring(0,20)+'...':p.name;return name+'<br/>方向数 '+p.value+' ('+p.percent+'%)';}},
-      legend:{type:'scroll',bottom:0,textStyle:{fontSize:11},formatter:function(name){return name.length>16?name.substring(0,16)+'...':name;}},
+      tooltip:{trigger:'item',formatter:function(p){
+        return p.name + '<br/>招生人数 <b>' + (p.value||0) + '</b> 人 (' + p.percent + '%)';
+      }},
+      legend:{type:'scroll',bottom:0,textStyle:{fontSize:11},formatter:function(name){return name.length>16?name.substring(0,16)+'…':name;}},
       series:[{
         type:'pie',radius:['40%','70%'],
         itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
-        label:{show:true,formatter:function(p){const name=p.name.length>14?p.name.substring(0,14)+'...':p.name;return name+'\n'+p.value+'个';},fontSize:10},
-        data:pieArr.map(x=>({name:x.name,value:x.n}))
+        label:{show:true,formatter:function(p){return pieShort(p.name)+'\n'+(p.value?p.value+'人':'人数暂无');},fontSize:10},
+        data:pieArr.map(x=>({name:x.name,value:x.num||0}))
       }]
     });
   }
 
-  // 各学院招生情况
+  // 各学院招生情况：显示该学院所有方向的进复试人数 + 拟录取人数（按学院区分）
   const collegeGroups = {};
   schoolRecs.forEach(r=>{
-    if(!collegeGroups[r.college]) collegeGroups[r.college]={name:r.college, n:0};
-    collegeGroups[r.college].n++;
+    const c = r.college || '未知';
+    if(!collegeGroups[c]) collegeGroups[c]={name:c, n:0, enter:0, admit:0};
+    collegeGroups[c].n++;
+    collegeGroups[c].enter += (r.enterNum||0);
+    collegeGroups[c].admit += (r.admitNum||0);
   });
-  const collegeArr = Object.values(collegeGroups).sort((a,b)=>b.n-a.n);
+  const collegeArr = Object.values(collegeGroups).sort((a,b)=>b.admit-a.admit);
 
   charts.detailCollege = echarts.init(document.getElementById('chartDetailCollege', null, {renderer: 'canvas'}));
   charts.detailCollege.setOption({
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(params){
+      return params[0].axisValue + '<br/>' + params.map(p=>p.marker + p.seriesName + ' <b>' + (p.value||0) + '</b> 人').join('<br/>');
+    }},
     legend:{bottom:0},
     grid:{left:'3%',right:'4%',bottom:'8%',top:'3%',containLabel:true},
-    xAxis:{type:'value'},
-    yAxis:{type:'category',data:collegeArr.map(x=>x.name.length>22?x.name.substring(0,22)+'...':x.name).reverse(),axisLabel:{fontSize:10}},
+    xAxis:{type:'value',name:'人数'},
+    yAxis:{type:'category',data:collegeArr.map(x=>x.name.length>22?x.name.substring(0,22)+'…':x.name).reverse(),axisLabel:{fontSize:10}},
     series:[
-      {name:'专业方向数',type:'bar',data:collegeArr.map(x=>x.n).reverse(),itemStyle:{color:'#B8A4D8'},barMaxWidth:18}
+      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#f59e0b'},barMaxWidth:18},
+      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#B8A4D8'},barMaxWidth:18}
     ]
   });
 
-  // 专业课分数分布（各方向）
+  // 专业课分数分布（各方向）——x轴注明具体方向名（同名方向追加学院短名区分）
+  const courseDirLabel = schoolRecs.map(r=>pieShort(r.majorName) || r.majorName || '未知');
+  const dirCnt = {};
+  courseDirLabel.forEach(x=>dirCnt[x]=(dirCnt[x]||0)+1);
+  const courseXData = schoolRecs.map((r,i)=>{
+    let d = courseDirLabel[i];
+    if(dirCnt[d] > 1 && r.college){
+      d = d + '(' + String(r.college).replace(/^\d{3}\s*/,'').substring(0,6) + ')';
+    }
+    return d.length>20 ? d.substring(0,20)+'…' : d;
+  });
   charts.detailCourse = echarts.init(document.getElementById('chartDetailCourse', null, {renderer: 'canvas'}));
   charts.detailCourse.setOption({
-    tooltip:{trigger:'axis'},
+    tooltip:{trigger:'axis',formatter:function(ps){
+      const idx = ps[0].dataIndex;
+      const r = schoolRecs[idx];
+      const head = (r.majorName||'') + (r.college ? '（'+r.college+'）' : '');
+      return head + '<br/>' + ps.map(p=>p.marker + p.seriesName + ' <b>' + (p.value==null?'-':p.value) + '</b>').join('<br/>');
+    }},
     legend:{bottom:0},
     grid:{left:'3%',right:'4%',bottom:'22%',top:'10%',containLabel:true},
-    xAxis:{type:'category',data:schoolRecs.map((r,i)=>{
-      const label = r.majorCode+' '+(r.college||'').substring(0,8);
-      return label.length>18?label.substring(0,18)+'...':label;
-    }),axisLabel:{rotate:55,fontSize:9,interval:0}},
+    xAxis:{type:'category',data:courseXData,axisLabel:{rotate:55,fontSize:9,interval:0}},
     yAxis:{type:'value',name:'分数'},
     series:[
       {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#FF5252'},barMaxWidth:14},
@@ -2231,8 +2197,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const schoolParam = urlParams.get('school');
   if (schoolParam) {
     console.log('URL school param detected:', schoolParam);
-    // 直接跳转详情页，即使数据中没有也会显示"暂无数据"页面
-    setTimeout(() => goDetail(schoolParam), 300);
+    // 移除 head 中提前隐藏首页的临时样式（只覆盖加载阶段，
+    // 此处起由 goDetail 的内联样式接管可见性，否则返回首页会被永久隐藏）
+    const noHomeFlash = document.getElementById('noHomeFlashStyle');
+    if (noHomeFlash) noHomeFlash.parentNode.removeChild(noHomeFlash);
+    // 直接跳转详情页（同步执行：同一任务内先隐藏首页再渲染详情，
+    // 避免"先转到首页再打开择校数据"的闪烁），即使数据中没有也会显示"暂无数据"页面
+    goDetail(schoolParam);
   }
 });
 

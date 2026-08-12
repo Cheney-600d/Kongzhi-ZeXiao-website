@@ -8,6 +8,9 @@ _tmp_*
 # 历史备份(日期命名, 由git版本管理替代)
 _backup_*/
 
+# 单文件备份(.bak_*后缀, 由git版本管理替代)
+*.bak_*
+
 # Windows 系统文件
 Thumbs.db
 Desktop.ini

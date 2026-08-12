@@ -3,303 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海南大学 - 控制类考研就业去向</title>
-        <style>
-        :root { --primary-color: #A8E6CF; --secondary-color: #88D8B0; --accent-color: #B5EADD; --bg-light: #F8FAFC; }
-        body { background-color: var(--bg-light); color: #2d3436; line-height: 1.7; }
-        .hero { text-shadow: 0 1px 2px rgba(255,255,255,0.5); background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 40px 30px; text-align: center; border-bottom: 4px solid #B5EADD; }
-        .hero h1 { font-size: 2.4em; margin-bottom: 12px; font-weight: 700; }
-        .hero p { font-size: 1.15em; opacity: 1; }
-        .info-card { background: #ffffff; border-radius: 14px; padding: 28px; border: 1px solid #e8e8e8; border-top: 4px solid var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-        .info-card h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
-        .highlight-box { background: linear-gradient(135deg, #A8E6CF 0%, #B5EADD 100%); color: #1a1a2e; padding: 20px; border-radius: 12px; margin: 20px 0; }
-        .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
-        .stat-item { background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; text-align: center; }
-        .stat-number { font-size: 2em; font-weight: 700; color: #1a1a2e; }
-        .stat-label { font-size: 0.85em; margin-top: 4px; opacity: 1; }
-        .company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
-        .company-card { background: white; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px; text-align: center; transition: all 0.3s; background: #fafafa; }
-        .company-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .company-name { font-weight: 600; color: #2d3436; font-size: 1em; }
-        .company-count { color: #5a5a5a; font-size: 0.85em; margin-top: 4px; }
-        .wordcloud-img { max-width: 70%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-        .footer { text-align: center; padding: 24px; color: #8a8a8a; font-size: 0.9em; border-top: 1px solid #e0e0e0; margin-top: 40px; }
-        .back-link { display: inline-block; margin: 20px 30px; color: #1a1a2e; text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-left: 8px; }
-        .badge-211 { background: #A8E6CF; color: #1a1a2e; }
-        .tip-box { background: #E8F5E9; border: 1px solid #B5EADD; border-radius: 8px; padding: 16px; margin: 16px 0; font-size: 0.95em; }
-        .tip-box strong { color: #1a1a2e; }
-        .content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .full-width { grid-column: 1 / -1; }
-        .rank-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
-        .rank-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; margin-right: 12px; flex-shrink: 0; }
-        .rank-1 { background: #F8C3CD; color: #1a1a2e; }
-        .rank-2 { background: #C5CAE9; color: #1a1a2e; }
-        .rank-3 { background: #FFCCBC; color: #1a1a2e; }
-        .rank-other { background: #E8F5E9; color: #1a1a2e; }
-        .rank-name { font-weight: 600; color: #2d3436; }
-        .rank-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: 600; margin-left: 8px; }
-        .tag-car { background: #FFCCBC; color: #1a1a2e; }
-        .tag-chip { background: #C5CAE9; color: #1a1a2e; }
-        .tag-telecom { background: #A8E6CF; color: #1a1a2e; }
-        .tag-bank { background: #F8C3CD; color: #1a1a2e; }
-        .tag-military { background: #D1C4E9; color: #1a1a2e; }
-        .tag-newenergy { background: #B5EADD; color: #1a1a2e; }
-        .tag-electron { background: #E8F5E9; color: #1a1a2e; }
-        .industry-bar { display: flex; align-items: center; margin: 8px 0; font-size: 0.9em; }
-        .industry-name { width: 220px; color: #2d3436; font-weight: 500; }
-        .industry-bar-fill { height: 20px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 30px; }
-        .industry-percent { color: #5a5a5a; font-weight: 600; }
-        .region-bar { display: flex; align-items: center; margin: 6px 0; font-size: 0.9em; }
-        .region-name { width: 160px; color: #2d3436; font-weight: 500; }
-        .region-bar-fill { height: 18px; background: linear-gradient(90deg, #A8E6CF, #B5EADD); border-radius: 4px; margin: 0 10px; min-width: 20px; }
-        .region-percent { color: #5a5a5a; font-weight: 600; width: 60px; }
-        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .wordcloud-img { max-width: 100%; } .industry-name { width: 160px; font-size: 0.85em; } .region-name { width: 120px; font-size: 0.85em; } }
+    <title>海南大学 - 控制类硕士就业去向</title>
+    <style>
+        .school-logo {
+            display: block;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            padding: 4px;
+            margin: 0 auto 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border: 2px solid rgba(255,255,255,0.7);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #F8FAFC; color: #2d3436; line-height: 1.7; }
+        .header { background: linear-gradient(135deg, #B8A4D8 0%, #D8C0E8 100%); color: #1a1a2e; padding: 40px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .badge { display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.25); color: #1a1a2e; border-radius: 20px; font-size: 0.85em; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: white; border: 1px solid #e8e8e8; border-radius: 8px; text-decoration: none; color: #2d3436; font-size: 1em; transition: all 0.3s; margin-bottom: 20px; }
+        .back-link:hover { background: #F8FAFC; border-color: #B8A4D8; color: #B8A4D8; }
+        .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .section h2 { font-size: 1.3em; margin-bottom: 16px; color: #B8A4D8; padding-bottom: 10px; border-bottom: 2px solid #F5F0F7; }
+        .info-note { padding: 20px; background: #fff8e1; border-left: 4px solid #ffc107; border-radius: 8px; font-size: 0.95em; color: #5a5a5a; text-align: center; }
+        .footer { text-align: center; padding: 30px 20px; color: #8a8a8a; font-size: 0.85em; }
+        @media (max-width: 768px) { .header h1 { font-size: 1.5em; } .section { padding: 16px; } }
     </style>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-link">← 返回上一级</a>
-    <div class="hero">
-        <h1>海南大学 <span class="badge badge-211">211</span></h1>
-        <p>211高校 / 海南唯一211 / 硕士就业去向</p>
+    <div class="header">
+        <img src="../../../专业课选择/images/校徽/海南大学.jpg" alt="海南大学校徽" class="school-logo" onerror="this.style.display='none'"><h1>海南大学</h1>
+        <span class="badge">211</span>
     </div>
-    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px;">
-        <div class="content-grid">
-            <div class="info-card full-width">
-                <h3>📊 核心数据概览</h3>
-                <div class="highlight-box">
-                    <div class="stat-row">
-                        <div class="stat-item"><div class="stat-number">47%+</div><div class="stat-label">制造业</div></div>
-                        <div class="stat-item"><div class="stat-number">26.60%</div><div class="stat-label">信息传输/IT</div></div>
-                        <div class="stat-item"><div class="stat-number">7.39%</div><div class="stat-label">金融业</div></div>
-                        <div class="stat-item"><div class="stat-number">30.54%</div><div class="stat-label">留深圳</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🏆 就业单位 TOP10</h3>
-                <div class="rank-item">
-                    <span class="rank-num rank-1">1</span>
-                    <span class="rank-name">比亚迪股份有限公司 <span class="rank-tag tag-car">汽车新能源</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-2">2</span>
-                    <span class="rank-name">芯原微电子（海南）有限公司 <span class="rank-tag tag-chip">芯片设计</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-3">3</span>
-                    <span class="rank-name">中国联通海南省分公司 <span class="rank-tag tag-telecom">运营商</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">4</span>
-                    <span class="rank-name">中国联通湖南省分公司 <span class="rank-tag tag-telecom">运营商</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">5</span>
-                    <span class="rank-name">广东省农村信用社联合社 <span class="rank-tag tag-bank">银行金融</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">6</span>
-                    <span class="rank-name">湖南云箭制导航空弹药研究开发有限公司 <span class="rank-tag tag-military">军工</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">7</span>
-                    <span class="rank-name">深圳市正浩创新科技股份有限公司 <span class="rank-tag tag-newenergy">新能源</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">8</span>
-                    <span class="rank-name">无锡飞谱电子信息技术有限公司 <span class="rank-tag tag-electron">电子软件</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">9</span>
-                    <span class="rank-name">中国电信海南分公司 <span class="rank-tag tag-telecom">运营商</span></span>
-                </div>
-                <div class="rank-item">
-                    <span class="rank-num rank-other">10</span>
-                    <span class="rank-name">中国工商银行上海市分行 <span class="rank-tag tag-bank">银行金融</span></span>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>📈 就业单位行业 TOP5</h3>
-                <div class="industry-bar">
-                    <span class="industry-name">制造业</span>
-                    <div class="industry-bar-fill" style="width: 200px;"></div>
-                    <span class="industry-percent">47%+</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">信息传输/软件/IT</span>
-                    <div class="industry-bar-fill" style="width: 113px;"></div>
-                    <span class="industry-percent">26.60%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">金融业</span>
-                    <div class="industry-bar-fill" style="width: 31px;"></div>
-                    <span class="industry-percent">7.39%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">科学研究和技术服务</span>
-                    <div class="industry-bar-fill" style="width: 25px;"></div>
-                    <span class="industry-percent">5.91%</span>
-                </div>
-                <div class="industry-bar">
-                    <span class="industry-name">公共管理/社会保障</span>
-                    <div class="industry-bar-fill" style="width: 15px;"></div>
-                    <span class="industry-percent">3.45%</span>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🏢 就业单位性质</h3>
-                <div class="tip-box">
-                    <strong>其他企业：</strong>占比最大，比亚迪、芯原微电子、正浩创新、飞谱电子等民企是主要吸纳方。
-                </div>
-                <div class="tip-box">
-                    <strong>国有企业：</strong>中国联通、中国电信、中国工商银行、湖南云箭（军工央企）等，央企/国企占相当比例。
-                </div>
-                <div class="tip-box">
-                    <strong>三资企业：</strong>芯原微电子（外资背景）等，半导体/芯片领域外资企业有吸引力。
-                </div>
-                <div class="tip-box">
-                    <strong>科研设计单位：</strong>湖南云箭制导航空弹药研究开发有限公司等军工科研院所。
-                </div>
-                <div class="tip-box">
-                    <strong>其他事业单位/机关：</strong>农村信用社（事业单位性质）、公共管理/社会保障单位等占比较小。
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🗺️ 就业地区分布</h3>
-                <div class="region-bar">
-                    <span class="region-name">广东省深圳市</span>
-                    <div class="region-bar-fill" style="width: 200px;"></div>
-                    <span class="region-percent">30.54%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">海南省海口市</span>
-                    <div class="region-bar-fill" style="width: 78px;"></div>
-                    <span class="region-percent">11.82%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">上海市</span>
-                    <div class="region-bar-fill" style="width: 45px;"></div>
-                    <span class="region-percent">6.90%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">湖南省长沙市</span>
-                    <div class="region-bar-fill" style="width: 29px;"></div>
-                    <span class="region-percent">4.43%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">湖北省武汉市</span>
-                    <div class="region-bar-fill" style="width: 23px;"></div>
-                    <span class="region-percent">3.45%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">四川省成都市</span>
-                    <div class="region-bar-fill" style="width: 23px;"></div>
-                    <span class="region-percent">3.45%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">广东省广州市</span>
-                    <div class="region-bar-fill" style="width: 20px;"></div>
-                    <span class="region-percent">2.96%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">北京市</span>
-                    <div class="region-bar-fill" style="width: 16px;"></div>
-                    <span class="region-percent">2.46%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">浙江省杭州市</span>
-                    <div class="region-bar-fill" style="width: 16px;"></div>
-                    <span class="region-percent">2.46%</span>
-                </div>
-                <div class="region-bar">
-                    <span class="region-name">江苏省无锡市</span>
-                    <div class="region-bar-fill" style="width: 13px;"></div>
-                    <span class="region-percent">1.97%</span>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>🏭 按行业分类</h3>
-                <h4 style="margin: 12px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 汽车/新能源/制造业</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">比亚迪</div><div class="company-count">TOP1</div></div>
-                    <div class="company-card"><div class="company-name">正浩创新科技</div><div class="company-count">TOP7</div></div>
-                </div>
-                <h4 style="margin: 16px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 半导体/芯片</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">芯原微电子（海南）</div><div class="company-count">TOP2</div></div>
-                </div>
-                <h4 style="margin: 16px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 电信运营商</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">中国联通海南</div><div class="company-count">TOP3</div></div>
-                    <div class="company-card"><div class="company-name">中国联通湖南</div><div class="company-count">TOP4</div></div>
-                    <div class="company-card"><div class="company-name">中国电信海南</div><div class="company-count">TOP9</div></div>
-                </div>
-                <h4 style="margin: 16px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 银行/金融</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">广东省农村信用社</div><div class="company-count">TOP5</div></div>
-                    <div class="company-card"><div class="company-name">工商银行上海</div><div class="company-count">TOP10</div></div>
-                </div>
-                <h4 style="margin: 16px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 军工/科研院所</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">湖南云箭制导</div><div class="company-count">TOP6</div></div>
-                </div>
-                <h4 style="margin: 16px 0 8px; color: #1a1a2e; font-size: 1em;">🔷 电子/软件</h4>
-                <div class="company-grid">
-                    <div class="company-card"><div class="company-name">无锡飞谱电子</div><div class="company-count">TOP8</div></div>
-                </div>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>🎨 企业雇主词云</h3>
-                <div style="text-align: center; padding: 20px;">
-                    <img src="../wordclouds/wordcloud_海南大学.png" alt="海南大学雇主词云" class="wordcloud-img">
-                </div>
-            </div>
-
-            <div class="info-card full-width">
-                <h3>💡 就业特点分析</h3>
-                <div class="tip-box">
-                    <strong>🚗 制造业 dominance：</strong>制造业占47%+，是绝对第一大行业。比亚迪TOP1（汽车新能源）、正浩创新TOP7（便携式储能/新能源），制造业以汽车/新能源为主导。海南大学控制类硕士在制造业就业优势突出，尤其新能源/汽车电子方向。
-                </div>
-                <div class="tip-box">
-                    <strong>💻 IT/通信：</strong>信息传输/软件/IT占26.60%，为第二大行业。中国联通海南TOP3、湖南TOP4、中国电信海南TOP9，运营商体系占3席；飞谱电子TOP8（电子软件/EDA工具），IT/通信领域以运营商+软件企业为主。
-                </div>
-                <div class="tip-box">
-                    <strong>🔬 半导体/芯片：</strong>芯原微电子（海南）TOP2，芯原微电子是全球领先的芯片设计服务/IP提供商，在海南有布局。海南大学与芯原微电子的地缘合作优势，使芯片设计成为重要就业方向。
-                </div>
-                <div class="tip-box">
-                    <strong>🏦 银行/金融：</strong>广东省农村信用社TOP5、工商银行上海TOP10，金融业占7.39%。金融科技岗位（系统开发、数据分析）是控制类硕士向金融业转型的通道。
-                </div>
-                <div class="tip-box">
-                    <strong>🛡️ 军工/科研院所：</strong>湖南云箭制导航空弹药研究开发有限公司TOP6，属于军工央企/科研院所。海南大学有部分毕业生进入国防科技领域，体现学校在电子信息领域的军工应用能力。
-                </div>
-                <div class="tip-box">
-                    <strong>📍 地域：深圳 dominance + 海口基本盘：</strong>深圳30.54%（比亚迪、正浩创新等）、海口11.82%（芯原海南、联通海南、电信海南），合计超40%。深圳是最大去向，海口是本地基本盘。上海6.90%、长沙4.43%、武汉3.45%、成都3.45%等，地域分布较广但集中在一线城市。
-                </div>
-                <div class="tip-box">
-                    <strong>🏢 单位性质：民企+国企并重：</strong>比亚迪（民企）、芯原微电子（外资/民企）、正浩创新（民企）、飞谱电子（民企）与联通、电信、工商银行、云箭（国企/军工）并重，体制内与市场化双轮驱动。
-                </div>
-                <div class="tip-box">
-                    <strong>🌴 海南自贸港优势：</strong>芯原微电子在海南布局、联通/电信海南分公司吸纳本地毕业生，海南自贸港建设为本地就业创造机会。但深圳30.54%的 dominance 说明海南本地高端技术岗位供给仍有限，大量毕业生选择外出就业。
-                </div>
-                <div class="tip-box">
-                    <strong>📊 科研/技术服务：</strong>科学研究和技术服务业占5.91%，湖南云箭、芯原微电子等均涉及研发/技术服务，体现海南大学硕士在技术研发岗位上的竞争力。
-                </div>
+    <div class="container">
+        <a href="javascript:history.back()" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            返回上一级
+        </a>
+        <div class="section">
+            <h2>📊 就业数据概览</h2>
+            <div class="info-note">
+                <strong>就业数据整理中，敬请期待。</strong><br><br>
+                海南大学 的控制类硕士就业去向数据正在整理中，上线后可在首页「就业大揭秘」板块查看该校详细就业去向、薪资区间、就业单位分布等数据。
             </div>
         </div>
     </div>
-    <div class="footer" style="text-align:center;padding:24px;color:#8a8a8a;font-size:0.9em;border-top:1px solid #e0e0e0;margin-top:40px;">
-        <p>数据来源：海南大学就业质量报告（硕士） | 整理：@一只通信考研的er</p>
-        <p>仅供考研择校参考，数据如有出入请以学校官方发布为准</p>
-    </div>
+    <div class="footer">控制类考研择校 · 就业大揭秘</div>
 </body>
 </html>

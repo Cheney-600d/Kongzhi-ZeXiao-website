@@ -5,52 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>河北大学 - 控制类硕士就业去向</title>
     <style>
+        .school-logo {
+            display: block;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            padding: 4px;
+            margin: 0 auto 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border: 2px solid rgba(255,255,255,0.7);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: #F8FAFC; color: #2d3436; line-height: 1.7; }
-        .header { background: linear-gradient(135deg, #A8E6CF 0%, #B8E6D8 100%); color: #1a1a2e; padding: 40px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #B8A4D8 0%, #D8C0E8 100%); color: #1a1a2e; padding: 40px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .header h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
         .badge { display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.25); color: #1a1a2e; border-radius: 20px; font-size: 0.85em; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .back-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: white; border: 1px solid #e8e8e8; border-radius: 8px; text-decoration: none; color: #2d3436; font-size: 1em; transition: all 0.3s; margin-bottom: 20px; }
-        .back-link:hover { background: #F8FAFC; border-color: #A8E6CF; color: #A8E6CF; }
+        .back-link:hover { background: #F8FAFC; border-color: #B8A4D8; color: #B8A4D8; }
         .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-        .section h2 { font-size: 1.3em; margin-bottom: 16px; color: #A8E6CF; padding-bottom: 10px; border-bottom: 2px solid #F8C3CD; }
-        .section h3 { font-size: 1.1em; margin: 18px 0 10px; color: #555; }
-        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 16px; }
-        .content-grid .full-width { grid-column: 1 / -1; }
-        .highlight-box { background: linear-gradient(135deg, #F8C3CD 0%, #A8E6CF 100%); border-radius: 12px; padding: 16px; margin-bottom: 12px; color: #1a1a2e; }
-        .highlight-box .label { font-size: 0.85em; opacity: 0.9; margin-bottom: 4px; }
-        .highlight-box .value { font-size: 1.3em; font-weight: bold; }
-        .rank-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
-        .rank-item:last-child { border-bottom: none; }
-        .rank-num { min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: bold; color: white; }
-        .rank-1 { background: #FFD700; color: #1a1a2e; }
-        .rank-2 { background: #C0C0C0; color: #1a1a2e; }
-        .rank-3 { background: #CD7F32; }
-        .rank-other { background: #C5CAE9; color: #1a1a2e; }
-        .company-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
-        .company-tag { display: flex; align-items: center; justify-content: center; padding: 10px; background: #F8FAFC; border: 2px solid #C5CAE9; border-radius: 10px; font-size: 0.85em; color: #1a1a2e; text-align: center; font-weight: 500; transition: all 0.2s; }
-        .company-tag:hover { background: #C5CAE9; color: white; }
-        .company-tag.state { border-color: #A8E6CF; background: #F0FFF4; }
-        .company-tag.state:hover { background: #A8E6CF; color: #1a1a2e; }
-        .company-tag.it { border-color: #F8C3CD; background: #FFF5F5; }
-        .company-tag.it:hover { background: #F8C3CD; color: #1a1a2e; }
-        .company-tag.bank { border-color: #FFD54F; background: #FFFDE7; }
-        .company-tag.bank:hover { background: #FFD54F; color: #1a1a2e; }
-        .company-tag.aviation { border-color: #D1C4E9; background: #EDE7F6; }
-        .company-tag.aviation:hover { background: #D1C4E9; color: #1a1a2e; }
-        .wordcloud-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-top: 12px; }
-        .info-note { padding: 12px; background: #fff8e1; border-left: 4px solid #ffc107; border-radius: 8px; font-size: 0.85em; color: #5a5a5a; margin-top: 12px; }
+        .section h2 { font-size: 1.3em; margin-bottom: 16px; color: #B8A4D8; padding-bottom: 10px; border-bottom: 2px solid #F5F0F7; }
+        .info-note { padding: 20px; background: #fff8e1; border-left: 4px solid #ffc107; border-radius: 8px; font-size: 0.95em; color: #5a5a5a; text-align: center; }
         .footer { text-align: center; padding: 30px 20px; color: #8a8a8a; font-size: 0.85em; }
-        @media (max-width: 768px) { .header h1 { font-size: 1.5em; } .section { padding: 16px; } .content-grid { grid-template-columns: 1fr; } .company-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .header h1 { font-size: 1.5em; } .section { padding: 16px; } }
     </style>
-
-<style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
 </head>
 <body>
     <div class="header">
-        <h1>河北大学</h1>
-        <span class="badge">其他</span>
+        <img src="../../../专业课选择/images/校徽/河北大学.jpg" alt="河北大学校徽" class="school-logo" onerror="this.style.display='none'"><h1>河北大学</h1>
+        <span class="badge">双非</span>
     </div>
     <div class="container">
         <a href="javascript:history.back()" class="back-link">
@@ -59,102 +44,12 @@
         </a>
         <div class="section">
             <h2>📊 就业数据概览</h2>
-            <div class="content-grid">
-                <div>
-                    <div class="highlight-box">
-                        <div class="label">数据届次</div>
-                        <div class="value">2022届硕士</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="highlight-box">
-                        <div class="label">专业方向</div>
-                        <div class="value">电子与通信工程</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="highlight-box">
-                        <div class="label">就业地区</div>
-                        <div class="value">京津冀为主</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="highlight-box">
-                        <div class="label">单位类型</div>
-                        <div class="value">运营商/银行/航天/IT</div>
-                    </div>
-                </div>
-            </div>
             <div class="info-note">
-                <strong>核心特点：</strong>河北大学2022届电子与通信工程硕士就业呈现<strong>"体制内为主、科技航天为辅"</strong>的格局。就业去向高度集中在<strong>京津冀地区</strong>，北京企业占比很高，包括航天系（新风航天、航天新立）、银行系（工行、农行、建行）和通信系（移动河北）。小米等科技企业和奕斯伟等半导体企业也有录用。
+                <strong>就业数据整理中，敬请期待。</strong><br><br>
+                河北大学 的控制类硕士就业去向数据正在整理中，上线后可在首页「就业大揭秘」板块查看该校详细就业去向、薪资区间、就业单位分布等数据。
             </div>
-        </div>
-        <div class="section">
-            <h2>🏢 就业单位列表（2022届）</h2>
-            <div class="content-grid">
-                <div>
-                    <div class="rank-item"><span class="rank-num rank-1">1</span><span>中国移动通信集团河北有限公司</span><span style="margin-left:auto;font-size:0.8em;color:#888;">3人</span></div>
-                    <div class="rank-item"><span class="rank-num rank-2">2</span><span>北京新风航天装备有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-3">3</span><span>中国铁塔股份有限公司河北省分公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">4</span><span>中国建设银行股份有限公司保定分行</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">5</span><span>小米通讯技术有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">6</span><span>北京能高普康测控技术有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">7</span><span>中国农业银行股份有限公司河北省分行</span></div>
-                </div>
-                <div>
-                    <div class="rank-item"><span class="rank-num rank-other">8</span><span>北京航天新立科技有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">9</span><span>广东中星电子有限公司北京分公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">10</span><span>国机工业互联网研究院(河南)有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">11</span><span>中国工商银行股份有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">12</span><span>北京奕斯伟计算技术有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">13</span><span>北京山石网科信息技术有限公司</span></div>
-                    <div class="rank-item"><span class="rank-num rank-other">14</span><span>中冶京诚工程技术有限公司</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="section">
-            <h2>🏭 就业单位分类</h2>
-            <h3>📡 通信/运营商</h3>
-            <div class="company-grid">
-                <div class="company-tag state">中国移动河北</div>
-                <div class="company-tag state">中国铁塔河北</div>
-            </div>
-            <h3>🏦 银行/金融</h3>
-            <div class="company-grid">
-                <div class="company-tag bank">建设银行保定</div>
-                <div class="company-tag bank">农业银行河北</div>
-                <div class="company-tag bank">工商银行</div>
-            </div>
-            <h3>✈️ 航天/军工</h3>
-            <div class="company-grid">
-                <div class="company-tag aviation">北京新风航天</div>
-                <div class="company-tag aviation">北京航天新立</div>
-            </div>
-            <h3>💻 IT/科技/半导体</h3>
-            <div class="company-grid">
-                <div class="company-tag it">小米通讯</div>
-                <div class="company-tag it">奕斯伟计算</div>
-                <div class="company-tag it">山石网科</div>
-                <div class="company-tag it">广东中星电子</div>
-            </div>
-            <h3>🏭 制造/工程/其他</h3>
-            <div class="company-grid">
-                <div class="company-tag">能高普康测控</div>
-                <div class="company-tag">国机工业互联网</div>
-                <div class="company-tag">中冶京诚</div>
-            </div>
-            <div class="info-note">
-                <strong>就业特点：</strong>河北大学毕业生就业面覆盖<strong>通信运营商、银行金融、航天军工、IT科技</strong>四大领域。其中<strong>中国移动河北</strong>是最大去向（3人），体现通信专业在运营商体系中的就业优势。<strong>北京航天系</strong>企业（新风航天、航天新立）录用人数可观，反映京津冀地区航天产业对本地高校人才的吸纳。<strong>银行系统</strong>（建行、农行、工行）合计录用3人，说明金融IT也是重要就业方向。<strong>小米、奕斯伟</strong>等科技企业则代表半导体和互联网方向。
-            </div>
-        </div>
-        <div class="section">
-            <h2>☁️ 就业单位词云</h2>
-            <p style="color: #777; font-size: 0.9em; margin-bottom: 12px;">基于就业质量报告数据生成的单位名称词云</p>
-            <img src="../wordclouds/wordcloud_河北大学.png" alt="就业单位词云" class="wordcloud-img">
         </div>
     </div>
-    <div class="footer">
-        <p>数据来源：《控制类硕士就业去向》PDF | 制作：@一只通信考研的er</p>
-    </div>
+    <div class="footer">控制类考研择校 · 就业大揭秘</div>
 </body>
 </html>

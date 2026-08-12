@@ -1,317 +1,324 @@
-// career-analysis charts.js v2 - with salary & city features
-(function() {
-  var style = getComputedStyle(document.documentElement);
-  var accent = style.getPropertyValue('--accent').trim();
-  var accent2 = style.getPropertyValue('--accent2').trim();
-  var ink = style.getPropertyValue('--ink').trim();
-  var muted = style.getPropertyValue('--muted').trim();
-  var rule = style.getPropertyValue('--rule').trim();
-  var bg2 = style.getPropertyValue('--bg2').trim();
-  var gold = '#d4a017';
+// ======== 控制类硕士就业数据总览报告 ========
+// 数据来源：《25就业宝典》《26择校宝典》 —— 方向薪资 / 私企 / 国央企 / 研究所
+(function () {
+  'use strict';
 
-  // ==================== DATA ====================
-  var regionData = [
-    {"region":"北京","total":3021,"companies":2314,"avg_salary":2.25,"stacks":{"算法/AI": 847, "测试": 319, "安全": 295, "数据/大数据": 261, "产品/设计": 233, "通信/信号处理": 216, "运维/DevOps": 176, "C/C++": 168, "芯片/IC设计": 164, "前端/JavaScript": 141}},
-    {"region":"上海","total":2981,"companies":2235,"avg_salary":2.18,"stacks":{"算法/AI": 803, "测试": 356, "数据/大数据": 242, "安全": 228, "产品/设计": 217, "芯片/IC设计": 195, "C/C++": 186, "运维/DevOps": 139, "通信/信号处理": 131, "前端/JavaScript": 130}},
-    {"region":"深圳","total":1928,"companies":1469,"avg_salary":2.05,"stacks":{"算法/AI": 592, "测试": 310, "产品/设计": 197, "C/C++": 183, "安全": 145, "数据/大数据": 144, "芯片/IC设计": 140, "通信/信号处理": 119, "前端/JavaScript": 103, "运维/DevOps": 97}},
-    {"region":"广州","total":1318,"companies":1047,"avg_salary":1.62,"stacks":{"算法/AI": 305, "产品/设计": 129, "测试": 129, "数据/大数据": 123, "安全": 107, "前端/JavaScript": 71, "C/C++": 69, "运维/DevOps": 68, "通信/信号处理": 54, "Java": 54}},
-    {"region":"全国各地","total":1281,"companies":1041,"avg_salary":1.15,"stacks":{"算法/AI": 216, "安全": 172, "测试": 95, "数据/大数据": 92, "产品/设计": 77, "运维/DevOps": 69, "通信/信号处理": 53, "C/C++": 49, "芯片/IC设计": 39, "Java": 31}},
-    {"region":"杭州","total":1246,"companies":961,"avg_salary":1.86,"stacks":{"算法/AI": 392, "测试": 169, "产品/设计": 137, "安全": 109, "数据/大数据": 103, "C/C++": 96, "芯片/IC设计": 77, "前端/JavaScript": 72, "Java": 67, "通信/信号处理": 58}},
-    {"region":"成都","total":1069,"companies":869,"avg_salary":1.35,"stacks":{"算法/AI": 320, "测试": 163, "安全": 109, "芯片/IC设计": 108, "通信/信号处理": 98, "产品/设计": 92, "C/C++": 81, "数据/大数据": 73, "运维/DevOps": 52, "前端/JavaScript": 51}},
-    {"region":"南京","total":949,"companies":746,"avg_salary":1.58,"stacks":{"算法/AI": 259, "测试": 147, "安全": 104, "产品/设计": 83, "数据/大数据": 80, "C/C++": 69, "芯片/IC设计": 64, "通信/信号处理": 64, "运维/DevOps": 63, "Java": 53}},
-    {"region":"武汉","total":856,"companies":674,"avg_salary":1.22,"stacks":{"算法/AI": 264, "测试": 155, "安全": 90, "产品/设计": 90, "数据/大数据": 83, "C/C++": 77, "通信/信号处理": 66, "前端/JavaScript": 54, "运维/DevOps": 53, "芯片/IC设计": 52}},
-    {"region":"西安","total":797,"companies":648,"avg_salary":1.28,"stacks":{"算法/AI": 248, "测试": 132, "安全": 91, "芯片/IC设计": 81, "通信/信号处理": 75, "产品/设计": 67, "C/C++": 66, "数据/大数据": 63, "运维/DevOps": 48, "前端/JavaScript": 45}},
-    {"region":"苏州","total":683,"companies":540,"avg_salary":1.49,"stacks":{"算法/AI": 152, "测试": 112, "C/C++": 60, "产品/设计": 55, "芯片/IC设计": 53, "安全": 44, "数据/大数据": 35, "通信/信号处理": 30, "运维/DevOps": 25, "前端/JavaScript": 24}},
-    {"region":"天津","total":634,"companies":517,"avg_salary":1.3,"stacks":{"算法/AI": 109, "安全": 78, "测试": 64, "通信/信号处理": 45, "产品/设计": 44, "数据/大数据": 41, "运维/DevOps": 24, "芯片/IC设计": 22, "Java": 22, "前端/JavaScript": 22}},
-    {"region":"重庆","total":603,"companies":505,"avg_salary":1.18,"stacks":{"算法/AI": 140, "测试": 74, "安全": 71, "数据/大数据": 47, "运维/DevOps": 38, "通信/信号处理": 33, "产品/设计": 32, "C/C++": 25, "前端/JavaScript": 22, "芯片/IC设计": 16}},
-    {"region":"合肥","total":516,"companies":416,"avg_salary":1.25,"stacks":{"算法/AI": 137, "测试": 60, "安全": 55, "数据/大数据": 41, "产品/设计": 39, "C/C++": 36, "芯片/IC设计": 36, "通信/信号处理": 31, "运维/DevOps": 23, "Java": 21}},
-    {"region":"长沙","total":473,"companies":396,"avg_salary":1.2,"stacks":{"算法/AI": 132, "产品/设计": 56, "测试": 55, "安全": 53, "数据/大数据": 42, "C/C++": 29, "运维/DevOps": 28, "前端/JavaScript": 27, "通信/信号处理": 26, "Java": 22}},
-  ];
-  var stackNames = ["算法/AI", "测试", "安全", "数据/大数据", "产品/设计", "通信/信号处理", "C/C++", "运维/DevOps", "芯片/IC设计", "前端/JavaScript", "Java", "Android"];
-  var stackColors = {};
-  var palette = ["#e63946", "#457b9d", "#2a9d8f", "#e9c46a", "#f4a261", "#264653", "#e76f51", "#6d6875", "#b5838d", "#ffb4a2", "#d4a373", "#a8dadc", "#06d6a0", "#118ab2", "#073b4c"];
-  stackNames.forEach(function(n,i){stackColors[n]=palette[i%palette.length]});
-  var stackData = [
-    {"name":"算法/AI","total":2083,"companies":1663,"regions":{"北京": 847, "上海": 803, "深圳": 592, "杭州": 392, "成都": 320, "广州": 305, "武汉": 264, "南京": 259, "西安": 248, "全国各地": 216, "苏州": 152, "重庆": 140, "合肥": 137, "长沙": 132, "天津": 109},"grades":{"2026届": 815, "2027届": 353, "2025届": 112, "2024届": 49, "2028届": 6, "海外往届": 3, "2029届": 2, "2023届": 1, "部分往届": 1},"types":{"26届秋招": 930, "春招": 731, "实习": 167, "暑期实习": 130, "秋招提前批": 52, "秋招": 51, "秋招补录": 37, "26届提前批": 27, "春招补录": 17, "人才计划": 12},"industries":{"国央企": 452, "互联网": 421, "科技": 275, "金融": 194, "制造业": 171, "半导体": 137, "事业单位": 95, "其他": 82, "外企": 76, "生物医药": 68},"salary_low":20,"salary_high":80,"salary_avg":35,"skill":"Python/C++, ML/DL框架, 数学基础, 顶会论文加分"},
-    {"name":"测试","total":942,"companies":802,"regions":{"上海": 356, "北京": 319, "深圳": 310, "杭州": 169, "成都": 163, "武汉": 155, "南京": 147, "西安": 132, "广州": 129, "苏州": 112, "全国各地": 95, "重庆": 74, "天津": 64, "海外": 61, "合肥": 60},"grades":{"2026届": 355, "2027届": 98, "2025届": 28, "2024届": 10, "2023届": 1, "部分往届": 1, "海外往届": 1},"types":{"26届秋招": 496, "春招": 312, "实习": 48, "暑期实习": 37, "秋招补录": 23, "秋招": 18, "秋招提前批": 13, "26届提前批": 11, "春招补录": 10, "26届暑期实习": 2},"industries":{"互联网": 159, "科技": 151, "半导体": 127, "国央企": 127, "制造业": 108, "外企": 50, "其他": 46, "金融": 44, "生物医药": 41, "汽车新能源": 40},"salary_low":10,"salary_high":18,"salary_avg":14,"skill":"测试理论, 自动化工具(Selenium/JMeter), Linux基础"},
-    {"name":"安全","total":934,"companies":840,"regions":{"北京": 295, "上海": 228, "全国各地": 172, "深圳": 145, "成都": 109, "杭州": 109, "广州": 107, "南京": 104, "西安": 91, "武汉": 90, "天津": 78, "重庆": 71, "合肥": 55, "长沙": 53, "济南": 45},"grades":{"2026届": 387, "2025届": 132, "2024届": 75, "2027届": 53, "海外往届": 4},"types":{"26届秋招": 491, "春招": 364, "实习": 22, "暑期实习": 18, "秋招": 16, "秋招补录": 10, "秋招提前批": 9, "春招补录": 4, "26届提前批": 3, "人才计划": 2},"industries":{"国央企": 479, "事业单位": 112, "互联网": 92, "金融": 58, "科技": 48, "制造业": 44, "能源": 42, "其他": 39, "建筑": 29, "汽车新能源": 26},"salary_low":15,"salary_high":25,"salary_avg":20,"skill":"网络协议, 渗透测试, 安全合规, CTF竞赛加分"},
-    {"name":"数据/大数据","total":700,"companies":614,"regions":{"北京": 261, "上海": 242, "深圳": 144, "广州": 123, "杭州": 103, "全国各地": 92, "武汉": 83, "南京": 80, "成都": 73, "西安": 63, "重庆": 47, "长沙": 42, "合肥": 41, "天津": 41, "济南": 38},"grades":{"2026届": 269, "2025届": 83, "2027届": 71, "2024届": 45, "海外往届": 2, "2023届": 1},"types":{"26届秋招": 362, "春招": 241, "暑期实习": 36, "实习": 22, "秋招补录": 16, "秋招提前批": 13, "秋招": 11, "26届提前批": 6, "春招补录": 5, "人才计划": 4},"industries":{"国央企": 207, "互联网": 110, "金融": 107, "事业单位": 74, "科技": 43, "其他": 30, "外企": 30, "制造业": 27, "快消零售": 24, "汽车新能源": 20},"salary_low":15,"salary_high":30,"salary_avg":22,"skill":"SQL, Hadoop/Spark/Flink, Python, 统计学"},
-    {"name":"产品/设计","total":660,"companies":576,"regions":{"北京": 233, "上海": 217, "深圳": 197, "杭州": 137, "广州": 129, "成都": 92, "武汉": 90, "南京": 83, "全国各地": 77, "西安": 67, "长沙": 56, "苏州": 55, "天津": 44, "厦门": 39, "合肥": 39},"grades":{"2026届": 241, "2027届": 73, "2025届": 31, "2024届": 13, "海外往届": 2, "2023届": 1},"types":{"26届秋招": 342, "春招": 223, "实习": 42, "暑期实习": 25, "秋招补录": 22, "26届提前批": 7, "秋招提前批": 7, "秋招": 6, "春招补录": 5, "实习生": 3},"industries":{"互联网": 162, "科技": 74, "国央企": 70, "其他": 49, "快消零售": 48, "游戏": 45, "金融": 43, "制造业": 40, "生物医药": 34, "外企": 21},"salary_low":12,"salary_high":25,"salary_avg":18,"skill":"产品思维, 用户研究, Axure/Figma, 数据分析"},
-    {"name":"通信/信号处理","total":637,"companies":569,"regions":{"北京": 216, "上海": 131, "深圳": 119, "成都": 98, "西安": 75, "武汉": 66, "南京": 64, "杭州": 58, "广州": 54, "全国各地": 53, "天津": 45, "重庆": 33, "合肥": 31, "苏州": 30, "长沙": 26},"grades":{"2026届": 252, "2025届": 67, "2024届": 42, "2027届": 37},"types":{"26届秋招": 336, "春招": 232, "秋招": 20, "暑期实习": 13, "秋招提前批": 13, "秋招补录": 10, "26届提前批": 9, "实习": 8, "实习生": 1, "人才计划": 1},"industries":{"国央企": 304, "事业单位": 96, "科技": 91, "半导体": 44, "制造业": 42, "互联网": 25, "金融": 22, "汽车新能源": 18, "其他": 15, "能源": 14},"salary_low":15,"salary_high":35,"salary_avg":25,"skill":"信号处理, DSP, 5G协议, MATLAB, RF/基带"},
-    {"name":"C/C++","total":554,"companies":471,"regions":{"上海": 186, "深圳": 183, "北京": 168, "杭州": 96, "成都": 81, "武汉": 77, "南京": 69, "广州": 69, "西安": 66, "苏州": 60, "全国各地": 49, "合肥": 36, "海外": 35, "长沙": 29, "厦门": 25},"grades":{"2026届": 214, "2027届": 46, "2025届": 18, "2024届": 9, "海外往届": 1, "2028届": 1, "2029届": 1},"types":{"26届秋招": 288, "春招": 193, "实习": 23, "暑期实习": 14, "秋招": 11, "春招补录": 10, "秋招补录": 8, "26届提前批": 7, "秋招提前批": 7, "实习生": 3},"industries":{"科技": 134, "互联网": 80, "制造业": 76, "半导体": 59, "国央企": 56, "金融": 30, "其他": 29, "外企": 27, "游戏": 17, "汽车新能源": 17},"salary_low":14,"salary_high":40,"salary_avg":24,"skill":"Linux系统编程, 数据结构, 操作系统, 嵌入式"},
-    {"name":"运维/DevOps","total":427,"companies":374,"regions":{"北京": 176, "上海": 139, "深圳": 97, "全国各地": 69, "广州": 68, "南京": 63, "杭州": 58, "武汉": 53, "成都": 52, "西安": 48, "重庆": 38, "长沙": 28, "厦门": 25, "苏州": 25, "天津": 24},"grades":{"2026届": 174, "2025届": 42, "2027届": 28, "2024届": 14, "海外往届": 1},"types":{"26届秋招": 229, "春招": 165, "实习": 11, "暑期实习": 10, "秋招补录": 9, "秋招": 4, "26届提前批": 3, "春招补录": 3, "秋招提前批": 1},"industries":{"国央企": 144, "互联网": 69, "金融": 55, "科技": 42, "事业单位": 26, "制造业": 25, "其他": 18, "半导体": 18, "游戏": 15, "能源": 12},"salary_low":12,"salary_high":28,"salary_avg":18,"skill":"Linux, Docker/K8s, CI/CD, 网络协议, 脚本编程"},
-    {"name":"芯片/IC设计","total":388,"companies":313,"regions":{"上海": 195, "北京": 164, "深圳": 140, "成都": 108, "西安": 81, "杭州": 77, "南京": 64, "苏州": 53, "武汉": 52, "全国各地": 39, "合肥": 36, "广州": 29, "珠海": 22, "天津": 22, "无锡": 22},"grades":{"2026届": 129, "2027届": 47, "2025届": 6, "2024届": 2, "2028届": 1},"types":{"26届秋招": 209, "春招": 115, "实习": 19, "秋招": 14, "暑期实习": 12, "秋招提前批": 10, "26届提前批": 5, "秋招补录": 5, "春招补录": 5, "26届暑期实习": 2},"industries":{"半导体": 152, "科技": 70, "国央企": 68, "制造业": 38, "外企": 22, "互联网": 20, "生物医药": 9, "汽车新能源": 6, "金融": 6, "其他": 5},"salary_low":15,"salary_high":50,"salary_avg":35,"skill":"Verilog/VHDL, 数字/模拟电路, FPGA, EDA工具"},
-    {"name":"前端/JavaScript","total":330,"companies":281,"regions":{"北京": 141, "上海": 130, "深圳": 103, "杭州": 72, "广州": 71, "武汉": 54, "成都": 51, "南京": 47, "西安": 45, "全国各地": 30, "厦门": 28, "济南": 28, "长沙": 27, "苏州": 24, "福州": 23},"grades":{"2026届": 121, "2027届": 44, "2025届": 18, "2024届": 11},"types":{"26届秋招": 162, "春招": 100, "实习": 31, "暑期实习": 14, "秋招补录": 11, "26届提前批": 9, "秋招": 6, "秋招提前批": 6, "春招补录": 2, "实习生": 1},"industries":{"互联网": 122, "科技": 41, "国央企": 37, "金融": 34, "半导体": 23, "游戏": 19, "制造业": 14, "教育": 12, "外企": 10, "快消零售": 7},"salary_low":12,"salary_high":23,"salary_avg":17,"skill":"HTML/CSS/JS, React/Vue, TypeScript, 工程化"},
-    {"name":"Java","total":257,"companies":218,"regions":{"北京": 123, "上海": 91, "深圳": 77, "杭州": 67, "广州": 54, "南京": 53, "成都": 41, "西安": 35, "武汉": 33, "全国各地": 31, "福州": 30, "济南": 26, "长沙": 22, "天津": 22, "合肥": 21},"grades":{"2026届": 100, "2027届": 23, "2025届": 12, "2024届": 3, "海外往届": 2},"types":{"26届秋招": 134, "春招": 92, "暑期实习": 12, "实习": 11, "秋招补录": 8, "26届提前批": 3, "春招补录": 2, "秋招提前批": 2, "秋招": 2, "春招提前批": 1},"industries":{"互联网": 104, "科技": 46, "国央企": 31, "金融": 22, "制造业": 16, "其他": 10, "游戏": 7, "外企": 7, "教育": 6, "半导体": 4},"salary_low":15,"salary_high":25,"salary_avg":20,"skill":"Java基础, Spring生态, 微服务, 数据库, 分布式"},
-    {"name":"Android","total":85,"companies":73,"regions":{"深圳": 38, "北京": 23, "上海": 23, "武汉": 15, "杭州": 13, "西安": 12, "南京": 12, "成都": 11, "广州": 10, "海外": 9, "福州": 7, "全国各地": 7, "香港": 7, "长沙": 6, "合肥": 6},"grades":{"2026届": 35, "2027届": 5, "2025届": 2, "2024届": 1, "海外往届": 1},"types":{"26届秋招": 47, "春招": 29, "实习": 3, "26届提前批": 2, "秋招": 2, "实习生": 1, "秋招补录": 1, "春招补录": 1},"industries":{"互联网": 30, "科技": 17, "制造业": 8, "金融": 7, "汽车新能源": 6, "国央企": 5, "游戏": 4, "其他": 3, "半导体": 3, "教育": 2},"salary_low":12,"salary_high":22,"salary_avg":16,"skill":"Kotlin/Java, Android SDK, 移动架构, 性能优化"},
-    {"name":"数据库","total":43,"companies":38,"regions":{"北京": 22, "广州": 12, "上海": 11, "成都": 10, "全国各地": 8, "重庆": 7, "杭州": 7, "南京": 6, "深圳": 6, "武汉": 6, "天津": 5, "苏州": 5, "福州": 4, "长沙": 4, "西安": 4},"grades":{"2026届": 19, "2025届": 3, "2027届": 3, "2024届": 2},"types":{"26届秋招": 22, "春招": 19, "实习": 1, "暑期实习": 1, "秋招提前批": 1},"industries":{"互联网": 11, "国央企": 10, "金融": 8, "科技": 5, "事业单位": 5, "快消零售": 2, "游戏": 2, "能源": 1, "生物医药": 1, "半导体": 1},"salary_low":12,"salary_high":20,"salary_avg":16,"skill":"-"},
-    {"name":"Python","total":43,"companies":34,"regions":{"北京": 22, "上海": 22, "深圳": 13, "广州": 10, "成都": 8, "南京": 8, "杭州": 8, "武汉": 7, "苏州": 6, "福州": 5, "合肥": 5, "天津": 5, "西安": 4, "全国各地": 4, "海口": 3},"grades":{"2026届": 16, "2027届": 3, "2025届": 2, "2028届": 1, "2029届": 1},"types":{"26届秋招": 25, "春招": 14, "暑期实习": 2, "秋招补录": 1, "实习": 1},"industries":{"科技": 14, "互联网": 12, "金融": 5, "半导体": 4, "国央企": 3, "汽车新能源": 2, "中外合资": 2, "制造业": 1, "游戏": 1, "外企": 1},"salary_low":12,"salary_high":20,"salary_avg":16,"skill":"-"},
-    {"name":"iOS","total":40,"companies":35,"regions":{"深圳": 17, "上海": 11, "北京": 11, "杭州": 8, "南京": 7, "武汉": 6, "广州": 5, "成都": 4, "重庆": 3, "香港": 3, "苏州": 2, "西安": 2, "长沙": 2, "惠州": 1, "扬州": 1},"grades":{"2026届": 14, "2027届": 3, "2025届": 2, "2024届": 1},"types":{"26届秋招": 24, "春招": 11, "26届提前批": 2, "实习": 2, "实习生": 1, "秋招": 1},"industries":{"互联网": 17, "金融": 6, "游戏": 6, "科技": 5, "国央企": 2, "其他": 2, "制造业": 2, "教育": 1, "半导体": 1, "外企": 1},"salary_low":12,"salary_high":20,"salary_avg":16,"skill":"-"},
-    {"name":"Go","total":26,"companies":23,"regions":{"上海": 10, "杭州": 9, "北京": 9, "广州": 5, "武汉": 4, "深圳": 4, "厦门": 4, "成都": 4, "全国各地": 3, "苏州": 3, "济南": 2, "海外": 2, "南京": 2, "长沙": 2, "天津": 1},"grades":{"2026届": 7, "2027届": 1},"types":{"26届秋招": 17, "春招": 6, "26届提前批": 1, "暑期实习": 1, "春招补录": 1},"industries":{"互联网": 15, "游戏": 3, "科技": 3, "制造业": 2, "教育": 2, "金融": 1},"salary_low":12,"salary_high":20,"salary_avg":16,"skill":"-"},
-    {"name":"Rust","total":2,"companies":2,"regions":{"杭州": 2},"grades":{"2026届": 1},"types":{"26届秋招": 1, "春招": 1},"industries":{"互联网": 1, "制造业": 1},"salary_low":12,"salary_high":20,"salary_avg":16,"skill":"-"},
-  ];
-  var cityFeatures = {
-  "北京": {
-    "industries": "互联网、央企/国企、金融科技、人工智能、半导体",
-    "feature": "全国科技研发中心，央企总部+互联网大厂+AI创业公司聚集。安全、通信/信号处理岗位全国第一，军工院所大量招聘。高薪岗位集中在大模型开发、自动驾驶算法。",
-    "top_companies": "百度、字节跳动、理想汽车、京东方、申万宏源",
-    "high_salary_dirs": "AI大模型开发(月薪30-65K)、集成电路设计(月薪25-50K)、自动驾驶算法(月薪35-60K)"
-  },
-  "上海": {
-    "industries": "半导体/芯片、互联网、金融科技、汽车、生物医药",
-    "feature": "全国半导体产业高地，外企+本土芯片公司密集。芯片/IC设计岗位全国第一，C/C++岗位突出。金融科技岗位薪资高（机器学习、量化开发）。",
-    "top_companies": "传音控股、德州仪器、小红书、蔚来、汇添富基金",
-    "high_salary_dirs": "芯片设计(月薪30-55K)、金融合规开发(月薪25-50K)、机器学习(月薪30-60K)"
-  },
-  "深圳": {
-    "industries": "消费电子、互联网/游戏、半导体、汽车、通信设备",
-    "feature": "硬件创新之都，华为/腾讯/比亚迪等总部所在地。C/C++和产品/设计岗位占比高，游戏开发薪资极强。通信设备方向（华为/中兴）岗位丰富。",
-    "top_companies": "迈瑞医疗、中兴通讯、传音控股、深信服、安克创新",
-    "high_salary_dirs": "算法工程(月薪30-60K)、游戏开发(月薪25-50K)、嵌入式开发(月薪20-45K)"
-  },
-  "广州": {
-    "industries": "互联网、游戏、金融、汽车、电商/SaaS",
-    "feature": "华南互联网重镇，网易/多益网络/微信等提供大量岗位。产品/设计岗占比高于其他城市，游戏方向突出。跨境电商企业IT岗需求增长。",
-    "top_companies": "网易游戏、多益网络、浩鲸科技、施耐德电气",
-    "high_salary_dirs": "游戏开发(月薪25-50K)、智能座舱(月薪20-40K)、SaaS产品(月薪15-30K)"
-  },
-  "全国各地": {
-    "industries": "央企/国企、银行/金融、制造业、互联网（远程）",
-    "feature": "非一线城市岗位多为全国分部的统一招聘，安全岗占比高。适合不限制工作地点的求职者，央企/银行岗位稳定性强。",
-    "top_companies": "海康威视、招商银行、京东、字节跳动（远程）",
-    "high_salary_dirs": "安全工程师(月薪12-25K)、运维(月薪10-20K)、数据开发(月薪12-22K)"
-  },
-  "杭州": {
-    "industries": "互联网/电商、安防/AI、半导体、汽车、金融科技",
-    "feature": "阿里系生态+海康威视+网易游戏，AI和安防岗集中。数据类岗位需求量大，电商架构师薪资高。近年零跑/吉利等带动汽车方向。",
-    "top_companies": "阿里国际、蚂蚁集团、海康威视、网易游戏、同花顺",
-    "high_salary_dirs": "数据科学家(月薪25-45K)、电商架构师(月薪30-50K)、机器视觉(月薪20-40K)"
-  },
-  "成都": {
-    "industries": "半导体、游戏、互联网、央企/国防、汽车",
-    "feature": "西部科技中心，芯片/IC设计和通信岗占比高。游戏产业聚集（腾讯天美、FunPlus等），性价比最高的求职城市之一。军工院所提供大量信号处理岗。",
-    "top_companies": "海康威视、FunPlus、本源量子、中国一汽",
-    "high_salary_dirs": "芯片设计(月薪20-40K)、游戏开发(月薪18-35K)、信号处理(月薪18-35K)"
-  },
-  "南京": {
-    "industries": "通信设备、半导体、汽车、互联网、军工/国防",
-    "feature": "中兴/华为研发中心+中国电科14所，通信和国防岗集中。芯片设计/测试岗位稳定，紫金山实验室等提供前沿研究岗。",
-    "top_companies": "中兴通讯、迈瑞医疗、汇川技术、中国电科14所、vivo",
-    "high_salary_dirs": "芯片设计(月薪18-35K)、数字IC验证(月薪18-35K)、通信协议开发(月薪15-30K)"
-  },
-  "武汉": {
-    "industries": "汽车、互联网、半导体、通信、生物医药",
-    "feature": "东风/小米/蔚来等汽车产业链，光电子产业全国领先。芯片设计岗位增长快（长江存储/新凯来），自动驾驶算法需求大。性价比高。",
-    "top_companies": "迈瑞医疗、海康威视、蔚来、东风汽车、文远知行",
-    "high_salary_dirs": "自动驾驶算法(月薪20-40K)、光电子嵌入式(月薪15-30K)、芯片设计(月薪18-35K)"
-  },
-  "西安": {
-    "industries": "半导体、军工/航天、通信、汽车、AI",
-    "feature": "航天军工重镇，芯片设计+信号处理双强。三星/美光等外企设厂，兆易创新/芯动科技等本土芯片公司。军工院所提供大量高稳定性岗位。",
-    "top_companies": "迈瑞医疗、隆基绿能、中兴通讯、科大讯飞、兆易创新",
-    "high_salary_dirs": "芯片设计(月薪18-35K)、信号处理(月薪15-30K)、AI嵌入式(月薪18-35K)"
+  var rootStyle = getComputedStyle(document.documentElement);
+  var ACCENT = (rootStyle.getPropertyValue('--accent') || '#e63946').trim();
+  var ACCENT2 = (rootStyle.getPropertyValue('--accent2') || '#457b9d').trim();
+  var GOLD = (rootStyle.getPropertyValue('--gold') || '#d4a017').trim();
+
+  var PALETTE = [ACCENT, ACCENT2, GOLD, '#2a9d8f', '#9b5de5', '#f77f00', '#00bbf9', '#e63946',
+                 '#457b9d', '#6d597a', '#b56576', '#84a59d', '#f28482', '#dda15e', '#5e60ce'];
+
+  function initChart(id) {
+    var el = document.getElementById(id);
+    if (!el || typeof echarts === 'undefined') return null;
+    return echarts.init(el, null, { renderer: 'svg' });
   }
-};
-  var tooltipBase = {trigger:'axis',appendToBody:true,backgroundColor:'rgba(255,255,255,0.95)',borderColor:rule,borderWidth:1,textStyle:{color:ink,fontSize:13}};
 
-  // ==================== Chart 1: City Bar ====================
-  var c1 = echarts.init(document.getElementById('chart-city-bar'), null, {renderer:'svg'});
-  c1.setOption({animation:false,tooltip:tooltipBase,grid:{left:80,right:50,top:20,bottom:60},
-    xAxis:{type:'value',axisLabel:{color:muted,fontSize:12},splitLine:{lineStyle:{color:rule}}},
-    yAxis:{type:'category',data:regionData.map(function(r){return r.region}).reverse(),axisLabel:{color:ink,fontSize:13}},
-    series:[{type:'bar',data:regionData.map(function(r){return r.total}).reverse(),
-      itemStyle:{color:accent,borderRadius:[0,4,4,0]},
-      label:{show:true,position:'right',color:muted,fontSize:11}
-    }]
-  });
-  window.addEventListener('resize',function(){c1.resize()});
-
-  // ==================== Chart 2: City Salary Bar ====================
-  var sortedBySalary = regionData.slice().sort(function(a,b){return b.avg_salary-a.avg_salary});
-  var c2 = echarts.init(document.getElementById('chart-city-salary'), null, {renderer:'svg'});
-  c2.setOption({animation:false,tooltip:{trigger:'axis',appendToBody:true,backgroundColor:'rgba(255,255,255,0.95)',borderColor:rule,borderWidth:1,textStyle:{color:ink,fontSize:13},formatter:function(p){return p[0].name+': '+p[0].value.toFixed(2)+'万/月'}},
-    grid:{left:80,right:50,top:20,bottom:60},
-    xAxis:{type:'value',axisLabel:{color:muted,fontSize:12,formatter:function(v){return v.toFixed(1)+'万'}},splitLine:{lineStyle:{color:rule}}},
-    yAxis:{type:'category',data:sortedBySalary.map(function(r){return r.region}).reverse(),axisLabel:{color:ink,fontSize:13}},
-    series:[{type:'bar',data:sortedBySalary.map(function(r){return r.avg_salary}).reverse(),
-      itemStyle:{color:gold,borderRadius:[0,4,4,0]},
-      label:{show:true,position:'right',color:muted,fontSize:11,formatter:function(p){return p.value.toFixed(2)+'万'}}
-    }]
-  });
-  window.addEventListener('resize',function(){c2.resize()});
-
-  // ==================== Chart 3: Stack Rank ====================
-  var c3 = echarts.init(document.getElementById('chart-stack-rank'), null, {renderer:'svg'});
-  c3.setOption({animation:false,tooltip:tooltipBase,grid:{left:140,right:60,top:20,bottom:40},
-    xAxis:{type:'value',axisLabel:{color:muted},splitLine:{lineStyle:{color:rule}}},
-    yAxis:{type:'category',data:stackData.map(function(s){return s.name}).reverse(),axisLabel:{color:ink,fontSize:13}},
-    series:[{type:'bar',data:stackData.map(function(s){return s.total}).reverse(),
-      itemStyle:{color:function(p){return palette[p.dataIndex%palette.length]},borderRadius:[0,4,4,0]},
-      label:{show:true,position:'right',color:muted,fontSize:11}
-    }]
-  });
-  window.addEventListener('resize',function(){c3.resize()});
-
-  // ==================== Chart 4: Stack Salary Bar ====================
-  var sortedStackBySalary = stackData.slice().sort(function(a,b){return b.salary_avg-a.salary_avg});
-  var c4 = echarts.init(document.getElementById('chart-stack-salary-bar'), null, {renderer:'svg'});
-  c4.setOption({animation:false,
-    tooltip:{trigger:'axis',appendToBody:true,backgroundColor:'rgba(255,255,255,0.95)',borderColor:rule,borderWidth:1,textStyle:{color:ink,fontSize:13},
-      formatter:function(p){return p[0].name+'<br/>年薪: '+p[0].value+'万'}},
-    grid:{left:140,right:40,top:10,bottom:40},
-    xAxis:{type:'value',name:'平均年薪(万)',nameTextStyle:{color:muted,fontSize:11},axisLabel:{color:muted,fontSize:12,formatter:function(v){return v+'万'}},splitLine:{lineStyle:{color:rule}}},
-    yAxis:{type:'category',data:sortedStackBySalary.map(function(s){return s.name}).reverse(),axisLabel:{color:ink,fontSize:13}},
-    series:[
-      {type:'bar',data:sortedStackBySalary.map(function(s){return s.salary_avg}).reverse(),
-        itemStyle:{color:gold,borderRadius:[0,4,4,0]},
-        label:{show:true,position:'right',color:muted,fontSize:11,formatter:function(p){return p.value+'万'}}
-      }
-    ]
-  });
-  window.addEventListener('resize',function(){c4.resize()});
-
-  // ==================== Chart 5: Heatmap ====================
-  var heatCities = ["北京","上海","深圳","杭州","广州","成都","南京","武汉","西安"];
-  var heatStacks = stackNames.slice(0,10);
-  var heatData = [];
-  for(var si=0;si<heatStacks.length;si++){
-    for(var ci=0;ci<heatCities.length;ci++){
-      var val = 0;
-      for(var k=0;k<stackData.length;k++){
-        if(stackData[k].name===heatStacks[si]){val = stackData[k].regions[heatCities[ci]]||0;break;}
-      }
-      heatData.push([ci,si,val]);
-    }
+  // 区间条形图公共配置：两段堆叠（下限半透明 + 区间实色），label 显示完整区间
+  function rangeBar(cats, lows, highs, unit, name) {
+    var diffs = highs.map(function (h, i) { return h - lows[i]; });
+    return {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
+        formatter: function (ps) {
+          var i = ps[0].dataIndex;
+          return '<b>' + cats[i] + '</b><br/>' + name + '区间：' + lows[i] + '-' + highs[i] + unit;
+        }
+      },
+      grid: { left: 8, right: 56, top: 12, bottom: 8, containLabel: true },
+      xAxis: { type: 'value', name: unit, splitLine: { lineStyle: { color: 'rgba(128,128,128,0.18)' } } },
+      yAxis: { type: 'category', data: cats, axisLabel: { color: 'inherit' }, axisLine: { lineStyle: { color: 'rgba(128,128,128,0.35)' } } },
+      series: [
+        {
+          name: '下限', type: 'bar', stack: 'r', data: lows, barWidth: 24,
+          itemStyle: { color: ACCENT, opacity: 0.15 },
+          emphasis: { itemStyle: { color: ACCENT, opacity: 0.28 } },
+          label: {
+            show: true, position: 'left', color: 'inherit', fontSize: 11,
+            formatter: function (p) { return lows[p.dataIndex]; }
+          }
+        },
+        {
+          name: '区间', type: 'bar', stack: 'r', data: diffs,
+          itemStyle: { color: ACCENT },
+          label: {
+            show: true, position: 'right', color: 'inherit', fontSize: 11,
+            formatter: function (p) { return highs[p.dataIndex] + unit; }
+          }
+        }
+      ]
+    };
   }
-  var maxVal = Math.max.apply(null,heatData.map(function(d){return d[2]}));
-  var c5 = echarts.init(document.getElementById('chart-stack-heatmap'), null, {renderer:'svg'});
-  c5.setOption({animation:false,
-    tooltip:{trigger:'item',appendToBody:true,backgroundColor:'rgba(255,255,255,0.95)',borderColor:rule,borderWidth:1,textStyle:{color:ink,fontSize:13},formatter:function(p){return p.data[2]+'个岗位'}},
-    grid:{left:120,right:60,top:20,bottom:80},
-    xAxis:{type:'category',data:heatCities,axisLabel:{color:ink,fontSize:12,rotate:30},splitArea:{show:false}},
-    yAxis:{type:'category',data:heatStacks,axisLabel:{color:ink,fontSize:12},splitArea:{show:false}},
-    visualMap:{min:0,max:maxVal,calculable:true,orient:'horizontal',left:'center',bottom:0,inRange:{color:[bg2,'#fdd','#fbb','#f77',accent]},textStyle:{color:muted,fontSize:11},itemWidth:12,itemHeight:100},
-    series:[{type:'heatmap',data:heatData,label:{show:true,fontSize:10,color:ink,formatter:function(p){return p.data[2]||''}},
-      emphasis:{itemStyle:{shadowBlur:6,shadowColor:'rgba(0,0,0,0.2)'}}
-    }]
-  });
-  window.addEventListener('resize',function(){c5.resize()});
 
-  // ==================== Chart 6: Grade Stacked ====================
-  var gradeNames = ["2026届","2027届","2025届","2024届","2023届","海外往届","2028届"];
-  var gradeColors = ["#e63946","#457b9d","#2a9d8f","#e9c46a","#f4a261","#6d6875","#d4a373"];
-  var c6 = echarts.init(document.getElementById('chart-stack-grade'), null, {renderer:'svg'});
-  c6.setOption({animation:false,tooltip:tooltipBase,
-    legend:{data:gradeNames,bottom:0,textStyle:{color:muted,fontSize:11},itemWidth:12,itemHeight:10},
-    grid:{left:120,right:20,top:10,bottom:60},
-    xAxis:{type:'value',axisLabel:{color:muted},splitLine:{lineStyle:{color:rule}}},
-    yAxis:{type:'category',data:stackData.map(function(s){return s.name}).reverse(),axisLabel:{color:ink,fontSize:13}},
-    series:gradeNames.map(function(gn,gi){return {name:gn,type:'bar',stack:'grade',data:stackData.map(function(s){return s.grades[gn]||0}),itemStyle:{color:gradeColors[gi]}};})
-  });
-  window.addEventListener('resize',function(){c6.resize()});
+  // ============================================================
+  //  第一章：就业方向薪资全景
+  // ============================================================
+  var direction = [
+    { name: '算法/AI',        low: 40, high: 60, avg: 48, co: '阿里/腾讯/百度/字节', note: '顶会论文加分，985硕士竞争激烈' },
+    { name: '智能驾驶',       low: 35, high: 65, avg: 48, co: '百度/极氪/大华/商汤', note: '自动驾驶算法/数据闭环' },
+    { name: '嵌入式/硬件',    low: 28, high: 50, avg: 36, co: '大疆/华为', note: '控制硕士对口度最高的方向' },
+    { name: '无人机/机器人',  low: 27, high: 50, avg: 36, co: '大疆/新松/库卡/ABB', note: '飞控/机械臂/智能制造' },
+    { name: '软件开发',       low: 30, high: 35, avg: 32, co: '华为/阿里/字节', note: '需求体量最大' },
+    { name: '医工融合',       low: 18, high: 30, avg: 24, co: '联影/迈瑞/东软/万孚', note: '医疗影像/器械研发，薪资稳定' }
+  ];
 
-  // ==================== City Feature Cards (3-column grid) ====================
-  var cityContainer = document.getElementById('city-feature-container');
-  var top10cities = regionData.slice(0,10);
-  var cityHTML = '<div class="grid-3col">';
-  top10cities.forEach(function(c){
-    var feat = cityFeatures[c.region] || {industries:'-',feature:'-',top_companies:'-',high_salary_dirs:'-'};
-    var stacks = Object.entries(c.stacks).sort(function(a,b){return b[1]-a[1]}).slice(0,5);
-    cityHTML += '<div class="city-feature">';
-    cityHTML += '<div class="city-feature-header">';
-    cityHTML += '<span class="city-feature-name">'+c.region+'</span>';
-    cityHTML += '<div class="city-feature-stats">';
-    cityHTML += '<div class="city-feature-stat"><div class="num">'+c.total+'</div><div class="label">岗位</div></div>';
-    cityHTML += '<div class="city-feature-stat"><div class="num" style="color:'+gold+'">'+c.avg_salary+'万</div><div class="label">月薪</div></div>';
-    cityHTML += '</div></div>';
-    // Single column inside each card for 3-col layout
-    cityHTML += '<div class="city-section-title">主导行业</div>';
-    cityHTML += '<div class="city-section-content"><p>'+feat.industries+'</p></div>';
-    cityHTML += '<div class="city-section-title" style="margin-top:0.6rem">产业特色</div>';
-    cityHTML += '<div class="city-section-content"><p>'+feat.feature+'</p></div>';
-    cityHTML += '<div class="city-section-title" style="margin-top:0.6rem">代表企业</div>';
-    cityHTML += '<div class="city-section-content"><p>'+feat.top_companies+'</p></div>';
-    cityHTML += '<div class="city-section-title" style="margin-top:0.6rem">技术栈分布</div>';
-    cityHTML += '<div class="city-section-content">';
-    stacks.forEach(function(s){cityHTML += '<span class="tag">'+s[0]+'('+s[1]+')</span>'; });
-    cityHTML += '</div>';
-    cityHTML += '<div class="city-section-title" style="margin-top:0.6rem">高薪方向</div>';
-    cityHTML += '<div class="city-section-content"><p class="salary-inline">'+feat.high_salary_dirs+'</p></div>';
-    cityHTML += '</div>';
-  });
-  cityHTML += '</div>';
-  cityContainer.innerHTML = cityHTML;
+  var c1 = initChart('chart-dir-salary');
+  if (c1) {
+    var cats1 = direction.map(function (d) { return d.name; });
+    var lows1 = direction.map(function (d) { return d.low; });
+    var highs1 = direction.map(function (d) { return d.high; });
+    c1.setOption(rangeBar(cats1, lows1, highs1, '万/年', '年薪'));
+    window.addEventListener('resize', function () { c1.resize(); });
+  }
 
-  // ==================== Salary Detail Table ====================
-  var salTableEl = document.getElementById('salary-table-body');
-  var salHTML = '';
-  stackData.forEach(function(s){
-    var topR = Object.entries(s.regions).sort(function(a,b){return b[1]-a[1]}).slice(0,3).map(function(r){return r[0]}).join('、');
-    var cls = s.salary_avg >= 30 ? 'high' : (s.salary_avg >= 18 ? 'mid' : 'low');
-    salHTML += '<tr>';
-    salHTML += '<td><strong>'+s.name+'</strong></td>';
-    salHTML += '<td>'+s.total+'</td>';
-    salHTML += '<td class="salary-cell '+cls+'">'+s.salary_low+'~'+s.salary_high+'万</td>';
-    salHTML += '<td class="salary-cell '+cls+'">'+(s.salary_avg/12).toFixed(1)+'~'+(s.salary_high/12).toFixed(1)+'万</td>';
-    salHTML += '<td>'+topR+'</td>';
-    salHTML += '<td style="font-size:0.78rem;color:'+muted+'">'+s.skill+'</td>';
-    salHTML += '</tr>';
-  });
-  salTableEl.innerHTML = salHTML;
+  // 头部企业高薪岗位月薪（K/月）
+  var company = [
+    { name: '百度·自动驾驶',   low: 35, high: 65 },
+    { name: '阿里·NLP',        low: 40, high: 60 },
+    { name: '腾讯·CV算法',     low: 30, high: 50 },
+    { name: '华为·嵌入式',     low: 25, high: 50 },
+    { name: '大疆·嵌入式',     low: 25, high: 40 },
+    { name: '小米·算法',       low: 25, high: 35 },
+    { name: '极氪·自动驾驶',   low: 25, high: 35 },
+    { name: '商汤·CV',         low: 20, high: 40 }
+  ];
 
-  // ==================== Stack Detail Cards ====================
-  var container = document.getElementById('stack-detail-container');
-  var descMap = {
-    "算法/AI":"涵盖机器学习、深度学习、计算机视觉、NLP、推荐系统等方向。几乎所有头部科技公司都有大量需求，是当前校招最热门方向。要求扎实的数学基础和编程能力。",
-    "测试":"包括功能测试、自动化测试、性能测试、测试开发等。门槛相对较低，但自动化测试方向有较高技术含量。适合细心、有质量意识的同学。",
-    "安全":"涵盖网络安全、信息安全、渗透测试等方向。央企、银行、网络安全公司需求大，对往届生友好。需要网络协议、操作系统基础知识。",
-    "数据/大数据":"包括数据开发、数据工程、数仓、BI分析等。互联网和金融行业需求最大，需要SQL、Hadoop、Spark等技能。",
-    "产品/设计":"产品经理、UI/UX设计师等岗位。需要良好的沟通能力和产品思维，不限专业背景，但竞争激烈。",
-    "通信/信号处理":"涵盖5G/6G、射频、基带、天线等方向。央企、通信设备商、芯片公司为主要雇主，专业对口要求高。",
-    "C/C++":"嵌入式、底层开发、系统编程、游戏引擎等方向。半导体、汽车、通信行业需求大，对计算机底层理解要求高。",
-    "运维/DevOps":"Linux运维、SRE、云原生运维等。互联网和央企需求大，需要Linux网络基础和自动化脚本能力。",
-    "芯片/IC设计":"数字/模拟电路设计、FPGA、验证等方向。半导体行业集中度高，薪资竞争力强，但专业门槛高。",
-    "前端/JavaScript":"Web前端、小程序、Node.js开发等。互联网公司为主，岗位量较往年收缩，竞争加剧。",
-    "Java":"后端开发、微服务、中间件等。传统强项方向，但岗位量明显少于算法，建议搭配全栈能力。",
-    "Android":"移动端开发，岗位量较小。建议关注鸿蒙或跨平台方向。"
+  var c2 = initChart('chart-dir-company');
+  if (c2) {
+    var cats2 = company.map(function (d) { return d.name; });
+    var lows2 = company.map(function (d) { return d.low; });
+    var highs2 = company.map(function (d) { return d.high; });
+    var o2 = rangeBar(cats2, lows2, highs2, 'K/月', '月薪');
+    o2.xAxis = { type: 'value', name: 'K/月', splitLine: { lineStyle: { color: 'rgba(128,128,128,0.18)' } } };
+    o2.series[0].itemStyle = { color: ACCENT2, opacity: 0.15 };
+    o2.series[0].emphasis.itemStyle = { color: ACCENT2, opacity: 0.28 };
+    o2.series[1].itemStyle = { color: ACCENT2 };
+    c2.setOption(o2);
+    window.addEventListener('resize', function () { c2.resize(); });
+  }
+
+  // 方向薪资速览表
+  var dirRows = '';
+  direction.forEach(function (d) {
+    dirRows += '<tr><td><span class="tag">' + d.name + '</span></td><td>' + d.co +
+               '</td><td><span class="salary-tag">' + d.low + '-' + d.high + '万/年</span></td><td>' + d.note + '</td></tr>';
+  });
+  document.getElementById('direction-table-body').innerHTML = dirRows;
+
+  // ============================================================
+  //  第二章：头部私企薪酬体系
+  // ============================================================
+  var privateCo = [
+    { name: '大疆',   low: 27, high: 50, avg: 36 },
+    { name: '百度',   low: 35, high: 65, avg: 48 },
+    { name: '腾讯',   low: 30, high: 50, avg: 40 },
+    { name: '阿里',   low: 30, high: 50, avg: 40 },
+    { name: '字节',   low: 30, high: 45, avg: 36 },
+    { name: '华为',   low: 20, high: 25, avg: 22 },
+    { name: '小米',   low: 25, high: 35, avg: 30 },
+    { name: '极氪',   low: 25, high: 35, avg: 30 },
+    { name: '商汤',   low: 20, high: 40, avg: 30 }
+  ];
+
+  var c3 = initChart('chart-private-salary');
+  if (c3) {
+    var cats3 = privateCo.map(function (d) { return d.name; });
+    var lows3 = privateCo.map(function (d) { return d.low; });
+    var highs3 = privateCo.map(function (d) { return d.high; });
+    var o3 = rangeBar(cats3, lows3, highs3, '万/年', '应届年薪');
+    o3.series[0].itemStyle = { color: GOLD, opacity: 0.15 };
+    o3.series[0].emphasis.itemStyle = { color: GOLD, opacity: 0.28 };
+    o3.series[1].itemStyle = { color: GOLD };
+    c3.setOption(o3);
+    window.addEventListener('resize', function () { c3.resize(); });
+  }
+
+  // 华为职级薪酬曲线
+  var huawei = [
+    { g: '13级', v: 22 }, { g: '14级', v: 31.5 }, { g: '15级', v: 34 }, { g: '16级', v: 55 },
+    { g: '17级', v: 65 }, { g: '18级', v: 80 }, { g: '19级', v: 150 }, { g: '20级', v: 350 },
+    { g: '21级', v: 450 }, { g: '22级', v: 575 }
+  ];
+
+  var c4 = initChart('chart-huawei-grade');
+  if (c4) {
+    c4.setOption({
+      tooltip: { trigger: 'axis', formatter: function (ps) { return ps[0].name + '：约 ' + ps[0].value + ' 万/年'; } },
+      grid: { left: 8, right: 24, top: 48, bottom: 8, containLabel: true },
+      xAxis: { type: 'category', data: huawei.map(function (h) { return h.g; }),
+               axisLabel: { color: 'inherit' }, axisLine: { lineStyle: { color: 'rgba(128,128,128,0.35)' } } },
+      yAxis: { type: 'value', name: '万/年', splitLine: { lineStyle: { color: 'rgba(128,128,128,0.18)' } } },
+      series: [{
+        name: '平均年薪', type: 'line', data: huawei.map(function (h) { return h.v; }),
+        smooth: true, symbol: 'circle', symbolSize: 8,
+        lineStyle: { color: ACCENT, width: 3 },
+        itemStyle: { color: ACCENT },
+        areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [{ offset: 0, color: 'rgba(230,57,70,0.28)' }, { offset: 1, color: 'rgba(230,57,70,0.02)' }] } },
+        label: { show: true, position: 'top', color: 'inherit', fontSize: 10, formatter: function (p) { return p.value; } },
+        markPoint: {
+          data: [{ type: 'max', name: '最高' }],
+          itemStyle: { color: GOLD },
+          label: { color: '#fff', fontSize: 10 }
+        },
+        markLine: {
+          symbol: 'none', lineStyle: { color: 'rgba(128,128,128,0.4)', type: 'dashed' },
+          label: { color: 'inherit', fontSize: 10 },
+          data: [{ yAxis: 60, name: '应届(13级)' }]
+        }
+      }]
+    });
+    window.addEventListener('resize', function () { c4.resize(); });
+  }
+
+  // 私企薪酬体系表
+  var privateRows = '';
+  var privateTable = [
+    ['大疆', '应届总包27-50W；算法SP/SSP 42/54/60W', '弹性打卡+房补/公租房', '研发岗83%薪资40K左右'],
+    ['华为', '13级起，13级20-25万', '应届从13级开始', '16级50-60万，19级管理层100-200万'],
+    ['阿里', 'P5入职30万+', '16薪=12+1+3', 'P6破60万，P7近百万+配股'],
+    ['字节', '标准12薪，实际15-18薪', '核心部门年终6-8个月', '大小周强度大，薪资实在'],
+    ['腾讯', 'CV算法30-50K·16薪', '7-15天年假/30天全薪病假', '技术氛围好'],
+    ['百度', '自动驾驶35-65K·16薪', '—', 'AI+自动驾驶投入大'],
+    ['小米', '算法25-35K·15薪', '六险一金+商业保险', '加班费可申请'],
+    ['极氪', '自动驾驶25-35K·14薪', '—', '新能源车企智能化投入大']
+  ];
+  privateTable.forEach(function (r) {
+    privateRows += '<tr><td><span class="tag">' + r[0] + '</span></td><td>' + r[1] +
+                   '</td><td><span class="salary-tag">' + r[2] + '</span></td><td>' + r[3] + '</td></tr>';
+  });
+  document.getElementById('private-table-body').innerHTML = privateRows;
+
+  // ============================================================
+  //  第三章：国央企薪酬体系
+  // ============================================================
+  var soe = [
+    { name: '航天科工',   low: 30, high: 45, avg: 41 },
+    { name: '兵装',       low: 25, high: 35, avg: 30 },
+    { name: '电科',       low: 25, high: 35, avg: 30 },
+    { name: '中国电子',   low: 20, high: 28, avg: 22 },
+    { name: '中广核',     low: 19, high: 25, avg: 21 },
+    { name: '中船',       low: 18, high: 25, avg: 20 },
+    { name: '航天科技',   low: 15, high: 40, avg: 25 },
+    { name: '移动',       low: 15, high: 20, avg: 17 },
+    { name: '航发',       low: 13, high: 18, avg: 15 },
+    { name: '电信(东)',   low: 12, high: 18, avg: 15 }
+  ];
+
+  var c5 = initChart('chart-soe-master');
+  if (c5) {
+    var cats5 = soe.map(function (d) { return d.name; });
+    var lows5 = soe.map(function (d) { return d.low; });
+    var highs5 = soe.map(function (d) { return d.high; });
+    var o5 = rangeBar(cats5, lows5, highs5, '万/年', '硕士年薪');
+    o5.series[0].itemStyle = { color: ACCENT2, opacity: 0.15 };
+    o5.series[0].emphasis.itemStyle = { color: ACCENT2, opacity: 0.28 };
+    o5.series[1].itemStyle = { color: ACCENT2 };
+    c5.setOption(o5);
+    window.addEventListener('resize', function () { c5.resize(); });
+  }
+
+  // 按学历起薪对比（本/硕/博）
+  var degreeUnits = ['中船', '航发', '兵装', '中广核'];
+  var degreeData = {
+    '本科': [14.3, 11.5, 12, 17],
+    '硕士': [18, 15.5, 30, 19],
+    '博士': [32, 33, 48, 24]
   };
-  var cardsHTML = '<div class="grid-3col">';
-  stackData.forEach(function(s){
-    var topRegions = Object.entries(s.regions).sort(function(a,b){return b[1]-a[1]}).slice(0,5);
-    var topGrades = Object.entries(s.grades).sort(function(a,b){return b[1]-a[1]}).slice(0,4);
-    var topIndustries = Object.entries(s.industries).sort(function(a,b){return b[1]-a[1]}).slice(0,5);
-    var topTypes = Object.entries(s.types).sort(function(a,b){return b[1]-a[1]}).slice(0,3);
-    cardsHTML += '<div class="stack-card">';
-    cardsHTML += '<div class="stack-header">';
-    cardsHTML += '<span class="stack-name">'+s.name+'</span>';
-    cardsHTML += '<div style="display:flex;gap:6px;flex-wrap:wrap">';
-    cardsHTML += '<span class="stack-count">'+s.total+'岗</span>';
-    cardsHTML += '<span class="stack-salary">'+s.salary_low+'~'+s.salary_high+'万</span>';
-    cardsHTML += '</div></div>';
-    cardsHTML += '<div class="stack-meta">';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">岗位说明</span><span class="stack-meta-value" style="font-size:0.78rem;line-height:1.5">'+(descMap[s.name]||'-')+'</span></div>';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">核心技能</span><span class="stack-meta-value" style="font-size:0.78rem">'+s.skill+'</span></div>';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">主要城市</span><span class="stack-meta-value" style="font-size:0.78rem">'+topRegions.map(function(r){return r[0]+'('+r[1]+')'}).join('、')+'</span></div>';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">招聘届次</span><span class="stack-meta-value" style="font-size:0.78rem">'+topGrades.map(function(g){return g[0]+':'+g[1]}).join(' | ')+'</span></div>';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">招聘类型</span><span class="stack-meta-value" style="font-size:0.78rem">'+topTypes.map(function(t){return t[0]+':'+t[1]}).join(' | ')+'</span></div>';
-    cardsHTML += '<div class="stack-meta-item"><span class="stack-meta-label">主要行业</span><span class="stack-meta-value">'+topIndustries.map(function(ind){return '<span class="tag">'+ind[0]+'('+ind[1]+')</span>'}).join('')+'</span></div>';
-    cardsHTML += '</div></div>';
-  });
-  cardsHTML += '</div>';
-  container.innerHTML = cardsHTML;
 
-  // ==================== Industry Table ====================
-  var indTableEl = document.getElementById('industry-table-body');
-  var indHTML = '';
-  stackData.forEach(function(s){
-    var topInd = Object.entries(s.industries).sort(function(a,b){return b[1]-a[1]}).slice(0,5);
-    indHTML += '<tr><td><strong>'+s.name+'</strong><br><span style="color:'+gold+';font-size:0.72rem">'+s.salary_low+'~'+s.salary_high+'万/年</span></td>';
-    for(var ii=0;ii<5;ii++){
-      if(topInd[ii]) indHTML += '<td>'+topInd[ii][0]+'<br><span style="color:'+muted+';font-size:0.72rem">'+topInd[ii][1]+'个</span></td>';
-      else indHTML += '<td>-</td>';
-    }
-    indHTML += '</tr>';
-  });
-  indTableEl.innerHTML = indHTML;
+  var c6 = initChart('chart-soe-degree');
+  if (c6) {
+    c6.setOption({
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { top: 0, textStyle: { color: 'inherit' } },
+      grid: { left: 8, right: 24, top: 40, bottom: 8, containLabel: true },
+      xAxis: { type: 'category', data: degreeUnits, axisLabel: { color: 'inherit' },
+               axisLine: { lineStyle: { color: 'rgba(128,128,128,0.35)' } } },
+      yAxis: { type: 'value', name: '万/年', splitLine: { lineStyle: { color: 'rgba(128,128,128,0.18)' } } },
+      series: ['本科', '硕士', '博士'].map(function (k, i) {
+        return {
+          name: k, type: 'bar', data: degreeData[k], barWidth: 22,
+          itemStyle: { color: [ACCENT, ACCENT2, GOLD][i], borderRadius: [4, 4, 0, 0] },
+          label: { show: true, position: 'top', color: 'inherit', fontSize: 10 }
+        };
+      })
+    });
+    window.addEventListener('resize', function () { c6.resize(); });
+  }
 
+  // 国央企薪酬要点表
+  var soeRows = '';
+  var soeTable = [
+    ['航天科工', '硕士约34.4K/月（年薪约41万）', '98.7%岗位薪酬20-50K'],
+    ['兵装', '硕士税前约30万', '博士48万起，特殊岗位最高100万'],
+    ['电科', '硕士起薪25.0K（北京28.2K）', '2024职友集20-30K占39.1%'],
+    ['中国电子', '硕士第一年总包20W+', '下属企业17-18W，27家二级企业'],
+    ['中广核', '硕士19万起', '本科17/博士24万起，年终奖平均20222元'],
+    ['中船', '硕士≥18万', '博士25-40万+安家费20-40万'],
+    ['航天科技', '年薪15-40万', '部分单位可解决事业编'],
+    ['移动', '新人转正税后15-20万', '总部网络部总包33W'],
+    ['航发', '硕士13-18万', '本科10-13万/博士30-36万，起薪20W安家费5W'],
+    ['电信', '东部12-18万/中西8-12万', '区域差异明显'],
+    ['联通', '本科定6-7级', '职级1-22级，薪酬弹性小'],
+    ['中车', '年终3-6个月工资', '六险两金+企业年金'],
+    ['东风', '年终奖平均约1.1万', '车企央企'],
+    ['中石油', '硕博岗级7000左右', '绩效与艰苦补贴弹性大']
+  ];
+  soeTable.forEach(function (r) {
+    soeRows += '<tr><td><span class="tag">' + r[0] + '</span></td><td>' + r[1] +
+               '</td><td><span class="salary-tag">' + r[2] + '</span></td></tr>';
+  });
+  document.getElementById('soe-table-body').innerHTML = soeRows;
+
+  // ============================================================
+  //  第四章：研究所与就业单位分布
+  // ============================================================
+  var institute = [
+    { city: '北京',   n: 5, units: '航天五院(501/502等)、一院一部、四院17所、二院二部、兵器导控所', f: '航天总体/制导控制' },
+    { city: '西安',   n: 6, units: '五院504、兵器203、航空618、一飞院603、试飞院630、西飞', f: '航天测控/兵器/航空' },
+    { city: '成都',   n: 6, units: '611、成飞、中电29/10、绵阳九院、兵装58所', f: '战机/电子对抗/机器人' },
+    { city: '南京',   n: 5, units: '中电14/28/55、609民机', f: '雷达/微电子/民机' },
+    { city: '上海',   n: 4, units: '航天八院八部802/811、微小卫星、航空无线电所、中船708', f: '卫星/总体' },
+    { city: '武汉',   n: 3, units: '中船701/719、航天三江', f: '舰船/航天' },
+    { city: '沈阳',   n: 3, units: '601、沈飞、中科院沈阳自动化所', f: '飞机/机器人' },
+    { city: '无锡',   n: 3, units: '中航607/614、中船702', f: '机载雷达/船舶' },
+    { city: '洛阳',   n: 2, units: '612、613', f: '空空导弹' },
+    { city: '天津',   n: 1, units: '中船707', f: '舰船导航' },
+    { city: '大连',   n: 1, units: '中船760', f: '船舶' },
+    { city: '连云港', n: 1, units: '中船716', f: '江苏自动化所' },
+    { city: '太原',   n: 1, units: '兵器207', f: '兵器' },
+    { city: '烟台',   n: 1, units: '五院513', f: '航天' }
+  ];
+
+  var c7 = initChart('chart-institute-city');
+  if (c7) {
+    c7.setOption({
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      grid: { left: 8, right: 24, top: 12, bottom: 8, containLabel: true },
+      xAxis: { type: 'category', data: institute.map(function (d) { return d.city; }),
+               axisLabel: { color: 'inherit' }, axisLine: { lineStyle: { color: 'rgba(128,128,128,0.35)' } } },
+      yAxis: { type: 'value', name: '单位数', minInterval: 1, splitLine: { lineStyle: { color: 'rgba(128,128,128,0.18)' } } },
+      series: [{
+        name: '单位数', type: 'bar', data: institute.map(function (d) { return d.n; }),
+        barWidth: 30, itemStyle: { color: GOLD, borderRadius: [4, 4, 0, 0] },
+        label: { show: true, position: 'top', color: 'inherit', fontSize: 11 },
+        markLine: { symbol: 'none', lineStyle: { color: 'rgba(128,128,128,0.4)', type: 'dashed' },
+                    label: { color: 'inherit', fontSize: 10 },
+                    data: [{ yAxis: 3, name: '平均' }] }
+      }]
+    });
+    window.addEventListener('resize', function () { c7.resize(); });
+  }
+
+  // 14城研究所布局明细表
+  var instRows = '';
+  institute.forEach(function (d) {
+    instRows += '<tr><td><span class="tag">' + d.city + '</span></td><td>' + d.units +
+                '</td><td><span class="salary-tag">' + d.f + '</span></td></tr>';
+  });
+  document.getElementById('institute-table-body').innerHTML = instRows;
 })();

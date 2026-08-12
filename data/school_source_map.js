@@ -6,135 +6,75 @@
     },
     "sources": [
       {
-        "name": "湖南大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
-        "province": "湖南",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "中国石油大学（北京）",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "中国矿业大学（北京）",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "长沙学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "佳木斯大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "武汉轻工大学",
+        "name": "中国地质大学(武汉)",
         "level": "双非",
         "province": "湖北",
         "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "湖南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 1
       },
       {
-        "name": "中国石油大学（北京）",
+        "name": "中国矿业大学(北京)",
         "level": "211",
         "province": "北京",
         "count": 1
       },
       {
-        "name": "中国矿业大学（北京）",
+        "name": "南京农业大学",
         "level": "211",
-        "province": "北京",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "长沙学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "佳木斯大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "武汉轻工大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "湖南",
-        "count": 3
-      },
-      {
-        "name": "北京",
-        "count": 2
-      },
-      {
-        "name": "湖北",
-        "count": 1
-      },
-      {
-        "name": "黑龙江",
-        "count": 1
-      }
-    ],
-    "total_unique": 7,
-    "total_records": 7
-  },
-  "(14430)中国科学院大学": {
-    "target_info": {
-      "level": "双非",
-      "province": "北京"
-    },
-    "sources": [
-      {
-        "name": "中国海洋大学",
+        "name": "国防科技大学",
         "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津商业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽文达信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "厦门大学",
-        "level": "985",
-        "province": "福建",
+        "name": "山东第二医科大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "华北电力大学",
-        "level": "211",
-        "province": "河北",
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "武汉轻工大学",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
@@ -144,87 +84,15 @@
         "count": 1
       },
       {
-        "name": "上海大学",
+        "name": "河海大学",
         "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "内蒙古大学",
-        "level": "211",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "华北科技学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "曲阜师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "杭州师范大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "湖北理工学院",
+        "name": "湖南工商大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -234,35 +102,363 @@
         "count": 1
       },
       {
-        "name": "西南科技大学",
-        "level": "双非",
-        "province": "四川",
+        "name": "西北农林科技大学",
+        "level": "985",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "重庆邮电大学",
+        "name": "西安科技大学",
         "level": "双非",
-        "province": "重庆",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "陕西科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学海都学院",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "中国海洋大学",
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "国防科技大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津商业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽文达信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东第二医科大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "湖南",
+        "count": 4
+      },
+      {
+        "name": "山东",
+        "count": 3
+      },
+      {
+        "name": "陕西",
+        "count": 3
+      },
+      {
+        "name": "河北",
+        "count": 2
+      },
+      {
+        "name": "湖北",
+        "count": 2
+      },
+      {
+        "name": "江苏",
+        "count": 2
+      },
+      {
+        "name": "北京",
+        "count": 1
+      },
+      {
+        "name": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽",
+        "count": 1
+      }
+    ],
+    "total_unique": 22,
+    "total_records": 22
+  },
+  "(14430)中国科学院大学": {
+    "target_info": {
+      "level": "双非",
+      "province": "北京"
+    },
+    "sources": [
+      {
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学（北京）",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京交通大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京联合大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华中农业大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学(保定)",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南方科技大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "吉林建筑大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
         "level": "985",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "厦门大学",
-        "level": "985",
-        "province": "福建",
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "华北电力大学",
+        "name": "山西农业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "广东理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "延边大学",
         "level": "211",
-        "province": "河北",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "暨南大学",
+        "level": "211",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
         "count": 1
       },
       {
@@ -272,86 +468,274 @@
         "count": 1
       },
       {
-        "name": "上海大学",
-        "level": "211",
-        "province": "上海",
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "内蒙古大学",
-        "level": "211",
-        "province": "内蒙古",
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "华北科技学院",
+        "name": "温州大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南理工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "曲阜师范大学",
+        "name": "福州大学",
+        "level": "211",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "航天工程大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "菏泽学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "青岛科技大学",
+        "name": "西南大学",
         "level": "双非",
-        "province": "山东",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "运城职业技术大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆交通大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆移通学院",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长春工业大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "阜阳师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "集美大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学（北京）",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京交通大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京联合大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "山东",
-        "count": 3
+        "name": "河南",
+        "count": 7
+      },
+      {
+        "name": "湖北",
+        "count": 5
+      },
+      {
+        "name": "北京",
+        "count": 5
+      },
+      {
+        "name": "吉林",
+        "count": 4
+      },
+      {
+        "name": "山西",
+        "count": 4
+      },
+      {
+        "name": "重庆",
+        "count": 4
       },
       {
         "name": "河北",
         "count": 3
       },
       {
-        "name": "福建",
-        "count": 2
+        "name": "江苏",
+        "count": 3
       },
       {
-        "name": "江西",
-        "count": 2
+        "name": "广东",
+        "count": 3
       },
       {
-        "name": "上海",
-        "count": 1
-      },
-      {
-        "name": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖南",
-        "count": 1
-      },
-      {
-        "name": "安徽",
-        "count": 1
-      },
-      {
-        "name": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "浙江",
-        "count": 1
+        "name": "辽宁",
+        "count": 3
       }
     ],
-    "total_unique": 21,
-    "total_records": 21
+    "total_unique": 63,
+    "total_records": 63
   },
   "(14325)南方科技大学": {
     "target_info": {
@@ -466,49 +850,235 @@
     },
     "sources": [
       {
-        "name": "南昌大学",
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东莞理工学院城市学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
         "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "亳州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "仲恺农业工程学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学天津学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北部湾大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
         "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "南昌职业大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南昌航空大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林工程技术师范学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "嘉应学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "四川工业科技学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津大学",
+        "level": "985",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "宁德师范学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "宁波财经学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东石油化工学院",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
         "name": "广东工业大学",
         "level": "双非",
         "province": "广东",
-        "count": 4
+        "count": 1
       },
       {
         "name": "广东技术师范大学",
         "level": "双非",
         "province": "广东",
-        "count": 3
-      },
-      {
-        "name": "广州航海学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 3
+        "count": 1
       },
       {
         "name": "广东海洋大学",
         "level": "双非",
         "province": "广东",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "东莞理工学院",
+        "name": "广东白云学院",
         "level": "双非",
         "province": "广东",
         "count": 1
       },
       {
-        "name": "五邑大学",
+        "name": "广东石油化工学院",
         "level": "双非",
         "province": "广东",
         "count": 1
@@ -520,37 +1090,139 @@
         "count": 1
       },
       {
-        "name": "广州城市理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
         "name": "广州大学",
         "level": "双非",
         "province": "广东",
         "count": 1
       },
       {
-        "name": "珠海科技学院",
+        "name": "成都信息工程大学",
         "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "昆明理工大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "昌吉学院",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "暨南大学",
+        "level": "211",
         "province": "广东",
         "count": 1
       },
       {
-        "name": "湖南工业大学",
+        "name": "曲阜师范大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 3
+        "province": "山东",
+        "count": 1
       },
       {
-        "name": "长沙学院",
+        "name": "杭州电子科技大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 2
+        "province": "浙江",
+        "count": 1
       },
       {
-        "name": "南华大学",
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "桂林航天工业学院",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江汉大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江海洋大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南交通工程学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
@@ -562,7 +1234,13 @@
         "count": 1
       },
       {
-        "name": "湖南农业大学",
+        "name": "湖南工业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工商大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
@@ -580,73 +1258,37 @@
         "count": 1
       },
       {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
         "name": "湖南理工学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "邵阳学院",
+        "name": "湖南科技大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "南昌航空大学",
+        "name": "潍坊学院",
         "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "景德镇陶瓷大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "南昌大学共青学院",
-        "level": "双非",
-        "province": "江西",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "江西农业大学南昌商学院",
+        "name": "燕山大学",
         "level": "双非",
-        "province": "江西",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "赣南师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "泉州师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建技术师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建理工大学",
+        "name": "福州理工学院",
         "level": "双非",
         "province": "福建",
         "count": 1
@@ -658,43 +1300,31 @@
         "count": 1
       },
       {
-        "name": "南京工业大学浦江学院",
-        "level": "双非",
-        "province": "江苏",
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "南京理工大学泰州科技学院",
+        "name": "西安建筑科技大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "南通理工学院",
+        "name": "赣南科技学院",
         "level": "双非",
-        "province": "江苏",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "安阳师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "新乡工程学院",
+        "name": "郑州经贸学院",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "洛阳理工学院",
+        "name": "郑州航空工业管理学院",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -706,148 +1336,142 @@
         "count": 1
       },
       {
-        "name": "太原学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西晋中理工学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "广西民族大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "重庆理工大学",
+        "name": "重庆邮电大学",
         "level": "双非",
         "province": "重庆",
         "count": 1
       },
       {
-        "name": "长春工程学院",
+        "name": "长春工业大学",
         "level": "双非",
         "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "阜阳师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "广东工业大学",
+        "name": "上海理工大学",
         "level": "双非",
-        "province": "广东",
-        "count": 4
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "广东技术师范大学",
+        "name": "上海电机学院",
         "level": "双非",
-        "province": "广东",
-        "count": 3
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "广州航海学院",
+        "name": "东北石油大学",
         "level": "双非",
-        "province": "广东",
-        "count": 3
+        "province": "黑龙江",
+        "count": 1
       },
       {
-        "name": "湖南工业大学",
+        "name": "东莞理工学院城市学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
         "level": "双非",
         "province": "湖南",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "广东海洋大学",
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "亳州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "仲恺农业工程学院",
         "level": "双非",
         "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "长沙学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "景德镇陶瓷大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "广东",
-        "count": 20
+        "count": 11
       },
       {
         "name": "湖南",
-        "count": 12
-      },
-      {
-        "name": "江西",
-        "count": 10
-      },
-      {
-        "name": "福建",
-        "count": 5
+        "count": 11
       },
       {
         "name": "河南",
+        "count": 7
+      },
+      {
+        "name": "江西",
+        "count": 6
+      },
+      {
+        "name": "山东",
+        "count": 6
+      },
+      {
+        "name": "浙江",
         "count": 4
       },
       {
-        "name": "江苏",
+        "name": "湖北",
         "count": 4
       },
       {
-        "name": "山西",
+        "name": "黑龙江",
         "count": 3
       },
       {
-        "name": "重庆",
-        "count": 1
+        "name": "江苏",
+        "count": 3
       },
       {
-        "name": "吉林",
-        "count": 1
-      },
-      {
-        "name": "广西",
-        "count": 1
+        "name": "安徽",
+        "count": 3
       }
     ],
-    "total_unique": 46,
-    "total_records": 61
+    "total_unique": 86,
+    "total_records": 86
   },
   "(11819)东莞理工学院": {
     "target_info": {
@@ -3050,85 +3674,133 @@
     },
     "sources": [
       {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "西安石油大学",
+        "name": "华北科技学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "河北",
         "count": 2
       },
       {
-        "name": "西安工程大学",
+        "name": "江西理工大学",
         "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "陕西理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "烟台理工学院",
-        "level": "双非",
-        "province": "山东",
+        "province": "江西",
         "count": 2
       },
       {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南师范大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "潍坊学院",
+        "name": "中国石油大学(华东)",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "中北大学",
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京工商大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "塔里木大学",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "天水师范学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "山东航空学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工学院",
         "level": "双非",
         "province": "山西",
         "count": 1
       },
       {
-        "name": "太原师范学院",
+        "name": "常州大学",
         "level": "双非",
-        "province": "山西",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "太原科技大学",
+        "name": "延安大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "晋中信息学院",
         "level": "双非",
         "province": "山西",
         "count": 1
@@ -3140,77 +3812,87 @@
         "count": 1
       },
       {
-        "name": "湖北文理学院",
+        "name": "沈阳工业大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "黑龙江大学",
+        "name": "河北科技大学",
         "level": "双非",
-        "province": "黑龙江",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "兰州交通大学",
+        "name": "河南工业大学",
         "level": "双非",
-        "province": "甘肃",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "昆明理工大学",
+        "name": "河南工学院",
         "level": "双非",
-        "province": "云南",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "江苏海洋大学",
+        "name": "河南理工大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "湖南工业大学",
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江师范大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖南工学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "皖西学院",
+        "name": "湖南科技学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "韶关学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "西安石油大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "烟台理工学院",
+        "name": "烟台南山学院",
         "level": "双非",
         "province": "山东",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "郑州航空工业管理学院",
+        "name": "燕京理工学院",
         "level": "双非",
-        "province": "河南",
-        "count": 2
+        "province": "河北",
+        "count": 1
       },
       {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
         "count": 1
       },
       {
@@ -3220,9 +3902,75 @@
         "count": 1
       },
       {
-        "name": "西安邮电大学",
+        "name": "西安建筑科技大学",
         "level": "双非",
         "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州升达经贸管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -3232,68 +3980,136 @@
         "count": 1
       },
       {
-        "name": "华北水利水电大学",
+        "name": "陕西科技大学镐京学院",
         "level": "双非",
-        "province": "河南",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "河南师范大学",
+        "name": "青岛理工大学",
         "level": "双非",
-        "province": "河南",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "潍坊学院",
+        "name": "青岛黄海学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       }
     ],
-    "top10_provinces": [
+    "top10_schools": [
       {
-        "name": "陕西",
-        "count": 5
-      },
-      {
-        "name": "河南",
-        "count": 4
-      },
-      {
-        "name": "山东",
-        "count": 4
-      },
-      {
-        "name": "山西",
-        "count": 3
-      },
-      {
-        "name": "湖北",
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
         "count": 2
       },
       {
-        "name": "黑龙江",
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
         "count": 2
       },
       {
-        "name": "江苏",
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "云南",
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "湖南",
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
         "count": 1
       },
       {
-        "name": "安徽",
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京工商大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       }
     ],
-    "total_unique": 23,
-    "total_records": 26
+    "top10_provinces": [
+      {
+        "name": "河南",
+        "count": 9
+      },
+      {
+        "name": "陕西",
+        "count": 9
+      },
+      {
+        "name": "山东",
+        "count": 8
+      },
+      {
+        "name": "河北",
+        "count": 5
+      },
+      {
+        "name": "江苏",
+        "count": 5
+      },
+      {
+        "name": "甘肃",
+        "count": 3
+      },
+      {
+        "name": "湖南",
+        "count": 3
+      },
+      {
+        "name": "江西",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 2
+      },
+      {
+        "name": "四川",
+        "count": 2
+      }
+    ],
+    "total_unique": 55,
+    "total_records": 57
   },
   "(10709)西安工程大学": {
     "target_info": {
@@ -3514,488 +4330,140 @@
     },
     "sources": [
       {
-        "name": "西北农林科技大学",
-        "level": "985",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "华南理工大学",
-        "level": "985",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "电子科技大学",
-        "level": "985",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 2
-      },
-      {
-        "name": "兰州大学",
-        "level": "985",
-        "province": "甘肃",
-        "count": 1
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 37
-      },
-      {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 4
-      },
-      {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 12
-      },
-      {
-        "name": "中国石油大学（华东）",
-        "level": "211",
-        "province": "山东",
-        "count": 6
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 6
-      },
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 10
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "中国地质大学（武汉）",
-        "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 5
-      },
-      {
-        "name": "湖南师范大学",
-        "level": "211",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 4
-      },
-      {
-        "name": "华北电力大学",
-        "level": "211",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
+        "name": "哈尔滨理工大学",
+        "level": "双非",
         "province": "黑龙江",
-        "count": 3
-      },
-      {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
-        "count": 3
-      },
-      {
-        "name": "广西大学",
-        "level": "211",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
         "count": 2
       },
       {
-        "name": "中国石油大学（北京）",
-        "level": "211",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "北京工业大学",
-        "level": "211",
-        "province": "北京",
+        "name": "上海工程技术大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "云南大学",
-        "level": "211",
-        "province": "云南",
-        "count": 2
-      },
-      {
-        "name": "延边大学",
-        "level": "211",
+        "name": "东北电力大学",
+        "level": "双非",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "宁夏大学",
-        "level": "211",
-        "province": "宁夏",
-        "count": 1
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 2
-      },
-      {
-        "name": "贵州大学",
-        "level": "211",
-        "province": "贵州",
-        "count": 2
-      },
-      {
-        "name": "上海大学",
+        "name": "东华大学",
         "level": "211",
         "province": "上海",
         "count": 1
       },
       {
-        "name": "内蒙古大学",
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
         "level": "211",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 4
-      },
-      {
-        "name": "西安工业大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "西安建筑科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "西安科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "西安工程大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安建筑科技大学华清学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安电子科技大学长安学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安石油大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安航空学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安财经大学行知学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "陕西科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 9
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 7
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 4
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 4
-      },
-      {
-        "name": "河南师范大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "安阳师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "山东师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 5
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 5
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 5
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "曲阜师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
+        "province": "北京",
         "count": 1
       },
       {
         "name": "南京邮电大学",
         "level": "双非",
         "province": "江苏",
-        "count": 5
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
         "count": 1
       },
       {
-        "name": "南京航空航天大学金城学院",
+        "name": "南昌航空大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "常州大学",
+        "name": "周口师范学院",
         "level": "双非",
-        "province": "江苏",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "扬州大学",
+        "name": "大连大学",
         "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东建筑大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
         "province": "江苏",
         "count": 1
       },
@@ -4006,349 +4474,49 @@
         "count": 1
       },
       {
-        "name": "安徽工业大学",
+        "name": "河南工业大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安徽理工大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安庆师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "铜陵学院",
+        "name": "河南理工大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "武汉科技大学",
+        "name": "河南科技大学",
         "level": "双非",
-        "province": "湖北",
-        "count": 5
-      },
-      {
-        "name": "湖北大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 4
-      },
-      {
-        "name": "三峡大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "长江大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "中南民族大学",
-        "level": "双非",
-        "province": "湖北",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "武汉工程大学",
-        "level": "双非",
-        "province": "湖北",
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "武汉纺织大学",
+        "name": "洛阳理工学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "武汉轻工大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北第二师范学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北经济学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 12
-      },
-      {
-        "name": "温州大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "中国计量大学",
+        "name": "浙江水利水电学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "宁波大学",
+        "name": "烟台大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "宁波工程学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江农林大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江理工大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "上饶师范学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "井冈山大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西科技师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "广州大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 5
-      },
-      {
-        "name": "广东工业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 3
-      },
-      {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 3
-      },
-      {
-        "name": "东莞理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "深圳大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "华南农业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "韶关学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 7
-      },
-      {
-        "name": "成都信息工程大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 5
-      },
-      {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
-      },
-      {
-        "name": "西南科技大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西大同大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西工程科技职业大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "西华大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 6
-      },
-      {
-        "name": "中南林业科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "南华大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南中医药大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
+        "province": "山东",
         "count": 1
       },
       {
         "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技大学",
         "level": "双非",
         "province": "河北",
         "count": 1
@@ -4360,310 +4528,202 @@
         "count": 1
       },
       {
-        "name": "重庆邮电大学",
+        "name": "西京学院",
         "level": "双非",
-        "province": "重庆",
-        "count": 8
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西华师范大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安电子科技大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
       },
       {
         "name": "重庆工商大学",
         "level": "双非",
         "province": "重庆",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "重庆理工大学",
+        "name": "重庆邮电大学",
         "level": "双非",
         "province": "重庆",
         "count": 1
       },
       {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "陕西理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "陕西科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
         "name": "哈尔滨理工大学",
         "level": "双非",
         "province": "黑龙江",
-        "count": 3
-      },
-      {
-        "name": "黑龙江大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "黑龙江科技大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "齐齐哈尔大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "桂林电子科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 5
-      },
-      {
-        "name": "沈阳大学",
-        "level": "双非",
-        "province": "辽宁",
         "count": 2
       },
       {
-        "name": "南宁师范大学",
+        "name": "上海工程技术大学",
         "level": "双非",
-        "province": "广西",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "大连大学",
+        "name": "东北电力大学",
         "level": "双非",
-        "province": "辽宁",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "广西师范大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "广西民族大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳理工大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "辽宁工程技术大学",
-        "level": "双非",
-        "province": "辽宁",
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
         "count": 1
       },
       {
         "name": "中国民航大学",
         "level": "双非",
         "province": "天津",
-        "count": 3
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "天津商业大学",
-        "level": "双非",
-        "province": "天津",
         "count": 1
       },
       {
-        "name": "华侨大学",
+        "name": "临沂大学",
         "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建理工大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "闽南师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "中华女子学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "中国人民公安大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "昆明理工大学",
-        "level": "双非",
-        "province": "云南",
-        "count": 2
-      },
-      {
-        "name": "长春理工大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 2
-      },
-      {
-        "name": "西南林业大学",
-        "level": "双非",
-        "province": "云南",
-        "count": 1
-      },
-      {
-        "name": "北方民族大学",
-        "level": "双非",
-        "province": "宁夏",
-        "count": 1
-      },
-      {
-        "name": "宁夏师范大学",
-        "level": "双非",
-        "province": "宁夏",
-        "count": 1
-      },
-      {
-        "name": "上海电力大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "内蒙古工业大学",
-        "level": "双非",
-        "province": "内蒙古",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 37
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 12
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 12
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 10
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 9
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 8
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 7
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 7
-      },
-      {
-        "name": "中国石油大学（华东）",
-        "level": "211",
         "province": "山东",
-        "count": 6
+        "count": 1
       },
       {
-        "name": "中国矿业大学",
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
         "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
         "province": "江苏",
-        "count": 6
+        "count": 1
+      },
+      {
+        "name": "南昌航空大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "陕西",
-        "count": 66
-      },
-      {
-        "name": "河南",
-        "count": 50
+        "count": 8
       },
       {
         "name": "山东",
-        "count": 38
+        "count": 6
+      },
+      {
+        "name": "河南",
+        "count": 6
       },
       {
         "name": "江苏",
-        "count": 31
-      },
-      {
-        "name": "安徽",
-        "count": 25
-      },
-      {
-        "name": "湖北",
-        "count": 22
+        "count": 4
       },
       {
         "name": "浙江",
-        "count": 21
+        "count": 3
       },
       {
-        "name": "江西",
-        "count": 19
+        "name": "安徽",
+        "count": 3
       },
       {
-        "name": "广东",
-        "count": 18
+        "name": "黑龙江",
+        "count": 2
       },
       {
-        "name": "山西",
-        "count": 15
+        "name": "上海",
+        "count": 2
+      },
+      {
+        "name": "天津",
+        "count": 2
+      },
+      {
+        "name": "辽宁",
+        "count": 2
       }
     ],
-    "total_unique": 174,
-    "total_records": 428
+    "total_unique": 48,
+    "total_records": 49
   },
   "(10700)西安理工大学": {
     "target_info": {
@@ -5362,81 +5422,57 @@
     },
     "sources": [
       {
-        "name": "西安交通大学",
+        "name": "东北大学",
         "level": "985",
-        "province": "陕西",
-        "count": 3
+        "province": "辽宁",
+        "count": 2
       },
       {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 5
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 2
       },
       {
-        "name": "山东大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
         "province": "山东",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "中南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 2
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
       },
       {
-        "name": "中央民族大学",
-        "level": "985",
+        "name": "中国矿业大学(北京)",
+        "level": "211",
         "province": "北京",
         "count": 1
       },
       {
-        "name": "厦门大学",
-        "level": "985",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "兰州大学",
-        "level": "985",
+        "name": "兰州交通大学",
+        "level": "双非",
         "province": "甘肃",
         "count": 1
       },
       {
-        "name": "天津大学",
-        "level": "985",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 6
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "上海大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "中国传媒大学",
-        "level": "211",
-        "province": "北京",
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
         "count": 1
       },
       {
@@ -5446,38 +5482,92 @@
         "count": 1
       },
       {
-        "name": "福州大学",
+        "name": "华南理工大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
         "level": "211",
-        "province": "福建",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "东北林业大学",
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吕梁学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "四川大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
         "level": "211",
-        "province": "黑龙江",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "武汉理工大学",
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "电子科技大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
         "level": "211",
-        "province": "湖北",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 5
-      },
-      {
-        "name": "西安交通大学城市学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安工业大学",
-        "level": "双非",
+        "name": "西安交通大学",
+        "level": "985",
         "province": "陕西",
         "count": 1
       },
@@ -5488,196 +5578,136 @@
         "count": 1
       },
       {
-        "name": "西安理工大学",
-        "level": "双非",
+        "name": "西安电子科技大学",
+        "level": "211",
         "province": "陕西",
         "count": 1
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "上海理工大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "上海第二工业大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "广东工业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "成都理工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "石家庄学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 6
-      },
-      {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 5
       },
       {
         "name": "西安邮电大学",
         "level": "双非",
         "province": "陕西",
-        "count": 5
+        "count": 1
       },
       {
-        "name": "西安交通大学",
-        "level": "985",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "山东大学",
-        "level": "985",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "中南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
+        "name": "长江师范学院",
         "level": "双非",
-        "province": "江苏",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
         "count": 2
       },
       {
-        "name": "中央民族大学",
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "东北大学秦皇岛分校",
         "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京交通大学",
+        "level": "211",
         "province": "北京",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "陕西",
-        "count": 14
-      },
-      {
-        "name": "河南",
-        "count": 6
-      },
-      {
-        "name": "吉林",
-        "count": 5
-      },
-      {
-        "name": "山东",
+        "name": "四川",
         "count": 4
       },
       {
-        "name": "北京",
+        "name": "陕西",
+        "count": 4
+      },
+      {
+        "name": "河北",
         "count": 3
       },
       {
-        "name": "上海",
+        "name": "河南",
         "count": 3
       },
       {
-        "name": "安徽",
+        "name": "山东",
         "count": 3
       },
       {
-        "name": "湖南",
-        "count": 3
+        "name": "辽宁",
+        "count": 2
       },
       {
         "name": "江苏",
-        "count": 3
+        "count": 2
       },
       {
-        "name": "福建",
+        "name": "北京",
         "count": 2
+      },
+      {
+        "name": "浙江",
+        "count": 2
+      },
+      {
+        "name": "甘肃",
+        "count": 1
       }
     ],
-    "total_unique": 35,
-    "total_records": 55
+    "total_unique": 30,
+    "total_records": 32
   },
   "(10697)西北大学": {
     "target_info": {
@@ -6480,277 +6510,115 @@
     },
     "sources": [
       {
-        "name": "中国矿业大学",
-        "level": "211",
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "六盘水师范学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学天津学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "宁夏大学",
-        "level": "211",
-        "province": "宁夏",
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "西华大学",
+        "name": "南京邮电大学通达学院",
         "level": "双非",
-        "province": "四川",
-        "count": 14
-      },
-      {
-        "name": "成都工业学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 9
-      },
-      {
-        "name": "西南科技大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 9
-      },
-      {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 8
-      },
-      {
-        "name": "四川轻化工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
-      },
-      {
-        "name": "成都信息工程大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
-      },
-      {
-        "name": "电子科技大学成都学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
-      },
-      {
-        "name": "四川师范大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "成都大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "成都锦城学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "西华师范大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "中国民用航空飞行学院",
-        "level": "双非",
-        "province": "四川",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "内江师范学院",
+        "name": "南昌交通学院",
         "level": "双非",
-        "province": "四川",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "四川大学锦江学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "四川工业科技学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "四川文理学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "四川电影电视学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "成都文理学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "成都理工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "绵阳师范学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西南民族大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西昌学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 28
-      },
-      {
-        "name": "重庆三峡学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 5
-      },
-      {
-        "name": "重庆理工大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 5
-      },
-      {
-        "name": "重庆文理学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 4
-      },
-      {
-        "name": "长江师范学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 4
-      },
-      {
-        "name": "重庆交通大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "重庆机电职业技术大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "重庆移通学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "重庆第二师范学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "河南工业大学",
+        "name": "南阳师范学院",
         "level": "双非",
         "province": "河南",
-        "count": 5
+        "count": 1
       },
       {
         "name": "南阳理工学院",
         "level": "双非",
         "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南师范大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "许昌学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "郑州工业应用技术学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "中原工学院",
-        "level": "双非",
-        "province": "河南",
         "count": 1
       },
       {
-        "name": "信阳师范大学",
+        "name": "吉林化工学院",
         "level": "双非",
-        "province": "河南",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "南阳师范学院",
+        "name": "周口师范学院",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -6762,835 +6630,61 @@
         "count": 1
       },
       {
-        "name": "平顶山学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "新乡工程学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南农业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南城建学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南工程学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "洛阳理工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州升达经贸管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州西亚斯学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 5
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "山东师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "烟台理工学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东华宇工学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东工商学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东建筑大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "德州学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "枣庄学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "泰山学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "泰山科技学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "济宁学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "菏泽学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "湖南工程学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "湖南农业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南工商大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南工学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南理工学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南科技学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "长沙学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "南华大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南人文科技学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南信息学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南城市学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 4
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "中南民族大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "武汉纺织大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "赣南师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "赣南科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "长江大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "上饶师范学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "宜春学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "武昌首义学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉华夏理工学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉商学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉科技大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉轻工大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西科技师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北工程学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北师范大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北理工学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北科技学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "赣南师范大学科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "黄冈师范学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "华侨大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "闽南师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "仰恩大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "厦门工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "武夷学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "泉州信息工程学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "泉州师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "莆田学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 4
-      },
-      {
-        "name": "华北科技学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "太原科技大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 3
-      },
-      {
-        "name": "北华航天工业学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "忻州师范学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "三江学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "南通大学杏林学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "唐山学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "山西大同大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西工学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "常州工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏理工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "河北农业大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北工程大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "苏州科技大学天平学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "衡水学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "大连大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 3
-      },
-      {
-        "name": "大连东软信息学院",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳理工大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳航空航天大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "渤海大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "辽宁工程技术大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "辽宁科技大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "桂林电子科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 3
-      },
-      {
-        "name": "北部湾大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 2
-      },
-      {
-        "name": "合肥师范学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "阜阳师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽科技学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "广西民族大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "广西科技师范学院",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "桂林理工大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "淮南师范学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "铜陵学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "长春理工大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 4
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "北华大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "吉林工程技术师范学院",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "延安大学",
+        "name": "商洛学院",
         "level": "双非",
         "province": "陕西",
         "count": 1
       },
       {
-        "name": "渭南师范学院",
+        "name": "四川大学锦江学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "西安工业大学",
+        "name": "四川工商学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "西安工程大学",
+        "name": "四川旅游学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "西安科技大学",
+        "name": "四川轻化工大学",
         "level": "双非",
-        "province": "陕西",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "长春工程学院",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "东北石油大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "云南师范大学",
-        "level": "双非",
-        "province": "云南",
-        "count": 2
-      },
-      {
-        "name": "云南民族大学",
-        "level": "双非",
-        "province": "云南",
-        "count": 2
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "中国计量大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "佳木斯大学",
+        "name": "大庆师范学院",
         "level": "双非",
         "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "台州学院",
+        "name": "大连工业大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "天津城建大学",
-        "level": "双非",
-        "province": "天津",
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "天津工业大学",
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
         "level": "双非",
         "province": "天津",
         "count": 1
@@ -7602,9 +6696,93 @@
         "count": 1
       },
       {
-        "name": "天津财经大学",
+        "name": "宁波大学",
         "level": "双非",
-        "province": "天津",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜宾学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工程科技职业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都理工大学工程技术学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "攀枝花学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "新疆工程学院",
+        "level": "双非",
+        "province": "新疆",
         "count": 1
       },
       {
@@ -7614,27 +6792,159 @@
         "count": 1
       },
       {
-        "name": "杭州电子科技大学信息工程学院",
+        "name": "景德镇陶瓷大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "浙江工商大学",
+        "name": "浙江理工大学",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "浙江师范大学",
-        "level": "双非",
-        "province": "浙江",
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
         "count": 1
       },
       {
-        "name": "温州大学",
+        "name": "淮阴工学院",
         "level": "双非",
-        "province": "浙江",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "湖北文理学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北汽车工业学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南农业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工程学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南理工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -7644,21 +6954,299 @@
         "count": 1
       },
       {
-        "name": "黑龙江科技大学",
+        "name": "烟台南山学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "玉溪师范学院",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "绍兴文理学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "绥化学院",
         "level": "双非",
         "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "兰州工业学院",
+        "name": "绵阳城市学院",
         "level": "双非",
-        "province": "甘肃",
-        "count": 2
+        "province": "四川",
+        "count": 1
       },
       {
-        "name": "兰州文理学院",
+        "name": "苏州城市学院",
         "level": "双非",
-        "province": "甘肃",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "西华大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西华师范大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安文理学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州师范学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵州理工学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "邵阳学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "郑州工业应用技术学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆工商大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆文理学院",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆理工大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆科技大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆移通学院",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "铜陵学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长春大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长春建筑学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长江师范学院",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "陕西科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "青岛城市学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黑龙江八一农垦大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "六盘水师范学院",
+        "level": "双非",
+        "province": "贵州",
         "count": 1
       },
       {
@@ -7668,160 +7256,68 @@
         "count": 1
       },
       {
-        "name": "凯里学院",
-        "level": "双非",
-        "province": "贵州",
-        "count": 1
-      },
-      {
-        "name": "贵阳学院",
-        "level": "双非",
-        "province": "贵州",
-        "count": 1
-      },
-      {
-        "name": "遵义师范学院",
-        "level": "双非",
-        "province": "贵州",
-        "count": 1
-      },
-      {
-        "name": "喀什大学",
-        "level": "双非",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "塔里木大学",
-        "level": "双非",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "广州软件学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "电子科技大学中山学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "中华女子学院",
+        "name": "北京科技大学天津学院",
         "level": "双非",
         "province": "北京",
         "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 28
       },
       {
-        "name": "西华大学",
+        "name": "北华航天工业学院",
         "level": "双非",
-        "province": "四川",
-        "count": 14
+        "province": "河北",
+        "count": 1
       },
       {
-        "name": "成都工业学院",
+        "name": "华北理工大学",
         "level": "双非",
-        "province": "四川",
-        "count": 9
-      },
-      {
-        "name": "西南科技大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 9
-      },
-      {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 8
-      },
-      {
-        "name": "重庆三峡学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 5
-      },
-      {
-        "name": "重庆理工大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 5
-      },
-      {
-        "name": "河南工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 5
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 5
-      },
-      {
-        "name": "四川轻化工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
+        "province": "河北",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "四川",
-        "count": 71
-      },
-      {
-        "name": "重庆",
-        "count": 52
+        "count": 16
       },
       {
         "name": "河南",
-        "count": 42
-      },
-      {
-        "name": "山东",
-        "count": 31
-      },
-      {
-        "name": "湖南",
-        "count": 23
-      },
-      {
-        "name": "湖北",
-        "count": 17
-      },
-      {
-        "name": "江西",
-        "count": 17
-      },
-      {
-        "name": "福建",
-        "count": 14
-      },
-      {
-        "name": "河北",
-        "count": 11
+        "count": 13
       },
       {
         "name": "江苏",
-        "count": 11
+        "count": 9
+      },
+      {
+        "name": "山东",
+        "count": 8
+      },
+      {
+        "name": "辽宁",
+        "count": 7
+      },
+      {
+        "name": "重庆",
+        "count": 7
+      },
+      {
+        "name": "陕西",
+        "count": 6
+      },
+      {
+        "name": "黑龙江",
+        "count": 5
+      },
+      {
+        "name": "河北",
+        "count": 5
+      },
+      {
+        "name": "湖南",
+        "count": 5
       }
     ],
-    "total_unique": 206,
-    "total_records": 377
+    "total_unique": 117,
+    "total_records": 117
   },
   "(10616)成都理工大学": {
     "target_info": {
@@ -8032,124 +7528,124 @@
     },
     "sources": [
       {
-        "name": "电子科技大学",
-        "level": "985",
-        "province": "四川",
-        "count": 8
-      },
-      {
-        "name": "四川大学",
-        "level": "985",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "武汉大学",
-        "level": "985",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "山东大学",
-        "level": "985",
+        "name": "中国石油大学(华东)",
+        "level": "双非",
         "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "重庆大学",
-        "level": "985",
-        "province": "重庆",
-        "count": 3
-      },
-      {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 7
-      },
-      {
-        "name": "哈尔滨工业大学",
-        "level": "985",
-        "province": "黑龙江",
-        "count": 3
-      },
-      {
-        "name": "中国农业大学",
-        "level": "985",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "西南交通大学",
-        "level": "211",
-        "province": "四川",
-        "count": 7
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
         "count": 2
       },
       {
-        "name": "中国地质大学（武汉）",
-        "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 4
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 5
-      },
-      {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "河海大学",
-        "level": "211",
+        "name": "南京工业大学",
+        "level": "双非",
         "province": "江苏",
         "count": 2
       },
       {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
         "count": 2
       },
       {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
         "name": "上海大学",
         "level": "211",
         "province": "上海",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "上海海洋大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南民族大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国海洋大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "仲恺农业工程学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
+        "count": 1
       },
       {
         "name": "北京化工大学",
@@ -8158,9 +7654,75 @@
         "count": 1
       },
       {
-        "name": "北京工业大学",
+        "name": "北京建筑大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学",
         "level": "211",
         "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华中科技大学",
+        "level": "985",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华南农业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "华南理工大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -8170,21 +7732,33 @@
         "count": 1
       },
       {
-        "name": "大连海事大学",
+        "name": "合肥工业大学",
         "level": "211",
-        "province": "辽宁",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "河北工业大学",
+        "name": "哈尔滨工程大学",
         "level": "211",
-        "province": "河北",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
+        "name": "四川大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "四川工商学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "天津工业大学",
+        "level": "双非",
+        "province": "天津",
         "count": 1
       },
       {
@@ -8194,28 +7768,52 @@
         "count": 1
       },
       {
-        "name": "成都理工大学",
+        "name": "宁波大学",
         "level": "双非",
-        "province": "四川",
-        "count": 5
+        "province": "浙江",
+        "count": 1
       },
       {
-        "name": "成都信息工程大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
       },
       {
-        "name": "四川师范大学",
+        "name": "安徽建筑大学",
         "level": "双非",
-        "province": "四川",
-        "count": 2
+        "province": "安徽",
+        "count": 1
       },
       {
-        "name": "西华大学",
+        "name": "安徽理工大学",
         "level": "双非",
-        "province": "四川",
-        "count": 2
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东药科大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
       },
       {
         "name": "成都大学",
@@ -8224,87 +7822,81 @@
         "count": 1
       },
       {
-        "name": "电子科技大学成都学院",
+        "name": "成都锦城学院",
         "level": "双非",
         "province": "四川",
         "count": 1
       },
       {
-        "name": "西南石油大学",
+        "name": "无锡学院",
         "level": "双非",
-        "province": "四川",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "西南科技大学",
+        "name": "景德镇陶瓷大学",
         "level": "双非",
-        "province": "四川",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "湖北工业大学",
+        "name": "杭州电子科技大学",
         "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
         "province": "湖北",
-        "count": 6
+        "count": 1
       },
       {
         "name": "武汉科技大学",
         "level": "双非",
         "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 4
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "临沂大学",
-        "level": "双非",
-        "province": "山东",
         "count": 1
       },
       {
-        "name": "亳州学院",
-        "level": "双非",
-        "province": "安徽",
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "安徽师范大学",
+        "name": "江苏师范大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "安阳师范学院",
+        "name": "江苏科技大学",
         "level": "双非",
-        "province": "河南",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "曲阜师范大学",
+        "name": "江西科技师范大学",
         "level": "双非",
-        "province": "山东",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
         "count": 1
       },
       {
@@ -8326,7 +7918,115 @@
         "count": 1
       },
       {
-        "name": "西南大学",
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "深圳技术大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "燕山大学里仁学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "西华大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安交通大学",
+        "level": "985",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安电子科技大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆大学",
+        "level": "985",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆工程学院",
         "level": "双非",
         "province": "重庆",
         "count": 1
@@ -8338,268 +8038,148 @@
         "count": 1
       },
       {
-        "name": "青岛科技大学",
+        "name": "重庆财经学院",
         "level": "双非",
-        "province": "山东",
+        "province": "重庆",
         "count": 1
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "东北电力大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "西安欧亚学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "陕西理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 3
-      },
-      {
-        "name": "中国计量大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "嘉兴大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "宁波大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "深圳大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 3
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "东莞理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "五邑大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广州大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "上海电力大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "沈阳航空航天大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "衡阳师范学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "赣南科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "电子科技大学",
-        "level": "985",
-        "province": "四川",
-        "count": 8
-      },
-      {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 7
-      },
-      {
-        "name": "西南交通大学",
-        "level": "211",
-        "province": "四川",
-        "count": 7
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 6
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 5
-      },
-      {
-        "name": "成都理工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 5
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 4
-      },
-      {
-        "name": "成都信息工程大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 4
       },
       {
         "name": "重庆邮电大学",
         "level": "双非",
         "province": "重庆",
-        "count": 4
+        "count": 1
       },
       {
-        "name": "山东大学",
-        "level": "985",
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长沙学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
         "province": "山东",
-        "count": 3
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 2
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海海洋大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "四川",
-        "count": 34
+        "name": "江苏",
+        "count": 11
       },
       {
-        "name": "湖北",
-        "count": 13
+        "name": "四川",
+        "count": 10
       },
       {
         "name": "山东",
-        "count": 9
-      },
-      {
-        "name": "河南",
-        "count": 9
-      },
-      {
-        "name": "重庆",
-        "count": 9
-      },
-      {
-        "name": "安徽",
-        "count": 9
-      },
-      {
-        "name": "吉林",
         "count": 8
       },
       {
-        "name": "陕西",
-        "count": 8
-      },
-      {
-        "name": "浙江",
+        "name": "湖北",
         "count": 7
       },
       {
-        "name": "江苏",
-        "count": 6
+        "name": "广东",
+        "count": 7
+      },
+      {
+        "name": "江西",
+        "count": 5
+      },
+      {
+        "name": "北京",
+        "count": 5
+      },
+      {
+        "name": "陕西",
+        "count": 5
+      },
+      {
+        "name": "重庆",
+        "count": 5
+      },
+      {
+        "name": "辽宁",
+        "count": 4
       }
     ],
-    "total_unique": 77,
-    "total_records": 147
+    "total_unique": 91,
+    "total_records": 95
   },
   "(10613)西南交通大学": {
     "target_info": {
@@ -11966,14 +11546,38 @@
     },
     "sources": [
       {
-        "name": "中南大学",
-        "level": "985",
+        "name": "中南林业科技大学",
+        "level": "双非",
         "province": "湖南",
         "count": 2
       },
       {
-        "name": "中国石油大学（华东）",
+        "name": "东北林业大学",
         "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国海洋大学",
+        "level": "985",
         "province": "山东",
         "count": 1
       },
@@ -11984,51 +11588,213 @@
         "count": 1
       },
       {
+        "name": "北京石油化工学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北部湾大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华中农业大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华南农业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
         "name": "南昌大学",
         "level": "211",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "西北大学",
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "合肥工业大学",
         "level": "211",
-        "province": "陕西",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "中南林业科技大学",
-        "level": "双非",
-        "province": "湖南",
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "天津工业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东农业大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "苏州科技大学",
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广州大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "新疆大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "新疆工程学院",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "中华女子学院",
+        "name": "河北大学",
         "level": "双非",
-        "province": "北京",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "中南民族大学",
+        "name": "河南工业大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
@@ -12036,24 +11802,138 @@
         "level": "双非",
         "province": "广东",
         "count": 1
-      }
-    ],
-    "top10_schools": [
+      },
       {
-        "name": "中南大学",
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "湖北文理学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北汽车工业学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南大学",
         "level": "985",
         "province": "湖南",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "皖江工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
       },
       {
         "name": "长沙理工大学",
         "level": "双非",
         "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青海大学",
+        "level": "211",
+        "province": "青海",
+        "count": 1
+      },
+      {
+        "name": "鲁东大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 2
       },
       {
-        "name": "中国石油大学（华东）",
+        "name": "东北林业大学",
         "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国海洋大学",
+        "level": "985",
         "province": "山东",
         "count": 1
       },
@@ -12064,78 +11944,68 @@
         "count": 1
       },
       {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "中南林业科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "中华女子学院",
+        "name": "北京石油化工学院",
         "level": "双非",
         "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北部湾大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "湖南",
-        "count": 5
+        "count": 8
       },
       {
-        "name": "山东",
-        "count": 2
+        "name": "湖北",
+        "count": 7
       },
       {
         "name": "江苏",
+        "count": 7
+      },
+      {
+        "name": "广东",
+        "count": 4
+      },
+      {
+        "name": "安徽",
+        "count": 4
+      },
+      {
+        "name": "河南",
+        "count": 4
+      },
+      {
+        "name": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "山东",
+        "count": 3
+      },
+      {
+        "name": "山西",
         "count": 2
       },
       {
         "name": "江西",
-        "count": 1
-      },
-      {
-        "name": "陕西",
-        "count": 1
-      },
-      {
-        "name": "北京",
-        "count": 1
-      },
-      {
-        "name": "湖北",
-        "count": 1
-      },
-      {
-        "name": "广东",
-        "count": 1
+        "count": 2
       }
     ],
-    "total_unique": 12,
-    "total_records": 14
+    "total_unique": 59,
+    "total_records": 60
   },
   "(10532)湖南大学": {
     "target_info": {
@@ -13620,64 +13490,28 @@
     },
     "sources": [
       {
-        "name": "华中科技大学",
-        "level": "985",
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
         "province": "湖北",
         "count": 2
       },
       {
-        "name": "武汉大学",
-        "level": "985",
-        "province": "湖北",
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "中南大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
-        "province": "湖南",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "湖南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "西北工业大学",
-        "level": "985",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "山东大学",
-        "level": "985",
+        "name": "中国石油大学(华东)",
+        "level": "双非",
         "province": "山东",
         "count": 1
-      },
-      {
-        "name": "四川大学",
-        "level": "985",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "重庆大学",
-        "level": "985",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
-        "count": 4
-      },
-      {
-        "name": "中国地质大学（武汉）",
-        "level": "211",
-        "province": "湖北",
-        "count": 3
       },
       {
         "name": "中国矿业大学",
@@ -13686,33 +13520,45 @@
         "count": 1
       },
       {
-        "name": "南京航空航天大学",
+        "name": "北京邮电大学",
         "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华中科技大学",
+        "level": "985",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华南理工大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "郑州大学",
-        "level": "211",
+        "name": "南开大学",
+        "level": "985",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
         "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "中国矿业大学（北京）",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "北京交通大学",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "西南交通大学",
-        "level": "211",
-        "province": "四川",
         "count": 1
       },
       {
@@ -13722,151 +13568,243 @@
         "count": 1
       },
       {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "武汉工程大学",
-        "level": "双非",
-        "province": "湖北",
+        "name": "大连理工大学",
+        "level": "985",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京工业职业技术大学",
-        "level": "双非",
-        "province": "江苏",
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
         "count": 1
       },
       {
-        "name": "湘潭大学",
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 2
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
       },
       {
         "name": "山东科技大学",
         "level": "双非",
         "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
         "count": 1
       },
       {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "宁波大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "广西师范大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
-        "count": 4
-      },
-      {
-        "name": "中国地质大学（武汉）",
-        "level": "211",
-        "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "华中科技大学",
-        "level": "985",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "西北工业大学",
-        "level": "985",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
+        "name": "常州大学",
         "level": "双非",
         "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
+        "count": 1
       },
       {
         "name": "武汉大学",
         "level": "985",
         "province": "湖北",
         "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "石河子大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "西北农林科技大学",
+        "level": "985",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西南大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆大学",
+        "level": "985",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "北京邮电大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华中科技大学",
+        "level": "985",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华南理工大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "湖北",
-        "count": 13
-      },
-      {
-        "name": "江苏",
-        "count": 5
-      },
-      {
-        "name": "湖南",
-        "count": 4
+        "count": 7
       },
       {
         "name": "山东",
+        "count": 5
+      },
+      {
+        "name": "河南",
+        "count": 5
+      },
+      {
+        "name": "河北",
         "count": 3
+      },
+      {
+        "name": "江苏",
+        "count": 3
+      },
+      {
+        "name": "安徽",
+        "count": 3
+      },
+      {
+        "name": "辽宁",
+        "count": 2
       },
       {
         "name": "陕西",
-        "count": 3
-      },
-      {
-        "name": "四川",
         "count": 2
       },
       {
@@ -13874,20 +13812,12 @@
         "count": 2
       },
       {
-        "name": "北京",
-        "count": 2
-      },
-      {
-        "name": "河南",
-        "count": 2
-      },
-      {
-        "name": "安徽",
+        "name": "上海",
         "count": 1
       }
     ],
-    "total_unique": 27,
-    "total_records": 39
+    "total_unique": 37,
+    "total_records": 38
   },
   "(10486)武汉大学": {
     "target_info": {
@@ -14296,10 +14226,58 @@
     },
     "sources": [
       {
-        "name": "郑州大学",
-        "level": "211",
+        "name": "河南工业大学",
+        "level": "双非",
         "province": "河南",
-        "count": 3
+        "count": 2
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "信阳师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
       },
       {
         "name": "华北水利水电大学",
@@ -14308,72 +14286,484 @@
         "count": 1
       },
       {
-        "name": "河南工业大学",
+        "name": "华北理工大学",
         "level": "双非",
-        "province": "河南",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "江苏海洋大学",
+        "name": "南京工程学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "浙大宁波理工学院",
+        "name": "南京师范大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "商丘学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "成都师范学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "新乡工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "昆明理工大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "景德镇学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "桂林理工大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工程学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
         "level": "双非",
         "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖南农业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "石河子大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "绍兴文理学院元培学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "苏州科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "衢州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西华大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "许昌学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州西亚斯学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄冈师范学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "黄河科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黑龙江八一农垦大学",
+        "level": "双非",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "郑州大学",
-        "level": "211",
+        "name": "河南工业大学",
+        "level": "双非",
         "province": "河南",
-        "count": 3
+        "count": 2
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "信阳师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
       },
       {
         "name": "华北水利水电大学",
         "level": "双非",
         "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "浙大宁波理工学院",
-        "level": "双非",
-        "province": "浙江",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "河南",
+        "count": 29
+      },
+      {
+        "name": "江苏",
+        "count": 6
+      },
+      {
+        "name": "湖北",
         "count": 5
       },
       {
         "name": "浙江",
-        "count": 1
+        "count": 4
       },
       {
-        "name": "江苏",
-        "count": 1
+        "name": "辽宁",
+        "count": 4
+      },
+      {
+        "name": "山东",
+        "count": 4
+      },
+      {
+        "name": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "安徽",
+        "count": 3
+      },
+      {
+        "name": "甘肃",
+        "count": 2
+      },
+      {
+        "name": "天津",
+        "count": 2
       }
     ],
-    "total_unique": 5,
-    "total_records": 7
+    "total_unique": 72,
+    "total_records": 74
   },
   "(10445)山东师范大学": {
     "target_info": {
@@ -16032,349 +16422,151 @@
     },
     "sources": [
       {
-        "name": "山东大学",
-        "level": "985",
-        "province": "山东",
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "中国人民大学",
-        "level": "985",
-        "province": "北京",
-        "count": 2
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
       },
       {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "五邑大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "佛山大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
         "name": "南昌大学",
         "level": "211",
         "province": "江西",
-        "count": 20
-      },
-      {
-        "name": "中国矿业大学（北京）",
-        "level": "211",
-        "province": "北京",
         "count": 1
       },
       {
-        "name": "内蒙古大学",
-        "level": "211",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 1
-      },
-      {
-        "name": "江西理工大学",
+        "name": "南昌大学科学技术学院",
         "level": "双非",
         "province": "江西",
-        "count": 21
+        "count": 1
       },
       {
-        "name": "东华理工大学",
+        "name": "南昌工学院",
         "level": "双非",
         "province": "江西",
-        "count": 12
+        "count": 1
       },
       {
         "name": "南昌航空大学",
         "level": "双非",
         "province": "江西",
-        "count": 11
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 10
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 8
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 8
-      },
-      {
-        "name": "景德镇陶瓷大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 7
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 7
-      },
-      {
-        "name": "新余学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 6
-      },
-      {
-        "name": "江西农业大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 6
-      },
-      {
-        "name": "赣南科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 5
-      },
-      {
-        "name": "井冈山大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "南昌交通学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "赣南医科大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "赣南师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "南昌航空大学科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "萍乡学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "南昌师范学院",
-        "level": "双非",
-        "province": "江西",
         "count": 1
       },
       {
-        "name": "宜春学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "抚州医药学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西农业大学南昌商学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西科技师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西财经大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "赣南师范大学科技学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 6
-      },
-      {
-        "name": "河南工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 4
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "平顶山学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "新乡学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南开封科技传媒学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "中原工学院",
+        "name": "南阳理工学院",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "信阳师范大学",
+        "name": "厦门工学院",
         "level": "双非",
-        "province": "河南",
+        "province": "福建",
         "count": 1
       },
       {
-        "name": "商丘学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南农业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南工程学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "洛阳师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "豫北医学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "安徽工业大学",
+        "name": "合肥经济学院",
         "level": "双非",
         "province": "安徽",
-        "count": 4
+        "count": 1
       },
       {
-        "name": "安徽农业大学",
+        "name": "商丘师范学院",
         "level": "双非",
-        "province": "安徽",
-        "count": 3
+        "province": "河南",
+        "count": 1
       },
       {
-        "name": "合肥师范学院",
+        "name": "嘉兴南湖学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "塔里木大学",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "宁波大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
         "level": "双非",
         "province": "安徽",
-        "count": 2
+        "count": 1
       },
       {
         "name": "安徽工程大学",
         "level": "双非",
         "province": "安徽",
-        "count": 2
+        "count": 1
       },
       {
         "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "阜阳师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "合肥大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽中医药大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽医科大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽建筑大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
@@ -16386,82 +16578,142 @@
         "count": 1
       },
       {
-        "name": "安徽科技学院",
+        "name": "宜春学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "安徽财经大学",
+        "name": "常州大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "宿州学院",
+        "name": "广东工业大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "广东",
         "count": 1
       },
       {
-        "name": "池州学院",
+        "name": "广东石油化工学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "广东",
         "count": 1
       },
       {
-        "name": "淮北理工学院",
+        "name": "成都大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "黄山学院",
+        "name": "新疆工程学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "新疆",
         "count": 1
       },
       {
-        "name": "湖南工商大学",
+        "name": "景德镇陶瓷大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 4
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "长沙学院",
+        "name": "桂林电子科技大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 4
+        "province": "广西",
+        "count": 1
       },
       {
-        "name": "长沙理工大学",
+        "name": "武汉工程大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 4
+        "province": "湖北",
+        "count": 1
       },
       {
-        "name": "湖南科技大学",
+        "name": "武汉纺织大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 3
+        "province": "湖北",
+        "count": 1
       },
       {
-        "name": "南华大学",
+        "name": "江西水利电力大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 2
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "吉首大学",
+        "name": "江西理工大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 2
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "湖南理工学院",
+        "name": "江西科技师范大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 2
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沧州交通学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北地质大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江农林大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
       },
       {
         "name": "湖南工业大学",
@@ -16470,7 +16722,7 @@
         "count": 1
       },
       {
-        "name": "湖南工学院",
+        "name": "湖南工程学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
@@ -16482,75 +16734,63 @@
         "count": 1
       },
       {
-        "name": "湘潭大学",
+        "name": "湖南科技大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "衡阳师范学院",
+        "name": "湖南财政经济学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "长沙师范学院",
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "荆楚理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "赣南科技学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "长沙学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "长沙理工大学",
         "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "山东航空学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "临沂大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "济宁学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "泰山学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -16566,405 +16806,9 @@
         "count": 1
       },
       {
-        "name": "武汉工程大学",
+        "name": "马鞍山学院",
         "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "湖北科技学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "中南民族大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉纺织大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北中医药大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北工程学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北工程学院新技术学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北理工学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北经济学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "三江学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "东南大学成贤学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京邮电大学通达学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州大学怀德学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴师范学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 3
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "南开大学滨海学院",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学中环信息学院",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "天津科技大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "泉州信息工程学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学金山学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建理工大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "莆田学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "太原科技大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西大同大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山西大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "北方工业大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "西安科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "宝鸡文理学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安工业大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安航空学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "陕西理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "首都师范大学科德学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "丽水学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "宁波大学科学技术学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江万里学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "温州理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "大连大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "宜宾学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "成都工业学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "沈阳城市学院",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "河北大学工商学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技工程职业技术大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "西南民族大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "辽宁科技大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "东莞理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广东技术师范大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "汕头大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -16974,130 +16818,118 @@
         "count": 1
       },
       {
-        "name": "上海体育大学",
+        "name": "齐鲁工业大学",
         "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "桂林信息科技学院",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "贵阳学院",
-        "level": "双非",
-        "province": "贵州",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 21
-      },
-      {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 20
-      },
-      {
         "name": "东华理工大学",
         "level": "双非",
         "province": "江西",
-        "count": 12
+        "count": 1
       },
       {
-        "name": "南昌航空大学",
+        "name": "中国民航大学",
         "level": "双非",
-        "province": "江西",
-        "count": 11
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 10
+        "province": "天津",
+        "count": 1
       },
       {
         "name": "九江学院",
         "level": "双非",
         "province": "江西",
-        "count": 8
+        "count": 1
       },
       {
-        "name": "江西水利电力大学",
+        "name": "五邑大学",
         "level": "双非",
-        "province": "江西",
-        "count": 8
+        "province": "广东",
+        "count": 1
       },
       {
-        "name": "景德镇陶瓷大学",
+        "name": "佛山大学",
         "level": "双非",
-        "province": "江西",
-        "count": 7
+        "province": "广东",
+        "count": 1
       },
       {
-        "name": "江西师范大学",
+        "name": "华东交通大学",
         "level": "双非",
         "province": "江西",
-        "count": 7
+        "count": 1
       },
       {
-        "name": "新余学院",
+        "name": "华北科技学院",
         "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "南昌大学",
+        "level": "211",
         "province": "江西",
-        "count": 6
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "江西",
-        "count": 144
-      },
-      {
-        "name": "河南",
-        "count": 29
-      },
-      {
-        "name": "安徽",
-        "count": 28
-      },
-      {
-        "name": "湖南",
-        "count": 27
-      },
-      {
-        "name": "山东",
-        "count": 21
-      },
-      {
-        "name": "湖北",
         "count": 13
       },
       {
-        "name": "江苏",
-        "count": 12
+        "name": "湖南",
+        "count": 8
+      },
+      {
+        "name": "安徽",
+        "count": 7
+      },
+      {
+        "name": "河南",
+        "count": 6
+      },
+      {
+        "name": "广东",
+        "count": 4
+      },
+      {
+        "name": "辽宁",
+        "count": 4
+      },
+      {
+        "name": "山东",
+        "count": 4
       },
       {
         "name": "天津",
-        "count": 9
+        "count": 3
       },
       {
-        "name": "福建",
-        "count": 9
+        "name": "河北",
+        "count": 3
       },
       {
-        "name": "山西",
-        "count": 7
+        "name": "浙江",
+        "count": 3
       }
     ],
-    "total_unique": 160,
-    "total_records": 338
+    "total_unique": 67,
+    "total_records": 67
   },
   "(10394)福建师范大学": {
     "target_info": {
@@ -17194,255 +17026,75 @@
     },
     "sources": [
       {
-        "name": "中南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
-        "count": 57
-      },
-      {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "华南师范大学",
-        "level": "211",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "中国政法大学",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "中国矿业大学（北京）",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "广西大学",
-        "level": "211",
-        "province": "广西",
-        "count": 2
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 2
-      },
-      {
-        "name": "东华大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "石河子大学",
-        "level": "211",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 18
-      },
-      {
         "name": "厦门理工学院",
         "level": "双非",
         "province": "福建",
-        "count": 16
-      },
-      {
-        "name": "华侨大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 14
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 12
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 10
-      },
-      {
-        "name": "福建理工大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 7
-      },
-      {
-        "name": "闽南师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 7
-      },
-      {
-        "name": "福州大学至诚学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 6
-      },
-      {
-        "name": "泉州师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 5
-      },
-      {
-        "name": "闽江学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 5
-      },
-      {
-        "name": "福建技术师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 3
-      },
-      {
-        "name": "集美大学诚毅学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 3
-      },
-      {
-        "name": "宁德师范学院",
-        "level": "双非",
-        "province": "福建",
         "count": 2
       },
       {
-        "name": "福建江夏学院",
+        "name": "上海第二工业大学",
         "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "龙岩学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "三明学院",
-        "level": "双非",
-        "province": "福建",
+        "province": "上海",
         "count": 1
-      },
-      {
-        "name": "厦门华厦学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "厦门大学嘉庚学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "武夷学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学金山学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建商学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建师范大学协和学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "闽南理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "闽南科技学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 7
-      },
-      {
-        "name": "井冈山大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "新余学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "江西科技师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
       },
       {
         "name": "东华理工大学",
         "level": "双非",
         "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "东莞理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北华大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
@@ -17452,163 +17104,109 @@
         "count": 1
       },
       {
-        "name": "南昌交通学院",
+        "name": "南京工业职业技术大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学泰州科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "南昌职业大学",
         "level": "双非",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "南昌航空大学科技学院",
+        "name": "南通大学",
         "level": "双非",
-        "province": "江西",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "江西农业大学",
+        "name": "南阳理工学院",
         "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "江西水利电力大学",
+        "name": "厦门大学嘉庚学院",
         "level": "双非",
-        "province": "江西",
+        "province": "福建",
         "count": 1
       },
       {
-        "name": "赣南科技学院",
+        "name": "周口师范学院",
         "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "湖南工业大学",
+        "name": "商丘师范学院",
         "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "怀化学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南科技学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "张家界学院",
-        "level": "双非",
-        "province": "湖南",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "湖南农业大学",
+        "name": "四川轻化工大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "湖南工学院",
+        "name": "塔里木大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "新疆",
         "count": 1
       },
       {
-        "name": "湖南工程学院",
+        "name": "天津商业大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "长沙学院",
+        "name": "天津工业大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "湖北大学",
+        "name": "安徽农业大学",
         "level": "双非",
-        "province": "湖北",
-        "count": 5
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 4
-      },
-      {
-        "name": "武汉纺织大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "湖北科技学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "中南民族大学",
-        "level": "双非",
-        "province": "湖北",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "汉口学院",
+        "name": "安徽工业大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "湖北工程学院",
+        "name": "安徽工程大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "安徽理工大学",
         "level": "双非",
-        "province": "山东",
-        "count": 3
+        "province": "安徽",
+        "count": 1
       },
       {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "临沂大学",
+        "name": "山东交通学院",
         "level": "双非",
         "province": "山东",
         "count": 1
@@ -17620,13 +17218,325 @@
         "count": 1
       },
       {
-        "name": "泰山科技学院",
+        "name": "山东华宇工学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "德州学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "桂林理工大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉轻工大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西水利电力大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西财经大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "泉州师范学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
         "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "湖南工业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工程学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "福州大学",
+        "level": "211",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福州大学至诚学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建农林大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建师范大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建江夏学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "绍兴文理学院元培学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "荆楚理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "赣东学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "辽宁大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长春大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "集美大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学海都学院",
         "level": "双非",
         "province": "山东",
         "count": 1
@@ -17638,453 +17548,15 @@
         "count": 1
       },
       {
-        "name": "青岛理工大学",
+        "name": "青岛科技大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "鲁东大学",
         "level": "双非",
         "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "中国计量大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 4
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南农业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "温州大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "中原工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "台州学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "宁波大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "河南财经政法大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "浙江传媒学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江农林大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江海洋大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江理工大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "温州理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "许昌学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京晓庄学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "无锡太湖学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴师范学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "东莞理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "五邑大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广东工业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广东药科大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广州大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "惠州学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "汕头大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "珠海科技学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "电子科技大学中山学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "山西大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 3
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "合肥城市学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "合肥大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "吕梁学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "安庆师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "宿州学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "山西财经大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "忻州师范学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "芜湖学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 3
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "成都信息工程大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "四川师范大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "天津职业技术师范大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "宜宾学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西华大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西南民族大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "中华女子学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "北京信息科技大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "北京科技大学天津学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "重庆移通学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "广西师范大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "广西民族大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "上海工程技术大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "上海电力大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "大连交通大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "大连工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "新疆师范大学",
-        "level": "双非",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "昌吉学院",
-        "level": "双非",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "海南师范大学",
-        "level": "双非",
-        "province": "海南",
         "count": 1
       },
       {
@@ -18094,148 +17566,118 @@
         "count": 1
       },
       {
-        "name": "东北电力大学",
+        "name": "齐鲁工业大学",
         "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "兰州交通大学",
-        "level": "双非",
-        "province": "甘肃",
-        "count": 1
-      },
-      {
-        "name": "兰州财经大学",
-        "level": "双非",
-        "province": "甘肃",
-        "count": 1
-      },
-      {
-        "name": "吉林师范大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "河北工程大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "兴义民族师范学院",
-        "level": "双非",
-        "province": "贵州",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
-        "count": 57
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 18
-      },
-      {
         "name": "厦门理工学院",
         "level": "双非",
         "province": "福建",
-        "count": 16
+        "count": 2
       },
       {
-        "name": "华侨大学",
+        "name": "上海第二工业大学",
         "level": "双非",
-        "province": "福建",
-        "count": 14
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 12
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 10
-      },
-      {
-        "name": "福建理工大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 7
-      },
-      {
-        "name": "闽南师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 7
-      },
-      {
-        "name": "江西理工大学",
+        "name": "东华理工大学",
         "level": "双非",
         "province": "江西",
-        "count": 7
+        "count": 1
       },
       {
-        "name": "福州大学至诚学院",
+        "name": "东莞理工学院",
         "level": "双非",
-        "province": "福建",
-        "count": 6
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "福建",
-        "count": 178
-      },
-      {
-        "name": "江西",
-        "count": 29
-      },
-      {
-        "name": "湖南",
-        "count": 20
-      },
-      {
-        "name": "湖北",
-        "count": 17
+        "count": 12
       },
       {
         "name": "山东",
-        "count": 14
-      },
-      {
-        "name": "浙江",
-        "count": 13
+        "count": 12
       },
       {
         "name": "河南",
-        "count": 13
-      },
-      {
-        "name": "江苏",
         "count": 11
       },
       {
-        "name": "广东",
-        "count": 10
+        "name": "江西",
+        "count": 7
       },
       {
-        "name": "山西",
-        "count": 8
+        "name": "湖南",
+        "count": 7
+      },
+      {
+        "name": "江苏",
+        "count": 6
+      },
+      {
+        "name": "四川",
+        "count": 5
+      },
+      {
+        "name": "湖北",
+        "count": 5
+      },
+      {
+        "name": "浙江",
+        "count": 4
+      },
+      {
+        "name": "安徽",
+        "count": 4
       }
     ],
-    "total_unique": 156,
-    "total_records": 371
+    "total_unique": 91,
+    "total_records": 92
   },
   "(10385)华侨大学": {
     "target_info": {
@@ -18330,183 +17772,75 @@
     },
     "sources": [
       {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
         "name": "厦门大学",
         "level": "985",
         "province": "福建",
-        "count": 3
-      },
-      {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "四川大学",
-        "level": "985",
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
         "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "中国农业大学",
-        "level": "985",
-        "province": "北京",
         "count": 1
       },
       {
-        "name": "兰州大学",
-        "level": "985",
-        "province": "甘肃",
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
         "count": 1
       },
       {
         "name": "福州大学",
         "level": "211",
         "province": "福建",
-        "count": 9
+        "count": 1
       },
       {
-        "name": "南昌大学",
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
         "level": "211",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "上海大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "华东理工大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "贵州大学",
-        "level": "211",
-        "province": "贵州",
-        "count": 1
-      },
-      {
-        "name": "华侨大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 4
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 4
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "宁德师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "泉州信息工程学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "泉州师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "福建技术师范学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "湖南科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "中南林业科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南第一师范学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
+        "province": "河南",
         "count": 1
       },
       {
@@ -18516,17 +17850,19 @@
         "count": 1
       },
       {
-        "name": "上饶师范学院",
+        "name": "集美大学",
         "level": "双非",
-        "province": "江西",
+        "province": "福建",
         "count": 1
       },
       {
-        "name": "东华理工大学",
+        "name": "青岛理工大学",
         "level": "双非",
-        "province": "江西",
+        "province": "山东",
         "count": 1
-      },
+      }
+    ],
+    "top10_schools": [
       {
         "name": "华东交通大学",
         "level": "双非",
@@ -18534,202 +17870,104 @@
         "count": 1
       },
       {
-        "name": "南京工业职业技术大学",
+        "name": "南京信息工程大学",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "南通大学",
+        "name": "南京工业大学",
         "level": "双非",
         "province": "江苏",
         "count": 1
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "武汉科技大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "大连医科大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "武汉轻工大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "汕头大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "中华女子学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "河北农业大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "浙江理工大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
-        "count": 9
-      },
-      {
-        "name": "华侨大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 4
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 4
       },
       {
         "name": "厦门大学",
         "level": "985",
         "province": "福建",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "湖南科技大学",
+        "name": "安徽理工大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 3
+        "province": "安徽",
+        "count": 1
       },
       {
-        "name": "四川大学",
-        "level": "985",
+        "name": "成都工业学院",
+        "level": "双非",
         "province": "四川",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "福建师范大学",
+        "name": "杭州电子科技大学",
         "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "福州大学",
+        "level": "211",
         "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "武汉科技大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "福建",
-        "count": 28
-      },
-      {
-        "name": "湖南",
-        "count": 7
-      },
-      {
-        "name": "江西",
-        "count": 6
-      },
-      {
         "name": "江苏",
-        "count": 5
-      },
-      {
-        "name": "广东",
         "count": 3
       },
       {
-        "name": "湖北",
+        "name": "福建",
         "count": 3
-      },
-      {
-        "name": "山东",
-        "count": 3
-      },
-      {
-        "name": "辽宁",
-        "count": 3
-      },
-      {
-        "name": "山西",
-        "count": 2
       },
       {
         "name": "四川",
         "count": 2
+      },
+      {
+        "name": "江西",
+        "count": 1
+      },
+      {
+        "name": "安徽",
+        "count": 1
+      },
+      {
+        "name": "浙江",
+        "count": 1
+      },
+      {
+        "name": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南",
+        "count": 1
+      },
+      {
+        "name": "湖南",
+        "count": 1
+      },
+      {
+        "name": "山东",
+        "count": 1
       }
     ],
-    "total_unique": 49,
-    "total_records": 74
+    "total_unique": 15,
+    "total_records": 15
   },
   "(10370)安徽师范大学": {
     "target_info": {
@@ -19290,95 +18528,27 @@
     },
     "sources": [
       {
-        "name": "华中科技大学",
+        "name": "中南大学",
         "level": "985",
-        "province": "湖北",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "中国地质大学（武汉）",
-        "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山东第一医科大学",
+        "name": "中国石油大学(华东)",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "浙江工业大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "合肥工业大学",
+        "name": "中国石油大学（北京）",
         "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "华中科技大学",
-        "level": "985",
-        "province": "湖北",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "中国地质大学（武汉）",
+        "name": "北京工业大学",
         "level": "211",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
-        "province": "湖北",
+        "province": "北京",
         "count": 1
       },
       {
@@ -19386,152 +18556,6 @@
         "level": "211",
         "province": "江苏",
         "count": 1
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "山东第一医科大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "浙江工业大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "湖北",
-        "count": 3
-      },
-      {
-        "name": "安徽",
-        "count": 2
-      },
-      {
-        "name": "浙江",
-        "count": 1
-      },
-      {
-        "name": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "江苏",
-        "count": 1
-      },
-      {
-        "name": "山西",
-        "count": 1
-      },
-      {
-        "name": "陕西",
-        "count": 1
-      },
-      {
-        "name": "山东",
-        "count": 1
-      }
-    ],
-    "total_unique": 10,
-    "total_records": 11
-  },
-  "(10357)安徽大学": {
-    "target_info": {
-      "level": "211",
-      "province": "安徽"
-    },
-    "sources": [
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 7
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "新疆大学",
-        "level": "211",
-        "province": "新疆",
-        "count": 1
-      },
-      {
-        "name": "安徽理工大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 7
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 5
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 5
-      },
-      {
-        "name": "合肥师范学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安徽工程大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安徽农业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽科技学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "巢湖学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
       },
       {
         "name": "合肥大学",
@@ -19540,49 +18564,339 @@
         "count": 1
       },
       {
-        "name": "安徽医科大学",
+        "name": "合肥工业大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
       },
       {
-        "name": "宿州学院",
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学（北京）",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京工业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
       },
       {
-        "name": "淮北师范大学",
+        "name": "合肥工业大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "安徽",
+        "count": 4
+      },
+      {
+        "name": "山东",
+        "count": 2
+      },
+      {
+        "name": "北京",
+        "count": 2
+      },
+      {
+        "name": "江苏",
+        "count": 2
+      },
+      {
+        "name": "湖南",
+        "count": 1
+      },
+      {
+        "name": "吉林",
+        "count": 1
+      },
+      {
+        "name": "山西",
+        "count": 1
+      },
+      {
+        "name": "河南",
+        "count": 1
+      },
+      {
+        "name": "贵州",
+        "count": 1
+      }
+    ],
+    "total_unique": 15,
+    "total_records": 15
+  },
+  "(10357)安徽大学": {
+    "target_info": {
+      "level": "211",
+      "province": "安徽"
+    },
+    "sources": [
+      {
+        "name": "东南大学成贤学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "亳州学院",
         "level": "双非",
         "province": "安徽",
         "count": 1
       },
       {
-        "name": "滁州学院",
+        "name": "兰州理工大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "甘肃",
         "count": 1
       },
       {
-        "name": "铜陵学院",
+        "name": "华北水利水电大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "阜阳师范大学",
-        "level": "双非",
-        "province": "安徽",
+        "province": "河南",
         "count": 1
       },
       {
         "name": "南阳理工学院",
         "level": "双非",
         "province": "河南",
-        "count": 3
+        "count": 1
+      },
+      {
+        "name": "吉林工程技术师范学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽农业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽科技学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
       },
       {
         "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -19594,45 +18908,267 @@
         "count": 1
       },
       {
-        "name": "河南科技学院",
+        "name": "河南科技大学",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "郑州轻工业大学",
+        "name": "河南财经政法大学",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "聊城大学",
+        "name": "浙大宁波理工学院",
         "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东工商学院",
-        "level": "双非",
-        "province": "山东",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "青岛城市学院",
+        "name": "浙江理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "江西理工大学",
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
         "level": "双非",
-        "province": "江西",
-        "count": 2
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "皖江工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "绥化学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "铜陵学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "阜阳师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "东南大学成贤学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       },
       {
         "name": "中北大学",
         "level": "双非",
         "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "亳州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林工程技术师范学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "安徽",
+        "count": 16
+      },
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "江苏",
+        "count": 4
+      },
+      {
+        "name": "浙江",
+        "count": 3
+      },
+      {
+        "name": "辽宁",
+        "count": 3
+      },
+      {
+        "name": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 1
+      },
+      {
+        "name": "北京",
+        "count": 1
+      },
+      {
+        "name": "山东",
+        "count": 1
+      },
+      {
+        "name": "甘肃",
+        "count": 1
+      }
+    ],
+    "total_unique": 49,
+    "total_records": 49
+  },
+  "(10356)中国计量大学": {
+    "target_info": {
+      "level": "双非",
+      "province": "浙江"
+    },
+    "sources": [
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "三亚学院",
+        "level": "双非",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
         "count": 1
       },
       {
@@ -19642,117 +19178,105 @@
         "count": 1
       },
       {
-        "name": "华北理工大学",
+        "name": "九江学院",
         "level": "双非",
-        "province": "河北",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "台州学院",
+        "name": "佳木斯大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "太原科技大学",
+        "name": "信阳农林学院",
         "level": "双非",
-        "province": "山西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "忻州师范学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "河北农业大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "浙江师范大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "石家庄铁道大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "三峡大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "兰州理工大学",
-        "level": "双非",
-        "province": "甘肃",
-        "count": 2
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "南京工业大学",
+        "name": "南京工业职业技术大学",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "大连交通大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "大连民族大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "常州大学",
+        "name": "南京工程学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "长沙理工大学城南学院",
+        "name": "南京理工大学泰州科技学院",
         "level": "双非",
-        "province": "湖南",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "东北电力大学",
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南昌航空大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林化工大学",
         "level": "双非",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "内蒙古农业大学",
+        "name": "商丘工学院",
         "level": "双非",
-        "province": "内蒙古",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "厦门理工学院",
+        "name": "商丘师范学院",
         "level": "双非",
-        "province": "福建",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "嘉兴南湖学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
         "count": 1
       },
       {
@@ -19762,264 +19286,496 @@
         "count": 1
       },
       {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽新华学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "宿州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东农业工程学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东华宇工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "新疆天山职业技术大学",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "无锡太湖学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "景德镇学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "景德镇陶瓷大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
         "name": "桂林电子科技大学",
         "level": "双非",
         "province": "广西",
         "count": 1
       },
       {
-        "name": "西华大学",
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西水利电力大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沧州交通学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北石油职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江海洋大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江药科职业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "淮北理工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "淮南师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "湖北汽车工业学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南工程学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "潍坊科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "苏州城市学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "衢州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
         "level": "双非",
         "province": "四川",
         "count": 1
       },
       {
-        "name": "黑龙江大学",
+        "name": "辽宁工业大学",
         "level": "双非",
-        "province": "黑龙江",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "铜陵学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "集美大学诚毅学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "青岛城市学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "马鞍山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "齐鲁理工学院",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 7
-      },
-      {
-        "name": "安徽理工大学",
+        "name": "辽宁石油化工大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 7
+        "province": "辽宁",
+        "count": 2
       },
       {
-        "name": "安徽工业大学",
+        "name": "三亚学院",
         "level": "双非",
-        "province": "安徽",
-        "count": 5
+        "province": "海南",
+        "count": 1
       },
       {
-        "name": "安徽师范大学",
+        "name": "上海应用技术大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 5
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "合肥师范学院",
+        "name": "东华理工大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 3
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "安徽工程大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "南阳理工学院",
+        "name": "中原工学院",
         "level": "双非",
         "province": "河南",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "安徽农业大学",
+        "name": "中国计量大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 2
+        "province": "浙江",
+        "count": 1
       },
       {
-        "name": "安徽建筑大学",
+        "name": "中国计量大学现代科技学院",
         "level": "双非",
-        "province": "安徽",
-        "count": 2
+        "province": "浙江",
+        "count": 1
       },
       {
-        "name": "安徽科技学院",
+        "name": "九江学院",
         "level": "双非",
-        "province": "安徽",
-        "count": 2
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "佳木斯大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "信阳农林学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "安徽",
-        "count": 46
+        "name": "江苏",
+        "count": 13
       },
       {
-        "name": "河南",
-        "count": 7
+        "name": "安徽",
+        "count": 13
       },
       {
         "name": "山东",
+        "count": 11
+      },
+      {
+        "name": "浙江",
+        "count": 10
+      },
+      {
+        "name": "河南",
+        "count": 9
+      },
+      {
+        "name": "江西",
+        "count": 7
+      },
+      {
+        "name": "辽宁",
         "count": 4
       },
       {
         "name": "河北",
-        "count": 3
+        "count": 4
       },
       {
-        "name": "浙江",
+        "name": "天津",
         "count": 3
       },
       {
         "name": "山西",
-        "count": 3
-      },
-      {
-        "name": "江西",
-        "count": 3
-      },
-      {
-        "name": "辽宁",
-        "count": 2
-      },
-      {
-        "name": "湖北",
-        "count": 2
-      },
-      {
-        "name": "江苏",
         "count": 2
       }
     ],
-    "total_unique": 54,
-    "total_records": 89
-  },
-  "(10356)中国计量大学": {
-    "target_info": {
-      "level": "双非",
-      "province": "浙江"
-    },
-    "sources": [
-      {
-        "name": "台州学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙大宁波理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南昌交通学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "龙岩学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "台州学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙大宁波理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南昌交通学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "龙岩学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "浙江",
-        "count": 3
-      },
-      {
-        "name": "山东",
-        "count": 2
-      },
-      {
-        "name": "河南",
-        "count": 1
-      },
-      {
-        "name": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江西",
-        "count": 1
-      },
-      {
-        "name": "福建",
-        "count": 1
-      }
-    ],
-    "total_unique": 8,
-    "total_records": 9
+    "total_unique": 89,
+    "total_records": 90
   },
   "(10353)浙江工商大学": {
     "target_info": {
@@ -20156,121 +19912,105 @@
     },
     "sources": [
       {
-        "name": "东华理工大学",
+        "name": "中原工学院",
         "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "南昌工学院",
+        "name": "临沂大学",
         "level": "双非",
-        "province": "江西",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "浙江工业大学",
+        "name": "兰州理工大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
+        "province": "甘肃",
         "count": 1
       },
       {
-        "name": "南昌工学院",
+        "name": "北京信息科技大学",
         "level": "双非",
-        "province": "江西",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "浙江工业大学",
+        "name": "南京理工大学紫金学院",
         "level": "双非",
-        "province": "浙江",
+        "province": "江苏",
         "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "江西",
-        "count": 2
       },
       {
-        "name": "浙江",
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
-      }
-    ],
-    "total_unique": 3,
-    "total_records": 3
-  },
-  "(10337)浙江工业大学": {
-    "target_info": {
-      "level": "双非",
-      "province": "浙江"
-    },
-    "sources": [
+      },
       {
-        "name": "丽水学院",
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "台州学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "浙江工业大学",
+        "name": "周口师范学院",
         "level": "双非",
-        "province": "浙江",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "浙江科技大学",
+        "name": "天津理工大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "温州理工学院",
+        "name": "天津职业技术师范大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "四川轻化工大学",
+        "name": "宁夏理工学院",
         "level": "双非",
-        "province": "四川",
+        "province": "宁夏",
         "count": 1
       },
       {
-        "name": "西南科技大学",
+        "name": "山东建筑大学",
         "level": "双非",
-        "province": "四川",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "北华大学",
+        "name": "山东石油化工学院",
         "level": "双非",
-        "province": "吉林",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "华北科技学院",
+        "name": "山西工程技术学院",
         "level": "双非",
-        "province": "河北",
+        "province": "山西",
         "count": 1
       },
       {
-        "name": "宿州学院",
+        "name": "新乡学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "武汉轻工大学",
+        "name": "沈阳大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "辽宁",
         "count": 1
       },
       {
@@ -20280,27 +20020,397 @@
         "count": 1
       },
       {
-        "name": "河南大学",
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "泰山科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "营口理工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "西华大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "赣南科技学院",
+        "name": "郑州财经学院",
         "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "陕西理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "陕西",
         "count": 1
       }
     ],
     "top10_schools": [
       {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "台州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "河南",
+        "count": 6
+      },
+      {
+        "name": "辽宁",
+        "count": 5
+      },
+      {
+        "name": "山东",
+        "count": 4
+      },
+      {
+        "name": "江苏",
+        "count": 2
+      },
+      {
+        "name": "浙江",
+        "count": 2
+      },
+      {
+        "name": "天津",
+        "count": 2
+      },
+      {
+        "name": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京",
+        "count": 1
+      },
+      {
+        "name": "宁夏",
+        "count": 1
+      },
+      {
+        "name": "山西",
+        "count": 1
+      }
+    ],
+    "total_unique": 30,
+    "total_records": 30
+  },
+  "(10337)浙江工业大学": {
+    "target_info": {
+      "level": "双非",
+      "province": "浙江"
+    },
+    "sources": [
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
         "name": "丽水学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "保定学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北京石油化工学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南宁师范大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "南昌工程学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "厦门大学嘉庚学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西科技学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "成都锦城学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "景德镇陶瓷大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西农业大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西水利电力大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙大宁波理工学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
@@ -20312,33 +20422,309 @@
         "count": 1
       },
       {
-        "name": "浙江科技大学",
+        "name": "浙江工业大学之江学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "温州理工学院",
+        "name": "浙江师范大学行知学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "四川轻化工大学",
+        "name": "浙江广厦职业技术大学",
         "level": "双非",
-        "province": "四川",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "西南科技大学",
+        "name": "浙江海洋大学",
         "level": "双非",
-        "province": "四川",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "北华大学",
+        "name": "淮南师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "深圳技术大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "荆楚理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "萍乡学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "贵阳信息科技学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长春大学",
         "level": "双非",
         "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黑龙江大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "丽水学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "保定学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北京石油化工学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南宁师范大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "南昌工程学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "浙江",
+        "count": 9
+      },
+      {
+        "name": "江西",
+        "count": 7
+      },
+      {
+        "name": "山东",
+        "count": 6
+      },
+      {
+        "name": "江苏",
+        "count": 3
+      },
+      {
+        "name": "安徽",
+        "count": 3
+      },
+      {
+        "name": "河北",
+        "count": 2
+      },
+      {
+        "name": "天津",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 2
+      },
+      {
+        "name": "黑龙江",
+        "count": 2
+      }
+    ],
+    "total_unique": 54,
+    "total_records": 55
+  },
+  "(10336)杭州电子科技大学": {
+    "target_info": {
+      "level": "双非",
+      "province": "浙江"
+    },
+    "sources": [
+      {
+        "name": "三峡大学科技学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "丽水学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京大学",
+        "level": "985",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
@@ -20348,122 +20734,46 @@
         "count": 1
       },
       {
-        "name": "宿州学院",
+        "name": "南京工业大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "武汉轻工大学",
+        "name": "南京航空航天大学金城学院",
         "level": "双非",
-        "province": "湖北",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "浙江",
-        "count": 4
-      },
-      {
-        "name": "四川",
-        "count": 2
-      },
-      {
-        "name": "河南",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "山东",
-        "count": 1
-      },
-      {
-        "name": "安徽",
-        "count": 1
-      },
-      {
-        "name": "河北",
-        "count": 1
-      },
-      {
-        "name": "湖北",
-        "count": 1
-      },
-      {
-        "name": "吉林",
-        "count": 1
-      },
-      {
-        "name": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "江西",
-        "count": 1
-      }
-    ],
-    "total_unique": 14,
-    "total_records": 14
-  },
-  "(10336)杭州电子科技大学": {
-    "target_info": {
-      "level": "双非",
-      "province": "浙江"
-    },
-    "sources": [
-      {
-        "name": "大连海事大学",
+        "name": "南昌大学",
         "level": "211",
-        "province": "辽宁",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "杭州电子科技大学",
+        "name": "南昌职业大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 19
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "杭州电子科技大学信息工程学院",
+        "name": "南昌航空大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 4
+        "province": "江西",
+        "count": 1
       },
       {
-        "name": "温州大学",
+        "name": "南通大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 4
+        "province": "江苏",
+        "count": 1
       },
       {
-        "name": "浙江工商大学",
+        "name": "南阳理工学院",
         "level": "双非",
-        "province": "浙江",
-        "count": 3
-      },
-      {
-        "name": "中国计量大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "嘉兴大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "浙江水利水电学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "绍兴文理学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
+        "province": "河南",
+        "count": 1
       },
       {
         "name": "台州学院",
@@ -20472,9 +20782,273 @@
         "count": 1
       },
       {
+        "name": "合肥经济学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "唐山师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "四川大学锦城学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
         "name": "宁波工程学院",
         "level": "双非",
         "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "宁波财经学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东建筑大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西师范大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西民族大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "景德镇学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "景德镇陶瓷大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学信息工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉工商学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学科文学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济宁学院",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
@@ -20490,7 +21064,19 @@
         "count": 1
       },
       {
-        "name": "浙江师范大学",
+        "name": "浙江农林大学暨阳学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江广厦建设职业技术大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
@@ -20502,357 +21088,87 @@
         "count": 1
       },
       {
-        "name": "安徽工程大学",
+        "name": "浙江科技大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 4
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "安庆师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "信阳师范大学",
-        "level": "双非",
-        "province": "河南",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "合肥城市学院",
+        "name": "渤海大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "商丘师范学院",
+        "name": "温州大学",
         "level": "双非",
-        "province": "河南",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "安徽农业大学",
+        "name": "湖北工业大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "安徽师范大学",
+        "name": "湖南人文科技学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "安徽理工大学",
+        "name": "湖南工业大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽科技学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "新乡工程学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "池州学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "河南工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南师范大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "洛阳理工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州升达经贸管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "铜陵学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 4
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "新余学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "景德镇陶瓷大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "山东交通学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "泰山科技学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "济宁学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
+        "province": "湖南",
         "count": 1
       },
       {
         "name": "湖南工学院",
         "level": "双非",
         "province": "湖南",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "湖南城市学院",
+        "name": "湖南文理学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "湖南工商大学",
+        "name": "滁州学院",
         "level": "双非",
-        "province": "湖南",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "湖南工程学院",
+        "name": "潍坊科技学院",
         "level": "双非",
-        "province": "湖南",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "湖南科技大学",
+        "name": "烟台南山学院",
         "level": "双非",
-        "province": "湖南",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "湖南财政经济学院",
+        "name": "燕山大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "华侨大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 2
-      },
-      {
-        "name": "三明学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "南京信息工程大学",
+        "name": "盐城工学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "南京工业大学",
+        "name": "石家庄铁道大学",
         "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
+        "province": "河北",
         "count": 1
       },
       {
@@ -20862,37 +21178,25 @@
         "count": 1
       },
       {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "闽南师范大学",
+        "name": "福建理工大学",
         "level": "双非",
         "province": "福建",
         "count": 1
       },
       {
-        "name": "闽江学院",
+        "name": "蚌埠学院",
         "level": "双非",
-        "province": "福建",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "西安邮电大学",
+        "name": "西安工业大学",
         "level": "双非",
         "province": "陕西",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "陕西科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "西安理工大学",
+        "name": "西安石油大学",
         "level": "双非",
         "province": "陕西",
         "count": 1
@@ -20904,207 +21208,167 @@
         "count": 1
       },
       {
-        "name": "陕西理工大学",
+        "name": "赤峰学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "内蒙古",
         "count": 1
       },
       {
-        "name": "燕山大学",
+        "name": "郑州工业应用技术学院",
         "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "北华航天工业学院",
-        "level": "双非",
-        "province": "河北",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "唐山学院",
+        "name": "郑州工程技术学院",
         "level": "双非",
-        "province": "河北",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "河北工程大学",
+        "name": "重庆理工大学",
         "level": "双非",
-        "province": "河北",
+        "province": "重庆",
         "count": 1
       },
       {
-        "name": "石家庄学院",
+        "name": "重庆科技大学",
         "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "天津城建大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳工程学院",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳航空航天大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "渤海大学",
-        "level": "双非",
-        "province": "辽宁",
+        "province": "重庆",
         "count": 1
       },
       {
         "name": "重庆邮电大学",
         "level": "双非",
         "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "东北石油大学",
-        "level": "双非",
-        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "哈尔滨学院",
+        "name": "金陵科技学院",
         "level": "双非",
-        "province": "黑龙江",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "哈尔滨理工大学",
+        "name": "铜陵学院",
         "level": "双非",
-        "province": "黑龙江",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "重庆交通大学",
-        "level": "双非",
-        "province": "重庆",
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "重庆文理学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "黑龙江科技大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "武汉科技大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "山西大同大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "湖北大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "吉林化工大学",
+        "name": "长春大学",
         "level": "双非",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "吉林建筑大学",
+        "name": "长春工业大学",
         "level": "双非",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "岭南师范学院",
+        "name": "长春理工大学",
         "level": "双非",
-        "province": "广东",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "广西师范大学",
+        "name": "陕西科技大学",
         "level": "双非",
-        "province": "广西",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "桂林电子科技大学",
+        "name": "青岛科技大学",
         "level": "双非",
-        "province": "广西",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "汕头大学",
+        "name": "马鞍山学院",
         "level": "双非",
-        "province": "广东",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "西南石油大学",
+        "name": "黄山学院",
         "level": "双非",
-        "province": "四川",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "西南科技大学",
+        "name": "黄河科技学院",
         "level": "双非",
-        "province": "四川",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "兰州理工大学",
+        "name": "黄淮学院",
         "level": "双非",
-        "province": "甘肃",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "齐鲁理工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "三峡大学科技学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "丽水学院",
+        "level": "双非",
+        "province": "浙江",
         "count": 1
       },
       {
@@ -21114,118 +21378,56 @@
         "count": 1
       },
       {
-        "name": "贵州师范学院",
+        "name": "北京印刷学院",
         "level": "双非",
-        "province": "贵州",
+        "province": "北京",
         "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 19
-      },
-      {
-        "name": "杭州电子科技大学信息工程学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 4
-      },
-      {
-        "name": "温州大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 4
-      },
-      {
-        "name": "安徽工程大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 4
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 4
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 3
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "安庆师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
       }
     ],
     "top10_provinces": [
       {
         "name": "浙江",
-        "count": 44
-      },
-      {
-        "name": "河南",
-        "count": 19
+        "count": 16
       },
       {
         "name": "安徽",
-        "count": 19
+        "count": 13
       },
       {
-        "name": "江西",
-        "count": 14
+        "name": "河南",
+        "count": 11
       },
       {
         "name": "山东",
-        "count": 12
-      },
-      {
-        "name": "湖南",
         "count": 10
       },
       {
         "name": "江苏",
-        "count": 9
+        "count": 10
       },
       {
-        "name": "福建",
+        "name": "江西",
         "count": 9
-      },
-      {
-        "name": "陕西",
-        "count": 7
       },
       {
         "name": "河北",
         "count": 6
+      },
+      {
+        "name": "陕西",
+        "count": 5
+      },
+      {
+        "name": "吉林",
+        "count": 4
+      },
+      {
+        "name": "辽宁",
+        "count": 4
       }
     ],
-    "total_unique": 118,
-    "total_records": 184
+    "total_unique": 113,
+    "total_records": 113
   },
   "(10335)浙江大学": {
     "target_info": {
@@ -21234,9 +21436,111 @@
     },
     "sources": [
       {
-        "name": "北京航空航天大学",
+        "name": "东南大学",
+        "level": "985",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中山大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京理工大学",
         "level": "985",
         "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京邮电大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南京大学",
+        "level": "985",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学",
+        "level": "985",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学(威海)",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "四川大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "复旦大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -21246,96 +21550,142 @@
         "count": 1
       },
       {
-        "name": "东北师范大学",
-        "level": "211",
-        "province": "吉林",
-        "count": 1
-      },
-      {
-        "name": "东华大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
         "name": "杭州电子科技大学",
         "level": "双非",
         "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江大学",
+        "level": "985",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江工商大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "重庆大学",
+        "level": "985",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "北京航空航天大学",
+        "name": "东南大学",
+        "level": "985",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中山大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京理工大学",
         "level": "985",
         "province": "北京",
         "count": 1
       },
       {
-        "name": "山东大学",
-        "level": "985",
-        "province": "山东",
+        "name": "北京邮电大学",
+        "level": "211",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "东北师范大学",
+        "name": "南京大学",
+        "level": "985",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
         "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "东华大学",
-        "level": "211",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
+        "name": "哈尔滨工业大学",
+        "level": "985",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "吉林",
-        "count": 1
-      },
-      {
-        "name": "山东",
-        "count": 1
+        "name": "江苏",
+        "count": 3
       },
       {
         "name": "北京",
-        "count": 1
-      },
-      {
-        "name": "上海",
-        "count": 1
+        "count": 3
       },
       {
         "name": "浙江",
-        "count": 1
+        "count": 3
+      },
+      {
+        "name": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "山东",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 2
       },
       {
         "name": "安徽",
+        "count": 2
+      },
+      {
+        "name": "广东",
+        "count": 1
+      },
+      {
+        "name": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "吉林",
         "count": 1
       }
     ],
-    "total_unique": 6,
-    "total_records": 6
+    "total_unique": 24,
+    "total_records": 24
   },
   "(10319)南京师范大学": {
     "target_info": {
@@ -21566,115 +21916,121 @@
     },
     "sources": [
       {
-        "name": "南京航空航天大学",
-        "level": "211",
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
         "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "东南大学成贤学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学徐海学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京城市学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京理工大学珠海学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "北京邮电大学世纪学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
         "name": "南京信息工程大学",
         "level": "双非",
         "province": "江苏",
-        "count": 19
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 6
-      },
-      {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 6
-      },
-      {
-        "name": "南京邮电大学通达学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 5
+        "count": 1
       },
       {
         "name": "南京工业大学",
         "level": "双非",
         "province": "江苏",
-        "count": 4
+        "count": 1
       },
       {
-        "name": "南京工业职业技术大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "徐州工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "淮阴工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "金陵科技学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "南京审计大学金审学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "盐城工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "苏州工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "三江学院",
+        "name": "南京工业大学浦江学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "南京林业大学",
+        "name": "南京工业职业技术大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京师范大学中北学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京晓庄学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
@@ -21683,6 +22039,24 @@
         "name": "南京理工大学紫金学院",
         "level": "双非",
         "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南昌航空大学科技学院",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       },
       {
@@ -21698,1359 +22072,27 @@
         "count": 1
       },
       {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州大学怀德学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学广陵学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏大学京江学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏理工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴师范学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州城市学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州大学应用技术学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州科技大学天平学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "临沂大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 6
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "泰山学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东工商学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东航空学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "曲阜师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "潍坊学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "潍坊科技学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学东昌学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "菏泽学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "齐鲁师范学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "齐鲁理工学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 4
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 3
-      },
-      {
         "name": "南阳理工学院",
         "level": "双非",
         "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "安阳师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南工程学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "洛阳理工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州工商学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "信阳学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "南阳师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "商丘师范学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "安阳工学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "平顶山学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南城建学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州升达经贸管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州商学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "皖西学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "合肥大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "合肥师范学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "池州学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "淮北师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "亳州学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "合肥经济学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽信息工程学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽工程大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽文达信息工程学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽科技学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽财经大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "宿州学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "皖南医学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "蚌埠学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "铜陵学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "阜阳师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "黄山学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "黄冈师范学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 4
-      },
-      {
-        "name": "武汉纺织大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "湖北科技学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "三峡大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "汉江师范学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖北理工学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "浙江农林大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "温州大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "杭州电子科技大学信息工程学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙大城市学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江师范大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "温州理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "绍兴文理学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "宜春学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "北华航天工业学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "河北水利电力学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "石家庄学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "南昌师范学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "河北科技工程职业技术大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "赣南师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "西南科技大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "成都工业学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "成都锦城学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "电子科技大学成都学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "西华大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "怀化学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南文理学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "长沙学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "北京科技大学天津学院",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "北京语言大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "山西大同大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "延安大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学高科学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "重庆三峡学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "重庆交通大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "重庆工程学院",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "首都经济贸易大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "黑龙江东方学院",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "黑龙江工商学院",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "黑龙江科技大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "上海健康医学院",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "上海师范大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "内蒙古医科大学",
-        "level": "双非",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "内蒙古工业大学",
-        "level": "双非",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "天津师范大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "闽江学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "兰州工业学院",
-        "level": "双非",
-        "province": "甘肃",
         "count": 1
       },
       {
-        "name": "大连民族大学",
+        "name": "大连交通大学",
         "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "桂林理工大学",
+        "name": "天津中德应用技术大学",
         "level": "双非",
-        "province": "广西",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 19
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 6
-      },
-      {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 6
-      },
-      {
-        "name": "临沂大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 6
-      },
-      {
-        "name": "南京邮电大学通达学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 5
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工业职业技术大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "徐州工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "淮阴工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "江苏",
-        "count": 87
-      },
-      {
-        "name": "山东",
-        "count": 41
-      },
-      {
-        "name": "河南",
-        "count": 37
-      },
-      {
-        "name": "安徽",
-        "count": 28
-      },
-      {
-        "name": "湖北",
-        "count": 13
-      },
-      {
-        "name": "浙江",
-        "count": 10
-      },
-      {
-        "name": "江西",
-        "count": 9
-      },
-      {
-        "name": "河北",
-        "count": 9
-      },
-      {
-        "name": "四川",
-        "count": 6
-      },
-      {
-        "name": "湖南",
-        "count": 4
-      }
-    ],
-    "total_unique": 157,
-    "total_records": 270
-  },
-  "(10295)江南大学": {
-    "target_info": {
-      "level": "211",
-      "province": "江苏"
-    },
-    "sources": [
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "广西大学",
-        "level": "211",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "合肥大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽信息工程学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "山东第一医科大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "曲阜师范大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "济南大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "吉首大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南科技大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南第一师范学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "浙江农林大学",
+        "name": "宁波工程学院",
         "level": "双非",
         "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江水利水电学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "陕西科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "沈阳化工大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "河北农业大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "湖北大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "贵州师范学院",
-        "level": "双非",
-        "province": "贵州",
-        "count": 1
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "广西大学",
-        "level": "211",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "江苏",
-        "count": 14
-      },
-      {
-        "name": "安徽",
-        "count": 5
-      },
-      {
-        "name": "山东",
-        "count": 4
-      },
-      {
-        "name": "湖南",
-        "count": 3
-      },
-      {
-        "name": "陕西",
-        "count": 2
-      },
-      {
-        "name": "河南",
-        "count": 2
-      },
-      {
-        "name": "浙江",
-        "count": 2
-      },
-      {
-        "name": "重庆",
-        "count": 1
-      },
-      {
-        "name": "贵州",
-        "count": 1
-      },
-      {
-        "name": "广西",
-        "count": 1
-      }
-    ],
-    "total_unique": 33,
-    "total_records": 38
-  },
-  "(10294)河海大学": {
-    "target_info": {
-      "level": "211",
-      "province": "江苏"
-    },
-    "sources": [
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "金陵科技学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "三江学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京邮电大学通达学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "无锡学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "盐城工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "合肥大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽农业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "合肥理工学院",
-        "level": "双非",
-        "province": "安徽",
         "count": 1
       },
       {
@@ -23060,13 +22102,19 @@
         "count": 1
       },
       {
-        "name": "安徽工程大学",
+        "name": "安徽三联学院",
         "level": "双非",
         "province": "安徽",
         "count": 1
       },
       {
-        "name": "安徽师范大学",
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
@@ -23084,33 +22132,63 @@
         "count": 1
       },
       {
-        "name": "阜阳师范大学",
+        "name": "宿迁学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "山东外事职业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
         "name": "山东科技大学",
         "level": "双非",
         "province": "山东",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "临沂大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东理工大学",
+        "name": "山东管理学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "山东青年政治学院",
+        "name": "山西农业大学",
         "level": "双非",
-        "province": "山东",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西科技学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "应急管理大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "徐州工程学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
@@ -23120,49 +22198,97 @@
         "count": 1
       },
       {
-        "name": "曲阜师范大学",
+        "name": "新乡学院",
         "level": "双非",
-        "province": "山东",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "无锡学院",
         "level": "双非",
-        "province": "山东",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "青岛科技大学",
+        "name": "昌吉学院",
         "level": "双非",
-        "province": "山东",
+        "province": "新疆",
         "count": 1
       },
       {
-        "name": "华东交通大学",
+        "name": "晋中学院",
         "level": "双非",
-        "province": "江西",
-        "count": 2
+        "province": "山西",
+        "count": 1
       },
       {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "东华理工大学",
+        "name": "景德镇学院",
         "level": "双非",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "江西理工大学",
+        "name": "桂林理工大学",
         "level": "双非",
-        "province": "江西",
+        "province": "广西",
         "count": 1
       },
       {
-        "name": "中原工学院",
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉东湖学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沧州交通学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -23174,15 +22300,225 @@
         "count": 1
       },
       {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
         "name": "河南理工大学",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "郑州轻工业大学",
+        "name": "河南科技大学",
         "level": "双非",
         "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "泰州学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "济宁学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "淮北理工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "淮南师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "淮阴工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "温州大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖南工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工程学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南理工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "潍坊科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州大学应用技术学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州升达经贸管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆科技大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "长春大学旅游学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长江师范学院",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "青岛城市学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛黄海学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "马鞍山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄冈师范学院",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
@@ -23192,21 +22528,345 @@
         "count": 1
       },
       {
-        "name": "中南民族大学",
+        "name": "黑龙江工业学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "张家口学院",
+        "name": "黑龙江工程学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "东南大学成贤学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学徐海学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京城市学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "江苏",
+        "count": 30
+      },
+      {
+        "name": "山东",
+        "count": 14
+      },
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "安徽",
+        "count": 10
+      },
+      {
+        "name": "辽宁",
+        "count": 6
+      },
+      {
+        "name": "河北",
+        "count": 4
+      },
+      {
+        "name": "浙江",
+        "count": 3
+      },
+      {
+        "name": "江西",
+        "count": 3
+      },
+      {
+        "name": "山西",
+        "count": 3
+      },
+      {
+        "name": "广西",
+        "count": 3
+      }
+    ],
+    "total_unique": 105,
+    "total_records": 107
+  },
+  "(10295)江南大学": {
+    "target_info": {
+      "level": "211",
+      "province": "江苏"
+    },
+    "sources": [
+      {
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "武汉轻工大学",
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学浦江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "呼伦贝尔学院",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常熟理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西民族大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "德州学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "攀枝花学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "昆明理工大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
         "level": "双非",
         "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "池州学院",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -23222,51 +22882,81 @@
         "count": 1
       },
       {
-        "name": "湖北大学",
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "泰山科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙大宁波理工学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
         "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "湖北文理学院",
+        "name": "湖北工业大学工程技术学院",
         "level": "双非",
         "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "石家庄铁道大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "东北石油大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "天津城建大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
         "count": 1
       },
       {
@@ -23276,133 +22966,207 @@
         "count": 1
       },
       {
-        "name": "湘潭大学",
+        "name": "湖南科技大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "西安工业大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安航空学院",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "成都理工大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "桂林理工大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "辽宁工程技术大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "重庆交通大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "金陵科技学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "山东科技大学",
+        "name": "烟台理工学院",
         "level": "双非",
         "province": "山东",
-        "count": 3
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "皖西学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       },
       {
         "name": "苏州科技大学",
         "level": "双非",
         "province": "江苏",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "合肥大学",
+        "name": "蚌埠学院",
         "level": "双非",
         "province": "安徽",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "安徽农业大学",
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安文理学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西藏农牧学院",
+        "level": "双非",
+        "province": "西藏",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "铜陵学院",
         "level": "双非",
         "province": "安徽",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "长春理工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学浦江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "江苏",
-        "count": 31
-      },
-      {
-        "name": "安徽",
-        "count": 13
+        "count": 14
       },
       {
         "name": "山东",
-        "count": 11
-      },
-      {
-        "name": "江西",
-        "count": 6
+        "count": 10
       },
       {
         "name": "河南",
-        "count": 5
+        "count": 10
       },
       {
-        "name": "湖北",
+        "name": "安徽",
+        "count": 8
+      },
+      {
+        "name": "辽宁",
         "count": 4
       },
       {
@@ -23410,20 +23174,564 @@
         "count": 4
       },
       {
-        "name": "山西",
+        "name": "湖北",
+        "count": 4
+      },
+      {
+        "name": "陕西",
+        "count": 3
+      },
+      {
+        "name": "四川",
         "count": 2
       },
       {
-        "name": "湖南",
-        "count": 2
-      },
-      {
-        "name": "天津",
+        "name": "浙江",
         "count": 2
       }
     ],
-    "total_unique": 64,
-    "total_records": 88
+    "total_unique": 71,
+    "total_records": 71
+  },
+  "(10294)河海大学": {
+    "target_info": {
+      "level": "211",
+      "province": "江苏"
+    },
+    "sources": [
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京审计大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学浦江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东农业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广西大学",
+        "level": "211",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "扬州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "新疆理工学院",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙大宁波理工学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "淮阴工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "皖西学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "福州大学至诚学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西安文理学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "赣南科技学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "长春理工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "闽南师范大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "黄冈师范学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "江苏",
+        "count": 24
+      },
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "安徽",
+        "count": 8
+      },
+      {
+        "name": "山东",
+        "count": 5
+      },
+      {
+        "name": "江西",
+        "count": 4
+      },
+      {
+        "name": "湖北",
+        "count": 3
+      },
+      {
+        "name": "福建",
+        "count": 3
+      },
+      {
+        "name": "陕西",
+        "count": 2
+      },
+      {
+        "name": "上海",
+        "count": 1
+      },
+      {
+        "name": "黑龙江",
+        "count": 1
+      }
+    ],
+    "total_unique": 71,
+    "total_records": 71
   },
   "(10293)南京邮电大学": {
     "target_info": {
@@ -24368,61 +24676,85 @@
     },
     "sources": [
       {
-        "name": "南京工业大学",
+        "name": "宿迁学院",
         "level": "双非",
         "province": "江苏",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
+        "count": 2
+      },
       {
-        "name": "南京工业大学",
+        "name": "山东管理学院",
         "level": "双非",
-        "province": "江苏",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
+        "province": "山东",
+        "count": 2
+      },
       {
-        "name": "江苏",
-        "count": 1
-      }
-    ],
-    "total_unique": 1,
-    "total_records": 1
-  },
-  "(10290)中国矿业大学": {
-    "target_info": {
-      "level": "211",
-      "province": "江苏"
-    },
-    "sources": [
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 2
+      },
       {
-        "name": "中国矿业大学",
+        "name": "皖江工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "苏州大学",
         "level": "211",
         "province": "江苏",
-        "count": 3
+        "count": 2
       },
       {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "中国矿业大学徐海学院",
+        "name": "中国计量大学现代科技学院",
         "level": "双非",
-        "province": "江苏",
-        "count": 3
+        "province": "浙江",
+        "count": 1
       },
       {
-        "name": "东南大学成贤学院",
+        "name": "临沂大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "亳州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "兰州工业学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
         "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学浦江学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
@@ -24434,9 +24766,69 @@
         "count": 1
       },
       {
-        "name": "南京理工大学紫金学院",
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通理工学院",
         "level": "双非",
         "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "厦门大学嘉庚学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "吕梁学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "大同大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽农业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽科技学院",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -24446,15 +24838,39 @@
         "count": 1
       },
       {
-        "name": "扬州大学",
+        "name": "常州大学怀德学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "江苏大学",
+        "name": "广西科技大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "新乡学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "新疆大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
@@ -24464,9 +24880,57 @@
         "count": 1
       },
       {
-        "name": "江苏科技大学",
+        "name": "沧州交通学院",
         "level": "双非",
-        "province": "江苏",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技工程职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北金融学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江海洋大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "淮北理工学院",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -24476,93 +24940,417 @@
         "count": 1
       },
       {
-        "name": "苏州工学院",
+        "name": "湖北大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北师范大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "燕京理工学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "金陵科技学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "山东理工大学",
+        "name": "聊城大学",
         "level": "双非",
         "province": "山东",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "芜湖学院",
         "level": "双非",
-        "province": "山东",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "郑州升达经贸管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "阳光学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "马鞍山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄河科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 2
-      },
-      {
-        "name": "山东第一医科大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
       },
       {
         "name": "山东管理学院",
         "level": "双非",
         "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 2
+      },
+      {
+        "name": "皖江工学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "济南大学",
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "烟台南山学院",
+        "name": "亳州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "江苏",
+        "count": 16
+      },
+      {
+        "name": "安徽",
+        "count": 12
+      },
+      {
+        "name": "河南",
+        "count": 8
+      },
+      {
+        "name": "河北",
+        "count": 6
+      },
+      {
+        "name": "山东",
+        "count": 5
+      },
+      {
+        "name": "山西",
+        "count": 5
+      },
+      {
+        "name": "浙江",
+        "count": 2
+      },
+      {
+        "name": "福建",
+        "count": 2
+      },
+      {
+        "name": "湖北",
+        "count": 2
+      },
+      {
+        "name": "湖南",
+        "count": 1
+      }
+    ],
+    "total_unique": 57,
+    "total_records": 63
+  },
+  "(10290)中国矿业大学": {
+    "target_info": {
+      "level": "211",
+      "province": "江苏"
+    },
+    "sources": [
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "上海第二工业大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "北方民族大学",
         "level": "双非",
-        "province": "山东",
+        "province": "宁夏",
         "count": 1
       },
       {
-        "name": "聊城大学东昌学院",
+        "name": "北部湾大学",
         "level": "双非",
-        "province": "山东",
+        "province": "广西",
         "count": 1
       },
       {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "河南理工大学",
+        "name": "华北水利水电大学",
         "level": "双非",
         "province": "河南",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学浦江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京师范大学中北学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京晓庄学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学泰州科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学通达学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       },
       {
         "name": "南阳理工学院",
         "level": "双非",
         "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "吉林化工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吕梁学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "四川轻化工大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连东软信息学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波大学科学技术学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽农业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
         "count": 1
       },
       {
@@ -24578,7 +25366,187 @@
         "count": 1
       },
       {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东管理学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东技术师范大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "徐州工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "德州学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "新乡学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "景德镇陶瓷大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "枣庄学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉华夏理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉轻工大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "汕头大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学科文学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北建筑工程学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
         "name": "河南师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -24590,55 +25558,49 @@
         "count": 1
       },
       {
-        "name": "淮北师范大学",
+        "name": "济南大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "滁州学院",
+        "name": "浙江万里学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "铜陵学院",
+        "name": "浙江农林大学",
         "level": "双非",
-        "province": "安徽",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "华北科技学院",
+        "name": "淮阴工学院",
         "level": "双非",
-        "province": "河北",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "哈尔滨理工大学",
+        "name": "深圳技术大学",
         "level": "双非",
-        "province": "黑龙江",
+        "province": "广东",
         "count": 1
       },
       {
-        "name": "江西水利电力大学",
+        "name": "湖北师范大学",
         "level": "双非",
-        "province": "江西",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "江西财经大学",
+        "name": "湖北汽车工业学院",
         "level": "双非",
-        "province": "江西",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "河北大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "湖南文理学院",
+        "name": "湖南工业大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
@@ -24650,166 +25612,280 @@
         "count": 1
       },
       {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "菏泽学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西南民族大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安航空学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "赣南科技学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "铜陵学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛恒星科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "马鞍山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
         "name": "黑龙江大学",
         "level": "双非",
         "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "中国人民公安大学",
+        "name": "黑龙江科技大学",
         "level": "双非",
-        "province": "北京",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "嘉兴大学",
+        "name": "齐鲁工业大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "天津工业大学",
+        "name": "齐齐哈尔大学",
         "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "太原科技大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "广东理工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广西科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "湖北理工学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_schools": [
       {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "上海第二工业大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
         "name": "中国矿业大学",
         "level": "211",
         "province": "江苏",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "中国矿业大学徐海学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "山东理工大学",
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "北方民族大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "宁夏",
+        "count": 1
       },
       {
-        "name": "河南理工大学",
+        "name": "北部湾大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
         "level": "双非",
         "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "东南大学成贤学院",
+        "name": "华北科技学院",
         "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
+        "province": "河北",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "江苏",
-        "count": 19
+        "count": 26
       },
       {
         "name": "山东",
-        "count": 13
-      },
-      {
-        "name": "河南",
-        "count": 5
+        "count": 14
       },
       {
         "name": "安徽",
-        "count": 5
+        "count": 14
       },
       {
-        "name": "湖南",
-        "count": 2
-      },
-      {
-        "name": "河北",
-        "count": 2
-      },
-      {
-        "name": "江西",
-        "count": 2
+        "name": "河南",
+        "count": 13
       },
       {
         "name": "黑龙江",
-        "count": 2
+        "count": 5
       },
       {
-        "name": "北京",
-        "count": 1
+        "name": "辽宁",
+        "count": 5
       },
       {
-        "name": "福建",
-        "count": 1
+        "name": "河北",
+        "count": 4
+      },
+      {
+        "name": "四川",
+        "count": 4
+      },
+      {
+        "name": "湖北",
+        "count": 4
+      },
+      {
+        "name": "山西",
+        "count": 3
       }
     ],
-    "total_unique": 51,
-    "total_records": 59
+    "total_unique": 108,
+    "total_records": 109
   },
   "(10289)江苏科技大学": {
     "target_info": {
@@ -24860,392 +25936,122 @@
     },
     "sources": [
       {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 10
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
+        "name": "南京工程学院",
+        "level": "双非",
         "province": "江苏",
         "count": 2
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "湖南师范大学",
-        "level": "211",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 1
       },
       {
         "name": "太原理工大学",
         "level": "211",
         "province": "山西",
-        "count": 3
+        "count": 2
       },
       {
-        "name": "武汉理工大学",
+        "name": "三明学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "三江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
         "level": "211",
-        "province": "湖北",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "北京林业大学",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "西南交通大学",
-        "level": "211",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 1
-      },
-      {
-        "name": "南京信息工程大学",
+        "name": "东华理工大学",
         "level": "双非",
-        "province": "江苏",
-        "count": 9
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京工业职业技术大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "宿迁学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "常州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "淮阴师范学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "盐城工学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "宁波大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "浙江理工大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "中国计量大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "杭州师范大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙大宁波理工学院",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江农林大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江师范大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "浙江科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东财经大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "潍坊科技学院",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "南华大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽建筑大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "安徽科技学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "郑州轻工业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
+        "province": "江西",
         "count": 1
       },
       {
         "name": "中北大学",
         "level": "双非",
         "province": "山西",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "武汉轻工大学",
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
         "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "湖北大学",
-        "level": "双非",
-        "province": "湖北",
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "湖北工业大学",
+        "name": "中国矿业大学徐海学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "湖北汽车工业学院",
+        "name": "丽水学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "华侨大学",
+        "name": "九江学院",
         "level": "双非",
-        "province": "福建",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
         "count": 1
       },
       {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "陕西科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "集美大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "中国人民公安大学",
+        "name": "北京信息科技大学",
         "level": "双非",
         "province": "北京",
         "count": 1
       },
       {
-        "name": "华北科技学院",
+        "name": "华东交通大学",
         "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
         "province": "河北",
         "count": 1
       },
@@ -25256,270 +26062,6 @@
         "count": 1
       },
       {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "广东工业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "成都大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "桂林电子科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "桂林航天工业学院",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "河北师范大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "黑龙江大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "华东交通大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "天津科技大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "重庆理工大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "长春理工大学",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 10
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 9
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 3
-      },
-      {
-        "name": "山东科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "湘潭大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京理工大学紫金学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "江苏",
-        "count": 40
-      },
-      {
-        "name": "浙江",
-        "count": 13
-      },
-      {
-        "name": "山东",
-        "count": 10
-      },
-      {
-        "name": "安徽",
-        "count": 6
-      },
-      {
-        "name": "河南",
-        "count": 6
-      },
-      {
-        "name": "湖南",
-        "count": 6
-      },
-      {
-        "name": "湖北",
-        "count": 5
-      },
-      {
-        "name": "山西",
-        "count": 5
-      },
-      {
-        "name": "陕西",
-        "count": 3
-      },
-      {
-        "name": "福建",
-        "count": 3
-      }
-    ],
-    "total_unique": 78,
-    "total_records": 115
-  },
-  "(10287)南京航空航天大学": {
-    "target_info": {
-      "level": "211",
-      "province": "江苏"
-    },
-    "sources": [
-      {
-        "name": "中国人民大学",
-        "level": "985",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "新疆大学",
-        "level": "211",
-        "province": "新疆",
-        "count": 2
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 2
-      },
-      {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "中国矿业大学徐海学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
         "name": "南京信息工程大学",
         "level": "双非",
         "province": "江苏",
@@ -25538,9 +26080,39 @@
         "count": 1
       },
       {
+        "name": "南京师范大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
         "name": "南京林业大学",
         "level": "双非",
         "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "南昌大学",
+        "level": "211",
+        "province": "江西",
         "count": 1
       },
       {
@@ -25550,22 +26122,100 @@
         "count": 1
       },
       {
-        "name": "苏州工学院",
+        "name": "南通理工学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "安徽师范大学",
+        "name": "南阳理工学院",
         "level": "双非",
-        "province": "安徽",
-        "count": 2
+        "province": "河南",
+        "count": 1
       },
       {
-        "name": "安徽理工大学",
-        "level": "双非",
+        "name": "合肥工业大学",
+        "level": "211",
         "province": "安徽",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "吉林化工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吉林建筑大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "大理大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津中德应用技术大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
       },
       {
         "name": "安庆师范大学",
@@ -25574,7 +26224,19 @@
         "count": 1
       },
       {
-        "name": "安徽工业大学",
+        "name": "安徽三联学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
@@ -25586,40 +26248,34 @@
         "count": 1
       },
       {
+        "name": "安徽新华学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
         "name": "安徽科技学院",
         "level": "双非",
         "province": "安徽",
         "count": 1
       },
       {
-        "name": "皖西学院",
+        "name": "山东交通学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "山东",
         "count": 1
       },
       {
-        "name": "阜阳师范大学",
+        "name": "山东华宇工学院",
         "level": "双非",
-        "province": "安徽",
+        "province": "山东",
         "count": 1
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛科技大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
       },
       {
         "name": "山东科技大学",
@@ -25628,97 +26284,43 @@
         "count": 1
       },
       {
-        "name": "聊城大学",
+        "name": "常州大学",
         "level": "双非",
-        "province": "山东",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "青岛大学",
+        "name": "成都工业学院",
         "level": "双非",
-        "province": "山东",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "河南工业大学",
+        "name": "成都理工大学",
         "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "中原工学院",
-        "level": "双非",
-        "province": "河南",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "华北理工大学",
+        "name": "攀枝花学院",
         "level": "双非",
-        "province": "河北",
+        "province": "四川",
         "count": 1
       },
       {
-        "name": "华北科技学院",
+        "name": "杭州电子科技大学",
         "level": "双非",
-        "province": "河北",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "河北农业大学",
+        "name": "桂林理工大学",
         "level": "双非",
-        "province": "河北",
+        "province": "广西",
         "count": 1
       },
       {
-        "name": "河北工程大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北建筑工程学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 5
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "三峡大学",
+        "name": "武汉工商学院",
         "level": "双非",
         "province": "湖北",
         "count": 1
@@ -25730,25 +26332,127 @@
         "count": 1
       },
       {
-        "name": "武汉科技大学",
+        "name": "武汉工程大学邮电与信息工程学院",
         "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "湖北大学",
+        "name": "武汉纺织大学",
         "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "浙江工业大学",
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江汉大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "浙江工商大学",
+        "name": "浙江工业大学",
         "level": "双非",
         "province": "浙江",
         "count": 1
@@ -25760,411 +26464,27 @@
         "count": 1
       },
       {
-        "name": "中国民用航空飞行学院",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "四川师范大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "广东工业大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广东海洋大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "西安建筑科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "上海第二工业大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "桂林电子科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 5
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 3
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "新疆大学",
-        "level": "211",
-        "province": "新疆",
-        "count": 2
-      },
-      {
-        "name": "海南大学",
-        "level": "211",
-        "province": "海南",
-        "count": 2
-      },
-      {
-        "name": "南京工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 2
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "江苏",
-        "count": 18
-      },
-      {
-        "name": "安徽",
-        "count": 11
-      },
-      {
-        "name": "山东",
-        "count": 9
-      },
-      {
-        "name": "河北",
-        "count": 6
-      },
-      {
-        "name": "河南",
-        "count": 6
-      },
-      {
-        "name": "天津",
-        "count": 5
-      },
-      {
-        "name": "江西",
-        "count": 5
-      },
-      {
-        "name": "湖北",
-        "count": 4
-      },
-      {
-        "name": "浙江",
-        "count": 3
-      },
-      {
-        "name": "海南",
-        "count": 2
-      }
-    ],
-    "total_unique": 62,
-    "total_records": 84
-  },
-  "(10286)东南大学": {
-    "target_info": {
-      "level": "985",
-      "province": "江苏"
-    },
-    "sources": [
-      {
-        "name": "东南大学",
+        "name": "清华大学",
         "level": "985",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "湖南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "天津大学",
-        "level": "985",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "中国海洋大学",
-        "level": "985",
-        "province": "山东",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "四川大学",
-        "level": "985",
-        "province": "四川",
+        "name": "温州大学",
+        "level": "双非",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "山东大学",
-        "level": "985",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "武汉大学",
-        "level": "985",
+        "name": "湖北工业大学",
+        "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 3
-      },
-      {
-        "name": "厦门大学",
-        "level": "985",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
-      },
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 4
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "武汉理工大学",
-        "level": "211",
+        "name": "湖北工程学院",
+        "level": "双非",
         "province": "湖北",
-        "count": 2
-      },
-      {
-        "name": "西南交通大学",
-        "level": "211",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "东华大学",
-        "level": "211",
-        "province": "上海",
-        "count": 2
-      },
-      {
-        "name": "贵州大学",
-        "level": "211",
-        "province": "贵州",
-        "count": 2
-      },
-      {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "江苏科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "南京中医药大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "徐州工程学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "扬州大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏第二师范学院",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
         "count": 1
       },
       {
@@ -26180,63 +26500,171 @@
         "count": 1
       },
       {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
         "name": "湘潭大学",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "长沙理工大学",
+        "name": "湘潭大学兴湘学院",
         "level": "双非",
         "province": "湖南",
         "count": 1
       },
       {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "防灾科技学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河南科技大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "山东农业大学",
+        "name": "烟台大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "绥化学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "芜湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "苏州城市学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "菏泽学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "成都信息工程大学",
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "衢州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南民族大学",
         "level": "双非",
         "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       },
       {
@@ -26246,8 +26674,70 @@
         "count": 1
       },
       {
-        "name": "上海理工大学",
+        "name": "长江师范学院",
         "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 2
+      },
+      {
+        "name": "三明学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "三江学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
         "province": "上海",
         "count": 1
       },
@@ -26258,33 +26748,91 @@
         "count": 1
       },
       {
-        "name": "景德镇陶瓷大学",
+        "name": "中北大学",
         "level": "双非",
-        "province": "江西",
+        "province": "山西",
         "count": 1
       },
       {
-        "name": "汕头大学",
+        "name": "中南林业科技大学",
         "level": "双非",
-        "province": "广东",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "江西理工大学",
+        "name": "中原工学院",
         "level": "双非",
-        "province": "江西",
+        "province": "河南",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "江苏",
+        "count": 25
+      },
+      {
+        "name": "河南",
+        "count": 12
+      },
+      {
+        "name": "安徽",
+        "count": 11
+      },
+      {
+        "name": "湖北",
+        "count": 9
+      },
+      {
+        "name": "湖南",
+        "count": 8
+      },
+      {
+        "name": "辽宁",
+        "count": 8
+      },
+      {
+        "name": "浙江",
+        "count": 7
+      },
+      {
+        "name": "山东",
+        "count": 7
+      },
+      {
+        "name": "四川",
+        "count": 6
+      },
+      {
+        "name": "陕西",
+        "count": 6
+      }
+    ],
+    "total_unique": 128,
+    "total_records": 130
+  },
+  "(10287)南京航空航天大学": {
+    "target_info": {
+      "level": "211",
+      "province": "江苏"
+    },
+    "sources": [
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "深圳大学",
+        "name": "中国民航大学",
         "level": "双非",
-        "province": "广东",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "深圳技术大学",
-        "level": "双非",
-        "province": "广东",
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
         "count": 1
       },
       {
@@ -26294,15 +26842,279 @@
         "count": 1
       },
       {
-        "name": "广西师范大学",
+        "name": "中国计量大学现代科技学院",
         "level": "双非",
-        "province": "广西",
+        "province": "浙江",
         "count": 1
       },
       {
-        "name": "桂林电子科技大学",
+        "name": "临沂大学",
         "level": "双非",
-        "province": "广西",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业职业技术大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学泰州科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "新疆大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江汉大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏师范大学科文学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
@@ -26312,15 +27124,1677 @@
         "count": 1
       },
       {
+        "name": "浙江科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台南山学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "西华大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西华师范大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
         "name": "西安邮电大学",
         "level": "双非",
         "province": "陕西",
         "count": 1
       },
       {
-        "name": "中华女子学院",
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
         "level": "双非",
         "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "江苏",
+        "count": 19
+      },
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "山东",
+        "count": 7
+      },
+      {
+        "name": "浙江",
+        "count": 6
+      },
+      {
+        "name": "河北",
+        "count": 5
+      },
+      {
+        "name": "安徽",
+        "count": 4
+      },
+      {
+        "name": "辽宁",
+        "count": 3
+      },
+      {
+        "name": "四川",
+        "count": 3
+      },
+      {
+        "name": "天津",
+        "count": 2
+      },
+      {
+        "name": "湖北",
+        "count": 2
+      }
+    ],
+    "total_unique": 70,
+    "total_records": 70
+  },
+  "(10286)东南大学": {
+    "target_info": {
+      "level": "985",
+      "province": "江苏"
+    },
+    "sources": [
+      {
+        "name": "东莞理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 3
+      },
+      {
+        "name": "河北工业职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 3
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 3
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 3
+      },
+      {
+        "name": "湖北汽车工业学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 3
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 2
+      },
+      {
+        "name": "东南大学",
+        "level": "985",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "华北电力大学(保定)",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "南京师范大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "哈尔滨华德学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "哈尔滨工业大学(威海)",
+        "level": "985",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "大庆师范学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "广东白云学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 2
+      },
+      {
+        "name": "德州学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 2
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 2
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 2
+      },
+      {
+        "name": "沧州交通学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北农业大学现代科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "河南师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "河南财经政法大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 2
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "湖南农业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 2
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 2
+      },
+      {
+        "name": "滇西科技师范学院",
+        "level": "双非",
+        "province": "云南",
+        "count": 2
+      },
+      {
+        "name": "福州大学",
+        "level": "211",
+        "province": "福建",
+        "count": 2
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海工程技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北师范大学",
+        "level": "211",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国农业大学",
+        "level": "985",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国海洋大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "佛山大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "保定学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京中医药大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京交通大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京工业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京工商大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京林业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京理工大学",
+        "level": "985",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京石油化工学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学天津学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京联合大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京航空航天大学",
+        "level": "985",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京邮电大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北方民族大学",
+        "level": "双非",
+        "province": "宁夏",
+        "count": 1
+      },
+      {
+        "name": "北部湾大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "华东理工大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "华中农业大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京晓庄学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学泰州科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南华大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "南开大学",
+        "level": "985",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "南昌大学",
+        "level": "211",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "合肥工业大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "合肥师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨剑桥学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学",
+        "level": "985",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学(深圳)",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "四川大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "国防科技大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "复旦大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "大连东软信息学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连理工大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连理工大学城市学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽三联学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽农业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽新华学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "安阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常熟理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东工商职业技术大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东技术师范大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东海洋大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广州大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广西大学",
+        "level": "211",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "广西科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "徐州工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都师范学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都理工大学工程技术学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都锦城学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "昌吉学院",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学信息工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "桂林理工大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "桂林航天工业学院",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西师范大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "池州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "沈阳农业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北农业大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北北方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学科信学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程技术学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北建筑工程学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北石油职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学理工学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南农业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南城建学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "海南热带海洋学院",
+        "level": "双非",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "淮阴工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "温州理工学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖北工程学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北师范大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北文理学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南人文科技学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工商大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工程学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南师范大学",
+        "level": "211",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南应用技术学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南理工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南第一师范学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "滇西应用技术大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "电子科技大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "电子科技大学中山学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "福建师范大学协和学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "航天工程大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "菏泽学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西北工业大学",
+        "level": "985",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安电子科技大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵州师范大学",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵州师范学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵州民族大学",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵州理工学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "贵阳信息科技学院",
+        "level": "双非",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "赣南科技学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "赤峰学院",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆大学",
+        "level": "985",
+        "province": "重庆",
         "count": 1
       },
       {
@@ -26328,114 +28802,186 @@
         "level": "双非",
         "province": "重庆",
         "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长春理工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "阜阳师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "青岛城市学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "韩山师范学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "黑龙江八一农垦大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "黑龙江大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "黑龙江工程学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
+        "name": "东莞理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 3
       },
       {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 4
+        "name": "河北工业职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 3
       },
       {
-        "name": "安徽大学",
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 3
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 3
+      },
+      {
+        "name": "湖北汽车工业学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 3
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "东北农业大学",
         "level": "211",
-        "province": "安徽",
-        "count": 4
+        "province": "黑龙江",
+        "count": 2
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 2
       },
       {
         "name": "东南大学",
         "level": "985",
         "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "湖南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 3
-      },
-      {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 3
-      },
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 3
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 3
+        "count": 2
       }
     ],
     "top10_provinces": [
       {
-        "name": "江苏",
-        "count": 34
-      },
-      {
-        "name": "安徽",
-        "count": 10
-      },
-      {
-        "name": "湖南",
-        "count": 7
-      },
-      {
         "name": "河北",
-        "count": 6
+        "count": 36
+      },
+      {
+        "name": "江苏",
+        "count": 29
       },
       {
         "name": "河南",
-        "count": 5
+        "count": 23
       },
       {
-        "name": "四川",
-        "count": 4
+        "name": "黑龙江",
+        "count": 21
       },
       {
-        "name": "天津",
-        "count": 4
+        "name": "湖南",
+        "count": 21
       },
       {
-        "name": "湖北",
-        "count": 4
+        "name": "北京",
+        "count": 20
+      },
+      {
+        "name": "安徽",
+        "count": 20
       },
       {
         "name": "山东",
-        "count": 4
+        "count": 17
       },
       {
         "name": "广东",
-        "count": 3
+        "count": 15
+      },
+      {
+        "name": "辽宁",
+        "count": 15
       }
     ],
-    "total_unique": 67,
-    "total_records": 106
+    "total_unique": 254,
+    "total_records": 305
   },
   "(10285)苏州大学": {
     "target_info": {
@@ -27152,15 +29698,111 @@
     },
     "sources": [
       {
-        "name": "杭州电子科技大学",
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海第二工业大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "浙江师范大学行知学院",
+        "name": "中国计量大学现代科技学院",
         "level": "双非",
         "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "华侨大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业职业技术大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京师范大学泰州学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学金城学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
@@ -27170,86 +29812,370 @@
         "count": 1
       },
       {
+        "name": "南通理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "天津中医药大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津城建大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "新疆大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学信息工程学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西水利电力大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
         "name": "河南工业大学",
         "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
-        "name": "长江大学",
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江理工大学科技与艺术学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖北工程学院",
         "level": "双非",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "长沙理工大学",
+        "name": "湖南工学院",
         "level": "双非",
         "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "衢州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "赣南科技学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆科技大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "集美大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "浙江师范大学行知学院",
+        "name": "上海应用技术大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "南通大学",
+        "name": "上海电力大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "河南工业大学",
+        "name": "上海第二工业大学",
         "level": "双非",
-        "province": "河南",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "长江大学",
-        "level": "双非",
-        "province": "湖北",
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "长沙理工大学",
+        "name": "中南林业科技大学",
         "level": "双非",
         "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "浙江",
-        "count": 2
-      },
-      {
-        "name": "湖北",
-        "count": 1
-      },
-      {
-        "name": "湖南",
-        "count": 1
-      },
-      {
         "name": "江苏",
-        "count": 1
+        "count": 15
+      },
+      {
+        "name": "浙江",
+        "count": 6
+      },
+      {
+        "name": "山东",
+        "count": 6
       },
       {
         "name": "河南",
-        "count": 1
+        "count": 5
+      },
+      {
+        "name": "上海",
+        "count": 4
+      },
+      {
+        "name": "河北",
+        "count": 4
+      },
+      {
+        "name": "安徽",
+        "count": 4
+      },
+      {
+        "name": "湖南",
+        "count": 3
+      },
+      {
+        "name": "天津",
+        "count": 3
+      },
+      {
+        "name": "江西",
+        "count": 3
       }
     ],
-    "total_unique": 6,
-    "total_records": 6
+    "total_unique": 62,
+    "total_records": 62
   },
   "(10269)华东师范大学": {
     "target_info": {
@@ -27748,136 +30674,430 @@
     },
     "sources": [
       {
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海杉达学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
         "name": "东华大学",
         "level": "211",
         "province": "上海",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "上海师范大学天华学院",
+        "name": "中南林业科技大学",
         "level": "双非",
-        "province": "上海",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古农业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西农业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "攀枝花学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "桂林理工大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学苏州理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江水利水电学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江海洋大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "淮阴工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "湖南城市学院",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       },
       {
         "name": "湖南工业大学",
         "level": "双非",
         "province": "湖南",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "南京工业大学",
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "宁波工程学院",
+        "name": "阜阳师范大学",
         "level": "双非",
-        "province": "浙江",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "山东理工大学",
+        "name": "黄淮学院",
         "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
+        "province": "河南",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "东华大学",
-        "level": "211",
-        "province": "上海",
-        "count": 2
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "上海师范大学天华学院",
+        "name": "上海师范大学",
         "level": "双非",
         "province": "上海",
         "count": 1
       },
       {
-        "name": "南京工业大学",
+        "name": "上海杉达学院",
         "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "宁波工程学院",
+        "name": "中国计量大学",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "山东理工大学",
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "沈阳工业大学",
+        "name": "兰州理工大学",
         "level": "双非",
-        "province": "辽宁",
+        "province": "甘肃",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "上海",
-        "count": 3
+        "name": "江苏",
+        "count": 9
       },
       {
-        "name": "湖南",
-        "count": 2
+        "name": "河南",
+        "count": 8
       },
       {
-        "name": "天津",
-        "count": 1
-      },
-      {
-        "name": "山东",
-        "count": 1
+        "name": "安徽",
+        "count": 6
       },
       {
         "name": "浙江",
-        "count": 1
+        "count": 5
       },
       {
-        "name": "江苏",
-        "count": 1
+        "name": "上海",
+        "count": 4
       },
       {
-        "name": "辽宁",
-        "count": 1
+        "name": "湖南",
+        "count": 3
+      },
+      {
+        "name": "山东",
+        "count": 2
+      },
+      {
+        "name": "河北",
+        "count": 2
+      },
+      {
+        "name": "四川",
+        "count": 2
+      },
+      {
+        "name": "广西",
+        "count": 2
       }
     ],
-    "total_unique": 8,
-    "total_records": 10
+    "total_unique": 53,
+    "total_records": 53
   },
   "(10254)上海海事大学": {
     "target_info": {
@@ -27916,28 +31136,198 @@
     },
     "sources": [
       {
-        "name": "景德镇陶瓷大学",
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南昌交通学院",
         "level": "双非",
         "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东海洋大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学四方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西安欧亚学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "景德镇陶瓷大学",
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南昌交通学院",
         "level": "双非",
         "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东海洋大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
+        "name": "江苏",
+        "count": 6
+      },
+      {
+        "name": "河南",
+        "count": 2
+      },
+      {
         "name": "江西",
+        "count": 1
+      },
+      {
+        "name": "广东",
+        "count": 1
+      },
+      {
+        "name": "广西",
+        "count": 1
+      },
+      {
+        "name": "湖南",
+        "count": 1
+      },
+      {
+        "name": "河北",
+        "count": 1
+      },
+      {
+        "name": "安徽",
+        "count": 1
+      },
+      {
+        "name": "陕西",
         "count": 1
       }
     ],
-    "total_unique": 1,
-    "total_records": 1
+    "total_unique": 15,
+    "total_records": 15
   },
   "(10251)华东理工大学": {
     "target_info": {
@@ -27946,9 +31336,9 @@
     },
     "sources": [
       {
-        "name": "北京交通大学",
-        "level": "211",
-        "province": "北京",
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
@@ -27958,35 +31348,413 @@
         "count": 1
       },
       {
-        "name": "东北电力大学",
+        "name": "上海理工大学",
         "level": "双非",
-        "province": "吉林",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "南昌师范学院",
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海第二工业大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
         "level": "双非",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "保定学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华东理工大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "嘉兴南湖学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津商业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "邵阳学院",
+        "name": "山东建筑大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州信息职业技术学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常熟理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东技术师范大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "无锡太湖学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江汉大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江西水利电力大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济宁学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙大城市学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "温州大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖南工业大学",
         "level": "双非",
         "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "苏州大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "苏州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长江大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青海大学",
+        "level": "211",
+        "province": "青海",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "北京交通大学",
-        "level": "211",
-        "province": "北京",
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
@@ -27996,58 +31764,98 @@
         "count": 1
       },
       {
-        "name": "东北电力大学",
+        "name": "上海理工大学",
         "level": "双非",
-        "province": "吉林",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "南昌师范学院",
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海第二工业大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
         "level": "双非",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "保定学院",
         "level": "双非",
-        "province": "山东",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "邵阳学院",
+        "name": "兰州交通大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
+        "name": "江苏",
+        "count": 12
+      },
+      {
         "name": "上海",
-        "count": 1
+        "count": 7
       },
       {
-        "name": "湖南",
-        "count": 1
-      },
-      {
-        "name": "江西",
-        "count": 1
-      },
-      {
-        "name": "吉林",
-        "count": 1
-      },
-      {
-        "name": "北京",
-        "count": 1
+        "name": "安徽",
+        "count": 7
       },
       {
         "name": "山东",
-        "count": 1
+        "count": 7
+      },
+      {
+        "name": "浙江",
+        "count": 5
+      },
+      {
+        "name": "江西",
+        "count": 4
+      },
+      {
+        "name": "湖北",
+        "count": 4
+      },
+      {
+        "name": "陕西",
+        "count": 4
+      },
+      {
+        "name": "河北",
+        "count": 3
+      },
+      {
+        "name": "辽宁",
+        "count": 3
       }
     ],
-    "total_unique": 6,
-    "total_records": 6
+    "total_unique": 69,
+    "total_records": 69
   },
   "(10248)上海交通大学": {
     "target_info": {
@@ -28056,60 +31864,166 @@
     },
     "sources": [
       {
-        "name": "南京大学",
-        "level": "985",
-        "province": "江苏",
-        "count": 1
-      },
-      {
         "name": "上海大学",
         "level": "211",
         "province": "上海",
         "count": 1
       },
       {
-        "name": "宜春学院",
+        "name": "上海理工大学",
         "level": "双非",
-        "province": "江西",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "同济大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "西安电子科技大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "南京大学",
-        "level": "985",
-        "province": "江苏",
-        "count": 1
-      },
-      {
         "name": "上海大学",
         "level": "211",
         "province": "上海",
         "count": 1
       },
       {
-        "name": "宜春学院",
+        "name": "上海理工大学",
         "level": "双非",
-        "province": "江西",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "同济大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "上海",
-        "count": 1
+        "count": 3
+      },
+      {
+        "name": "湖北",
+        "count": 2
       },
       {
         "name": "江苏",
+        "count": 2
+      },
+      {
+        "name": "山东",
         "count": 1
       },
       {
-        "name": "江西",
+        "name": "浙江",
+        "count": 1
+      },
+      {
+        "name": "河北",
+        "count": 1
+      },
+      {
+        "name": "陕西",
         "count": 1
       }
     ],
-    "total_unique": 3,
-    "total_records": 3
+    "total_unique": 11,
+    "total_records": 11
   },
   "(10246)复旦大学": {
     "target_info": {
@@ -28414,22 +32328,10 @@
     },
     "sources": [
       {
-        "name": "北京大学",
-        "level": "985",
-        "province": "北京",
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
-      },
-      {
-        "name": "中国石油大学（华东）",
-        "level": "211",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 12
       },
       {
         "name": "东北农业大学",
@@ -28444,21 +32346,261 @@
         "count": 1
       },
       {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 2
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
       },
       {
-        "name": "西北大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 2
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
       },
       {
-        "name": "中国地质大学（武汉）",
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "佳木斯大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州信息科技学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华中农业大学",
         "level": "211",
         "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "合肥师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "吉林建筑大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨师范大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "大连工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津城建大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "常熟理工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东技术师范大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广东海洋大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "延安大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "景德镇艺术职业大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
         "count": 1
       },
       {
@@ -28468,159 +32610,69 @@
         "count": 1
       },
       {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
+        "name": "武汉纺织大学",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
+        "name": "江苏师范大学",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
-        "count": 2
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "辽宁大学",
-        "level": "211",
+        "name": "沈阳工业大学",
+        "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "山东科技大学",
+        "name": "沈阳理工大学",
         "level": "双非",
-        "province": "山东",
-        "count": 11
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 6
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "山东师范大学",
-        "level": "双非",
-        "province": "山东",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "山东建筑大学",
+        "name": "沈阳航空航天大学",
         "level": "双非",
-        "province": "山东",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "山东管理学院",
+        "name": "河北外国语学院",
         "level": "双非",
-        "province": "山东",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "德州学院",
-        "level": "双非",
-        "province": "山东",
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "济南大学",
+        "name": "河北工程大学",
         "level": "双非",
-        "province": "山东",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "青岛科技大学",
+        "name": "河北科技大学",
         "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 4
-      },
-      {
-        "name": "黑龙江大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "黑龙江科技大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "河南农业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
+        "province": "河北",
         "count": 1
       },
       {
@@ -28630,7 +32682,7 @@
         "count": 1
       },
       {
-        "name": "河南工程学院",
+        "name": "河南理工大学",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -28642,99 +32694,15 @@
         "count": 1
       },
       {
-        "name": "郑州航空工业管理学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "南京邮电大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "河北工程大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 2
-      },
-      {
-        "name": "中南民族大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "唐山学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "延安大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "徐州工程学院",
-        "level": "双非",
+        "name": "河海大学",
+        "level": "211",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "无锡学院",
+        "name": "济南大学",
         "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "武汉工程大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "江苏理工学院",
-        "level": "双非",
-        "province": "江苏",
+        "province": "山东",
         "count": 1
       },
       {
@@ -28744,9 +32712,93 @@
         "count": 1
       },
       {
-        "name": "衡水学院",
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北工程学院新技术学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北民族大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "潍坊理工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
         "level": "双非",
         "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "绍兴文理学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
         "count": 1
       },
       {
@@ -28756,57 +32808,27 @@
         "count": 1
       },
       {
-        "name": "金陵科技学院",
+        "name": "西安邮电大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "长江大学",
+        "name": "邯郸学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "重庆邮电大学",
+        "name": "郑州航空工业管理学院",
         "level": "双非",
-        "province": "重庆",
-        "count": 3
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 2
-      },
-      {
-        "name": "西南大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 2
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "华东交通大学",
+        "name": "郑州西亚斯学院",
         "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "新余学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "江西水利电力大学",
-        "level": "双非",
-        "province": "江西",
+        "province": "河南",
         "count": 1
       },
       {
@@ -28816,81 +32838,27 @@
         "count": 1
       },
       {
-        "name": "淮南师范学院",
+        "name": "重庆科技大学",
         "level": "双非",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "安徽工业大学",
-        "level": "双非",
-        "province": "安徽",
+        "province": "重庆",
         "count": 1
       },
       {
-        "name": "安徽新华学院",
-        "level": "双非",
-        "province": "安徽",
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
         "count": 1
       },
       {
-        "name": "桂林电子科技大学",
+        "name": "长春工业大学",
         "level": "双非",
-        "province": "广西",
-        "count": 4
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "汕头大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 2
-      },
-      {
-        "name": "中国民航大学",
-        "level": "双非",
-        "province": "天津",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "南华大学",
+        "name": "长江大学",
         "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "天津城建大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "广东技术师范大学",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "广东石油化工学院",
-        "level": "双非",
-        "province": "广东",
-        "count": 1
-      },
-      {
-        "name": "湖南工业大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "湖南理工学院",
-        "level": "双非",
-        "province": "湖南",
+        "province": "湖北",
         "count": 1
       },
       {
@@ -28900,10 +32868,84 @@
         "count": 1
       },
       {
-        "name": "中北大学",
+        "name": "阜阳师范大学",
         "level": "双非",
-        "province": "山西",
-        "count": 2
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛黄海学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北林业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
       },
       {
         "name": "东北电力大学",
@@ -28912,153 +32954,57 @@
         "count": 1
       },
       {
-        "name": "长春大学",
+        "name": "中北大学",
         "level": "双非",
-        "province": "吉林",
+        "province": "山西",
         "count": 1
       },
       {
-        "name": "长春理工大学",
+        "name": "中国民航大学",
         "level": "双非",
-        "province": "吉林",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "厦门理工学院",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "成都大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "浙江理工大学",
+        "name": "中国计量大学",
         "level": "双非",
         "province": "浙江",
         "count": 1
       },
       {
-        "name": "温州大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "福建师范大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "西华大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "上海理工大学",
-        "level": "双非",
-        "province": "上海",
-        "count": 1
-      },
-      {
-        "name": "内蒙古工业大学",
-        "level": "双非",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "北方民族大学",
-        "level": "双非",
-        "province": "宁夏",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 12
-      },
-      {
-        "name": "山东科技大学",
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
-        "count": 11
+        "count": 1
       },
       {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 6
-      },
-      {
-        "name": "青岛理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 4
-      },
-      {
-        "name": "哈尔滨理工大学",
+        "name": "佳木斯大学",
         "level": "双非",
         "province": "黑龙江",
-        "count": 4
+        "count": 1
       },
       {
-        "name": "桂林电子科技大学",
+        "name": "兰州交通大学",
         "level": "双非",
-        "province": "广西",
-        "count": 4
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 3
-      },
-      {
-        "name": "湖北工业大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 3
-      },
-      {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 3
-      },
-      {
-        "name": "重庆邮电大学",
-        "level": "双非",
-        "province": "重庆",
-        "count": 3
+        "province": "甘肃",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "山东",
-        "count": 39
-      },
-      {
-        "name": "黑龙江",
-        "count": 20
-      },
-      {
-        "name": "河南",
-        "count": 12
+        "count": 14
       },
       {
         "name": "湖北",
-        "count": 8
+        "count": 9
       },
       {
         "name": "河北",
+        "count": 9
+      },
+      {
+        "name": "黑龙江",
         "count": 8
       },
       {
@@ -29066,24 +33012,28 @@
         "count": 8
       },
       {
+        "name": "河南",
+        "count": 7
+      },
+      {
         "name": "陕西",
-        "count": 8
+        "count": 7
       },
       {
-        "name": "重庆",
-        "count": 6
-      },
-      {
-        "name": "江西",
+        "name": "辽宁",
         "count": 6
       },
       {
         "name": "安徽",
         "count": 5
+      },
+      {
+        "name": "四川",
+        "count": 5
       }
     ],
-    "total_unique": 94,
-    "total_records": 155
+    "total_unique": 100,
+    "total_records": 100
   },
   "(10214)哈尔滨理工大学": {
     "target_info": {
@@ -29138,141 +33088,87 @@
     },
     "sources": [
       {
-        "name": "哈尔滨工业大学",
-        "level": "985",
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
+        "count": 2
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "山东航空学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
         "province": "黑龙江",
-        "count": 48
+        "count": 1
       },
       {
         "name": "东北大学",
         "level": "985",
         "province": "辽宁",
-        "count": 5
-      },
-      {
-        "name": "山东大学",
-        "level": "985",
-        "province": "山东",
-        "count": 2
-      },
-      {
-        "name": "南京大学",
-        "level": "985",
-        "province": "江苏",
         "count": 1
       },
       {
-        "name": "大连理工大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
-        "province": "辽宁",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东莞理工学院",
+        "level": "双非",
+        "province": "广东",
         "count": 1
       },
       {
         "name": "中南大学",
         "level": "985",
         "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "西安交通大学",
-        "level": "985",
-        "province": "陕西",
         "count": 1
       },
       {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 2
-      },
-      {
-        "name": "中山大学",
-        "level": "985",
-        "province": "广东",
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "四川大学",
-        "level": "985",
-        "province": "四川",
-        "count": 2
-      },
-      {
-        "name": "重庆大学",
-        "level": "985",
-        "province": "重庆",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨工程大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "南京航空航天大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "河海大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 3
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 3
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 3
-      },
-      {
-        "name": "安徽大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 2
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "华北电力大学",
-        "level": "211",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "中国地质大学（北京）",
-        "level": "211",
-        "province": "北京",
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       },
       {
@@ -29282,39 +33178,93 @@
         "count": 1
       },
       {
-        "name": "延边大学",
-        "level": "211",
-        "province": "吉林",
+        "name": "北京工商大学",
+        "level": "双非",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "暨南大学",
-        "level": "211",
-        "province": "广东",
+        "name": "北京联合大学",
+        "level": "双非",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "武汉理工大学",
-        "level": "211",
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华中科技大学",
+        "level": "985",
         "province": "湖北",
         "count": 1
       },
       {
-        "name": "宁夏大学",
+        "name": "华北电力大学",
         "level": "211",
-        "province": "宁夏",
-        "count": 2
-      },
-      {
-        "name": "福州大学",
-        "level": "211",
-        "province": "福建",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "内蒙古大学",
+        "name": "华南理工大学",
+        "level": "985",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
         "level": "211",
-        "province": "内蒙古",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "同济大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "吕梁学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学",
+        "level": "985",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
         "count": 1
       },
       {
@@ -29324,15 +33274,21 @@
         "count": 1
       },
       {
-        "name": "南京信息工程大学",
+        "name": "商丘师范学院",
         "level": "双非",
-        "province": "江苏",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "南通大学",
-        "level": "双非",
-        "province": "江苏",
+        "name": "四川大学",
+        "level": "985",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "国防科技大学",
+        "level": "985",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -29342,15 +33298,81 @@
         "count": 1
       },
       {
-        "name": "山东农业大学",
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "山东师范大学",
+        "name": "山东科技大学",
         "level": "双非",
         "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "岭南师范学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "常州工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广西民族大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "成都信息工程大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "成都大学",
+        "level": "双非",
+        "province": "四川",
         "count": 1
       },
       {
@@ -29360,111 +33382,27 @@
         "count": 1
       },
       {
-        "name": "江苏师范大学科文学院",
+        "name": "昆明理工大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "云南",
         "count": 1
       },
       {
-        "name": "济南大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "苏州科技大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "青岛大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "华北水利水电大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南农业大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "河南大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "中北大学",
+        "name": "晋中学院",
         "level": "双非",
         "province": "山西",
-        "count": 5
-      },
-      {
-        "name": "长沙理工大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 2
-      },
-      {
-        "name": "衡阳师范学院",
-        "level": "双非",
-        "province": "湖南",
         "count": 1
       },
       {
-        "name": "西安科技大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "河北大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "中国计量大学",
+        "name": "杭州电子科技大学",
         "level": "双非",
         "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "中国人民公安大学",
-        "level": "双非",
-        "province": "北京",
         "count": 1
       },
       {
-        "name": "天津师范大学",
-        "level": "双非",
-        "province": "天津",
+        "name": "武汉大学",
+        "level": "985",
+        "province": "湖北",
         "count": 1
       },
       {
@@ -29474,9 +33412,93 @@
         "count": 1
       },
       {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
         "name": "浙江工业大学",
         "level": "双非",
         "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
         "count": 1
       },
       {
@@ -29486,130 +33508,244 @@
         "count": 1
       },
       {
-        "name": "湖北科技学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "福建农林大学",
-        "level": "双非",
-        "province": "福建",
-        "count": 1
-      },
-      {
-        "name": "九江学院",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "哈尔滨工业大学",
+        "name": "湖南大学",
         "level": "985",
-        "province": "黑龙江",
-        "count": 48
+        "province": "湖南",
+        "count": 1
       },
       {
-        "name": "东北大学",
-        "level": "985",
-        "province": "辽宁",
-        "count": 5
-      },
-      {
-        "name": "中北大学",
+        "name": "湘潭大学",
         "level": "双非",
-        "province": "山西",
-        "count": 5
+        "province": "湖南",
+        "count": 1
       },
       {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 3
+        "name": "烟台科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
       },
       {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 3
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "西京学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西北农林科技大学",
+        "level": "985",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
       },
       {
         "name": "西安电子科技大学",
         "level": "211",
         "province": "陕西",
-        "count": 3
+        "count": 1
       },
       {
-        "name": "山东大学",
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安航空学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽东学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "邢台学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆大学",
         "level": "985",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长春光华学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "闽南师范大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青海大学",
+        "level": "211",
+        "province": "青海",
+        "count": 1
+      },
+      {
+        "name": "黑龙江大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
+        "count": 2
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "山东航空学院",
+        "level": "双非",
         "province": "山东",
         "count": 2
       },
       {
-        "name": "中南大学",
-        "level": "985",
-        "province": "湖南",
-        "count": 2
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "吉林大学",
-        "level": "985",
-        "province": "吉林",
-        "count": 2
+        "name": "上海理工大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "四川大学",
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
         "level": "985",
-        "province": "四川",
-        "count": 2
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "黑龙江",
-        "count": 52
+        "name": "山东",
+        "count": 9
       },
       {
         "name": "江苏",
-        "count": 8
-      },
-      {
-        "name": "辽宁",
-        "count": 8
-      },
-      {
-        "name": "山东",
-        "count": 8
+        "count": 9
       },
       {
         "name": "河南",
+        "count": 7
+      },
+      {
+        "name": "辽宁",
+        "count": 7
+      },
+      {
+        "name": "黑龙江",
+        "count": 6
+      },
+      {
+        "name": "河北",
+        "count": 6
+      },
+      {
+        "name": "广东",
+        "count": 6
+      },
+      {
+        "name": "湖北",
         "count": 6
       },
       {
         "name": "陕西",
-        "count": 5
+        "count": 6
       },
       {
-        "name": "安徽",
-        "count": 5
-      },
-      {
-        "name": "山西",
-        "count": 5
-      },
-      {
-        "name": "湖南",
-        "count": 5
-      },
-      {
-        "name": "河北",
+        "name": "上海",
         "count": 4
       }
     ],
-    "total_unique": 61,
-    "total_records": 133
+    "total_unique": 92,
+    "total_records": 95
   },
   "(10212)黑龙江大学": {
     "target_info": {
@@ -30135,40 +34271,568 @@
         "name": "东北大学",
         "level": "985",
         "province": "辽宁",
-        "count": 1
+        "count": 2
       },
       {
-        "name": "中国人民大学",
-        "level": "985",
+        "name": "中国石油大学(北京)",
+        "level": "双非",
         "province": "北京",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 2
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "上海海洋大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
         "count": 1
       },
       {
         "name": "东北林业大学",
         "level": "211",
         "province": "黑龙江",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东莞理工学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国传媒大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国民用航空飞行学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "九江学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "兰州大学",
+        "level": "985",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古民族大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京工业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北方民族大学",
+        "level": "双非",
+        "province": "宁夏",
+        "count": 1
+      },
+      {
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学(保定)",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京航空航天大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
       },
       {
         "name": "南昌大学",
         "level": "211",
         "province": "江西",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "郑州大学",
+        "name": "南昌理工学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南昌航空大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "合肥大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "合肥工业大学",
         "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨商业大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "塔里木大学",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连民族大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连理工大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津大学",
+        "level": "985",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津工业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学中环信息学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁波大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳师范学院",
+        "level": "双非",
         "province": "河南",
         "count": 1
       },
       {
+        "name": "宿迁学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东大学",
+        "level": "985",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东石油化工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东管理学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东航空学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西农业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西大同大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西师范大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西财经大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "巢湖学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "广州航海学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "扬州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "新疆大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "杭州师范大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江南大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳城市建设学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
         "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工程学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
         "level": "双非",
         "province": "辽宁",
         "count": 1
@@ -30180,108 +34844,490 @@
         "count": 1
       },
       {
-        "name": "中国人民公安大学",
+        "name": "河北大学",
         "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北师范大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工程学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "泰山科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江农林大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南师范大学",
+        "level": "双非",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "清华大学",
+        "level": "985",
         "province": "北京",
         "count": 1
       },
       {
-        "name": "南京工业大学",
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南大学",
+        "level": "985",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南理工学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
         "level": "双非",
         "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "石河子大学",
+        "level": "211",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "福州大学",
+        "level": "211",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "菏泽学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "营口理工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "蚌埠学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西北农林科技大学",
+        "level": "985",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西南科技大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "辽宁大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学城南学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "阜阳师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "陕西理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "陕西科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "鲁东大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黑龙江八一农垦大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "黑龙江大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "东北林业大学",
-        "level": "211",
-        "province": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "南昌大学",
-        "level": "211",
-        "province": "江西",
-        "count": 2
-      },
-      {
         "name": "东北大学",
         "level": "985",
         "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 2
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 2
+      },
+      {
+        "name": "上海海洋大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "中国人民大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
-        "province": "北京",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "辽宁大学",
+        "name": "东北林业大学",
         "level": "211",
-        "province": "辽宁",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "沈阳工业大学",
+        "name": "东北电力大学",
         "level": "双非",
-        "province": "辽宁",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "沈阳航空航天大学",
+        "name": "东北石油大学",
         "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "中国人民公安大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "南京工业大学",
-        "level": "双非",
-        "province": "江苏",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "辽宁",
-        "count": 4
+        "count": 22
       },
       {
-        "name": "黑龙江",
-        "count": 2
-      },
-      {
-        "name": "江西",
-        "count": 2
-      },
-      {
-        "name": "北京",
-        "count": 2
-      },
-      {
-        "name": "河南",
-        "count": 1
+        "name": "山东",
+        "count": 20
       },
       {
         "name": "江苏",
-        "count": 1
+        "count": 16
+      },
+      {
+        "name": "河北",
+        "count": 12
+      },
+      {
+        "name": "山西",
+        "count": 10
+      },
+      {
+        "name": "河南",
+        "count": 10
+      },
+      {
+        "name": "安徽",
+        "count": 10
+      },
+      {
+        "name": "陕西",
+        "count": 8
+      },
+      {
+        "name": "北京",
+        "count": 7
+      },
+      {
+        "name": "湖南",
+        "count": 7
       }
     ],
-    "total_unique": 10,
-    "total_records": 12
+    "total_unique": 159,
+    "total_records": 164
   },
   "(10144)沈阳理工大学": {
     "target_info": {
@@ -30850,9 +35896,177 @@
     },
     "sources": [
       {
-        "name": "南京工业大学",
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学技术工程学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
         "level": "双非",
         "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "吉林化工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "天津职业技术师范大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西大同大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西科技学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西能源学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "延安大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "无锡太湖学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "枣庄学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武昌理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "河北工业职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
@@ -30862,64 +36076,148 @@
         "count": 1
       },
       {
-        "name": "湖南理工学院",
+        "name": "海南热带海洋学院",
         "level": "双非",
-        "province": "湖南",
+        "province": "海南",
         "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
         "level": "双非",
         "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛农业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "南京工业大学",
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学现代科技学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "兰州理工大学技术工程学院",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
         "level": "双非",
         "province": "江苏",
         "count": 1
       },
       {
-        "name": "河南科技学院",
+        "name": "吉林化工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
         "level": "双非",
         "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "湖南理工学院",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "烟台大学",
-        "level": "双非",
-        "province": "山东",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "湖南",
-        "count": 1
+        "name": "山西",
+        "count": 10
       },
       {
         "name": "山东",
-        "count": 1
-      },
-      {
-        "name": "江苏",
-        "count": 1
+        "count": 7
       },
       {
         "name": "河南",
+        "count": 3
+      },
+      {
+        "name": "甘肃",
+        "count": 2
+      },
+      {
+        "name": "河北",
+        "count": 2
+      },
+      {
+        "name": "江苏",
+        "count": 2
+      },
+      {
+        "name": "安徽",
+        "count": 2
+      },
+      {
+        "name": "浙江",
+        "count": 1
+      },
+      {
+        "name": "江西",
+        "count": 1
+      },
+      {
+        "name": "吉林",
         "count": 1
       }
     ],
-    "total_unique": 4,
-    "total_records": 4
+    "total_unique": 36,
+    "total_records": 36
   },
   "(10107)石家庄铁道大学": {
     "target_info": {
@@ -31004,19 +36302,283 @@
     },
     "sources": [
       {
-        "name": "保定学院",
+        "name": "淮南师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "唐山学院",
+        "name": "华北水利水电大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林建筑大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "四川轻化工大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连东软信息学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津中德应用技术大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津工业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工程科技职业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "新疆农业大学",
+        "level": "双非",
+        "province": "新疆",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沧州交通学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "河北建筑工程学院",
+        "name": "河北农业大学现代科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技工程职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北金融学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
         "level": "双非",
         "province": "河北",
         "count": 1
@@ -31028,84 +36590,190 @@
         "count": 1
       },
       {
-        "name": "太原工业学院",
+        "name": "石家庄铁道大学",
         "level": "双非",
-        "province": "山西",
+        "province": "河北",
         "count": 1
       },
       {
-        "name": "太原科技大学",
+        "name": "营口理工学院",
         "level": "双非",
-        "province": "山西",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "西南石油大学",
+        "name": "西安石油大学",
         "level": "双非",
-        "province": "四川",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安航空学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州升达经贸管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青海大学",
+        "level": "211",
+        "province": "青海",
+        "count": 1
+      },
+      {
+        "name": "黑龙江科技大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "保定学院",
+        "name": "淮南师范学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 2
+      },
+      {
+        "name": "东北农业大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
         "level": "双非",
         "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "唐山学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北建筑工程学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "石家庄学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "太原工业学院",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "太原科技大学",
-        "level": "双非",
-        "province": "山西",
-        "count": 1
-      },
-      {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "河北",
+        "count": 14
+      },
+      {
+        "name": "河南",
+        "count": 12
+      },
+      {
+        "name": "山东",
+        "count": 5
+      },
+      {
+        "name": "辽宁",
         "count": 4
       },
       {
-        "name": "山西",
-        "count": 2
+        "name": "安徽",
+        "count": 3
       },
       {
-        "name": "四川",
-        "count": 1
+        "name": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "天津",
+        "count": 3
+      },
+      {
+        "name": "山西",
+        "count": 3
+      },
+      {
+        "name": "陕西",
+        "count": 3
+      },
+      {
+        "name": "江苏",
+        "count": 2
       }
     ],
-    "total_unique": 7,
-    "total_records": 7
+    "total_unique": 61,
+    "total_records": 62
   },
   "(10079)华北电力大学(保定)": {
     "target_info": {
@@ -31420,43 +37088,259 @@
     },
     "sources": [
       {
-        "name": "辽宁大学",
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "佳木斯大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "信阳师范大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "兰州石化职业技术大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北京科技大学",
         "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京晓庄学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林农业大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吉林化工学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "周口师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "唐山学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "唐山师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "商丘师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "四川大学锦江学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "临沂大学",
+        "name": "大连工业大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "辽宁",
+        "count": 1
       },
       {
-        "name": "山东第一医科大学",
+        "name": "大连民族大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "辽宁",
+        "count": 1
       },
       {
-        "name": "德州学院",
+        "name": "大连理工大学城市学院",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "辽宁",
+        "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "天津中德应用技术大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "天津",
+        "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "天津商业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津城建大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津工业大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学中环信息学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安庆师范大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽建筑大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "宝鸡文理学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
         "level": "双非",
         "province": "山东",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "山东华宇工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东石油化工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
       },
       {
         "name": "山东航空学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "平顶山学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "德州学院",
         "level": "双非",
         "province": "山东",
         "count": 1
@@ -31468,73 +37352,55 @@
         "count": 1
       },
       {
-        "name": "济宁医学院",
+        "name": "桂林信息科技学院",
         "level": "双非",
-        "province": "山东",
+        "province": "广西",
         "count": 1
       },
       {
-        "name": "聊城大学",
+        "name": "沈阳大学",
         "level": "双非",
-        "province": "山东",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "菏泽学院",
+        "name": "沈阳理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "辽宁",
         "count": 1
       },
       {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "保定理工学院",
+        "name": "沧州师范学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "北华航天工业学院",
+        "name": "河北农业大学",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "唐山学院",
+        "name": "河北农业大学现代科技学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "廊坊师范学院",
+        "name": "河北北方学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "河北地质大学",
+        "name": "河北工程大学",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "河北师范大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北水利电力学院",
+        "name": "河北工程技术学院",
         "level": "双非",
         "province": "河北",
         "count": 1
@@ -31546,31 +37412,31 @@
         "count": 1
       },
       {
-        "name": "石家庄学院",
+        "name": "河北科技师范学院",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "石家庄铁道大学",
+        "name": "河南城建学院",
         "level": "双非",
-        "province": "河北",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
         "name": "河南工业大学",
         "level": "双非",
         "province": "河南",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "河南科技学院",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "河南大学",
+        "name": "河南工学院",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -31582,7 +37448,139 @@
         "count": 1
       },
       {
-        "name": "河南师范大学",
+        "name": "河南牧业经济学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "济宁学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "海南大学",
+        "level": "211",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "湖北师范大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北科技学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "潍坊科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "石家庄学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学四方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "辽宁工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁工程技术大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "邵阳学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
         "level": "双非",
         "province": "河南",
         "count": 1
@@ -31594,63 +37592,69 @@
         "count": 1
       },
       {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "沈阳工业大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "井冈山大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "桂林电子科技大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "江苏海洋大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "湖北汽车工业学院",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "铜陵学院",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "长春理工大学",
+        "name": "长春科技学院",
         "level": "双非",
         "province": "吉林",
         "count": 1
       },
       {
-        "name": "陕西科技大学",
+        "name": "青岛城市学院",
         "level": "双非",
-        "province": "陕西",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛恒星科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛滨海学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "马鞍山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黄河交通学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黄河科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "黄淮学院",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       },
       {
         "name": "黑龙江科技大学",
         "level": "双非",
         "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
@@ -31659,107 +37663,107 @@
         "name": "临沂大学",
         "level": "双非",
         "province": "山东",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "山东第一医科大学",
+        "name": "佳木斯大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "黑龙江",
+        "count": 1
       },
       {
-        "name": "德州学院",
+        "name": "信阳师范大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "河南",
+        "count": 1
       },
       {
-        "name": "烟台大学",
+        "name": "兰州石化职业技术大学",
         "level": "双非",
-        "province": "山东",
-        "count": 2
+        "province": "甘肃",
+        "count": 1
       },
       {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 2
+        "name": "北京科技大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
       },
       {
         "name": "华北理工大学",
         "level": "双非",
         "province": "河北",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "河南工业大学",
+        "name": "南京工程学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京晓庄学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
         "level": "双非",
         "province": "河南",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "河南科技学院",
+        "name": "吉林农业大学",
         "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "天津工业大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
+        "province": "吉林",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
+        "name": "河南",
+        "count": 19
+      },
+      {
         "name": "山东",
-        "count": 16
+        "count": 18
       },
       {
         "name": "河北",
-        "count": 12
-      },
-      {
-        "name": "河南",
-        "count": 8
+        "count": 13
       },
       {
         "name": "辽宁",
-        "count": 2
+        "count": 10
       },
       {
         "name": "天津",
-        "count": 2
-      },
-      {
-        "name": "江苏",
-        "count": 1
-      },
-      {
-        "name": "广西",
-        "count": 1
+        "count": 6
       },
       {
         "name": "安徽",
-        "count": 1
+        "count": 4
       },
       {
-        "name": "湖北",
-        "count": 1
+        "name": "陕西",
+        "count": 4
       },
       {
         "name": "黑龙江",
-        "count": 1
+        "count": 3
+      },
+      {
+        "name": "吉林",
+        "count": 3
+      },
+      {
+        "name": "山西",
+        "count": 3
       }
     ],
-    "total_unique": 39,
-    "total_records": 48
+    "total_unique": 95,
+    "total_records": 95
   },
   "(10057)天津科技大学": {
     "target_info": {
@@ -32164,57 +38168,9 @@
     },
     "sources": [
       {
-        "name": "南开大学",
+        "name": "中南大学",
         "level": "985",
-        "province": "天津",
-        "count": 4
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "江南大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "北京交通大学",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "北京邮电大学",
-        "level": "211",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
+        "province": "湖南",
         "count": 1
       },
       {
@@ -32224,27 +38180,33 @@
         "count": 1
       },
       {
-        "name": "天津职业技术师范大学",
+        "name": "北京交通大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "南开大学",
+        "level": "985",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
         "level": "双非",
         "province": "天津",
         "count": 1
       },
       {
-        "name": "南京工业大学",
+        "name": "天津科技大学",
         "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "南京林业大学",
-        "level": "双非",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "安徽师范大学",
-        "level": "双非",
-        "province": "安徽",
+        "province": "天津",
         "count": 1
       },
       {
@@ -32254,33 +38216,51 @@
         "count": 1
       },
       {
-        "name": "河北农业大学",
+        "name": "山东科技大学",
         "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "山东理工大学",
+        "name": "河南科技大学",
         "level": "双非",
-        "province": "山东",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "青岛大学",
+        "name": "洛阳理工学院",
         "level": "双非",
-        "province": "山东",
+        "province": "河南",
         "count": 1
       },
       {
-        "name": "上海理工大学",
+        "name": "深圳大学",
         "level": "双非",
-        "province": "上海",
+        "province": "广东",
         "count": 1
       },
       {
-        "name": "兰州交通大学",
+        "name": "深圳技术大学",
         "level": "双非",
-        "province": "甘肃",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "盐城工学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "福建理工大学",
+        "level": "双非",
+        "province": "福建",
         "count": 1
       },
       {
@@ -32290,41 +38270,29 @@
         "count": 1
       },
       {
-        "name": "西南石油大学",
-        "level": "双非",
-        "province": "四川",
+        "name": "重庆大学",
+        "level": "985",
+        "province": "重庆",
         "count": 1
       },
       {
-        "name": "长江大学",
+        "name": "长沙理工大学",
         "level": "双非",
-        "province": "湖北",
+        "province": "湖南",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "南开大学",
+        "name": "中南大学",
         "level": "985",
-        "province": "天津",
-        "count": 4
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 2
-      },
-      {
-        "name": "合肥工业大学",
-        "level": "211",
-        "province": "安徽",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "江南大学",
-        "level": "211",
-        "province": "江苏",
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
         "count": 1
       },
       {
@@ -32334,80 +38302,92 @@
         "count": 1
       },
       {
-        "name": "北京邮电大学",
-        "level": "211",
-        "province": "北京",
+        "name": "南开大学",
+        "level": "985",
+        "province": "天津",
         "count": 1
       },
       {
-        "name": "西安电子科技大学",
-        "level": "211",
-        "province": "陕西",
+        "name": "吉林大学",
+        "level": "985",
+        "province": "吉林",
         "count": 1
       },
       {
-        "name": "长安大学",
-        "level": "211",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "辽宁大学",
-        "level": "211",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "中国民航大学",
+        "name": "天津理工大学",
         "level": "双非",
         "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
         "name": "天津",
-        "count": 6
+        "count": 4
       },
       {
-        "name": "江苏",
-        "count": 3
+        "name": "湖南",
+        "count": 2
       },
       {
-        "name": "河北",
-        "count": 3
+        "name": "河南",
+        "count": 2
       },
       {
-        "name": "安徽",
-        "count": 3
+        "name": "广东",
+        "count": 2
+      },
+      {
+        "name": "重庆",
+        "count": 2
       },
       {
         "name": "北京",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "陕西",
-        "count": 2
+        "name": "吉林",
+        "count": 1
+      },
+      {
+        "name": "安徽",
+        "count": 1
       },
       {
         "name": "山东",
-        "count": 2
-      },
-      {
-        "name": "四川",
         "count": 1
       },
       {
-        "name": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "湖北",
+        "name": "河北",
         "count": 1
       }
     ],
-    "total_unique": 23,
-    "total_records": 27
+    "total_unique": 19,
+    "total_records": 19
   },
   "(10054)华北电力大学": {
     "target_info": {
@@ -32416,45 +38396,93 @@
     },
     "sources": [
       {
-        "name": "中国石油大学（华东）",
-        "level": "211",
-        "province": "山东",
-        "count": 1
-      },
-      {
         "name": "华北电力大学",
         "level": "211",
         "province": "河北",
         "count": 2
       },
       {
-        "name": "内蒙古大学",
-        "level": "211",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "烟台大学",
+        "name": "哈尔滨理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "黑龙江",
         "count": 2
       },
       {
-        "name": "山东理工大学",
+        "name": "河南大学",
         "level": "双非",
-        "province": "山东",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 2
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 2
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "德州学院",
+        "name": "东北石油大学",
         "level": "双非",
-        "province": "山东",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "东华理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学（北京）",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "兰州交通大学",
+        "level": "双非",
+        "province": "甘肃",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       },
       {
@@ -32464,39 +38492,129 @@
         "count": 1
       },
       {
-        "name": "河北师范大学",
+        "name": "华北电力大学(保定)",
         "level": "双非",
         "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学紫金学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "四川师范大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
         "count": 1
       },
       {
         "name": "天津理工大学",
         "level": "双非",
         "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "东南大学成贤学院",
-        "level": "双非",
-        "province": "江苏",
         "count": 1
       },
       {
-        "name": "四川轻化工大学",
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安阳工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "山东工商学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西工程科技职业大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "攀枝花学院",
         "level": "双非",
         "province": "四川",
         "count": 1
       },
       {
-        "name": "安康学院",
+        "name": "桂林电子科技大学",
         "level": "双非",
-        "province": "陕西",
+        "province": "广西",
         "count": 1
       },
       {
-        "name": "常州大学",
+        "name": "江西水利电力大学",
         "level": "双非",
-        "province": "江苏",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河北农业大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
@@ -32512,9 +38630,57 @@
         "count": 1
       },
       {
-        "name": "西南科技大学",
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学之江学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖北工程学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "西南石油大学",
         "level": "双非",
         "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
         "count": 1
       },
       {
@@ -32524,33 +38690,39 @@
         "count": 1
       },
       {
-        "name": "南华大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "安徽农业大学",
-        "level": "双非",
-        "province": "安徽",
-        "count": 1
-      },
-      {
-        "name": "江西师范大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "沈阳工程学院",
+        "name": "辽宁工程技术大学",
         "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "湖北工业大学",
+        "name": "重庆移通学院",
         "level": "双非",
-        "province": "湖北",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长春理工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
@@ -32562,104 +38734,104 @@
         "count": 2
       },
       {
-        "name": "烟台大学",
+        "name": "哈尔滨理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "黑龙江",
         "count": 2
       },
       {
-        "name": "天津理工大学",
+        "name": "河南大学",
         "level": "双非",
-        "province": "天津",
+        "province": "河南",
         "count": 2
       },
       {
-        "name": "中国石油大学（华东）",
-        "level": "211",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "内蒙古大学",
-        "level": "211",
-        "province": "内蒙古",
-        "count": 1
-      },
-      {
-        "name": "山东理工大学",
+        "name": "西安建筑科技大学",
         "level": "双非",
-        "province": "山东",
+        "province": "陕西",
+        "count": 2
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 2
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
         "count": 1
       },
       {
-        "name": "德州学院",
+        "name": "东北石油大学",
         "level": "双非",
-        "province": "山东",
+        "province": "黑龙江",
         "count": 1
       },
       {
-        "name": "齐鲁工业大学",
+        "name": "东华理工大学",
         "level": "双非",
-        "province": "山东",
+        "province": "江西",
         "count": 1
       },
       {
-        "name": "华北理工大学",
+        "name": "中北大学",
         "level": "双非",
-        "province": "河北",
+        "province": "山西",
         "count": 1
       },
       {
-        "name": "河北师范大学",
+        "name": "中南林业科技大学",
         "level": "双非",
-        "province": "河北",
+        "province": "湖南",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "山东",
-        "count": 6
-      },
-      {
         "name": "河北",
-        "count": 4
+        "count": 7
       },
       {
-        "name": "天津",
-        "count": 2
-      },
-      {
-        "name": "四川",
-        "count": 2
+        "name": "山东",
+        "count": 7
       },
       {
         "name": "河南",
-        "count": 2
+        "count": 5
       },
       {
         "name": "陕西",
-        "count": 2
-      },
-      {
-        "name": "江苏",
-        "count": 2
-      },
-      {
-        "name": "湖南",
-        "count": 1
+        "count": 5
       },
       {
         "name": "江西",
-        "count": 1
+        "count": 4
       },
       {
-        "name": "安徽",
-        "count": 1
+        "name": "山西",
+        "count": 4
+      },
+      {
+        "name": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "重庆",
+        "count": 3
+      },
+      {
+        "name": "四川",
+        "count": 3
+      },
+      {
+        "name": "湖南",
+        "count": 2
       }
     ],
-    "total_unique": 23,
-    "total_records": 26
+    "total_unique": 55,
+    "total_records": 60
   },
   "(10052)中央民族大学": {
     "target_info": {
@@ -33304,117 +39476,195 @@
     },
     "sources": [
       {
-        "name": "东北大学",
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海海事大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京林业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京邮电大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨职业技术大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "四川轻化工大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "复旦大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海事大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连理工大学",
         "level": "985",
         "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉理工大学",
+        "level": "211",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "武汉轻工大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "河北农业大学",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
         "name": "河北工业大学",
         "level": "211",
         "province": "河北",
-        "count": 4
-      },
-      {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
         "count": 1
       },
       {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "北京邮电大学",
-        "level": "211",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "河北科技大学",
+        "name": "河南牧业经济学院",
         "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "燕山大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "北方工业大学",
-        "level": "双非",
-        "province": "北京",
-        "count": 1
-      },
-      {
-        "name": "大连交通大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳理工大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "山东农业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "山东理工大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "西安理工大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "西安邮电大学",
-        "level": "双非",
-        "province": "陕西",
-        "count": 1
-      },
-      {
-        "name": "南昌航空大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "天津科技大学",
-        "level": "双非",
-        "province": "天津",
-        "count": 1
-      },
-      {
-        "name": "武昌理工学院",
-        "level": "双非",
-        "province": "湖北",
+        "province": "河南",
         "count": 1
       },
       {
@@ -33424,118 +39674,220 @@
         "count": 1
       },
       {
-        "name": "长沙理工大学",
+        "name": "济南大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "湖南人文科技学院",
         "level": "双非",
         "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南文理学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "西南交通大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安工程大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "辽宁大学",
+        "level": "211",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长沙学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄河科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
     "top10_schools": [
       {
-        "name": "河北工业大学",
+        "name": "上海大学",
         "level": "211",
-        "province": "河北",
-        "count": 4
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "南京理工大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 2
-      },
-      {
-        "name": "北京邮电大学",
-        "level": "211",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "杭州电子科技大学",
+        "name": "上海海事大学",
         "level": "双非",
-        "province": "浙江",
-        "count": 2
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "东北大学",
+        "name": "东北大学秦皇岛分校",
         "level": "985",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "苏州大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "河北科技大学",
-        "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "燕山大学",
+        "name": "中南林业科技大学",
         "level": "双非",
-        "province": "河北",
+        "province": "湖南",
         "count": 1
       },
       {
-        "name": "北方工业大学",
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京信息科技大学",
         "level": "双非",
         "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京化工大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京林业大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "河北",
+        "name": "河南",
         "count": 6
       },
       {
-        "name": "江苏",
-        "count": 4
+        "name": "湖南",
+        "count": 5
+      },
+      {
+        "name": "湖北",
+        "count": 5
       },
       {
         "name": "辽宁",
-        "count": 3
-      },
-      {
-        "name": "北京",
-        "count": 3
-      },
-      {
-        "name": "浙江",
-        "count": 2
-      },
-      {
-        "name": "陕西",
-        "count": 2
+        "count": 5
       },
       {
         "name": "山东",
-        "count": 2
+        "count": 5
       },
       {
-        "name": "湖南",
-        "count": 1
+        "name": "河北",
+        "count": 4
+      },
+      {
+        "name": "北京",
+        "count": 4
+      },
+      {
+        "name": "上海",
+        "count": 3
       },
       {
         "name": "江西",
-        "count": 1
+        "count": 2
       },
       {
-        "name": "河南",
-        "count": 1
+        "name": "四川",
+        "count": 2
       }
     ],
-    "total_unique": 21,
-    "total_records": 27
+    "total_unique": 51,
+    "total_records": 51
   },
   "(10010)北京化工大学": {
     "target_info": {
@@ -34286,22 +40638,76 @@
     },
     "sources": [
       {
-        "name": "河北工业大学",
-        "level": "211",
+        "name": "华北科技学院",
+        "level": "双非",
         "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
         "count": 1
       },
       {
-        "name": "北京工业大学",
-        "level": "211",
-        "province": "北京",
-        "count": 2
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
       },
       {
-        "name": "太原理工大学",
-        "level": "211",
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
         "province": "山西",
-        "count": 2
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "中国地质大学(北京)",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国民航大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
       },
       {
         "name": "中国矿业大学",
@@ -34310,69 +40716,27 @@
         "count": 1
       },
       {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
+        "name": "中国矿业大学徐海学院",
+        "level": "双非",
+        "province": "江苏",
         "count": 1
       },
       {
-        "name": "山东农业大学",
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "潍坊学院",
+        "name": "内蒙古农业大学",
         "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "聊城大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "鲁东大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "齐鲁工业大学",
-        "level": "双非",
-        "province": "山东",
-        "count": 1
-      },
-      {
-        "name": "河北建筑工程学院",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河北科技工程职业技术大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "河南理工大学",
-        "level": "双非",
-        "province": "河南",
-        "count": 2
-      },
-      {
-        "name": "东华理工大学",
-        "level": "双非",
-        "province": "江西",
+        "province": "内蒙古",
         "count": 1
       },
       {
@@ -34382,43 +40746,133 @@
         "count": 1
       },
       {
-        "name": "山西大学",
-        "level": "双非",
-        "province": "山西",
+        "name": "北京工业大学",
+        "level": "211",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "景德镇陶瓷大学",
+        "name": "北京石油化工学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北方工业大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
         "level": "双非",
         "province": "江西",
         "count": 1
       },
       {
-        "name": "江西理工大学",
-        "level": "双非",
-        "province": "江西",
-        "count": 1
-      },
-      {
-        "name": "黄淮学院",
+        "name": "华北水利水电大学",
         "level": "双非",
         "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "华北理工大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京工业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京师范大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南阳师范学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "南阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "吉林农业大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "吉林化工大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "四川轻化工大学",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
         "count": 1
       },
       {
         "name": "天津工业大学",
         "level": "双非",
         "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "南京信息工程大学",
-        "level": "双非",
-        "province": "江苏",
         "count": 1
       },
       {
-        "name": "安徽工业大学",
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津科技大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "宁夏理工学院",
+        "level": "双非",
+        "province": "宁夏",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
         "level": "双非",
         "province": "安徽",
         "count": 1
@@ -34430,89 +40884,21 @@
         "count": 1
       },
       {
-        "name": "湖南工业大学",
+        "name": "安徽建筑大学",
         "level": "双非",
-        "province": "湖南",
+        "province": "安徽",
         "count": 1
       },
       {
-        "name": "湖南工商大学",
-        "level": "双非",
-        "province": "湖南",
-        "count": 1
-      },
-      {
-        "name": "南宁师范大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "四川师范大学",
-        "level": "双非",
-        "province": "四川",
-        "count": 1
-      },
-      {
-        "name": "武汉工程大学",
-        "level": "双非",
-        "province": "湖北",
-        "count": 1
-      },
-      {
-        "name": "长春工程学院",
-        "level": "双非",
-        "province": "吉林",
-        "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "北京工业大学",
-        "level": "211",
-        "province": "北京",
-        "count": 2
-      },
-      {
-        "name": "太原理工大学",
-        "level": "211",
-        "province": "山西",
-        "count": 2
-      },
-      {
-        "name": "河南理工大学",
+        "name": "安阳师范学院",
         "level": "双非",
         "province": "河南",
-        "count": 2
+        "count": 1
       },
       {
-        "name": "天津工业大学",
+        "name": "山东交通学院",
         "level": "双非",
-        "province": "天津",
-        "count": 2
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "中国矿业大学",
-        "level": "211",
-        "province": "江苏",
-        "count": 1
-      },
-      {
-        "name": "大连海事大学",
-        "level": "211",
-        "province": "辽宁",
+        "province": "山东",
         "count": 1
       },
       {
@@ -34522,139 +40908,15 @@
         "count": 1
       },
       {
-        "name": "潍坊学院",
+        "name": "山东华宇工学院",
         "level": "双非",
         "province": "山东",
         "count": 1
       },
       {
-        "name": "聊城大学",
+        "name": "山东理工大学",
         "level": "双非",
         "province": "山东",
-        "count": 1
-      }
-    ],
-    "top10_provinces": [
-      {
-        "name": "山东",
-        "count": 5
-      },
-      {
-        "name": "河北",
-        "count": 4
-      },
-      {
-        "name": "山西",
-        "count": 3
-      },
-      {
-        "name": "河南",
-        "count": 3
-      },
-      {
-        "name": "北京",
-        "count": 3
-      },
-      {
-        "name": "江西",
-        "count": 3
-      },
-      {
-        "name": "安徽",
-        "count": 2
-      },
-      {
-        "name": "天津",
-        "count": 2
-      },
-      {
-        "name": "湖南",
-        "count": 2
-      },
-      {
-        "name": "江苏",
-        "count": 2
-      }
-    ],
-    "total_unique": 31,
-    "total_records": 35
-  },
-  "(10004)北京交通大学": {
-    "target_info": {
-      "level": "211",
-      "province": "北京"
-    },
-    "sources": [
-      {
-        "name": "兰州大学",
-        "level": "985",
-        "province": "甘肃",
-        "count": 1
-      },
-      {
-        "name": "河北工业大学",
-        "level": "211",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "云南大学",
-        "level": "211",
-        "province": "云南",
-        "count": 1
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
-        "level": "双非",
-        "province": "河北",
-        "count": 1
-      },
-      {
-        "name": "大连民族大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "沈阳理工大学",
-        "level": "双非",
-        "province": "辽宁",
-        "count": 1
-      },
-      {
-        "name": "北部湾大学",
-        "level": "双非",
-        "province": "广西",
-        "count": 1
-      },
-      {
-        "name": "哈尔滨理工大学",
-        "level": "双非",
-        "province": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "天津理工大学",
-        "level": "双非",
-        "province": "天津",
         "count": 1
       },
       {
@@ -34664,23 +40926,123 @@
         "count": 1
       },
       {
-        "name": "长春理工大学",
+        "name": "山西大同大学",
         "level": "双非",
-        "province": "吉林",
+        "province": "山西",
         "count": 1
-      }
-    ],
-    "top10_schools": [
-      {
-        "name": "杭州电子科技大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 2
       },
       {
-        "name": "兰州大学",
-        "level": "985",
-        "province": "甘肃",
+        "name": "山西大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "山西工程技术学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "常州大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "广州新华学院",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "广西师范大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "成都工业学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "无锡学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "昆明理工大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "曲阜师范大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "武汉工程大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳建筑大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳航空航天大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北农业大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北大学",
+        "level": "双非",
+        "province": "河北",
         "count": 1
       },
       {
@@ -34690,92 +41052,646 @@
         "count": 1
       },
       {
-        "name": "云南大学",
-        "level": "211",
-        "province": "云南",
-        "count": 1
-      },
-      {
-        "name": "郑州大学",
-        "level": "211",
-        "province": "河南",
-        "count": 1
-      },
-      {
-        "name": "浙江工商大学",
-        "level": "双非",
-        "province": "浙江",
-        "count": 1
-      },
-      {
-        "name": "华北理工大学",
+        "name": "河北工业职业技术大学",
         "level": "双非",
         "province": "河北",
         "count": 1
       },
       {
-        "name": "大连民族大学",
+        "name": "河北师范大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北建筑工程学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "海南师范大学",
+        "level": "双非",
+        "province": "海南",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "渤海大学",
         "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "沈阳理工大学",
+        "name": "湖南工业大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湖南科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "湘潭大学兴湘学院",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "烟台大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台理工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "石家庄学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "福州大学至诚学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "莆田学院",
+        "level": "双非",
+        "province": "福建",
+        "count": 1
+      },
+      {
+        "name": "营口理工学院",
         "level": "双非",
         "province": "辽宁",
         "count": 1
       },
       {
-        "name": "北部湾大学",
+        "name": "西南科技大学",
         "level": "双非",
-        "province": "广西",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "许昌学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "辽宁石油化工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆邮电大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长安大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄河科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "齐齐哈尔大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "三峡大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "上海电力大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北电力大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "东华理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中南林业科技大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      },
+      {
+        "name": "中原工学院",
+        "level": "双非",
+        "province": "河南",
         "count": 1
       }
     ],
     "top10_provinces": [
       {
-        "name": "浙江",
-        "count": 3
+        "name": "河南",
+        "count": 16
       },
       {
         "name": "河北",
-        "count": 2
-      },
-      {
-        "name": "辽宁",
-        "count": 2
-      },
-      {
-        "name": "天津",
-        "count": 1
-      },
-      {
-        "name": "云南",
-        "count": 1
-      },
-      {
-        "name": "黑龙江",
-        "count": 1
-      },
-      {
-        "name": "甘肃",
-        "count": 1
+        "count": 15
       },
       {
         "name": "山东",
+        "count": 12
+      },
+      {
+        "name": "辽宁",
+        "count": 9
+      },
+      {
+        "name": "江苏",
+        "count": 8
+      },
+      {
+        "name": "山西",
+        "count": 7
+      },
+      {
+        "name": "湖南",
+        "count": 6
+      },
+      {
+        "name": "北京",
+        "count": 5
+      },
+      {
+        "name": "天津",
+        "count": 5
+      },
+      {
+        "name": "陕西",
+        "count": 4
+      }
+    ],
+    "total_unique": 113,
+    "total_records": 115
+  },
+  "(10004)北京交通大学": {
+    "target_info": {
+      "level": "211",
+      "province": "北京"
+    },
+    "sources": [
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "河南",
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
         "count": 1
       },
       {
-        "name": "吉林",
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华南农业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "宜春学院",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "山东交通学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "昆明理工大学",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "桂林电子科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "江苏科技大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "西安工业大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安理工大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "青岛理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛科技大学",
+        "level": "双非",
+        "province": "山东",
         "count": 1
       }
     ],
-    "total_unique": 14,
-    "total_records": 15
+    "top10_schools": [
+      {
+        "name": "北京信息科技大学",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "北京印刷学院",
+        "level": "双非",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华南农业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "南京农业大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京林业大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "大连交通大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "太原理工大学",
+        "level": "211",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "太原科技大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽工程大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "陕西",
+        "count": 4
+      },
+      {
+        "name": "江苏",
+        "count": 3
+      },
+      {
+        "name": "安徽",
+        "count": 3
+      },
+      {
+        "name": "山东",
+        "count": 3
+      },
+      {
+        "name": "北京",
+        "count": 2
+      },
+      {
+        "name": "江西",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 2
+      },
+      {
+        "name": "河南",
+        "count": 2
+      },
+      {
+        "name": "广东",
+        "count": 1
+      },
+      {
+        "name": "辽宁",
+        "count": 1
+      }
+    ],
+    "total_unique": 26,
+    "total_records": 26
   },
   "(10001)北京大学": {
     "target_info": {
@@ -34806,5 +41722,1241 @@
     ],
     "total_unique": 1,
     "total_records": 1
+  },
+  "(10126)内蒙古大学": {
+    "target_info": {
+      "level": "211",
+      "province": "内蒙古"
+    },
+    "sources": [
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中原科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古民族大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "大连海洋大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "天津中德应用技术大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津理工大学",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "山东华宇工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山东石油化工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "山西大同大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "广西民族大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "晋中学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "江西理工大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "沈阳工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳理工大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河北工业大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "滁州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "营口理工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州经贸学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆理工大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "金陵科技学院",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "长春大学",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "齐鲁工业大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "中原科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "内蒙古大学",
+        "level": "211",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古工业大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古民族大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "华北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "大连大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "辽宁",
+        "count": 5
+      },
+      {
+        "name": "山东",
+        "count": 4
+      },
+      {
+        "name": "内蒙古",
+        "count": 4
+      },
+      {
+        "name": "山西",
+        "count": 3
+      },
+      {
+        "name": "河南",
+        "count": 3
+      },
+      {
+        "name": "河北",
+        "count": 3
+      },
+      {
+        "name": "天津",
+        "count": 2
+      },
+      {
+        "name": "广西",
+        "count": 1
+      },
+      {
+        "name": "江西",
+        "count": 1
+      },
+      {
+        "name": "安徽",
+        "count": 1
+      }
+    ],
+    "total_unique": 30,
+    "total_records": 30
+  },
+  "(10247)同济大学": {
+    "target_info": {
+      "level": "985",
+      "province": "上海"
+    },
+    "sources": [
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 2
+      },
+      {
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "中国石油大学（北京）",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国矿业大学(北京)",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "中国计量大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "北京交通大学",
+        "level": "211",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 1
+      },
+      {
+        "name": "华东理工大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "华北电力大学",
+        "level": "211",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "南京信息工程大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京师范大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南京理工大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "南通大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "同济大学",
+        "level": "985",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工业大学",
+        "level": "985",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨工程大学",
+        "level": "211",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "大连理工大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "威海职业学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "安徽大学",
+        "level": "211",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽理工大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东科技大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "广东工业大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "杭州电子科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "武汉科技大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "江苏大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "江苏海洋大学",
+        "level": "双非",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "沈阳大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "沈阳工学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "河南财经政法大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河海大学",
+        "level": "211",
+        "province": "江苏",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江工业大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "深圳大学",
+        "level": "双非",
+        "province": "广东",
+        "count": 1
+      },
+      {
+        "name": "清华大学",
+        "level": "985",
+        "province": "北京",
+        "count": 1
+      },
+      {
+        "name": "湖北工业大学",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "荆楚理工学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "西京学院",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西北大学",
+        "level": "211",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西南大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "西南财经大学",
+        "level": "211",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "西安建筑科技大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "郑州大学",
+        "level": "211",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州航空工业管理学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "重庆交通大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 1
+      },
+      {
+        "name": "长沙理工大学",
+        "level": "双非",
+        "province": "湖南",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "中国地质大学(武汉)",
+        "level": "双非",
+        "province": "湖北",
+        "count": 2
+      },
+      {
+        "name": "中国石油大学(华东)",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "浙江理工大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 2
+      },
+      {
+        "name": "上海大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海师范大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海应用技术大学",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "上海电机学院",
+        "level": "双非",
+        "province": "上海",
+        "count": 1
+      },
+      {
+        "name": "东北大学",
+        "level": "985",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "东北大学秦皇岛分校",
+        "level": "985",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "东华大学",
+        "level": "211",
+        "province": "上海",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "上海",
+        "count": 7
+      },
+      {
+        "name": "江苏",
+        "count": 7
+      },
+      {
+        "name": "湖北",
+        "count": 5
+      },
+      {
+        "name": "山东",
+        "count": 5
+      },
+      {
+        "name": "浙江",
+        "count": 5
+      },
+      {
+        "name": "河南",
+        "count": 5
+      },
+      {
+        "name": "辽宁",
+        "count": 4
+      },
+      {
+        "name": "北京",
+        "count": 4
+      },
+      {
+        "name": "河北",
+        "count": 3
+      },
+      {
+        "name": "陕西",
+        "count": 3
+      }
+    ],
+    "total_unique": 56,
+    "total_records": 59
+  },
+  "(10216)燕山大学": {
+    "target_info": {
+      "level": "双非",
+      "province": "河北"
+    },
+    "sources": [
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 3
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 2
+      },
+      {
+        "name": "唐山学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "河北北方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "重庆科技大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 2
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "中北大学",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "临沂大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "内蒙古科技大学",
+        "level": "双非",
+        "province": "内蒙古",
+        "count": 1
+      },
+      {
+        "name": "北华航天工业学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "哈尔滨理工大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      },
+      {
+        "name": "唐山师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "天津仁爱学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "天津农学院",
+        "level": "双非",
+        "province": "天津",
+        "count": 1
+      },
+      {
+        "name": "太原工业学院",
+        "level": "双非",
+        "province": "山西",
+        "count": 1
+      },
+      {
+        "name": "安徽信息工程学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "安徽农业大学",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "山东英才学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "平顶山学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "广西科技大学",
+        "level": "双非",
+        "province": "广西",
+        "count": 1
+      },
+      {
+        "name": "成都锦城学院",
+        "level": "双非",
+        "province": "四川",
+        "count": 1
+      },
+      {
+        "name": "武汉东湖学院",
+        "level": "双非",
+        "province": "湖北",
+        "count": 1
+      },
+      {
+        "name": "池州学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "沧州交通学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工业职业技术大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北工程技术学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北建筑工程学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北水利电力学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技大学理工学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河北科技师范学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "河南工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "河南科技大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "泰山学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "洛阳理工学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "浙江科技大学",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "渤海大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "潍坊学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "潍坊理工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "潍坊科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "烟台理工学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "燕山大学里仁学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "玉溪师范学院",
+        "level": "双非",
+        "province": "云南",
+        "count": 1
+      },
+      {
+        "name": "石家庄铁道大学四方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "衢州学院",
+        "level": "双非",
+        "province": "浙江",
+        "count": 1
+      },
+      {
+        "name": "西安石油大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "西安邮电大学",
+        "level": "双非",
+        "province": "陕西",
+        "count": 1
+      },
+      {
+        "name": "许昌学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "贵州大学",
+        "level": "211",
+        "province": "贵州",
+        "count": 1
+      },
+      {
+        "name": "辽宁工业大学",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "辽宁科技学院",
+        "level": "双非",
+        "province": "辽宁",
+        "count": 1
+      },
+      {
+        "name": "郑州科技学院",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "郑州轻工业大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 1
+      },
+      {
+        "name": "长春建筑学院",
+        "level": "双非",
+        "province": "吉林",
+        "count": 1
+      },
+      {
+        "name": "防灾科技学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 1
+      },
+      {
+        "name": "青岛大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "青岛恒星科技学院",
+        "level": "双非",
+        "province": "山东",
+        "count": 1
+      },
+      {
+        "name": "黄山学院",
+        "level": "双非",
+        "province": "安徽",
+        "count": 1
+      },
+      {
+        "name": "黑龙江工程学院",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_schools": [
+      {
+        "name": "燕山大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 3
+      },
+      {
+        "name": "华东交通大学",
+        "level": "双非",
+        "province": "江西",
+        "count": 2
+      },
+      {
+        "name": "唐山学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "山东理工大学",
+        "level": "双非",
+        "province": "山东",
+        "count": 2
+      },
+      {
+        "name": "河北北方学院",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北工程大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河北科技大学",
+        "level": "双非",
+        "province": "河北",
+        "count": 2
+      },
+      {
+        "name": "河南理工大学",
+        "level": "双非",
+        "province": "河南",
+        "count": 2
+      },
+      {
+        "name": "重庆科技大学",
+        "level": "双非",
+        "province": "重庆",
+        "count": 2
+      },
+      {
+        "name": "东北石油大学",
+        "level": "双非",
+        "province": "黑龙江",
+        "count": 1
+      }
+    ],
+    "top10_provinces": [
+      {
+        "name": "河北",
+        "count": 24
+      },
+      {
+        "name": "山东",
+        "count": 11
+      },
+      {
+        "name": "河南",
+        "count": 9
+      },
+      {
+        "name": "安徽",
+        "count": 4
+      },
+      {
+        "name": "黑龙江",
+        "count": 3
+      },
+      {
+        "name": "辽宁",
+        "count": 3
+      },
+      {
+        "name": "江西",
+        "count": 2
+      },
+      {
+        "name": "重庆",
+        "count": 2
+      },
+      {
+        "name": "山西",
+        "count": 2
+      },
+      {
+        "name": "天津",
+        "count": 2
+      }
+    ],
+    "total_unique": 63,
+    "total_records": 73
   }
 };

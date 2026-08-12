@@ -406,21 +406,21 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
     <span class="brand-text">导航</span>
     <span class="collapse-hint">点击折叠</span>
   </div>
-  <a href="#sec-city" class="nav-item" data-target="sec-city">
+  <a href="#sec-dir" class="nav-item" data-target="sec-dir">
     <span class="nav-num">01</span>
-    <span class="nav-label">城市行业特色</span>
+    <span class="nav-label">方向薪资</span>
   </a>
-  <a href="#sec-salary" class="nav-item" data-target="sec-salary">
+  <a href="#sec-private" class="nav-item" data-target="sec-private">
     <span class="nav-num">02</span>
-    <span class="nav-label">技术栈薪资</span>
+    <span class="nav-label">私企薪酬</span>
   </a>
-  <a href="#sec-detail" class="nav-item" data-target="sec-detail">
+  <a href="#sec-soe" class="nav-item" data-target="sec-soe">
     <span class="nav-num">03</span>
-    <span class="nav-label">招聘要求</span>
+    <span class="nav-label">国央企薪酬</span>
   </a>
-  <a href="#sec-industry" class="nav-item" data-target="sec-industry">
+  <a href="#sec-institute" class="nav-item" data-target="sec-institute">
     <span class="nav-num">04</span>
-    <span class="nav-label">行业交叉</span>
+    <span class="nav-label">研究所分布</span>
   </a>
   <a href="#top" class="nav-item top-link" data-target="top">
     <span class="nav-num">↑</span>
@@ -432,105 +432,157 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换导航">☰</button>
 
 <header class="hero" id="top">
-  <h1 style="font-size:2.8rem;font-weight:900;color:var(--accent);text-shadow:0 2px 8px rgba(230,57,70,0.15);">2026届应届毕业生校招就业市场职业分析报告</h1>
+  <h1 style="font-size:2.4rem;font-weight:900;color:var(--accent);text-shadow:0 2px 8px rgba(230,57,70,0.15);">控制类硕士就业市场数据总览报告</h1>
+  <p style="position:relative;z-index:1;margin-top:0.8rem;color:var(--muted);font-size:0.95rem;">基于《25就业宝典》与《26择校宝典》整理 · 方向薪资 / 私企薪酬 / 国央企 / 研究所四大维度</p>
 </header>
 
 <div class="container">
 
-  <!-- ======== 第一章：各城市行业特色与薪资 ======== -->
-  <div class="section" id="sec-city">
-    <h2 class="section-title">一、各城市行业特色与薪资一览</h2>
-    <p class="section-desc">不同城市因产业布局差异，提供的岗位类型和技术方向截然不同。薪资水平也随城市能级显著变化——一线城市比二线城市普遍高 10%~20%。以下逐一展示 TOP10 城市的产业特色、代表企业、技术栈分布和各方向参考薪资。</p>
+  <!-- ======== 第一章：就业方向与薪资全景 ======== -->
+  <div class="section" id="sec-dir">
+    <h2 class="section-title">一、就业方向与薪资全景</h2>
+    <p class="section-desc">控制硕士就业方向主要分为软件（算法/软开）、硬件（嵌入式/无人机/机器人）、智能驾驶与医工融合四大赛道。算法天花板最高（40万+），嵌入式/无人机是控制对口度最强的方向，医工融合薪资稳定（18-30万）。数据来源：26宝典「控制硕士就业方向」。</p>
 
     <figure class="chart-figure">
-      <figcaption>TOP15 城市岗位数量</figcaption>
-      <div id="chart-city-bar" style="width:100%;min-height:400px"></div>
+      <figcaption>控制硕士主要就业方向年薪区间（万/年）</figcaption>
+      <div id="chart-dir-salary" style="width:100%;min-height:420px"></div>
     </figure>
 
     <figure class="chart-figure">
-      <figcaption>各城市技术岗平均月薪参考（万元/月）</figcaption>
-      <div id="chart-city-salary" style="width:100%;min-height:420px"></div>
+      <figcaption>头部企业高薪岗位月薪对比（K/月）</figcaption>
+      <div id="chart-dir-company" style="width:100%;min-height:420px"></div>
     </figure>
 
-    <div id="city-feature-container"></div>
-  </div>
-
-  <!-- ======== 第二章：技术栈薪资对比 ======== -->
-  <div class="section" id="sec-salary">
-    <h2 class="section-title">二、技术栈需求与薪资对比</h2>
-    <p class="section-desc">算法/AI 以 2,083 个岗位遥遥领先，芯片/IC设计虽然岗位量排名第九，但薪资竞争力极强。以下展示各技术栈的岗位量、薪资范围和主要分布城市。</p>
-
-    <figure class="chart-figure">
-      <figcaption>技术栈岗位需求排行</figcaption>
-      <div id="chart-stack-rank" style="width:100%;min-height:440px"></div>
-    </figure>
-
-    <figure class="chart-figure">
-      <figcaption>各技术栈校招年薪范围对比</figcaption>
-      <div id="chart-stack-salary-bar" style="width:100%;min-height:420px"></div>
-    </figure>
-
-    <figure class="chart-figure">
-      <figcaption>各技术栈地域分布热力图</figcaption>
-      <div id="chart-stack-heatmap" style="width:100%;min-height:520px"></div>
-    </figure>
-
-    <!-- 薪资详情表 -->
     <div class="card">
-      <h3>各技术栈校招薪资详情</h3>
+      <h3>各方向薪资速览</h3>
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>技术栈</th><th>岗位数</th><th>校招年薪范围</th><th>月薪参考</th><th>主要城市</th><th>核心技能要求</th></tr>
+            <tr><th>就业方向</th><th>代表企业</th><th>参考薪资</th><th>说明</th></tr>
           </thead>
-          <tbody id="salary-table-body"></tbody>
+          <tbody id="direction-table-body"></tbody>
         </table>
       </div>
     </div>
 
     <div class="insight-box">
-      <strong>薪资关键发现：</strong>
-      <br>1. <mark class="key">算法/AI（大模型方向）</mark>校招年薪最高可达 50~80 万，985 硕士+顶会论文是敲门砖。
-      <br>2. <mark class="key">芯片/IC设计</mark>硕士起薪约 35~50 万/年，985 集成电路专业硕士非常抢手，本科起薪约 15~20 万。
-      <br>3. <mark class="key">安全</mark>方向对往届友好，校招年薪约 15~25 万，但高级安全专家可达 40~70 万。
-      <br>4. <mark class="key">测试</mark>岗门槛最低，年薪 10~18 万；<mark class="key">前端/Java</mark>约 15~25 万，竞争激烈。
-      <br>5. 城市差异明显：北京/上海同岗位比成都/武汉高 20%~40%。
+      <strong>方向薪资关键发现：</strong>
+      <br>1. <mark class="key">算法/AI</mark>薪资天花板最高：阿里NLP 40-60K·16薪、腾讯CV 30-50K·16薪、百度自动驾驶35-65K·16薪，但需985硕士+顶会论文、竞争最激烈。
+      <br>2. <mark class="key">嵌入式/硬件</mark>是控制硕士对口度最高的方向：大疆嵌入式25-40K·15薪、华为嵌入式20-40K·14薪，无人机/机器人研发岗专业壁垒高。
+      <br>3. <mark class="key">医工融合</mark>薪资稳定且竞争较小：迈瑞/万东25-30万、联影22-28万、东软20-30万、万孚18-25万，对口生医+控制复合背景。
+      <br>4. <mark class="key">软件开发</mark>需求体量最大：华为后端20-40K·16薪，年薪普遍30-35万，是控制硕士转型主流选择。
     </div>
   </div>
 
-  <!-- ======== 第三章：各技术栈招聘要求详解 ======== -->
-  <div class="section" id="sec-detail">
-    <h2 class="section-title">三、各技术栈招聘要求详解</h2>
-    <p class="section-desc">以下逐一展示每个主要技术栈的岗位画像，包含薪资范围、主要城市、招聘届次偏好和行业分布。</p>
-    <div id="stack-detail-container"></div>
-  </div>
+  <!-- ======== 第二章：头部私企薪酬体系 ======== -->
+  <div class="section" id="sec-private">
+    <h2 class="section-title">二、头部私企薪酬体系</h2>
+    <p class="section-desc">大厂与硬科技私企是控制硕士的主要高薪去向。不同公司职级体系、薪酬结构与工作强度差异显著——大疆应届总包27-50W、阿里P5起薪30W+、字节普遍15-18薪。数据来源：25宝典「私企」+ 26宝典「头部企业简介」。</p>
 
-  <!-- ======== 第四章：行业与技术栈交叉分析 ======== -->
-  <div class="section" id="sec-industry">
-    <h2 class="section-title">四、行业与技术栈交叉分析</h2>
-    <p class="section-desc">不同行业对技术栈的需求差异显著，了解行业分布有助于求职时精准定位。</p>
+    <figure class="chart-figure">
+      <figcaption>头部私企硕士应届年薪参考（万/年）</figcaption>
+      <div id="chart-private-salary" style="width:100%;min-height:440px"></div>
+    </figure>
+
+    <figure class="chart-figure">
+      <figcaption>华为职级薪酬曲线（平均年薪，万元）</figcaption>
+      <div id="chart-huawei-grade" style="width:100%;min-height:380px"></div>
+    </figure>
+
     <div class="card">
-      <h3>技术栈 × 行业 需求 TOP5</h3>
+      <h3>头部私企薪酬体系对比</h3>
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>技术栈</th><th>行业1</th><th>行业2</th><th>行业3</th><th>行业4</th><th>行业5</th></tr>
+            <tr><th>企业</th><th>职级/薪酬结构</th><th>硕士应届参考</th><th>特点/隐性福利</th></tr>
           </thead>
-          <tbody id="industry-table-body"></tbody>
+          <tbody id="private-table-body"></tbody>
         </table>
       </div>
     </div>
+
+    <div class="insight-box">
+      <strong>私企薪酬关键发现：</strong>
+      <br>1. <mark class="key">大疆</mark>应届总包27-50W，算法岗普通/SP/SSP offer分别为42/54/60万，研发岗83%薪资在40K左右，弹性打卡+房补/公租房。
+      <br>2. <mark class="key">华为</mark>应届从13级起步（20-25万），16级50-60万，19级管理层100-200万，22级500-650万，天花板极高。
+      <br>3. <mark class="key">阿里</mark>P5入职年薪30万+，P6破60万，P7接近百万并开始配股（16薪=12+1+3）。
+      <br>4. <mark class="key">字节</mark>标准12薪但普遍15-18薪，核心部门（抖音/广告）年终6-8个月以上，"字节一年人间三年"强度大但薪资实在。
+    </div>
+  </div>
+
+  <!-- ======== 第三章：国央企薪酬体系 ======== -->
+  <div class="section" id="sec-soe">
+    <h2 class="section-title">三、国央企薪酬体系</h2>
+    <p class="section-desc">军工/能源/通信国央企是控制硕士"稳定+高性价比"的重要去向。薪资虽不及头部大厂，但附带事业编、北京户口、安家费、六险两金等隐性福利。以下薪资均来自25宝典「国央企」章节。</p>
+
     <figure class="chart-figure">
-      <figcaption>技术栈招聘届次分布</figcaption>
-      <div id="chart-stack-grade" style="width:100%;min-height:420px"></div>
+      <figcaption>国央企硕士年薪参考（万/年）</figcaption>
+      <div id="chart-soe-master" style="width:100%;min-height:440px"></div>
     </figure>
+
+    <figure class="chart-figure">
+      <figcaption>部分国央企按学历起薪对比（万/年）</figcaption>
+      <div id="chart-soe-degree" style="width:100%;min-height:400px"></div>
+    </figure>
+
+    <div class="card">
+      <h3>国央企薪酬要点（25宝典）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>单位</th><th>硕士参考</th><th>亮点 / 隐性福利</th></tr>
+          </thead>
+          <tbody id="soe-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <strong>国央企薪酬关键发现：</strong>
+      <br>1. <mark class="key">航天科工</mark>硕士月薪约34.4K（年薪约41万），是国央企中薪资领先者，98.7%岗位薪酬在20-50K。
+      <br>2. <mark class="key">兵装</mark>硕士税前约30万、博士48万起（特殊岗位可达100万），军工央企中竞争力极强。
+      <br>3. <mark class="key">中船</mark>博士25-40万+安家费20-40万+地方补贴30万，硕士≥18万；701所硕士16-20W（3年后20+）。
+      <br>4. <mark class="key">中国电子</mark>财务公司硕士第一年总包20W+；<mark class="key">航天科技</mark>年薪15-40万、部分单位可解决事业编。
+      <br>5. <mark class="key">三大运营商</mark>移动新人转正税后15-20万、电信东部12-18万，稳定但薪资弹性较小，适合求稳。
+    </div>
+  </div>
+
+  <!-- ======== 第四章：研究所与就业单位分布 ======== -->
+  <div class="section" id="sec-institute">
+    <h2 class="section-title">四、研究所与就业单位分布</h2>
+    <p class="section-desc">军工/航天/兵器科研院所在全国14个城市集中布局，是控制硕士"体制内+技术岗"的核心去向。北京（航天五院/一院/二院/四院+兵器导控所）、西安（航天504/兵器203/航空618）、成都（航空611/中电29/10/绵阳九院）三城最为密集。数据来源：26宝典「研究所」。</p>
+
+    <figure class="chart-figure">
+      <figcaption>研究所城市分布（单位数）</figcaption>
+      <div id="chart-institute-city" style="width:100%;min-height:440px"></div>
+    </figure>
+
+    <div class="card">
+      <h3>14城研究所布局明细</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>城市</th><th>研究所 / 单位</th><th>方向特色</th></tr>
+          </thead>
+          <tbody id="institute-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <strong>研究所就业关键发现：</strong>
+      <br>1. <mark class="key">北京</mark>军工院所最全：航天五院（501/502/通导/遥感/钱学森/东方红）、一院（一部/战武/12/10）、二院二部、四院17所+兵器导控所，总体单位密集。
+      <br>2. <mark class="key">西安/成都</mark>西部军工双核：西安（航天504/兵器203/航空618/西飞）、成都（航空611/成飞/中电29/10/绵阳九院/兵装58所机械狗·战场机器人）。
+      <br>3. <mark class="key">武汉/南京</mark>船电重镇：武汉中船701/719、南京中电14/28/55（集成电路/微电子）。
+      <br>4. <mark class="key">沈阳</mark>中科院自动化所（机器人）与航空601/沈飞；洛阳空空导弹612/613；连云港中船716（江苏自动化所）。
+    </div>
   </div>
 
 </div>
 
 <footer>
-  <p>薪资数据参考猎聘、职友集、校招公示等公开渠道</p>
-  <p>所有信息来源于网络，请以公司实际发布信息为准</p>
+  <p>数据来源：《25就业宝典》《26择校宝典》（控制考研阿祖），薪资为各企业校招公开/网传参考数据</p>
+  <p>所有信息来源于网络，请以企业实际招聘信息为准</p>
 </footer>
 
 <script src="./_shared/js/echarts.min.js"></script>
@@ -546,25 +598,17 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
   var collapseBtn = document.getElementById('sidebarCollapseBtn');
   var brand = document.getElementById('sidebarBrand');
 
-  // ===== Collapsible sidebar (desktop) =====
   function toggleCollapse() {
     sidebar.classList.toggle('collapsed');
-    // Save preference
-    try {
-      localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed') ? '1' : '0');
-    } catch(e) {}
+    try { localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed') ? '1' : '0'); } catch(e) {}
   }
-  // Restore saved state
   try {
-    if (localStorage.getItem('sidebarCollapsed') === '1') {
-      sidebar.classList.add('collapsed');
-    }
+    if (localStorage.getItem('sidebarCollapsed') === '1') { sidebar.classList.add('collapsed'); }
   } catch(e) {}
 
   if (collapseBtn) collapseBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleCollapse(); });
   if (brand) brand.addEventListener('click', function(e) { if (window.innerWidth > 900) toggleCollapse(); });
 
-  // Smooth scroll on nav click
   navItems.forEach(function(item) {
     item.addEventListener('click', function(e) {
       var targetId = this.getAttribute('data-target');
@@ -583,12 +627,10 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
     });
   });
 
-  // Mobile toggle
   if (toggleBtn) {
     toggleBtn.addEventListener('click', function() { sidebar.classList.toggle('open'); });
   }
 
-  // Scroll-spy: highlight active section
   var lastActive = null;
   function updateActive() {
     var scrollPos = window.pageYOffset + 150;
@@ -597,7 +639,6 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
       if (sec.offsetTop <= scrollPos) activeId = sec.id;
     });
     if (window.pageYOffset < 100) activeId = null;
-
     if (activeId !== lastActive) {
       lastActive = activeId;
       navItems.forEach(function(item) {
@@ -608,12 +649,10 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
         }
       });
     }
-
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var pct = docHeight > 0 ? (window.pageYOffset / docHeight) * 100 : 0;
     if (progressBar) progressBar.style.width = pct + '%';
   }
-
   var ticking = false;
   window.addEventListener('scroll', function() {
     if (!ticking) {
@@ -625,4 +664,5 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 })();
 </script>
 </body>
+
 </html>
