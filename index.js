@@ -68,7 +68,7 @@ function getFilteredForUpdate(updateField){
     if(updateField !== 'college' && cv && r.college !== cv) return false;
     if(updateField !== 'major' && mv && r.majorCode !== mv) return false;
     if(is0854 && !(r.majorCode||'').startsWith('0854')) return false;
-    if(isMath2Eng2 && (!r.math || !r.english || !r.math.includes('数学（二）') || !r.english.includes('英语（二）'))) return false;
+    if(isMath2Eng2 && !(r.math && r.english && r.math.replace(/[\s（）()]/g,'').includes('数学二') && r.english.replace(/[\s（）()]/g,'').includes('英语二'))) return false;
     return true;
   });
 }
