@@ -995,11 +995,11 @@ function renderDirectionRows(){
       '<td class="py-3 pr-2 col-school"><div class="flex items-center gap-1"><img src="专业课选择/images/校徽/'+escAttr(r.school)+'.jpg" onerror="this.style.display=\'none\'" style="width:30px;height:30px;border-radius:50%;object-fit:cover;"><span onclick="goDetail(\''+String(r.school).replace(/'/g,"\\'")+'\')" style="cursor:pointer;">'+escAttr(r.school)+'</span></div></td>' +
       '<td class="py-3 pr-2" style="font-size:12px;white-space:normal;line-height:1.4;">'+escAttr(r.college||'-')+'</td>' +
       '<td class="py-3 pr-2" style="font-size:12px;white-space:normal;line-height:1.4;">'+escAttr(dirName||'-')+'</td>' +
-      '<td class="py-3 pr-2 row-enter">'+(r.enterNum!=null?r.enterNum:'-')+'</td>' +
-      '<td class="py-3 pr-2 row-admit">'+(r.admitNum!=null?r.admitNum:'-')+'</td>' +
-      '<td class="py-3 pr-2 row-ratio">'+(r.ratio!=null?r.ratio:'-')+'</td>' +
-      '<td class="py-3 pr-2 row-avgadmit">'+fmt(r.admitAvg)+'</td>' +
-      '<td class="py-3 pr-2 row-avgcourse">'+fmt(r.courseAvg)+'</td>' +
+      '<td class="py-3 pr-2 row-enter" style="text-align:center;">'+(r.enterNum!=null?r.enterNum:'-')+'</td>' +
+      '<td class="py-3 pr-2 row-admit" style="text-align:center;">'+(r.admitNum!=null?r.admitNum:'-')+'</td>' +
+      '<td class="py-3 pr-2 row-ratio" style="text-align:center;">'+(r.ratio!=null?r.ratio:'-')+'</td>' +
+      '<td class="py-3 pr-2 row-avgadmit" style="text-align:center;">'+fmt(r.admitAvg)+'</td>' +
+      '<td class="py-3 pr-2 row-avgcourse" style="text-align:center;">'+fmt(r.courseAvg)+'</td>' +
       '<td class="py-3" style="text-align:center;"></td>' +
       '</tr>';
   }).join('');
