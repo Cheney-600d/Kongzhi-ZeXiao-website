@@ -31,11 +31,12 @@
 })();
 </script>
 
-<!-- 带 school 参数进入时提前隐藏首页，避免加载阶段先闪现首页再进入择校数据详情（与 index.js 同步 goDetail 配合） -->
+<!-- 带 school 或 uiView=school-detail 参数进入时提前隐藏首页，避免加载阶段先闪现首页再进入择校数据详情（与 index.js 同步 goDetail / ui-history-state 深度链接恢复配合） -->
 <script>
 (function(){
   try {
-    if (new URLSearchParams(location.search).get('school')) {
+    var _bootSearch = new URLSearchParams(location.search);
+    if (_bootSearch.get('school') || _bootSearch.get('uiView') === 'school-detail') {
       document.documentElement.classList.add('school-detail-boot');
       var s = document.createElement('style');
       s.id = 'noHomeFlashStyle';
@@ -1800,7 +1801,7 @@ textarea:focus-visible,
 
     <script src="考研常识科普/posts-data.js" defer></script>
     <script src="home-banner.js" defer></script>
-    <script src="index.js?v=20260814-return-home-only" defer></script>
+    <script src="index.js?v=20260814-return-noflash" defer></script>
     <script src="ui-history-state.js" defer></script>
     <script src="toy-coin-gate.js" defer></script>
 

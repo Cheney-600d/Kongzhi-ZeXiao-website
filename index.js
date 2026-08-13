@@ -2281,13 +2281,18 @@ window.addEventListener('DOMContentLoaded', ()=>{
   }
   
   // URL参数解析：自动跳转到指定院校详情页
+  // school= 直接同步 goDetail；uiView=school-detail 由 ui-history-state.js 深度链接恢复
+  // 在 defer 阶段已渲染详情（早于本 DOMContentLoaded）。两条路径统一在此解除 head 遮蔽。
   const urlParams = new URLSearchParams(window.location.search);
   const schoolParam = urlParams.get('school');
-  if (schoolParam) {
-    console.log('URL school param detected:', schoolParam);
-    // 直接跳转详情页（同步执行：同一任务内先隐藏首页再渲染详情，
-    // 避免"先转到首页再打开择校数据"的闪烁），即使数据中没有也会显示"暂无数据"页面
-    goDetail(schoolParam);
+  const isDetailEntry = schoolParam || urlParams.get('uiView') === 'school-detail';
+  if (isDetailEntry) {
+    if (schoolParam) {
+      console.log('URL school param detected:', schoolParam);
+      // 直接跳转详情页（同步执行：同一任务内先隐藏首页再渲染详情，
+      // 避免"先转到首页再打开择校数据"的闪烁），即使数据中没有也会显示"暂无数据"页面
+      goDetail(schoolParam);
+    }
     // 必须等学校详情已经完成首帧布局后，才能解除 head 中的首页遮蔽。
     // 提前删除会让移动端 WebView 在脚本执行间隙绘制一次主页。
     const noHomeFlash = document.getElementById('noHomeFlashStyle');
