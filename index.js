@@ -496,7 +496,8 @@ function goSchoolDetailNoDirection(){
   if(!school) return;
   document.getElementById('directionPromptModal').classList.remove('active');
   window.pendingDetailFilter = null;
-  goDetail(school);
+  if(typeof window.enterSchoolDetailWithHistory === 'function') window.enterSchoolDetailWithHistory(school);
+  else goDetail(school);
 }
 
 // 当前标签筛选（全局）
@@ -566,6 +567,15 @@ function filterByProvince(provinceName) {
   }, 100);
 }
 
+function withSchoolDetailSource(href, schoolName){
+  try {
+    const url = new URL(href, window.location.href);
+    url.searchParams.set('fromSchoolDetail', '1');
+    url.searchParams.set('sourceSchool', schoolName);
+    return url.pathname.replace(/^\//,'') + url.search + url.hash;
+  } catch(error) { return href; }
+}
+
 function renderClickableTags(schoolName, tier) {
   const tags = getSchoolTags(schoolName, tier);
   return tags.map(t => {
@@ -574,7 +584,7 @@ function renderClickableTags(schoolName, tier) {
       return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }
     if (t.type === 'shengyuan') {
-      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}')" title="点击查看生源分布">${t.name}</span>`;
+      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open(withSchoolDetailSource('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
     }
     if (t.type === 'eval') {
       const subject = '0810';
@@ -736,6 +746,27 @@ function updateMobileSchoolCard(tr){
     const target = card.querySelector('[data-metric="'+key+'"]');
     if(target) target.textContent = chosen ? mobileMetricValue(tr,mapping[key]) : '—';
   });
+  updateMobileFavoriteButton(card, tr.dataset.school || '');
+}
+function updateMobileFavoriteButton(card, schoolName){
+  if(!card || !schoolName) return;
+  const btn = card.querySelector('.mobile-school-card__star');
+  if(!btn) return;
+  const active = isFavorite(schoolName);
+  btn.classList.toggle('is-favorite', active);
+  btn.textContent = active ? '★' : '☆';
+  btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  btn.setAttribute('aria-label', (active ? '取消收藏' : '收藏') + schoolName);
+  btn.title = active ? '从目标院校移除' : '加入目标院校';
+}
+function toggleMobileFavorite(event, button, schoolName){
+  if(event){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  toggleFavorite(schoolName);
+  const card = button && button.closest('.mobile-school-card');
+  if(card) updateMobileFavoriteButton(card, schoolName);
 }
 function mobileSelectSchoolCard(cardId, type, value){
   const card = document.getElementById(cardId);
@@ -785,10 +816,11 @@ function renderMobileSchoolCards(){
     const card = document.createElement('article');
     card.id = cardId;
     card.dataset.rowId = rowId;
+    card.dataset.school = school;
     card.className = 'mobile-school-card';
     card.innerHTML = '<header class="mobile-school-card__header">'+
       '<div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(tier)+' · '+escAttr(province)+'</small><button type="button" onclick="openMobileSchoolDetail(\''+cardId+'\')">'+escAttr(school)+'</button></span></div>'+
-      '<button class="mobile-school-card__star" type="button" onclick="toggleFavorite(\''+String(school).replace(/'/g,"\\'")+'\')" aria-label="收藏'+escAttr(school)+'">☆</button></header>'+
+      '<button class="mobile-school-card__star'+(isFavorite(school)?' is-favorite':'')+'" type="button" onclick="toggleMobileFavorite(event,this,\''+String(school).replace(/'/g,"\\'")+'\')" aria-pressed="'+(isFavorite(school)?'true':'false')+'" aria-label="'+(isFavorite(school)?'取消收藏':'收藏')+escAttr(school)+'">'+(isFavorite(school)?'★':'☆')+'</button></header>'+
       '<div class="mobile-school-card__links">'+info+'</div>'+
       '<div class="mobile-school-card__controls"><label>学院<select class="mobile-row-col" onchange="mobileSelectSchoolCard(\''+cardId+'\',\'college\',this.value)">'+(colSel?colSel.innerHTML:'')+'</select></label><label>专业方向<select class="mobile-row-dir" onchange="mobileSelectSchoolCard(\''+cardId+'\',\'direction\',this.value)">'+(dirSel?dirSel.innerHTML:'')+'</select></label></div>'+
       '<section class="mobile-school-card__result"><div class="mobile-school-card__result-head"><b>当前方向数据</b><span class="mobile-school-card__status">请选择具体方向查看数据</span></div><div class="mobile-school-card__metrics">'+
@@ -812,7 +844,7 @@ function renderMobileDirectionCards(recs){
     const direction = cleanDirName(r.majorName) || '未标注方向';
     const recordIndex = records.indexOf(r);
     return '<article class="mobile-school-card mobile-direction-card has-direction" data-school="'+escAttr(school)+'" data-record-index="'+recordIndex+'">'+
-      '<header class="mobile-school-card__header"><div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(r.tier||'—')+' · '+escAttr(r.province||'—')+'</small><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">'+escAttr(school)+'</button></span></div></header>'+
+      '<header class="mobile-school-card__header"><div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(r.tier||'—')+' · '+escAttr(r.province||'—')+'</small><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">'+escAttr(school)+'</button></span></div><button class="mobile-school-card__star'+(isFavorite(school)?' is-favorite':'')+'" type="button" onclick="toggleMobileFavorite(event,this,\''+String(school).replace(/'/g,"\\'")+'\')" aria-pressed="'+(isFavorite(school)?'true':'false')+'" aria-label="'+(isFavorite(school)?'取消收藏':'收藏')+escAttr(school)+'">'+(isFavorite(school)?'★':'☆')+'</button></header>'+
       '<div class="mobile-direction-card__path"><span>数二英二专项</span><b>'+escAttr(r.college||dirCollege(r)||'学院未标注')+'</b><strong>'+(r.majorCode?escAttr(r.majorCode)+' ':'')+escAttr(direction)+'</strong></div>'+
       '<section class="mobile-school-card__result"><div class="mobile-school-card__result-head"><b>该方向录取数据</b><span>专项筛选结果</span></div><div class="mobile-school-card__metrics">'+
       '<div><span>'+escAttr(r.enterNum!=null?r.enterNum:'—')+'</span><small>进复试</small></div><div><span>'+escAttr(r.admitNum!=null?r.admitNum:'—')+'</span><small>拟录取</small></div><div><span>'+escAttr(r.ratio!=null?r.ratio:'—')+'</span><small>复录比</small></div><div><span>'+escAttr(r.admitAvg!=null?fmt(r.admitAvg):'—')+'</span><small>录取均分</small></div><div><span>'+escAttr(r.courseAvg!=null?fmt(r.courseAvg):'—')+'</span><small>专业课均分</small></div></div></section>'+
@@ -840,7 +872,8 @@ function openMobileSchoolDetail(cardId){
       return r.college === rec.college && r.majorName === rec.majorName;
     };
   }
-  goDetail(school);
+  if(typeof window.enterSchoolDetailWithHistory === 'function') window.enterSchoolDetailWithHistory(school);
+  else goDetail(school);
 }
 
 // 数二英二专项卡片本身已代表一个明确方向，进入详情时保持这一精确筛选。
@@ -1093,7 +1126,7 @@ function renderSchoolTable(){
       <td class="py-3 pr-2">
         <div class="flex gap-1 flex-wrap" style="justify-content:flex-start;">
           ${SHENGYUAN_SCHOOLS.has(s['学校']) ? `<a href="通信电子院校生源地图.html?school=${encodeURIComponent(s['学校'])}" class="tag tag-blue" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校生源分布">院校生源</a>` : ''}
-          <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(s['学校'])}" class="tag tag-green" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校考察的专业课">考察专业课</a>
+          <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(s['学校'])}&fromSchoolDetail=1" class="tag tag-green" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校考察的专业课">考察专业课</a>
           ${EMPLOYMENT_SCHOOLS.has(s['学校']) ? `<a href="${EMPLOYMENT_MAP[s['学校']] || '就业相关/院校就业去向/schools/' + s['学校'] + '.html'}" class="tag tag-orange" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校就业数据">就业去向</a>` : ''}
         </div>
       </td>
@@ -1581,7 +1614,7 @@ function renderDetail(schoolName){
       const s = getTagStyle(t.name, t.type);
       const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;font-size:14px;padding:6px 14px;border-radius:16px;`;
       if (t.type === 'tier') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
-      if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}')" title="点击查看生源分布">${t.name}</span>`;
+      if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open(withSchoolDetailSource('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
       if (t.type === 'eval') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')" title="点击查看${t.name}研究方向">${t.name}</span>`;
       return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }).join('')}</div>`;
@@ -1596,10 +1629,10 @@ function renderDetail(schoolName){
           <h2 class="text-2xl font-bold text-gray-800">${schoolName}</h2>
           ${tagsHtml}
           <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html'}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
-            <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(schoolName)}" class="tag clickable-tag" style="background:#dcfce7;color:#15803d;border:1px solid #86efac;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}考察专业课">📚 考察专业课</a>
+            ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource(EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html', schoolName)}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
+            <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(schoolName)}&fromSchoolDetail=1" class="tag clickable-tag" style="background:#dcfce7;color:#15803d;border:1px solid #86efac;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}考察专业课">📚 考察专业课</a>
             ${VALID_QRS.has(schoolName) ? `<span class="tag clickable-tag" style="background:#e0f2fe;color:#0277bd;border:1px solid #81d4fa;font-size:14px;padding:6px 14px;border-radius:16px;cursor:pointer;" onclick="openQrLightbox('${getQrPath(schoolName)}')" title="点击查看${schoolName}QQ群二维码">📱 院校QQ群</span>` : ''}
-            ${GAIKAO_SCHOOLS.has(schoolName) ? `<a href="改考院校.html?school=${encodeURIComponent(schoolName)}" class="tag clickable-tag" style="background:#fff1f0;color:#cf1322;border:1px solid #ffa39e;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}改考信息">🔔 27考研有改考</a>` : ''}
+            ${GAIKAO_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource('改考院校.html?school='+encodeURIComponent(schoolName), schoolName)}" class="tag clickable-tag" style="background:#fff1f0;color:#cf1322;border:1px solid #ffa39e;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}改考信息">🔔 27考研有改考</a>` : ''}
             <span class="fav-star ${isFavorite(schoolName)?'fav-active':'fav-inactive'}" 
                   onclick="handleFavClick('${schoolName.replace(/'/g, "\\'")}')" 
                   title="${isFavorite(schoolName)?'取消收藏':'加入目标院校'}" 
@@ -1692,10 +1725,10 @@ function renderDetail(schoolName){
         <h2 class="text-2xl font-bold text-gray-800">${schoolName}</h2>
         ${tagsHtml}
         <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html'}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
-          <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(schoolName)}" class="tag clickable-tag" style="background:#dcfce7;color:#15803d;border:1px solid #86efac;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}考察专业课">📚 考察专业课</a>
+          ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource(EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html', schoolName)}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
+          <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(schoolName)}&fromSchoolDetail=1" class="tag clickable-tag" style="background:#dcfce7;color:#15803d;border:1px solid #86efac;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}考察专业课">📚 考察专业课</a>
           ${VALID_QRS.has(schoolName) ? `<span class="tag clickable-tag" style="background:#e0f2fe;color:#0277bd;border:1px solid #81d4fa;font-size:14px;padding:6px 14px;border-radius:16px;cursor:pointer;" onclick="openQrLightbox('${getQrPath(schoolName)}')" title="点击查看${schoolName}QQ群二维码">📱 院校QQ群</span>` : ``}
-          ${GAIKAO_SCHOOLS.has(schoolName) ? `<a href="改考院校.html?school=${encodeURIComponent(schoolName)}" class="tag clickable-tag" style="background:#fff1f0;color:#cf1322;border:1px solid #ffa39e;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}改考信息">🔔 27考研有改考</a>` : ``}
+          ${GAIKAO_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource('改考院校.html?school='+encodeURIComponent(schoolName), schoolName)}" class="tag clickable-tag" style="background:#fff1f0;color:#cf1322;border:1px solid #ffa39e;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}改考信息">🔔 27考研有改考</a>` : ``}
           <span class="fav-star ${isFavorite(schoolName)?'fav-active':'fav-inactive'}" 
                 onclick="handleFavClick('${schoolName.replace(/'/g, "\\'")}')" 
                 title="${isFavorite(schoolName)?'取消收藏':'加入目标院校'}" 
@@ -2272,13 +2305,20 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const schoolParam = urlParams.get('school');
   if (schoolParam) {
     console.log('URL school param detected:', schoolParam);
-    // 移除 head 中提前隐藏首页的临时样式（只覆盖加载阶段，
-    // 此处起由 goDetail 的内联样式接管可见性，否则返回首页会被永久隐藏）
-    const noHomeFlash = document.getElementById('noHomeFlashStyle');
-    if (noHomeFlash) noHomeFlash.parentNode.removeChild(noHomeFlash);
     // 直接跳转详情页（同步执行：同一任务内先隐藏首页再渲染详情，
     // 避免"先转到首页再打开择校数据"的闪烁），即使数据中没有也会显示"暂无数据"页面
     goDetail(schoolParam);
+    // 必须等学校详情已经完成首帧布局后，才能解除 head 中的首页遮蔽。
+    // 提前删除会让移动端 WebView 在脚本执行间隙绘制一次主页。
+    const noHomeFlash = document.getElementById('noHomeFlashStyle');
+    if (noHomeFlash) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.documentElement.classList.remove('school-detail-boot');
+          noHomeFlash.remove();
+        });
+      });
+    }
   }
 });
 
@@ -2560,6 +2600,11 @@ function toggleFavorite(name){
   saveFavorites(arr);
   renderSchoolTable();
   updateFavBtnStyle();
+  document.querySelectorAll('.mobile-school-card').forEach(function(card){
+    const row = card.id ? document.querySelector('#schoolTable tr[data-mobile-card-id="'+card.id+'"]') : null;
+    const cardSchool = card.dataset.school || (row && row.dataset.school);
+    if(cardSchool === name) updateMobileFavoriteButton(card, name);
+  });
 }
 function toggleFavoriteFilter(){
   FAVORITE_FILTER = !FAVORITE_FILTER;

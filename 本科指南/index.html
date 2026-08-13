@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -335,7 +335,111 @@ a:focus-visible,button:focus-visible,input:focus-visible,.major-item:focus-visib
 }
 </style>
 
-<link rel="stylesheet" href="../mobile-function-shell.css">
+<style id="undergrad-mobile-redesign">
+:root{
+  --ug-ink:#17242c;
+  --ug-paper:#f7f6f2;
+  --ug-line:#d9dfdc;
+  --ug-coral:#c95770;
+  --ug-sage:#8ab7ad;
+}
+.major-mobile-trigger,.major-mobile-scrim,.major-mobile-sheet{display:none}
+@media(max-width:760px){
+  html{scroll-padding-top:132px}
+  body{background:var(--ug-paper)}
+  .topbar{
+    position:sticky!important;top:4.25rem!important;z-index:180;
+    min-height:54px;padding:7px 14px!important;overflow:visible!important;
+    background:rgba(247,246,242,.96);border-bottom:1px solid var(--ug-line);
+    box-shadow:0 8px 24px rgba(23,36,44,.07);backdrop-filter:blur(16px)
+  }
+  .brand{min-width:0;flex:0 1 auto;color:var(--ug-ink);font-size:13px;line-height:1.2}
+  .brand .logo{width:28px;height:28px;background:var(--ug-ink);color:#fff;border-radius:8px;box-shadow:none}
+  .brand small,.topbar-meta,.topbar-home,.topbar-guides,.topbar-site{display:none!important}
+  .search{margin-left:auto;flex:0 0 116px}
+  .search input{height:36px;padding:0 12px;border:1px solid var(--ug-line);border-radius:9px;background:#fff;font-size:12px;color:var(--ug-ink)}
+
+  .major-mobile-trigger{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:11px;
+    position:sticky;top:calc(4.25rem + 54px);z-index:170;width:calc(100% - 24px);
+    min-height:58px;margin:10px 12px 0;padding:9px 12px;border:1px solid rgba(23,36,44,.14);
+    border-radius:13px;background:var(--ug-ink);color:#fff;text-align:left;
+    box-shadow:0 12px 26px rgba(23,36,44,.16)
+  }
+  .major-mobile-trigger svg{width:20px;height:20px;color:#d9ebe7}
+  .major-mobile-trigger small{display:block;margin-bottom:2px;color:#a9c9c2;font-size:10px;letter-spacing:.12em}
+  .major-mobile-trigger strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:650}
+  .major-mobile-trigger .trigger-arrow{display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(255,255,255,.2);border-radius:50%;font-size:17px}
+
+  .major-mobile-scrim{position:fixed;inset:0;z-index:1260;background:rgba(12,22,27,.46);backdrop-filter:blur(3px)}
+  .major-mobile-scrim.is-open{display:block}
+  .major-mobile-sheet{
+    display:flex;flex-direction:column;position:fixed;left:0;right:0;bottom:0;z-index:1270;
+    max-height:min(76vh,650px);padding-bottom:calc(14px + env(safe-area-inset-bottom));
+    border-radius:22px 22px 0 0;background:var(--ug-paper);
+    box-shadow:0 -24px 70px rgba(9,22,27,.25);transform:translateY(105%)!important;
+    visibility:hidden;transition:transform .32s cubic-bezier(.22,.8,.22,1),visibility .32s
+  }
+  .major-mobile-sheet.is-open{transform:translateY(0)!important;visibility:visible}
+  /* 该页原有的低性能设备规则会清空全部 transform，需要恢复两个真实抽屉的位移状态。 */
+  .mfs-sheet{transform:translateY(102%)!important}
+  .mfs-sheet.is-open{transform:translateY(0)!important}
+  .major-sheet-head{display:flex;align-items:center;gap:12px;padding:14px 16px 11px;border-bottom:1px solid var(--ug-line)}
+  .major-sheet-head::before{content:"";position:absolute;top:7px;left:50%;width:38px;height:4px;border-radius:4px;background:#c9cfcc;transform:translateX(-50%)}
+  .major-sheet-head div{min-width:0;flex:1}
+  .major-sheet-head small{display:block;color:var(--ug-coral);font-size:10px;font-weight:700;letter-spacing:.14em}
+  .major-sheet-head h2{margin:3px 0 0;color:var(--ug-ink);font-size:20px}
+  .major-sheet-close{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--ug-line);border-radius:50%;background:#fff;color:var(--ug-ink);font-size:20px}
+  .major-sheet-search{margin:12px 16px 8px;padding:0 13px;height:42px;border:1px solid var(--ug-line);border-radius:10px;background:#fff;font-size:14px}
+  .mobile-major-list{overflow:auto;padding:2px 12px 18px;overscroll-behavior:contain}
+  .mobile-major-list .side-group{margin:8px 0;border:1px solid var(--ug-line);border-radius:12px;background:#fff;overflow:hidden}
+  .mobile-major-list .side-title{padding:12px 13px;background:#eef1ee;color:var(--ug-ink);font-size:13px}
+  .mobile-major-list ul{padding:5px!important}
+  .mobile-major-list .major-item{min-height:44px;padding:8px 9px;border-radius:8px;font-size:13px}
+  .mobile-major-list .major-item.active{background:var(--ug-ink);color:#fff}
+
+  .layout{display:block;min-height:0;padding:0!important}
+  .sidebar,.right-nav{display:none!important}
+  .main{width:100%;min-width:0;padding:8px 12px 100px!important}
+  .welcome{padding:9px 0 0!important}
+  .welcome h1{margin:13px 3px 5px;color:var(--ug-ink);font-family:"Noto Serif SC",serif;font-size:clamp(26px,8vw,34px);line-height:1.16;letter-spacing:-.03em}
+  .welcome>p{margin:0 3px 18px;color:#637078;font-size:13px;line-height:1.75}
+  .w-guides{margin:0!important;padding:18px 0 15px!important;border:0!important;border-top:1px solid var(--ug-line)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+  .w-gtitle{display:flex!important;align-items:flex-end;justify-content:space-between;margin:0 3px 12px!important;color:var(--ug-ink)!important;font-size:15px!important;text-align:left!important}
+  .w-gtitle::after{content:"横向滑动";font-size:10px;font-weight:500;letter-spacing:.08em;color:#81908e}
+  .w-gcards{display:flex!important;gap:10px!important;margin:0 -12px;padding:0 12px 8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;counter-reset:route}
+  .w-gcards::-webkit-scrollbar{display:none}
+  .w-gcard{
+    position:relative;flex:0 0 min(78vw,300px);min-height:132px;padding:18px 17px 15px!important;
+    border:1px solid var(--ug-line)!important;border-radius:14px!important;background:#fff!important;
+    box-shadow:none!important;scroll-snap-align:start;counter-increment:route
+  }
+  .w-gcard::before{content:"0" counter(route);display:block;margin-bottom:17px;color:var(--ug-coral);font:700 10px/1 "JetBrains Mono",monospace;letter-spacing:.12em}
+  .w-gcard::after{content:"↗";position:absolute;top:15px;right:16px;color:#8ba59f;font-size:17px}
+  .w-gcard:hover{transform:none!important}
+  .w-gcard .wg-icon{position:absolute;right:43px;top:13px;font-size:18px!important;opacity:.72}
+  .w-gcard .wg-title{margin-bottom:5px;color:var(--ug-ink)!important;font-size:16px!important}
+  .w-gcard .wg-desc{color:#68777d!important;font-size:12px!important;line-height:1.6!important}
+  .hint{margin:14px 0 2px!important;padding:13px 15px!important;border:0!important;border-left:3px solid var(--ug-sage)!important;border-radius:2px 10px 10px 2px!important;background:#eef3f0!important;color:#607069!important;font-size:0!important;text-align:left!important}
+  .hint::before{content:"先选择专业，或从上方专题开始浏览";font-size:12px}
+
+  .m-header{margin:2px 0 12px!important;padding:20px 17px!important;border-radius:15px!important;background:var(--ug-ink)!important;color:#fff;box-shadow:0 14px 34px rgba(23,36,44,.18)!important}
+  .m-header h1,.m-header h2,.m-header .m-title{color:#fff!important}
+  .m-header p,.m-header .m-intro{color:#d5dfdd!important}
+  .m-header .kh-cloud{display:none!important}
+  .section{margin:0 0 10px!important;padding:17px 15px!important;border:1px solid var(--ug-line)!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important}
+  .section h2,.section .sec-title{color:var(--ug-ink)!important;font-size:17px!important}
+  .course-tags,.grad-dir-list{gap:7px!important}
+  .course-tag,.grad-dir-item{border-color:var(--ug-line)!important;background:#f0f3f0!important;color:#3f5554!important}
+  .comp-item{display:grid!important;grid-template-columns:40px minmax(0,1fr)!important;gap:8px 10px!important;padding:12px 0!important}
+  .comp-item>*{min-width:0}
+  .res-grid,.cat-grid{grid-template-columns:1fr!important}
+  body.major-sheet-open{overflow:hidden}
+}
+@media(prefers-reduced-motion:reduce){.major-mobile-sheet{transition:none}}
+</style>
+
+<link rel="stylesheet" href="../mobile-function-shell.css?v=20260814-theme-purple">
 </head>
 <body>
 <div class="topbar">
@@ -359,6 +463,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,.major-item:focus-visib
   </div>
   <a class="topbar-site" href="../index.html" title="返回网站首页">🏡 网站首页</a>
 </div>
+
+<button class="major-mobile-trigger" id="majorMobileTrigger" type="button" aria-haspopup="dialog" aria-controls="majorMobileSheet" aria-expanded="false">
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 7h8M8 11h6"/></svg>
+  <span><small>MAJOR INDEX · 17</small><strong id="majorMobileCurrent">选择专业，查看完整路线</strong></span>
+  <span class="trigger-arrow" aria-hidden="true">⌃</span>
+</button>
+<div class="major-mobile-scrim" id="majorMobileScrim"></div>
+<section class="major-mobile-sheet" id="majorMobileSheet" role="dialog" aria-modal="true" aria-labelledby="majorMobileTitle" aria-hidden="true">
+  <header class="major-sheet-head">
+    <div><small>MAJOR DIRECTORY</small><h2 id="majorMobileTitle">专业目录</h2></div>
+    <button class="major-sheet-close" id="majorMobileClose" type="button" aria-label="关闭专业目录">×</button>
+  </header>
+  <input class="major-sheet-search" id="majorMobileSearch" type="search" placeholder="搜索专业名称或代码" autocomplete="off">
+  <div class="mobile-major-list" id="mobileMajorList"></div>
+</section>
 
 <div class="layout">
   <aside class="sidebar" id="sidebar"><div class="side-group"><div class="side-title" onclick="this.parentElement.classList.toggle('collapsed')"><span class="side-arrow">▾</span>❀ 基础专业 <span class="side-cnt">6</span></div><ul><li class="major-item" data-code="080701" data-name="电子信息工程"><span class="mi-code">080701</span><span class="mi-name">电子信息工程</span></li><li class="major-item" data-code="080702" data-name="电子科学与技术"><span class="mi-code">080702</span><span class="mi-name">电子科学与技术</span></li><li class="major-item" data-code="080703" data-name="通信工程"><span class="mi-code">080703</span><span class="mi-name">通信工程</span></li><li class="major-item" data-code="080704" data-name="微电子科学与工程"><span class="mi-code">080704</span><span class="mi-name">微电子科学与工程</span></li><li class="major-item" data-code="080705" data-name="光电信息科学与工程"><span class="mi-code">080705</span><span class="mi-name">光电信息科学与工程</span></li><li class="major-item" data-code="080706" data-name="信息工程"><span class="mi-code">080706</span><span class="mi-name">信息工程</span></li></ul></div><div class="side-group"><div class="side-title" onclick="this.parentElement.classList.toggle('collapsed')"><span class="side-arrow">▾</span>✿ 特色专业（T） <span class="side-cnt">11</span></div><ul><li class="major-item" data-code="080707T" data-name="广播电视工程"><span class="mi-code">080707T</span><span class="mi-name">广播电视工程</span></li><li class="major-item" data-code="080708T" data-name="水声工程"><span class="mi-code">080708T</span><span class="mi-name">水声工程</span></li><li class="major-item" data-code="080709T" data-name="电子封装技术"><span class="mi-code">080709T</span><span class="mi-name">电子封装技术</span></li><li class="major-item" data-code="080710T" data-name="集成电路设计与集成系统"><span class="mi-code">080710T</span><span class="mi-name">集成电路设计与集成系统</span></li><li class="major-item" data-code="080711T" data-name="医学信息工程"><span class="mi-code">080711T</span><span class="mi-name">医学信息工程</span></li><li class="major-item" data-code="080712T" data-name="电磁场与无线技术"><span class="mi-code">080712T</span><span class="mi-name">电磁场与无线技术</span></li><li class="major-item" data-code="080713T" data-name="电波传播与天线"><span class="mi-code">080713T</span><span class="mi-name">电波传播与天线</span></li><li class="major-item" data-code="080714T" data-name="电子信息科学与技术"><span class="mi-code">080714T</span><span class="mi-name">电子信息科学与技术</span></li><li class="major-item" data-code="080715T" data-name="电信工程及管理"><span class="mi-code">080715T</span><span class="mi-name">电信工程及管理</span></li><li class="major-item" data-code="080716T" data-name="应用电子技术教育"><span class="mi-code">080716T</span><span class="mi-name">应用电子技术教育</span></li><li class="major-item" data-code="080717T" data-name="人工智能"><span class="mi-code">080717T</span><span class="mi-name">人工智能</span></li></ul></div></aside>
@@ -654,6 +773,62 @@ document.getElementById('homeBtn').onclick = ()=>{
 };
 </script>
 
+<script id="undergrad-mobile-nav-js">
+(function(){
+  const trigger=document.getElementById('majorMobileTrigger');
+  const sheet=document.getElementById('majorMobileSheet');
+  const scrim=document.getElementById('majorMobileScrim');
+  const closeBtn=document.getElementById('majorMobileClose');
+  const list=document.getElementById('mobileMajorList');
+  const search=document.getElementById('majorMobileSearch');
+  const current=document.getElementById('majorMobileCurrent');
+  const source=document.getElementById('sidebar');
+  if(!trigger||!sheet||!source)return;
+
+  list.innerHTML=source.innerHTML;
+  list.querySelectorAll('[onclick]').forEach(function(el){el.removeAttribute('onclick')});
+
+  function setOpen(open){
+    sheet.classList.toggle('is-open',open);
+    scrim.classList.toggle('is-open',open);
+    document.body.classList.toggle('major-sheet-open',open);
+    sheet.setAttribute('aria-hidden',String(!open));
+    trigger.setAttribute('aria-expanded',String(open));
+    if(open)setTimeout(function(){search.focus({preventScroll:true})},120);
+    else trigger.focus({preventScroll:true});
+  }
+  trigger.addEventListener('click',function(){setOpen(true)});
+  closeBtn.addEventListener('click',function(){setOpen(false)});
+  scrim.addEventListener('click',function(){setOpen(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet.classList.contains('is-open'))setOpen(false)});
+
+  list.addEventListener('click',function(e){
+    const groupTitle=e.target.closest('.side-title');
+    if(groupTitle){groupTitle.parentElement.classList.toggle('collapsed');return}
+    const item=e.target.closest('.major-item');
+    if(!item)return;
+    const code=item.dataset.code;
+    const original=Array.from(source.querySelectorAll('.major-item')).find(function(el){return el.dataset.code===code});
+    if(original)original.click();
+    current.textContent=item.dataset.name+' · '+code;
+    list.querySelectorAll('.major-item').forEach(function(el){el.classList.toggle('active',el.dataset.code===code)});
+    setOpen(false);
+    setTimeout(function(){document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'})},80);
+  });
+
+  search.addEventListener('input',function(){
+    const q=search.value.trim().toLowerCase();
+    list.querySelectorAll('.major-item').forEach(function(item){
+      const match=(item.dataset.code+' '+item.dataset.name).toLowerCase().includes(q);
+      item.style.display=match?'':'none';
+    });
+    list.querySelectorAll('.side-group').forEach(function(group){
+      group.style.display=Array.from(group.querySelectorAll('.major-item')).some(function(item){return item.style.display!=='none'})?'':'none';
+    });
+  });
+})();
+</script>
+
 <script id="entry-a11y-adapt-js">
 (function(){
   function enhanceClickableKeyboard(){
@@ -681,3 +856,4 @@ document.getElementById('homeBtn').onclick = ()=>{
 <script src="../mobile-function-shell.js" data-root=".."></script>
 </body>
 </html>
+

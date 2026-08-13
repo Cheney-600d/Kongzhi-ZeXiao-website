@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -153,7 +153,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,.school-link:focus-visi
 }
 </style>
 
-<link rel="stylesheet" href="mobile-function-shell.css">
+<link rel="stylesheet" href="mobile-function-shell.css?v=20260814-theme-purple">
 </head>
 <body>
 
@@ -184,7 +184,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,.school-link:focus-visi
 <div class="page">
   <!-- 返回按钮 -->
   <div class="flex gap-2 mb-4">
-    <button class="back-btn" onclick="goBack()" id="backBtn" style="display:none;">
+    <button class="back-btn" onclick="siteHistoryBack('index.html')" id="backBtn">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       返回上一级
     </button>
@@ -807,7 +807,7 @@ function toggleFold(id){
   
   // 显示返回上一级按钮
   const backBtn = document.getElementById('backBtn');
-  if(backBtn && hasBack()) backBtn.style.display = 'inline-flex';
+  if(backBtn) backBtn.style.display = 'inline-flex';
   
 })();
 
@@ -1016,6 +1016,8 @@ document.addEventListener('click',(e)=>{
 })();
 </script>
 
+<script src="navigation-history.js"></script>
 <script src="mobile-function-shell.js" data-root="."></script>
 </body>
 </html>
+

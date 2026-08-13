@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -421,7 +421,7 @@
     </style>
 
 
-<link rel="stylesheet" href="mobile-function-shell.css">
+<link rel="stylesheet" href="mobile-function-shell.css?v=20260814-theme-purple">
 </head>
 <body>
     <!-- 导航历史记录 -->
@@ -449,7 +449,7 @@
     </script>
     <div class="container">
         <div class="flex gap-2 mb-4">
-            <button class="back-home-btn" onclick="goBack()" id="backBtn" style="display:none;">
+            <button class="back-home-btn" onclick="siteHistoryBack('./index.html')" id="backBtn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 返回上一级
             </button>
@@ -3103,7 +3103,7 @@
             
             // 显示返回上一级按钮
             const backBtn = document.getElementById('backBtn');
-            if(backBtn && hasBack()) backBtn.style.display = 'inline-flex';
+            if(backBtn) backBtn.style.display = 'inline-flex';
             
             // URL参数解析：自动跳转到指定院校详情
             const urlParams = new URLSearchParams(window.location.search);
@@ -3178,6 +3178,9 @@
   });
 })();
 </script>
+<script src="ui-history-state.js"></script>
+<script src="navigation-history.js"></script>
 <script src="mobile-function-shell.js" data-root="."></script>
 </body>
 </html>
+

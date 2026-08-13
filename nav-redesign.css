@@ -90,9 +90,9 @@ body{padding-top:64px!important}
   #homePage{background:transparent!important}
   .site-nav--v2 .site-nav__menu{opacity:1!important;visibility:visible!important;transform:none!important;position:static!important;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important}
   html body #homePage header .nav-btn-grid{display:none!important}
-  .site-nav--v2 .site-nav__tools{left:auto;right:14px;bottom:calc(72px + env(safe-area-inset-bottom));width:auto;transition:right .25s ease,bottom .25s ease}
+  .site-nav--v2 .site-nav__tools{left:auto;right:14px;bottom:calc(72px + env(safe-area-inset-bottom));width:auto;z-index:88!important;isolation:isolate;pointer-events:auto!important;transition:right .25s ease,bottom .25s ease}
   #backToTop{left:14px!important;right:auto!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;z-index:46!important}
-  .site-nav--v2 .site-nav__tools-btn{min-width:158px;width:158px;height:52px;padding:0 13px;gap:9px;border:2px solid #fff;border-radius:12px;transition:width .24s cubic-bezier(.2,.8,.2,1),min-width .24s cubic-bezier(.2,.8,.2,1),padding .24s ease,box-shadow .24s ease}
+  .site-nav--v2 .site-nav__tools-btn{min-width:158px;width:158px;height:52px;padding:0 13px;gap:9px;border:2px solid #fff;border-radius:12px;pointer-events:auto!important;touch-action:manipulation;transition:width .24s cubic-bezier(.2,.8,.2,1),min-width .24s cubic-bezier(.2,.8,.2,1),padding .24s ease,box-shadow .24s ease}
   .site-nav--v2 .site-nav__tools-label{min-width:91px;overflow:hidden;white-space:nowrap;transition:max-width .2s ease,opacity .16s ease;max-width:100px}
   .site-nav--v2 .site-nav__tools-label b{font-size:12px}.site-nav--v2 .site-nav__tools-label small{font-size:7px}
   .site-nav--v2 .site-nav__tools-btn .chevron{display:none}
@@ -113,6 +113,110 @@ body{padding-top:64px!important}
   .site-nav--v2 .site-nav__mega{box-shadow:0 -18px 52px rgba(43,31,28,.22),0 -1px 0 rgba(169,33,34,.14)}
 }
 
+/* Mobile overlays — content-first control workspaces */
+.modal-mobile-handle,.modal-heading small{display:none}
+@media(max-width:768px){
+  body:has(.app-workspace-modal.active){overflow:hidden!important}
+  .app-workspace-modal{
+    align-items:flex-end!important;
+    justify-content:stretch!important;
+    padding:0!important;
+    background:rgba(10,18,25,.56)!important;
+    backdrop-filter:blur(5px) saturate(92%);
+    z-index:90!important;
+  }
+  .app-workspace-modal .modal-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    width:100%!important;
+    max-width:none!important;
+    height:auto!important;
+    max-height:min(88dvh,760px)!important;
+    margin:0!important;
+    padding:0 14px calc(16px + env(safe-area-inset-bottom))!important;
+    overflow:hidden!important;
+    border:0!important;
+    border-radius:20px 20px 0 0!important;
+    background:#f8f8f5!important;
+    box-shadow:0 -24px 70px rgba(8,18,25,.28)!important;
+  }
+  .app-workspace-modal .modal-card:before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:4px;
+    background:linear-gradient(#a92122 0 28%,#b9c4c2 28% 100%);
+  }
+  .app-workspace-modal .modal-mobile-handle{
+    display:block;
+    flex:none;
+    width:38px;height:4px;
+    margin:8px auto 4px;
+    border-radius:999px;
+    background:#c8ccc9;
+  }
+  .app-workspace-modal .modal-header{
+    position:sticky;
+    top:0;
+    z-index:2;
+    flex:none;
+    min-height:58px;
+    margin:0!important;
+    padding:9px 0 11px!important;
+    border-bottom:1px solid #dde1de!important;
+    background:rgba(248,248,245,.96);
+    backdrop-filter:blur(12px);
+  }
+  .app-workspace-modal .modal-heading{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:3px;text-align:left}
+  .app-workspace-modal .modal-heading small{display:block;color:#9d292b;font:700 8px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em}
+  .app-workspace-modal .modal-heading h3{margin:0!important;color:#1c2932!important;font-size:15px!important;line-height:1.3!important;text-wrap:balance}
+  .app-workspace-modal .modal-close{
+    position:static!important;
+    flex:none;
+    width:38px!important;height:38px!important;
+    color:#24323b!important;
+    background:#eaedeb!important;
+    border:1px solid #d4d9d6!important;
+    border-radius:10px!important;
+    font-size:20px!important;
+  }
+  .app-workspace-modal .modal-scroll-body{
+    min-height:0;
+    overflow:auto!important;
+    overscroll-behavior:contain;
+    padding:14px 2px 3px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .app-workspace-modal .modal-scroll-body>h4{margin-bottom:10px!important;color:#66737a!important;font-size:11px!important;font-weight:650!important;letter-spacing:.04em}
+  .app-workspace-modal .modal-list{display:grid;gap:7px}
+  .app-workspace-modal .modal-list li{
+    margin:0!important;
+    padding:11px 10px!important;
+    background:#fff;
+    border:1px solid #e1e5e2!important;
+    border-radius:10px;
+    color:#25323a!important;
+    font-size:12px!important;
+    line-height:1.55;
+  }
+  .app-workspace-modal .modal-rank{border-radius:5px!important;background:#728d87!important;font-variant-numeric:tabular-nums}
+  .app-workspace-modal .modal-rank.top3{background:#a92122!important}
+  .app-workspace-modal .compare-scroll-region{padding-left:0;padding-right:0}
+  .app-workspace-modal .compare-scroll-region table{min-width:720px;font-size:11px!important;font-variant-numeric:tabular-nums}
+  .app-workspace-modal .compare-scroll-region:before{content:"左右滑动查看完整对比数据";position:sticky;left:0;display:block;width:max-content;margin:0 0 10px;padding:5px 8px;color:#55716b;background:#e4eeeb;border-radius:5px;font-size:10px;font-weight:650}
+  .app-workspace-modal .modal-card--prompt{max-height:none!important;padding:0 18px calc(20px + env(safe-area-inset-bottom))!important}
+  .app-workspace-modal .modal-card--prompt>div[style*="font-size:56px"]{margin:12px 0 3px!important;color:#a92122}
+  .app-workspace-modal .modal-card--prompt .modal-header{position:static;justify-content:center!important;min-height:auto;padding:5px 0 8px!important;border:0!important}
+  .app-workspace-modal .modal-card--prompt h3{font-size:16px!important;line-height:1.55!important}
+  .app-workspace-modal .modal-card--prompt p{margin-bottom:14px!important;font-size:12px!important;line-height:1.6!important}
+  .app-workspace-modal .modal-card--prompt>div:last-child{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
+  .app-workspace-modal .modal-card--prompt>div:last-child button{width:100%;min-height:46px;margin:0!important;border-radius:10px!important;font-size:13px!important}
+  #imgLightbox{padding:16px!important;background:rgba(7,14,20,.92)!important;backdrop-filter:blur(8px)}
+  #imgLightboxImg{width:min(92vw,520px)!important;max-width:92vw!important;height:auto!important;max-height:74dvh!important;border-radius:14px!important}
+  #imgLightbox>div{top:max(14px,env(safe-area-inset-top))!important;right:14px!important;display:grid;width:42px;height:42px;place-items:center;border-radius:11px;background:rgba(255,255,255,.12);font-size:28px!important}
+}
+
 /* 手机端院校结果卡片：复用桌面表格状态，仅改变信息呈现 */
 .mobile-school-cards{display:none}
 @media(max-width:768px){
@@ -123,7 +227,10 @@ body{padding-top:64px!important}
   .mobile-school-card.has-direction:before{background:var(--nav-red)}
   .mobile-school-card__header{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 9px 16px}
   .mobile-school-card__identity{display:flex;align-items:center;gap:10px;min-width:0}.mobile-school-card__identity img{width:38px;height:38px;flex:none;border-radius:9px;object-fit:contain;background:#fff;border:1px solid #eceae5}.mobile-school-card__identity>span{display:flex;min-width:0;flex-direction:column;gap:3px}.mobile-school-card__identity small{font:9px ui-monospace,SFMono-Regular,Consolas,monospace;color:#898b8f;letter-spacing:.04em}.mobile-school-card__identity button{overflow:hidden;padding:0;border:0;background:none;color:#24262a;font-size:15px;font-weight:800;text-align:left;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
-  .mobile-school-card__star{width:36px;height:36px;flex:none;border:1px solid #e2dfd8;border-radius:8px;background:#f8f7f3;color:#a92122;font-size:20px;cursor:pointer}
+  .mobile-school-card__star{width:40px;height:40px;flex:none;display:grid;place-items:center;border:1px solid #d8d5ce;border-radius:10px;background:#f8f7f3;color:#8b8983;font-size:22px;line-height:1;cursor:pointer;touch-action:manipulation;transition:color .16s ease,background .16s ease,border-color .16s ease,transform .16s ease}
+  .mobile-school-card__star:active{transform:scale(.9)}
+  .mobile-school-card__star.is-favorite{color:#a92122;background:#fff0ee;border-color:#d9a5a2;box-shadow:inset 0 0 0 1px rgba(169,33,34,.06)}
+  .mobile-school-card__star:focus-visible{outline:3px solid rgba(169,33,34,.2);outline-offset:2px}
   .mobile-school-card__links{display:flex;gap:5px;min-height:26px;padding:0 14px 10px 16px}.mobile-school-card__links .flex{display:flex!important;gap:5px!important}.mobile-school-card__links .tag{padding:3px 6px!important;border-radius:4px!important;font-size:9px!important}
   .mobile-school-card__controls{display:grid;gap:8px;padding:11px 14px 13px 16px;border-top:1px solid #eceae5;background:#f7f6f2}.mobile-school-card__controls label{display:grid;grid-template-columns:58px minmax(0,1fr);align-items:center;gap:7px;color:#65686d;font-size:11px;font-weight:600}.mobile-school-card__controls select{width:100%;height:38px;min-width:0;padding:0 30px 0 10px;border:1px solid #d9d6cf;border-radius:7px;background:#fff;color:#25272b;font-size:11px;font-weight:600;outline:none}.mobile-school-card__controls select:focus{border-color:var(--nav-red);box-shadow:0 0 0 3px rgba(169,33,34,.1)}
   .mobile-school-card__result{margin:0 14px 0 16px;padding:12px 0 10px}.mobile-school-card__result-head{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-bottom:10px}.mobile-school-card__result-head b{font-size:12px}.mobile-school-card__result-head span{color:#96989c;font-size:9px}.mobile-school-card.has-direction .mobile-school-card__result-head span{color:var(--nav-red)}
