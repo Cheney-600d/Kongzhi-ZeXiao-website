@@ -1578,11 +1578,6 @@ textarea:focus-visible,
         <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
           <h3 class="font-bold text-gray-700">学校列表 <span class="text-sm font-normal text-gray-500" id="schoolCount"></span></h3>
           <div class="flex gap-2 items-center flex-wrap">
-            <div class="flex items-center gap-1 flex-shrink-0">
-              <label class="text-xs text-gray-500 whitespace-nowrap"><svg class="li-ico" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>相关院校层级择校推荐（勾选你所在的院校层级）:</label>
-              <select id="sFilterRecommend" class="filter-sm" style="width:70px;padding:3px 4px;font-size:11px;"><option value="">全部</option><option value="民办院校">民办</option><option value="二本院校">二本</option><option value="一本院校">一本</option><option value="211院校">211</option><option value="985院校">985</option></select>
-            </div>
-            <div id="recommendCriteria" style="font-size:12px;color:#6a6a7a;white-space:nowrap;"></div>
             <div style="position:relative;display:inline-block;">
               <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#999;pointer-events:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               <input id="schoolSearch" type="text" placeholder="搜索院校名称..." class="select-box" style="min-width:160px;width:180px;font-size:13px;padding:6px 10px 6px 32px;border-radius:20px;border:2px solid #B8A4D8;" oninput="debounceSchoolSearch()">
