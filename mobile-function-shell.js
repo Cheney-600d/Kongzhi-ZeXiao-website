@@ -7,16 +7,19 @@
     grid: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
     home: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>',
     up: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>',
-    close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>'
+    close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+    book: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+    target: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+    briefcase: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>'
   };
   var groups = [
-    {label:'备考认知', items:[
+    {label:'备考认知', icon:'book', items:[
       ['考研常识科普/index.html','28 考研常识扫盲'],['复试全攻略/index.html','27 考研复试'],['考研常识科普/experience.html','上岸经验贴'],['本科指南/index.html','大学生存与发展']
     ]},
-    {label:'择校工具', items:[
+    {label:'择校工具', icon:'target', items:[
       ['专业课选择/考研专业课院校查询.html','专业课院校查询'],['院校PK.html','院校 PK 对比'],['通信电子院校生源地图.html','院校生源地图'],['heat_compare.html','院校热度榜'],['改考院校.html','27 改考院校']
     ]},
-    {label:'就业与能力', items:[
+    {label:'就业与能力', icon:'briefcase', items:[
       ['就业相关/就业去向index.html','就业去向'],['AI课程/ai-course-overview/ai-course-overview.html','AI 提效指南'],['就业相关/job-listing/job-listing.html','26 校招信息'],['就业相关/career-analysis/career-analysis.html','就业分析报告'],['就业相关/career-analysis/role-tech-stack.html','职业规划全景']
     ]}
   ];
@@ -101,7 +104,7 @@
     window.location.replace(historyFallback);
   };
   var groupHtml = groups.map(function(group){
-    return '<section class="mfs-group"><b>'+group.label+'</b><div class="mfs-grid">'+group.items.map(function(item){
+    return '<section class="mfs-group"><b>'+icon[group.icon]+group.label+'</b><div class="mfs-grid">'+group.items.map(function(item){
       var active = current === item[1] ? ' aria-current="page"' : '';
       return '<a href="'+absolute(item[0])+'"'+active+'>'+item[1]+'</a>';
     }).join('')+'</div></section>';

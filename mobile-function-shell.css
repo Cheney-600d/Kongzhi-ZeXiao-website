@@ -170,7 +170,8 @@
   .mfs-sheet__head strong { display: block; margin-top: .22rem; font-size: 1.18rem; letter-spacing: -.025em; }
   .mfs-sheet__close { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; color: #fff; background: rgba(255,255,255,.08); border: 0; border-radius: .72rem; }
   .mfs-group { margin-top: 1rem; }
-  .mfs-group > b { display: block; margin: 0 0 .5rem .15rem; color: #b8adbf; font-size: .67rem; font-weight: 650; letter-spacing: .1em; }
+  .mfs-group > b { display: flex; align-items: center; gap: .32rem; margin: 0 0 .5rem .15rem; color: #b8adbf; font-size: .67rem; font-weight: 650; letter-spacing: .1em; }
+  .mfs-group > b svg { width: .88rem; height: .88rem; flex: none; opacity: .85; }
   .mfs-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .48rem; }
   .mfs-grid a {
     display: flex;
