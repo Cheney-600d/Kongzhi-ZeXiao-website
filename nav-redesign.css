@@ -83,7 +83,7 @@ body{padding-top:64px!important}
 .site-nav__close{display:none;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--nav-line);border-radius:6px;background:#fff;color:#333;cursor:pointer}.site-nav__close .li-ico{width:17px;height:17px}
 @media(max-width:980px){
   body{padding-top:64px!important}
-  .site-nav--v2 .site-nav__toggle{display:flex!important}
+  .site-nav--v2 .site-nav__toggle{display:none!important}
   .site-nav--v2 .site-brand>span:last-child{display:flex!important}
   #techBg{display:block!important;background:transparent!important;opacity:.62}
   #homePage{background:transparent!important}
