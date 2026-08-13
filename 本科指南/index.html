@@ -506,11 +506,10 @@ function renderSection(key, title, value, majorCode){
       <div class="grad-dir-title">🎓 适合考研方向</div>
       <div class="grad-dir-list">`;
     dirs.forEach(d => {
-      content += `<a class="grad-dir-link" href="../专业科普.html#${d.anchor}" target="_blank" rel="noopener">
+      content += `<span class="grad-dir-link" title="考研专业方向">
         <span class="gd-code">${esc(d.code)}</span>
         <span class="gd-name">${esc(d.name)}</span>
-        <span class="gd-arrow">→</span>
-      </a>`;
+      </span>`;
     });
     content += `</div></div>`;
   }
