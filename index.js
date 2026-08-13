@@ -2646,6 +2646,18 @@ function clearSchoolSearch(){
   renderSchoolTable();
 }
 
+// 导航栏搜索入口：点击"筛选"跳转到表格区后，自动聚焦院校搜索框，可直接输入
+(function(){
+  var navSearch = document.querySelector('.site-nav__search');
+  if(!navSearch) return;
+  navSearch.addEventListener('click', function(){
+    setTimeout(function(){
+      var inp = document.getElementById('schoolSearch');
+      if(inp) inp.focus();
+    }, 350);
+  });
+})();
+
 // ===================== 多选对比功能 =====================
 var compareSchools = new Set();
 (function(){
