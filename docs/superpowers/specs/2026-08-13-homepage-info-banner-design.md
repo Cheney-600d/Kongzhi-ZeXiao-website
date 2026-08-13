@@ -11,7 +11,7 @@
 
 ## 方案总览
 
-- **位置（2026-08-13 用户反馈后调整）**：首页导航行内部——B站头像（左）与考研倒计时（右）之间的横向空白带（导航行中间）。桌面端首页的 `.nav-btn-grid` 药丸组被 `nav-redesign.css` 隐藏（`#homePage .nav-btn-grid{display:none!important}`），因此该行只剩头像+倒计时、中间整条空白；横幅以 `flex:1 1 auto` 填充此空白。横幅是导航行的第 3 个 flex 子项：`[头像][横幅 flex:1][倒计时]`。
+- **位置（2026-08-13 用户反馈后调整）**：首页导航行内部——B站头像（左）与考研倒计时（右）之间的横向空白带（导航行中间）。桌面端首页的 `.nav-btn-grid` 药丸组被 `nav-redesign.css` 隐藏（`#homePage .nav-btn-grid{display:none!important}`），因此该行只剩头像+倒计时、中间整条空白；横幅以 `flex:1 1 auto` 填充此空白。横幅是导航行第 4 个 flex 子项、第 3 个可见子项（头像与横幅之间隔着一个零宽的隐藏药丸 wrapper）：`[头像][隐藏wrapper][横幅 flex:1][倒计时]`。
 - **数据**：把 `考研常识科普/experience.html` line 242 内联的 `const POSTS = [...]`（126 条）抽取到新共享文件 `考研常识科普/posts-data.js`，experience.html 与 index.html 均引用同一文件。
 - **渲染**：横幅 HTML 静态写入 index.html；`home-banner.js`（defer）读取共享 `POSTS`，渲染左栏「最新经验贴」，右栏「更新公告」为静态 HTML。
 - **选帖规则（用户反馈后调整）**：从 POSTS 末尾（最新）往前取，按学校去重，凑满 **4 所不同学校**——既保持"最新"语义，又保证横幅学校多样性（不再出现 4 条全同一学校）。
