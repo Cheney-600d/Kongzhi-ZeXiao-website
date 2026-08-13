@@ -1651,26 +1651,20 @@ function renderDetail(schoolName){
   const tags = getSchoolTags(schoolName, schoolRecs[0].tier, province, true);
   
   function renderTagGroup(tagList) {
+    // 详情页标签仅作注释展示（985/地区/控制评级等），不提供跳转/筛选
     return tagList.map(t => {
       const s = getTagStyle(t.name, t.type);
-      const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;font-size:14px;padding:6px 14px;border-radius:16px;`;
-      if (t.type === 'tier') {
-        return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
-      }
-      if (t.type === 'shengyuan') {
-        return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}')" title="点击查看生源分布">${t.name}</span>`;
-      }
-      if (t.type === 'region') {
-        return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByRegion('${t.name.replace(/'/g, "\\'")}')" title="点击筛选${t.name}地区院校">${t.name}</span>`;
-      }
-      if (t.type === 'province') {
-        return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByProvince('${t.name.replace(/'/g, "\\'")}')" title="点击筛选${t.name}省份院校">${t.name}</span>`;
-      }
-      if (t.type === 'eval') {
-        const subject = '0810';
-        return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','${subject}')" title="点击查看${t.name}研究方向">${t.name}</span>`;
-      }
-      return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
+      const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;font-size:14px;padding:6px 14px;border-radius:16px;`;
+      const tipMap = {
+        tier: `${t.name}工程院校`,
+        shengyuan: `属于${schoolName}的院校生源标签`,
+        region: `${t.name}地区`,
+        province: `所在省份：${t.name}`,
+        eval: `${schoolName}${t.name}`,
+        group: t.name
+      };
+      const tip = tipMap[t.type] || t.name;
+      return `<span class="tag" style="${baseStyle}" title="${tip}">${t.name}</span>`;
     }).join('');
   }
   
