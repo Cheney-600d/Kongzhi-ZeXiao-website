@@ -741,6 +741,143 @@ function clearRowPlaceholder(tr){
     td.style.whiteSpace = '';
   });
 }
+function mobileMetricValue(tr, cls){
+  const el = tr.querySelector('.'+cls);
+  return el ? (el.textContent||'—').trim() : '—';
+}
+function updateMobileSchoolCard(tr){
+  if(!tr || !tr.dataset.mobileCardId) return;
+  const card = document.getElementById(tr.dataset.mobileCardId);
+  if(!card) return;
+  const chosen = tr.dataset.dirChosen === '1' && tr.querySelector('.row-dir') && tr.querySelector('.row-dir').value !== '';
+  card.classList.toggle('has-direction', chosen);
+  const status = card.querySelector('.mobile-school-card__status');
+  if(status) status.textContent = chosen ? '已更新当前方向数据' : '请选择具体方向查看数据';
+  const mapping = {enter:'row-enter',admit:'row-admit',ratio:'row-ratio',avgadmit:'row-avgadmit',avgcourse:'row-avgcourse'};
+  Object.keys(mapping).forEach(function(key){
+    const target = card.querySelector('[data-metric="'+key+'"]');
+    if(target) target.textContent = chosen ? mobileMetricValue(tr,mapping[key]) : '—';
+  });
+}
+function mobileSelectSchoolCard(cardId, type, value){
+  const card = document.getElementById(cardId);
+  if(!card) return;
+  const trId = card.dataset.rowId;
+  const tr = document.querySelector('#schoolTable tr[data-mobile-row-id="'+trId+'"]');
+  if(!tr) return;
+  const original = tr.querySelector(type === 'college' ? '.row-col' : '.row-dir');
+  if(!original) return;
+  original.value = value;
+  applyRowSelect(original);
+  if(type === 'college'){
+    const mobileDir = card.querySelector('.mobile-row-dir');
+    const originalDir = tr.querySelector('.row-dir');
+    if(mobileDir && originalDir){
+      mobileDir.innerHTML = originalDir.innerHTML;
+      mobileDir.value = originalDir.value;
+    }
+  }
+  updateMobileSchoolCard(tr);
+  card.classList.remove('is-updating');
+  void card.offsetWidth;
+  card.classList.add('is-updating');
+}
+function renderMobileSchoolCards(){
+  const host = document.getElementById('mobileSchoolCards');
+  const tbody = document.getElementById('schoolTable');
+  if(!host || !tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr[data-school]'));
+  if(!rows.length){
+    host.innerHTML = '<div class="mobile-school-empty">没有符合当前条件的院校，请调整筛选条件。</div>';
+    return;
+  }
+  host.innerHTML = '';
+  rows.forEach(function(tr,index){
+    const rowId = 'mobile-row-'+index;
+    const cardId = 'mobile-school-card-'+index;
+    tr.dataset.mobileRowId = rowId;
+    tr.dataset.mobileCardId = cardId;
+    const school = tr.dataset.school || '';
+    const cells = tr.children;
+    const tier = cells[0] ? cells[0].textContent.trim() : '—';
+    const province = cells[1] ? cells[1].textContent.trim() : '—';
+    const info = cells[3] ? cells[3].innerHTML : '';
+    const colSel = tr.querySelector('.row-col');
+    const dirSel = tr.querySelector('.row-dir');
+    const card = document.createElement('article');
+    card.id = cardId;
+    card.dataset.rowId = rowId;
+    card.className = 'mobile-school-card';
+    card.innerHTML = '<header class="mobile-school-card__header">'+
+      '<div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(tier)+' · '+escAttr(province)+'</small><button type="button" onclick="openMobileSchoolDetail(\''+cardId+'\')">'+escAttr(school)+'</button></span></div>'+
+      '<button class="mobile-school-card__star" type="button" onclick="toggleFavorite(\''+String(school).replace(/'/g,"\\'")+'\')" aria-label="收藏'+escAttr(school)+'">☆</button></header>'+
+      '<div class="mobile-school-card__links">'+info+'</div>'+
+      '<div class="mobile-school-card__controls"><label>学院<select class="mobile-row-col" onchange="mobileSelectSchoolCard(\''+cardId+'\',\'college\',this.value)">'+(colSel?colSel.innerHTML:'')+'</select></label><label>专业方向<select class="mobile-row-dir" onchange="mobileSelectSchoolCard(\''+cardId+'\',\'direction\',this.value)">'+(dirSel?dirSel.innerHTML:'')+'</select></label></div>'+
+      '<section class="mobile-school-card__result"><div class="mobile-school-card__result-head"><b>当前方向数据</b><span class="mobile-school-card__status">请选择具体方向查看数据</span></div><div class="mobile-school-card__metrics">'+
+      '<div><span data-metric="enter">—</span><small>进复试</small></div><div><span data-metric="admit">—</span><small>拟录取</small></div><div><span data-metric="ratio">—</span><small>复录比</small></div><div><span data-metric="avgadmit">—</span><small>录取均分</small></div><div><span data-metric="avgcourse">—</span><small>专业课均分</small></div></div></section>'+
+      '<footer><button type="button" onclick="openMobileSchoolDetail(\''+cardId+'\')">查看完整数据 <span>→</span></button></footer>';
+    host.appendChild(card);
+    if(colSel) card.querySelector('.mobile-row-col').value = colSel.value;
+    if(dirSel) card.querySelector('.mobile-row-dir').value = dirSel.value;
+    updateMobileSchoolCard(tr);
+  });
+}
+function renderMobileDirectionCards(recs){
+  const host = document.getElementById('mobileSchoolCards');
+  if(!host) return;
+  if(!recs || !recs.length){
+    host.innerHTML = '<div class="mobile-school-empty">没有符合条件的数二英二方向，请调整筛选条件。</div>';
+    return;
+  }
+  host.innerHTML = recs.map(function(r){
+    const school = r.school || '';
+    const direction = cleanDirName(r.majorName) || '未标注方向';
+    const recordIndex = records.indexOf(r);
+    return '<article class="mobile-school-card mobile-direction-card has-direction" data-school="'+escAttr(school)+'" data-record-index="'+recordIndex+'">'+
+      '<header class="mobile-school-card__header"><div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(r.tier||'—')+' · '+escAttr(r.province||'—')+'</small><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">'+escAttr(school)+'</button></span></div></header>'+
+      '<div class="mobile-direction-card__path"><span>数二英二专项</span><b>'+escAttr(r.college||dirCollege(r)||'学院未标注')+'</b><strong>'+(r.majorCode?escAttr(r.majorCode)+' ':'')+escAttr(direction)+'</strong></div>'+
+      '<section class="mobile-school-card__result"><div class="mobile-school-card__result-head"><b>该方向录取数据</b><span>专项筛选结果</span></div><div class="mobile-school-card__metrics">'+
+      '<div><span>'+escAttr(r.enterNum!=null?r.enterNum:'—')+'</span><small>进复试</small></div><div><span>'+escAttr(r.admitNum!=null?r.admitNum:'—')+'</span><small>拟录取</small></div><div><span>'+escAttr(r.ratio!=null?r.ratio:'—')+'</span><small>复录比</small></div><div><span>'+escAttr(r.admitAvg!=null?fmt(r.admitAvg):'—')+'</span><small>录取均分</small></div><div><span>'+escAttr(r.courseAvg!=null?fmt(r.courseAvg):'—')+'</span><small>专业课均分</small></div></div></section>'+
+      '<footer><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">查看该方向完整数据 <span>→</span></button></footer></article>';
+  }).join('');
+}
+
+// 移动端学校卡片沿用首页的选择上下文：未选方向看全校，选择后只看该学院下的该方向。
+function openMobileSchoolDetail(cardId){
+  const card = document.getElementById(cardId);
+  if(!card) return;
+  const rowId = card.dataset.rowId;
+  const tr = rowId ? document.querySelector('tr[data-mobile-row-id="'+rowId+'"]') : null;
+  if(!tr || !tr.dataset.school) return;
+
+  const school = tr.dataset.school;
+  const dirSel = tr.querySelector('.row-dir');
+  const dirIdx = dirSel ? dirSel.value : '';
+  const schRecs = records.filter(function(r){ return r.school === school; });
+
+  window.pendingDetailFilter = null;
+  if(tr.dataset.dirChosen === '1' && dirIdx !== '' && schRecs[parseInt(dirIdx, 10)]){
+    const rec = schRecs[parseInt(dirIdx, 10)];
+    window.pendingDetailFilter = function(r){
+      return r.college === rec.college && r.majorName === rec.majorName;
+    };
+  }
+  goDetail(school);
+}
+
+// 数二英二专项卡片本身已代表一个明确方向，进入详情时保持这一精确筛选。
+function openMobileDirectionDetail(card){
+  if(!card) return;
+  const school = card.dataset.school || '';
+  const recordIndex = parseInt(card.dataset.recordIndex, 10);
+  const rec = Number.isNaN(recordIndex) ? null : records[recordIndex];
+  if(!school) return;
+
+  window.pendingDetailFilter = rec ? function(r){
+    return r.college === rec.college && r.majorName === rec.majorName;
+  } : null;
+  goDetail(school);
+}
 function applyRowSelect(sel){
   const tr = sel.closest('tr');
   if(!tr) return;
@@ -777,6 +914,7 @@ function applyRowSelect(sel){
   // 未主动选择具体方向(含"全部")：不展示任何数据, 显示柔和占位
   if(tr.dataset.dirChosen !== '1' || dirIdx === ''){
     setRowPlaceholder(tr);
+    updateMobileSchoolCard(tr);
     return;
   }
   // 已选具体方向：先清除占位灰色样式, 恢复醒目数据展示
@@ -795,6 +933,7 @@ function applyRowSelect(sel){
   tr.querySelector('.row-ratio').textContent = chosen.ratio!=null?chosen.ratio:'-';
   tr.querySelector('.row-avgadmit').textContent = chosen.admitAvg!=null?fmt(chosen.admitAvg):'-';
   tr.querySelector('.row-avgcourse').textContent = chosen.courseAvg!=null?fmt(chosen.courseAvg):'-';
+  updateMobileSchoolCard(tr);
 }
 function findDist(school, rec){
   const dists = (typeof SCHOOL_DIST!=='undefined') ? SCHOOL_DIST[school] : null;
@@ -866,6 +1005,7 @@ function renderDirectionRows(){
   if(recs.length === 0){
     tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;">没有符合条件的数二英二方向</div></td></tr>';
     renderSchoolPagination(0, 1);
+    renderMobileDirectionCards([]);
     return;
   }
   tbody.innerHTML = recs.map(function(r){
@@ -888,6 +1028,7 @@ function renderDirectionRows(){
   const countEl = document.getElementById('schoolCount');
   if(countEl) countEl.textContent = '(共'+recs.length+'个方向)';
   renderSchoolPagination(recs.length, 1);
+  renderMobileDirectionCards(recs);
 }
 function schoolNameHtml(name){
   // 带括号校区后缀(如"华北电力大学（北京）")的括号部分用小字号弱化, 防窄列内文字溢出遮挡
@@ -908,6 +1049,8 @@ function renderSchoolTable(){
 
   if(data.length === 0){
     tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的院校</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件或搜索关键词</div><button onclick="resetSchoolFilters()" style="padding:8px 20px;background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
+    const mobileHost = document.getElementById('mobileSchoolCards');
+    if(mobileHost) mobileHost.innerHTML = '<div class="mobile-school-empty">没有符合当前条件的院校，请调整筛选条件。</div>';
     renderSchoolPagination(0, 1);
     return;
   }
@@ -1000,6 +1143,7 @@ function renderSchoolTable(){
   });
 
   renderSchoolPagination(totalItems, totalPages);
+  renderMobileSchoolCards();
   // 更新排序箭头
   ['admit','avgAdmit','avgCourse','enter','ratio'].forEach(function(f){
     var el = document.getElementById('sort-'+f);
@@ -2198,7 +2342,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
   resize();
   window.addEventListener('resize', resize);
   
-  const colors = ['#3b82f6','#06b6d4','#8b5cf6','#6366f1','#0ea5e9'];
+  // 浅色主题粒子：控制红负责识别，蓝灰与淡紫负责空间层次。
+  const colors = ['#b4232a','#637c9a','#7989b4','#9184b1','#5d8d96'];
   const particleCount = Math.min(80, Math.floor(W * H / 25000));
   
   // 粒子节点（芯片引脚/神经元）
@@ -2224,7 +2369,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
       y: Math.random()*H,
       vy: Math.random()*0.8+0.3,
       char: binChars[Math.floor(Math.random()*binChars.length)],
-      alpha: Math.random()*0.3+0.1,
+      alpha: Math.random()*0.16+0.07,
       size: Math.random()*10+8
     });
   }
@@ -2284,7 +2429,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
       ctx.fillStyle = p.color;
-      ctx.globalAlpha = glow*0.6;
+      ctx.globalAlpha = glow*0.48;
       ctx.fill();
       ctx.globalAlpha = 1;
       
@@ -2298,7 +2443,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
           ctx.strokeStyle = p.color;
-          ctx.globalAlpha = (1-dist/140)*0.15;
+          ctx.globalAlpha = (1-dist/140)*0.11;
           ctx.lineWidth = 0.8;
           ctx.stroke();
           ctx.globalAlpha = 1;
@@ -2343,7 +2488,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
       c.y += c.vy;
       if(c.y > H+20) { c.y = -20; c.x = Math.random()*W; c.char = binChars[Math.floor(Math.random()*binChars.length)]; }
       ctx.font = c.size + 'px monospace';
-      ctx.fillStyle = '#3b82f6';
+      ctx.fillStyle = '#637c9a';
       ctx.globalAlpha = c.alpha;
       ctx.fillText(c.char, c.x, c.y);
       ctx.globalAlpha = 1;
@@ -3003,4 +3148,3 @@ function showPoster(index){
     dot.style.background = i === index ? '#B8A4D8' : '#ddd';
   });
 }
-

@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="覆盖100+高校的控制类考研择校数据，支持筛选、对比、热度、生源、就业等一站式查询。">
 <link rel="canonical" href="index.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="nav-redesign.css">
 
 <!-- 早期广告状态同步：避免从子页面返回时QQ群广告闪现 -->
 <script>
@@ -1134,6 +1135,48 @@ textarea:focus-visible,
 <link rel="stylesheet" href="entry-intro-white.css">
 </head>
 <body>
+<a class="site-skip-link" href="#homePage">跳到主要内容</a>
+<nav class="site-nav site-nav--v2" aria-label="全站导航">
+  <div class="site-nav__rail" aria-hidden="true"><span></span></div>
+  <div class="site-nav__inner">
+    <a class="site-brand" href="index.html" aria-label="控制择校首页">
+      <span class="site-brand__mark"><i></i><b>K</b><small>(s)</small></span>
+      <span><strong>控制择校</strong><small>CONTROL · SCHOOL</small></span>
+    </a>
+    <div class="site-nav__status" aria-label="平台数据状态">
+      <span><i></i>2027 / 2028 数据版</span>
+      <b>132</b><small>所院校</small>
+      <b>529</b><small>条录取记录</small>
+    </div>
+    <a class="site-nav__search" href="#mainContentArea">
+      <svg class="li-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <span>搜索院校、地区或专业课</span><kbd>筛选</kbd>
+    </a>
+    <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="siteNavMenu" aria-label="打开导航菜单">
+      <svg class="li-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="site-nav-dock site-nav--v2"><div class="site-nav__tools" id="siteNavMenu">
+        <button class="site-nav__scrim" type="button" aria-label="关闭功能总览" tabindex="-1"></button>
+        <button class="site-nav__tools-btn" type="button" aria-expanded="false">
+          <svg class="li-ico site-nav__grid-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="site-nav__tools-label"><b>功能总览</b><small>14 项功能 · 随时直达</small></span>
+          <svg class="li-ico chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="site-nav__panel site-nav__mega">
+          <header><span><b>全站功能</b><small>按照考研阶段快速进入对应工具</small></span><i>CONTROL HUB</i><button class="site-nav__close" type="button" aria-label="关闭功能总览"><svg class="li-ico" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></header>
+          <section><p><span>01</span>备考与提升</p>
+            <a href="考研常识科普/index.html">28 考研常识扫盲</a><a href="复试全攻略/index.html">27 考研复试</a><a href="考研常识科普/experience.html">上岸经验贴</a><a href="本科指南/index.html">大学生存与发展</a>
+          </section>
+          <section><p><span>02</span>择校决策</p>
+            <a href="专业课选择/考研专业课院校查询.html">专业课院校查询</a><a href="院校PK.html">院校 PK 对比</a><a href="通信电子院校生源地图.html">院校生源地图</a><a href="heat_compare.html">院校热度榜</a><a href="改考院校.html">27 改考院校</a>
+          </section>
+          <section><p><span>03</span>就业与能力</p>
+            <a href="就业相关/就业去向index.html">就业去向</a><a href="AI课程/ai-course-overview/ai-course-overview.html">AI 提效指南</a><a href="就业相关/job-listing/job-listing.html">26 校招信息</a><a href="就业相关/career-analysis/career-analysis.html">就业分析报告</a><a href="就业相关/career-analysis/role-tech-stack.html">职业规划全景</a>
+          </section>
+        </div>
+      </div></div>
 <!-- 控制择校入场动画（Codex entry-intro-white，Ditto 浅色红配色） -->
 <div id="entryIntro" class="entry-intro" role="dialog" aria-modal="true" aria-label="控制择校入场动画">
   <div class="entry-intro__veil" aria-hidden="true">
@@ -1513,6 +1556,7 @@ textarea:focus-visible,
             <button class="back-btn text-xs px-3 py-1.5" onclick="resetSchoolFilter()">重置</button>
           </div>
         </div>
+        <div id="mobileSchoolCards" class="mobile-school-cards" aria-live="polite"></div>
         <div class="overflow-x-auto table-scroll-hint">
           <table class="w-full text-sm school-table" style="white-space:nowrap;">
             <colgroup>
@@ -1788,5 +1832,6 @@ textarea:focus-visible,
   <div style="position:absolute;top:20px;right:30px;color:#fff;font-size:36px;cursor:pointer;font-weight:300;" onclick="closeImageLightbox()">&times;</div>
 </div>
 
+<script src="nav-redesign.js"></script>
 </body>
 </html>
