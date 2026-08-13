@@ -1339,6 +1339,46 @@ textarea:focus-visible,
       <div class="stat"><span class="stat-num">154</span><span class="stat-label">个专业方向</span></div>
     </div>
 
+    <!-- 信息横幅：最新经验贴 + 更新公告（桌面端显示，移动端隐藏） -->
+    <style>
+      .home-banner{display:flex;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.05);padding:14px 16px;margin-bottom:12px;}
+      .home-banner .hb-col{padding:0 16px;min-width:0;}
+      .home-banner .hb-col:first-child{padding-left:0;}
+      .home-banner .hb-col + .hb-col{border-left:1px solid #EEF0F4;}
+      .home-banner .hb-title{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:800;color:#B71C1C;margin-bottom:8px;}
+      .home-banner .hb-title .hb-more{font-size:12px;font-weight:600;color:#6b7280;text-decoration:none;}
+      .home-banner .hb-title .hb-more:hover{color:#B71C1C;}
+      .home-banner .hb-posts{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;}
+      .home-banner a.banner-post{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;text-decoration:none;min-width:0;transition:background .2s;}
+      .home-banner a.banner-post:hover{background:#F8F8F6;}
+      .home-banner .hb-news{list-style:none;margin:0;padding:0;}
+      .home-banner .hb-news li{display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;padding:4px 0;}
+      .home-banner .hb-news li a{color:#374151;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+      .home-banner .hb-news li a:hover{color:#B71C1C;}
+      .home-banner .hb-news .dot{width:6px;height:6px;border-radius:50%;background:#B71C1C;flex-shrink:0;}
+      @media(max-width:768px){.home-banner{display:none;}}
+    </style>
+    <div class="home-banner" aria-label="首页信息">
+      <!-- 左：最新上岸经验贴（JS 渲染） -->
+      <div class="hb-col" style="flex:1.25;">
+        <div class="hb-title">
+          <span><svg class="li-ico" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg> 最新上岸经验贴</span>
+          <a class="hb-more" href="考研常识科普/experience.html">查看全部 →</a>
+        </div>
+        <div class="hb-posts" id="bannerLatestPosts"></div>
+      </div>
+      <!-- 右：更新公告 -->
+      <div class="hb-col" style="flex:1;">
+        <div class="hb-title"><span><svg class="li-ico" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg> 更新公告</span></div>
+        <ul class="hb-news">
+          <li><span class="dot"></span><a href="考研常识科普/experience.html">经验贴上新：126 篇 26 考研上岸实录</a></li>
+          <li><span class="dot"></span><a href="就业相关/就业去向index.html">就业去向揭秘：覆盖扩至 151 所高校</a></li>
+          <li><span class="dot"></span><a href="专业课选择/考研专业课院校查询.html">专业课参考书目：133 校 12 类方向查询上线</a></li>
+          <li><span class="dot"></span><a href="复试全攻略/index.html">27 考研复试全攻略上线</a></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
     <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
       <!-- 左侧：头像（B站角标）+ 关于UP主 -->
@@ -1776,6 +1816,8 @@ textarea:focus-visible,
   </div>
 </div>
 
+    <script src="考研常识科普/posts-data.js" defer></script>
+    <script src="home-banner.js" defer></script>
     <script src="index.js" defer></script>
     <script src="toy-coin-gate.js" defer></script>
 
