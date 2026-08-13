@@ -1387,17 +1387,6 @@ function goDetail(schoolName){
   console.log('dp display:', dp.style.display, 'dp className:', dp.className);
   window.scrollTo(0,0);
   renderDetail(schoolName);
-  // 检查URL参数中是否有来源页面（from子页面跳转）
-  const urlParams = new URLSearchParams(window.location.search);
-  const fromPage = urlParams.get('from');
-  const backBtn = document.getElementById('detailBackBtn');
-  if(fromPage && backBtn){
-    sessionStorage.setItem('detailSource', fromPage);
-    backBtn.style.display = 'inline-flex';
-  } else {
-    sessionStorage.setItem('detailSource', 'home');
-    if(backBtn) backBtn.style.display = 'none';
-  }
 }
 
 function showPage(pageId){
@@ -1511,15 +1500,6 @@ function openPosterLightbox(src){
   // 滚动到顶部
   ov.scrollTop = 0;
 }
-function goBackFromDetail(){
-  const source = sessionStorage.getItem('detailSource');
-  if(source && source !== 'home'){
-    location.href = source;
-  } else {
-    goHome();
-  }
-}
-
 // ===================== 最近浏览功能 =====================
 function recordRecentlyViewed(schoolName){
   if(!schoolName) return;

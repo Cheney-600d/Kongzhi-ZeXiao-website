@@ -72,32 +72,18 @@
     window.goHome = function () {
       var s = history.state;
       if (!restoring && s && s.kzUiHistory && s.view === 'school-detail') {
-        var fromParam = new URL(location.href).searchParams.get('from');
-        if (fromParam === 'course-parent-fallback') {
-          // 课程页 location.replace 往返产生的详情条目，上一跳也是同一学校详情（或外部页），
-          // history.back() 无法回到首页 → 直接渲染首页并清理 URL 中的导航参数。
-          var homeUrl = cleanUrl();
-          ['from', 'school', 'fromSchoolDetail'].forEach(function (key) {
-            homeUrl.searchParams.delete(key);
-          });
-          homeUrl.searchParams.set('uiView', 'home');
-          history.replaceState({ kzUiHistory: true, view: 'home' }, '', homeUrl.pathname + homeUrl.search);
-          return renderHome.apply(this, arguments);
-        }
-        history.back();
-        return;
+        // 详情页"返回首页"：直接渲染首页并 replaceState 清理导航参数。
+        // 不再 history.back()——back 的落点受 BFCache/历史堆栈影响，
+        // 可能出现"先回首页、随后闪回详情页"。确定性渲染保证停留在首页。
+        var homeUrl = cleanUrl();
+        ['from', 'school', 'fromSchoolDetail'].forEach(function (key) {
+          homeUrl.searchParams.delete(key);
+        });
+        homeUrl.searchParams.set('uiView', 'home');
+        history.replaceState({ kzUiHistory: true, view: 'home' }, '', homeUrl.pathname + homeUrl.search);
+        return renderHome.apply(this, arguments);
       }
       return renderHome.apply(this, arguments);
-    };
-
-    window.goBackFromDetail = function () {
-      if (history.state && history.state.kzUiHistory && history.state.view === 'school-detail') {
-        history.back();
-      } else if (history.length > 1) {
-        history.back();
-      } else {
-        renderHome();
-      }
     };
 
     addEventListener('popstate', function (event) {
