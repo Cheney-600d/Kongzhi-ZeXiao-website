@@ -288,7 +288,7 @@ function renderCards(){
   const picks = shuffled.slice(0,15);
   let html = '';
   picks.forEach(p => {
-    const label = p.code ? p.schoolShort+' '+p.code : p.schoolShort;
+    const label = p.code ? p.school+' '+p.code : p.school; // 封面用学校全称（不用简称）
     const badge = p.total ? '总分'+p.total : (p.subjectScore ? '专业课'+p.subjectScore : p.year);
     const authorName = p.author ? '@'+p.author : '@上岸学长';
     const metaTag = p.subjectScore ? '专业课'+p.subjectScore : (p.total ? '总分'+p.total : p.level);
@@ -296,7 +296,7 @@ function renderCards(){
           + '<div class="card-cover-wrap" style="background: linear-gradient(135deg, '+p.c1+', '+p.c2+');">'
           + '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:8px;">'
           + '<img src="../专业课选择/images/校徽/'+schoolBadgeName(p.school)+'.jpg" onerror="this.style.display=\'none\'" alt="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55);">'
-          + '<span style="font-size:1.2rem;font-weight:700;color:'+p.ct+';">'+label+'</span>'
+          + '<span style="font-size:1.2rem;font-weight:700;color:'+p.ct+';flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+label+'</span>'
           + '</div>'
           + '<div class="card-duration">'+badge+'</div>'
           + '</div>'
