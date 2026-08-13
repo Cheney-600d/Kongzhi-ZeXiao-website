@@ -274,6 +274,13 @@ function shuffle(arr){
   return a;
 }
 
+// 校徽文件名：分校区剥后缀用校本部徽章；无校区简称帖默认主校区徽章
+function schoolBadgeName(s){
+  var base = String(s || '').replace(/[（(][^）)]*[）)]/g, '');
+  if (base === '中国石油大学') return '中国石油大学(华东)';
+  if (base === '中国地质大学') return '中国地质大学(武汉)';
+  return base;
+}
 function renderCards(){
   const container = document.getElementById('random-experience-cards');
   if(!container) return;
@@ -288,7 +295,7 @@ function renderCards(){
     html += '<a href="experience/'+p.id+'.html" class="video-card" style="text-decoration:none;" data-year="'+p.year+'">'
           + '<div class="card-cover-wrap" style="background: linear-gradient(135deg, '+p.c1+', '+p.c2+');">'
           + '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:8px;">'
-          + '<img src="../专业课选择/images/校徽/'+p.school+'.jpg" onerror="this.style.display=\'none\'" alt="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55);">'
+          + '<img src="../专业课选择/images/校徽/'+schoolBadgeName(p.school)+'.jpg" onerror="this.style.display=\'none\'" alt="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55);">'
           + '<span style="font-size:1.2rem;font-weight:700;color:'+p.ct+';">'+label+'</span>'
           + '</div>'
           + '<div class="card-duration">'+badge+'</div>'

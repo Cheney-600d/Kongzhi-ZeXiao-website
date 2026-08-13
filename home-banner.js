@@ -18,7 +18,9 @@
     return;
   }
   list.innerHTML = latest.map(function (p) {
-    var logo = '<img src="专业课选择/images/校徽/' + esc(p.school || '') + '.jpg" onerror="this.style.display=\'none\'" alt="" style="width:20px;height:20px;border-radius:50%;object-fit:cover;flex-shrink:0;">';
+    var schoolBase = (p.school || '').replace(/[（(][^）)]*[）)]/g, ''); // 分校区剥后缀→校本部徽章
+    var schoolBadge = schoolBase === '中国石油大学' ? '中国石油大学(华东)' : (schoolBase === '中国地质大学' ? '中国地质大学(武汉)' : schoolBase); // 无校区简称帖默认主校区
+    var logo = '<img src="专业课选择/images/校徽/' + esc(schoolBadge) + '.jpg" onerror="this.style.display=\'none\'" alt="" style="width:20px;height:20px;border-radius:50%;object-fit:cover;flex-shrink:0;">';
     var badge = '<span style="background:' + (LEVEL[p.level] || '#6b7280') + ';color:#fff;font-size:11px;font-weight:600;line-height:1;padding:3px 6px;border-radius:6px;flex-shrink:0;">' + esc(p.schoolShort || p.school || '') + '</span>';
     var title = '<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;color:#1f2430;">' + esc(p.title) + '</span>';
     var score = p.total ? '<span style="color:#B71C1C;font-weight:700;font-size:13px;flex-shrink:0;">' + esc(p.total) + '分</span>' : '';
