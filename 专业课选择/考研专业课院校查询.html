@@ -817,12 +817,20 @@
                         ref.searchParams.get('uiView') === 'school-detail' &&
                         ref.searchParams.get('uiSchool') === params.get('school');
                 } catch (error) {}
-                // The course page creates its own in-page history state while it
-                // renders the selected school. A plain history.back() can land on
-                // that intermediate state and then continue to the homepage on
-                // mobile WebView/BFCache restores. Replace the child page with
-                // the explicit school-detail URL so the parent is deterministic
-                // and the Back gesture cannot loop through this child again.
+                if (referrerIsSchoolDetail) {
+                    // 正常来自主站学校详情页：用 history.back() 精确恢复原详情条目，
+                    // 不产生 from 参数/重复详情条目，"返回首页"与"返回上一级"均恢复正常。
+                    // 仅当已在课程工具内深入浏览（push 过中间状态）时，才明确替换回主站详情。
+                    const toolState = history.state && history.state.kzUiHistory && history.state.view;
+                    if (toolState && toolState !== 'course-school-detail') {
+                        location.replace(fallback);
+                    } else {
+                        history.back();
+                    }
+                    return false;
+                }
+                // 非详情页来源（如直接输入课程页 URL）：用带 school 参数的明确 URL
+                // 替换回主站对应学校详情，保证父级确定性。
                 location.replace(fallback);
             } else if (typeof window.siteHistoryBack === 'function') window.siteHistoryBack(fallback);
             else if (document.referrer && new URL(document.referrer, location.href).origin === location.origin) history.back();

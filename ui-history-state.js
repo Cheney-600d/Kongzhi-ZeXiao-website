@@ -37,8 +37,19 @@
     var renderDetail = window.goDetail;
     var renderHome = window.goHome;
     var directSchool = new URL(location.href).searchParams.get('school');
+    // 必须在 initialView() 之前捕获原始 URL 参数——initialView 会用 replaceState
+    // 将 URL 改写为 uiView=home 并清除 uiSchool。
+    var homeParams = new URLSearchParams(location.search);
 
     initialView('home');
+
+    // 深度链接恢复：URL 携带 uiView=school-detail 时，重载/无 BFCache 返回后直接渲染该学校详情，
+    // 否则 history.back() 重载该条目会落到首页，破坏"考察专业课→返回→详情页"流程。
+    if (homeParams.get('uiView') === 'school-detail' && homeParams.get('uiSchool')) {
+      var restoredSchool = homeParams.get('uiSchool');
+      write('school-detail', { school: restoredSchool }, true);
+      renderDetail(restoredSchool);
+    }
 
     function enterSchoolDetail(schoolName) {
       if (!schoolName) return;
@@ -59,7 +70,20 @@
     window.enterSchoolDetailWithHistory = enterSchoolDetail;
 
     window.goHome = function () {
-      if (!restoring && history.state && history.state.kzUiHistory && history.state.view === 'school-detail') {
+      var s = history.state;
+      if (!restoring && s && s.kzUiHistory && s.view === 'school-detail') {
+        var fromParam = new URL(location.href).searchParams.get('from');
+        if (fromParam === 'course-parent-fallback') {
+          // 课程页 location.replace 往返产生的详情条目，上一跳也是同一学校详情（或外部页），
+          // history.back() 无法回到首页 → 直接渲染首页并清理 URL 中的导航参数。
+          var homeUrl = cleanUrl();
+          ['from', 'school', 'fromSchoolDetail'].forEach(function (key) {
+            homeUrl.searchParams.delete(key);
+          });
+          homeUrl.searchParams.set('uiView', 'home');
+          history.replaceState({ kzUiHistory: true, view: 'home' }, '', homeUrl.pathname + homeUrl.search);
+          return renderHome.apply(this, arguments);
+        }
         history.back();
         return;
       }
