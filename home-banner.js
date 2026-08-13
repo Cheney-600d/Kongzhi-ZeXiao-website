@@ -5,7 +5,14 @@
   var posts = window.POSTS || [];
   var LEVEL = { '985': '#E53935', '211': '#00AEEC', '双一流': '#9C27B0', '双非': '#43A047' };
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  var latest = posts.slice(-4).reverse();
+  // 从最新往前取 4 条，但学校去重：凑满 4 所不同学校（auto-sync 时也能保证多样性）
+  var latest = [];
+  var seen = {};
+  for (var i = posts.length - 1; i >= 0 && latest.length < 4; i--) {
+    var p = posts[i];
+    var key = p.school || p.schoolShort || p.id;
+    if (!seen[key]) { seen[key] = true; latest.push(p); }
+  }
   if (!latest.length) {
     list.innerHTML = '<div style="font-size:12px;color:#999;padding:6px 2px;">暂无经验贴</div>';
     return;
