@@ -21,6 +21,7 @@ body{padding-top:112px!important}
 .site-nav--v2{height:112px;background:#f8f8f5;border:0;box-shadow:0 12px 34px rgba(38,31,29,.1)}
 .site-nav--v2.site-nav:before{content:"";position:absolute;inset:0 0 48px;background:#1d2025}
 .site-nav-dock:before,.site-nav-dock:after{content:none!important;display:none!important}
+.site-nav-dock{display:contents}
 .site-nav--v2 .site-nav__rail{z-index:2}
 .site-nav--v2 .site-nav__inner{height:64px;position:relative;align-self:flex-start;margin-top:0;gap:28px}
 .site-nav--v2 .site-brand{color:#fff}.site-nav--v2 .site-brand__mark{color:#17191d}.site-nav--v2 .site-brand>span>small{color:#9ca0a7}

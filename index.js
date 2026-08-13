@@ -2258,7 +2258,6 @@ function histOption(dist, color){
 window.addEventListener('DOMContentLoaded', ()=>{
   initStats();
   initFilters();
-  updateAdToggleBtn();
   updateHomeQqGroupAds(isQrAdEnabled());
   renderRecentViewBar();
   
@@ -2696,48 +2695,6 @@ function isQrAdEnabled(){
   var val = localStorage.getItem(QR_AD_KEY);
   return val === null ? true : (val === 'true');
 }
-function setQrAdEnabled(enabled){
-  localStorage.setItem(QR_AD_KEY, String(enabled));
-  // 同步 html 标签上的 ad-disabled 类，避免页面刷新/返回时闪现
-  if(enabled){
-    document.documentElement.classList.remove('ad-disabled');
-  } else {
-    document.documentElement.classList.add('ad-disabled');
-  }
-}
-function toggleQrAd(){
-  var enabled = !isQrAdEnabled();
-  setQrAdEnabled(enabled);
-  updateAdToggleBtn();
-  // 刷新所有已存在的二维码链接显示状态
-  var qrLinkDivs = document.querySelectorAll('[id^="qr-link-"]');
-  qrLinkDivs.forEach(function(el){
-    if(!enabled){
-      el.style.display = 'none';
-    } else {
-      var img = el.querySelector('img');
-      if(img && img.complete && img.naturalWidth > 0){
-        el.style.display = 'block';
-      }
-    }
-  });
-  // 刷新所有已存在的QQ群标签显示状态
-  var qqTags = document.querySelectorAll('[id^="qq-"]');
-  qqTags.forEach(function(el){
-    el.style.display = enabled ? 'inline-flex' : 'none';
-  });
-  // 控制院校海报轮播显示
-  var carousel = document.getElementById('posterCarousel');
-  if(carousel) carousel.style.display = enabled ? 'block' : 'none';
-  // 控制详情页广告框（海报）显示
-  var detailAds = document.getElementById('detailAds');
-  if(detailAds) detailAds.style.display = enabled ? 'block' : 'none';
-  // 控制详情页院校QQ群卡片显示
-  var qqGroupCard = document.getElementById('qqGroupCard');
-  if(qqGroupCard) qqGroupCard.style.display = enabled ? 'block' : 'none';
-  // 控制首页QQ交流群显示：根据屏幕宽度分别控制桌面端/移动端
-  updateHomeQqGroupAds(enabled);
-}
 function updateHomeQqGroupAds(enabled){
   var isMobile = window.innerWidth <= 768;
   var desktop = document.querySelectorAll('.ad-qq-group-desktop');
@@ -2746,15 +2703,7 @@ function updateHomeQqGroupAds(enabled){
   mobile.forEach(function(el){ el.style.display = (enabled && isMobile) ? 'flex' : 'none'; });
 }
 window.addEventListener('resize', function(){ updateHomeQqGroupAds(isQrAdEnabled()); updateResponsiveChromeVars(); });
-window.addEventListener('pageshow', function(){ updateHomeQqGroupAds(isQrAdEnabled()); updateAdToggleBtn(); updateResponsiveChromeVars(); });
-function updateAdToggleBtn(){
-  var btn = document.getElementById('adToggleBtn');
-  if(!btn) return;
-  var enabled = isQrAdEnabled();
-  btn.className = enabled ? 'ad-on' : 'ad-off';
-  btn.title = enabled ? '点击关闭考研群二维码' : '点击显示考研群二维码';
-  btn.textContent = enabled ? '📢' : '🔕';
-}
+window.addEventListener('pageshow', function(){ updateHomeQqGroupAds(isQrAdEnabled()); updateResponsiveChromeVars(); });
 
 // ===================== 院校海报轮播 =====================
 var POSTERS = [
