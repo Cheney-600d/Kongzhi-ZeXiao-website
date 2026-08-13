@@ -280,7 +280,9 @@ function renderPosts(posts) {
     card.innerHTML = yearBadge +
       '<div class="exp-card-title">' + p.title + '</div>' +
       '<div class="exp-card-tags">' + levelTag + catTag + scoreTag + subTag + ugTag + '</div>' +
-      '<div style="margin-top:auto; font-size:.8rem; color:#9499a0;">' + (p.author ? '@' + p.author + ' · ' : '') + p.school + (p.code ? ' ' + p.code : '') + '</div>';
+      '<div style="margin-top:auto; font-size:.8rem; color:#9499a0; display:flex; align-items:center; gap:5px;">' +
+        '<img src="../专业课选择/images/校徽/' + p.school + '.jpg" onerror="this.style.display=\'none\'" alt="" style="width:18px;height:18px;border-radius:50%;object-fit:cover;flex-shrink:0;">' +
+        '<span>' + (p.author ? '@' + p.author + ' · ' : '') + p.school + (p.code ? ' ' + p.code : '') + '</span></div>';
     container.appendChild(card);
   });
 }
