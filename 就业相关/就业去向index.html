@@ -357,8 +357,8 @@
         /* 移动端底部导航 */
         .mobile-nav-bar {
             display: none;
-            position: fixed;
-            bottom: 0;
+            position: fixed;            /* 抬升至全站手机壳 dock(固定底部)之上,避免两栏重叠: 5rem = 底部间隙0.65rem + dock高约4.1rem + 0.25rem间隙 */
+            bottom: calc(5rem + env(safe-area-inset-bottom));
             left: 0;
             width: 100%;
             height: 60px;
@@ -507,11 +507,11 @@ body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
 img,svg,canvas,video{max-width:100%}
 a,button,input,.nav-link,.mobile-nav-tab{touch-action:manipulation}
 a:focus-visible,button:focus-visible,input:focus-visible,.nav-link:focus-visible,.mobile-nav-tab:focus-visible{outline:3px solid rgba(184,164,216,.46);outline-offset:3px}
-.mobile-nav-bar{padding-bottom:env(safe-area-inset-bottom,0px)}
+.mobile-nav-bar{padding-bottom:0}
 .section,.card,.school-emp-card{min-width:0}
 @media (hover:none){.card:hover,.school-emp-card:hover,#operator .operator-card:hover,#operator .operator-card-btn:hover{transform:none}}
 @media (max-width:900px){
-  .main-content{padding-right:0!important;padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+  .main-content{padding-right:0!important;padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px))}
   .section{width:100%;padding:24px max(14px,env(safe-area-inset-right)) 24px max(14px,env(safe-area-inset-left))}
   .card-grid{grid-template-columns:1fr}
   .card{padding:20px 18px}
