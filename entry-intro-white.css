@@ -33,7 +33,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   opacity: .7;
   background-image:
     radial-gradient(circle at 1px 1px, rgba(48,52,59,.09) 1px, transparent 1.1px),
-    linear-gradient(115deg, transparent 48%, rgba(183,28,28,.025) 49%, transparent 50%);
+    linear-gradient(115deg, transparent 48%, rgba(169,33,34,.025) 49%, transparent 50%);
   background-size: 32px 32px, 240px 240px;
   mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
 }
@@ -50,7 +50,7 @@ html.entry-intro-running body { overflow: hidden !important; }
 .entry-intro__veil span {
   min-width: 0;
   background: var(--entry-canvas);
-  border-right: 1px solid rgba(183,28,28,.035);
+  border-right: 1px solid rgba(169,33,34,.035);
   transition: transform 1.05s cubic-bezier(.76,0,.24,1);
 }
 
@@ -250,7 +250,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   width: 210px;
   min-height: 96px;
   padding: 16px 18px;
-  border: 1px solid rgba(183,28,28,.11);
+  border: 1px solid rgba(169,33,34,.11);
   border-radius: 14px;
   background: rgba(255,255,255,.86);
   box-shadow: 0 20px 55px rgba(104,75,71,.11), 0 3px 10px rgba(104,75,71,.05);
@@ -294,7 +294,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   position: absolute;
   top: 14px;
   right: 15px;
-  color: rgba(183,28,28,.28);
+  color: rgba(169,33,34,.28);
   font: 700 20px/1 "Consolas", monospace;
 }
 
@@ -328,11 +328,11 @@ html.entry-intro-running body { overflow: hidden !important; }
 .entry-target-lock i {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(183,28,28,.72);
+  border: 1px solid rgba(169,33,34,.72);
   border-radius: 50%;
 }
 
-.entry-target-lock span:nth-child(2) { inset: 15px; border-color: rgba(154,138,200,.72); }
+.entry-target-lock span:nth-child(2) { inset: 15px; border-color: rgba(169,33,34,.72); }
 .entry-target-lock i {
   inset: 27px;
   border: 0;
@@ -356,7 +356,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   height: 9px;
   border-radius: 50%;
   background: var(--entry-red);
-  box-shadow: 0 0 0 6px rgba(183,28,28,.08), 0 0 20px rgba(183,28,28,.28);
+  box-shadow: 0 0 0 6px rgba(169,33,34,.08), 0 0 20px rgba(169,33,34,.28);
   opacity: 0;
   animation: entry-white-pulse 2.1s 1.78s cubic-bezier(.42,.05,.24,1) forwards;
 }
@@ -415,7 +415,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   82% { left: 89%; opacity: 1; }
   100% { left: 94%; opacity: 0; }
 }
-@keyframes entry-white-status { to { border-color: var(--entry-red); background: var(--entry-red); box-shadow: 0 0 0 4px rgba(183,28,28,.07); } }
+@keyframes entry-white-status { to { border-color: var(--entry-red); background: var(--entry-red); box-shadow: 0 0 0 4px rgba(169,33,34,.07); } }
 
 @media (max-width: 820px) {
   .entry-intro__stage {

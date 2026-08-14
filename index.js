@@ -398,7 +398,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:provArr.map(x=>x.name),axisLabel:{rotate:25,fontSize:9}},
     yAxis:[{type:'value',axisLabel:{fontSize:8}}],
     series:[
-      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#B71C1C'},barMaxWidth:14}
+      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#a92122'},barMaxWidth:14}
     ]
   });
 
@@ -418,7 +418,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:majorArr.map(x=>x.code),axisLabel:{rotate:30,fontSize:9}},
     yAxis:[{type:'value',axisLabel:{fontSize:8}}],
     series:[
-      {name:'专业方向数',type:'bar',data:majorArr.map(x=>x.n),itemStyle:{color:'#B71C1C'},barMaxWidth:14}
+      {name:'专业方向数',type:'bar',data:majorArr.map(x=>x.n),itemStyle:{color:'#a92122'},barMaxWidth:14}
     ]
   });
 
@@ -434,7 +434,7 @@ function renderHomeCharts(){
     else ratioMap['2.0+']++;
   });
   const ratioData = Object.entries(ratioMap).filter(([k,v])=>v>0).map(([k,v])=>({name:k,value:v}));
-  const ratioColors = ['#B71C1C','#D94F4F','#E57373','#C62828','#EF9A9A','#8B1A1A'];
+  const ratioColors = ['#a92122','#D94F4F','#E57373','#C62828','#EF9A9A','#8B1A1A'];
 
   // charts.ratio = echarts.init(document.getElementById('chartRatio', null, {renderer: 'canvas'})); // 已移到右侧栏
   charts.ratioSide = echarts.init(document.getElementById('chartRatioSide', null, {renderer: 'canvas'}));
@@ -1059,7 +1059,7 @@ function renderSchoolTable(){
   const data = getSchoolTableData();
 
   if(data.length === 0){
-    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的院校</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件或搜索关键词</div><button onclick="resetSchoolFilters()" style="padding:8px 20px;background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的院校</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件或搜索关键词</div><button onclick="resetSchoolFilters()" style="padding:8px 20px;background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
     const mobileHost = document.getElementById('mobileSchoolCards');
     if(mobileHost) mobileHost.innerHTML = '<div class="mobile-school-empty">没有符合当前条件的院校，请调整筛选条件。</div>';
     renderSchoolPagination(0, 1);
@@ -1734,19 +1734,19 @@ function renderDetail(schoolName){
         </div>
         <div style="flex:1;min-width:100px;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均录取分</div>
-          <div style="font-size:22px;font-weight:700;color:#f59e0b;">${fmt(avgAdmit)}</div>
+          <div style="font-size:22px;font-weight:700;color:#a92122;">${fmt(avgAdmit)}</div>
         </div>
         <div style="flex:1;min-width:100px;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均专业课</div>
-          <div style="font-size:22px;font-weight:700;color:#10b981;">${fmt(avgCourse)}</div>
+          <div style="font-size:22px;font-weight:700;color:#c98a3d;">${fmt(avgCourse)}</div>
         </div>
         <div style="flex:1;min-width:100px;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">复试最低分</div>
-          <div style="font-size:22px;font-weight:700;color:#3b82f6;">${minEnter != null ? minEnter : '-'}</div>
+          <div style="font-size:22px;font-weight:700;color:#637c9a;">${minEnter != null ? minEnter : '-'}</div>
         </div>
         <div style="flex:1;min-width:100px;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">录取最低分</div>
-          <div style="font-size:22px;font-weight:700;color:#8b5cf6;">${minAdmit != null ? minAdmit : '-'}</div>
+          <div style="font-size:22px;font-weight:700;color:#a92122;">${minAdmit != null ? minAdmit : '-'}</div>
         </div>
       </div>
     </div>
@@ -1860,9 +1860,9 @@ function renderDetail(schoolName){
     xAxis:{type:'category',data:majorArr.map(x=>x.shortName),axisLabel:{rotate:50,fontSize:10,interval:0}},
     yAxis:{type:'value',name:'分数'},
     series:[
-      {name:'复试平均分',type:'bar',data:majorArr.map(x=>x.enterAvg!=null?+x.enterAvg.toFixed(1):null),itemStyle:{color:'#f59e0b'},barMaxWidth:20},
-      {name:'录取平均分',type:'bar',data:majorArr.map(x=>x.admitAvg!=null?+x.admitAvg.toFixed(1):null),itemStyle:{color:'#43A047'},barMaxWidth:20},
-      {name:'专业课平均',type:'bar',data:majorArr.map(x=>x.courseAvg!=null?+x.courseAvg.toFixed(1):null),itemStyle:{color:'#6366f1'},barMaxWidth:20}
+      {name:'复试平均分',type:'bar',data:majorArr.map(x=>x.enterAvg!=null?+x.enterAvg.toFixed(1):null),itemStyle:{color:'#637c9a'},barMaxWidth:20},
+      {name:'录取平均分',type:'bar',data:majorArr.map(x=>x.admitAvg!=null?+x.admitAvg.toFixed(1):null),itemStyle:{color:'#a92122'},barMaxWidth:20},
+      {name:'专业课平均',type:'bar',data:majorArr.map(x=>x.courseAvg!=null?+x.courseAvg.toFixed(1):null),itemStyle:{color:'#c98a3d'},barMaxWidth:20}
     ]
   });
 
@@ -1890,7 +1890,7 @@ function renderDetail(schoolName){
       series:[{
         name:'招生人数',type:'bar',
         data:pieArr.map(x=>x.num||0),
-        itemStyle:{color:'#38ef7d'},barMaxWidth:26,
+        itemStyle:{color:'#a92122'},barMaxWidth:26,
         label:{show:true,position:'top',fontSize:9,color:'#2d2d3d',formatter:function(p){return p.value ? p.value : '';}}
       }]
     });
@@ -1930,8 +1930,8 @@ function renderDetail(schoolName){
     xAxis:{type:'value',name:'人数'},
     yAxis:{type:'category',data:collegeArr.map(x=>x.name.length>22?x.name.substring(0,22)+'…':x.name).reverse(),axisLabel:{fontSize:10}},
     series:[
-      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#f59e0b'},barMaxWidth:18},
-      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#B8A4D8'},barMaxWidth:18}
+      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#637c9a'},barMaxWidth:18},
+      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#a92122'},barMaxWidth:18}
     ]
   });
 
@@ -1959,9 +1959,9 @@ function renderDetail(schoolName){
     xAxis:{type:'category',data:courseXData,axisLabel:{rotate:55,fontSize:9,interval:0}},
     yAxis:{type:'value',name:'分数'},
     series:[
-      {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#FF5252'},barMaxWidth:14},
-      {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#4facfe'},barMaxWidth:14},
-      {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#43A047'},barMaxWidth:14}
+      {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#a92122'},barMaxWidth:14},
+      {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#c98a3d'},barMaxWidth:14},
+      {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#5d8d96'},barMaxWidth:14}
     ]
   });
 
@@ -2094,7 +2094,7 @@ function resetDetailFilter(){
 function renderDetailTable(data){
   const tbody = document.getElementById('detailTable');
   if(!data || data.length === 0){
-    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的记录</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件</div><button onclick="resetDetailFilter()" style="padding:8px 20px;background:linear-gradient(135deg,#B8A4D8 0%,#B8A4D8 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的记录</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件</div><button onclick="resetDetailFilter()" style="padding:8px 20px;background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
     document.getElementById('detailCount').textContent = '(共0条)';
     return;
   }
@@ -2197,7 +2197,7 @@ function renderDetailDistributions(schoolName, recs){
   dists.forEach(function(d, idx){
     const card = document.createElement('div');
     card.className = 'card p-4 mb-4';
-    let html = '<div style="font-size:15px;font-weight:700;color:#5a4a7e;margin-bottom:10px;">' + (d.title||('方向'+(idx+1))) + '</div>';
+    let html = '<div style="font-size:15px;font-weight:700;color:#a92122;margin-bottom:10px;">' + (d.title||('方向'+(idx+1))) + '</div>';
     html += '<div class="grid grid-cols-1 lg:grid-cols-3 gap-3">';
     const extTag = function(dd){
       const parts = [];
@@ -2208,13 +2208,13 @@ function renderDetailDistributions(schoolName, recs){
     };
     if(d.total){
       const totAvg = [d.total.enterAvg!=null ? '复试均分 '+Number(d.total.enterAvg).toFixed(1) : '', d.total.admitAvg!=null ? '录取均分 '+Number(d.total.admitAvg).toFixed(1) : ''].filter(Boolean).join('｜');
-      html += '<div><div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px;">总分分布' +
+      html += '<div><div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px;">总分分布' +
               (totAvg ? ' <span style="font-weight:400;color:#888;font-size:12px;">（'+totAvg+'）</span>' : '') +
               '</div><div id="dist-total-'+idx+'" style="height:180px;"></div></div>';
     }
-    html += '<div><div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px;">数学分数分布' + extTag(d.math) + '</div>' +
+    html += '<div><div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px;">数学分数分布' + extTag(d.math) + '</div>' +
             (d.math ? '<div id="dist-math-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#999;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
-    html += '<div><div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px;">专业课分数分布' + extTag(d.course) + '</div>' +
+    html += '<div><div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px;">专业课分数分布' + extTag(d.course) + '</div>' +
             (d.course ? '<div id="dist-course-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#999;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
     html += '</div>';
     card.innerHTML = html;
@@ -2227,18 +2227,18 @@ function renderDetailDistributions(schoolName, recs){
         xAxis:{type:'category', data:d.total.labels},
         yAxis:{type:'value', minInterval:1},
         series:[
-          {name:'复试人数', type:'bar', data:d.total.enter, itemStyle:{color:'#667eea'}},
-          {name:'录取人数', type:'bar', data:d.total.admit, itemStyle:{color:'#10b981'}}
+          {name:'复试人数', type:'bar', data:d.total.enter, itemStyle:{color:'#637c9a'}},
+          {name:'录取人数', type:'bar', data:d.total.admit, itemStyle:{color:'#a92122'}}
         ]
       });
     }
     if(d.math && typeof echarts !== 'undefined'){
       var cm = echarts.init(document.getElementById('dist-math-'+idx));
-      cm.setOption(histOption(d.math, '#6366f1'));
+      cm.setOption(histOption(d.math, '#637c9a'));
     }
     if(d.course && typeof echarts !== 'undefined'){
       var cc = echarts.init(document.getElementById('dist-course-'+idx));
-      cc.setOption(histOption(d.course, '#4f46e5'));
+      cc.setOption(histOption(d.course, '#c98a3d'));
     }
   });
 }
@@ -2307,175 +2307,193 @@ window.addEventListener('DOMContentLoaded', ()=>{
   }
 });
 
-// ===================== 动态科技背景动画 =====================
+// ===================== 动态控制工程信号场背景 =====================
+// 去除旧紫色与通用科技粒子，改为：工程网格 + 闭环反馈回路 + 阶跃响应 + 稀疏信号流节点
 (function(){
   const canvas = document.getElementById('techBg');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H;
-  
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const RED = '#a92122';      // 控制红（信号）
+  const NEUTRAL = '#637c9a';  // 蓝灰中性（网格/节点/回路）
+
+  let loopPath = [], loopLen = 0, loopGeo = null;
+  let signalT = 0, lastTime = 0;
+  let nodes = [];
+  let animId = null, running = true;
+
+  function rand(a, b){ return a + Math.random() * (b - a); }
+
+  function buildLoop(w, h){
+    const m = Math.max(64, w * 0.07);
+    const x0 = m, y0 = 122;
+    const x1 = w - m, y1 = y0 + Math.min(104, h * 0.13);
+    loopPath = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+    loopLen = 2 * ((x1 - x0) + (y1 - y0));
+    loopGeo = { x0: x0, y0: y0, x1: x1, y1: y1 };
+  }
+
+  function buildNodes(w, h){
+    const count = w < 768 ? 5 : 9;
+    nodes = [];
+    for(let i = 0; i < count; i++){
+      nodes.push({ x: rand(40, w - 40), y: rand(h * 0.34, h - 30), r: rand(1.4, 3), phase: rand(0, Math.PI * 2) });
+    }
+  }
+
   function resize(){
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(window.innerWidth * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildLoop(window.innerWidth, window.innerHeight);
+    buildNodes(window.innerWidth, window.innerHeight);
   }
-  resize();
+
+  function pointOnLoop(t){
+    let d = (t % 1) * loopLen;
+    for(let i = 0; i < loopPath.length; i++){
+      const a = loopPath[i], b = loopPath[(i + 1) % loopPath.length];
+      const seg = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if(d <= seg || i === loopPath.length - 1){
+        const k = seg === 0 ? 0 : d / seg;
+        return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+      }
+      d -= seg;
+    }
+    return loopPath[0];
+  }
+
+  function drawGrid(w, h){
+    const step = 48;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = NEUTRAL;
+    ctx.globalAlpha = 0.05;
+    ctx.beginPath();
+    for(let x = step; x < w; x += step){ ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+    for(let y = step; y < h; y += step){ ctx.moveTo(0, y); ctx.lineTo(w, y); }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawLoop(){
+    const g = loopGeo;
+    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = NEUTRAL;
+    ctx.globalAlpha = 0.22;
+    ctx.beginPath();
+    ctx.moveTo(loopPath[0][0], loopPath[0][1]);
+    for(let i = 1; i < loopPath.length; i++) ctx.lineTo(loopPath[i][0], loopPath[i][1]);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    const cx = g.x0, cy = (g.y0 + g.y1) / 2;
+    ctx.strokeStyle = NEUTRAL;
+    ctx.globalAlpha = 0.4;
+    ctx.beginPath(); ctx.arc(cx, cy, 7, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - 4, cy); ctx.lineTo(cx + 4, cy);
+    ctx.moveTo(cx, cy - 4); ctx.lineTo(cx, cy + 4);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    const bw = 34, bh = 22;
+    const bx = (g.x0 + g.x1) / 2 - bw / 2, by = g.y0 - bh / 2;
+    ctx.globalAlpha = 0.3;
+    ctx.strokeRect(bx, by, bw, bh);
+    ctx.globalAlpha = 1;
+
+    const s = pointOnLoop(signalT);
+    ctx.beginPath(); ctx.arc(s[0], s[1], 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = RED; ctx.globalAlpha = 0.9; ctx.fill();
+    ctx.beginPath(); ctx.arc(s[0], s[1], 9, 0, Math.PI * 2);
+    ctx.fillStyle = RED; ctx.globalAlpha = 0.14; ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawStepResponse(){
+    const g = loopGeo;
+    if(!g) return;
+    const x0 = g.x0 + 6, y0 = g.y1 + 44;
+    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = NEUTRAL;
+    ctx.globalAlpha = 0.2;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0 + 80); ctx.lineTo(x0 + 200, y0 + 80);
+    ctx.moveTo(x0, y0); ctx.lineTo(x0, y0 + 80);
+    ctx.stroke();
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(x0, y0 + 55); ctx.lineTo(x0 + 30, y0 + 55); ctx.lineTo(x0 + 30, y0 + 22); ctx.lineTo(x0 + 200, y0 + 22);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(x0 + 30, y0 + 55);
+    ctx.bezierCurveTo(x0 + 45, y0 + 55, x0 + 48, y0 + 24, x0 + 75, y0 + 22);
+    ctx.bezierCurveTo(x0 + 100, y0 + 20, x0 + 115, y0 + 26, x0 + 200, y0 + 22);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawNodes(timeSec){
+    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = NEUTRAL;
+    ctx.globalAlpha = 0.1;
+    ctx.beginPath();
+    for(let i = 0; i < nodes.length; i++){
+      for(let j = i + 1; j < nodes.length; j++){
+        const a = nodes[i], b = nodes[j];
+        if(Math.hypot(a.x - b.x, a.y - b.y) < 180){ ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); }
+      }
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    nodes.forEach(n => {
+      const glow = 0.5 + 0.5 * Math.sin(timeSec * 0.8 + n.phase);
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = NEUTRAL;
+      ctx.globalAlpha = 0.12 + glow * 0.1;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  function drawFrame(now){
+    const w = window.innerWidth, h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+    drawGrid(w, h);
+    if(w >= 768){ drawLoop(); drawStepResponse(); }
+    drawNodes(now / 1000);
+  }
+
+  function loop(now){
+    if(!running) return;
+    if(lastTime) signalT = (signalT + (now - lastTime) / 12000) % 1;
+    lastTime = now;
+    drawFrame(now);
+    animId = requestAnimationFrame(loop);
+  }
+
+  function start(){
+    if(prefersReducedMotion){ signalT = 0.18; drawFrame(0); return; }
+    animId = requestAnimationFrame(loop);
+  }
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){
+      running = false;
+      if(animId){ cancelAnimationFrame(animId); animId = null; }
+    } else if(!prefersReducedMotion){
+      running = true; lastTime = 0;
+      animId = requestAnimationFrame(loop);
+    }
+  });
+
   window.addEventListener('resize', resize);
-  
-  // 浅色主题粒子：控制红负责识别，蓝灰与淡紫负责空间层次。
-  const colors = ['#b4232a','#637c9a','#7989b4','#9184b1','#5d8d96'];
-  const particleCount = Math.min(80, Math.floor(W * H / 25000));
-  
-  // 粒子节点（芯片引脚/神经元）
-  const particles = [];
-  for(let i=0; i<particleCount; i++){
-    particles.push({
-      x: Math.random()*W,
-      y: Math.random()*H,
-      vx: (Math.random()-0.5)*0.4,
-      vy: (Math.random()-0.5)*0.4,
-      r: Math.random()*2+1.5,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      pulse: Math.random()*Math.PI*2
-    });
-  }
-  
-  // 二进制字符雨
-  const chars = [];
-  const binChars = '01ABCDEF';
-  for(let i=0; i<15; i++){
-    chars.push({
-      x: Math.random()*W,
-      y: Math.random()*H,
-      vy: Math.random()*0.8+0.3,
-      char: binChars[Math.floor(Math.random()*binChars.length)],
-      alpha: Math.random()*0.16+0.07,
-      size: Math.random()*10+8
-    });
-  }
-  
-  // 芯片框（集成电路元素）
-  const chips = [];
-  for(let i=0; i<6; i++){
-    chips.push({
-      x: Math.random()*W,
-      y: Math.random()*H,
-      w: Math.random()*40+30,
-      h: Math.random()*30+20,
-      vx: (Math.random()-0.5)*0.15,
-      vy: (Math.random()-0.5)*0.15,
-      alpha: Math.random()*0.08+0.03,
-      color: colors[Math.floor(Math.random()*colors.length)]
-    });
-  }
-  
-  // 脉冲信号
-  const pulses = [];
-  
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    
-    // 绘制芯片框
-    chips.forEach(c=>{
-      c.x += c.vx; c.y += c.vy;
-      if(c.x<-50) c.x=W+50; if(c.x>W+50) c.x=-50;
-      if(c.y<-50) c.y=H+50; if(c.y>H+50) c.y=-50;
-      ctx.strokeStyle = c.color;
-      ctx.globalAlpha = c.alpha;
-      ctx.lineWidth = 1;
-      ctx.strokeRect(c.x, c.y, c.w, c.h);
-      // 内部引脚线
-      ctx.beginPath();
-      for(let i=0; i<4; i++){
-        ctx.moveTo(c.x, c.y + c.h*(i+1)/5);
-        ctx.lineTo(c.x-6, c.y + c.h*(i+1)/5);
-        ctx.moveTo(c.x+c.w, c.y + c.h*(i+1)/5);
-        ctx.lineTo(c.x+c.w+6, c.y + c.h*(i+1)/5);
-      }
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    });
-    
-    // 更新和绘制粒子
-    particles.forEach((p,i)=>{
-      p.x += p.vx;
-      p.y += p.vy;
-      if(p.x<0) p.x=W; if(p.x>W) p.x=0;
-      if(p.y<0) p.y=H; if(p.y>H) p.y=0;
-      p.pulse += 0.02;
-      
-      // 发光效果
-      const glow = Math.sin(p.pulse)*0.3+0.7;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = glow*0.48;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      
-      // 连线（电路走线/神经网络）
-      for(let j=i+1; j<particles.length; j++){
-        const q = particles[j];
-        const dx = p.x-q.x, dy = p.y-q.y;
-        const dist = Math.sqrt(dx*dx+dy*dy);
-        if(dist < 140){
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = p.color;
-          ctx.globalAlpha = (1-dist/140)*0.11;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        }
-      }
-    });
-    
-    // 脉冲信号沿连线传播
-    if(Math.random()<0.03 && particles.length>1){
-      const a = particles[Math.floor(Math.random()*particles.length)];
-      const b = particles[Math.floor(Math.random()*particles.length)];
-      if(a!==b){
-        const dx=b.x-a.x, dy=b.y-a.y, dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<200) pulses.push({x:a.x, y:a.y, tx:b.x, ty:b.y, dx:dx/dist*2, dy:dy/dist*2, progress:0, color:a.color});
-      }
-    }
-    
-    for(let i=pulses.length-1; i>=0; i--){
-      const p = pulses[i];
-      p.x += p.dx; p.y += p.dy;
-      p.progress += 2;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = 0.9;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      // 光晕
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 8, 0, Math.PI*2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = 0.15;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      
-      const totalDist = Math.sqrt((p.tx-p.x+p.dx*10)**2+(p.ty-p.y+p.dy*10)**2);
-      if(totalDist < 10 || p.progress > 200) pulses.splice(i,1);
-    }
-    
-    // 二进制字符雨
-    chars.forEach(c=>{
-      c.y += c.vy;
-      if(c.y > H+20) { c.y = -20; c.x = Math.random()*W; c.char = binChars[Math.floor(Math.random()*binChars.length)]; }
-      ctx.font = c.size + 'px monospace';
-      ctx.fillStyle = '#637c9a';
-      ctx.globalAlpha = c.alpha;
-      ctx.fillText(c.char, c.x, c.y);
-      ctx.globalAlpha = 1;
-    });
-    
-    requestAnimationFrame(draw);
-  }
-  draw();
+  resize();
+  start();
 })();
 
 window.addEventListener('resize', debounce(()=>{
@@ -3038,7 +3056,7 @@ function initPosterCarousel(){
   dots.innerHTML = '';
   POSTERS.forEach(function(p, i){
     var dot = document.createElement('span');
-    dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (i === 0 ? '#B8A4D8' : '#ddd') + ';cursor:pointer;transition:background .3s;';
+    dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (i === 0 ? '#a92122' : '#ddd') + ';cursor:pointer;transition:background .3s;';
     dot.onclick = function(){ showPoster(i); };
     dots.appendChild(dot);
   });
@@ -3079,6 +3097,6 @@ function showPoster(index){
   // 更新指示点
   var dotEls = dots.querySelectorAll('span');
   dotEls.forEach(function(dot, i){
-    dot.style.background = i === index ? '#B8A4D8' : '#ddd';
+    dot.style.background = i === index ? '#a92122' : '#ddd';
   });
 }

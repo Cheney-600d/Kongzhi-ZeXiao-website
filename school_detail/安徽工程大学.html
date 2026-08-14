@@ -6,21 +6,21 @@
 <title>安徽工程大学 - 控制类考研院校详情</title>
 <script src="../vendor/chart-4.5.1.umd.min.js"></script>
 <style>
-body{font-family:'Noto Sans SC',system-ui,sans-serif;background:#F5F0F7;color:#2d2d3d;margin:0;padding:0;line-height:1.6}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:#f7eceb;color:#2d2d3d;margin:0;padding:0;line-height:1.6}
 .wrap{max-width:1100px;margin:0 auto;padding:20px}
-header{background:linear-gradient(135deg,#5a4a7e,#8a5a8e);color:#fff;padding:28px 20px;text-align:center}
+header{background:linear-gradient(135deg,#a92122,#a92122);color:#fff;padding:28px 20px;text-align:center}
 header h1{margin:0 0 6px;font-size:1.8rem}
 .meta{font-size:13px;opacity:.9}
 .intro{max-width:900px;margin:14px auto 0;font-size:14px;background:rgba(255,255,255,.12);padding:10px 14px;border-radius:10px}
-h2{border-left:4px solid #667eea;padding-left:10px;margin-top:28px;font-size:1.2rem}
-.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(184,164,216,.2)}
-.card h3{margin:0 0 8px;font-size:1.05rem;color:#5a4a7e}
+h2{border-left:4px solid #a92122;padding-left:10px;margin-top:28px;font-size:1.2rem}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(169,33,34,.2)}
+.card h3{margin:0 0 8px;font-size:1.05rem;color:#a92122}
 .stat{font-size:14px;margin:4px 0}
 .score{font-size:13px;color:#555;margin:4px 0 10px}
-.subavg{font-size:14px;font-weight:600;color:#5a4a7e;margin:6px 0;padding:6px 10px;background:#f0ebf3;border-radius:6px}
+.subavg{font-size:14px;font-weight:600;color:#a92122;margin:6px 0;padding:6px 10px;background:#f7eceb;border-radius:6px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
 th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}
-th{background:#f0ebf3;white-space:nowrap}
+th{background:#f7eceb;white-space:nowrap}
 footer{text-align:center;color:#999;font-size:12px;padding:20px}
 @media (max-width:768px){.card{overflow-x:auto}}
 </style>
@@ -54,7 +54,7 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>360-369</td><td>1</td><td>1</td><td>100%</td><td>71</td><td>71</td><td>109</td><td>115</td><td>366</td><td></td></tr><tr><td>310-319</td><td>2</td><td>2</td><td>100%</td><td>61.5</td><td>59.5</td><td>75</td><td>116.5</td><td>312.5</td><td></td></tr><tr><td>300-309</td><td>3</td><td>3</td><td>100%</td><td>62.7</td><td>57</td><td>74.7</td><td>112</td><td>306.3</td><td></td></tr><tr><td>280-289</td><td>4</td><td>4</td><td>100%</td><td>61</td><td>45.5</td><td>63</td><td>112.2</td><td>281.8</td><td></td></tr><tr><td>260-269</td><td>1</td><td>1</td><td>100%</td><td>58</td><td>38</td><td>58</td><td>113</td><td>267</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-0"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-0-math"></canvas></div>
 </div>
 <script>
@@ -64,14 +64,14 @@ try {
     type: 'bar',
     data: {
       labels: ["50-59", "60-69", "70-79", "80-89", "90-99", "100-109"],
-      datasets: [{ label: '人数', data: [2, 3, 6, 0, 0, 1], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [2, 3, 6, 0, 0, 1], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-0-course"></canvas></div>
 </div>
 <script>
@@ -81,7 +81,7 @@ try {
     type: 'bar',
     data: {
       labels: ["70-79", "80-89", "90-99", "100-109", "110-119"],
-      datasets: [{ label: '人数', data: [1, 0, 0, 1, 10], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 0, 0, 1, 10], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -96,8 +96,8 @@ try {
     data: {
       labels: ["360-369", "310-319", "300-309", "280-289", "260-269"],
       datasets: [
-        { label: '复试人数', data: ["1", "2", "3", "4", "1"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["1", "2", "3", "4", "1"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["1", "2", "3", "4", "1"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["1", "2", "3", "4", "1"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }
@@ -113,7 +113,7 @@ try {
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>390-399</td><td>1</td><td>0</td><td>0%</td><td>61</td><td>64</td><td>137</td><td>131</td><td>393</td><td></td></tr><tr><td>380-389</td><td>4</td><td>3</td><td>75%</td><td>64</td><td>75.3</td><td>114.7</td><td>129.3</td><td>383.3</td><td></td></tr><tr><td>370-379</td><td>7</td><td>7</td><td>100%</td><td>62</td><td>67.9</td><td>113.6</td><td>129.4</td><td>372.9</td><td></td></tr><tr><td>360-369</td><td>1</td><td>1</td><td>100%</td><td>60.0</td><td>79</td><td>107</td><td>123</td><td>369</td><td></td></tr><tr><td>350-359</td><td>9</td><td>8</td><td>88.9%</td><td>64.1</td><td>68.9</td><td>97.9</td><td>123.8</td><td>354.6</td><td></td></tr><tr><td>340-349</td><td>14</td><td>10</td><td>71.4%</td><td>59.1</td><td>65.4</td><td>101.8</td><td>119.1</td><td>345.4</td><td></td></tr><tr><td>240-249</td><td>13</td><td>9</td><td>100%</td><td>56</td><td>63</td><td>64</td><td>61</td><td>244</td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-1"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-1-math"></canvas></div>
 </div>
 <script>
@@ -123,14 +123,14 @@ try {
     type: 'bar',
     data: {
       labels: ["60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129", "130-139"],
-      datasets: [{ label: '人数', data: [1, 1, 5, 10, 10, 10, 3, 1], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 1, 5, 10, 10, 10, 3, 1], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-1-course"></canvas></div>
 </div>
 <script>
@@ -140,7 +140,7 @@ try {
     type: 'bar',
     data: {
       labels: ["60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [1, 0, 0, 1, 2, 12, 15, 9, 1], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 0, 0, 1, 2, 12, 15, 9, 1], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -155,8 +155,8 @@ try {
     data: {
       labels: ["390-399", "380-389", "370-379", "360-369", "350-359", "340-349", "240-249"],
       datasets: [
-        { label: '复试人数', data: ["1", "4", "7", "1", "9", "14", "13"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["0", "3", "7", "1", "8", "10", "9"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["1", "4", "7", "1", "9", "14", "13"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["0", "3", "7", "1", "8", "10", "9"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }
@@ -172,7 +172,7 @@ try {
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>320-329</td><td>2</td><td>2</td><td>100%</td><td>57</td><td>90.5</td><td>117</td><td>324.5</td><td>366</td><td></td></tr><tr><td>310-319</td><td>1</td><td>1</td><td>100%</td><td>57</td><td>96</td><td>96</td><td>105</td><td>316</td><td></td></tr><tr><td>290-299</td><td>1</td><td>1</td><td>100%</td><td>56</td><td>42</td><td>79</td><td>113</td><td>290</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-2"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-2-math"></canvas></div>
 </div>
 <script>
@@ -182,14 +182,14 @@ try {
     type: 'bar',
     data: {
       labels: ["60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129", "130-139"],
-      datasets: [{ label: '人数', data: [1, 1, 5, 10, 10, 10, 3, 1], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 1, 5, 10, 10, 10, 3, 1], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-2-course"></canvas></div>
 </div>
 <script>
@@ -199,7 +199,7 @@ try {
     type: 'bar',
     data: {
       labels: ["60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [1, 0, 0, 1, 2, 12, 15, 9, 1], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 0, 0, 1, 2, 12, 15, 9, 1], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -214,8 +214,8 @@ try {
     data: {
       labels: ["320-329", "310-319", "290-299"],
       datasets: [
-        { label: '复试人数', data: ["2", "1", "1"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["2", "1", "1"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["2", "1", "1"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["2", "1", "1"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }
@@ -231,7 +231,7 @@ try {
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>340-349</td><td>1</td><td>1</td><td>100%</td><td>63</td><td>36</td><td>100</td><td>144</td><td>343</td><td></td></tr><tr><td>310-319</td><td>1</td><td>1</td><td>100%</td><td>56</td><td>71</td><td>58</td><td>129</td><td>316</td><td></td></tr><tr><td>290-299</td><td>1</td><td>1</td><td>100%</td><td>61</td><td>37</td><td>65</td><td>133</td><td>296</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-3"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-3-math"></canvas></div>
 </div>
 <script>
@@ -241,14 +241,14 @@ try {
     type: 'bar',
     data: {
       labels: ["50-59", "60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129"],
-      datasets: [{ label: '人数', data: [1, 2, 0, 1, 0, 1, 0, 1], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 2, 0, 1, 0, 1, 0, 1], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-3-course"></canvas></div>
 </div>
 <script>
@@ -258,7 +258,7 @@ try {
     type: 'bar',
     data: {
       labels: ["120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [2, 2, 2], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [2, 2, 2], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -273,8 +273,8 @@ try {
     data: {
       labels: ["340-349", "310-319", "290-299"],
       datasets: [
-        { label: '复试人数', data: ["1", "1", "1"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["1", "1", "1"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["1", "1", "1"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["1", "1", "1"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }
@@ -290,7 +290,7 @@ try {
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>390-399</td><td>1</td><td>1</td><td>100%</td><td>60</td><td>69</td><td>124</td><td>143</td><td>396</td><td></td></tr><tr><td>360-369</td><td>1</td><td>1</td><td>100%</td><td>63</td><td>76</td><td>84</td><td>139</td><td>362</td><td></td></tr><tr><td>320-329</td><td>1</td><td>1</td><td>100%</td><td>61</td><td>71</td><td>66</td><td>122</td><td>320</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-4"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-4-math"></canvas></div>
 </div>
 <script>
@@ -300,14 +300,14 @@ try {
     type: 'bar',
     data: {
       labels: ["50-59", "60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129"],
-      datasets: [{ label: '人数', data: [1, 2, 0, 1, 0, 1, 0, 1], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 2, 0, 1, 0, 1, 0, 1], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-4-course"></canvas></div>
 </div>
 <script>
@@ -317,7 +317,7 @@ try {
     type: 'bar',
     data: {
       labels: ["120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [2, 2, 2], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [2, 2, 2], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -332,8 +332,8 @@ try {
     data: {
       labels: ["390-399", "360-369", "320-329"],
       datasets: [
-        { label: '复试人数', data: ["1", "1", "1"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["1", "1", "1"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["1", "1", "1"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["1", "1", "1"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }
@@ -349,7 +349,7 @@ try {
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>400-409</td><td>1</td><td>1</td><td>100%</td><td>65</td><td>78</td><td>122</td><td>143</td><td>408</td><td></td></tr><tr><td>380-389</td><td>1</td><td>1</td><td>100%</td><td>72</td><td>59</td><td>113</td><td>142</td><td>386</td><td></td></tr><tr><td>370-379</td><td>3</td><td>3</td><td>100%</td><td>59.3</td><td>73.3</td><td>107.7</td><td>136</td><td>376.3</td><td></td></tr><tr><td>360-369</td><td>1</td><td>1</td><td>100%</td><td>65</td><td>65</td><td>97</td><td>137</td><td>364</td><td></td></tr><tr><td>350-359</td><td>5</td><td>5</td><td>100%</td><td>61.6</td><td>64.4</td><td>91.2</td><td>135</td><td>352.2</td><td></td></tr><tr><td>340-349</td><td>3</td><td>3</td><td>100%</td><td>56</td><td>64.7</td><td>92.3</td><td>132.7</td><td>345.7</td><td></td></tr><tr><td>330-339</td><td>2</td><td>2</td><td>100%</td><td>62</td><td>63</td><td>80.5</td><td>125</td><td>330.5</td><td></td></tr><tr><td>320-329</td><td>2</td><td>2</td><td>100%</td><td>56.5</td><td>52</td><td>82</td><td>130.5</td><td>321</td><td></td></tr><tr><td>310-319</td><td>3</td><td>3</td><td>100%</td><td>58</td><td>60.7</td><td>65.7</td><td>130.3</td><td>314.7</td><td></td></tr><tr><td>300-309</td><td>2</td><td>2</td><td>100%</td><td>55.5</td><td>59.5</td><td>69</td><td>120.5</td><td>304.5</td><td></td></tr><tr><td>290-299</td><td>4</td><td>4</td><td>100%</td><td>53</td><td>58</td><td>72.5</td><td>111.5</td><td>295</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-5"></canvas></div>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">数学分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
 <div style="height:160px;"><canvas id="chart-5-math"></canvas></div>
 </div>
 <script>
@@ -359,14 +359,14 @@ try {
     type: 'bar',
     data: {
       labels: ["50-59", "60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129"],
-      datasets: [{ label: '人数', data: [5, 7, 6, 6, 5, 4, 2, 2], backgroundColor: 'rgba(99,102,241,0.7)' }]
+      datasets: [{ label: '人数', data: [5, 7, 6, 6, 5, 4, 2, 2], backgroundColor: 'rgba(99,124,154,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
   <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">专业课分数分布</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
 <div style="height:160px;"><canvas id="chart-5-course"></canvas></div>
 </div>
 <script>
@@ -376,7 +376,7 @@ try {
     type: 'bar',
     data: {
       labels: ["90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [1, 2, 5, 9, 14, 6], backgroundColor: 'rgba(79,70,229,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 2, 5, 9, 14, 6], backgroundColor: 'rgba(201,138,61,0.7)' }]
     },
     options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
   });
@@ -391,8 +391,8 @@ try {
     data: {
       labels: ["400-409", "380-389", "370-379", "360-369", "350-359", "340-349", "330-339", "320-329", "310-319", "300-309", "290-299"],
       datasets: [
-        { label: '复试人数', data: ["1", "1", "3", "1", "5", "3", "2", "2", "3", "2", "4"], backgroundColor: 'rgba(102,126,234,0.7)' },
-        { label: '录取人数', data: ["1", "1", "3", "1", "5", "3", "2", "2", "3", "2", "4"], backgroundColor: 'rgba(16,185,129,0.7)' }
+        { label: '复试人数', data: ["1", "1", "3", "1", "5", "3", "2", "2", "3", "2", "4"], backgroundColor: 'rgba(99,124,154,0.7)' },
+        { label: '录取人数', data: ["1", "1", "3", "1", "5", "3", "2", "2", "3", "2", "4"], backgroundColor: 'rgba(169,33,34,0.7)' }
       ]
     },
     options: { responsive: true, plugins: { legend: { position: 'top' } } }

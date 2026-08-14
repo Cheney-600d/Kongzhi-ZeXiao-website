@@ -91,7 +91,7 @@ def word_band_dist(a):
 def band_chart(cid, title, labels, values, color):
     """按总分段展示数学/专业课均分的分布图(Word 分数段兜底)。"""
     return f"""<div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">{title}</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">{title}</div>
 <div style="height:160px;"><canvas id="{cid}"></canvas></div>
 </div>
 <script>
@@ -121,7 +121,7 @@ def hist_chart(cid, title, scores, color):
         counts.append(sum(1 for x in scores if v <= x < v + 10))
     counts[-1] += sum(1 for x in scores if x >= hi + 10)
     return f"""<div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#5a4a7e;margin-bottom:4px">{title}</div>
+<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">{title}</div>
 <div style="height:160px;"><canvas id="{cid}"></canvas></div>
 </div>
 <script>
@@ -208,11 +208,11 @@ def analysis_blocks(sch):
         zs = zexiao_scores(sch['学校'], a['标题'])
         wd = word_band_dist(a)
         if (zs or {}).get('math') or (zs or {}).get('course'):
-            math_block = hist_chart(f'{chart_id}-math', '数学分数分布', (zs or {}).get('math'), 'rgba(99,102,241,0.7)')
-            course_block = hist_chart(f'{chart_id}-course', '专业课分数分布', (zs or {}).get('course'), 'rgba(79,70,229,0.7)')
+            math_block = hist_chart(f'{chart_id}-math', '数学分数分布', (zs or {}).get('math'), 'rgba(99,124,154,0.7)')
+            course_block = hist_chart(f'{chart_id}-course', '专业课分数分布', (zs or {}).get('course'), 'rgba(201,138,61,0.7)')
         elif wd:
-            math_block = band_chart(f'{chart_id}-math', '数学分数分布（按总分段均分）', wd['labels'], wd['math'], 'rgba(99,102,241,0.7)')
-            course_block = band_chart(f'{chart_id}-course', '专业课分数分布（按总分段均分）', wd['labels'], wd['course'], 'rgba(79,70,229,0.7)')
+            math_block = band_chart(f'{chart_id}-math', '数学分数分布（按总分段均分）', wd['labels'], wd['math'], 'rgba(99,124,154,0.7)')
+            course_block = band_chart(f'{chart_id}-course', '专业课分数分布（按总分段均分）', wd['labels'], wd['course'], 'rgba(201,138,61,0.7)')
         else:
             math_block = '<div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>'
             course_block = '<div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>'
@@ -249,8 +249,8 @@ try {{
     data: {{
       labels: {json.dumps(labels, ensure_ascii=False)},
       datasets: [
-        {{ label: '复试人数', data: {json.dumps(enter_vals)}, backgroundColor: 'rgba(102,126,234,0.7)' }},
-        {{ label: '录取人数', data: {json.dumps(admit_vals)}, backgroundColor: 'rgba(16,185,129,0.7)' }}
+        {{ label: '复试人数', data: {json.dumps(enter_vals)}, backgroundColor: 'rgba(99,124,154,0.7)' }},
+        {{ label: '录取人数', data: {json.dumps(admit_vals)}, backgroundColor: 'rgba(169,33,34,0.7)' }}
       ]
     }},
     options: {{ responsive: true, plugins: {{ legend: {{ position: 'top' }} }} }}
@@ -271,21 +271,21 @@ def render(sch):
 <title>{esc(title)}</title>
 <script src="../vendor/chart-4.5.1.umd.min.js"></script>
 <style>
-body{{font-family:'Noto Sans SC',system-ui,sans-serif;background:#F5F0F7;color:#2d2d3d;margin:0;padding:0;line-height:1.6}}
+body{{font-family:'Noto Sans SC',system-ui,sans-serif;background:#f7eceb;color:#2d2d3d;margin:0;padding:0;line-height:1.6}}
 .wrap{{max-width:1100px;margin:0 auto;padding:20px}}
-header{{background:linear-gradient(135deg,#5a4a7e,#8a5a8e);color:#fff;padding:28px 20px;text-align:center}}
+header{{background:linear-gradient(135deg,#a92122,#a92122);color:#fff;padding:28px 20px;text-align:center}}
 header h1{{margin:0 0 6px;font-size:1.8rem}}
 .meta{{font-size:13px;opacity:.9}}
 .intro{{max-width:900px;margin:14px auto 0;font-size:14px;background:rgba(255,255,255,.12);padding:10px 14px;border-radius:10px}}
-h2{{border-left:4px solid #667eea;padding-left:10px;margin-top:28px;font-size:1.2rem}}
-.card{{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(184,164,216,.2)}}
-.card h3{{margin:0 0 8px;font-size:1.05rem;color:#5a4a7e}}
+h2{{border-left:4px solid #a92122;padding-left:10px;margin-top:28px;font-size:1.2rem}}
+.card{{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 4px 12px rgba(169,33,34,.2)}}
+.card h3{{margin:0 0 8px;font-size:1.05rem;color:#a92122}}
 .stat{{font-size:14px;margin:4px 0}}
 .score{{font-size:13px;color:#555;margin:4px 0 10px}}
-.subavg{{font-size:14px;font-weight:600;color:#5a4a7e;margin:6px 0;padding:6px 10px;background:#f0ebf3;border-radius:6px}}
+.subavg{{font-size:14px;font-weight:600;color:#a92122;margin:6px 0;padding:6px 10px;background:#f7eceb;border-radius:6px}}
 table{{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}}
 th,td{{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}}
-th{{background:#f0ebf3;white-space:nowrap}}
+th{{background:#f7eceb;white-space:nowrap}}
 footer{{text-align:center;color:#999;font-size:12px;padding:20px}}
 </style>
 </head>

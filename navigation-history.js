@@ -37,7 +37,7 @@
     if(document.documentElement.dataset.siteRoot){
       return new URL(document.documentElement.dataset.siteRoot.replace(/\/$/,'') + '/', current);
     }
-    var marker = ['/本科指南/','/复试全攻略/','/考研常识科普/','/专业课选择/','/就业相关/','/AI课程/','/school_detail/'];
+    var marker = ['/复试全攻略/','/考研常识科普/','/专业课选择/','/就业相关/','/AI课程/','/school_detail/'];
     var pathname = decodeURIComponent(location.pathname);
     for(var i = 0; i < marker.length; i++){
       var at = pathname.indexOf(marker[i]);
@@ -50,8 +50,7 @@
     var root = siteRoot();
     var path = decodeURIComponent(location.pathname).replace(/\\/g,'/');
     var target = 'index.html';
-    if(/\/本科指南\/pages\//.test(path)) target = '本科指南/index.html';
-    else if(/\/复试全攻略\/(?!index\.html$)/.test(path)) target = '复试全攻略/index.html';
+    if(/\/复试全攻略\/(?!index\.html$)/.test(path)) target = '复试全攻略/index.html';
     else if(/\/考研常识科普\/experience\/post-/.test(path)) target = '考研常识科普/experience.html';
     else if(/\/考研常识科普\/(?!index\.html$|experience\.html$)/.test(path)) target = '考研常识科普/index.html';
     else if(/\/就业相关\/院校就业去向\/schools\//.test(path)) target = '就业相关/就业去向index.html';

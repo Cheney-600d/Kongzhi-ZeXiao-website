@@ -26,7 +26,7 @@
   };
   var groups = [
     {label:'备考认知', icon:'book', items:[
-      ['考研常识科普/index.html','28 考研常识扫盲','book'],['复试全攻略/index.html','27 考研复试','clipboard'],['考研常识科普/experience.html','上岸经验贴','message'],['本科指南/index.html','大学生存与发展','grad']
+      ['考研常识科普/index.html','28 考研常识扫盲','book'],['复试全攻略/index.html','27 考研复试','clipboard'],['考研常识科普/experience.html','上岸经验贴','message']
     ]},
     {label:'择校工具', icon:'target', items:[
       ['专业课选择/考研专业课院校查询.html','专业课院校查询','search'],['院校PK.html','院校 PK 对比','scale'],['通信电子院校生源地图.html','院校生源地图','map'],['heat_compare.html','院校热度榜','flame'],['改考院校.html','27 改考院校','refresh']

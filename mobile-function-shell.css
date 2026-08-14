@@ -1,7 +1,7 @@
 :root {
   --mfs-ink: #342e40;
   --mfs-ink-2: #453c53;
-  --mfs-paper: #f5f0f7;
+  --mfs-paper: #f7eceb;
   --mfs-surface: #ffffff;
   --mfs-line: #ded5e6;
   --mfs-signal: #b8a4d8;
@@ -110,7 +110,7 @@
     inset: auto .7rem calc(.65rem + env(safe-area-inset-bottom));
     padding: .42rem;
     background: rgba(251,249,252,.96);
-    border: 1px solid rgba(184,164,216,.36);
+    border: 1px solid rgba(169,33,34,.36);
     border-radius: 1.08rem;
     box-shadow: 0 1rem 2.6rem rgba(52,46,64,.2), inset 0 1px rgba(255,255,255,.8);
     backdrop-filter: blur(18px) saturate(110%);

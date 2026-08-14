@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
         
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #F5F0F7;
+            background: #f7eceb;
             min-height: 100vh;
             padding: 20px;
         }
@@ -28,12 +28,12 @@
             padding: 20px;
         }
         
-        .header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 900; color: #B71C1C; text-shadow: 0 0 8px rgba(183,28,28,0.2); }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 900; color: #a92122; text-shadow: 0 0 8px rgba(169,33,34,0.2); }
         .header p { font-size: 1.1em; font-weight: 600; opacity: 0.9; }
         
-        .school-name { font-weight: 700; text-shadow: 0 0 8px rgba(184,164,216,0.25); }
-        .number-glow { font-weight: 700; text-shadow: 0 0 6px rgba(184,164,216,0.3); }
-        .filter-label { font-weight: 700; text-shadow: 0 0 6px rgba(184,164,216,0.2); }
+        .school-name { font-weight: 700; text-shadow: 0 0 8px rgba(169,33,34,0.25); }
+        .number-glow { font-weight: 700; text-shadow: 0 0 6px rgba(169,33,34,0.3); }
+        .filter-label { font-weight: 700; text-shadow: 0 0 6px rgba(169,33,34,0.2); }
         
         .search-box {
             max-width: 600px;
@@ -43,11 +43,11 @@
         .search-box input {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid #D4C8E0;
+            border: 2px solid #e2d7d7;
             border-radius: 50px;
             font-size: 16px;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(184,164,216,0.2);
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
             outline: none;
         }
         
@@ -56,7 +56,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(184,164,216,0.2);
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
         }
         
         .filter-group { margin-bottom: 15px; }
@@ -78,7 +78,7 @@
         
         .filter-btn {
             padding: 8px 16px;
-            border: 2px solid #D4C8E0;
+            border: 2px solid #e2d7d7;
             border-radius: 20px;
             background: #FFFFFF;
             cursor: pointer;
@@ -88,13 +88,13 @@
         }
         
         .filter-btn:hover {
-            border-color: #9A8AC8;
-            color: #9A8AC8;
-            box-shadow: 0 0 0 2px rgba(154,138,200,0.15);
+            border-color: #a92122;
+            color: #a92122;
+            box-shadow: 0 0 0 2px rgba(169,33,34,0.15);
         }
         
         .filter-btn.active {
-            background: linear-gradient(135deg, #B8A4D8 0%, #C5B4D8 100%);
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
             color: white;
             border-color: transparent;
         }
@@ -104,7 +104,7 @@
         }
         
         .filter-btn.province-btn.active {
-            background: linear-gradient(135deg, #B8A4D8 0%, #9A8AC8 100%);
+            background: linear-gradient(135deg, #a92122 0%, #a92122 100%);
         }
         
         .filter-btn.level-985.active { background: #e74c3c; color: #fff; }
@@ -123,11 +123,11 @@
             background: #FFFFFF;
             padding: 15px 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(184,164,216,0.2);
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
             text-align: center;
         }
         
-        .stat-card .number { font-size: 2.5em; font-weight: 800; color: #B8A4D8; }
+        .stat-card .number { font-size: 2.5em; font-weight: 800; color: #a92122; }
         .stat-card .label { color: #666; font-size: 0.9em; }
         
         .school-grid {
@@ -141,7 +141,7 @@
             background: #FFFFFF;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 12px rgba(184,164,216,0.2);
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -150,7 +150,7 @@
         
         .school-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(184,164,216,0.35);
+            box-shadow: 0 12px 35px rgba(169,33,34,0.35);
         }
         
         .school-card::before {
@@ -160,7 +160,7 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: linear-gradient(180deg, #B8A4D8 0%, #C5B4D8 100%);
+            background: linear-gradient(180deg, #a92122 0%, #c0392b 100%);
         }
         
         .school-header {
@@ -192,17 +192,17 @@
         .level-tag.level-211 { background: #8b5cf6; color: #fff; }
         .level-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
         
-        .province-tag { background: linear-gradient(135deg, #B8A4D8, #9A8AC8); }
+        .province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
         
         .school-count { color: #666; font-size: 0.9em; }
-        .school-count span { color: #B8A4D8; font-weight: bold; }
+        .school-count span { color: #a92122; font-weight: bold; }
         
         .arrow {
             position: absolute;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: #B8A4D8;
+            color: #a92122;
             font-size: 1.5em;
         }
         
@@ -212,7 +212,7 @@
             background: #FFFFFF;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(184,164,216,0.2);
+            box-shadow: 0 10px 40px rgba(169,33,34,0.2);
         }
         
         .detail-page.active { display: block; }
@@ -222,13 +222,13 @@
             align-items: center;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #E8E0E8;
+            border-bottom: 2px solid #efe6e6;
             flex-wrap: wrap;
             gap: 15px;
         }
         
         .back-btn {
-            background: linear-gradient(135deg, #B8A4D8 0%, #C5B4D8 100%);
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -264,10 +264,10 @@
         .detail-tag.level-985 { background: #e74c3c; color: #fff; }
         .detail-tag.level-211 { background: #8b5cf6; color: #fff; }
         .detail-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
-        .detail-tag.province-tag { background: linear-gradient(135deg, #B8A4D8, #9A8AC8); }
+        .detail-tag.province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
         
         .detail-count {
-            background: linear-gradient(135deg, #B8A4D8 0%, #C5B4D8 100%);
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -282,7 +282,7 @@
         }
         
         .chart-card {
-            background: #F5F0F7;
+            background: #f7eceb;
             border-radius: 12px;
             padding: 20px;
             min-width: 0;
@@ -302,7 +302,7 @@
         }
         
         .detail-filters {
-            background: #F5F0F7;
+            background: #f7eceb;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 25px;
@@ -315,10 +315,10 @@
         }
         
         .source-item {
-            background: #F5F0F7;
+            background: #f7eceb;
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #B8A4D8;
+            border-left: 4px solid #a92122;
             transition: all 0.3s;
             display: flex;
             justify-content: space-between;
@@ -353,13 +353,13 @@
         .source-tag.level-985 { background: #e74c3c; color: #fff; }
         .source-tag.level-211 { background: #8b5cf6; color: #fff; }
         .source-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
-        .source-tag.province-tag { background: linear-gradient(135deg, #B8A4D8, #9A8AC8); }
+        .source-tag.province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
         
         .source-count {
             position: absolute;
             top: 8px;
             right: 12px;
-            background: linear-gradient(135deg, #B8A4D8, #C5B4D8);
+            background: linear-gradient(135deg, #a92122, #c0392b);
             color: white;
             width: 28px;
             height: 28px;
@@ -450,11 +450,11 @@
     <div class="container">
         <div class="flex gap-2 mb-4">
             <button class="back-home-btn" onclick="siteHistoryBack('./index.html')" id="backBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 返回上一级
             </button>
             <a href="./index.html" class="back-home-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 返回首页
             </a>
         </div>
@@ -2619,7 +2619,7 @@
             <div class="detail-header">
                 <div class="flex items-center gap-2 mb-2">
                     <button class="back-btn" onclick="showMain()">← 返回列表</button>
-                    <a id="toZexiaoLink" href="./index.html" class="back-btn" style="background:linear-gradient(135deg,#B8A4D8 0%,#C5B4D8 100%);color:#fff;border:none;text-decoration:none;display:inline-flex;align-items:center;">📊 查看择校数据</a>
+                    <a id="toZexiaoLink" href="./index.html" class="back-btn" style="background:linear-gradient(135deg,#a92122 0%,#c0392b 100%);color:#fff;border:none;text-decoration:none;display:inline-flex;align-items:center;">📊 查看择校数据</a>
                 </div>
                 <div class="detail-title" id="detailTitle"></div>
                 <div class="detail-tags" id="detailTags"></div>
@@ -2799,8 +2799,8 @@
                     type: 'bar',
                     itemStyle: {
                         color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                            { offset: 0, color: '#B8A4D8' },
-                            { offset: 1, color: '#C5B4D8' }
+                            { offset: 0, color: '#a92122' },
+                            { offset: 1, color: '#c0392b' }
                         ])
                     },
                     barWidth: '60%',
@@ -2842,8 +2842,8 @@
                     type: 'bar',
                     itemStyle: {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: '#D1C4E9' },
-                            { offset: 1, color: '#FF5252' }
+                            { offset: 0, color: '#a92122' },
+                            { offset: 1, color: '#c0392b' }
                         ])
                     },
                     barWidth: '55%',
