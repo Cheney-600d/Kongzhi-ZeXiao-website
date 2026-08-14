@@ -7,14 +7,14 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif; background: linear-gradient(135deg, #f7eceb 0%, #f7eceb 100%); min-height: 100vh; padding: 20px; color: #2d2d3d; }
+        body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif; background: linear-gradient(135deg, #f8f8f6 0%, #f8f8f6 100%); min-height: 100vh; padding: 20px; color: #17191d; }
         .container { max-width: 1200px; margin: 0 auto; }
         
         /* 导航栏 */
         .top-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
         .top-nav-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #FFFFFF; border-radius: 8px; font-size: 13px; font-weight: 600; color: #4A5570; text-decoration: none; box-shadow: 0 2px 8px rgba(169,33,34,0.2); transition: all 0.2s; }
         /* Subject-specific tag colors */
-        .subject-tag.tag-signal { background: linear-gradient(135deg, #E8E0F0, #f7eceb); color: #5D4E75; border-color: #D1C4E9; }
+        .subject-tag.tag-signal { background: linear-gradient(135deg, #E8E0F0, #f8f8f6); color: #5D4E75; border-color: #D1C4E9; }
         .subject-tag.tag-signal:hover { background: linear-gradient(135deg, #a92122, #c0392b); color: white; }
         .subject-tag.tag-digital { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); color: #1565C0; border-color: #90CAF9; }
         .subject-tag.tag-digital:hover { background: linear-gradient(135deg, #42A5F5, #1E88E5); color: white; }
@@ -88,13 +88,13 @@
         .overview-card-icon { font-size: 2rem; margin-bottom: 6px; }
         .overview-card-cover { width: calc(100% + 28px); height: 280px; object-fit: contain; border-radius: 10px 10px 0 0; margin: -14px -14px 10px -14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.3s; background: #f5f5f5; }
         .overview-card:hover .overview-card-cover { transform: scale(1.02); }
-        .overview-card-title { font-weight: 800; color: #2d2d3d; font-size: 14px; margin-bottom: 4px; }
+        .overview-card-title { font-weight: 800; color: #17191d; font-size: 14px; margin-bottom: 4px; }
         .overview-card-desc { font-size: 11px; color: #6a6a7a; }
         .overview-card-hint { font-size: 10px; color: #a92122; font-weight: 700; margin-top: 4px; }
         
         /* 科目标签 */
         .subject-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; justify-content: center; padding: 10px 0; }
-        .subject-tag { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; background: linear-gradient(135deg, #E8E0F0, #f7eceb); border-radius: 20px; font-size: 13px; font-weight: 700; color: #5D4E75; border: 1px solid #D1C4E9; transition: all 0.2s; }
+        .subject-tag { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; background: linear-gradient(135deg, #E8E0F0, #f8f8f6); border-radius: 20px; font-size: 13px; font-weight: 700; color: #5D4E75; border: 1px solid #D1C4E9; transition: all 0.2s; }
         .subject-tag:hover { background: linear-gradient(135deg, #a92122, #c0392b); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(169,33,34,0.3); }
         
         /* 表格样式 */
@@ -147,22 +147,22 @@
         /* 详情卡片 */
         .detail-card { background: #FFFFFF; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 10px; }
         .detail-card-title { font-weight: 800; color: #F57F17; font-size: 16px; margin-bottom: 6px; }
-        .detail-card-desc { font-size: 13px; color: #2d2d3d; line-height: 1.7; }
+        .detail-card-desc { font-size: 13px; color: #17191d; line-height: 1.7; }
         
         /* 模态框 - 宝典S & 刷题本 */
         .baodian-s-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.75); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
         .baodian-s-modal-overlay.active { display: flex; }
         .baodian-s-modal { background: #FFFFFF; border-radius: 16px; max-width: 90vw; width: 100%; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
         .baodian-s-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #E8EAF6; }
-        .baodian-s-modal-header h3 { font-size: 1.2rem; font-weight: 900; color: #2d2d3d; margin: 0; }
+        .baodian-s-modal-header h3 { font-size: 1.2rem; font-weight: 900; color: #17191d; margin: 0; }
         .baodian-s-modal-close { background: none; border: none; font-size: 1.5rem; color: #6a6a7a; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-        .baodian-s-modal-close:hover { background: #f7eceb; color: #a92122; }
-        .baodian-s-modal-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 80vh; position: relative; background: #f7eceb; }
+        .baodian-s-modal-close:hover { background: #f8f8f6; color: #a92122; }
+        .baodian-s-modal-body { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 80vh; position: relative; background: #f8f8f6; }
         .baodian-s-modal-img { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 8px; transition: opacity 0.3s, max-width 0.3s, max-height 0.3s; }
         .baodian-s-modal-img.fullscreen { max-width: 95vw; max-height: 95vh; width: auto; height: auto; }
         .baodian-s-expand-btn { background: rgba(255,255,255,0.9); border: none; border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; color: #4A5570; font-weight: 600; transition: all 0.2s; }
         .baodian-s-expand-btn:hover { background: #a92122; color: white; }
-        .baodian-s-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; font-size: 1.2rem; color: #2d2d3d; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 2; }
+        .baodian-s-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.9); border: none; font-size: 1.2rem; color: #17191d; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 2; }
         .baodian-s-nav-btn:hover { background: #a92122; color: white; }
         .baodian-s-nav-btn.prev { left: 12px; }
         .baodian-s-nav-btn.next { right: 12px; }
@@ -240,6 +240,21 @@
     </style>
 
 <style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
+<style id="theme-polish">/* 主题细节：文字选中色 + 滚动条 + 焦点态（控制考研红） */
+::selection{background:#a92122;color:#fff;text-shadow:none}
+::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
+html{scrollbar-width:thin;scrollbar-color:#c9a0a0 #f1f0eb}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#f1f0eb}
+::-webkit-scrollbar-thumb{background:#c9a0a0;border-radius:999px;border:2px solid #f1f0eb}
+::-webkit-scrollbar-thumb:hover{background:#a92122}
+[id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
+[id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
+@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.chart-container{transition:box-shadow .2s ease,transform .2s ease}
+.card:hover,.chart-container:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(169,33,34,.12) !important;border-color:#a92122 !important}
+:focus-visible{outline:2px solid #a92122;outline-offset:2px}
+</style>
 </head>
 <body>
     <div class="container">

@@ -1,8 +1,8 @@
 :root {
   --entry-canvas: #f8f8f6;
   --entry-card: #ffffff;
-  --entry-red: #b71c1c;
-  --entry-lavender: #9a8ac8;
+  --entry-red: #a92122;
+  --entry-bronze: #c98a3d;
   --entry-ink: #30343b;
   --entry-muted: #77787f;
   --entry-line: #e5dfdc;
@@ -20,7 +20,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   overflow: hidden;
   color: var(--entry-ink);
   background: var(--entry-canvas);
-  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
   isolation: isolate;
 }
 
@@ -203,7 +203,7 @@ html.entry-intro-running body { overflow: hidden !important; }
 
 .entry-control-map__feedback {
   fill: none;
-  stroke: var(--entry-lavender);
+  stroke: var(--entry-bronze);
   stroke-width: 1.5;
   stroke-dasharray: 760;
   stroke-dashoffset: 760;
@@ -241,8 +241,8 @@ html.entry-intro-running body { overflow: hidden !important; }
 
 .entry-control-map__sum-mark { stroke: var(--entry-red); stroke-width: 1.5; }
 .entry-control-map__code { fill: var(--entry-ink); font: 700 20px "Consolas", monospace; }
-.entry-control-map__label { fill: #6f6d72; font: 650 12px "Microsoft YaHei", sans-serif; }
-.entry-control-map__utility { fill: #8f8a8c; font: 600 10px "Microsoft YaHei", sans-serif; letter-spacing: .06em; }
+.entry-control-map__label { fill: #6f6d72; font: 650 12px "PingFang SC", "Microsoft YaHei", sans-serif; }
+.entry-control-map__utility { fill: #8f8a8c; font: 600 10px "PingFang SC", "Microsoft YaHei", sans-serif; letter-spacing: .06em; }
 
 .entry-layer {
   position: absolute;
@@ -301,13 +301,14 @@ html.entry-intro-running body { overflow: hidden !important; }
 .entry-layer small {
   display: block;
   margin-bottom: 8px;
-  color: var(--entry-lavender);
+  color: var(--entry-bronze);
   font: 700 8px/1 "Consolas", monospace;
   letter-spacing: .14em;
 }
 
 .entry-layer strong { display: block; font-size: 18px; color: var(--entry-ink); }
 .entry-layer p { margin: 7px 0 0; color: #8a8588; font-size: 10px; }
+.entry-layer__icon { width: 17px; height: 17px; margin-right: 7px; vertical-align: -3px; color: var(--entry-red); fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; stroke-linejoin: round; }
 
 .entry-target-lock {
   position: absolute;
@@ -378,7 +379,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   align-items: center;
   gap: 9px;
   color: #999397;
-  font: 650 9px/1.2 "Microsoft YaHei", sans-serif;
+  font: 650 9px/1.2 "PingFang SC", "Microsoft YaHei", sans-serif;
   letter-spacing: .08em;
 }
 

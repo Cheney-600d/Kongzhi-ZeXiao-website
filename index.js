@@ -1014,7 +1014,7 @@ function renderDirectionRows(){
     return (b.admitAvg||0)-(a.admitAvg||0);
   });
   if(recs.length === 0){
-    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;">没有符合条件的数二英二方向</div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px 20px;"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin:0 auto 14px;display:block;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg><div style="font-size:16px;font-weight:700;color:#17191d;">没有符合条件的数二英二方向</div></td></tr>';
     renderSchoolPagination(0, 1);
     renderMobileDirectionCards([]);
     return;
@@ -1059,7 +1059,7 @@ function renderSchoolTable(){
   const data = getSchoolTableData();
 
   if(data.length === 0){
-    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的院校</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件或搜索关键词</div><button onclick="resetSchoolFilters()" style="padding:8px 20px;background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin:0 auto 14px;display:block;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg><div style="font-size:16px;font-weight:700;color:#17191d;margin-bottom:8px;">没有找到符合条件的院校</div><div style="font-size:13px;color:#777a80;margin-bottom:16px;">试试调整筛选条件或搜索关键词</div><button onclick="resetSchoolFilters()" style="padding:8px 20px;background:#a92122;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
     const mobileHost = document.getElementById('mobileSchoolCards');
     if(mobileHost) mobileHost.innerHTML = '<div class="mobile-school-empty">没有符合当前条件的院校，请调整筛选条件。</div>';
     renderSchoolPagination(0, 1);
@@ -1318,7 +1318,7 @@ function getTagStyle(tagName, type){
   if(tagName.startsWith('控制C+')) return {bg:'#facc15',color:'#713f12',border:'#fde047'};
   if(tagName.startsWith('控制C')) return {bg:'#f97316',color:'#fff',border:'#ea580c'};
   if(tagName.startsWith('控制C-')) return {bg:'#d1d5db',color:'#374151',border:'#9ca3af'};
-  return {bg:'#f3f4f6',color:'#374151',border:'#2d2d3d'};
+  return {bg:'#f3f4f6',color:'#374151',border:'#17191d'};
 }
 
 // ===================== 二级页 =====================
@@ -1891,7 +1891,7 @@ function renderDetail(schoolName){
         name:'招生人数',type:'bar',
         data:pieArr.map(x=>x.num||0),
         itemStyle:{color:'#a92122'},barMaxWidth:26,
-        label:{show:true,position:'top',fontSize:9,color:'#2d2d3d',formatter:function(p){return p.value ? p.value : '';}}
+        label:{show:true,position:'top',fontSize:9,color:'#17191d',formatter:function(p){return p.value ? p.value : '';}}
       }]
     });
   } else {
@@ -2094,7 +2094,7 @@ function resetDetailFilter(){
 function renderDetailTable(data){
   const tbody = document.getElementById('detailTable');
   if(!data || data.length === 0){
-    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><div style="font-size:48px;margin-bottom:12px;">😅</div><div style="font-size:16px;font-weight:700;color:#555;margin-bottom:8px;">没有找到符合条件的记录</div><div style="font-size:13px;color:#999;margin-bottom:16px;">试试调整筛选条件</div><button onclick="resetDetailFilter()" style="padding:8px 20px;background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin:0 auto 14px;display:block;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg><div style="font-size:16px;font-weight:700;color:#17191d;margin-bottom:8px;">没有找到符合条件的记录</div><div style="font-size:13px;color:#777a80;margin-bottom:16px;">试试调整筛选条件</div><button onclick="resetDetailFilter()" style="padding:8px 20px;background:#a92122;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
     document.getElementById('detailCount').textContent = '(共0条)';
     return;
   }
@@ -2213,9 +2213,9 @@ function renderDetailDistributions(schoolName, recs){
               '</div><div id="dist-total-'+idx+'" style="height:180px;"></div></div>';
     }
     html += '<div><div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px;">数学分数分布' + extTag(d.math) + '</div>' +
-            (d.math ? '<div id="dist-math-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#999;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
+            (d.math ? '<div id="dist-math-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#777a80;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
     html += '<div><div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px;">专业课分数分布' + extTag(d.course) + '</div>' +
-            (d.course ? '<div id="dist-course-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#999;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
+            (d.course ? '<div id="dist-course-'+idx+'" style="height:180px;"></div>' : '<div style="font-size:13px;color:#777a80;padding-top:60px;text-align:center;">暂无数据</div>') + '</div>';
     html += '</div>';
     card.innerHTML = html;
     content.appendChild(card);

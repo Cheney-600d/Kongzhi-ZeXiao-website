@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>控制类考研各院校生源地图</title>
 <meta name="description" content="控制类考研各院校生源地图，展示上岸考生本科来源院校分布。">
-<meta name="keywords" content="通信考研,电子考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
+<meta name="keywords" content="控制考研,自动化考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <script src="vendor/echarts.min.js" defer></script>
@@ -13,8 +13,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #f7eceb;
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+            background: #f8f8f6;
             min-height: 100vh;
             padding: 20px;
         }
@@ -23,7 +23,7 @@
         
         .header {
             text-align: center;
-            color: #2d2d3d;
+            color: #17191d;
             margin-bottom: 30px;
             padding: 20px;
         }
@@ -43,7 +43,7 @@
         .search-box input {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid #e2d7d7;
+            border: 2px solid #d5d5cf;
             border-radius: 50px;
             font-size: 16px;
             font-weight: 600;
@@ -64,7 +64,7 @@
         
         .filter-label {
             font-weight: bold;
-            color: #2d2d3d;
+            color: #17191d;
             margin-bottom: 10px;
             display: block;
             font-size: 0.95em;
@@ -78,7 +78,7 @@
         
         .filter-btn {
             padding: 8px 16px;
-            border: 2px solid #e2d7d7;
+            border: 2px solid #d5d5cf;
             border-radius: 20px;
             background: #FFFFFF;
             cursor: pointer;
@@ -171,7 +171,7 @@
             padding-right: 30px;
         }
         
-        .school-name { font-size: 1.15em; font-weight: bold; color: #2d2d3d; flex: 1; }
+        .school-name { font-size: 1.15em; font-weight: bold; color: #17191d; flex: 1; }
         
         .school-tags {
             display: flex;
@@ -222,7 +222,7 @@
             align-items: center;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #efe6e6;
+            border-bottom: 2px solid #deded8;
             flex-wrap: wrap;
             gap: 15px;
         }
@@ -242,7 +242,7 @@
         
         .detail-title {
             font-size: 1.8em;
-            color: #2d2d3d;
+            color: #17191d;
             flex: 1;
             min-width: 200px;
         }
@@ -282,7 +282,7 @@
         }
         
         .chart-card {
-            background: #f7eceb;
+            background: #f8f8f6;
             border-radius: 12px;
             padding: 20px;
             min-width: 0;
@@ -291,7 +291,7 @@
         .chart-title {
             font-size: 1.1em;
             font-weight: bold;
-            color: #2d2d3d;
+            color: #17191d;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -302,7 +302,7 @@
         }
         
         .detail-filters {
-            background: #f7eceb;
+            background: #f8f8f6;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 25px;
@@ -315,7 +315,7 @@
         }
         
         .source-item {
-            background: #f7eceb;
+            background: #f8f8f6;
             padding: 15px;
             border-radius: 10px;
             border-left: 4px solid #a92122;
@@ -335,7 +335,7 @@
         }
         
         .source-info { flex: 1; }
-        .source-name { color: #2d2d3d; font-weight: 500; margin-bottom: 5px; }
+        .source-name { color: #17191d; font-weight: 500; margin-bottom: 5px; }
         
         .source-tags {
             display: flex;
@@ -377,9 +377,9 @@
         
         .no-result {
             text-align: center;
-            color: #666;
+            color: #777a80;
             padding: 40px;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
         
         @media (max-width: 768px) {
@@ -422,6 +422,21 @@
 
 
 <link rel="stylesheet" href="mobile-function-shell.css?v=20260814-theme-purple">
+<style id="theme-polish">/* 主题细节：文字选中色 + 滚动条 + 焦点态（控制考研红） */
+::selection{background:#a92122;color:#fff;text-shadow:none}
+::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
+html{scrollbar-width:thin;scrollbar-color:#c9a0a0 #f1f0eb}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#f1f0eb}
+::-webkit-scrollbar-thumb{background:#c9a0a0;border-radius:999px;border:2px solid #f1f0eb}
+::-webkit-scrollbar-thumb:hover{background:#a92122}
+[id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
+[id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
+@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.chart-container{transition:box-shadow .2s ease,transform .2s ease}
+.card:hover,.chart-container:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(169,33,34,.12) !important;border-color:#a92122 !important}
+:focus-visible{outline:2px solid #a92122;outline-offset:2px}
+</style>
 </head>
 <body>
     <!-- 导航历史记录 -->
@@ -2610,7 +2625,8 @@
             </div>
             
             <div class="no-result" id="noResult" style="display: none;">
-                😕 未找到匹配的院校
+                <svg viewBox="0 0 24 24" style="width:40px;height:40px;display:block;margin:0 auto 10px;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg>
+                未找到匹配的院校
             </div>
         </div>
         

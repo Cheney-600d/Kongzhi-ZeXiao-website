@@ -1,11 +1,11 @@
 :root {
-  --mfs-ink: #342e40;
-  --mfs-ink-2: #453c53;
-  --mfs-paper: #f7eceb;
+  --mfs-ink: #17191d;
+  --mfs-ink-2: #23262b;
+  --mfs-paper: #f8f8f6;
   --mfs-surface: #ffffff;
-  --mfs-line: #ded5e6;
-  --mfs-signal: #b8a4d8;
-  --mfs-muted: #756d7e;
+  --mfs-line: #deded8;
+  --mfs-signal: #a92122;
+  --mfs-muted: #777a80;
 }
 
 .mfs-topbar,
@@ -33,10 +33,10 @@
     inset: 0 0 auto;
     min-height: 4.25rem;
     padding: max(.62rem, env(safe-area-inset-top)) .9rem .62rem;
-    color: #fbf9fc;
-    background: rgba(52,46,64,.96);
+    color: #f4f4f1;
+    background: rgba(23,25,29,.96);
     border-bottom: 1px solid rgba(255,255,255,.1);
-    box-shadow: 0 .8rem 2rem rgba(52,46,64,.2);
+    box-shadow: 0 .8rem 2rem rgba(23,25,29,.2);
     backdrop-filter: blur(18px) saturate(110%);
     z-index: 1200;
   }
@@ -56,7 +56,7 @@
     place-items: center;
     width: 2.55rem;
     height: 2.55rem;
-    color: #fbf9fc;
+    color: #f4f4f1;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
     border-radius: .78rem;
@@ -66,13 +66,13 @@
   .mfs-icon-btn svg,
   .mfs-menu-btn svg,
   .mfs-dock svg,
-  .mfs-sheet svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mfs-sheet svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; stroke-linejoin: round; }
 
   .mfs-title { min-width: 0; line-height: 1.08; }
   .mfs-title small {
     display: block;
     margin-bottom: .25rem;
-    color: #cbbce1;
+    color: #d98a8a;
     font-size: .62rem;
     font-weight: 700;
     letter-spacing: .14em;
@@ -94,9 +94,9 @@
     gap: .38rem;
     min-height: 2.55rem;
     padding: 0 .78rem;
-    color: #fbf9fc;
-    background: #453c53;
-    border: 1px solid rgba(203,188,225,.34);
+    color: #f4f4f1;
+    background: #23262b;
+    border: 1px solid rgba(130,135,142,.34);
     border-radius: .78rem;
     font-size: .75rem;
     font-weight: 650;
@@ -109,10 +109,10 @@
     gap: .35rem;
     inset: auto .7rem calc(.65rem + env(safe-area-inset-bottom));
     padding: .42rem;
-    background: rgba(251,249,252,.96);
+    background: rgba(248,248,246,.96);
     border: 1px solid rgba(169,33,34,.36);
     border-radius: 1.08rem;
-    box-shadow: 0 1rem 2.6rem rgba(52,46,64,.2), inset 0 1px rgba(255,255,255,.8);
+    box-shadow: 0 1rem 2.6rem rgba(23,25,29,.2), inset 0 1px rgba(255,255,255,.8);
     backdrop-filter: blur(18px) saturate(110%);
     z-index: 1190;
   }
@@ -126,14 +126,14 @@
     align-items: center;
     justify-content: center;
     gap: .18rem;
-    color: #6f6679;
+    color: #777a80;
     background: transparent;
     border-radius: .76rem;
     font-size: .66rem;
     font-weight: 600;
     text-decoration: none;
   }
-  .mfs-dock .is-primary { color: #342e40; background: #b8a4d8; box-shadow: inset 0 1px rgba(255,255,255,.42); }
+  .mfs-dock .is-primary { color: #fff; background: #a92122; box-shadow: inset 0 1px rgba(255,255,255,.28); }
 
   .mfs-scrim {
     position: fixed;
@@ -141,7 +141,7 @@
     inset: 0;
     visibility: hidden;
     opacity: 0;
-    background: rgba(35,29,43,.48);
+    background: rgba(15,17,20,.5);
     backdrop-filter: blur(3px);
     transition: opacity .24s ease, visibility .24s ease;
     z-index: 1300;
@@ -155,10 +155,10 @@
     max-height: min(82dvh, 46rem);
     overflow: auto;
     padding: .7rem .9rem calc(1.1rem + env(safe-area-inset-bottom));
-    color: #f8f5fa;
+    color: #f4f4f1;
     background: var(--mfs-ink);
     border-radius: 1.45rem 1.45rem 0 0;
-    box-shadow: 0 -1.5rem 4rem rgba(35,29,43,.3);
+    box-shadow: 0 -1.5rem 4rem rgba(15,17,20,.3);
     transform: translateY(102%);
     transition: transform .34s cubic-bezier(.22,.8,.24,1);
     z-index: 1310;
@@ -166,11 +166,11 @@
   .mfs-sheet.is-open { transform: translateY(0); }
   .mfs-sheet__handle { width: 2.8rem; height: .25rem; margin: 0 auto .85rem; background: rgba(255,255,255,.25); border-radius: 1rem; }
   .mfs-sheet__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-  .mfs-sheet__head small { display: block; color: #cbbce1; font-size: .66rem; letter-spacing: .13em; }
+  .mfs-sheet__head small { display: block; color: #d98a8a; font-size: .66rem; letter-spacing: .13em; }
   .mfs-sheet__head strong { display: block; margin-top: .22rem; font-size: 1.18rem; letter-spacing: -.025em; }
   .mfs-sheet__close { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; color: #fff; background: rgba(255,255,255,.08); border: 0; border-radius: .72rem; }
   .mfs-group { margin-top: 1rem; }
-  .mfs-group > b { display: flex; align-items: center; gap: .32rem; margin: 0 0 .5rem .15rem; color: #b8adbf; font-size: .67rem; font-weight: 650; letter-spacing: .1em; }
+  .mfs-group > b { display: flex; align-items: center; gap: .32rem; margin: 0 0 .5rem .15rem; color: #a6abb3; font-size: .67rem; font-weight: 650; letter-spacing: .1em; }
   .mfs-group > b svg { width: .88rem; height: .88rem; flex: none; opacity: .85; }
   .mfs-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .48rem; }
   .mfs-grid a {
@@ -179,7 +179,7 @@
     gap: .5rem;
     min-height: 3.2rem;
     padding: .72rem .78rem;
-    color: #f3eef6;
+    color: #f2f2ee;
     background: rgba(255,255,255,.055);
     border: 1px solid rgba(255,255,255,.075);
     border-radius: .78rem;
@@ -188,9 +188,9 @@
     line-height: 1.25;
     text-decoration: none;
   }
-  .mfs-grid a svg { width: 1.05rem; height: 1.05rem; flex: none; color: #b8a4d8; }
-  .mfs-grid a[aria-current="page"] { color: #342e40; background: #b8a4d8; border-color: #cbbce1; }
-  .mfs-grid a[aria-current="page"] svg { color: #342e40; }
+  .mfs-grid a svg { width: 1.05rem; height: 1.05rem; flex: none; color: #d98a8a; }
+  .mfs-grid a[aria-current="page"] { color: #fff; background: #a92122; border-color: #d98a8a; }
+  .mfs-grid a[aria-current="page"] svg { color: #fff; }
 
   /* Shared responsive guardrails: preserve each tool's content, remove desktop-only width assumptions. */
   body.mobile-function-ready :where(.container,.page,.page-content,.main-content,.content,.wrapper,.nav-container) {
@@ -238,7 +238,7 @@
   body.mobile-function-ready :where(.site-header,.main-nav,.topbar,.navbar) { top: 4.25rem !important; }
 
   .mfs-icon-btn:active,.mfs-menu-btn:active,.mfs-dock a:active,.mfs-dock button:active,.mfs-grid a:active { transform: scale(.97); }
-  .mfs-icon-btn:focus-visible,.mfs-menu-btn:focus-visible,.mfs-dock a:focus-visible,.mfs-dock button:focus-visible,.mfs-grid a:focus-visible,.mfs-sheet__close:focus-visible { outline: 2px solid #d6c8e8; outline-offset: 2px; }
+  .mfs-icon-btn:focus-visible,.mfs-menu-btn:focus-visible,.mfs-dock a:focus-visible,.mfs-dock button:focus-visible,.mfs-grid a:focus-visible,.mfs-sheet__close:focus-visible { outline: 2px solid #a92122; outline-offset: 2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

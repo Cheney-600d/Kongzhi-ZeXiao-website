@@ -16,13 +16,13 @@
 <script src="school_detail_data.js"></script>
 <style>
 @import url('vendor/fonts/fd7c59f8d290aab04d9d487b4c33ba39.css');
-body{font-family:'Noto+Sans+SC',sans-serif;background:#f7eceb;font-weight:600;color:#2d2d3d;}
+body{font-family:'Noto+Sans+SC',sans-serif;background:#f8f8f6;font-weight:600;color:#17191d;}
 .card{background:#FFFFFF;border-radius:12px;box-shadow:0 4px 12px rgba(169,33,34,0.2);}
 .btn-primary{background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:700;transition:transform .2s,box-shadow .2s;}
 .btn-primary:hover{transform:scale(1.02);box-shadow:0 6px 16px rgba(169,33,34,0.35);}
 .back-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#FFFFFF;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:#6a6a7a;border:none;transition:transform .2s,background .2s;}
-.back-btn:hover{background:#efe6e6;transform:scale(1.02);}
-.select-box{padding:10px 14px;border:1px solid #e2d7d7;border-radius:8px;background:#FFFFFF;color:#2d2d3d;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+.back-btn:hover{background:#deded8;transform:scale(1.02);}
+.select-box{padding:10px 14px;border:1px solid #d5d5cf;border-radius:8px;background:#FFFFFF;color:#17191d;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
 .select-box:focus{border-color:#a92122;box-shadow:0 0 0 3px rgba(169,33,34,0.25);}
 .school-tag{display:inline-flex;align-items:center;gap:18px;padding:18px 42px;background:linear-gradient(135deg,#a92122 0%,#a92122 100%);color:#fff;border-radius:40px;font-size:24px;font-weight:700;transition:box-shadow .2s,transform .2s;}
 .school-tag:hover{box-shadow:0 8px 24px rgba(169,33,34,0.35);transform:scale(1.01);}
@@ -31,32 +31,32 @@ body{font-family:'Noto+Sans+SC',sans-serif;background:#f7eceb;font-weight:600;co
 .school-tag .del:hover{background:rgba(255,255,255,0.5);}
 .pk-tags-wrap{display:grid;gap:12px;justify-content:center;max-width:100%;margin:0 auto;}
 .search-wrap{position:relative;}
-.search-dropdown{position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border:1px solid #e2d7d7;border-radius:8px;max-height:200px;overflow-y:auto;z-index:20;display:none;box-shadow:0 4px 12px rgba(169,33,34,0.2);}
+.search-dropdown{position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border:1px solid #d5d5cf;border-radius:8px;max-height:200px;overflow-y:auto;z-index:20;display:none;box-shadow:0 4px 12px rgba(169,33,34,0.2);}
 .search-dropdown.active{display:block;}
-.search-dropdown div{padding:8px 14px;cursor:pointer;font-size:14px;color:#2d2d3d;font-weight:600;}
-.search-dropdown div:hover{background:#f7eceb;}
+.search-dropdown div{padding:8px 14px;cursor:pointer;font-size:14px;color:#17191d;font-weight:600;}
+.search-dropdown div:hover{background:#f8f8f6;}
 .pk-title{font-size:6.25rem;font-weight:900;color:#e74c3c;margin:0;text-align:center;display:block;width:100%;letter-spacing:1px;}
-h1,h2,h3{font-weight:700;color:#2d2d3d;}
+h1,h2,h3{font-weight:700;color:#17191d;}
 .compare-table .school-col{font-weight:700;}
 .compare-table .label-col{font-weight:700;}
 .compare-table th{font-weight:700;}
-.compare-table td{font-weight:600;color:#2d2d3d;}
-.number-glow{font-weight:700;color:#2d2d3d;}
-.pk-section-title{font-size:1.25rem;font-weight:700;text-align:center;padding:10px 20px;margin-bottom:16px;border-radius:8px;background:linear-gradient(135deg,#efe6e6 0%,#e2d7d7 100%);color:#2d2d3d;box-shadow:0 2px 8px rgba(169,33,34,0.2);position:relative;}
+.compare-table td{font-weight:600;color:#17191d;}
+.number-glow{font-weight:700;color:#17191d;}
+.pk-section-title{font-size:1.25rem;font-weight:700;text-align:center;padding:10px 20px;margin-bottom:16px;border-radius:8px;background:linear-gradient(135deg,#deded8 0%,#d5d5cf 100%);color:#17191d;box-shadow:0 2px 8px rgba(169,33,34,0.2);position:relative;}
 .heart-burst{position:fixed;pointer-events:none;z-index:9999;font-size:28px;animation:heartBurst .8s ease-out forwards;}
 @keyframes heartBurst{0%{transform:scale(0) rotate(0deg);opacity:1;}50%{transform:scale(1.5) rotate(10deg);opacity:.9;}100%{transform:scale(2.2) rotate(-10deg) translateY(-40px);opacity:0;}}
 .heart-glow{position:fixed;pointer-events:none;z-index:9998;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,150,0.4) 0%,transparent 70%);animation:glowExpand .6s ease-out forwards;}
 @keyframes glowExpand{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
 .live-text{position:fixed;pointer-events:none;z-index:10000;font-size:16px;font-weight:700;color:#F48FB1;text-shadow:0 0 8px rgba(236,72,153,0.5);animation:textPop 1s ease-out forwards;white-space:nowrap;}
 @keyframes textPop{0%{transform:scale(0.5) translateY(0);opacity:0;}20%{transform:scale(1.2) translateY(-10px);opacity:1;}60%{transform:scale(1) translateY(-30px);opacity:1;}100%{transform:scale(0.8) translateY(-60px);opacity:0;}}
-.compare-table{display:grid;grid-template-columns:minmax(140px,1fr) repeat(var(--cols,1),minmax(140px,1fr));font-size:20px;border:1px solid #efe6e6;border-bottom:none;border-right:none;}
+.compare-table{display:grid;grid-template-columns:minmax(140px,1fr) repeat(var(--cols,1),minmax(140px,1fr));font-size:20px;border:1px solid #deded8;border-bottom:none;border-right:none;}
 .compare-table thead,.compare-table tbody,.compare-table tr{display:contents;}
-.compare-table th,.compare-table td{padding:6px 8px;border-right:1px solid #efe6e6;border-bottom:1px solid #efe6e6;text-align:center;}
+.compare-table th,.compare-table td{padding:6px 8px;border-right:1px solid #deded8;border-bottom:1px solid #deded8;text-align:center;}
 .compare-table th{background:#a92122;font-weight:700;color:#fff;}
-.compare-table td{background:#FFFFFF;color:#2d2d3d;font-weight:600;}
+.compare-table td{background:#FFFFFF;color:#17191d;font-weight:600;}
 .compare-table tr:nth-child(even) td{background:#FAF7FC;}
 .compare-table .school-col{font-weight:700;}
-.compare-table .label-col{background:#f7eceb;font-weight:700;color:#2d2d3d;text-align:left;}
+.compare-table .label-col{background:#f8f8f6;font-weight:700;color:#17191d;text-align:left;}
 .tier-985{color:#fff;font-weight:700;background:#e74c3c;padding:3px 10px;border-radius:4px;}
 .tier-211{color:#fff;font-weight:700;background:#8b5cf6;padding:3px 10px;border-radius:4px;}
 .tier-syl{color:#fff;font-weight:600;background:#0ea5e9;padding:3px 10px;border-radius:4px;}
@@ -89,13 +89,13 @@ h1,h2,h3{font-weight:700;color:#2d2d3d;}
 .modal-box { background: #fff; border-radius: 12px; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
 .modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; cursor: pointer; color: #718096; }
 .modal-close:hover { color: #e53e3e; }
-.modal-title { font-size: 1.3rem; font-weight: 700; color: #2d2d3d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #efe6e6; }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #17191d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #deded8; }
 .modal-section { margin-bottom: 18px; }
 .modal-section h4 { font-size: 0.95rem; color: #a92122; margin-bottom: 8px; font-weight: 600; }
 .modal-section p, .modal-section li { font-size: 0.85rem; line-height: 1.7; color: #4a5568; }
 .modal-section ul { padding-left: 18px; margin: 0; }
 .modal-section table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
-.modal-section table td, .modal-section table th { border: 1px solid #efe6e6; padding: 6px 8px; text-align: left; }
+.modal-section table td, .modal-section table th { border: 1px solid #deded8; padding: 6px 8px; text-align: left; }
 .modal-section table th { background: #f7fafc; font-weight: 600; }
 
 /* === 院校详情弹窗 === */
@@ -107,13 +107,13 @@ h1,h2,h3{font-weight:700;color:#2d2d3d;}
 .modal-box { background: #fff; border-radius: 12px; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
 .modal-close { position: absolute; top: 12px; right: 16px; font-size: 24px; cursor: pointer; color: #718096; }
 .modal-close:hover { color: #e53e3e; }
-.modal-title { font-size: 1.3rem; font-weight: 700; color: #2d2d3d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #efe6e6; }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #17191d; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #deded8; }
 .modal-section { margin-bottom: 18px; }
 .modal-section h4 { font-size: 0.95rem; color: #a92122; margin-bottom: 8px; font-weight: 600; }
 .modal-section p, .modal-section li { font-size: 0.85rem; line-height: 1.7; color: #4a5568; }
 .modal-section ul { padding-left: 18px; margin: 0; }
 .modal-section table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
-.modal-section table td, .modal-section table th { border: 1px solid #efe6e6; padding: 6px 8px; text-align: left; }
+.modal-section table td, .modal-section table th { border: 1px solid #deded8; padding: 6px 8px; text-align: left; }
 .modal-section table th { background: #f7fafc; font-weight: 600; }
 
 @media (max-width: 768px) {
@@ -130,7 +130,7 @@ html{overflow-x:hidden}
 body{min-width:0;overflow-x:hidden;-webkit-text-size-adjust:100%}
 img,svg,canvas,video{max-width:100%}
 a,button,input,.school-link,.school-tag .del{touch-action:manipulation}
-a:focus-visible,button:focus-visible,input:focus-visible,.school-link:focus-visible,.school-tag .del:focus-visible{outline:3px solid rgba(169,33,34,.48);outline-offset:3px}
+:focus-visible{outline:2px solid #a92122;outline-offset:2px}
 .compare-table{min-width:max(560px,calc(140px + var(--cols,1)*150px))}
 .compare-table th,.compare-table td{word-break:break-word}
 .chart-container{overflow:hidden}
@@ -154,6 +154,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,.school-link:focus-visi
 </style>
 
 <link rel="stylesheet" href="mobile-function-shell.css?v=20260814-theme-purple">
+<style id="theme-polish">/* 主题细节：文字选中色 + 滚动条（控制考研红） */
+::selection{background:#a92122;color:#fff;text-shadow:none}
+::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
+html{scrollbar-width:thin;scrollbar-color:#c9a0a0 #f1f0eb}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#f1f0eb}
+::-webkit-scrollbar-thumb{background:#c9a0a0;border-radius:999px;border:2px solid #f1f0eb}
+::-webkit-scrollbar-thumb:hover{background:#a92122}
+[id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
+[id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
+@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.chart-container{transition:box-shadow .2s ease,transform .2s ease}
+.card:hover,.chart-container:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(169,33,34,.12) !important;border-color:#a92122 !important}
+</style>
 </head>
 <body>
 
@@ -525,7 +539,7 @@ function updateSelected(){
         + '</span>';
       idx++;
       if (i < count - 1) {
-        html += '<span style="font-size:'+vsFs+'px;font-weight:900;color:#2d2d3d;text-shadow:0 0 4px rgba(169,33,34,0.3);flex-shrink:0;letter-spacing:1px;">VS</span>';
+        html += '<span style="font-size:'+vsFs+'px;font-weight:900;color:#17191d;text-shadow:0 0 4px rgba(169,33,34,0.3);flex-shrink:0;letter-spacing:1px;">VS</span>';
       }
     }
     html += '</div>';
@@ -620,9 +634,9 @@ function renderPk(){
     const mappedPath = EMPLOYMENT_MAP[s];
     if (hasData || mappedPath) {
       const path = mappedPath || '就业相关/院校就业去向/schools/' + s + '.html';
-      return `<td><a href="${path}" style="display:inline-block;padding:4px 12px;background:#efe6e6;color:#a92122;border-radius:6px;font-size:13px;text-decoration:none;font-weight:700;" title="查看就业详情">📊 查看就业</a></td>`;
+      return `<td><a href="${path}" style="display:inline-block;padding:4px 12px;background:#deded8;color:#a92122;border-radius:6px;font-size:13px;text-decoration:none;font-weight:700;" title="查看就业详情">📊 查看就业</a></td>`;
     } else {
-      return `<td><span style="display:inline-block;padding:4px 12px;background:#f7eceb;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">敬请期待</span></td>`;
+      return `<td><span style="display:inline-block;padding:4px 12px;background:#f8f8f6;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">敬请期待</span></td>`;
     }
   }).join('')}</tr>`;
   
@@ -631,13 +645,13 @@ function renderPk(){
     const bd = getBaodianEmployment(s);
     if (bd && bd.intro) {
       const intro = bd.intro.length > 46 ? bd.intro.slice(0,46) + '…' : bd.intro;
-      const top5 = bd.top5.length ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;">` + bd.top5.map((t,i)=>`<span style="display:inline-block;padding:2px 8px;background:linear-gradient(135deg,#efe6e6 0%,#e2d7d7 100%);color:#4a4a5a;border-radius:12px;font-size:12px;font-weight:600;">${i+1}.${t}</span>`).join('') + `</div>` : '';
+      const top5 = bd.top5.length ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;">` + bd.top5.map((t,i)=>`<span style="display:inline-block;padding:2px 8px;background:linear-gradient(135deg,#deded8 0%,#d5d5cf 100%);color:#4a4a5a;border-radius:12px;font-size:12px;font-weight:600;">${i+1}.${t}</span>`).join('') + `</div>` : '';
       return `<td style="font-size:13px;color:#555;text-align:left;padding:10px 12px;line-height:1.7;">${intro}${top5}</td>`;
     } else {
       // 无宝典简介时：详情页为占位（数据整理中）则如实标注，暂无页面则敬请期待（就业数据行仍有查看就业链接）
       const hasPage = EMPLOYMENT_SCHOOLS.has(s) || EMPLOYMENT_MAP[s];
       const label = hasPage ? '数据整理中' : '敬请期待';
-      return `<td><span style="display:inline-block;padding:4px 12px;background:#f7eceb;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">${label}</span></td>`;
+      return `<td><span style="display:inline-block;padding:4px 12px;background:#f8f8f6;color:#9B8AA5;border-radius:6px;font-size:13px;font-weight:600;">${label}</span></td>`;
     }
   }).join('')}</tr>`;
   
@@ -684,7 +698,7 @@ function renderPk(){
         });
         const weightedAvg = totalAdmit > 0 ? (weightedSum / totalAdmit).toFixed(1) : null;
         const avgText = weightedAvg ? ` <span style="color:#9a8aa0;font-size:12px;">(${weightedAvg})</span>` : '';
-        return `<span style="display:inline-block;padding:4px 12px;background:#f7eceb;border-radius:8px;margin:2px 6px 2px 0;font-size:13px;color:#4a4a5a;">${subject} <span style="color:#8b5cf6;font-weight:700;">${codeText}</span>${avgText}</span>`;
+        return `<span style="display:inline-block;padding:4px 12px;background:#f8f8f6;border-radius:8px;margin:2px 6px 2px 0;font-size:13px;color:#4a4a5a;">${subject} <span style="color:#8b5cf6;font-weight:700;">${codeText}</span>${avgText}</span>`;
       });
       html += `<tr><td class="label-col">${wrapSchoolBadge(s)}</td><td style="text-align:left;font-size:13px;line-height:2;">${chips.length ? chips.join('') : '<span style="color:#9b8aa5;">-</span>'}</td></tr>`;
     });
@@ -719,7 +733,7 @@ function renderPk(){
       const foldId = `fold-${s}-${college}`.replace(/[^a-zA-Z0-9]/g,'-');
       
       html += `<div style="margin-bottom:10px;padding:8px 10px;background:#FFFFFF;border-radius:6px;border-left:3px solid ${colors[i]};">`;
-      html += `<div style="font-weight:700;color:#2d2d3d;margin-bottom:4px;font-size:13px;">${college}</div>`;
+      html += `<div style="font-weight:700;color:#17191d;margin-bottom:4px;font-size:13px;">${college}</div>`;
       html += `<div style="font-size:12px;color:#4b5563;line-height:1.7;">`;
       html += `进复试:${enter} | 录取:${admit}<br>`;
       html += `复录比:<span class="${ratioClass(ratio)}">${ratio}</span> | 均分:<span class="${scoreClass(avgAdmit)}">${avgAdmit?avgAdmit.toFixed(1):'-'}</span>`;

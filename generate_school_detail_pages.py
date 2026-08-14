@@ -271,7 +271,7 @@ def render(sch):
 <title>{esc(title)}</title>
 <script src="../vendor/chart-4.5.1.umd.min.js"></script>
 <style>
-body{{font-family:'Noto Sans SC',system-ui,sans-serif;background:#f7eceb;color:#2d2d3d;margin:0;padding:0;line-height:1.6}}
+body{{font-family:'Noto Sans SC',system-ui,sans-serif;background:#f8f8f6;color:#17191d;margin:0;padding:0;line-height:1.6}}
 .wrap{{max-width:1100px;margin:0 auto;padding:20px}}
 header{{background:linear-gradient(135deg,#a92122,#a92122);color:#fff;padding:28px 20px;text-align:center}}
 header h1{{margin:0 0 6px;font-size:1.8rem}}
@@ -282,10 +282,10 @@ h2{{border-left:4px solid #a92122;padding-left:10px;margin-top:28px;font-size:1.
 .card h3{{margin:0 0 8px;font-size:1.05rem;color:#a92122}}
 .stat{{font-size:14px;margin:4px 0}}
 .score{{font-size:13px;color:#555;margin:4px 0 10px}}
-.subavg{{font-size:14px;font-weight:600;color:#a92122;margin:6px 0;padding:6px 10px;background:#f7eceb;border-radius:6px}}
+.subavg{{font-size:14px;font-weight:600;color:#a92122;margin:6px 0;padding:6px 10px;background:#f8f8f6;border-radius:6px}}
 table{{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}}
 th,td{{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}}
-th{{background:#f7eceb;white-space:nowrap}}
+th{{background:#f8f8f6;white-space:nowrap}}
 footer{{text-align:center;color:#999;font-size:12px;padding:20px}}
 </style>
 </head>

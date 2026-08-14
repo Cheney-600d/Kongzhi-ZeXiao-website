@@ -345,6 +345,21 @@ h4,.h4{font-size:17px;line-height:1.3;font-weight:600;margin:0 0 6px}
 /* Content wrapper used by the auto-fit JS (transform scales this) */
 .deck .slide .slide-content-wrap                           { transform-origin: top center; will-change: transform; position: relative; width: 100%; }
 </style>
+<style id="theme-polish">/* 主题细节：文字选中色 + 滚动条 + 焦点态（控制考研红） */
+::selection{background:#a92122;color:#fff;text-shadow:none}
+::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
+html{scrollbar-width:thin;scrollbar-color:#c9a0a0 #f1f0eb}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#f1f0eb}
+::-webkit-scrollbar-thumb{background:#c9a0a0;border-radius:999px;border:2px solid #f1f0eb}
+::-webkit-scrollbar-thumb:hover{background:#a92122}
+[id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
+[id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
+@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.chart-container{transition:box-shadow .2s ease,transform .2s ease}
+.card:hover,.chart-container:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(169,33,34,.12) !important;border-color:#a92122 !important}
+:focus-visible{outline:2px solid #a92122;outline-offset:2px}
+</style>
 </head>
 <body>
 
@@ -2494,7 +2509,7 @@ USB ──→ <span class="fn">TTL转USB模块</span> ──→ UART<br>
     'pure-white': {
       '--bg':'#ffffff','--bg-soft':'#f8f9fa','--surface':'#ffffff','--surface-2':'#f0f2f5',
       '--border':'rgba(0,0,0,.08)','--border-strong':'rgba(0,0,0,.16)',
-      '--text-1':'#1a1a2e','--text-2':'#555566','--text-3':'#999aaa',
+      '--text-1':'#17191d','--text-2':'#555566','--text-3':'#999aaa',
       '--accent':'#4a6cf7','--accent-2':'#7c3aed','--accent-3':'#06b6d4',
       '--good':'#10b981','--warn':'#f59e0b','--bad':'#ef4444',
       '--grad':'linear-gradient(135deg,#4a6cf7,#7c3aed 55%,#06b6d4)',
