@@ -176,6 +176,7 @@
   .mfs-grid a {
     display: flex;
     align-items: center;
+    gap: .5rem;
     min-height: 3.2rem;
     padding: .72rem .78rem;
     color: #f3eef6;
@@ -187,7 +188,9 @@
     line-height: 1.25;
     text-decoration: none;
   }
+  .mfs-grid a svg { width: 1.05rem; height: 1.05rem; flex: none; color: #b8a4d8; }
   .mfs-grid a[aria-current="page"] { color: #342e40; background: #b8a4d8; border-color: #cbbce1; }
+  .mfs-grid a[aria-current="page"] svg { color: #342e40; }
 
   /* Shared responsive guardrails: preserve each tool's content, remove desktop-only width assumptions. */
   body.mobile-function-ready :where(.container,.page,.page-content,.main-content,.content,.wrapper,.nav-container) {
