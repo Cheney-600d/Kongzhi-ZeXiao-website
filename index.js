@@ -2545,7 +2545,6 @@ if(window.visualViewport){
 })();
 
 (function(){
-  const liveWords = ['求赞~','求关注','多多弹幕交流','一键三连','点个关注不迷路','弹幕走起来','感谢支持','记得关注哦','互动起来','点赞支持'];
   const isInteractive = function(el){
     if(!el) return false;
     const tag = el.tagName;
@@ -2558,29 +2557,13 @@ if(window.visualViewport){
   document.addEventListener('click', function(e){
     if(isInteractive(e.target)) return;
     const x = e.clientX, y = e.clientY;
-    // 光晕
-    const glow = document.createElement('div');
-    glow.className = 'heart-glow';
-    glow.style.left = (x - 30) + 'px';
-    glow.style.top = (y - 30) + 'px';
-    document.body.appendChild(glow);
-    setTimeout(() => glow.remove(), 600);
-    // 爱心
-    const heart = document.createElement('div');
-    heart.className = 'heart-burst';
-    heart.textContent = '❤️';
-    heart.style.left = (x - 14) + 'px';
-    heart.style.top = (y - 14) + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 800);
-    // 文字
-    const text = document.createElement('div');
-    text.className = 'live-text';
-    text.textContent = liveWords[Math.floor(Math.random() * liveWords.length)];
-    text.style.left = (x + 10) + 'px';
-    text.style.top = (y - 20) + 'px';
-    document.body.appendChild(text);
-    setTimeout(() => text.remove(), 1000);
+    // 控制红信号脉冲
+    const pulse = document.createElement('div');
+    pulse.className = 'signal-pulse';
+    pulse.style.left = (x - 6) + 'px';
+    pulse.style.top = (y - 6) + 'px';
+    document.body.appendChild(pulse);
+    setTimeout(() => pulse.remove(), 700);
   });
 })();
 

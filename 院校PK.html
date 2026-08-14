@@ -43,12 +43,8 @@ h1,h2,h3{font-weight:700;color:#17191d;}
 .compare-table td{font-weight:600;color:#17191d;}
 .number-glow{font-weight:700;color:#17191d;}
 .pk-section-title{font-size:1.25rem;font-weight:700;text-align:center;padding:10px 20px;margin-bottom:16px;border-radius:8px;background:linear-gradient(135deg,#deded8 0%,#d5d5cf 100%);color:#17191d;box-shadow:0 2px 8px rgba(169,33,34,0.2);position:relative;}
-.heart-burst{position:fixed;pointer-events:none;z-index:9999;font-size:28px;animation:heartBurst .8s ease-out forwards;}
-@keyframes heartBurst{0%{transform:scale(0) rotate(0deg);opacity:1;}50%{transform:scale(1.5) rotate(10deg);opacity:.9;}100%{transform:scale(2.2) rotate(-10deg) translateY(-40px);opacity:0;}}
-.heart-glow{position:fixed;pointer-events:none;z-index:9998;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,150,0.4) 0%,transparent 70%);animation:glowExpand .6s ease-out forwards;}
-@keyframes glowExpand{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
-.live-text{position:fixed;pointer-events:none;z-index:10000;font-size:16px;font-weight:700;color:#F48FB1;text-shadow:0 0 8px rgba(236,72,153,0.5);animation:textPop 1s ease-out forwards;white-space:nowrap;}
-@keyframes textPop{0%{transform:scale(0.5) translateY(0);opacity:0;}20%{transform:scale(1.2) translateY(-10px);opacity:1;}60%{transform:scale(1) translateY(-30px);opacity:1;}100%{transform:scale(0.8) translateY(-60px);opacity:0;}}
+.signal-pulse{position:fixed;pointer-events:none;z-index:9999;width:12px;height:12px;border:2px solid #a92122;border-radius:50%;animation:signalPulse .7s ease-out forwards;}
+@keyframes signalPulse{0%{transform:scale(.4);opacity:.9;}100%{transform:scale(9);opacity:0;}}
 .compare-table{display:grid;grid-template-columns:minmax(140px,1fr) repeat(var(--cols,1),minmax(140px,1fr));font-size:20px;border:1px solid #deded8;border-bottom:none;border-right:none;}
 .compare-table thead,.compare-table tbody,.compare-table tr{display:contents;}
 .compare-table th,.compare-table td{padding:6px 8px;border-right:1px solid #deded8;border-bottom:1px solid #deded8;text-align:center;}
@@ -949,9 +945,8 @@ document.addEventListener('click',(e)=>{
   }
 });
 
-// ===================== 单击空白处爱心光晕效果 =====================
+// ===================== 单击空白处信号脉冲效果 =====================
 (function(){
-  const liveWords = ['求赞~','求关注','多多弹幕交流','一键三连','点个关注不迷路','弹幕走起来','感谢支持','记得关注哦','互动起来','点赞支持'];
   const isInteractive = function(el){
     if(!el) return false;
     const tag = el.tagName;
@@ -964,29 +959,13 @@ document.addEventListener('click',(e)=>{
   document.addEventListener('click', function(e){
     if(isInteractive(e.target)) return;
     const x = e.clientX, y = e.clientY;
-    // 光晕
-    const glow = document.createElement('div');
-    glow.className = 'heart-glow';
-    glow.style.left = (x - 30) + 'px';
-    glow.style.top = (y - 30) + 'px';
-    document.body.appendChild(glow);
-    setTimeout(() => glow.remove(), 600);
-    // 爱心
-    const heart = document.createElement('div');
-    heart.className = 'heart-burst';
-    heart.textContent = '❤️';
-    heart.style.left = (x - 14) + 'px';
-    heart.style.top = (y - 14) + 'px';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 800);
-    // 文字
-    const text = document.createElement('div');
-    text.className = 'live-text';
-    text.textContent = liveWords[Math.floor(Math.random() * liveWords.length)];
-    text.style.left = (x + 10) + 'px';
-    text.style.top = (y - 20) + 'px';
-    document.body.appendChild(text);
-    setTimeout(() => text.remove(), 1000);
+    // 控制红信号脉冲
+    const pulse = document.createElement('div');
+    pulse.className = 'signal-pulse';
+    pulse.style.left = (x - 6) + 'px';
+    pulse.style.top = (y - 6) + 'px';
+    document.body.appendChild(pulse);
+    setTimeout(() => pulse.remove(), 700);
   });
 })();
 

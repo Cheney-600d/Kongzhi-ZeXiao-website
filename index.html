@@ -156,12 +156,8 @@ h1,h2,h3{font-weight:700;color:#17191d;text-shadow:0 0 8px rgba(169,33,34,0.2);}
 .page{position:relative;z-index:1;}
 .card{position:relative;z-index:1;}
 .chart-container{position:relative;z-index:1;}
-.heart-burst{position:fixed;pointer-events:none;z-index:9999;font-size:28px;animation:heartBurst .8s ease-out forwards;}
-@keyframes heartBurst{0%{transform:scale(0) rotate(0deg);opacity:1;}50%{transform:scale(1.5) rotate(10deg);opacity:.9;}100%{transform:scale(2.2) rotate(-10deg) translateY(-40px);opacity:0;}}
-.heart-glow{position:fixed;pointer-events:none;z-index:9998;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,150,0.4) 0%,transparent 70%);animation:glowExpand .6s ease-out forwards;}
-@keyframes glowExpand{0%{transform:scale(0);opacity:1;}100%{transform:scale(3);opacity:0;}}
-.live-text{position:fixed;pointer-events:none;z-index:10000;font-size:16px;font-weight:700;color:#F48FB1;text-shadow:0 0 8px rgba(236,72,153,0.5);animation:textPop 1s ease-out forwards;white-space:nowrap;}
-@keyframes textPop{0%{transform:scale(0.5) translateY(0);opacity:0;}20%{transform:scale(1.2) translateY(-10px);opacity:1;}60%{transform:scale(1) translateY(-30px);opacity:1;}100%{transform:scale(0.8) translateY(-60px);opacity:0;}}
+.signal-pulse{position:fixed;pointer-events:none;z-index:9999;width:12px;height:12px;border:2px solid #a92122;border-radius:50%;animation:signalPulse .7s ease-out forwards;}
+@keyframes signalPulse{0%{transform:scale(.4);opacity:.9;}100%{transform:scale(9);opacity:0;}}
 .school-link { color: #a92122; cursor: pointer; text-decoration: underline; font-weight: 600; }
 .school-link:hover { color: #a92122; }
 .table-scroll-hint{position:relative;}
