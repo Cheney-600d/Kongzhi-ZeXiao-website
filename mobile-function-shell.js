@@ -29,7 +29,7 @@
       ['考研常识科普/index.html','28 考研常识扫盲','book'],['复试全攻略/index.html','27 考研复试','clipboard'],['考研常识科普/experience.html','上岸经验贴','message']
     ]},
     {label:'择校工具', icon:'target', items:[
-      ['专业课选择/考研专业课院校查询.html','专业课院校查询','search'],['院校PK.html','院校 PK 对比','scale'],['通信电子院校生源地图.html','院校生源地图','map'],['heat_compare.html','院校热度榜','flame'],['改考院校.html','27 改考院校','refresh']
+      ['专业课选择/考研专业课院校查询.html','专业课院校查询','search'],['院校PK.html','院校 PK 对比','scale'],['控制院校生源地图.html','院校生源地图','map'],['heat_compare.html','院校热度榜','flame'],['改考院校.html','27 改考院校','refresh']
     ]},
     {label:'就业与能力', icon:'briefcase', items:[
       ['就业相关/就业去向index.html','就业去向','briefcase'],['AI课程/ai-course-overview/ai-course-overview.html','AI 提效指南','sparkles'],['就业相关/job-listing/job-listing.html','26 校招信息','megaphone'],['就业相关/career-analysis/career-analysis.html','就业分析报告','chart'],['就业相关/career-analysis/role-tech-stack.html','职业规划全景','compass']

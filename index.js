@@ -402,26 +402,6 @@ function renderHomeCharts(){
     ]
   });
 
-  // 专业分布
-  const majorMap = {};
-  filteredRecords.forEach(r=>{
-    if(!majorMap[r.majorCode]) majorMap[r.majorCode]={code:r.majorCode, name:r.majorName, n:0};
-    majorMap[r.majorCode].n++;
-  });
-  const majorArr = Object.values(majorMap).sort((a,b)=>b.n-a.n).slice(0,15);
-
-  // charts.major = echarts.init(document.getElementById('chartMajor', null, {renderer: 'canvas'})); // 已移到右侧栏
-  charts.majorSide = echarts.init(document.getElementById('chartMajorSide'), null, {renderer: 'canvas'});
-  charts.majorSide.setOption({
-    tooltip:{trigger:'axis'},
-    grid:{left:'2%',right:'2%',bottom:'2%',top:'8%',containLabel:true},
-    xAxis:{type:'category',data:majorArr.map(x=>x.code),axisLabel:{rotate:30,fontSize:9}},
-    yAxis:[{type:'value',axisLabel:{fontSize:8}}],
-    series:[
-      {name:'专业方向数',type:'bar',data:majorArr.map(x=>x.n),itemStyle:{color:'#a92122'},barMaxWidth:14}
-    ]
-  });
-
   // 复录比分布
   const ratioMap = {'1.0(等额)':0,'1.0-1.2':0,'1.2-1.5':0,'1.5-2.0':0,'2.0+':0,'未知':0};
   filteredRecords.forEach(r=>{
@@ -584,7 +564,7 @@ function renderClickableTags(schoolName, tier) {
       return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }
     if (t.type === 'shengyuan') {
-      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open(withSchoolDetailSource('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
+      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open(withSchoolDetailSource('控制院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
     }
     if (t.type === 'eval') {
       const subject = '0810';
@@ -1125,7 +1105,7 @@ function renderSchoolTable(){
       </td>
       <td class="py-3 pr-2">
         <div class="flex gap-1 flex-wrap" style="justify-content:flex-start;">
-          ${SHENGYUAN_SCHOOLS.has(s['学校']) ? `<a href="通信电子院校生源地图.html?school=${encodeURIComponent(s['学校'])}" class="tag tag-blue" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校生源分布">院校生源</a>` : ''}
+          ${SHENGYUAN_SCHOOLS.has(s['学校']) ? `<a href="控制院校生源地图.html?school=${encodeURIComponent(s['学校'])}" class="tag tag-blue" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校生源分布">院校生源</a>` : ''}
           <a href="专业课选择/考研专业课院校查询.html?school=${encodeURIComponent(s['学校'])}&fromSchoolDetail=1" class="tag tag-green" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校考察的专业课">考察专业课</a>
           ${EMPLOYMENT_SCHOOLS.has(s['学校']) ? `<a href="${EMPLOYMENT_MAP[s['学校']] || '就业相关/院校就业去向/schools/' + s['学校'] + '.html'}" class="tag tag-orange" style="font-size:10px;padding:2px 5px;cursor:pointer;text-decoration:none;" title="查看该校就业数据">就业去向</a>` : ''}
         </div>
@@ -1594,7 +1574,7 @@ function renderDetail(schoolName){
       const s = getTagStyle(t.name, t.type);
       const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;font-size:14px;padding:6px 14px;border-radius:16px;`;
       if (t.type === 'tier') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
-      if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open(withSchoolDetailSource('通信电子院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
+      if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open(withSchoolDetailSource('控制院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
       if (t.type === 'eval') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')" title="点击查看${t.name}研究方向">${t.name}</span>`;
       return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }).join('')}</div>`;

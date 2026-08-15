@@ -191,6 +191,6 @@
   }
 
   if (/专业课选择\/考研专业课院校查询\.html$/.test(path)) installCourseQueryHistory();
-  else if (/通信电子院校生源地图\.html$/.test(path)) installSourceMapHistory();
+  else if (/控制院校生源地图\.html$/.test(path)) installSourceMapHistory();
   else if (/\/(index\.html)?$/.test(path)) installHomeHistory();
 })();

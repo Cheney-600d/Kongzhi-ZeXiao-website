@@ -9,7 +9,7 @@
   <style>
     /* Hero Banner */
     .hero-banner {
-      background: linear-gradient(135deg, #ffd6e7 0%, #ffe0f0 40%, #fff0f5 100%);
+      background: linear-gradient(135deg, #a92122 0%, #e63946 100%);
       padding: 24px 20px;
       text-align: center;
       border-radius: 12px;
@@ -25,7 +25,7 @@
     }
     .hero-subtitle {
       font-size: .9rem;
-      color: #61666d;
+      color: rgba(255,255,255,.92);
     }
     
     /* 紧凑板块卡片 */
@@ -49,7 +49,7 @@
     .compact-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 16px rgba(0,0,0,.06);
-      border-color: #fb7299;
+      border-color: #e63946;
     }
     .compact-icon {
       width: 44px;
@@ -60,6 +60,8 @@
       justify-content: center;
       font-size: 1.4rem;
       flex-shrink: 0;
+      background: #fdf0f0;
+      color: #e63946;
     }
     .compact-text {
       flex: 1;
@@ -75,6 +77,14 @@
       font-size: .75rem;
       color: #9499a0;
     }
+    /* 经验贴简洁卡片（去 B 站视频卡风） */
+    .post-card { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; background:#fff; border:1px solid #f1f2f3; border-radius:10px; transition:all .2s; text-decoration:none; }
+    .post-card:hover { border-color:#e63946; box-shadow:0 4px 14px rgba(230,57,70,.1); transform:translateY(-2px); }
+    .post-card-main { flex:1; min-width:0; }
+    .post-card-title { font-size:.95rem; font-weight:600; color:#18191c; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .post-card-tags { display:flex; gap:6px; margin-top:6px; flex-wrap:wrap; }
+    .post-tag { font-size:.72rem; color:#e63946; background:#fdf0f0; padding:2px 8px; border-radius:999px; }
+    .post-card-school { font-size:.85rem; color:#9499a0; flex-shrink:0; max-width:170px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   </style>
 
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260814-theme-purple">
@@ -101,12 +111,25 @@
       <!-- Hero Banner -->
       <div class="hero-banner" style="display:flex;align-items:center;justify-content:space-between;text-align:left;">
         <div>
-          <div class="hero-subtitle" style="font-size:1.05rem;">为<span style="color:#fb7299;font-weight:700;font-size:1.15rem;">28考研</span>的同学全面扫盲 | 收录 126 篇真实上岸经验贴</div>
+          <div class="hero-subtitle" style="font-size:1.05rem;">为<span style="color:#ffd54f;font-weight:700;font-size:1.15rem;">28考研</span>的同学全面扫盲 | 收录 126 篇真实上岸经验贴</div>
         </div>
-        <a href="../index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:#fff;border:2px solid #fb7299;border-radius:24px;color:#fb7299;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;flex-shrink:0;" onmouseover="this.style.background='#fb7299';this.style.color='#fff';this.style.transform='scale(1.05)';" onmouseout="this.style.background='#fff';this.style.color='#fb7299';this.style.transform='scale(1)';">
+        <a href="../index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:#fff;border:2px solid #e63946;border-radius:24px;color:#e63946;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;flex-shrink:0;" onmouseover="this.style.background='#e63946';this.style.color='#fff';this.style.transform='scale(1.05)';" onmouseout="this.style.background='#fff';this.style.color='#e63946';this.style.transform='scale(1)';">
           ← 返回择校首页
         </a>
       </div>
+<!-- 新手推荐阅读顺序 -->
+      <div style="margin-bottom:20px;padding:16px 20px;background:#fff;border:1px solid #f1f2f3;border-left:4px solid #e63946;border-radius:12px;">
+        <div style="font-size:.95rem;font-weight:700;color:#18191c;margin-bottom:6px;">🎯 新手推荐阅读顺序</div>
+        <div style="font-size:.85rem;color:#61666d;line-height:1.9;">
+          <a href="01-basics.html" style="color:#e63946;font-weight:600;">① 基础常识</a> → 
+          <a href="02-timeline.html" style="color:#e63946;font-weight:600;">② 备考时间线</a> → 
+          <a href="03-public-courses.html" style="color:#e63946;font-weight:600;">③ 公共课</a> + <a href="04-major.html" style="color:#e63946;font-weight:600;">④ 专业课</a> → 
+          <a href="05-school-selection.html" style="color:#e63946;font-weight:600;">⑤ 择校</a> → 
+          <a href="06-mindset-career.html" style="color:#e63946;font-weight:600;">⑥ 就业规划</a>
+          <span style="display:block;margin-top:4px;">📌 刚准备考研，先精读这 3 页：<b>01 基础常识</b>（搞懂规则）、<b>02 时间线</b>（知道节奏）、<b>05 择校</b>（定目标）。</span>
+        </div>
+      </div>
+
 <!-- B站风格主布局：左侧推荐 + 右侧热门 -->
       <div class="bili-layout">
         <div class="bili-main">
@@ -118,56 +141,56 @@
 
           <div class="compact-grid">
             <a href="01-basics.html" class="compact-card">
-              <div class="compact-icon" style="background:#e8f5e9;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">考研基础常识</div>
                 <div class="compact-meta">学硕/专硕 · A区/B区</div>
               </div>
             </a>
             <a href="02-timeline.html" class="compact-card">
-              <div class="compact-icon" style="background:#fff3e0;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">备考时间线</div>
                 <div class="compact-meta">全年规划 · 关键节点</div>
               </div>
             </a>
             <a href="03-public-courses.html" class="compact-card">
-              <div class="compact-icon" style="background:#e0f7fa;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">公共课备考攻略</div>
                 <div class="compact-meta">政治 · 英语 · 数学</div>
               </div>
             </a>
             <a href="04-major.html" class="compact-card">
-              <div class="compact-icon" style="background:#f3e5f5;">🔬</div>
+              <div class="compact-icon">🔬</div>
               <div class="compact-text">
                 <div class="compact-title">专业课备考</div>
                 <div class="compact-meta">信息搜集 · 真题策略</div>
               </div>
             </a>
             <a href="05-school-selection.html" class="compact-card">
-              <div class="compact-icon" style="background:#fff3e0;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">考研择校指南</div>
                 <div class="compact-meta">择校原则 · 关键指标</div>
               </div>
             </a>
             <a href="06-mindset-career.html" class="compact-card">
-              <div class="compact-icon" style="background:#ffc4d6;">💪</div>
+              <div class="compact-icon">💪</div>
               <div class="compact-text">
                 <div class="compact-title">心态调整 & 就业</div>
                 <div class="compact-meta">心态管理 · 职业规划</div>
               </div>
             </a>
             <a href="07-faq.html" class="compact-card">
-              <div class="compact-icon" style="background:#fff0f3;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">常见问题答疑</div>
                 <div class="compact-meta">备考 · 择校 · 心态</div>
               </div>
             </a>
             <a href="08-methods.html" class="compact-card">
-              <div class="compact-icon" style="background:#e8f4ff;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+              <div class="compact-icon"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
               <div class="compact-text">
                 <div class="compact-title">高效学习方法</div>
                 <div class="compact-meta">时间管理 · 复盘技巧</div>
@@ -207,19 +230,19 @@
           <div class="aside-widget">
             <div class="aside-widget-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg> 考研关键时间节点</div>
             <a href="02-timeline.html#pre-registration" class="aside-widget-item" style="flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#fff8f0';" onmouseout="this.style.background='';">
-              <span style="font-size:.72rem;color:#fb7299;font-weight:600;">9月</span>
+              <span style="font-size:.72rem;color:#e63946;font-weight:600;">9月</span>
               <span style="font-size:.82rem;">预报名（应届本科生）</span>
             </a>
             <a href="02-timeline.html#formal-registration" class="aside-widget-item" style="flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#fff8f0';" onmouseout="this.style.background='';">
-              <span style="font-size:.72rem;color:#fb7299;font-weight:600;">10月</span>
+              <span style="font-size:.72rem;color:#e63946;font-weight:600;">10月</span>
               <span style="font-size:.82rem;">正式报名</span>
             </a>
             <a href="02-timeline.html#online-confirmation" class="aside-widget-item" style="flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#fff8f0';" onmouseout="this.style.background='';">
-              <span style="font-size:.72rem;color:#fb7299;font-weight:600;">11月</span>
+              <span style="font-size:.72rem;color:#e63946;font-weight:600;">11月</span>
               <span style="font-size:.82rem;">网上确认</span>
             </a>
             <a href="02-timeline.html#initial-exam" class="aside-widget-item" style="flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#fff8f0';" onmouseout="this.style.background='';">
-              <span style="font-size:.72rem;color:#fb7299;font-weight:600;">12月</span>
+              <span style="font-size:.72rem;color:#e63946;font-weight:600;">12月</span>
               <span style="font-size:.82rem;">初试（倒数第二个周末）</span>
             </a>
             <a href="02-timeline.html#score-release" class="aside-widget-item" style="flex-direction:column;align-items:flex-start;gap:2px;padding:10px 0;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#fff8f0';" onmouseout="this.style.background='';">
@@ -289,22 +312,19 @@ function renderCards(){
   const picks = shuffled.slice(0,15);
   let html = '';
   picks.forEach(p => {
-    const label = p.code ? p.school+' '+p.code : p.school; // 封面用学校全称（不用简称）
-    const badge = p.total ? '总分'+p.total : (p.subjectScore ? '专业课'+p.subjectScore : p.year);
-    const authorName = p.author ? '@'+p.author : '@上岸学长';
-    const metaTag = p.subjectScore ? '专业课'+p.subjectScore : (p.total ? '总分'+p.total : p.level);
-    html += '<a href="experience/'+p.id+'.html" class="video-card" style="text-decoration:none;" data-year="'+p.year+'">'
-          + '<div class="card-cover-wrap" style="background: linear-gradient(135deg, '+p.c1+', '+p.c2+');">'
-          + '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:8px;">'
-          + '<img src="../专业课选择/images/校徽/'+schoolBadgeName(p.school)+'.jpg" onerror="this.style.display=\'none\'" alt="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.55);">'
-          + '<span style="font-size:1.2rem;font-weight:700;color:'+p.ct+';flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+label+'</span>'
+    const school = p.school || '';
+    const score = p.total ? '总分'+p.total : (p.subjectScore ? '专业课'+p.subjectScore : '');
+    const tags = [p.year, score, p.code].filter(Boolean);
+    html += '<a href="experience/'+p.id+'.html" class="post-card">'
+          + '<div class="post-card-main">'
+          +   '<div class="post-card-title">'+p.title+'</div>'
+          +   '<div class="post-card-tags">' + tags.map(t=>'<span class="post-tag">'+t+'</span>').join('') + '</div>'
           + '</div>'
-          + '<div class="card-duration">'+badge+'</div>'
+          + '<div class="post-card-school" style="display:flex;align-items:center;gap:6px;">'
+          +   '<img src="../专业课选择/images/校徽/'+schoolBadgeName(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+school+'" style="width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#f1f2f3;">'
+          +   '<span>'+school+'</span>'
           + '</div>'
-          + '<div class="card-info">'
-          + '<div class="card-title">'+p.title+'</div>'
-          + '<div class="card-meta"><span class="up">'+authorName+'</span><span class="dot"></span>'+metaTag+'</div>'
-          + '</div></a>';
+          + '</a>';
   });
   container.innerHTML = html;
 }
@@ -317,9 +337,10 @@ function renderHotList(){
   let html = '<div class="aside-widget-title">&#128293; 热门经验贴</div>';
   picks.forEach((p, idx) => {
     const rankClass = idx===0 ? 'rank top' : (idx===1 ? 'rank top2' : (idx===2 ? 'rank top3' : 'rank'));
-    html += '<a href="experience/'+p.id+'.html" class="aside-widget-item">'
+    html += '<a href="experience/'+p.id+'.html" class="aside-widget-item" style="gap:8px;">'
           + '<span class="'+rankClass+'">'+(idx+1)+'</span>'
-          + '<span>'+p.title+'</span>'
+          + '<img src="../专业课选择/images/校徽/'+schoolBadgeName(p.school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+p.school+'" style="width:22px;height:22px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#f1f2f3;">'
+          + '<span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+p.title+'</span>'
           + '</a>';
   });
   widget.innerHTML = html;
@@ -358,10 +379,10 @@ function renderCountdown(){
   const nextExam = getExamDate(examYear + 1);
   const nextDiff = Math.ceil((nextExam - now) / (1000 * 60 * 60 * 24));
   
-  box.innerHTML = '<div style="font-size: 2.2rem; font-weight: 700; color: #fb7299;">'+diff+'</div>'
+  box.innerHTML = '<div style="font-size: 2.2rem; font-weight: 700; color: #e63946;">'+diff+'</div>'
                 + '<div style="font-size: .85rem; color: #9499a0;">距离 '+shortYear+'考研 初试</div>'
                 + '<div style="margin-top: 12px; font-size: .8rem; color: #9499a0;">'
-                + '距离 '+(examYear+1).toString().slice(-2)+'考研 还有 <strong style="color:#fb7299;">'+nextDiff+'</strong> 天'
+                + '距离 '+(examYear+1).toString().slice(-2)+'考研 还有 <strong style="color:#e63946;">'+nextDiff+'</strong> 天'
                 + '</div>';
 }
 

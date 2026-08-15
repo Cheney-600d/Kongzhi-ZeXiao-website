@@ -5,8 +5,8 @@
 /* ===== 变量 ===== */
 :root {
   --primary: #18191c;
-  --accent: #fb7299;
-  --accent-light: #ff85ad;
+  --accent: #e63946;
+  --accent-light: #f28b8b;
   --bg: #f6f7f8;
   --bg-card: #ffffff;
   --text: #18191c;
@@ -67,13 +67,13 @@ body {
   background: linear-gradient(135deg, var(--accent), var(--accent-light));
   color: #fff;
   border-color: var(--accent);
-  box-shadow: 0 2px 10px rgba(251,114,153,0.35);
+  box-shadow: 0 2px 10px rgba(230,57,70,0.35);
 }
 .nav-links a.active {
   background: linear-gradient(135deg, var(--accent), var(--accent-light));
   color: #fff;
   border-color: var(--accent);
-  box-shadow: 0 2px 10px rgba(251,114,153,0.3);
+  box-shadow: 0 2px 10px rgba(230,57,70,0.3);
 }
 
 /* 返回按钮 */
@@ -84,15 +84,15 @@ body {
 }
 .nav-back-btn {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 6px 14px; background: linear-gradient(135deg, #fb7299, #ff85ad);
+  padding: 6px 14px; background: linear-gradient(135deg, #e63946, #f28b8b);
   color: #fff; font-size: 0.85rem; font-weight: 600;
   border-radius: 50px; text-decoration: none; white-space: nowrap;
-  transition: all 0.2s; box-shadow: 0 2px 8px rgba(251,114,153,0.25);
+  transition: all 0.2s; box-shadow: 0 2px 8px rgba(230,57,70,0.25);
   flex-shrink: 0;
 }
 .nav-back-btn:hover {
   transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(251,114,153,0.4);
+  box-shadow: 0 4px 12px rgba(230,57,70,0.4);
   color: #fff;
 }
 .main-nav {
@@ -119,7 +119,7 @@ body {
   transition: var(--transition); white-space: nowrap;
 }
 .nav-links a:hover, .nav-links a.active {
-  background: rgba(251,114,153,0.08); color: var(--accent);
+  background: rgba(230,57,70,0.08); color: var(--accent);
 }
 
 /* 返回按钮 */
@@ -129,14 +129,14 @@ body {
 }
 .nav-back-btn {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 6px 14px; background: linear-gradient(135deg, #fb7299, #ff85ad);
+  padding: 6px 14px; background: linear-gradient(135deg, #e63946, #f28b8b);
   color: #fff; font-size: 0.85rem; font-weight: 600;
   border-radius: 50px; text-decoration: none; white-space: nowrap;
-  transition: all 0.2s; box-shadow: 0 2px 8px rgba(251,114,153,0.25);
+  transition: all 0.2s; box-shadow: 0 2px 8px rgba(230,57,70,0.25);
 }
 .nav-back-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(251,114,153,0.35);
+  box-shadow: 0 4px 12px rgba(230,57,70,0.35);
   color: #fff;
 }
 
@@ -165,7 +165,7 @@ body {
   transition: var(--transition);
 }
 .mobile-nav a:hover, .mobile-nav a.active {
-  background: rgba(251,114,153,0.04); color: var(--accent);
+  background: rgba(230,57,70,0.04); color: var(--accent);
 }
 
 /* ===== 容器 ===== */
@@ -277,7 +277,7 @@ body {
   display: inline-block; padding: 4px 12px;
   border-radius: 50px; font-size: 0.8rem; font-weight: 500; margin: 2px;
 }
-.tag-primary { background: #fff0f3; color: #fb7299; }
+.tag-primary { background: #fdf0f0; color: #e63946; }
 .tag-accent { background: #fff3e0; color: #ff8f1f; }
 .tag-success { background: #e8f5e9; color: #00b8a9; }
 .tag-info { background: #e0f7fa; color: #00bcd4; }
@@ -373,13 +373,13 @@ body {
 
 /* ===== 高亮 ===== */
 .highlight {
-  background: linear-gradient(180deg, transparent 60%, rgba(251,114,153,0.25) 60%);
+  background: linear-gradient(180deg, transparent 60%, rgba(230,57,70,0.25) 60%);
   padding: 0 2px;
 }
 
 /* ===== 代码块 ===== */
 code {
-  background: rgba(251,114,153,0.06);
+  background: rgba(230,57,70,0.06);
   padding: 2px 8px; border-radius: 4px;
   font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
   font-size: 0.88em; color: var(--accent);
@@ -425,7 +425,7 @@ pre code { background: none; color: inherit; padding: 0; }
 
 /* ===== 选中文本 ===== */
 ::selection {
-  background: rgba(251,114,153,0.3);
+  background: rgba(230,57,70,0.3);
   color: var(--primary);
 }
 

@@ -24,7 +24,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-top: 3px solid #fb7299;
+      border-top: 3px solid #e63946;
       position: relative;
     }
     .exp-card:hover {
@@ -43,7 +43,7 @@
     .exp-card-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
       margin-bottom: 12px;
       line-height: 1.5;
       padding-right: 50px;
@@ -99,14 +99,14 @@
       border: none;
     }
     .school-tag:hover { background: #e3e5e7; }
-    .school-tag.active { background: #fb7299; color: #fff; }
+    .school-tag.active { background: #e63946; color: #fff; }
     
     .tag-orange { background: #fff3e0; color: #ff8f1f; }
     .tag-green { background: #e8f5e9; color: #00b8a9; }
     .tag-blue { background: #e8f4ff; color: #00aeec; }
     .tag-purple { background: #f3e5f5; color: #9c27b0; }
-    .tag-pink { background: #fff0f3; color: #fb7299; }
-    .tag-red { background: #ffebee; color: #e53935; }
+    .tag-pink { background: #fdf0f0; color: #e63946; }
+    .tag-red { background: #fdf0f0; color: #e53935; }
     .tag-cyan { background: #e0f7fa; color: #00bcd4; }
     
     @media (max-width: 768px) {
@@ -120,7 +120,7 @@
 </head>
 <body>
 <!-- 返回首页（固定） -->
-<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
   ← 返回首页
 </a>
 
@@ -263,7 +263,7 @@ function renderPosts(posts) {
   noResults.style.display = 'none';
   
   const yearStyle = {
-    '25考研': 'background:#fff0f3;color:#fb7299;',
+    '25考研': 'background:#fdf0f0;color:#e63946;',
     '24考研': 'background:#e8f4ff;color:#00aeec;',
     '26考研': 'background:#fff3e0;color:#ff8f1f;',
   };

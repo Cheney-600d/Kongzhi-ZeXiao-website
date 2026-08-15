@@ -14,11 +14,11 @@
     }
     .subject-tab {
       padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer;
-      border: 2px solid #fb7299; background: #fff; color: #fb7299;
+      border: 2px solid #e63946; background: #fff; color: #e63946;
       transition: all .2s;
     }
     .subject-tab:hover, .subject-tab.active {
-      background: #fb7299; color: #fff;
+      background: #e63946; color: #fff;
     }
     .score-chart {
       display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0;
@@ -28,7 +28,7 @@
       border-radius: 6px; text-align: center; border: 1px solid #e3e5e7;
     }
     .score-num {
-      font-size: 1.6rem; font-weight: 700; color: #fb7299;
+      font-size: 1.6rem; font-weight: 700; color: #e63946;
     }
     .score-label {
       font-size: .85rem; color: #888; margin-top: 4px;
@@ -37,27 +37,27 @@
       display: flex; align-items: center; gap: 12px; margin: 10px 0;
     }
     .module-name {
-      width: 80px; font-weight: 600; color: #fb7299; text-align: right; flex-shrink: 0;
+      width: 80px; font-weight: 600; color: #e63946; text-align: right; flex-shrink: 0;
     }
     .module-track {
       flex: 1; height: 28px; background: #e8f0fe; border-radius: 6px; overflow: hidden;
     }
     .module-fill {
-      height: 100%; background: linear-gradient(90deg, #fb7299, #ff85ad);
+      height: 100%; background: linear-gradient(90deg, #e63946, #f08a8e);
       border-radius: 6px; display: flex; align-items: center; justify-content: flex-end;
       padding-right: 10px; color: #fff; font-size: .8rem; font-weight: 600;
     }
-    .module-pct { width: 50px; font-weight: 700; color: #fb7299; }
+    .module-pct { width: 50px; font-weight: 700; color: #e63946; }
     .stage-card {
       background: #fff; border-radius: 6px; padding: 20px; margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05); border-left: 3px solid #fb7299;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05); border-left: 3px solid #e63946;
     }
     .stage-header {
       display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
     }
-    .stage-name { font-weight: 700; color: #fb7299; font-size: 1.05rem; }
+    .stage-name { font-weight: 700; color: #e63946; font-size: 1.05rem; }
     .stage-time {
-      background: #fb7299; color: #fff; padding: 2px 10px; border-radius: 6px;
+      background: #e63946; color: #fff; padding: 2px 10px; border-radius: 6px;
       font-size: .8rem; font-weight: 600;
     }
     .teacher-grid {
@@ -67,13 +67,13 @@
       background: #fff; padding: 14px; border-radius: 6px; text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,.05);
     }
-    .teacher-subject { font-size: .8rem; color: #fb7299; font-weight: 600; margin-bottom: 4px; }
-    .teacher-name { font-weight: 700; color: #fb7299; }
+    .teacher-subject { font-size: .8rem; color: #e63946; font-weight: 600; margin-bottom: 4px; }
+    .teacher-name { font-weight: 700; color: #e63946; }
     .formula-box {
       background: #f8f9fa; border-radius: 14px; padding: 16px 20px; margin: 12px 0;
-      border: 1px dashed #ffc4d6;
+      border: 1px dashed #f3c6c9;
     }
-    .formula-title { font-weight: 700; color: #fb7299; margin-bottom: 6px; }
+    .formula-title { font-weight: 700; color: #e63946; margin-bottom: 6px; }
     .method-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 16px 0;
     }
@@ -82,21 +82,21 @@
       border: 1px solid #e3e5e7;
     }
     .method-icon { font-size: 1.5rem; margin-bottom: 8px; }
-    .method-name { font-weight: 700; color: #fb7299; margin-bottom: 6px; }
+    .method-name { font-weight: 700; color: #e63946; margin-bottom: 6px; }
     .method-desc { font-size: .9rem; color: #555; }
     .three-what { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
     .what-card {
       background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #e3e5e7;
       border-top: 4px solid;
     }
-    .what-card.what { border-top-color: #fb7299; }
-    .what-card.why { border-top-color: #fb7299; }
+    .what-card.what { border-top-color: #e63946; }
+    .what-card.why { border-top-color: #e63946; }
     .what-card.how { border-top-color: #2e7d32; }
     .what-label {
       display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: .8rem; font-weight: 700; margin-bottom: 8px;
     }
-    .what-card.what .what-label { background: #e8f0fe; color: #fb7299; }
-    .what-card.why .what-label { background: #fff0f3; color: #fb7299; }
+    .what-card.what .what-label { background: #e8f0fe; color: #e63946; }
+    .what-card.why .what-label { background: #fdf0f0; color: #e63946; }
     .what-card.how .what-label { background: #e8f5e9; color: #2e7d32; }
   </style>
 
@@ -104,7 +104,7 @@
 </head>
 <body>
 <!-- 返回首页（固定） -->
-<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
   ← 返回首页
 </a>
 
@@ -125,6 +125,21 @@
       <section class="section" id="politics">
         <h2 class="section-title">🗳️ 政治备考攻略</h2>
 
+        <div style="margin:16px 0;padding:14px 18px;background:#fff7f0;border:1px solid #ffd9b0;border-left:4px solid #ff8536;border-radius:8px;">
+          <b style="color:#d97706;">⏱️ 30 秒速览</b>
+          <ul style="margin:6px 0 0 18px;color:#6b7280;font-size:.9rem;line-height:1.9;">
+            <li>政治后期突击即可；英语、数学要长期积累，越早越好</li>
+            <li>数学一范围最广最难，数学二不考概率，数学三经管专用</li>
+            <li>英语重阅读和真题，单词是地基</li>
+          </ul>
+        </div>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+          <b style="color:#a92122;">📈 2026 大纲信号：公共课总体趋稳</b>
+          <p style="margin-top:6px;color:#6b7280;font-size:.9rem;line-height:1.8;">26 考研政英数大纲<strong>总体趋稳、无大改</strong>，备考重心是「<strong>核心能力 + 热点融合</strong>」：政治紧跟当年时政、英语多读热点话题文章、数学抓基础与综合应用，不必为「大纲变化」焦虑。</p>
+          <p style="margin-top:4px;font-size:.8rem;color:#999;">来源：<a href="https://m.hqqt.com/kaoyan-kaoshi/news/17604097434151.html" target="_blank" style="color:#e63946;">2026考研公共课大纲变动总结</a></p>
+        </div>
+
         <!-- 题型分值 -->
         <div class="card">
           <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 政治题型与分值分布</div>
@@ -134,7 +149,7 @@
               <div class="score-label">单选题<br>16题 × 1分</div>
             </div>
             <div class="score-item">
-              <div class="score-num" style="color:#fb7299;">34分</div>
+              <div class="score-num" style="color:#e63946;">34分</div>
               <div class="score-label">多选题<br>17题 × 2分</div>
             </div>
             <div class="score-item">
@@ -152,44 +167,57 @@
         <div class="card">
           <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg> 各模块分值占比与复习重点</div>
           <div class="module-bar">
-            <div class="module-name">毛中特</div>
-            <div class="module-track">
-              <div class="module-fill" style="width:30%">30%</div>
-            </div>
-            <div class="module-pct">30%</div>
-          </div>
-          <div class="module-bar">
             <div class="module-name">马原</div>
             <div class="module-track">
               <div class="module-fill" style="width:24%">24%</div>
             </div>
-            <div class="module-pct">24%</div>
+            <div class="module-pct">约24%</div>
           </div>
           <div class="module-bar">
-            <div class="module-name">思修法基</div>
+            <div class="module-name">新思想</div>
             <div class="module-track">
-              <div class="module-fill" style="width:16%">16%</div>
+              <div class="module-fill" style="width:22%">22%</div>
             </div>
-            <div class="module-pct">16%</div>
+            <div class="module-pct">约22%</div>
           </div>
           <div class="module-bar">
             <div class="module-name">时政</div>
             <div class="module-track">
               <div class="module-fill" style="width:16%">16%</div>
             </div>
-            <div class="module-pct">16%</div>
+            <div class="module-pct">约16%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">思修法基</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:15%">15%</div>
+            </div>
+            <div class="module-pct">约15%</div>
           </div>
           <div class="module-bar">
             <div class="module-name">史纲</div>
             <div class="module-track">
               <div class="module-fill" style="width:14%">14%</div>
             </div>
-            <div class="module-pct">14%</div>
+            <div class="module-pct">约14%</div>
+          </div>
+          <div class="module-bar">
+            <div class="module-name">毛中特</div>
+            <div class="module-track">
+              <div class="module-fill" style="width:13%">13%</div>
+            </div>
+            <div class="module-pct">约13%</div>
           </div>
           <div class="tip-box info" style="margin-top:14px;">
             <div class="tip-title">💡 复习优先级建议</div>
-            <p>优先攻克<strong>毛中特</strong>和<strong>马原</strong>两大重点，这两部分占了54%的分值，是复习的绝对核心。史纲、思修法基、时政相对容易拿分，可以适当分配时间。</p>
+            <p>优先攻克<strong>马原</strong>和<strong>新思想</strong>两大重点（合计约 46%）。2024 年起「<strong>新思想</strong>」已从毛中特拆分为独立模块，是当前分值最高的模块之一。毛中特、史纲、思修法基、时政相对均衡，时政已「超时政化」需全程关注（见上方提示）。占比为大致值，以当年大纲为准。</p>
           </div>
+        </div>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+          <b style="color:#a92122;">📈 2026 政治命题新趋势：超时政化 + 反押题</b>
+          <p style="margin-top:6px;color:#6b7280;font-size:.9rem;line-height:1.8;">时政相关题目占比已<strong>突破 42%</strong>，且不再只是单独 16% 模块，而是融合进马原、毛中特等各题；同时命题<strong>「反押题」</strong>明显——背的答案可能直接出现在题干里。应对：<strong>框架先于背诵</strong>、时政贯穿全年、别指望最后突击背押题卷。</p>
+          <p style="margin-top:4px;font-size:.8rem;color:#999;">来源：<a href="https://mtoutiao.xdf.cn/kaoyan/202608/15309904.html" target="_blank" style="color:#e63946;">新东方·时政题占比突破42%</a></p>
         </div>
 
         <!-- 选择题策略 -->
@@ -302,6 +330,12 @@
       <!-- ==================== 英语 ==================== -->
       <section class="section" id="english">
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 英语备考攻略</h2>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+          <b style="color:#a92122;">📈 2026 英语命题新趋势：去技巧化</b>
+          <p style="margin-top:6px;color:#6b7280;font-size:.9rem;line-height:1.8;">英语一/二命题正<strong>加速「去技巧化」</strong>，靠蒙题技巧越来越难拿分。核心要回到<strong>词汇 + 长难句精读 + 真题精读</strong>，重点识别命题人常设的「同义替换」词汇陷阱。</p>
+          <p style="margin-top:4px;font-size:.8rem;color:#999;">来源：<a href="https://mtoutiao.xdf.cn/kaoyan/202606/15223365.html" target="_blank" style="color:#e63946;">新东方·英语命题去技巧化</a></p>
+        </div>
 
         <!-- 英语一vs英语二 -->
         <div class="card">
@@ -457,7 +491,7 @@
           <div class="card-title">✍️ 英语作文备考策略：大小作文全面突破</div>
           <div class="card-grid card-grid-2">
             <div>
-              <h4 style="color:#fb7299; margin-bottom:10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 小作文（Task 1）· 10分</h4>
+              <h4 style="color:#e63946; margin-bottom:10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 小作文（Task 1）· 10分</h4>
               <ul class="check-list">
                 <li>掌握书信、通知、报告等不同文体的固定格式</li>
                 <li>背诵不同类型模板（道歉信、感谢信、申请信等）</li>
@@ -465,7 +499,7 @@
               </ul>
             </div>
             <div>
-              <h4 style="color:#fb7299; margin-bottom:10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg> 大作文（Task 2）· 20分</h4>
+              <h4 style="color:#e63946; margin-bottom:10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg> 大作文（Task 2）· 20分</h4>
               <ul class="check-list">
                 <li>掌握三段论结构（开头-中间-结尾）</li>
                 <li>覆盖教育、科技、环境、文化等常考领域</li>
@@ -528,6 +562,19 @@
       <!-- ==================== 数学 ==================== -->
       <section class="section" id="math">
         <h2 class="section-title">🔢 数学备考攻略</h2>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+          <b style="color:#a92122;">📈 2026 数学备考要点：基础优先 + 主流老师</b>
+          <p style="margin-top:6px;color:#6b7280;font-size:.9rem;line-height:1.8;">数学是拉分关键，<strong>基础阶段（5-7月）必须打牢</strong>再进强化。主流跟课老师：<strong>张宇</strong>（重技巧拓展）、<strong>武忠祥</strong>（重基础扎实），可据基础二选一，配套刷题别断。</p>
+          <p style="margin-top:4px;font-size:.8rem;color:#999;">来源：<a href="https://mtoutiao.xdf.cn/kaoyan/202605/15196743.html" target="_blank" style="color:#e63946;">新东方·27考研数学基础阶段规划</a></p>
+        </div>
+
+        <div class="card" style="margin-bottom:16px;border-top:4px solid #e63946;">
+          <div class="card-title">🎯 控制专业考哪个数学？</div>
+          <div class="card-body">
+            <p>控制科学与工程 / 控制工程考研<strong>几乎都考数学一</strong>（含高数、线代、概率论与数理统计）。数学一是考研数学里范围最广、难度最高的，务必尽早开始，把高数积分、线代、概率的基础打牢。</p>
+          </div>
+        </div>
 
         <!-- 数一/二/三对比 -->
         <div class="card">
@@ -630,7 +677,7 @@
             </div>
           </div>
 
-          <h4 style="color:#fb7299; margin:20px 0 10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14 22v-4a2 2 0 1 0-4 0v4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M18 5v17"/><path d="m2 10 10-8 10 8"/></svg> 推荐老师与资料</h4>
+          <h4 style="color:#e63946; margin:20px 0 10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>‍<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14 22v-4a2 2 0 1 0-4 0v4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M18 5v17"/><path d="m2 10 10-8 10 8"/></svg> 推荐老师与资料</h4>
           <div class="teacher-grid">
             <div class="teacher-item">
               <div class="teacher-subject">高数</div>
@@ -658,7 +705,7 @@
             </div>
           </div>
 
-          <h4 style="color:#fb7299; margin:20px 0 10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 推荐习题</h4>
+          <h4 style="color:#e63946; margin:20px 0 10px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 推荐习题</h4>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
             <span class="tag tag-blue">李林880</span>
             <span class="tag tag-blue">张宇1000题</span>
@@ -673,7 +720,7 @@
           <div class="card-title">🛠️ 数学题型解题技巧</div>
           <div class="card-grid card-grid-3">
             <div>
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> 选择题技巧</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> 选择题技巧</h4>
               <ul class="check-list">
                 <li><strong>代入法</strong>：将选项代入题干验证</li>
                 <li><strong>排除法</strong>：排除明显错误选项</li>
@@ -681,14 +728,14 @@
               </ul>
             </div>
             <div>
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 填空题技巧</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 填空题技巧</h4>
               <ul class="check-list">
                 <li><strong>直接法</strong>：根据题干直接计算</li>
                 <li><strong>数形结合法</strong>：通过画图直观得出答案</li>
               </ul>
             </div>
             <div>
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg> 解答题技巧</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg> 解答题技巧</h4>
               <ul class="check-list">
                 <li><strong>步骤清晰</strong>：写出详细步骤，不要跳步</li>
                 <li><strong>规范书写</strong>：使用规范的数学符号</li>
@@ -781,7 +828,7 @@
       <div class="tip-box" style="margin-top:40px; text-align:center;">
         <div class="tip-title">💡 备考寄语</div>
         <p>公共课是考研的"基本盘"，稳扎稳打才能笑到最后。<br>
-        <strong style="color:#fb7299;">政治靠突击，英语靠积累，数学靠苦练。</strong><br>
+        <strong style="color:#e63946;">政治靠突击，英语靠积累，数学靠苦练。</strong><br>
         三科齐头并进，上岸指日可待！</p>
       </div>
     </div>

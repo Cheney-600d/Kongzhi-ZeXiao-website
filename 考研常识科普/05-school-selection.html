@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="assets/style.css">
   <style>
     .danger-signal {
-      background: linear-gradient(135deg, #fff0f3, #ffebee);
-      border-left: 3px solid #fb7299;
+      background: linear-gradient(135deg, #fdf0f0, #fdf0f0);
+      border-left: 3px solid #e63946;
       padding: 12px 16px;
       border-radius: 0 8px 8px 0;
       margin: 8px 0;
     }
     .danger-signal .signal-title {
-      color: #fb7299;
+      color: #e63946;
       font-weight: 700;
       margin-bottom: 4px;
     }
@@ -32,27 +32,27 @@
       justify-content: space-between;
       margin-bottom: 12px;
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
     }
     .comparison-card .vs-badge {
-      background: #fb7299;
+      background: #e63946;
       color: #fff;
       padding: 2px 10px;
       border-radius: 6px;
       font-size: .75rem;
     }
     .principle-card {
-      background: linear-gradient(135deg, #fff8f5, #fff0f3);
+      background: linear-gradient(135deg, #fff8f5, #fdf0f0);
       border-radius: 6px;
       padding: 20px;
       margin-bottom: 16px;
-      border-left: 3px solid #fb7299;
+      border-left: 3px solid #e63946;
     }
     .principle-card .principle-num {
       display: inline-block;
       width: 32px;
       height: 32px;
-      background: #fb7299;
+      background: #e63946;
       color: #fff;
       border-radius: 50%;
       text-align: center;
@@ -63,7 +63,7 @@
     .principle-card .principle-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
       display: inline-block;
       vertical-align: middle;
     }
@@ -83,7 +83,7 @@
     .metric-item .metric-value {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
     }
     .metric-item .metric-label {
       font-size: .9rem;
@@ -100,7 +100,7 @@
     .toc-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
       margin-bottom: 12px;
     }
     .toc-list {
@@ -119,12 +119,12 @@
       transition: background .2s;
     }
     .toc-list li a:hover {
-      background: #fff0f3;
-      color: #fb7299;
+      background: #fdf0f0;
+      color: #e63946;
     }
     .toc-list li a::before {
       content: '› ';
-      color: #fb7299;
+      color: #e63946;
       font-weight: 700;
     }
     .strategy-card {
@@ -133,11 +133,11 @@
       padding: 16px;
       margin-bottom: 12px;
       border: 1px solid #e3e5e7;
-      border-top: 3px solid #fb7299;
+      border-top: 3px solid #e63946;
     }
     .strategy-card .strategy-title {
       font-weight: 700;
-      color: #fb7299;
+      color: #e63946;
       margin-bottom: 6px;
     }
   </style>
@@ -146,7 +146,7 @@
 </head>
 <body>
 <!-- 返回首页（固定） -->
-<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
   ← 返回首页
 </a>
 
@@ -160,29 +160,72 @@
       <!-- TOC -->
       <div class="toc">
         <div class="toc-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> 本章导航</div>
-        <ul class="toc-list">
-          <li><a href="#principles">择校三大核心原则</a></li>
-          <li><a href="#indicators">择校关键指标</a></li>
-          <li><a href="#scores">各类分数线解析</a></li>
-          <li><a href="#fairness">复试公平性</a></li>
-          <li><a href="#strategy">初期择校策略</a></li>
-          <li><a href="#big-small">分数线大小年</a></li>
-          <li><a href="#explode">学校会不会"炸"</a></li>
-          <li><a href="#211-vs-double">末流211 vs 强双非</a></li>
-          <li><a href="#tier23">三本/二本怎么择校</a></li>
-          <li><a href="#black-school">识别"黑校"</a></li>
-          <li><a href="#ratio">初复试占比</a></li>
-          <li><a href="#factors">难度影响因素</a></li>
-          <li><a href="#weak">基础差选校策略</a></li>
-          <li><a href="#elec-vs-cs">电子信息 vs 计算机</a></li>
-          <li><a href="#info">信息搜集渠道</a></li>
-          <li><a href="#newbie">菜鸟择校指南</a></li>
-        </ul>
+        <style>
+          .toc details{margin:4px 0;}
+          .toc summary{cursor:pointer;font-weight:600;color:#e63946;padding:6px 4px;list-style:none;font-size:.92rem;user-select:none;}
+          .toc summary::-webkit-details-marker{display:none;}
+          .toc summary::before{content:'▸ ';font-size:.8rem;}
+          .toc details[open] summary::before{content:'▾ ';}
+          .toc details ul{margin:0 0 0 14px;list-style:none;}
+          .toc details a{color:#61666d;font-size:.85rem;text-decoration:none;line-height:1.9;}
+          .toc details a:hover{color:#e63946;}
+        </style>
+        <details open>
+          <summary>核心认知</summary>
+          <ul>
+            <li><a href="#principles">择校三大核心原则</a></li>
+            <li><a href="#indicators">择校关键指标</a></li>
+            <li><a href="#scores">各类分数线解析</a></li>
+            <li><a href="#fairness">复试公平性</a></li>
+            <li><a href="#ratio">初复试占比</a></li>
+            <li><a href="#factors">难度影响因素</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>策略方法</summary>
+          <ul>
+            <li><a href="#strategy">初期择校策略</a></li>
+            <li><a href="#big-small">分数线大小年</a></li>
+            <li><a href="#explode">学校会不会"炸"</a></li>
+            <li><a href="#weak">基础差选校策略</a></li>
+            <li><a href="#newbie">菜鸟择校指南</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>人群选择</summary>
+          <ul>
+            <li><a href="#211-vs-double">末流211 vs 强双非</a></li>
+            <li><a href="#tier23">三本/二本怎么择校</a></li>
+            <li><a href="#elec-vs-cs">电子信息 vs 计算机</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>避坑信息</summary>
+          <ul>
+            <li><a href="#black-school">识别"黑校"</a></li>
+            <li><a href="#info">信息搜集渠道</a></li>
+          </ul>
+        </details>
       </div>
 
       <!-- 择校三大核心原则 -->
       <section class="section" id="principles">
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> 择校三大核心原则</h2>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fff7f0;border:1px solid #ffd9b0;border-left:4px solid #ff8536;border-radius:8px;">
+          <b style="color:#d97706;">⏱️ 30 秒速览</b>
+          <ul style="margin:6px 0 0 18px;color:#6b7280;font-size:.9rem;line-height:1.9;">
+            <li>择校三原则：跳一跳够得着、不歧视出身、专业课匹配</li>
+            <li>重点看：招生人数、报录比、复录比（复试淘汰率）</li>
+            <li>避开「黑校」：压分、歧视、临时换科目等危险信号</li>
+          </ul>
+        </div>
+
+        <div style="margin:16px 0;padding:14px 18px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+          <b style="color:#a92122;">📈 2026 择校新信号：学硕缩招、专硕扩招</b>
+          <p style="margin-top:6px;color:#6b7280;font-size:.9rem;line-height:1.8;">专硕招生已占总量约 2/3，多校缩招甚至停招部分学硕——择校时务必先查目标院校<strong>当年是否还招你报的类型</strong>（学硕/专硕）；同时「考不上大不了调剂」的旧逻辑正在失效，一志愿越来越重要。</p>
+          <p style="margin-top:4px;font-size:.8rem;color:#999;">来源：<a href="https://mtoutiao.xdf.cn/kaoyan/202607/15278619.html" target="_blank" style="color:#e63946;">新东方·27考研三大结构性改革</a></p>
+        </div>
 
         <div class="principle-card">
           <span class="principle-num">1</span>
@@ -521,7 +564,7 @@
         <div class="card">
           <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg> 择校公式</div>
           <div class="card-body">
-            <p style="font-size:1.2rem; color:#fb7299; font-weight:700;">考研难度 = 初试分数 + 个人能力 + 学校层次</p>
+            <p style="font-size:1.2rem; color:#e63946; font-weight:700;">考研难度 = 初试分数 + 个人能力 + 学校层次</p>
             <p style="margin-top:10px;">本科出身不能决定你的上限，<strong>初试分数才是你最好的证明！</strong></p>
           </div>
         </div>
@@ -583,11 +626,11 @@
           <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 评价学校四维度</div>
           <div class="card-body">
             <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px;">
-              <div style="background:#fff0f3; padding:12px; border-radius: 6px;">
-                <strong style="color:#fb7299;">① 考研难度</strong><br>
+              <div style="background:#fdf0f0; padding:12px; border-radius: 6px;">
+                <strong style="color:#e63946;">① 考研难度</strong><br>
                 <span style="font-size:.9rem; color:#555;">分数线、报录比、专业课难度</span>
               </div>
-              <div style="background:#fff0f3; padding:12px; border-radius: 6px;">
+              <div style="background:#fdf0f0; padding:12px; border-radius: 6px;">
                 <strong style="color:#e65100;">② 就业质量</strong><br>
                 <span style="font-size:.9rem; color:#555;">毕业生去向、平均薪资、就业地域</span>
               </div>
@@ -615,27 +658,27 @@
 
         <div class="metric-grid">
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">学校层级</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">学校层级</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">985 > 211 > 双非</div>
           </div>
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">学科评估</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">学科评估</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">A+ > A > A- > B+</div>
           </div>
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">专业课</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">专业课</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">自命题差异大</div>
           </div>
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">招生人数</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">招生人数</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">越少越难</div>
           </div>
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">地理位置</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">地理位置</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">一线更卷</div>
           </div>
           <div class="metric-item">
-            <div class="metric-label" style="font-weight:700; color:#fb7299;">舆论热度</div>
+            <div class="metric-label" style="font-weight:700; color:#e63946;">舆论热度</div>
             <div class="metric-value" style="font-size:1rem; color:#555;">机构推的会热</div>
           </div>
         </div>
@@ -747,7 +790,7 @@
           <div class="card-body">
             <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px;">
               <div>
-                <strong style="color:#fb7299;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 基础数据</strong>
+                <strong style="color:#e63946;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 基础数据</strong>
                 <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
                   <li>招生人数</li>
                   <li>报录比</li>
@@ -756,7 +799,7 @@
                 </ul>
               </div>
               <div>
-                <strong style="color:#fb7299;">⚠️ 公平性问题</strong>
+                <strong style="color:#e63946;">⚠️ 公平性问题</strong>
                 <ul style="margin-top:6px; padding-left:18px; font-size:.9rem; color:#555;">
                   <li>是否保护一志愿</li>
                   <li>初复试占比</li>
@@ -936,8 +979,8 @@
 
       <!-- 页脚导航 -->
       <div style="display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid #e0e0e0;">
-        <a href="04-major.html" style="color:#fb7299;">← 上一章：专业课备考</a>
-        <a href="06-mindset-career.html" style="color:#fb7299;">下一章：心态调整 & 就业规划 →</a>
+        <a href="04-major.html" style="color:#e63946;">← 上一章：专业课备考</a>
+        <a href="06-mindset-career.html" style="color:#e63946;">下一章：心态调整 & 就业规划 →</a>
       </div>
     </div>
   </main>

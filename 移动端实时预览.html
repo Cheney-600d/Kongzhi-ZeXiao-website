@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机端实时预览 · 控制考研择校站</title>
+<style>
+  body{background:#eef0f3;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px 16px 40px;}
+  h1{font-size:22px;font-weight:800;margin:0 0 4px;color:#1f2430;letter-spacing:.5px;}
+  .sub{font-size:13px;color:#6b7280;margin-bottom:18px;}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+  .ctl{padding:8px 15px;border:1px solid #d7dae0;background:#fff;border-radius:10px;font-size:13px;color:#374151;cursor:pointer;font-weight:600;font-family:inherit;transition:all .2s;}
+  .ctl:hover{color:#a92122;border-color:#a92122;}
+  .ctl.active{background:#a92122;color:#fff;border-color:#a92122;}
+  .pages{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;}
+  .pg{padding:7px 14px;border:1px solid #d7dae0;background:#fff;border-radius:10px;font-size:12.5px;color:#374151;cursor:pointer;font-family:inherit;transition:all .2s;}
+  .pg:hover{color:#a92122;border-color:#a92122;}
+  .pg.active{background:#1f2430;color:#fff;border-color:#1f2430;}
+  .phone{position:relative;background:#0b0d10;border-radius:54px;padding:13px;box-shadow:0 28px 64px rgba(0,0,0,.28),inset 0 0 0 2px #2c3036;transition:all .3s;}
+  .phone-screen{position:relative;background:#000;border-radius:42px;overflow:hidden;padding-top:44px;}
+  .phone-screen iframe{display:block;border:0;width:390px;height:800px;background:#fff;}
+  .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:112px;height:27px;background:#0b0d10;border-radius:17px;z-index:5;pointer-events:none;}
+  .btn{position:absolute;background:#2c3036;width:3px;border-radius:2px;}
+  .btn-power{right:-3px;top:150px;height:74px;}
+  .btn-vol1{left:-3px;top:126px;height:38px;}
+  .btn-vol2{left:-3px;top:178px;height:38px;}
+  .tips{margin-top:22px;font-size:12.5px;color:#6b7280;text-align:center;line-height:2;max-width:600px;}
+  .tips b{color:#374151;}
+</style>
+<link rel="stylesheet" href="theme-global.css">
+</head>
+<body>
+<h1>📱 控制考研择校站 · 手机端实时预览</h1>
+<div class="sub">真实页面渲染（127.0.0.1:8766）· 手机壳内可滚动 / 点击 / 浏览全站</div>
+
+<div class="controls">
+  <button class="ctl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
+  <button class="ctl" data-w="430" data-h="932">Pro Max · 430×932</button>
+  <button class="ctl" data-w="360" data-h="800">Android · 360×800</button>
+  <button class="ctl" data-w="768" data-h="1024">iPad · 768×1024</button>
+  <button class="ctl refresh">↻ 重播入场动画</button>
+</div>
+
+<div class="pages" id="pagesBar">
+  <button class="pg active" data-url="index.html?intro=1">首页</button>
+  <button class="pg" data-url="考研常识科普/index.html">常识科普</button>
+  <button class="pg" data-url="考研常识科普/experience.html">经验贴</button>
+  <button class="pg" data-url="院校PK.html">院校PK</button>
+  <button class="pg" data-url="改考院校.html">改考院校</button>
+  <button class="pg" data-url="专业课选择/考研专业课院校查询.html">专业课查询</button>
+  <button class="pg" data-url="控制院校生源地图.html">生源地图</button>
+  <button class="pg" data-url="heat_compare.html">热度对比</button>
+</div>
+
+<div class="phone">
+  <span class="btn btn-vol1"></span><span class="btn btn-vol2"></span><span class="btn btn-power"></span>
+  <div class="phone-screen">
+    <iframe id="frame" src="http://127.0.0.1:8766/index.html?intro=1" title="手机端实时预览"></iframe>
+    <div class="notch"></div>
+  </div>
+</div>
+
+<div class="tips">
+  <b>浏览方式：</b>直接在该页面的手机壳里点击、滚动，点链接会像真机一样在壳内跳转全站。<br>
+  <b>切换页面：</b>点上方页面按钮，在手机壳里加载对应页面；「首页」会自动带 ?intro=1 播放入场动画。<br>
+  <b>切换尺寸：</b>iPhone 14 / Pro Max / Android / iPad，站点按实际视口宽度自适应。
+</div>
+
+<script>
+  var BASE = 'http://127.0.0.1:8766/';
+  var frame = document.getElementById('frame');
+  var currentUrl = 'index.html?intro=1';
+
+  function loadPage(url, forceIntro) {
+    currentUrl = url;
+    if (forceIntro && url === 'index.html') url = 'index.html?intro=1';
+    frame.src = BASE + url + (url.indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now();
+  }
+
+  // 尺寸切换
+  var ctl = document.querySelectorAll('.ctl[data-w]');
+  ctl.forEach(function(b) {
+    b.addEventListener('click', function() {
+      ctl.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      frame.style.width = b.dataset.w + 'px';
+      frame.style.height = (parseInt(b.dataset.h, 10) - 44) + 'px';
+    });
+  });
+
+  // 页面切换
+  var pgs = document.querySelectorAll('.pg');
+  pgs.forEach(function(b) {
+    b.addEventListener('click', function() {
+      pgs.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      loadPage(b.dataset.url, true);
+    });
+  });
+
+  // 重播入场动画（首页）
+  document.querySelector('.refresh').addEventListener('click', function() {
+    if (currentUrl.indexOf('index.html') !== -1) {
+      loadPage('index.html', true);
+    } else {
+      loadPage(currentUrl, false);
+    }
+  });
+</script>
+</body>
+</html>

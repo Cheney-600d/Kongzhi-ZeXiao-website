@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="assets/style.css">
   <style>
     .faq-nav { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:30px; }
-    .faq-nav a { display:inline-block; padding:8px 16px; background:#fff0f3; color:#fb7299; border-radius: 6px; font-size:.9rem; font-weight:600; transition:all .2s; }
-    .faq-nav a:hover { background:#fb7299; color:#fff; }
+    .faq-nav a { display:inline-block; padding:8px 16px; background:#fdf0f0; color:#e63946; border-radius: 6px; font-size:.9rem; font-weight:600; transition:all .2s; }
+    .faq-nav a:hover { background:#e63946; color:#fff; }
     .qa-answer ul, .qa-answer ol { margin:8px 0 8px 20px; }
     .qa-answer li { margin:4px 0; }
     .faq-section { margin-bottom:50px; }
@@ -28,7 +28,7 @@
     }
     .faq-sidebar::-webkit-scrollbar { width: 6px; }
     .faq-sidebar::-webkit-scrollbar-thumb { background: #e3e5e7; border-radius: 3px; }
-    .faq-sidebar::-webkit-scrollbar-thumb:hover { background: #fb7299; }
+    .faq-sidebar::-webkit-scrollbar-thumb:hover { background: #e63946; }
     
     .faq-sidebar-inner {
       background: #fff;
@@ -39,25 +39,25 @@
     
     .faq-sidebar-title {
       font-size: 1.1rem; font-weight: 700;
-      color: #fb7299; margin-bottom: 16px;
-      padding-bottom: 10px; border-bottom: 2px solid #ffc4d6;
+      color: #e63946; margin-bottom: 16px;
+      padding-bottom: 10px; border-bottom: 2px solid #f3c6c9;
     }
     
     .faq-sidebar-group { margin-bottom: 12px; }
     
     .faq-sidebar-section-title {
       font-weight: 600; font-size: .9rem;
-      color: #fb7299; padding: 8px 10px;
-      background: #fff0f3; border-radius: 6px;
+      color: #e63946; padding: 8px 10px;
+      background: #fdf0f0; border-radius: 6px;
       cursor: pointer; display: flex;
       justify-content: space-between; align-items: center;
       transition: background .2s;
       user-select: none;
     }
-    .faq-sidebar-section-title:hover { background: #fff0f3; }
+    .faq-sidebar-section-title:hover { background: #fdf0f0; }
     .faq-sidebar-section-title.collapsed { background: #fff8f5; }
     .faq-sidebar-section-title.collapsed .faq-arrow { transform: rotate(-90deg); }
-    .faq-arrow { font-size: .75rem; transition: transform .2s; color: #fb7299; }
+    .faq-arrow { font-size: .75rem; transition: transform .2s; color: #e63946; }
     
     .faq-sidebar-links { padding: 6px 0 6px 8px; }
     .faq-sidebar-links a {
@@ -68,12 +68,12 @@
       border-left: 3px solid transparent;
     }
     .faq-sidebar-links a:hover {
-      background: #fff0f3; color: #fb7299;
-      border-left-color: #ffc4d6;
+      background: #fdf0f0; color: #e63946;
+      border-left-color: #f3c6c9;
     }
     .faq-sidebar-links a.active {
-      background: #fb7299; color: #fff;
-      border-left-color: #ffc4d6;
+      background: #e63946; color: #fff;
+      border-left-color: #f3c6c9;
       font-weight: 600;
     }
     
@@ -83,12 +83,12 @@
     .sidebar-toggle {
       display: none; width: 100%;
       padding: 12px; margin-bottom: 16px;
-      background: #fb7299; color: #fff;
+      background: #e63946; color: #fff;
       border: none; border-radius: 6px;
       font-size: 1rem; font-weight: 600;
       cursor: pointer; text-align: left;
     }
-    .sidebar-toggle:hover { background: #ff85ad; }
+    .sidebar-toggle:hover { background: #f08a8e; }
     
     @media (max-width: 900px) {
       .faq-layout { flex-direction: column; }
@@ -110,7 +110,7 @@
       font-size: 1.4rem; margin-top: 0; margin-bottom: 24px;
     }
     .faq-subtitle {
-      font-size: 1.15rem; font-weight: 700; color: #fb7299;
+      font-size: 1.15rem; font-weight: 700; color: #e63946;
       margin: 40px 0 20px; padding: 0;
       background: none; border: none;
     }
@@ -125,7 +125,7 @@
       margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
     }
     .qa-question .q-icon {
-      background: #fb7299; color: #fff; width: 24px; height: 24px;
+      background: #e63946; color: #fff; width: 24px; height: 24px;
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-size: .8rem; font-weight: 700; flex-shrink: 0;
     }
@@ -133,7 +133,7 @@
     .qa-answer p { margin-bottom: 10px; }
     .qa-answer ul, .qa-answer ol { margin: 8px 0 12px 24px; }
     .qa-answer li { margin: 6px 0; }
-    .qa-answer strong { color: #fb7299; }
+    .qa-answer strong { color: #e63946; }
     
     /* Remove nested card feel from inner elements */
     .qa-answer .card, .qa-answer .tip-box, .qa-answer .steps .step {
@@ -150,12 +150,12 @@
     .qa-answer .timeline-item::before { display: none; }
     .qa-answer .timeline-date {
       display: inline; background: none; padding: 0; border: none;
-      font-weight: 600; color: #fb7299;
+      font-weight: 600; color: #e63946;
     }
     .qa-answer .timeline-content { padding: 0; border: none; background: none; }
     .qa-answer .compare-table { border: 1px solid #e3e5e7; }
     .qa-answer .compare-table th { background: #f1f2f3; }
-    .qa-answer .number-list li::before { background: #fb7299; }
+    .qa-answer .number-list li::before { background: #e63946; }
     .qa-answer .check-list li::before { color: #00b8a9; }
     
     /* Hide the nested pink border lines */
@@ -169,7 +169,7 @@
 </head>
 <body>
 <!-- 返回首页（固定） -->
-<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
   ← 返回首页
 </a>
 
@@ -190,7 +190,7 @@
             <span class="faq-arrow">▼</span>
           </div>
           <div class="faq-sidebar-links">
-            <a href="#q-001" onclick="scrollToQ(event,'q-001')">27考研现在备考还来得及吗？</a>
+            <a href="#q-001" onclick="scrollToQ(event,'q-001')">28考研现在备考还来得及吗？</a>
             <a href="#q-002" onclick="scrollToQ(event,'q-002')">8月才准备政治来得及吗？</a>
             <a href="#q-003" onclick="scrollToQ(event,'q-003')">前期备考，还没定院校，应该怎么学？</a>
             <a href="#q-004" onclick="scrollToQ(event,'q-004')">数学全年应该怎么规划？</a>
@@ -214,7 +214,7 @@
             <span class="faq-arrow">▼</span>
           </div>
           <div class="faq-sidebar-links">
-            <a href="#q-017" onclick="scrollToQ(event,'q-017')">27考研初期怎么择校？</a>
+            <a href="#q-017" onclick="scrollToQ(event,'q-017')">28考研初期怎么择校？</a>
             <a href="#q-018" onclick="scrollToQ(event,'q-018')">分数线暴增或减是怎么回事？</a>
             <a href="#q-019" onclick="scrollToQ(event,'q-019')">XX学校会不会"炸"？怎么判断？</a>
             <a href="#q-020" onclick="scrollToQ(event,'q-020')">末流211和强双非怎么选？</a>
@@ -252,7 +252,7 @@
           </div>
           <div class="faq-sidebar-links">
             <a href="#q-038" onclick="scrollToQ(event,'q-038')">学历贬值这么厉害，读研还有意义吗？</a>
-            <a href="#q-039" onclick="scrollToQ(event,'q-039')">通信只能转码吗？为什么不直接选计算机？</a>
+            <a href="#q-039" onclick="scrollToQ(event,'q-039')">控制只能做自动化吗？为什么不直接选计算机？</a>
             <a href="#q-040" onclick="scrollToQ(event,'q-040')">不考研怎么准备就业？就业究竟看的是啥？</a>
             <a href="#q-041" onclick="scrollToQ(event,'q-041')">学校牌子对就业影响有多大？</a>
             <a href="#q-042" onclick="scrollToQ(event,'q-042')">专硕和学硕就业有区别吗？</a>
@@ -269,14 +269,37 @@
     <!-- Content -->
     <div class="faq-content">
 
+      <div style="margin:0 0 20px;padding:16px 20px;background:#fff7f0;border:1px solid #ffd9b0;border-left:4px solid #ff8536;border-radius:8px;">
+        <b style="color:#d97706;">🔥 新手最常问的 5 个问题</b>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;font-size:.88rem;">
+          <a href="#q-001" onclick="scrollToQ(event,'q-001')" style="color:#61666d;text-decoration:none;">① 28考研现在备考还来得及吗？</a>
+          <a href="#q-003" onclick="scrollToQ(event,'q-003')" style="color:#61666d;text-decoration:none;">② 还没定院校，应该怎么学？</a>
+          <a href="#q-014" onclick="scrollToQ(event,'q-014')" style="color:#61666d;text-decoration:none;">③ 大一大二怎么为考研做准备？</a>
+          <a href="#q-024" onclick="scrollToQ(event,'q-024')" style="color:#61666d;text-decoration:none;">④ 考研、竞赛、就业怎么抉择？</a>
+          <a href="#q-042" onclick="scrollToQ(event,'q-042')" style="color:#61666d;text-decoration:none;">⑤ 专硕和学硕就业有区别吗？</a>
+        </div>
+      </div>
+
+      <div style="margin:0 0 20px;padding:16px 20px;background:#fdf0f0;border:1px solid #fbd5d6;border-left:4px solid #e63946;border-radius:8px;">
+        <b style="color:#a92122;">🎯 控制专业同学速看（5 个高频疑问）</b>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px;font-size:.88rem;color:#61666d;line-height:1.7;">
+          <div><b style="color:#18191c;">Q1 控制考研考什么科目？</b><br>政治 + 英语一 + 数学一 + 专业课（绝大多数院校考「自动控制原理」，少数叠加现代控制或改考电路/信号）。</div>
+          <div><b style="color:#18191c;">Q2 数学一定考数一吗？</b><br>几乎都考数学一（高数 + 线代 + 概率），数二数三极少见，按数一准备最稳妥。</div>
+          <div><b style="color:#18191c;">Q3 学硕和专硕怎么选？</b><br>学硕 = 控制科学与工程(081100)偏理论、适合读博；专硕 = 控制工程(085406)偏工程、适合就业。2026 专硕扩招、学硕缩招，先确认目标院校还招不招学硕。</div>
+          <div><b style="color:#18191c;">Q4 跨考控制难吗？要补什么？</b><br>补「自动控制原理 + 现代控制 + C/C++」三件套即可入门，相对友好；用竞赛 / 实习 / 项目证明能力。</div>
+          <div><b style="color:#18191c;">Q5 控制就业怎么样？</b><br>对口去向广：机器人、智驾、工控、军工院所、电网、嵌入式。具体岗位 / 薪资见站内 <a href="../就业相关/job-listing/job-listing.html" style="color:#e63946;font-weight:600;">招聘检索库</a> 和 <a href="../就业相关/career-analysis/role-tech-stack.html" style="color:#e63946;font-weight:600;">技术全景</a>。</div>
+        </div>
+      </div>
+
       <!-- ==================== 一、考试备考 ==================== -->
       <section class="faq-section" id="exam-prep">
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 考试备考</h2>
 
         <!-- Q1 -->
         <div class="qa-item" id="q-001">
-          <div class="qa-question"><span class="q-icon">Q</span>27考研现在备考还来得及吗？</div>
+          <div class="qa-question"><span class="q-icon">Q</span>28考研现在备考还来得及吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：现在开始完全来得及，别再问「来不来得及」，先问「今天学什么」。</strong></p>
             <p><strong class="key-point">不早！现在开始，刚刚好！</strong></p>
             <ul>
               <li><strong>时间充裕，从容夯实基础</strong>：提前准备能帮你打好坚实基础，避免后期复习任务堆积、手忙脚乱。尤其对于基础薄弱或跨考的同学，时间更是宝贵。</li>
@@ -296,6 +319,7 @@
         <div class="qa-item" id="q-002">
           <div class="qa-question"><span class="q-icon">Q</span>8月才准备政治来得及吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：政治 8 月启动完全来得及，但不能再拖；数学英语才是前期重点。</strong></p>
             <p><strong class="key-point">来得及！但建议越早越好</strong></p>
             <p><strong>时间线对比</strong></p>
             <ul>
@@ -324,6 +348,7 @@
         <div class="qa-item" id="q-003">
           <div class="qa-question"><span class="q-icon">Q</span>前期备考，还没定院校，应该怎么学？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：没定校就按统考科目（数学一/英语/政治）先学，专业课等定校后再启动。</strong></p>
             <p><strong class="key-point">想不清楚就使劲学，有了资本才有选择的权力！</strong></p>
             <div class="steps" style="margin:16px 0;">
               <div class="step">
@@ -396,6 +421,7 @@
               <p><strong>基础不牢，地动山摇！前期慢就是后期快。</strong><br>
               建议：数学是考研拉分最大的科目，投入时间应占总复习时间的40%以上。</p>
             </div>
+            <div style="margin-top:12px;padding:10px 14px;background:#fdf0f0;border-left:3px solid #e63946;border-radius:6px;font-size:.88rem;color:#61666d;line-height:1.7;">🎯 <b style="color:#a92122;">控制提示：</b>控制考研几乎都考数学一（高数/线代/概率全考、范围最广），积分、级数、线代、概率一个都不能丢，按数一准备最稳妥。</div>
           </div>
         </div>
 
@@ -403,6 +429,7 @@
         <div class="qa-item" id="q-005">
           <div class="qa-question"><span class="q-icon">Q</span>数学跟哪个老师？刷什么题？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：老师没有绝对好坏——张宇偏技巧、武忠祥偏基础，按自己基础二选一，刷题比听课更重要。</strong></p>
             <p><strong>主流老师推荐</strong></p>
             <div class="card-grid card-grid-3" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
@@ -445,10 +472,11 @@
         <div class="qa-item" id="q-006">
           <div class="qa-question"><span class="q-icon">Q</span>高数基础需要多少时间？学完学什么？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：高数基础约 2-3 个月，学完直接进线代、概率，别在单章死磕。</strong></p>
             <div class="steps" style="margin:12px 0;">
               <div class="step">
                 <div class="step-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 高数基础阶段建议时长</div>
-                <p style="font-size:1.3rem; color:#fb7299; font-weight:700;">30-50h</p>
+                <p style="font-size:1.3rem; color:#e63946; font-weight:700;">30-50h</p>
                 <p>每天2-3小时，约2-3周完成，重点理解概念和定理。课后习题必须做，不要眼高手低。</p>
               </div>
               <div class="step">
@@ -458,7 +486,7 @@
               </div>
               <div class="step">
                 <div class="step-title">🛒 真题资料购买建议</div>
-                <p style="font-size:1.3rem; color:#fb7299; font-weight:700;">9.9元包邮</p>
+                <p style="font-size:1.3rem; color:#e63946; font-weight:700;">9.9元包邮</p>
                 <p>数学英语真题都需要买，9.9包邮的真题完全够用，不需要买昂贵的版本。</p>
               </div>
             </div>
@@ -474,6 +502,7 @@
         <div class="qa-item" id="q-007">
           <div class="qa-question"><span class="q-icon">Q</span>英语全年应该怎么规划？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：英语是「长线科目」——单词全年不断，阅读和真题是绝对核心。</strong></p>
             <div class="timeline">
               <div class="timeline-item">
                 <span class="timeline-date">5月前 · 基础期</span>
@@ -518,6 +547,7 @@
         <div class="qa-item" id="q-008">
           <div class="qa-question"><span class="q-icon">Q</span>单词怎么背？背了就忘怎么办？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：背了忘是正常的，用「多轮重复 + 语境记忆」对抗遗忘，别指望一遍记住。</strong></p>
             <p><strong class="key-point">重复是王道！遵循艾宾浩斯遗忘曲线</strong></p>
             <div class="card-grid card-grid-2" style="margin:16px 0;">
               <div class="card" style="margin-bottom:0;">
@@ -555,6 +585,7 @@
         <div class="qa-item" id="q-009">
           <div class="qa-question"><span class="q-icon">Q</span>英语阅读怎么做？精翻怎么搞？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：阅读 = 精读真题，不是刷题量——吃透一篇胜过泛做十篇。</strong></p>
             <p><strong class="key-point">阅读分值：5篇×2分×4题 = 40分，得阅读者得天下！</strong></p>
             <div class="section-subtitle">阅读做题方法</div>
             <ol class="number-list">
@@ -579,6 +610,7 @@
         <div class="qa-item" id="q-010">
           <div class="qa-question"><span class="q-icon">Q</span>政治全年应该怎么规划？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：政治 8 月开始不晚——前期看课打框架、后期肖四肖八背大题。</strong></p>
             <div class="timeline">
               <div class="timeline-item">
                 <span class="timeline-date">基础阶段（8-9月）</span>
@@ -654,6 +686,7 @@
               <div class="tip-title">核心</div>
               <p>信息收集是第一步，也是决定成败的关键一步！<strong>信息不对称是考研大忌</strong>。</p>
             </div>
+            <div style="margin-top:12px;padding:10px 14px;background:#fdf0f0;border-left:3px solid #e63946;border-radius:6px;font-size:.88rem;color:#61666d;line-height:1.7;">🎯 <b style="color:#a92122;">控制提示：</b>控制专业课绝大多数是「自动控制原理」，参考书优先胡寿松《自动控制原理》；先确认目标院校是否叠加现代控制/电路/信号。</div>
           </div>
         </div>
 
@@ -700,6 +733,7 @@
               <div class="tip-title">⚠️ 提醒</div>
               <p>专业课150分，和数学同等重要！不要只重视数学而忽视专业课。</p>
             </div>
+            <div style="margin-top:12px;padding:10px 14px;background:#fdf0f0;border-left:3px solid #e63946;border-radius:6px;font-size:.88rem;color:#61666d;line-height:1.7;">🎯 <b style="color:#a92122;">控制提示：</b>自控原理复习重点——框图化简、时域/频域分析、根轨迹、稳定性判据、校正设计；考现代控制的再加状态空间、能控能观、极点配置。</div>
           </div>
         </div>
 
@@ -707,6 +741,7 @@
         <div class="qa-item" id="q-013">
           <div class="qa-question"><span class="q-icon">Q</span>竞赛、四六级、挂科对考研有影响吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：竞赛/四六级是加分项不是硬门槛，挂科补过就不影响；初试分数才是王道。</strong></p>
             <div class="card-grid card-grid-3" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> 竞赛</div>
@@ -740,6 +775,7 @@
         <div class="qa-item" id="q-014">
           <div class="qa-question"><span class="q-icon">Q</span>大一大二怎么为考研做准备？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：大一大二别急着刷题——先把数学英语底子打牢、把绩点和英语六级搞上去。</strong></p>
             <p><strong class="key-point">大三上期末考完后开始准备考研即可！</strong></p>
             <div class="timeline">
               <div class="timeline-item">
@@ -777,6 +813,7 @@
         <div class="qa-item" id="q-015">
           <div class="qa-question"><span class="q-icon">Q</span>跨考怎么包装项目？面试怎么准备？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：跨考不怕没背景，怕的是「说不清项目」——用 STAR 把相关经历讲清楚。</strong></p>
             <div class="section-subtitle">跨考项目包装策略</div>
             <ul>
               <li><strong>利用本科项目</strong>：用本科项目+自学技术，往目标专业方向靠</li>
@@ -808,6 +845,7 @@
         <div class="qa-item" id="q-016">
           <div class="qa-question"><span class="q-icon">Q</span>复试常见问题有哪些？流程难吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：复试 = 初试分数 + 专业问答 + 项目/简历，提前备好自我介绍和项目复盘就不慌。</strong></p>
             <div class="section-subtitle">复试流程</div>
             <div class="steps" style="margin:12px 0;">
               <div class="step" style="min-width:120px; flex:0 1 auto;">
@@ -859,8 +897,9 @@
 
         <!-- Q1 -->
         <div class="qa-item" id="q-017">
-          <div class="qa-question"><span class="q-icon">Q</span>27考研初期怎么择校？</div>
+          <div class="qa-question"><span class="q-icon">Q</span>28考研初期怎么择校？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：择校先定「冲-稳-保」三档，10 月再按模考成绩最终定；想不清楚就先把数学英语学起来，实力是选择权的底气。</strong></p>
             <p><strong>择校三要素</strong></p>
             <ol class="number-list">
               <li>本科学校层次</li>
@@ -897,7 +936,7 @@
             <p><strong class="key-point">大小年现象</strong></p>
             <p><strong>什么是大小年？</strong>：前一年分低→第二年扎堆→分高→第三年不敢报→分低，如此循环</p>
             <ul>
-              <li><strong>热门院校</strong>：一直热门，分数线相对稳定在高位（如：北邮、西电、成电等通信强校）</li>
+              <li><strong>热门院校</strong>：一直热门，分数线相对稳定在高位（如：清华、哈工大、浙大、东北大学等控制强校）</li>
               <li><strong>冷门院校也容易扎堆</strong>：前一年爆冷→大家以为好考→第二年扎堆→分数线暴涨</li>
             </ul>
             <div class="section-subtitle">应对策略</div>
@@ -950,6 +989,7 @@
         <div class="qa-item" id="q-020">
           <div class="qa-question"><span class="q-icon">Q</span>末流211和强双非怎么选？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：想走技术进企业，强双非（杭电/重邮/深大等）往往比末流 211 更好；想考公/进国企，211 牌子更值钱。</strong></p>
             <p><strong>典型案例对比</strong></p>
             <table class="compare-table">
               <thead>
@@ -973,6 +1013,7 @@
         <div class="qa-item" id="q-021">
           <div class="qa-question"><span class="q-icon">Q</span>民办三本/二本怎么择校？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：本科出身不能决定上限，初试高分才是最好的证明——优先选不歧视出身、初试占比高的学校。</strong></p>
             <p><strong class="key-point">择校公式：考研难度 = 初试分数 + 个人能力 + 学校层次</strong></p>
             <div class="section-subtitle">认清自己的实力</div>
             <ul>
@@ -1078,6 +1119,7 @@
         <div class="qa-item" id="q-024">
           <div class="qa-question"><span class="q-icon">Q</span>考研、竞赛、就业怎么抉择？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：大三优先考研或就业，竞赛除非能直接保研否则性价比低；三条路没有绝对对错，但「既要又要」最容易两头空。</strong></p>
             <div class="card-grid card-grid-3" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> 考研</div>
@@ -1180,23 +1222,23 @@
         <div class="qa-item" id="q-027">
           <div class="qa-question"><span class="q-icon">Q</span>10月报名常见问题有哪些？</div>
           <div class="qa-answer">
-            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fff0f3;">
+            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fdf0f0;">
               <p><strong>Q: 扩招后会变简单吗？</strong></p>
               <p>A: 不一定！扩招可能吸引更多考生报考，竞争反而更激烈。</p>
             </div>
-            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fff0f3;">
+            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fdf0f0;">
               <p><strong>Q: 缩招了还能报吗？</strong></p>
               <p>A: 看具体情况！如果只缩招1-2个名额影响不大，如果缩招一半以上要慎重。</p>
             </div>
-            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fff0f3;">
+            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fdf0f0;">
               <p><strong>Q: 第一年新开的专业可以报吗？</strong></p>
               <p>A: 有机会也有风险！好处是知道的人少，风险是没有历年真题参考。</p>
             </div>
-            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fff0f3;">
+            <div class="qa-item" style="margin-bottom:12px; box-shadow:none; border:1px solid #fdf0f0;">
               <p><strong>Q: 报哪所？后面还要改吗？</strong></p>
               <p>A: 根据自身实力定，报名后尽量不要改，频繁换学校会影响复习节奏。</p>
             </div>
-            <div class="qa-item" style="margin-bottom:0; box-shadow:none; border:1px solid #fff0f3;">
+            <div class="qa-item" style="margin-bottom:0; box-shadow:none; border:1px solid #fdf0f0;">
               <p><strong>Q: 报考点、档案、信息填写问题？</strong></p>
               <p>A: 应届生一般在学校考，往届生在户籍地或工作地考；档案填学校或人才市场地址。</p>
             </div>
@@ -1207,6 +1249,7 @@
         <div class="qa-item" id="q-028">
           <div class="qa-question"><span class="q-icon">Q</span>菜鸟/基础差考什么学校比较好？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：基础差就「曲线救国」——选名校的边缘学院/边缘专业，或联合培养/偏远 211，用低分换好平台。</strong></p>
             <div class="steps" style="margin:12px 0;">
               <div class="step">
                 <div class="step-title">策略1：同学校的业务边缘学院</div>
@@ -1265,7 +1308,7 @@
         <div class="qa-item" id="q-030">
           <div class="qa-question"><span class="q-icon">Q</span>为什么要考研？考研能改变什么？</div>
           <div class="qa-answer">
-            <p><strong class="key-point">改变人生走向，去往更大平台</strong></p>
+            <p><strong class="key-point">结论先行：考研是「用 1 年换更高起点」，但不是唯一出路，别神化它。</strong></p>
             <div class="card-grid card-grid-2" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> 三次改变命运的机会</div>
@@ -1312,7 +1355,13 @@
                 <p>每天7-8小时睡眠至关重要。<br>熬夜学习效率其实很低下。</p>
               </div>
             </div>
-            <p><strong class="key-point">核心：信念要强，不要抱着试一试的心态！要么不考，考就全力以赴。</strong></p>
+            <p><strong class="key-point">结论先行：焦虑不靠「想」解决，靠「做」解决——先动起来 10 分钟，比任何鸡汤都管用。</strong></p>
+            <div class="section-subtitle">可执行的 3 步</div>
+            <ol class="number-list">
+              <li><strong>拆小任务</strong>：把「怕考不上」拆成「今天背 50 个单词」，做完一件焦虑减一分。</li>
+              <li><strong>固定作息 + 每天运动 20 分钟</strong>：状态是睡出来、动出来的，不是熬出来的。</li>
+              <li><strong>减少对比</strong>：别看别人进度，考研是跟自己比，不是跟朋友圈比。</li>
+            </ol>
           </div>
         </div>
 
@@ -1320,6 +1369,7 @@
         <div class="qa-item" id="q-032">
           <div class="qa-question"><span class="q-icon">Q</span>身边同学都找到工作/保研了，我很迷茫？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：迷茫的根源是「跟别人比」——你的赛道上只有你自己，稳住节奏按计划走。</strong></p>
             <p><strong class="key-point">这是典型的"同辈压力"，每个人都有自己的时区！</strong></p>
             <div class="section-subtitle">应对方法</div>
             <ol class="number-list">
@@ -1338,6 +1388,7 @@
         <div class="qa-item" id="q-033">
           <div class="qa-question"><span class="q-icon">Q</span>复习效率低下、学不进去怎么办？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：效率比时长更重要——10 小时低效 &lt; 6 小时高效，先解决「坐得住」，再谈「学得进」。</strong></p>
             <div class="steps" style="margin:12px 0;">
               <div class="step">
                 <div class="step-num">1</div>
@@ -1373,6 +1424,7 @@
         <div class="qa-item" id="q-034">
           <div class="qa-question"><span class="q-icon">Q</span>感觉复习不完了，想放弃怎么办？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：「复习不完」是所有人的共同错觉——抓大放小、坚持到考场，就赢了一半。</strong></p>
             <p><strong class="key-point">"感觉复习不完"是所有考研人的共同感受！</strong></p>
             <div class="section-subtitle">应对策略</div>
             <ul>
@@ -1391,6 +1443,7 @@
         <div class="qa-item" id="q-035">
           <div class="qa-question"><span class="q-icon">Q</span>万一考不上怎么办？时间成本怎么算？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：做好最坏打算（提前想好 Plan B），反而更能放开手脚全力以赴。</strong></p>
             <div class="section-subtitle">时间规划建议</div>
             <ul>
               <li><strong>给自己1-2次机会</strong>：一战未成功，评估是否二战。如果差距不大（10-20分），建议二战。</li>
@@ -1411,6 +1464,7 @@
         <div class="qa-item" id="q-036">
           <div class="qa-question"><span class="q-icon">Q</span>院校选择不坚定、怕这怕那怎么办？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：实力是消除焦虑的唯一解药——用模考分数和数据说话，别凭感觉瞎担心。</strong></p>
             <ol class="number-list">
               <li><strong>用模考成绩量化实力</strong>：不确定的根源是对自己实力没底。做几套真题模拟，用分数说话，而不是凭感觉。</li>
               <li><strong>收集目标院校近3年录取数据</strong>：数据是消除恐惧的最好武器。了解分数线、报录比、复录比，做到心中有数。</li>
@@ -1425,6 +1479,7 @@
         <div class="qa-item" id="q-037">
           <div class="qa-question"><span class="q-icon">Q</span>还没开始复习/失眠精神不集中怎么办？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：最好的开始时间就是现在，别把时间耗在「来不来得及」上。</strong></p>
             <div class="card-grid card-grid-2" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 还没开始的</div>
@@ -1454,6 +1509,7 @@
         <div class="qa-item" id="q-038">
           <div class="qa-question"><span class="q-icon">Q</span>学历贬值这么厉害，读研还有意义吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：学历贬值 ≠ 读研无用——研究生仍能过更多简历初筛，关键是读研期间把能力练出来。</strong></p>
             <div class="card-grid card-grid-2" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg> 选择工作的权力</div>
@@ -1481,32 +1537,32 @@
 
         <!-- Q2 -->
         <div class="qa-item" id="q-039">
-          <div class="qa-question"><span class="q-icon">Q</span>通信只能转码吗？为什么不直接选计算机？</div>
+          <div class="qa-question"><span class="q-icon">Q</span>控制只能做自动化吗？为什么不直接选计算机？</div>
           <div class="qa-answer">
-            <div class="section-subtitle">通信的方向（不止转码）</div>
+            <div class="section-subtitle">控制的方向（不止自动化）</div>
             <div class="card-grid card-grid-3" style="margin:12px 0;">
               <div class="card" style="margin-bottom:0;">
-                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 19c-2.3-2.3-2.3-6.7 0-9"/><path d="M12.8 21.9c-4.5-4.5-4.5-11.3 0-15.8"/><path d="M16.9 7.9c1.9 1.9 1.9 5.1 0 7"/><path d="M19.1 4.9C22 7.8 22 12.2 19.1 15.1"/></svg> 传统通信方向</div>
-                <p>5G/6G、无线通信、光纤通信</p>
+                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 19c-2.3-2.3-2.3-6.7 0-9"/><path d="M12.8 21.9c-4.5-4.5-4.5-11.3 0-15.8"/><path d="M16.9 7.9c1.9 1.9 1.9 5.1 0 7"/><path d="M19.1 4.9C22 7.8 22 12.2 19.1 15.1"/></svg> 传统控制/自动化方向</div>
+                <p>工业自动化、运动控制、伺服、PLC/DCS</p>
               </div>
               <div class="card" style="margin-bottom:0;">
-                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> 硬件方向</div>
-                <p>嵌入式、FPGA、数字芯片、IC设计</p>
+                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> 算法方向</div>
+                <p>自动驾驶规控、机器人控制、飞控/GNC、具身智能</p>
               </div>
               <div class="card" style="margin-bottom:0;">
-                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> 新兴方向</div>
-                <p>自动驾驶、物联网、人工智能、机器学习、智能硬件</p>
+                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> 硬件/嵌入式方向</div>
+                <p>嵌入式、芯片、半导体设备控制</p>
               </div>
             </div>
-            <div class="section-subtitle">跨考建议</div>
+            <div class="section-subtitle">择方向建议</div>
             <ul>
-              <li><strong>为什么通信不只能转码？</strong>：通信是宽口径专业，软硬结合，就业面广。</li>
-              <li><strong>跨考的关键</strong>：补齐目标专业的核心能力，做相关项目积累经历。</li>
-              <li><strong>为什么不直接选计算机？</strong>：通信竞争相对较小，且通信+代码复合背景更吃香。</li>
+              <li><strong>为什么控制不只能做自动化？</strong>：控制是宽口径专业，软硬结合、对口行业广（机器人/智驾/军工/电网/工控）。</li>
+              <li><strong>跨考/择方向的关键</strong>：补齐目标专业的核心能力，做相关项目积累经历。</li>
+              <li><strong>为什么不直接选计算机？</strong>：控制竞争相对计算机小，且控制+代码/算法复合背景更吃香。</li>
             </ul>
             <div class="tip-box success" style="margin-top:12px;">
               <div class="tip-title">结论</div>
-              <p>通信+代码的复合背景在就业市场非常吃香，不要局限于"转码"思维！</p>
+              <p>控制+算法/代码的复合背景在就业市场非常吃香，不要局限于"做自动化"思维！</p>
             </div>
           </div>
         </div>
@@ -1515,6 +1571,7 @@
         <div class="qa-item" id="q-040">
           <div class="qa-question"><span class="q-icon">Q</span>不考研怎么准备就业？就业究竟看的是啥？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：不考研就尽早实习攒经历——学历不够用实习和项目补。</strong></p>
             <div class="section-subtitle">就业三要素</div>
             <div class="steps" style="margin:12px 0;">
               <div class="step">
@@ -1546,6 +1603,7 @@
         <div class="qa-item" id="q-041">
           <div class="qa-question"><span class="q-icon">Q</span>学校牌子对就业影响有多大？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：牌子影响简历初筛，但过了初筛就看能力——技术岗尤其看重项目。</strong></p>
             <ul>
               <li><strong>985/211是门槛，但不是全部</strong>：名校背景能让你通过更多企业的简历筛选，但最终能否拿到offer取决于面试表现和个人能力。</li>
               <li><strong>双非也有出路，关键看能力</strong>：很多双非院校的毕业生通过实习经历和项目经验弥补了学历差距，进入了大厂和名企。</li>
@@ -1563,6 +1621,7 @@
         <div class="qa-item" id="q-042">
           <div class="qa-question"><span class="q-icon">Q</span>专硕和学硕就业有区别吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：企业招聘基本不区分专硕/学硕，看的是方向和能力，别为这个纠结。</strong></p>
             <ul>
               <li><strong>培养目标不同</strong>：学硕侧重学术研究能力培养，专硕侧重实践应用能力培养。但就业市场上，两者差异越来越小。</li>
               <li><strong>就业认可度基本持平</strong>：绝大多数企业不区分专硕和学硕，只看学历层次（硕士）和学校背景。公务员、事业单位同样认可。</li>
@@ -1609,6 +1668,7 @@
         <div class="qa-item" id="q-044">
           <div class="qa-question"><span class="q-icon">Q</span>研究生相比本科生有哪些就业优势？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：研究生优势 = 更高起薪 + 更多岗位门槛 + 更深技术积累。</strong></p>
             <div class="steps" style="margin:12px 0;">
               <div class="step">
                 <div class="step-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> 起薪更高，涨幅更快</div>
@@ -1660,6 +1720,7 @@
               <div class="tip-title">结论</div>
               <p>就业方向没有好坏之分，关键是结合自身优势和兴趣做出适合的选择！</p>
             </div>
+            <div style="margin-top:12px;padding:10px 14px;background:#fdf0f0;border-left:3px solid #e63946;border-radius:6px;font-size:.88rem;color:#61666d;line-height:1.7;">🎯 <b style="color:#a92122;">控制提示：</b>控制硕士对口去向——机器人/无人机、智能驾驶、工业自动化、军工院所、电网/能源、半导体嵌入式、互联网AI；具体岗位与公司见站内<a href="../就业相关/job-listing/job-listing.html" style="color:#e63946;font-weight:600;">招聘检索库</a>和<a href="../就业相关/career-analysis/role-tech-stack.html" style="color:#e63946;font-weight:600;">技术全景</a>。</div>
           </div>
         </div>
 
@@ -1673,8 +1734,8 @@
                 <p>就业面广、薪资高、需求大。虽然竞争激烈，但依然是性价比最高的方向之一。适合数理基础好的同学。</p>
               </div>
               <div class="card" style="margin-bottom:0;">
-                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 19c-2.3-2.3-2.3-6.7 0-9"/><path d="M12.8 21.9c-4.5-4.5-4.5-11.3 0-15.8"/><path d="M16.9 7.9c1.9 1.9 1.9 5.1 0 7"/><path d="M19.1 4.9C22 7.8 22 12.2 19.1 15.1"/></svg> 电子信息/通信工程</div>
-                <p>5G、物联网、芯片等国家战略方向，人才需求旺盛。软硬结合，就业稳定性高。</p>
+                <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"/><path d="M7.8 19c-2.3-2.3-2.3-6.7 0-9"/><path d="M12.8 21.9c-4.5-4.5-4.5-11.3 0-15.8"/><path d="M16.9 7.9c1.9 1.9 1.9 5.1 0 7"/><path d="M19.1 4.9C22 7.8 22 12.2 19.1 15.1"/></svg> 控制/自动化</div>
+                <p>智能制造、机器人、智驾、军工等对口方向，人才需求旺盛。软硬结合，就业稳定性高。</p>
               </div>
               <div class="card" style="margin-bottom:0;">
                 <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> 金融/经济（名校效应明显）</div>
@@ -1696,6 +1757,7 @@
         <div class="qa-item" id="q-047">
           <div class="qa-question"><span class="q-icon">Q</span>考研、考公、考证能同时准备吗？</div>
           <div class="qa-answer">
+            <p><strong class="key-point">结论先行：别三线作战，精力会摊薄——先主攻一个，其他作备选。</strong></p>
             <div class="tip-box warning" style="margin-bottom:16px;">
               <div class="tip-title">不建议多线并行，精力有限</div>
               <p>考研和考公都是高强度备考，同时准备往往导致两边都准备不充分。建议明确优先级，主攻一个方向。</p>
@@ -1718,9 +1780,9 @@
         <div class="tip-title">💡 送给考研人的几句话</div>
         <p>考研不是唯一的出路，但一定是值得全力以赴的选择。<br>
         你背不下来的书，总有人能背下来。那么不好意思，你想去的学校也只能别人去了。<br>
-        <strong style="color:#fb7299;">不是因为看到希望才坚持，而是因为坚持才看到希望。</strong><br>
+        <strong style="color:#e63946;">不是因为看到希望才坚持，而是因为坚持才看到希望。</strong><br>
         星光不问赶路人，时光不负有心人。你的努力，终将照亮前路。<br>
-        愿你在考研路上，不负韶华，不负自己。<strong>27考研，加油！</strong></p>
+        愿你在考研路上，不负韶华，不负自己。<strong>28考研，加油！</strong></p>
       </div>
     </div>
   </div>

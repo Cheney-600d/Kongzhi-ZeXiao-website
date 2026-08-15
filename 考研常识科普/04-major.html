@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- 返回首页（固定） -->
-<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#fb7299';this.style.color='#fb7299';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
+<a href="index.html" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';">
   ← 返回首页
 </a>
 
@@ -23,10 +23,11 @@
       </div>
 
       <!-- 快速导航锚点 -->
-      <div class="card" style="margin-bottom:32px; background: linear-gradient(135deg, #fff0f3, #fff8f5);">
+      <div class="card" style="margin-bottom:32px; background: linear-gradient(135deg, #fdf0f0, #fff8f5);">
         <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M12 2 3 21h9l3-3 3 3h3z"/><path d="M12 2v19"/></svg> 本章导航</div>
         <div class="card-body">
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <a href="#control-major" class="tag tag-red">🎯 控制专业课速览</a>
             <a href="#info-collection" class="tag tag-blue">信息搜集渠道</a>
             <a href="#core-materials" class="tag tag-orange">核心资料推荐</a>
             <a href="#liberal-arts" class="tag tag-blue">文科类复习方法</a>
@@ -40,12 +41,64 @@
         </div>
       </div>
 
+      <div style="margin:16px 0;padding:14px 18px;background:#fff7f0;border:1px solid #ffd9b0;border-left:4px solid #ff8536;border-radius:8px;">
+        <b style="color:#d97706;">⏱️ 30 秒速览</b>
+        <ul style="margin:6px 0 0 18px;color:#6b7280;font-size:.9rem;line-height:1.9;">
+          <li>专业课是学校<strong>自命题</strong>，先定学校再复习</li>
+          <li>真题价值最高，至少做近 10 年</li>
+          <li>4-5 月数学打底后再启动专业课</li>
+        </ul>
+      </div>
+
+      <!-- ===== 0. 控制专业 · 专业课速览 ===== -->
+      <section class="section" id="control-major">
+        <h2 class="section-title">🎯 控制专业 · 专业课速览（本页为控制/自动化同学定制）</h2>
+        <p style="color:#6b7280;font-size:.95rem;margin-bottom:16px;">控制科学与工程（学硕 081100）/ 控制工程（专硕 085406）考研，专业课绝大多数院校考「<strong>自动控制原理</strong>」，少数叠加「现代控制理论」或改考「电路 / 信号与系统」。</p>
+
+        <div class="card-grid card-grid-2">
+          <div class="card" style="border-top:4px solid #e63946;">
+            <div class="card-title">📚 核心专业课</div>
+            <div class="card-body">
+              <ul class="check-list">
+                <li><strong>自动控制原理（最主流）</strong>：时域、频域、根轨迹、稳定性、校正</li>
+                <li><strong>现代控制理论</strong>：状态空间、能控能观、极点配置、李雅普诺夫</li>
+                <li><strong>电路 / 信号与系统 / 数电模电</strong>：少数院校改考</li>
+                <li><strong>数学一</strong>：控制考研几乎都考数学一（详见公共课页）</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="border-top:4px solid #e63946;">
+            <div class="card-title">📖 参考教材（公认主流）</div>
+            <div class="card-body">
+              <ul class="check-list">
+                <li>胡寿松《自动控制原理》（第7版，控制考研人手一本）</li>
+                <li>刘豹《现代控制理论》</li>
+                <li>邱关源《电路》（考电路的院校用）</li>
+                <li>郑君里《信号与系统》（考信号的院校用）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <div class="card-title">🏫 各院校专业课差异</div>
+          <div class="card-body">
+            <ul class="check-list">
+              <li><strong>自控 + 现控</strong>：清华、浙大、上交、哈工大、北航、东南、东北大学等多数强势院校</li>
+              <li><strong>只考自控</strong>：部分院校单考一门自动控制原理</li>
+              <li><strong>考电路 / 信号</strong>：个别院校改考，务必以目标院校最新招生目录为准</li>
+            </ul>
+            <p style="margin-top:8px;color:#6b7280;font-size:.9rem;">⚠️ 专业课是院校<strong>自命题</strong>，每年大纲可能调整，务必在「研究生招生目录」里确认当年考试科目。</p>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== 1. 什么时候开始 + 信息搜集渠道 ===== -->
       <section class="section" id="info-collection">
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> 专业课什么时候开始？信息怎么收集？</h2>
 
         <div class="card-grid card-grid-2">
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 建议开始时间</div>
             <div class="card-body">
               <p><strong>一般考生：4-5月开始</strong>，数学进入正轨后再启动专业课</p>
@@ -56,7 +109,7 @@
               </ul>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">⚡ 跨考同学注意</div>
             <div class="card-body">
               <p><strong>跨考需要更早开始</strong>，建议<strong>3月</strong>就启动专业课</p>
@@ -157,7 +210,7 @@
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 专业课核心资料推荐</h2>
 
         <div class="card-grid card-grid-2">
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">🔴 必备资料（最核心）</div>
             <div class="card-body">
               <p>这些资料是专业课复习的根基，必须精读细研：</p>
@@ -168,7 +221,7 @@
               </ul>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">🟡 可选资料（辅助参考）</div>
             <div class="card-body">
               <p>这些资料可作为补充参考，但不要过度依赖：</p>
@@ -178,6 +231,13 @@
                 <li><strong>专业课视频课</strong><br>对于理解困难的知识点，可以找相关视频课程辅助学习。</li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;border-top:4px solid #0ea5e9;">
+          <div class="card-title">🎯 控制专业特别提示</div>
+          <div class="card-body">
+            <p>控制/自动化考研的「指定参考书目」绝大多数是 <strong>胡寿松《自动控制原理》</strong>，配套 <strong>刘豹《现代控制理论》</strong>。真题重点：框图化简、时域/频域分析、根轨迹、稳定性判据、校正设计、状态空间（现控）。</p>
           </div>
         </div>
 
@@ -230,7 +290,7 @@
           <div class="timeline-item">
             <span class="timeline-date">第1遍 · 3-4周</span>
             <div class="timeline-content">
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> 通读——建立宏观框架</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> 通读——建立宏观框架</h4>
               <p>快速浏览全书，把握章节结构和逻辑关系。<strong>不求甚解，重在建立宏观认识。</strong></p>
               <ul class="check-list">
                 <li>了解整体框架和章节安排</li>
@@ -243,7 +303,7 @@
           <div class="timeline-item">
             <span class="timeline-date">第2遍 · 6-8周</span>
             <div class="timeline-content">
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> 精读——深入理解知识点</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> 精读——深入理解知识点</h4>
               <p>逐字逐句阅读，理解每个概念和理论。<strong>做详细笔记，梳理知识框架。</strong></p>
               <ul class="check-list">
                 <li>深入理解每个概念和理论</li>
@@ -256,7 +316,7 @@
           <div class="timeline-item">
             <span class="timeline-date">第3遍 · 持续进行</span>
             <div class="timeline-content">
-              <h4 style="color:#fb7299; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> 背诵——内化知识</h4>
+              <h4 style="color:#e63946; margin-bottom:8px;"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> 背诵——内化知识</h4>
               <p>结合真题有重点地背诵。<strong>理解性记忆，不要死记硬背。</strong></p>
               <ul class="check-list">
                 <li>理解性记忆，不死记硬背</li>
@@ -432,7 +492,7 @@
         <p style="margin-bottom:16px; color:#888;">科学运用多种背诵方法，事半功倍。重复是记忆之母，无论用什么方法，都要反复复习才能真正记住。</p>
 
         <div class="card-grid card-grid-2">
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg> 艾宾浩斯遗忘曲线</div>
             <div class="card-body">
               <p>根据遗忘规律，在最恰当的时间复习，事半功倍。</p>
@@ -465,7 +525,7 @@
               <p style="margin-top:8px;"><strong>核心原则：</strong>理解后记忆，记忆更牢固，应用更灵活。</p>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg> 框架式背诵</div>
             <div class="card-body">
               <p>先记框架再填充细节，从宏观到微观，层次分明。</p>
@@ -547,19 +607,19 @@
 
         <h3 class="section-subtitle">❌ 真题使用常见误区</h3>
         <div class="card-grid card-grid-3">
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">❌ 只做一遍就扔掉</div>
             <div class="card-body">
               <p>真题需要反复研究，每次都有新的收获。建议至少做3遍以上。</p>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">❌ 不分析不总结</div>
             <div class="card-body">
               <p>做完不对答案、不分析错因、不总结规律，等于白做。</p>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">❌ 只做不看教材</div>
             <div class="card-body">
               <p>真题是用来检验复习效果的工具，不能替代教材的系统学习。</p>
@@ -686,14 +746,14 @@
 
         <h3 class="section-subtitle"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 复试内容构成</h3>
         <div class="card-grid card-grid-3">
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg> 专业课笔试（65-85分）</div>
             <div class="card-body">
               <p>复习初试内容，关注前沿动态。有些学校考初试科目，有些考新科目。</p>
               <p style="margin-top:8px;"><strong>跨考生：</strong>要狂补，不需要像初试那样准备，会做题就行。</p>
             </div>
           </div>
-          <div class="card" style="border-top:4px solid #fb7299;">
+          <div class="card" style="border-top:4px solid #e63946;">
             <div class="card-title">🎤 综合面试（70-90分）</div>
             <div class="card-body">
               <p><strong>最重要的一环！</strong>考查口语、综合面试、专业面试、竞赛项目。</p>
@@ -796,11 +856,11 @@
       </section>
 
       <!-- 页面导航 -->
-      <div style="display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid #fff0f3;">
+      <div style="display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid #fdf0f0;">
         <a href="03-public-courses.html" style="display:flex; align-items:center; gap:8px; font-weight:600;">
           ← 上一章：公共课备考
         </a>
-        <a href="05-school-selection.html" style="display:flex; align-items:center; gap:8px; font-weight:600; color:#fb7299;">
+        <a href="05-school-selection.html" style="display:flex; align-items:center; gap:8px; font-weight:600; color:#e63946;">
           下一章：考研择校 →
         </a>
       </div>

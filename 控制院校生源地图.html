@@ -1,0 +1,3167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制类考研各院校生源地图</title>
+<meta name="description" content="控制类考研各院校生源地图，展示上岸考生本科来源院校分布。">
+<meta name="keywords" content="控制考研,自动化考研,择校,考研院校,院校对比,考研数据,985,211,双一流">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <script src="vendor/echarts.min.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+            background: #f8f8f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container { width: 80%; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            color: #17191d;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 900; color: #a92122; text-shadow: 0 0 8px rgba(169,33,34,0.2); }
+        .header p { font-size: 1.1em; font-weight: 600; opacity: 0.9; }
+        
+        .school-name { font-weight: 700; text-shadow: 0 0 8px rgba(169,33,34,0.25); }
+        .number-glow { font-weight: 700; text-shadow: 0 0 6px rgba(169,33,34,0.3); }
+        .filter-label { font-weight: 700; text-shadow: 0 0 6px rgba(169,33,34,0.2); }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #d5d5cf;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
+            outline: none;
+        }
+        
+        .filter-section {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
+        }
+        
+        .filter-group { margin-bottom: 15px; }
+        .filter-group:last-child { margin-bottom: 0; }
+        
+        .filter-label {
+            font-weight: bold;
+            color: #17191d;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 0.95em;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #d5d5cf;
+            border-radius: 20px;
+            background: #FFFFFF;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover {
+            border-color: #a92122;
+            color: #a92122;
+            box-shadow: 0 0 0 2px rgba(169,33,34,0.15);
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .filter-btn.region-btn.active {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        
+        .filter-btn.province-btn.active {
+            background: linear-gradient(135deg, #a92122 0%, #a92122 100%);
+        }
+        
+        .filter-btn.level-985.active { background: #e74c3c; color: #fff; }
+        .filter-btn.level-211.active { background: #8b5cf6; color: #fff; }
+        .filter-btn.level-双非.active { background: #e5e7eb; color: #6b7280; }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
+            text-align: center;
+        }
+        
+        .stat-card .number { font-size: 2.5em; font-weight: 800; color: #a92122; }
+        .stat-card .label { color: #666; font-size: 0.9em; }
+        
+        .school-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .school-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(169,33,34,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .school-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(169,33,34,0.35);
+        }
+        
+        .school-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #a92122 0%, #c0392b 100%);
+        }
+        
+        .school-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding-right: 30px;
+        }
+        
+        .school-name { font-size: 1.15em; font-weight: bold; color: #17191d; flex: 1; }
+        
+        .school-tags {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+        
+        .tag {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .level-tag.level-985 { background: #e74c3c; color: #fff; }
+        .level-tag.level-211 { background: #8b5cf6; color: #fff; }
+        .level-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
+        
+        .province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
+        
+        .school-count { color: #666; font-size: 0.9em; }
+        .school-count span { color: #a92122; font-weight: bold; }
+        
+        .arrow {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a92122;
+            font-size: 1.5em;
+        }
+        
+        /* 详情页 */
+        .detail-page {
+            display: none;
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(169,33,34,0.2);
+        }
+        
+        .detail-page.active { display: block; }
+        
+        .detail-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #deded8;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(184, 164, 216, 0.4); }
+        
+        .detail-title {
+            font-size: 1.8em;
+            color: #17191d;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .detail-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .detail-tag {
+            padding: 5px 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .detail-tag.level-985 { background: #e74c3c; color: #fff; }
+        .detail-tag.level-211 { background: #8b5cf6; color: #fff; }
+        .detail-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
+        .detail-tag.province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
+        
+        .detail-count {
+            background: linear-gradient(135deg, #a92122 0%, #c0392b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .charts-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .chart-card {
+            background: #f8f8f6;
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 0;
+        }
+        
+        .chart-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #17191d;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 450px;
+        }
+        
+        .detail-filters {
+            background: #f8f8f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .source-item {
+            background: #f8f8f6;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #a92122;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .source-item:hover {
+            background: #F0EBF3;
+            transform: translateX(5px);
+        }
+        
+        .source-info { flex: 1; }
+        .source-name { color: #17191d; font-weight: 500; margin-bottom: 5px; }
+        
+        .source-tags {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .source-tag {
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .source-tag.level-985 { background: #e74c3c; color: #fff; }
+        .source-tag.level-211 { background: #8b5cf6; color: #fff; }
+        .source-tag.level-双非 { background: #e5e7eb; color: #6b7280; }
+        .source-tag.province-tag { background: linear-gradient(135deg, #a92122, #a92122); }
+        
+        .source-count {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: linear-gradient(135deg, #a92122, #c0392b);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(184, 164, 216, 0.3);
+        }
+        
+        .main-page { display: block; }
+        .main-page.hidden { display: none; }
+        
+        .no-result {
+            text-align: center;
+            color: #777a80;
+            padding: 40px;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .school-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
+            .stats { gap: 15px; }
+            .school-header { flex-direction: column; align-items: flex-start; }
+            .school-tags { margin-left: 0; margin-top: 8px; }
+            .detail-header { flex-direction: column; align-items: flex-start; }
+            .charts-section { grid-template-columns: 1fr; }
+        }
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: #6a6a7a;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 15px;
+        }
+        .back-home-btn:hover {
+            background: #f1f5f9;
+            border-color: #6a6a7a;
+            color: #334155;
+        }
+.signal-pulse{position:fixed;pointer-events:none;z-index:9999;width:12px;height:12px;border:2px solid #a92122;border-radius:50%;animation:signalPulse .7s ease-out forwards;}
+@keyframes signalPulse{0%{transform:scale(.4);opacity:.9;}100%{transform:scale(9);opacity:0;}}
+    </style>
+
+
+<link rel="stylesheet" href="mobile-function-shell.css?v=20260814-theme-purple">
+<link rel="stylesheet" href="theme-global.css">
+</head>
+<body>
+    <!-- 导航历史记录 -->
+    <script>
+    (function(){
+      const key = 'navHistory';
+      let history = [];
+      try {
+        const saved = sessionStorage.getItem(key);
+        if(saved) history = JSON.parse(saved);
+      }catch(e){}
+      const current = location.href;
+      if(history.length === 0 || history[history.length-1] !== current){
+        history.push(current);
+        sessionStorage.setItem(key, JSON.stringify(history));
+      }
+      window.goBack = function(){
+        if(history.length <= 1) return;
+        history.pop();
+        const prev = history[history.length-1];
+        if(prev){ sessionStorage.setItem(key, JSON.stringify(history)); location.href = prev; }
+      };
+      window.hasBack = function(){ return history.length > 1; };
+    })();
+    </script>
+    <div class="container">
+        <div class="flex gap-2 mb-4">
+            <button class="back-home-btn" onclick="siteHistoryBack('./index.html')" id="backBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                返回上一级
+            </button>
+            <a href="./index.html" class="back-home-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                返回首页
+            </a>
+        </div>
+        <div class="header">
+            <h1>📡 控制类考研各院校生源地图</h1>
+            <p>所有数据来自于26考研水木观畴考研分数排名系统</p>
+        </div>
+        
+        <!-- 主页面 -->
+        <div class="main-page" id="mainPage">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 搜索院校名称..." oninput="filterSchools()">
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-group">
+                    <span class="filter-label">🗺️ 地区筛选（点击地区筛选，也可展开选具体省份）</span>
+                    <div class="filter-buttons" id="regionButtons">
+<button class="filter-btn region-btn active" data-region="全部" onclick="filterByRegion('全部')">全部</button>
+<button class="filter-btn region-btn " data-region="西南地区" onclick="filterByRegion('西南地区')">西南地区</button>
+<button class="filter-btn region-btn " data-region="山河四省" onclick="filterByRegion('山河四省')">山河四省</button>
+<button class="filter-btn region-btn " data-region="京津地区" onclick="filterByRegion('京津地区')">京津地区</button>
+<button class="filter-btn region-btn " data-region="华中地区" onclick="filterByRegion('华中地区')">华中地区</button>
+<button class="filter-btn region-btn " data-region="江浙沪地区" onclick="filterByRegion('江浙沪地区')">江浙沪地区</button>
+<button class="filter-btn region-btn " data-region="华南地区" onclick="filterByRegion('华南地区')">华南地区</button>
+<button class="filter-btn region-btn " data-region="西北地区" onclick="filterByRegion('西北地区')">西北地区</button>
+<button class="filter-btn region-btn " data-region="东北地区" onclick="filterByRegion('东北地区')">东北地区</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">📍 省份筛选</span>
+                    <div class="filter-buttons" id="provinceButtons">
+<button class="filter-btn province-btn active" data-filter="全部" onclick="filterByProvince('全部')">全部</button>
+<button class="filter-btn province-btn " data-filter="上海" onclick="filterByProvince('上海')">上海</button>
+<button class="filter-btn province-btn " data-filter="云南" onclick="filterByProvince('云南')">云南</button>
+<button class="filter-btn province-btn " data-filter="内蒙古" onclick="filterByProvince('内蒙古')">内蒙古</button>
+<button class="filter-btn province-btn " data-filter="北京" onclick="filterByProvince('北京')">北京</button>
+<button class="filter-btn province-btn " data-filter="吉林" onclick="filterByProvince('吉林')">吉林</button>
+<button class="filter-btn province-btn " data-filter="四川" onclick="filterByProvince('四川')">四川</button>
+<button class="filter-btn province-btn " data-filter="天津" onclick="filterByProvince('天津')">天津</button>
+<button class="filter-btn province-btn " data-filter="宁夏" onclick="filterByProvince('宁夏')">宁夏</button>
+<button class="filter-btn province-btn " data-filter="安徽" onclick="filterByProvince('安徽')">安徽</button>
+<button class="filter-btn province-btn " data-filter="山东" onclick="filterByProvince('山东')">山东</button>
+<button class="filter-btn province-btn " data-filter="山西" onclick="filterByProvince('山西')">山西</button>
+<button class="filter-btn province-btn " data-filter="广东" onclick="filterByProvince('广东')">广东</button>
+<button class="filter-btn province-btn " data-filter="广西" onclick="filterByProvince('广西')">广西</button>
+<button class="filter-btn province-btn " data-filter="新疆" onclick="filterByProvince('新疆')">新疆</button>
+<button class="filter-btn province-btn " data-filter="江苏" onclick="filterByProvince('江苏')">江苏</button>
+<button class="filter-btn province-btn " data-filter="江西" onclick="filterByProvince('江西')">江西</button>
+<button class="filter-btn province-btn " data-filter="河北" onclick="filterByProvince('河北')">河北</button>
+<button class="filter-btn province-btn " data-filter="河南" onclick="filterByProvince('河南')">河南</button>
+<button class="filter-btn province-btn " data-filter="浙江" onclick="filterByProvince('浙江')">浙江</button>
+<button class="filter-btn province-btn " data-filter="海南" onclick="filterByProvince('海南')">海南</button>
+<button class="filter-btn province-btn " data-filter="湖北" onclick="filterByProvince('湖北')">湖北</button>
+<button class="filter-btn province-btn " data-filter="湖南" onclick="filterByProvince('湖南')">湖南</button>
+<button class="filter-btn province-btn " data-filter="甘肃" onclick="filterByProvince('甘肃')">甘肃</button>
+<button class="filter-btn province-btn " data-filter="福建" onclick="filterByProvince('福建')">福建</button>
+<button class="filter-btn province-btn " data-filter="贵州" onclick="filterByProvince('贵州')">贵州</button>
+<button class="filter-btn province-btn " data-filter="辽宁" onclick="filterByProvince('辽宁')">辽宁</button>
+<button class="filter-btn province-btn " data-filter="重庆" onclick="filterByProvince('重庆')">重庆</button>
+<button class="filter-btn province-btn " data-filter="陕西" onclick="filterByProvince('陕西')">陕西</button>
+<button class="filter-btn province-btn " data-filter="黑龙江" onclick="filterByProvince('黑龙江')">黑龙江</button>
+<button class="filter-btn province-btn " data-filter="其他" onclick="filterByProvince('其他')">其他</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">🏷️ 院校层次筛选</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-level="all" onclick="filterByLevel('all')">全部</button>
+                        <button class="filter-btn" data-level="985" onclick="filterByLevel('985')">985</button>
+                        <button class="filter-btn" data-level="211" onclick="filterByLevel('211')">211</button>
+                        <button class="filter-btn" data-level="双非" onclick="filterByLevel('双非')">双非</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number" id="statTotal">172</div>
+                    <div class="label">目标院校</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="statVisible">172</div>
+                    <div class="label">当前显示</div>
+                </div>
+            </div>
+            
+            <div class="school-grid" id="schoolGrid">
+
+                <div class="school-card" data-name="(10701)西安电子科技大学" data-level="211" data-province="陕西" onclick="showDetail('(10701)西安电子科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安电子科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10701)西安电子科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>48</span> 所 (去重后) / <span>49</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10617)重庆邮电大学" data-level="双非" data-province="重庆" onclick="showDetail('(10617)重庆邮电大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/重庆邮电大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10617)重庆邮电大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">重庆</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>117</span> 所 (去重后) / <span>117</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10386)福州大学" data-level="211" data-province="福建" onclick="showDetail('(10386)福州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/福州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10386)福州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">福建</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>91</span> 所 (去重后) / <span>92</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10403)南昌大学" data-level="211" data-province="江西" onclick="showDetail('(10403)南昌大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南昌大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10403)南昌大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>67</span> 所 (去重后) / <span>67</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10300)南京信息工程大学" data-level="双非" data-province="江苏" onclick="showDetail('(10300)南京信息工程大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京信息工程大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10300)南京信息工程大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>105</span> 所 (去重后) / <span>107</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10293)南京邮电大学" data-level="双非" data-province="江苏" onclick="showDetail('(10293)南京邮电大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京邮电大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10293)南京邮电大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>137</span> 所 (去重后) / <span>256</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11664)西安邮电大学" data-level="双非" data-province="陕西" onclick="showDetail('(11664)西安邮电大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安邮电大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11664)西安邮电大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>141</span> 所 (去重后) / <span>221</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10613)西南交通大学" data-level="211" data-province="四川" onclick="showDetail('(10613)西南交通大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西南交通大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10613)西南交通大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>106</span> 所 (去重后) / <span>196</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10336)杭州电子科技大学" data-level="双非" data-province="浙江" onclick="showDetail('(10336)杭州电子科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/杭州电子科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10336)杭州电子科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>113</span> 所 (去重后) / <span>113</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10217)哈尔滨工程大学" data-level="211" data-province="黑龙江" onclick="showDetail('(10217)哈尔滨工程大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/哈尔滨工程大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10217)哈尔滨工程大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>100</span> 所 (去重后) / <span>100</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10614)电子科技大学" data-level="985" data-province="四川" onclick="showDetail('(10614)电子科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/电子科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10614)电子科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>91</span> 所 (去重后) / <span>95</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10423)中国海洋大学" data-level="985" data-province="山东" onclick="showDetail('(10423)中国海洋大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国海洋大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10423)中国海洋大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>89</span> 所 (去重后) / <span>138</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10213)哈尔滨工业大学" data-level="985" data-province="黑龙江" onclick="showDetail('(10213)哈尔滨工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/哈尔滨工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10213)哈尔滨工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>92</span> 所 (去重后) / <span>95</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10288)南京理工大学" data-level="211" data-province="江苏" onclick="showDetail('(10288)南京理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10288)南京理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>128</span> 所 (去重后) / <span>130</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10285)苏州大学" data-level="211" data-province="江苏" onclick="showDetail('(10285)苏州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/苏州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10285)苏州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>76</span> 所 (去重后) / <span>109</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10286)东南大学" data-level="985" data-province="江苏" onclick="showDetail('(10286)东南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10286)东南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>254</span> 所 (去重后) / <span>305</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10699)西北工业大学" data-level="985" data-province="陕西" onclick="showDetail('(10699)西北工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西北工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10699)西北工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>63</span> 所 (去重后) / <span>101</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10007)北京理工大学" data-level="985" data-province="北京" onclick="showDetail('(10007)北京理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10007)北京理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>64</span> 所 (去重后) / <span>98</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10611)重庆大学" data-level="985" data-province="重庆" onclick="showDetail('(10611)重庆大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/重庆大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10611)重庆大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">重庆</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>63</span> 所 (去重后) / <span>95</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10357)安徽大学" data-level="211" data-province="安徽" onclick="showDetail('(10357)安徽大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/安徽大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10357)安徽大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>49</span> 所 (去重后) / <span>49</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10294)河海大学" data-level="211" data-province="江苏" onclick="showDetail('(10294)河海大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/河海大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10294)河海大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>71</span> 所 (去重后) / <span>71</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10033)中国传媒大学" data-level="211" data-province="北京" onclick="showDetail('(10033)中国传媒大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国传媒大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10033)中国传媒大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>67</span> 所 (去重后) / <span>87</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10359)合肥工业大学" data-level="211" data-province="安徽" onclick="showDetail('(10359)合肥工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/合肥工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10359)合肥工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>58</span> 所 (去重后) / <span>85</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10287)南京航空航天大学" data-level="211" data-province="江苏" onclick="showDetail('(10287)南京航空航天大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京航空航天大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10287)南京航空航天大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>70</span> 所 (去重后) / <span>70</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10384)厦门大学" data-level="985" data-province="福建" onclick="showDetail('(10384)厦门大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/厦门大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10384)厦门大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">福建</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>15</span> 所 (去重后) / <span>15</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10056)天津大学" data-level="985" data-province="天津" onclick="showDetail('(10056)天津大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/天津大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10056)天津大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>42</span> 所 (去重后) / <span>70</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10532)湖南大学" data-level="985" data-province="湖南" onclick="showDetail('(10532)湖南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/湖南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10532)湖南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>42</span> 所 (去重后) / <span>64</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10491)中国地质大学(武汉)" data-level="双非" data-province="湖北" onclick="showDetail('(10491)中国地质大学(武汉)')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国地质大学(武汉).jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10491)中国地质大学(武汉)</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>44</span> 所 (去重后) / <span>64</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10425)中国石油大学(华东)" data-level="双非" data-province="山东" onclick="showDetail('(10425)中国石油大学(华东)')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国石油大学(华东).jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10425)中国石油大学(华东)</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>44</span> 所 (去重后) / <span>63</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11845)广东工业大学" data-level="双非" data-province="广东" onclick="showDetail('(11845)广东工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/广东工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11845)广东工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>86</span> 所 (去重后) / <span>86</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10290)中国矿业大学" data-level="211" data-province="江苏" onclick="showDetail('(10290)中国矿业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国矿业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10290)中国矿业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>108</span> 所 (去重后) / <span>109</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11646)宁波大学" data-level="双非" data-province="浙江" onclick="showDetail('(11646)宁波大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/宁波大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11646)宁波大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>50</span> 所 (去重后) / <span>58</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10595)桂林电子科技大学" data-level="双非" data-province="广西" onclick="showDetail('(10595)桂林电子科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/桂林电子科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10595)桂林电子科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>42</span> 所 (去重后) / <span>58</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10698)西安交通大学" data-level="985" data-province="陕西" onclick="showDetail('(10698)西安交通大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安交通大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10698)西安交通大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>32</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10058)天津工业大学" data-level="双非" data-province="天津" onclick="showDetail('(10058)天津工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/天津工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10058)天津工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>95</span> 所 (去重后) / <span>95</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11415)中国地质大学(北京)" data-level="双非" data-province="北京" onclick="showDetail('(11415)中国地质大学(北京)')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国地质大学(北京).jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11415)中国地质大学(北京)</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>41</span> 所 (去重后) / <span>47</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10542)湖南师范大学" data-level="211" data-province="湖南" onclick="showDetail('(10542)湖南师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/湖南师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10542)湖南师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>29</span> 所 (去重后) / <span>44</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10657)贵州大学" data-level="211" data-province="贵州" onclick="showDetail('(10657)贵州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/贵州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10657)贵州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">贵州</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>33</span> 所 (去重后) / <span>41</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10486)武汉大学" data-level="985" data-province="湖北" onclick="showDetail('(10486)武汉大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/武汉大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10486)武汉大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>28</span> 所 (去重后) / <span>40</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10487)华中科技大学" data-level="985" data-province="湖北" onclick="showDetail('(10487)华中科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华中科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10487)华中科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>37</span> 所 (去重后) / <span>38</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10295)江南大学" data-level="211" data-province="江苏" onclick="showDetail('(10295)江南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/江南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10295)江南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>71</span> 所 (去重后) / <span>71</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10589)海南大学" data-level="211" data-province="海南" onclick="showDetail('(10589)海南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/海南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10589)海南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">海南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>37</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10558)中山大学" data-level="985" data-province="广东" onclick="showDetail('(10558)中山大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中山大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10558)中山大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>32</span> 所 (去重后) / <span>36</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10112)太原理工大学" data-level="211" data-province="山西" onclick="showDetail('(10112)太原理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/太原理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10112)太原理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">山西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>36</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10005)北京工业大学" data-level="211" data-province="北京" onclick="showDetail('(10005)北京工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10005)北京工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>113</span> 所 (去重后) / <span>115</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10269)华东师范大学" data-level="985" data-province="上海" onclick="showDetail('(10269)华东师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华东师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10269)华东师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>34</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10079)华北电力大学(保定)" data-level="双非" data-province="河北" onclick="showDetail('(10079)华北电力大学(保定)')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华北电力大学(保定).jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10079)华北电力大学(保定)</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>20</span> 所 (去重后) / <span>30</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10497)武汉理工大学" data-level="211" data-province="湖北" onclick="showDetail('(10497)武汉理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/武汉理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10497)武汉理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>23</span> 所 (去重后) / <span>28</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10055)南开大学" data-level="985" data-province="天津" onclick="showDetail('(10055)南开大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南开大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10055)南开大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>19</span> 所 (去重后) / <span>19</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10013)北京邮电大学" data-level="211" data-province="北京" onclick="showDetail('(10013)北京邮电大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京邮电大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10013)北京邮电大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>51</span> 所 (去重后) / <span>51</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10710)长安大学" data-level="211" data-province="陕西" onclick="showDetail('(10710)长安大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/长安大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10710)长安大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>55</span> 所 (去重后) / <span>57</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10054)华北电力大学" data-level="211" data-province="河北" onclick="showDetail('(10054)华北电力大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华北电力大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10054)华北电力大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>55</span> 所 (去重后) / <span>60</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(14430)中国科学院大学" data-level="双非" data-province="北京" onclick="showDetail('(14430)中国科学院大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国科学院大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(14430)中国科学院大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>63</span> 所 (去重后) / <span>63</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10621)成都信息工程大学" data-level="双非" data-province="四川" onclick="showDetail('(10621)成都信息工程大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/成都信息工程大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10621)成都信息工程大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>15</span> 所 (去重后) / <span>17</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10616)成都理工大学" data-level="双非" data-province="四川" onclick="showDetail('(10616)成都理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/成都理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10616)成都理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>13</span> 所 (去重后) / <span>16</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10422)山东大学" data-level="985" data-province="山东" onclick="showDetail('(10422)山东大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/山东大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10422)山东大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>12</span> 所 (去重后) / <span>16</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10256)上海电力大学" data-level="双非" data-province="上海" onclick="showDetail('(10256)上海电力大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10256)上海电力大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>15</span> 所 (去重后) / <span>16</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10574)华南师范大学" data-level="211" data-province="广东" onclick="showDetail('(10574)华南师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华南师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10574)华南师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>14</span> 所 (去重后) / <span>15</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10004)北京交通大学" data-level="211" data-province="北京" onclick="showDetail('(10004)北京交通大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京交通大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10004)北京交通大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>26</span> 所 (去重后) / <span>26</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10700)西安理工大学" data-level="双非" data-province="陕西" onclick="showDetail('(10700)西安理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10700)西安理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>14</span> 所 (去重后) / <span>14</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10533)中南大学" data-level="985" data-province="湖南" onclick="showDetail('(10533)中南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10533)中南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>59</span> 所 (去重后) / <span>60</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10337)浙江工业大学" data-level="双非" data-province="浙江" onclick="showDetail('(10337)浙江工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/浙江工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10337)浙江工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>54</span> 所 (去重后) / <span>55</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10225)东北林业大学" data-level="211" data-province="黑龙江" onclick="showDetail('(10225)东北林业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东北林业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10225)东北林业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>13</span> 所 (去重后) / <span>14</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10319)南京师范大学" data-level="211" data-province="江苏" onclick="showDetail('(10319)南京师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10319)南京师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>11</span> 所 (去重后) / <span>12</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10145)东北大学" data-level="985" data-province="辽宁" onclick="showDetail('(10145)东北大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东北大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10145)东北大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>159</span> 所 (去重后) / <span>164</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10424)山东科技大学" data-level="双非" data-province="山东" onclick="showDetail('(10424)山东科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/山东科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10424)山东科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>7</span> 所 (去重后) / <span>11</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10406)南昌航空大学" data-level="双非" data-province="江西" onclick="showDetail('(10406)南昌航空大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南昌航空大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10406)南昌航空大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>7</span> 所 (去重后) / <span>11</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10358)中国科学技术大学" data-level="985" data-province="安徽" onclick="showDetail('(10358)中国科学技术大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国科学技术大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10358)中国科学技术大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>15</span> 所 (去重后) / <span>15</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10255)东华大学" data-level="211" data-province="上海" onclick="showDetail('(10255)东华大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东华大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10255)东华大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>53</span> 所 (去重后) / <span>53</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10183)吉林大学" data-level="985" data-province="吉林" onclick="showDetail('(10183)吉林大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/吉林大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10183)吉林大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">吉林</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>9</span> 所 (去重后) / <span>10</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10561)华南理工大学" data-level="985" data-province="广东" onclick="showDetail('(10561)华南理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华南理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10561)华南理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>9</span> 所 (去重后) / <span>9</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10530)湘潭大学" data-level="双非" data-province="湖南" onclick="showDetail('(10530)湘潭大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/湘潭大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10530)湘潭大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>6</span> 所 (去重后) / <span>9</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10511)华中师范大学" data-level="211" data-province="湖北" onclick="showDetail('(10511)华中师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华中师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10511)华中师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>9</span> 所 (去重后) / <span>9</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10356)中国计量大学" data-level="双非" data-province="浙江" onclick="showDetail('(10356)中国计量大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国计量大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10356)中国计量大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>89</span> 所 (去重后) / <span>90</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10284)南京大学" data-level="985" data-province="江苏" onclick="showDetail('(10284)南京大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10284)南京大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>8</span> 所 (去重后) / <span>8</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(92002)国防科技大学" data-level="985" data-province="湖南" onclick="showDetail('(92002)国防科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/国防科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(92002)国防科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>22</span> 所 (去重后) / <span>22</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10755)新疆大学" data-level="211" data-province="新疆" onclick="showDetail('(10755)新疆大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/新疆大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10755)新疆大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">新疆</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>7</span> 所 (去重后) / <span>7</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10459)郑州大学" data-level="211" data-province="河南" onclick="showDetail('(10459)郑州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/郑州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10459)郑州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">河南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>72</span> 所 (去重后) / <span>74</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10212)黑龙江大学" data-level="双非" data-province="黑龙江" onclick="showDetail('(10212)黑龙江大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/黑龙江大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10212)黑龙江大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>6</span> 所 (去重后) / <span>7</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10110)中北大学" data-level="双非" data-province="山西" onclick="showDetail('(10110)中北大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中北大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10110)中北大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>7</span> 所 (去重后) / <span>7</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10080)河北工业大学" data-level="211" data-province="河北" onclick="showDetail('(10080)河北工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/河北工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10080)河北工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>61</span> 所 (去重后) / <span>62</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(14325)南方科技大学" data-level="双非" data-province="广东" onclick="showDetail('(14325)南方科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南方科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(14325)南方科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>6</span> 所 (去重后) / <span>6</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10673)云南大学" data-level="211" data-province="云南" onclick="showDetail('(10673)云南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/云南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10673)云南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">云南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>6</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10564)华南农业大学" data-level="双非" data-province="广东" onclick="showDetail('(10564)华南农业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华南农业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10564)华南农业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>6</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10353)浙江工商大学" data-level="双非" data-province="浙江" onclick="showDetail('(10353)浙江工商大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/浙江工商大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10353)浙江工商大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>6</span> 所 (去重后) / <span>6</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10335)浙江大学" data-level="985" data-province="浙江" onclick="showDetail('(10335)浙江大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/浙江大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10335)浙江大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>24</span> 所 (去重后) / <span>24</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10280)上海大学" data-level="211" data-province="上海" onclick="showDetail('(10280)上海大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/上海大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10280)上海大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>62</span> 所 (去重后) / <span>62</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10251)华东理工大学" data-level="211" data-province="上海" onclick="showDetail('(10251)华东理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华东理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10251)华东理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>69</span> 所 (去重后) / <span>69</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10151)大连海事大学" data-level="211" data-province="辽宁" onclick="showDetail('(10151)大连海事大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/大连海事大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10151)大连海事大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>6</span> 所 (去重后) / <span>6</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10709)西安工程大学" data-level="双非" data-province="陕西" onclick="showDetail('(10709)西安工程大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安工程大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10709)西安工程大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10610)四川大学" data-level="985" data-province="四川" onclick="showDetail('(10610)四川大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/四川大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10610)四川大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10590)深圳大学" data-level="双非" data-province="广东" onclick="showDetail('(10590)深圳大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/深圳大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10590)深圳大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10559)暨南大学" data-level="211" data-province="广东" onclick="showDetail('(10559)暨南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/暨南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10559)暨南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10385)华侨大学" data-level="双非" data-province="福建" onclick="showDetail('(10385)华侨大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华侨大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10385)华侨大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">福建</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10010)北京化工大学" data-level="211" data-province="北京" onclick="showDetail('(10010)北京化工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京化工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10010)北京化工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>5</span> 所 (去重后) / <span>5</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11232)北京信息科技大学" data-level="双非" data-province="北京" onclick="showDetail('(11232)北京信息科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京信息科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11232)北京信息科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10635)西南大学" data-level="双非" data-province="重庆" onclick="showDetail('(10635)西南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10635)西南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">重庆</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10536)长沙理工大学" data-level="双非" data-province="湖南" onclick="showDetail('(10536)长沙理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/长沙理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10536)长沙理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10246)复旦大学" data-level="985" data-province="上海" onclick="showDetail('(10246)复旦大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/复旦大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10246)复旦大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10186)长春理工大学" data-level="双非" data-province="吉林" onclick="showDetail('(10186)长春理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/长春理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10186)长春理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">吉林</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10108)山西大学" data-level="双非" data-province="山西" onclick="showDetail('(10108)山西大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/山西大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10108)山西大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>36</span> 所 (去重后) / <span>36</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10006)北京航空航天大学" data-level="985" data-province="北京" onclick="showDetail('(10006)北京航空航天大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京航空航天大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10006)北京航空航天大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>4</span> 所 (去重后) / <span>4</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10697)西北大学" data-level="211" data-province="陕西" onclick="showDetail('(10697)西北大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西北大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10697)西北大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10593)广西大学" data-level="211" data-province="广西" onclick="showDetail('(10593)广西大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/广西大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10593)广西大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">广西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10489)长江大学" data-level="双非" data-province="湖北" onclick="showDetail('(10489)长江大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/长江大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10489)长江大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10338)浙江理工大学" data-level="双非" data-province="浙江" onclick="showDetail('(10338)浙江理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/浙江理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10338)浙江理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>30</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10307)南京农业大学" data-level="211" data-province="江苏" onclick="showDetail('(10307)南京农业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京农业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10307)南京农业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10248)上海交通大学" data-level="985" data-province="上海" onclick="showDetail('(10248)上海交通大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/上海交通大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10248)上海交通大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>11</span> 所 (去重后) / <span>11</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10143)沈阳航空航天大学" data-level="双非" data-province="辽宁" onclick="showDetail('(10143)沈阳航空航天大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/沈阳航空航天大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10143)沈阳航空航天大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10060)天津理工大学" data-level="双非" data-province="天津" onclick="showDetail('(10060)天津理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/天津理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10060)天津理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>3</span> 所 (去重后) / <span>3</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11660)重庆理工大学" data-level="双非" data-province="重庆" onclick="showDetail('(11660)重庆理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/重庆理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11660)重庆理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">重庆</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11414)中国石油大学(北京)" data-level="双非" data-province="北京" onclick="showDetail('(11414)中国石油大学(北京)')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国石油大学(北京).jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11414)中国石油大学(北京)</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10704)西安科技大学" data-level="双非" data-province="陕西" onclick="showDetail('(10704)西安科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10704)西安科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10702)西安工业大学" data-level="双非" data-province="陕西" onclick="showDetail('(10702)西安工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10702)西安工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10615)西南石油大学" data-level="双非" data-province="四川" onclick="showDetail('(10615)西南石油大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西南石油大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10615)西南石油大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10538)中南林业科技大学" data-level="双非" data-province="湖南" onclick="showDetail('(10538)中南林业科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中南林业科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10538)中南林业科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10512)湖北大学" data-level="双非" data-province="湖北" onclick="showDetail('(10512)湖北大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10512)湖北大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10500)湖北工业大学" data-level="双非" data-province="湖北" onclick="showDetail('(10500)湖北工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/湖北工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10500)湖北工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10463)河南工业大学" data-level="双非" data-province="河南" onclick="showDetail('(10463)河南工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/河南工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10463)河南工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10460)河南理工大学" data-level="双非" data-province="河南" onclick="showDetail('(10460)河南理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/河南理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10460)河南理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10431)齐鲁工业大学" data-level="双非" data-province="山东" onclick="showDetail('(10431)齐鲁工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/齐鲁工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10431)齐鲁工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10429)青岛理工大学" data-level="双非" data-province="山东" onclick="showDetail('(10429)青岛理工大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10429)青岛理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10394)福建师范大学" data-level="双非" data-province="福建" onclick="showDetail('(10394)福建师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/福建师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10394)福建师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">福建</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10390)集美大学" data-level="双非" data-province="福建" onclick="showDetail('(10390)集美大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/集美大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10390)集美大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">福建</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10289)江苏科技大学" data-level="双非" data-province="江苏" onclick="showDetail('(10289)江苏科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/江苏科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10289)江苏科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10224)东北农业大学" data-level="211" data-province="黑龙江" onclick="showDetail('(10224)东北农业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东北农业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10224)东北农业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10214)哈尔滨理工大学" data-level="双非" data-province="黑龙江" onclick="showDetail('(10214)哈尔滨理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/哈尔滨理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10214)哈尔滨理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">黑龙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10082)河北科技大学" data-level="双非" data-province="河北" onclick="showDetail('(10082)河北科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/河北科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10082)河北科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10008)北京科技大学" data-level="211" data-province="北京" onclick="showDetail('(10008)北京科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10008)北京科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>2</span> 所 (去重后) / <span>2</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11819)东莞理工学院" data-level="双非" data-province="广东" onclick="showDetail('(11819)东莞理工学院')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东莞理工学院.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11819)东莞理工学院</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11276)南京工程学院" data-level="双非" data-province="江苏" onclick="showDetail('(11276)南京工程学院')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京工程学院.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11276)南京工程学院</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(11078)广州大学" data-level="双非" data-province="广东" onclick="showDetail('(11078)广州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/广州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(11078)广州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">广东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10749)宁夏大学" data-level="211" data-province="宁夏" onclick="showDetail('(10749)宁夏大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/宁夏大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10749)宁夏大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">宁夏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10730)兰州大学" data-level="985" data-province="甘肃" onclick="showDetail('(10730)兰州大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/兰州大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10730)兰州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">甘肃</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10718)陕西师范大学" data-level="211" data-province="陕西" onclick="showDetail('(10718)陕西师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/陕西师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10718)陕西师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10705)西安石油大学" data-level="双非" data-province="陕西" onclick="showDetail('(10705)西安石油大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西安石油大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10705)西安石油大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">陕西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10674)昆明理工大学" data-level="双非" data-province="云南" onclick="showDetail('(10674)昆明理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/昆明理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10674)昆明理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">云南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10619)西南科技大学" data-level="双非" data-province="四川" onclick="showDetail('(10619)西南科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/西南科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10619)西南科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">四川</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10524)中南民族大学" data-level="双非" data-province="湖北" onclick="showDetail('(10524)中南民族大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中南民族大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10524)中南民族大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10490)武汉工程大学" data-level="双非" data-province="湖北" onclick="showDetail('(10490)武汉工程大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/武汉工程大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10490)武汉工程大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10488)武汉科技大学" data-level="双非" data-province="湖北" onclick="showDetail('(10488)武汉科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/武汉科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10488)武汉科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">湖北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10475)河南大学" data-level="双非" data-province="河南" onclick="showDetail('(10475)河南大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10475)河南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河南</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10445)山东师范大学" data-level="双非" data-province="山东" onclick="showDetail('(10445)山东师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/山东师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10445)山东师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10427)济南大学" data-level="双非" data-province="山东" onclick="showDetail('(10427)济南大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/济南大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10427)济南大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">山东</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10414)江西师范大学" data-level="双非" data-province="江西" onclick="showDetail('(10414)江西师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/江西师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10414)江西师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10405)东华理工大学" data-level="双非" data-province="江西" onclick="showDetail('(10405)东华理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东华理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10405)东华理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10404)华东交通大学" data-level="双非" data-province="江西" onclick="showDetail('(10404)华东交通大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/华东交通大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10404)华东交通大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江西</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10370)安徽师范大学" data-level="双非" data-province="安徽" onclick="showDetail('(10370)安徽师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/安徽师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10370)安徽师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10364)安徽农业大学" data-level="双非" data-province="安徽" onclick="showDetail('(10364)安徽农业大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10364)安徽农业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10361)安徽理工大学" data-level="双非" data-province="安徽" onclick="showDetail('(10361)安徽理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/安徽理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10361)安徽理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">安徽</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10351)温州大学" data-level="双非" data-province="浙江" onclick="showDetail('(10351)温州大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10351)温州大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">浙江</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10291)南京工业大学" data-level="双非" data-province="江苏" onclick="showDetail('(10291)南京工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/南京工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10291)南京工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">江苏</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>57</span> 所 (去重后) / <span>63</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10254)上海海事大学" data-level="双非" data-province="上海" onclick="showDetail('(10254)上海海事大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/上海海事大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10254)上海海事大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10252)上海理工大学" data-level="双非" data-province="上海" onclick="showDetail('(10252)上海理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/上海理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10252)上海理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>15</span> 所 (去重后) / <span>15</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10200)东北师范大学" data-level="211" data-province="吉林" onclick="showDetail('(10200)东北师范大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/东北师范大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10200)东北师范大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">吉林</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10190)长春工业大学" data-level="双非" data-province="吉林" onclick="showDetail('(10190)长春工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/长春工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10190)长春工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">吉林</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10152)大连工业大学" data-level="双非" data-province="辽宁" onclick="showDetail('(10152)大连工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/大连工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10152)大连工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10144)沈阳理工大学" data-level="双非" data-province="辽宁" onclick="showDetail('(10144)沈阳理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/沈阳理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10144)沈阳理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10141)大连理工大学" data-level="985" data-province="辽宁" onclick="showDetail('(10141)大连理工大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/大连理工大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10141)大连理工大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">辽宁</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10128)内蒙古工业大学" data-level="双非" data-province="内蒙古" onclick="showDetail('(10128)内蒙古工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/内蒙古工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10128)内蒙古工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">内蒙古</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10107)石家庄铁道大学" data-level="双非" data-province="河北" onclick="showDetail('(10107)石家庄铁道大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/石家庄铁道大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10107)石家庄铁道大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10059)中国民航大学" data-level="双非" data-province="天津" onclick="showDetail('(10059)中国民航大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中国民航大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10059)中国民航大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10057)天津科技大学" data-level="双非" data-province="天津" onclick="showDetail('(10057)天津科技大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/天津科技大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10057)天津科技大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">天津</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10052)中央民族大学" data-level="985" data-province="北京" onclick="showDetail('(10052)中央民族大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/中央民族大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10052)中央民族大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10041)中国人民公安大学" data-level="双非" data-province="北京" onclick="showDetail('(10041)中国人民公安大学')">
+                    <div class="school-header">
+                        <div class="school-name">(10041)中国人民公安大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10022)北京林业大学" data-level="211" data-province="北京" onclick="showDetail('(10022)北京林业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京林业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10022)北京林业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10018)北京电子科技学院" data-level="双非" data-province="北京" onclick="showDetail('(10018)北京电子科技学院')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京电子科技学院.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10018)北京电子科技学院</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10009)北方工业大学" data-level="双非" data-province="北京" onclick="showDetail('(10009)北方工业大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北方工业大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10009)北方工业大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10001)北京大学" data-level="985" data-province="北京" onclick="showDetail('(10001)北京大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/北京大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10001)北京大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">北京</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>1</span> 所 (去重后) / <span>1</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+                <div class="school-card" data-name="(10126)内蒙古大学" data-level="211" data-province="内蒙古" onclick="showDetail('(10126)内蒙古大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/内蒙古大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10126)内蒙古大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-211">211</span>
+                            <span class="tag province-tag">内蒙古</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>30</span> 所 (去重后) / <span>30</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10216)燕山大学" data-level="双非" data-province="河北" onclick="showDetail('(10216)燕山大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/燕山大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10216)燕山大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-双非">双非</span>
+                            <span class="tag province-tag">河北</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>63</span> 所 (去重后) / <span>73</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+                <div class="school-card" data-name="(10247)同济大学" data-level="985" data-province="上海" onclick="showDetail('(10247)同济大学')">
+                    <div class="school-header">
+                        <div class="school-name"><img src="专业课选择/images/校徽/同济大学.jpg" onerror="this.style.display='none'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">(10247)同济大学</div>
+                        <div class="school-tags">
+                            <span class="tag level-tag level-985">985</span>
+                            <span class="tag province-tag">上海</span>
+                        </div>
+                    </div>
+                    <div class="school-count">生源本科院校: <span>56</span> 所 (去重后) / <span>59</span> 人</div>
+                    <div class="arrow">›</div>
+                </div>
+
+            </div>
+            
+            <div class="no-result" id="noResult" style="display: none;">
+                <svg viewBox="0 0 24 24" style="width:40px;height:40px;display:block;margin:0 auto 10px;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg>
+                未找到匹配的院校
+            </div>
+        </div>
+        
+        <!-- 详情页 -->
+        <div class="detail-page" id="detailPage">
+            <div class="detail-header">
+                <div class="flex items-center gap-2 mb-2">
+                    <button class="back-btn" onclick="showMain()">← 返回列表</button>
+                    <a id="toZexiaoLink" href="./index.html" class="back-btn" style="background:linear-gradient(135deg,#a92122 0%,#c0392b 100%);color:#fff;border:none;text-decoration:none;display:inline-flex;align-items:center;">📊 查看择校数据</a>
+                </div>
+                <div class="detail-title" id="detailTitle"></div>
+                <div class="detail-tags" id="detailTags"></div>
+                <div class="detail-count" id="detailCount"></div>
+            </div>
+            
+            <div class="charts-section">
+                <div class="chart-card">
+                    <div class="chart-title">🏆 Top 10 生源院校</div>
+                    <div class="chart-container" id="schoolChart"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">🗺️ Top 10 生源省份</div>
+                    <div class="chart-container" id="provinceChart"></div>
+                </div>
+            </div>
+            
+            <div class="detail-filters">
+                <div class="filter-group">
+                    <span class="filter-label">🏷️ 生源层次筛选</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-src-level="all" onclick="filterSourcesByLevel('all')">全部</button>
+                        <button class="filter-btn" data-src-level="985" onclick="filterSourcesByLevel('985')">985</button>
+                        <button class="filter-btn" data-src-level="211" onclick="filterSourcesByLevel('211')">211</button>
+                        <button class="filter-btn" data-src-level="双非" onclick="filterSourcesByLevel('双非')">双非</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">🗺️ 生源地区筛选</span>
+                    <div class="filter-buttons" id="sourceRegionButtons"></div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">📍 生源省份筛选</span>
+                    <div class="filter-buttons" id="sourceProvinceButtons"></div>
+                </div>
+            </div>
+            
+            <div class="source-grid" id="sourceGrid"></div>
+        </div>
+    </div>
+    
+    <script src="data/school_source_map.js"></script>
+    <script>
+        const provinces = ["上海", "云南", "内蒙古", "北京", "吉林", "四川", "天津", "宁夏", "安徽", "山东", "山西", "广东", "广西", "新疆", "江苏", "江西", "河北", "河南", "浙江", "海南", "湖北", "湖南", "甘肃", "福建", "贵州", "辽宁", "重庆", "陕西", "黑龙江", "其他"];
+        const regionMap = {"西南地区": ["四川", "重庆", "贵州", "云南"], "山河四省": ["山西", "山东", "河南", "河北"], "京津地区": ["北京", "天津"], "华中地区": ["湖南", "湖北", "安徽", "江西"], "江浙沪地区": ["江苏", "浙江", "上海"], "华南地区": ["广东", "广西", "福建", "海南"], "西北地区": ["陕西", "甘肃", "宁夏", "新疆", "西藏", "内蒙古"], "东北地区": ["黑龙江", "吉林", "辽宁"]};
+
+        let currentLevelFilter = 'all';
+        let currentRegionFilter = '全部';
+        let currentProvinceFilter = '全部';
+        let currentDetailLevelFilter = 'all';
+        let currentDetailRegionFilter = '全部';
+        let currentDetailProvinceFilter = '全部';
+        let currentSchool = null;
+        let schoolChart = null;
+        let provinceChart = null;
+        
+        // 显示详情
+        function showDetail(schoolName) {
+            currentSchool = schoolName;
+            const data = window.schoolData[schoolName];
+            const targetInfo = data.target_info;
+            
+            document.getElementById('detailTitle').textContent = schoolName;
+            
+            // 更新"查看择校数据"链接
+            const schoolNameOnly = schoolName.replace(/^\(\d+\)/, '');
+            document.getElementById('toZexiaoLink').href = './index.html?school=' + encodeURIComponent(schoolNameOnly) + '&from=控制院校生源地图.html';
+            
+            const tagsHtml = `
+                <span class="detail-tag level-${targetInfo.level.toLowerCase()}">${targetInfo.level}</span>
+                <span class="detail-tag province-tag">${targetInfo.province}</span>
+            `;
+            document.getElementById('detailTags').innerHTML = tagsHtml;
+            document.getElementById('detailCount').textContent = `共 ${data.total_unique} 所生源院校 (去重后) / ${data.total_records} 条记录`;
+            
+            // 生成生源地区筛选按钮
+            const sourceRegions = [];
+            const seenRegions = new Set();
+            for (const src of data.sources) {
+                for (const [region, regionProvinces] of Object.entries(regionMap)) {
+                    if (regionProvinces.includes(src.province) && !seenRegions.has(region)) {
+                        seenRegions.add(region);
+                        sourceRegions.push(region);
+                        break;
+                    }
+                }
+            }
+            sourceRegions.sort();
+            sourceRegions.unshift('全部');
+            
+            let srcRegionButtons = '';
+            for (const r of sourceRegions) {
+                const active = r === '全部' ? 'active' : '';
+                srcRegionButtons += `<button class="filter-btn ${active}" onclick="filterSourcesByRegion('${r}')">${r}</button>`;
+            }
+            document.getElementById('sourceRegionButtons').innerHTML = srcRegionButtons;
+            
+            // 生成生源省份筛选按钮
+            const sourceProvinces = [];
+            const seen = new Set();
+            for (const src of data.sources) {
+                if (!seen.has(src.province)) {
+                    seen.add(src.province);
+                    sourceProvinces.push(src.province);
+                }
+            }
+            sourceProvinces.sort();
+            sourceProvinces.unshift('全部');
+            
+            let srcProvButtons = '';
+            for (const p of sourceProvinces) {
+                const active = p === '全部' ? 'active' : '';
+                srcProvButtons += `<button class="filter-btn ${active}" onclick="filterSourcesByProvince('${p}')">${p}</button>`;
+            }
+            document.getElementById('sourceProvinceButtons').innerHTML = srcProvButtons;
+            
+            currentDetailLevelFilter = 'all';
+            currentDetailRegionFilter = '全部';
+            currentDetailProvinceFilter = '全部';
+            document.querySelectorAll('[data-src-level]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-src-level="all"]').classList.add('active');
+            
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('detailPage').classList.add('active');
+            window.scrollTo(0, 0);
+            
+            setTimeout(() => {
+                renderCharts(data);
+                setTimeout(() => {
+                    if (schoolChart) schoolChart.resize();
+                    if (provinceChart) provinceChart.resize();
+                }, 200);
+            }, 300);
+            
+            renderSources();
+        }
+        
+        function renderCharts(data) {
+            const schoolChartDom = document.getElementById('schoolChart');
+            if (schoolChart) schoolChart.dispose();
+            schoolChart = echarts.init(schoolChartDom);
+            
+            const schoolNames = data.top10_schools.map(s => s.name);
+            const schoolCounts = data.top10_schools.map(s => s.count);
+            
+            schoolChart.setOption({
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function(params) {
+                        const idx = params[0].dataIndex;
+                        const fullName = data.top10_schools[idx].name;
+                        const count = params[0].value;
+                        return fullName + '<br/>出现次数: ' + count;
+                    }
+                },
+                grid: { left: '3%', right: '12%', bottom: '3%', top: '3%', containLabel: true },
+                xAxis: {
+                    type: 'value',
+                    name: '出现次数',
+                    nameLocation: 'end',
+                    axisLabel: { fontSize: 12 }
+                },
+                yAxis: {
+                    type: 'category',
+                    data: schoolNames,
+                    axisLabel: {
+                        fontSize: 12,
+                        width: 170,
+                        overflow: 'truncate',
+                        ellipsis: '..'
+                    },
+                    inverse: true
+                },
+                series: [{
+                    data: schoolCounts,
+                    type: 'bar',
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                            { offset: 0, color: '#a92122' },
+                            { offset: 1, color: '#c0392b' }
+                        ])
+                    },
+                    barWidth: '60%',
+                    label: { show: true, position: 'right', fontSize: 13, fontWeight: 'bold' }
+                }]
+            });
+            
+            const provinceChartDom = document.getElementById('provinceChart');
+            if (provinceChart) provinceChart.dispose();
+            provinceChart = echarts.init(provinceChartDom);
+            
+            const provinceNames = data.top10_provinces.map(p => p.name);
+            const provinceCounts = data.top10_provinces.map(p => p.count);
+            
+            provinceChart.setOption({
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function(params) {
+                        const idx = params[0].dataIndex;
+                        const fullName = data.top10_provinces[idx].name;
+                        const count = params[0].value;
+                        return fullName + '<br/>出现次数: ' + count;
+                    }
+                },
+                grid: { left: '8%', right: '5%', bottom: '8%', top: '8%', containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: provinceNames,
+                    axisLabel: { fontSize: 13, interval: 0 }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '出现次数',
+                    axisLabel: { fontSize: 12 }
+                },
+                series: [{
+                    data: provinceCounts,
+                    type: 'bar',
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#a92122' },
+                            { offset: 1, color: '#c0392b' }
+                        ])
+                    },
+                    barWidth: '55%',
+                    label: { show: true, position: 'top', fontSize: 13, fontWeight: 'bold' }
+                }]
+            });
+        }
+        
+        function renderSources() {
+            if (!currentSchool) return;
+            const data = window.schoolData[currentSchool];
+            let filtered = [...data.sources];
+            
+            if (currentDetailLevelFilter !== 'all') {
+                filtered = filtered.filter(s => s.level === currentDetailLevelFilter);
+            }
+            
+            if (currentDetailRegionFilter !== '全部') {
+                const regionProvinces = regionMap[currentDetailRegionFilter];
+                filtered = filtered.filter(s => regionProvinces && regionProvinces.includes(s.province));
+            }
+            
+            if (currentDetailProvinceFilter !== '全部') {
+                filtered = filtered.filter(s => s.province === currentDetailProvinceFilter);
+            }
+            
+            const grid = document.getElementById('sourceGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; color:#999; padding:40px;">😕 没有符合条件的生源院校</div>';
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(src => `
+                <a href="index.html?school=${encodeURIComponent(src.name)}" class="source-item" title="查看 ${src.name} 择校数据">
+                    <div class="source-info">
+                        <div class="source-name">${src.name}</div>
+                        <div class="source-tags">
+                            <span class="source-tag level-${src.level.toLowerCase()}">${src.level}</span>
+                            <span class="source-tag province-tag">${src.province}</span>
+                        </div>
+                    </div>
+                    ${src.count > 1 ? `<div class="source-count">${src.count}</div>` : ''}
+                </a>
+            `).join('');
+            
+            document.getElementById('detailCount').textContent = `共 ${filtered.length} 所生源院校 (筛选后)`;
+        }
+        
+        function filterSourcesByLevel(level) {
+            currentDetailLevelFilter = level;
+            document.querySelectorAll('[data-src-level]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-src-level="${level}"]`).classList.add('active');
+            renderSources();
+        }
+        
+        function filterSourcesByRegion(region) {
+            currentDetailRegionFilter = region;
+            const buttons = document.getElementById('sourceRegionButtons').querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === region);
+            });
+            
+            if (region !== '全部' && currentDetailProvinceFilter !== '全部') {
+                const regionProvinces = regionMap[region];
+                if (!regionProvinces.includes(currentDetailProvinceFilter)) {
+                    currentDetailProvinceFilter = '全部';
+                }
+            }
+            
+            updateSourceProvinceButtons();
+            renderSources();
+        }
+        
+        function updateSourceProvinceButtons() {
+            const provinceButtons = document.getElementById('sourceProvinceButtons').querySelectorAll('.filter-btn');
+            provinceButtons.forEach(btn => {
+                const province = btn.textContent;
+                if (province === '全部') {
+                    btn.style.display = 'inline-block';
+                    return;
+                }
+                
+                if (currentDetailRegionFilter === '全部') {
+                    btn.style.display = 'inline-block';
+                } else {
+                    const regionProvinces = regionMap[currentDetailRegionFilter];
+                    if (regionProvinces && regionProvinces.includes(province)) {
+                        btn.style.display = 'inline-block';
+                    } else {
+                        btn.style.display = 'none';
+                    }
+                }
+            });
+            
+            provinceButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === currentDetailProvinceFilter);
+            });
+        }
+        
+        function filterSourcesByProvince(province) {
+            currentDetailProvinceFilter = province;
+            const buttons = document.getElementById('sourceProvinceButtons').querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === province);
+            });
+            
+            if (province !== '全部') {
+                for (const [region, regionProvinces] of Object.entries(regionMap)) {
+                    if (regionProvinces.includes(province)) {
+                        currentDetailRegionFilter = region;
+                        const regionButtons = document.getElementById('sourceRegionButtons').querySelectorAll('.filter-btn');
+                        regionButtons.forEach(btn => {
+                            btn.classList.toggle('active', btn.textContent === region);
+                        });
+                        break;
+                    }
+                }
+            }
+            
+            updateSourceProvinceButtons();
+            renderSources();
+        }
+        
+        function showMain() {
+            document.getElementById('mainPage').classList.remove('hidden');
+            document.getElementById('detailPage').classList.remove('active');
+            currentSchool = null;
+            if (schoolChart) { schoolChart.dispose(); schoolChart = null; }
+            if (provinceChart) { provinceChart.dispose(); provinceChart = null; }
+        }
+        
+        function filterByRegion(region) {
+            currentRegionFilter = region;
+            
+            document.querySelectorAll('.region-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-region') === region);
+            });
+            
+            if (region !== '全部' && currentProvinceFilter !== '全部') {
+                const regionProvinces = regionMap[region];
+                if (!regionProvinces.includes(currentProvinceFilter)) {
+                    currentProvinceFilter = '全部';
+                }
+            }
+            
+            updateProvinceButtons();
+            applyFilters();
+        }
+        
+        function updateProvinceButtons() {
+            const provinceButtons = document.querySelectorAll('.province-btn');
+            provinceButtons.forEach(btn => {
+                const province = btn.getAttribute('data-filter');
+                if (province === '全部') {
+                    btn.style.display = 'inline-block';
+                    return;
+                }
+                
+                if (currentRegionFilter === '全部') {
+                    btn.style.display = 'inline-block';
+                } else {
+                    const regionProvinces = regionMap[currentRegionFilter];
+                    if (regionProvinces && regionProvinces.includes(province)) {
+                        btn.style.display = 'inline-block';
+                    } else {
+                        btn.style.display = 'none';
+                    }
+                }
+            });
+            
+            provinceButtons.forEach(btn => {
+                const province = btn.getAttribute('data-filter');
+                btn.classList.toggle('active', province === currentProvinceFilter);
+            });
+        }
+        
+        function filterByProvince(province) {
+            currentProvinceFilter = province;
+            
+            document.querySelectorAll('.province-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-filter') === province);
+            });
+            
+            if (province !== '全部') {
+                for (const [region, regionProvinces] of Object.entries(regionMap)) {
+                    if (regionProvinces.includes(province)) {
+                        currentRegionFilter = region;
+                        document.querySelectorAll('.region-btn').forEach(btn => {
+                            btn.classList.toggle('active', btn.getAttribute('data-region') === region);
+                        });
+                        break;
+                    }
+                }
+            }
+            
+            updateProvinceButtons();
+            applyFilters();
+        }
+        
+        function filterByLevel(level) {
+            currentLevelFilter = level;
+            document.querySelectorAll('[data-level]').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-level="${level}"]`).classList.add('active');
+            applyFilters();
+        }
+        
+        function filterSchools() {
+            applyFilters();
+        }
+        
+        function applyFilters() {
+            const keyword = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.school-card');
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const level = card.getAttribute('data-level');
+                const province = card.getAttribute('data-province');
+                
+                const matchKeyword = name.includes(keyword);
+                const matchLevel = currentLevelFilter === 'all' || level === currentLevelFilter;
+                const matchProvince = currentProvinceFilter === '全部' || province === currentProvinceFilter;
+                
+                let matchRegion = true;
+                if (currentRegionFilter !== '全部') {
+                    const regionProvinces = regionMap[currentRegionFilter];
+                    matchRegion = regionProvinces && regionProvinces.includes(province);
+                }
+                
+                if (matchKeyword && matchLevel && matchProvince && matchRegion) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('noResult').style.display = visibleCount > 0 ? 'none' : 'block';
+            document.getElementById('statVisible').textContent = visibleCount;
+        }
+        
+        window.addEventListener('resize', function() {
+            if (schoolChart) schoolChart.resize();
+            if (provinceChart) provinceChart.resize();
+        });
+        
+        function initSchoolData() {
+            // 防御性检查：如果数据尚未加载，则等待重试
+            if (!window.schoolData || typeof window.schoolData !== 'object') {
+                console.warn('[DEBUG] schoolData not ready, retrying...');
+                setTimeout(initSchoolData, 100);
+                return;
+            }
+
+            updateProvinceButtons();
+            
+            // 显示返回上一级按钮
+            const backBtn = document.getElementById('backBtn');
+            if(backBtn) backBtn.style.display = 'inline-flex';
+            
+            // URL参数解析：自动跳转到指定院校详情
+            const urlParams = new URLSearchParams(window.location.search);
+            const schoolParam = urlParams.get('school');
+            console.log('[DEBUG] initSchoolData called, schoolParam:', schoolParam);
+            console.log('[DEBUG] schoolData loaded, keys count:', Object.keys(window.schoolData).length);
+            if (schoolParam) {
+                // 在 schoolData 中查找匹配的学校（键名格式: (代码)学校名）
+                const keys = Object.keys(window.schoolData);
+                console.log("[DEBUG] schoolData keys count:", keys.length);
+                const matchedKey = keys.find(key => {
+                    const schoolName = key.replace(/^\(\d+\)/, ''); // 去掉代码前缀
+                    return schoolName === schoolParam;
+                });
+                console.log('[DEBUG] matchedKey:', matchedKey);
+                if (matchedKey) {
+                    setTimeout(() => {
+                        showDetail(matchedKey);
+                        // 滚动到详情区域
+                        const detailPage = document.getElementById('detailPage');
+                        if (detailPage) detailPage.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                }
+            }
+        }
+        // 页面加载完成后根据URL参数自动跳转详情
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initSchoolData);
+        } else {
+            initSchoolData();
+        }
+    </script>
+<!-- 单击空白处信号脉冲效果 -->
+<script>
+(function(){
+  const isInteractive = function(el){
+    if(!el) return false;
+    const tag = el.tagName;
+    if(['A','BUTTON','INPUT','SELECT','TEXTAREA','IMG','SVG','CANVAS','LABEL'].includes(tag)) return true;
+    const cls = el.className || '';
+    if(typeof cls === 'string' && /tag|clickable|btn|button|filter|select|nav-icon|back-btn|modal|chart|puppy|school-card|filter-btn/.test(cls)) return true;
+    if(el.closest && (el.closest('a') || el.closest('button') || el.closest('label'))) return true;
+    return false;
+  };
+  document.addEventListener('click', function(e){
+    if(isInteractive(e.target)) return;
+    const x = e.clientX, y = e.clientY;
+    // 控制红信号脉冲
+    const pulse = document.createElement('div');
+    pulse.className = 'signal-pulse';
+    pulse.style.left = (x - 6) + 'px';
+    pulse.style.top = (y - 6) + 'px';
+    document.body.appendChild(pulse);
+    setTimeout(() => pulse.remove(), 700);
+  });
+})();
+</script>
+<script src="ui-history-state.js"></script>
+<script src="navigation-history.js"></script>
+<script src="mobile-function-shell.js" data-root="."></script>
+</body>
+</html>
+
