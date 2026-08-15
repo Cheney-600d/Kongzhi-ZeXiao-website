@@ -31,7 +31,7 @@
 </head>
 <body>
 <h1>📱 控制考研择校站 · 手机端实时预览</h1>
-<div class="sub">真实页面渲染（127.0.0.1:8766）· 手机壳内可滚动 / 点击 / 浏览全站</div>
+<div class="sub">真实页面渲染（127.0.0.1:8765）· 手机壳内可滚动 / 点击 / 浏览全站</div>
 
 <div class="controls">
   <button class="ctl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
@@ -45,17 +45,23 @@
   <button class="pg active" data-url="index.html?intro=1">首页</button>
   <button class="pg" data-url="考研常识科普/index.html">常识科普</button>
   <button class="pg" data-url="考研常识科普/experience.html">经验贴</button>
+  <button class="pg" data-url="school_detail/index.html">院校详情库</button>
+  <button class="pg" data-url="school_detail/上海大学.html">院校详情(样例)</button>
   <button class="pg" data-url="院校PK.html">院校PK</button>
   <button class="pg" data-url="改考院校.html">改考院校</button>
   <button class="pg" data-url="专业课选择/考研专业课院校查询.html">专业课查询</button>
   <button class="pg" data-url="控制院校生源地图.html">生源地图</button>
   <button class="pg" data-url="heat_compare.html">热度对比</button>
+  <button class="pg" data-url="就业相关/就业去向index.html">就业去向</button>
+  <button class="pg" data-url="就业相关/job-listing/job-listing.html">校招岗位</button>
+  <button class="pg" data-url="AI课程/ai-course-overview/ai-course-overview.html">AI课程</button>
+  <button class="pg" data-url="复试全攻略/index.html">复试攻略</button>
 </div>
 
 <div class="phone">
   <span class="btn btn-vol1"></span><span class="btn btn-vol2"></span><span class="btn btn-power"></span>
   <div class="phone-screen">
-    <iframe id="frame" src="http://127.0.0.1:8766/index.html?intro=1" title="手机端实时预览"></iframe>
+    <iframe id="frame" src="http://127.0.0.1:8765/index.html?intro=1" title="手机端实时预览"></iframe>
     <div class="notch"></div>
   </div>
 </div>
@@ -67,7 +73,7 @@
 </div>
 
 <script>
-  var BASE = 'http://127.0.0.1:8766/';
+  var BASE = 'http://127.0.0.1:8765/';
   var frame = document.getElementById('frame');
   var currentUrl = 'index.html?intro=1';
 

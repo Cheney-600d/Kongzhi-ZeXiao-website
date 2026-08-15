@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -155,6 +155,13 @@
           <option value="电路">电路</option>
           <option value="其他">其他</option>
         </select>
+        <select id="filter-score">
+          <option value="">全部分数</option>
+          <option value="420+">总分 420+</option>
+          <option value="400-419">总分 400–419</option>
+          <option value="380-399">总分 380–399</option>
+          <option value="<380">总分 380 以下</option>
+        </select>
       </div>
       
       <!-- School Tags -->
@@ -301,15 +308,24 @@ function getConditionFilters() {
   const year = document.getElementById('filter-year').value;
   const level = document.getElementById('filter-level').value;
   const category = document.getElementById('filter-category').value;
-  return { search, year, level, category };
+  const score = document.getElementById('filter-score').value;
+  return { search, year, level, category, score };
 }
 
 function applyFilters(opts) {
-  const { search, year, level, category, school } = opts;
+  const { search, year, level, category, score, school } = opts;
   return POSTS.filter(p => {
     if (year && p.year !== year) return false;
     if (level && p.level !== level) return false;
     if (category && p.category !== category) return false;
+    if (score) {
+      const t = parseInt(p.total, 10);
+      if (isNaN(t)) return false;
+      if (score === '420+' && t < 420) return false;
+      if (score === '400-419' && (t < 400 || t > 419)) return false;
+      if (score === '380-399' && (t < 380 || t > 399)) return false;
+      if (score === '<380' && t >= 380) return false;
+    }
     if (school && p.school !== school) return false;
     if (search) {
       const text = (p.title + p.school + p.schoolShort + p.code + p.category + p.level).toLowerCase();
@@ -321,9 +337,9 @@ function applyFilters(opts) {
 
 // 根据当前筛选条件（不含院校），动态更新院校标签云
 function updateSchoolTags() {
-  const { search, year, level, category } = getConditionFilters();
+  const { search, year, level, category, score } = getConditionFilters();
   // 先过滤出满足条件（不含院校）的结果
-  const filtered = applyFilters({ search, year, level, category, school: '' });
+  const filtered = applyFilters({ search, year, level, category, score, school: '' });
   // 提取唯一院校并排序
   const schools = [...new Set(filtered.map(p => p.school))].filter(s => s !== '某985').sort();
   
@@ -338,20 +354,20 @@ function updateSchoolTags() {
 // 条件筛选变化时：更新标签云 + 渲染卡片
 function onConditionChange() {
   updateSchoolTags();
-  const { search, year, level, category } = getConditionFilters();
-  const filtered = applyFilters({ search, year, level, category, school: '' });
+  const { search, year, level, category, score } = getConditionFilters();
+  const filtered = applyFilters({ search, year, level, category, score, school: '' });
   renderPosts(filtered);
 }
 
 // 院校标签点击时：只渲染卡片（不更新标签云）
 function onSchoolClick(school) {
-  const { search, year, level, category } = getConditionFilters();
-  const filtered = applyFilters({ search, year, level, category, school });
+  const { search, year, level, category, score } = getConditionFilters();
+  const filtered = applyFilters({ search, year, level, category, score, school });
   renderPosts(filtered);
 }
 
 // 事件绑定：条件筛选框
-['search-input', 'filter-year', 'filter-level', 'filter-category'].forEach(id => {
+['search-input', 'filter-year', 'filter-level', 'filter-category', 'filter-score'].forEach(id => {
   const el = document.getElementById(id);
   if (!el) return;
   const eventType = (id === 'search-input') ? 'input' : 'change';
@@ -383,7 +399,8 @@ renderPosts(POSTS);
   });
 })();
 </script>
-<script src="../mobile-function-shell.js" data-root=".."></script>
+<script src="../nav-data.js"></script>
+<script src="../mobile-function-shell.js" data-root="..">
 </body>
 </html>
 

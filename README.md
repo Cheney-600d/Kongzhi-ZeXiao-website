@@ -3,7 +3,7 @@
 > 本文档是给后续接手开发的人/AI（如 Codex、Claude）看的快速上手说明。
 > **定位**：面向抖音私域引流业务的「控制工程考研择校」信息站。
 > **技术栈**：纯静态站 —— HTML + 原生 JS + ECharts/Chart.js + Tailwind，**无后端、无数据库、无构建步骤**。
-> 当前数据：**491 条记录 / 129 所学校**（`kaoyan_data.js`）。
+> 当前数据：**530 条记录 / 132 所学校**（`kaoyan_data.js`，来源：桌面《27考研择校宝典_录取数据表_0815.xlsx》）。
 
 ---
 
@@ -26,16 +26,16 @@ python serve.py 8000     # 静态文件服务 + 禁用缓存（避免浏览器�
 
 | 文件/目录 | 作用 | 什么时候动它 |
 |---|---|---|
-| `index.html` | 首页单页应用（HTML 结构 + 样式变量） | 改页面结构、品牌文案、**表格列宽(colgroup)**、主题色(`#B8A4D8` 等 CSS 变量) |
+| `index.html` | 首页单页应用（HTML 结构 + 样式变量） | 改页面结构、品牌文案、**表格列宽(colgroup)**、主题色(`#a92122` 考研红 等 CSS 变量) |
 | `index.js` | 全部渲染与交互（原生 JS + ECharts） | 改表格逻辑、筛选、热度榜、详情面板、图表 |
 | `kaoyan_data.js` | 首页主表数据（`window.KAOYAN_DATA`） | **改学校/分数数据**（也由脚本生成，见第四节） |
 | `zexiaobao_data.js` | 择校宝分数分布（详情面板直方图） | 由 `generate_zexiaobao_data.py` 生成，勿手改 |
 | `school_detail_data.js` | 院校弹窗/详情文字数据（简介、学科评估） | 改弹窗文字 |
 | `school_distributions.js` | 每校每方向分数分布 | 由 `generate_school_distributions.py` 生成 |
-| `school_detail/*.html` | 每所学校独立详情页（129 所） | 由脚本生成，勿手改 |
+| `school_detail/*.html` | 每所学校独立详情页（132 所） | 由脚本生成，勿手改 |
 | `vendor/` | 本地化的全部第三方库（ECharts/Chart.js/Tailwind/字体） | 一般不动 |
 | 各 `.py` | 数据生成管线（见第四节） | 数据源更新时 |
-| 内容目录 | `就业相关/ 专业课选择/ AI课程/ 考研常识科普/ 本科指南/ 复试全攻略/ 导师资料/` 等 | 编辑型子站内容 |
+| 内容目录 | `就业相关/ 专业课选择/ AI课程/ 考研常识科普/ 复试全攻略/` 等 | 编辑型子站内容 |
 
 ---
 
@@ -93,6 +93,9 @@ python serve.py 8000     # 静态文件服务 + 禁用缓存（避免浏览器�
 
 ## 四、数据更新管线（宝典/Excel → 网站）
 
+> ⚠️ **生成脚本位置已变更**：所有 `.py` 生成脚本已从仓库根目录移到 `C:\Users\51366\kaoyan-site-dev\`（避免被静态服务器外发）。运行下面命令前，先 `cd C:\Users\51366\kaoyan-site-dev`，或写全脚本路径。
+> **当前主用数据源 = 管线 B**（桌面《27考研择校宝典_录取数据表_0815.xlsx》），已适配 27 列新结构（用 `convert_0815.py`）。
+
 数据源头有两个，二选一（都用过，都可用）：
 
 **管线 A：Word 宝典 → 结构化 JSON → 站点数据**
@@ -109,7 +112,7 @@ python generate_school_distributions.py   # → school_distributions.js（详情
 
 **管线 B：Excel 录取数据表 → 站点数据**
 ```bash
-python convert_excel_data.py              # 桌面《27考研择校宝典_录取数据表.xlsx》→ kaoyan_data.js
+python convert_0815.py                     # 桌面《27考研择校宝典_录取数据表_0815.xlsx》→ kaoyan_data.js（27列新结构，530条/132校）
 ```
 
 **管线 C：parquet 原始分数 → 择校宝分布**
