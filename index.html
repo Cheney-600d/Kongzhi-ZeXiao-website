@@ -1238,8 +1238,6 @@ var _hmt = _hmt || [];
       <div id="heroChannels"></div>
     </div>
 
-    </div>
-
     <!-- 第二行：左侧头像+粉丝牌+平台图标 | 中间放大导航按钮 | 右侧广告+倒计时 -->
     <div style="display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:16px;gap:4px;">
       <!-- 左侧：头像（B站角标）+ 关于UP主 -->
@@ -1744,6 +1742,7 @@ var _hmt = _hmt || [];
 }
 .hero-channels .hc-links a{padding:7px 6px;gap:8px}
 .hero-channels .hc-links a .li-ico{width:15px;height:15px}
+@media(max-width:768px){body>.mb-6{flex-direction:column !important;gap:10px !important}body>.mb-6>#favBtn,body>.mb-6>.ad-course-link{width:100% !important;max-width:100% !important}body>.mb-6>.ad-course-link{order:-1 !important}}
 </style>
 <script src="nav-data.js"></script>
 <script src="nav-render.js"></script>

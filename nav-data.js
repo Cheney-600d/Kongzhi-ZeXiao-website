@@ -26,6 +26,7 @@ window.NAV_GROUPS = [
   { id: 'school', label: '择校决策', icon: 'target', items: [
     { href: '专业课选择/考研专业课院校查询.html', label: '专业课院校查询', icon: 'search' },
     { href: '院校PK.html', label: '院校 PK 对比', icon: 'scale' },
+    { href: 'school_detail/index.html', label: '院校详情库', icon: 'book' },
     { href: '控制院校生源地图.html', label: '院校生源地图', icon: 'map' },
     { href: 'heat_compare.html', label: '院校热度榜', icon: 'flame' },
     { href: '改考院校.html', label: '27 改考院校', icon: 'refresh' }

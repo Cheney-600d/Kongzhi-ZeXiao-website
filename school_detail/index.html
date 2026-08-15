@@ -22,8 +22,10 @@ main{max-width:1100px;margin:24px auto 40px;padding:0 20px}
 .card .ico{width:40px;height:40px;border-radius:10px;background:#fdf0f0;color:#e63946;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:10px}
 .card .t{font-weight:700;font-size:1.02rem;color:#17191d;margin-bottom:4px}
 .card .d{font-size:.82rem;color:#6a6a7a}
-.school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
-.school-grid a{display:block;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:.88rem;color:#17191d;text-decoration:none;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.school-grid a{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:7px 10px;font-size:.88rem;color:#17191d;text-decoration:none;transition:all .15s}
+.school-grid a img{width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#f5f4ef;border:1px solid #eee}
+.school-grid a span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .school-grid a:hover{border-color:#a92122;color:#a92122;box-shadow:0 3px 10px rgba(169,33,34,.12)}
 .search{max-width:480px;margin:0 auto 22px}
 .search input{width:100%;padding:12px 18px;border:1px solid #d5d5cf;border-radius:50px;font-size:.95rem;outline:none;box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -39,138 +41,138 @@ footer a{color:#a92122;text-decoration:none}
   <p>逐校查看控制类考研详情：学院专业、招生计划、历年招生人数与分数分布。</p>
   <span class="count">132 所院校</span>
 </div>
-<main><div class="search"><input id="q" type="text" placeholder="搜索院校，例如：南京理工、哈工大…" oninput="filter()"></div><div class="school-grid" id="grid"><a href="安徽大学.html">安徽大学</a>
-<a href="安徽工程大学.html">安徽工程大学</a>
-<a href="北方工业大学.html">北方工业大学</a>
-<a href="北京工业大学.html">北京工业大学</a>
-<a href="北京航空航天大学.html">北京航空航天大学</a>
-<a href="北京化工大学.html">北京化工大学</a>
-<a href="北京建筑大学.html">北京建筑大学</a>
-<a href="北京交通大学.html">北京交通大学</a>
-<a href="北京科技大学.html">北京科技大学</a>
-<a href="北京理工大学.html">北京理工大学</a>
-<a href="北京林业大学.html">北京林业大学</a>
-<a href="北京信息科技大学.html">北京信息科技大学</a>
-<a href="北京邮电大学.html">北京邮电大学</a>
-<a href="渤海大学.html">渤海大学</a>
-<a href="重庆大学.html">重庆大学</a>
-<a href="重庆邮电大学.html">重庆邮电大学</a>
-<a href="大连海事大学.html">大连海事大学</a>
-<a href="大连交通大学.html">大连交通大学</a>
-<a href="大连理工大学.html">大连理工大学</a>
-<a href="电子科技大学.html">电子科技大学</a>
-<a href="东北大学.html">东北大学</a>
-<a href="东北电力大学.html">东北电力大学</a>
-<a href="东北林业大学.html">东北林业大学</a>
-<a href="东华大学.html">东华大学</a>
-<a href="东南大学.html">东南大学</a>
-<a href="福州大学.html">福州大学</a>
-<a href="广东工业大学.html">广东工业大学</a>
-<a href="广西科技大学.html">广西科技大学</a>
-<a href="广州大学.html">广州大学</a>
-<a href="贵州大学.html">贵州大学</a>
-<a href="桂林电子科技大学.html">桂林电子科技大学</a>
-<a href="国防科技大学.html">国防科技大学</a>
-<a href="哈尔滨工程大学.html">哈尔滨工程大学</a>
-<a href="哈尔滨工业大学.html">哈尔滨工业大学</a>
-<a href="哈尔滨理工大学.html">哈尔滨理工大学</a>
-<a href="海南大学.html">海南大学</a>
-<a href="杭州电子科技大学.html">杭州电子科技大学</a>
-<a href="合肥工业大学.html">合肥工业大学</a>
-<a href="河北大学.html">河北大学</a>
-<a href="河北工业大学.html">河北工业大学</a>
-<a href="河北科技大学.html">河北科技大学</a>
-<a href="河海大学.html">河海大学</a>
-<a href="河南大学.html">河南大学</a>
-<a href="河南科技大学.html">河南科技大学</a>
-<a href="黑龙江大学.html">黑龙江大学</a>
-<a href="湖北工业大学.html">湖北工业大学</a>
-<a href="湖南科技大学.html">湖南科技大学</a>
-<a href="湖州师范学院.html">湖州师范学院</a>
-<a href="华北电力大学（保定）.html">华北电力大学（保定）</a>
-<a href="华北电力大学（北京）.html">华北电力大学（北京）</a>
-<a href="华北理工大学.html">华北理工大学</a>
-<a href="华东交通大学.html">华东交通大学</a>
-<a href="华东理工大学.html">华东理工大学</a>
-<a href="华中科技大学.html">华中科技大学</a>
-<a href="吉林大学.html">吉林大学</a>
-<a href="济南大学.html">济南大学</a>
-<a href="江汉大学.html">江汉大学</a>
-<a href="江南大学.html">江南大学</a>
-<a href="江苏科技大学.html">江苏科技大学</a>
-<a href="空军工程大学.html">空军工程大学</a>
-<a href="兰州理工大学.html">兰州理工大学</a>
-<a href="辽宁工业大学.html">辽宁工业大学</a>
-<a href="辽宁石油化工大学.html">辽宁石油化工大学</a>
-<a href="南昌大学.html">南昌大学</a>
-<a href="南京大学.html">南京大学</a>
-<a href="南京工业大学.html">南京工业大学</a>
-<a href="南京航空航天大学.html">南京航空航天大学</a>
-<a href="南京理工大学.html">南京理工大学</a>
-<a href="南京林业大学.html">南京林业大学</a>
-<a href="南京信息工程大学.html">南京信息工程大学</a>
-<a href="南京邮电大学.html">南京邮电大学</a>
-<a href="南开大学.html">南开大学</a>
-<a href="南通大学.html">南通大学</a>
-<a href="内蒙古大学.html">内蒙古大学</a>
-<a href="内蒙古工业大学.html">内蒙古工业大学</a>
-<a href="内蒙古科技大学.html">内蒙古科技大学</a>
-<a href="青岛大学.html">青岛大学</a>
-<a href="青岛科技大学.html">青岛科技大学</a>
-<a href="清华大学.html">清华大学</a>
-<a href="厦门大学.html">厦门大学</a>
-<a href="山东大学.html">山东大学</a>
-<a href="山西大学.html">山西大学</a>
-<a href="陕西科技大学.html">陕西科技大学</a>
-<a href="上海大学.html">上海大学</a>
-<a href="上海交通大学.html">上海交通大学</a>
-<a href="上海理工大学.html">上海理工大学</a>
-<a href="深圳大学.html">深圳大学</a>
-<a href="沈阳工业大学.html">沈阳工业大学</a>
-<a href="沈阳航空航天大学.html">沈阳航空航天大学</a>
-<a href="沈阳理工大学.html">沈阳理工大学</a>
-<a href="四川大学.html">四川大学</a>
-<a href="四川轻化工大学.html">四川轻化工大学</a>
-<a href="苏州大学.html">苏州大学</a>
-<a href="太原科技大学.html">太原科技大学</a>
-<a href="太原理工大学.html">太原理工大学</a>
-<a href="天津大学.html">天津大学</a>
-<a href="天津工业大学.html">天津工业大学</a>
-<a href="天津科技大学.html">天津科技大学</a>
-<a href="同济大学.html">同济大学</a>
-<a href="武汉大学.html">武汉大学</a>
-<a href="武汉科技大学.html">武汉科技大学</a>
-<a href="武汉理工大学.html">武汉理工大学</a>
-<a href="西安电子科技大学.html">西安电子科技大学</a>
-<a href="西安工程大学.html">西安工程大学</a>
-<a href="西安工业大学.html">西安工业大学</a>
-<a href="西安建筑科技大学.html">西安建筑科技大学</a>
-<a href="西安交通大学.html">西安交通大学</a>
-<a href="西安科技大学.html">西安科技大学</a>
-<a href="西安理工大学.html">西安理工大学</a>
-<a href="西安邮电大学.html">西安邮电大学</a>
-<a href="西北工业大学.html">西北工业大学</a>
-<a href="湘潭大学.html">湘潭大学</a>
-<a href="新疆大学.html">新疆大学</a>
-<a href="燕山大学.html">燕山大学</a>
-<a href="扬州大学.html">扬州大学</a>
-<a href="长安大学.html">长安大学</a>
-<a href="长春工业大学.html">长春工业大学</a>
-<a href="长沙理工大学.html">长沙理工大学</a>
-<a href="浙江工业大学.html">浙江工业大学</a>
-<a href="浙江理工大学.html">浙江理工大学</a>
-<a href="郑州大学.html">郑州大学</a>
-<a href="中北大学.html">中北大学</a>
-<a href="中国海洋大学.html">中国海洋大学</a>
-<a href="中国科学技术大学.html">中国科学技术大学</a>
-<a href="中国科学院大学.html">中国科学院大学</a>
-<a href="中国科学院沈阳自动化研究所.html">中国科学院沈阳自动化研究所</a>
-<a href="中国矿业大学（徐州）.html">中国矿业大学（徐州）</a>
-<a href="中国民航大学.html">中国民航大学</a>
-<a href="中国石油大学（北京）.html">中国石油大学（北京）</a>
-<a href="中国石油大学（华东）.html">中国石油大学（华东）</a>
-<a href="中南大学.html">中南大学</a>
-<a href="中山大学.html">中山大学</a></div>
+<main><div class="search"><input id="q" type="text" placeholder="搜索院校，例如：南京理工、哈工大…" oninput="filter()"></div><div class="school-grid" id="grid"><a href="安徽大学.html"><img src="../专业课选择/images/校徽/安徽大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>安徽大学</span></a>
+<a href="安徽工程大学.html"><img src="../专业课选择/images/校徽/安徽工程大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>安徽工程大学</span></a>
+<a href="北方工业大学.html"><img src="../专业课选择/images/校徽/北方工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北方工业大学</span></a>
+<a href="北京工业大学.html"><img src="../专业课选择/images/校徽/北京工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京工业大学</span></a>
+<a href="北京航空航天大学.html"><img src="../专业课选择/images/校徽/北京航空航天大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京航空航天大学</span></a>
+<a href="北京化工大学.html"><img src="../专业课选择/images/校徽/北京化工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京化工大学</span></a>
+<a href="北京建筑大学.html"><img src="../专业课选择/images/校徽/北京建筑大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京建筑大学</span></a>
+<a href="北京交通大学.html"><img src="../专业课选择/images/校徽/北京交通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京交通大学</span></a>
+<a href="北京科技大学.html"><img src="../专业课选择/images/校徽/北京科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京科技大学</span></a>
+<a href="北京理工大学.html"><img src="../专业课选择/images/校徽/北京理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京理工大学</span></a>
+<a href="北京林业大学.html"><img src="../专业课选择/images/校徽/北京林业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京林业大学</span></a>
+<a href="北京信息科技大学.html"><img src="../专业课选择/images/校徽/北京信息科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京信息科技大学</span></a>
+<a href="北京邮电大学.html"><img src="../专业课选择/images/校徽/北京邮电大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>北京邮电大学</span></a>
+<a href="渤海大学.html"><img src="../专业课选择/images/校徽/渤海大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>渤海大学</span></a>
+<a href="重庆大学.html"><img src="../专业课选择/images/校徽/重庆大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>重庆大学</span></a>
+<a href="重庆邮电大学.html"><img src="../专业课选择/images/校徽/重庆邮电大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>重庆邮电大学</span></a>
+<a href="大连海事大学.html"><img src="../专业课选择/images/校徽/大连海事大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>大连海事大学</span></a>
+<a href="大连交通大学.html"><img src="../专业课选择/images/校徽/大连交通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>大连交通大学</span></a>
+<a href="大连理工大学.html"><img src="../专业课选择/images/校徽/大连理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>大连理工大学</span></a>
+<a href="电子科技大学.html"><img src="../专业课选择/images/校徽/电子科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>电子科技大学</span></a>
+<a href="东北大学.html"><img src="../专业课选择/images/校徽/东北大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>东北大学</span></a>
+<a href="东北电力大学.html"><img src="../专业课选择/images/校徽/东北电力大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>东北电力大学</span></a>
+<a href="东北林业大学.html"><img src="../专业课选择/images/校徽/东北林业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>东北林业大学</span></a>
+<a href="东华大学.html"><img src="../专业课选择/images/校徽/东华大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>东华大学</span></a>
+<a href="东南大学.html"><img src="../专业课选择/images/校徽/东南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>东南大学</span></a>
+<a href="福州大学.html"><img src="../专业课选择/images/校徽/福州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>福州大学</span></a>
+<a href="广东工业大学.html"><img src="../专业课选择/images/校徽/广东工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>广东工业大学</span></a>
+<a href="广西科技大学.html"><img src="../专业课选择/images/校徽/广西科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>广西科技大学</span></a>
+<a href="广州大学.html"><img src="../专业课选择/images/校徽/广州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>广州大学</span></a>
+<a href="贵州大学.html"><img src="../专业课选择/images/校徽/贵州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>贵州大学</span></a>
+<a href="桂林电子科技大学.html"><img src="../专业课选择/images/校徽/桂林电子科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>桂林电子科技大学</span></a>
+<a href="国防科技大学.html"><img src="../专业课选择/images/校徽/国防科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>国防科技大学</span></a>
+<a href="哈尔滨工程大学.html"><img src="../专业课选择/images/校徽/哈尔滨工程大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>哈尔滨工程大学</span></a>
+<a href="哈尔滨工业大学.html"><img src="../专业课选择/images/校徽/哈尔滨工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>哈尔滨工业大学</span></a>
+<a href="哈尔滨理工大学.html"><img src="../专业课选择/images/校徽/哈尔滨理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>哈尔滨理工大学</span></a>
+<a href="海南大学.html"><img src="../专业课选择/images/校徽/海南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>海南大学</span></a>
+<a href="杭州电子科技大学.html"><img src="../专业课选择/images/校徽/杭州电子科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>杭州电子科技大学</span></a>
+<a href="合肥工业大学.html"><img src="../专业课选择/images/校徽/合肥工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>合肥工业大学</span></a>
+<a href="河北大学.html"><img src="../专业课选择/images/校徽/河北大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河北大学</span></a>
+<a href="河北工业大学.html"><img src="../专业课选择/images/校徽/河北工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河北工业大学</span></a>
+<a href="河北科技大学.html"><img src="../专业课选择/images/校徽/河北科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河北科技大学</span></a>
+<a href="河海大学.html"><img src="../专业课选择/images/校徽/河海大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河海大学</span></a>
+<a href="河南大学.html"><img src="../专业课选择/images/校徽/河南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河南大学</span></a>
+<a href="河南科技大学.html"><img src="../专业课选择/images/校徽/河南科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>河南科技大学</span></a>
+<a href="黑龙江大学.html"><img src="../专业课选择/images/校徽/黑龙江大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>黑龙江大学</span></a>
+<a href="湖北工业大学.html"><img src="../专业课选择/images/校徽/湖北工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>湖北工业大学</span></a>
+<a href="湖南科技大学.html"><img src="../专业课选择/images/校徽/湖南科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>湖南科技大学</span></a>
+<a href="湖州师范学院.html"><img src="../专业课选择/images/校徽/湖州师范学院.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>湖州师范学院</span></a>
+<a href="华北电力大学（保定）.html"><img src="../专业课选择/images/校徽/华北电力大学（保定）.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华北电力大学（保定）</span></a>
+<a href="华北电力大学（北京）.html"><img src="../专业课选择/images/校徽/华北电力大学（北京）.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华北电力大学（北京）</span></a>
+<a href="华北理工大学.html"><img src="../专业课选择/images/校徽/华北理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华北理工大学</span></a>
+<a href="华东交通大学.html"><img src="../专业课选择/images/校徽/华东交通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华东交通大学</span></a>
+<a href="华东理工大学.html"><img src="../专业课选择/images/校徽/华东理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华东理工大学</span></a>
+<a href="华中科技大学.html"><img src="../专业课选择/images/校徽/华中科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>华中科技大学</span></a>
+<a href="吉林大学.html"><img src="../专业课选择/images/校徽/吉林大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>吉林大学</span></a>
+<a href="济南大学.html"><img src="../专业课选择/images/校徽/济南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>济南大学</span></a>
+<a href="江汉大学.html"><img src="../专业课选择/images/校徽/江汉大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>江汉大学</span></a>
+<a href="江南大学.html"><img src="../专业课选择/images/校徽/江南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>江南大学</span></a>
+<a href="江苏科技大学.html"><img src="../专业课选择/images/校徽/江苏科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>江苏科技大学</span></a>
+<a href="空军工程大学.html"><img src="../专业课选择/images/校徽/空军工程大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>空军工程大学</span></a>
+<a href="兰州理工大学.html"><img src="../专业课选择/images/校徽/兰州理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>兰州理工大学</span></a>
+<a href="辽宁工业大学.html"><img src="../专业课选择/images/校徽/辽宁工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>辽宁工业大学</span></a>
+<a href="辽宁石油化工大学.html"><img src="../专业课选择/images/校徽/辽宁石油化工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>辽宁石油化工大学</span></a>
+<a href="南昌大学.html"><img src="../专业课选择/images/校徽/南昌大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南昌大学</span></a>
+<a href="南京大学.html"><img src="../专业课选择/images/校徽/南京大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京大学</span></a>
+<a href="南京工业大学.html"><img src="../专业课选择/images/校徽/南京工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京工业大学</span></a>
+<a href="南京航空航天大学.html"><img src="../专业课选择/images/校徽/南京航空航天大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京航空航天大学</span></a>
+<a href="南京理工大学.html"><img src="../专业课选择/images/校徽/南京理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京理工大学</span></a>
+<a href="南京林业大学.html"><img src="../专业课选择/images/校徽/南京林业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京林业大学</span></a>
+<a href="南京信息工程大学.html"><img src="../专业课选择/images/校徽/南京信息工程大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京信息工程大学</span></a>
+<a href="南京邮电大学.html"><img src="../专业课选择/images/校徽/南京邮电大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南京邮电大学</span></a>
+<a href="南开大学.html"><img src="../专业课选择/images/校徽/南开大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南开大学</span></a>
+<a href="南通大学.html"><img src="../专业课选择/images/校徽/南通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>南通大学</span></a>
+<a href="内蒙古大学.html"><img src="../专业课选择/images/校徽/内蒙古大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>内蒙古大学</span></a>
+<a href="内蒙古工业大学.html"><img src="../专业课选择/images/校徽/内蒙古工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>内蒙古工业大学</span></a>
+<a href="内蒙古科技大学.html"><img src="../专业课选择/images/校徽/内蒙古科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>内蒙古科技大学</span></a>
+<a href="青岛大学.html"><img src="../专业课选择/images/校徽/青岛大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>青岛大学</span></a>
+<a href="青岛科技大学.html"><img src="../专业课选择/images/校徽/青岛科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>青岛科技大学</span></a>
+<a href="清华大学.html"><img src="../专业课选择/images/校徽/清华大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>清华大学</span></a>
+<a href="厦门大学.html"><img src="../专业课选择/images/校徽/厦门大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>厦门大学</span></a>
+<a href="山东大学.html"><img src="../专业课选择/images/校徽/山东大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>山东大学</span></a>
+<a href="山西大学.html"><img src="../专业课选择/images/校徽/山西大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>山西大学</span></a>
+<a href="陕西科技大学.html"><img src="../专业课选择/images/校徽/陕西科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>陕西科技大学</span></a>
+<a href="上海大学.html"><img src="../专业课选择/images/校徽/上海大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>上海大学</span></a>
+<a href="上海交通大学.html"><img src="../专业课选择/images/校徽/上海交通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>上海交通大学</span></a>
+<a href="上海理工大学.html"><img src="../专业课选择/images/校徽/上海理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>上海理工大学</span></a>
+<a href="深圳大学.html"><img src="../专业课选择/images/校徽/深圳大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>深圳大学</span></a>
+<a href="沈阳工业大学.html"><img src="../专业课选择/images/校徽/沈阳工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>沈阳工业大学</span></a>
+<a href="沈阳航空航天大学.html"><img src="../专业课选择/images/校徽/沈阳航空航天大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>沈阳航空航天大学</span></a>
+<a href="沈阳理工大学.html"><img src="../专业课选择/images/校徽/沈阳理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>沈阳理工大学</span></a>
+<a href="四川大学.html"><img src="../专业课选择/images/校徽/四川大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>四川大学</span></a>
+<a href="四川轻化工大学.html"><img src="../专业课选择/images/校徽/四川轻化工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>四川轻化工大学</span></a>
+<a href="苏州大学.html"><img src="../专业课选择/images/校徽/苏州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>苏州大学</span></a>
+<a href="太原科技大学.html"><img src="../专业课选择/images/校徽/太原科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>太原科技大学</span></a>
+<a href="太原理工大学.html"><img src="../专业课选择/images/校徽/太原理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>太原理工大学</span></a>
+<a href="天津大学.html"><img src="../专业课选择/images/校徽/天津大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>天津大学</span></a>
+<a href="天津工业大学.html"><img src="../专业课选择/images/校徽/天津工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>天津工业大学</span></a>
+<a href="天津科技大学.html"><img src="../专业课选择/images/校徽/天津科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>天津科技大学</span></a>
+<a href="同济大学.html"><img src="../专业课选择/images/校徽/同济大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>同济大学</span></a>
+<a href="武汉大学.html"><img src="../专业课选择/images/校徽/武汉大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>武汉大学</span></a>
+<a href="武汉科技大学.html"><img src="../专业课选择/images/校徽/武汉科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>武汉科技大学</span></a>
+<a href="武汉理工大学.html"><img src="../专业课选择/images/校徽/武汉理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>武汉理工大学</span></a>
+<a href="西安电子科技大学.html"><img src="../专业课选择/images/校徽/西安电子科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安电子科技大学</span></a>
+<a href="西安工程大学.html"><img src="../专业课选择/images/校徽/西安工程大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安工程大学</span></a>
+<a href="西安工业大学.html"><img src="../专业课选择/images/校徽/西安工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安工业大学</span></a>
+<a href="西安建筑科技大学.html"><img src="../专业课选择/images/校徽/西安建筑科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安建筑科技大学</span></a>
+<a href="西安交通大学.html"><img src="../专业课选择/images/校徽/西安交通大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安交通大学</span></a>
+<a href="西安科技大学.html"><img src="../专业课选择/images/校徽/西安科技大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安科技大学</span></a>
+<a href="西安理工大学.html"><img src="../专业课选择/images/校徽/西安理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安理工大学</span></a>
+<a href="西安邮电大学.html"><img src="../专业课选择/images/校徽/西安邮电大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西安邮电大学</span></a>
+<a href="西北工业大学.html"><img src="../专业课选择/images/校徽/西北工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>西北工业大学</span></a>
+<a href="湘潭大学.html"><img src="../专业课选择/images/校徽/湘潭大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>湘潭大学</span></a>
+<a href="新疆大学.html"><img src="../专业课选择/images/校徽/新疆大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>新疆大学</span></a>
+<a href="燕山大学.html"><img src="../专业课选择/images/校徽/燕山大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>燕山大学</span></a>
+<a href="扬州大学.html"><img src="../专业课选择/images/校徽/扬州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>扬州大学</span></a>
+<a href="长安大学.html"><img src="../专业课选择/images/校徽/长安大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>长安大学</span></a>
+<a href="长春工业大学.html"><img src="../专业课选择/images/校徽/长春工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>长春工业大学</span></a>
+<a href="长沙理工大学.html"><img src="../专业课选择/images/校徽/长沙理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>长沙理工大学</span></a>
+<a href="浙江工业大学.html"><img src="../专业课选择/images/校徽/浙江工业大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>浙江工业大学</span></a>
+<a href="浙江理工大学.html"><img src="../专业课选择/images/校徽/浙江理工大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>浙江理工大学</span></a>
+<a href="郑州大学.html"><img src="../专业课选择/images/校徽/郑州大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>郑州大学</span></a>
+<a href="中北大学.html"><img src="../专业课选择/images/校徽/中北大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中北大学</span></a>
+<a href="中国海洋大学.html"><img src="../专业课选择/images/校徽/中国海洋大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国海洋大学</span></a>
+<a href="中国科学技术大学.html"><img src="../专业课选择/images/校徽/中国科学技术大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国科学技术大学</span></a>
+<a href="中国科学院大学.html"><img src="../专业课选择/images/校徽/中国科学院大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国科学院大学</span></a>
+<a href="中国科学院沈阳自动化研究所.html"><img src="../专业课选择/images/校徽/中国科学院沈阳自动化研究所.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国科学院沈阳自动化研究所</span></a>
+<a href="中国矿业大学（徐州）.html"><img src="../专业课选择/images/校徽/中国矿业大学（徐州）.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国矿业大学（徐州）</span></a>
+<a href="中国民航大学.html"><img src="../专业课选择/images/校徽/中国民航大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国民航大学</span></a>
+<a href="中国石油大学（北京）.html"><img src="../专业课选择/images/校徽/中国石油大学（北京）.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国石油大学（北京）</span></a>
+<a href="中国石油大学（华东）.html"><img src="../专业课选择/images/校徽/中国石油大学（华东）.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中国石油大学（华东）</span></a>
+<a href="中南大学.html"><img src="../专业课选择/images/校徽/中南大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中南大学</span></a>
+<a href="中山大学.html"><img src="../专业课选择/images/校徽/中山大学.jpg" onerror="this.style.display='none'" loading="lazy" alt=""><span>中山大学</span></a></div>
 <script>
 function filter(){var v=document.getElementById('q').value.trim();document.querySelectorAll('#grid a').forEach(function(a){a.style.display=(!v||a.textContent.indexOf(v)>=0)?'':'none';});}
 </script></main>

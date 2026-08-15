@@ -22,6 +22,7 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
 th,td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left}
 th{background:#f8f8f6;white-space:nowrap}
 footer{text-align:center;color:#999;font-size:12px;padding:20px}
+@media(max-width:768px){.wrap{padding:12px}.card{overflow-x:auto;-webkit-overflow-scrolling:touch}table{font-size:12px}}
 </style>
 </head>
 <body>
@@ -80,9 +81,14 @@ try {
     type: 'bar',
     data: {
       labels: ["60-69", "70-79", "80-89", "90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [1, 0, 0, 1, 0, 7, 8, 6, 4], backgroundColor: 'rgba(99,124,154,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 0, 0, 1, 0, 7, 8, 6, 4], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -97,9 +103,14 @@ try {
     type: 'bar',
     data: {
       labels: ["90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [1, 0, 4, 4, 13, 5], backgroundColor: 'rgba(201,138,61,0.7)' }]
+      datasets: [{ label: '人数', data: [1, 0, 4, 4, 13, 5], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -112,11 +123,16 @@ try {
     data: {
       labels: ["420-429", "410-419", "400-409", "390-399", "380-389", "370-379", "270-279"],
       datasets: [
-        { label: '复试人数', data: ["3", "2", "2", "9", "6", "4", "1"], backgroundColor: 'rgba(99,124,154,0.7)' },
-        { label: '录取人数', data: ["3", "2", "1", "7", "4", "1", "1"], backgroundColor: 'rgba(169,33,34,0.7)' }
+        { label: '复试人数', data: ["3", "2", "2", "9", "6", "4", "1"], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 },
+        { label: '录取人数', data: ["3", "2", "1", "7", "4", "1", "1"], backgroundColor: 'rgba(169,33,34,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }
       ]
     },
-    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { position: 'top', labels: { font: { size: 11, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#6a6a7a', usePointStyle: true, pointStyle: 'circle', boxWidth: 8, boxHeight: 8 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -139,9 +155,14 @@ try {
     type: 'bar',
     data: {
       labels: ["430-439", "420-429", "410-419", "400-409", "390-399"],
-      datasets: [{ label: '均分', data: [142.2, 139.2, 133.2, 124.3, 118.8], backgroundColor: 'rgba(99,124,154,0.7)' }]
+      datasets: [{ label: '均分', data: [142.2, 139.2, 133.2, 124.3, 118.8], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -156,9 +177,14 @@ try {
     type: 'bar',
     data: {
       labels: ["430-439", "420-429", "410-419", "400-409", "390-399"],
-      datasets: [{ label: '均分', data: [140.0, 139.4, 137.5, 133.7, 136.7], backgroundColor: 'rgba(201,138,61,0.7)' }]
+      datasets: [{ label: '均分', data: [140.0, 139.4, 137.5, 133.7, 136.7], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -171,11 +197,16 @@ try {
     data: {
       labels: ["430-439", "420-429", "410-419", "400-409", "390-399"],
       datasets: [
-        { label: '复试人数', data: ["5", "10", "12", "24", "36"], backgroundColor: 'rgba(99,124,154,0.7)' },
-        { label: '录取人数', data: ["5", "10", "12", "18", "15"], backgroundColor: 'rgba(169,33,34,0.7)' }
+        { label: '复试人数', data: ["5", "10", "12", "24", "36"], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 },
+        { label: '录取人数', data: ["5", "10", "12", "18", "15"], backgroundColor: 'rgba(169,33,34,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }
       ]
     },
-    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { position: 'top', labels: { font: { size: 11, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#6a6a7a', usePointStyle: true, pointStyle: 'circle', boxWidth: 8, boxHeight: 8 } } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -198,9 +229,14 @@ try {
     type: 'bar',
     data: {
       labels: ["400-409", "390-399", "380-389", "370-379", "360-369", "350-359", "340-349"],
-      datasets: [{ label: '均分', data: [122.8, 115.1, 116.8, 113.6, 105.7, 97.7, 0], backgroundColor: 'rgba(99,124,154,0.7)' }]
+      datasets: [{ label: '均分', data: [122.8, 115.1, 116.8, 113.6, 105.7, 97.7, 0], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -215,9 +251,14 @@ try {
     type: 'bar',
     data: {
       labels: ["400-409", "390-399", "380-389", "370-379", "360-369", "350-359", "340-349"],
-      datasets: [{ label: '均分', data: [136.2, 140.4, 131.0, 124.8, 118.4, 124.3, 0], backgroundColor: 'rgba(201,138,61,0.7)' }]
+      datasets: [{ label: '均分', data: [136.2, 140.4, 131.0, 124.8, 118.4, 124.3, 0], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
     },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { display: false } } }
   });
 } catch(e) { console.error(e); }
 </script>
@@ -230,11 +271,16 @@ try {
     data: {
       labels: ["400-409", "390-399", "380-389", "370-379", "360-369", "350-359", "340-349"],
       datasets: [
-        { label: '复试人数', data: ["4", "8", "8", "15", "15", "8", "2"], backgroundColor: 'rgba(99,124,154,0.7)' },
-        { label: '录取人数', data: ["4", "7", "8", "14", "7", "3", "0"], backgroundColor: 'rgba(169,33,34,0.7)' }
+        { label: '复试人数', data: ["4", "8", "8", "15", "15", "8", "2"], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 },
+        { label: '录取人数', data: ["4", "7", "8", "14", "7", "3", "0"], backgroundColor: 'rgba(169,33,34,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }
       ]
     },
-    options: { responsive: true, plugins: { legend: { position: 'top' } } }
+    options: { responsive: true, maintainAspectRatio: false,
+animation: { duration: 550, easing: 'easeOutQuart' },
+scales: {
+  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
+  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
+}, plugins: { legend: { position: 'top', labels: { font: { size: 11, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#6a6a7a', usePointStyle: true, pointStyle: 'circle', boxWidth: 8, boxHeight: 8 } } } }
   });
 } catch(e) { console.error(e); }
 </script>

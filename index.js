@@ -398,7 +398,7 @@ function renderHomeCharts(){
     xAxis:{type:'category',data:provArr.map(x=>x.name),axisLabel:{rotate:25,fontSize:9}},
     yAxis:[{type:'value',axisLabel:{fontSize:8}}],
     series:[
-      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#a92122'},barMaxWidth:14}
+      {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14}
     ]
   });
 
@@ -1840,9 +1840,9 @@ function renderDetail(schoolName){
     xAxis:{type:'category',data:majorArr.map(x=>x.shortName),axisLabel:{rotate:50,fontSize:10,interval:0}},
     yAxis:{type:'value',name:'分数'},
     series:[
-      {name:'复试平均分',type:'bar',data:majorArr.map(x=>x.enterAvg!=null?+x.enterAvg.toFixed(1):null),itemStyle:{color:'#637c9a'},barMaxWidth:20},
-      {name:'录取平均分',type:'bar',data:majorArr.map(x=>x.admitAvg!=null?+x.admitAvg.toFixed(1):null),itemStyle:{color:'#a92122'},barMaxWidth:20},
-      {name:'专业课平均',type:'bar',data:majorArr.map(x=>x.courseAvg!=null?+x.courseAvg.toFixed(1):null),itemStyle:{color:'#c98a3d'},barMaxWidth:20}
+      {name:'复试平均分',type:'bar',data:majorArr.map(x=>x.enterAvg!=null?+x.enterAvg.toFixed(1):null),itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]},barMaxWidth:20},
+      {name:'录取平均分',type:'bar',data:majorArr.map(x=>x.admitAvg!=null?+x.admitAvg.toFixed(1):null),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:20},
+      {name:'专业课平均',type:'bar',data:majorArr.map(x=>x.courseAvg!=null?+x.courseAvg.toFixed(1):null),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:20}
     ]
   });
 
@@ -1870,7 +1870,7 @@ function renderDetail(schoolName){
       series:[{
         name:'招生人数',type:'bar',
         data:pieArr.map(x=>x.num||0),
-        itemStyle:{color:'#a92122'},barMaxWidth:26,
+        itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:26,
         label:{show:true,position:'top',fontSize:9,color:'#17191d',formatter:function(p){return p.value ? p.value : '';}}
       }]
     });
@@ -1910,8 +1910,8 @@ function renderDetail(schoolName){
     xAxis:{type:'value',name:'人数'},
     yAxis:{type:'category',data:collegeArr.map(x=>x.name.length>22?x.name.substring(0,22)+'…':x.name).reverse(),axisLabel:{fontSize:10}},
     series:[
-      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#637c9a'},barMaxWidth:18},
-      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#a92122'},barMaxWidth:18}
+      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]},barMaxWidth:18},
+      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:18}
     ]
   });
 
@@ -1939,9 +1939,9 @@ function renderDetail(schoolName){
     xAxis:{type:'category',data:courseXData,axisLabel:{rotate:55,fontSize:9,interval:0}},
     yAxis:{type:'value',name:'分数'},
     series:[
-      {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#a92122'},barMaxWidth:14},
-      {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#c98a3d'},barMaxWidth:14},
-      {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#5d8d96'},barMaxWidth:14}
+      {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14},
+      {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:14},
+      {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#5d8d96',borderRadius:[5,5,0,0]},barMaxWidth:14}
     ]
   });
 
@@ -2207,8 +2207,8 @@ function renderDetailDistributions(schoolName, recs){
         xAxis:{type:'category', data:d.total.labels},
         yAxis:{type:'value', minInterval:1},
         series:[
-          {name:'复试人数', type:'bar', data:d.total.enter, itemStyle:{color:'#637c9a'}},
-          {name:'录取人数', type:'bar', data:d.total.admit, itemStyle:{color:'#a92122'}}
+          {name:'复试人数', type:'bar', data:d.total.enter, itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]}},
+          {name:'录取人数', type:'bar', data:d.total.admit, itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]}}
         ]
       });
     }
@@ -2230,7 +2230,7 @@ function histOption(dist, color){
       grid:{left:40,right:10,top:20,bottom:30},
       xAxis:{type:'category', data:dist.labels},
       yAxis:{type:'value', minInterval:1},
-      series:[{name:'人数', type:'bar', data:dist.counts, itemStyle:{color:color}}]
+      series:[{name:'人数', type:'bar', data:dist.counts, itemStyle:{color:color,borderRadius:[5,5,0,0]}}]
     };
   }
   return {
@@ -2238,7 +2238,7 @@ function histOption(dist, color){
     grid:{left:40,right:10,top:20,bottom:30},
     xAxis:{type:'category', data:dist.labels},
     yAxis:{type:'value'},
-    series:[{name:'均分', type:'bar', data:dist.values, itemStyle:{color:color}}]
+    series:[{name:'均分', type:'bar', data:dist.values, itemStyle:{color:color,borderRadius:[5,5,0,0]}}]
   };
 }
 // ===================== 初始化 =====================
