@@ -1,0 +1,129 @@
+# The `minimal-gray` (极简灰度版) agent preset: the builtin `minimal`
+# composition with a small set of `standard` coding tools carried over, plus a
+# platform switch for Windows where the persistent bash terminal backend is
+# unavailable and PowerShell replaces Bash.
+#
+# Everything else stays minimal: the complete one-line persona, no runtime
+# context snapshots, no agent instructions, no skills, no goals, no plan mode,
+# no compaction, no delegation/workflows, and no web tool.
+#
+# This file is an AGENT-PLANE composition. The roster mounts it ONCE under a
+# standing scope; every session naming it joins by scope parentage, so the
+# tools and prompt sections registered here cover each joined agent while a
+# session's own state stays keyed per Session/Agent inside the plugins.
+#
+# A service row here MUST sit inside a group carrying an `isolate` realm.
+# Without one it publishes into the root realm, where it is process-global;
+# `dsh-agent-presets` rejects that at mount. Rows copied from `standard` that
+# only register model-facing tools resolve host registries and need no realm.
+
+# ── identity ────────────────────────────────────────────────────────────────
+
+# The persona is the complete system prompt, so global identity, Web
+# orientation, tool guidance, and later assembly listeners cannot add prompt
+# text. Runtime context snapshots are suppressed, and the model composes only
+# the tools listed below. Context compaction is absent.
+- id: persona
+  name: '@deepseek-ai/dsh-persona'
+  config:
+    text: You are a helpful software engineer assistant.
+    complete: true
+    includeRuntimeContext: false
+
+# ── shell ───────────────────────────────────────────────────────────────────
+
+# The PTY registry is an agent-owned service, so it lives in an entry-local
+# realm. The backend still consumes the host sandbox policy and subprocess
+# implementation, while the tool registers into this agent's scoped catalog.
+#
+# Windows has no usable PTY/bash backend for this persistent shell, so every
+# child row is disabled there. The `tool-pwsh` row below supplies the
+# PowerShell replacement on Windows; on other platforms this group stays
+# exactly the builtin `minimal` persistent bash shell.
+- id: persistent-shell
+  name: cordis:group
+  group: true
+  isolate:
+    terminals: true
+  config:
+    - id: pty
+      name: '@deepseek-ai/dsh-terminal'
+      disabled: !!js process.platform === 'win32'
+
+    - id: terminal-bash
+      name: '@deepseek-ai/dsh-terminal-bash'
+      disabled: !!js process.platform === 'win32'
+      config:
+        timeoutMs: 300000
+
+    - id: persistent-bash
+      name: '@deepseek-ai/dsh-tool-bash-persistent'
+      disabled: !!js process.platform === 'win32'
+      config:
+        timeoutMs: 300000
+        description: |-
+          Run commands in a bash shell
+          * When invoking this tool, the contents of the "command" parameter does NOT need to be XML-escaped.
+          * You don't have access to the internet via this tool.
+          * You do have access to a mirror of common linux and python packages via apt and pip.
+          * State is persistent across command calls and discussions with the user.
+          * To inspect a particular line range of a file, e.g. lines 10-25, try 'sed -n 10,25p /path/to/the/file'.
+          * Please avoid commands that may produce a very large amount of output.
+          * Please run long lived commands in the background, e.g. 'sleep 10 &' or start a server in the background.
+
+# Standard-mode PowerShell shell for Windows. It consumes the host `shell`
+# executor (`pwsh-sandbox`), registers only the model-facing `pwsh` tool, and
+# therefore needs no isolate realm. Background commands register with the host
+# jobs registry, whose model-facing controls are mounted below.
+- id: tool-pwsh
+  name: '@deepseek-ai/dsh-tool-pwsh'
+  disabled: !!js process.platform !== 'win32'
+
+# ── filesystem ──────────────────────────────────────────────────────────────
+
+# The bare local filesystem shadows the host's sandboxed provider only for the
+# editor group, exactly as in the builtin `minimal` preset. The editor shares
+# that realm and requires absolute paths.
+- id: filesystem
+  name: cordis:group
+  group: true
+  isolate:
+    fs: true
+  config:
+    - id: fs-local
+      name: '@deepseek-ai/dsh-fs-local'
+      config:
+        cwd: !!js process.env.DSH_CWD ?? process.cwd()
+
+    - id: str-replace-editor
+      name: '@deepseek-ai/dsh-tool-str-replace-editor'
+      config:
+        maxOutputChars: 16000
+
+# ── standard common tools carried into the minimal preset ───────────────────
+
+# Both register into the host `tools` registry and provide nothing, so they
+# need no realm. The `fs` service and its policy stay in the host; these are
+# the standard-mode `read`/`write`/`edit`/`read_image` tools.
+- id: tool-fs
+  name: '@deepseek-ai/dsh-tool-fs'
+
+# Standard-mode `glob` and `grep` search tools. They run packaged ripgrep
+# directly through the host subprocess seam, with no shell layer involved.
+- id: tool-fs-search
+  name: '@deepseek-ai/dsh-tool-fs-search'
+  config:
+    sampleOverCapGlobResults: false
+
+# Model-facing background-job controls. The task REGISTRY stays on the host
+# plane and is keyed by owning agent; this row only decides whether the agent
+# can collect and stop background work. It is required by `tool-pwsh`'s
+# `run_in_background` mode and is otherwise the same row `standard` mounts.
+- id: tool-jobs
+  name: '@deepseek-ai/dsh-tool-jobs'
+
+# Standard-mode `todo_write`, the only planning surface this preset carries.
+- id: tool-todo
+  name: '@deepseek-ai/dsh-tool-todo'
+  config:
+    allowParallelInProgress: true
