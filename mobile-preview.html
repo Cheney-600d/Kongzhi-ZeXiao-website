@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机端视觉预览 · 控制考研择校站</title>
+<style>
+  body{background:#eef0f3;font-family:'Noto Sans SC','Microsoft YaHei',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 16px;}
+  h1{font-size:24px;font-weight:800;margin:0 0 6px;color:#1f2430;letter-spacing:.5px;}
+  .sub{font-size:13px;color:#6b7280;margin-bottom:22px;}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;}
+  .ctl{padding:8px 15px;border:1px solid #d7dae0;background:#fff;border-radius:10px;font-size:13px;color:#374151;cursor:pointer;font-weight:600;font-family:inherit;transition:all .2s;}
+  .ctl:hover{color:#B71C1C;border-color:#B71C1C;}
+  .ctl.active{background:#B71C1C;color:#fff;border-color:#B71C1C;}
+  .phone{position:relative;background:#0b0d10;border-radius:54px;padding:13px;box-shadow:0 28px 64px rgba(0,0,0,.28),inset 0 0 0 2px #2c3036;transition:all .3s;}
+  .phone-screen{position:relative;background:#000;border-radius:42px;overflow:hidden;padding-top:44px;}
+  .phone-screen iframe{display:block;border:0;width:390px;height:800px;background:#fff;}
+  .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:112px;height:27px;background:#0b0d10;border-radius:17px;z-index:5;pointer-events:none;}
+  .btn{position:absolute;background:#2c3036;width:3px;border-radius:2px;}
+  .btn-power{right:-3px;top:150px;height:74px;}
+  .btn-vol1{left:-3px;top:126px;height:38px;}
+  .btn-vol2{left:-3px;top:178px;height:38px;}
+  .tips{margin-top:26px;font-size:12.5px;color:#6b7280;text-align:center;line-height:2;max-width:560px;}
+  .tips b{color:#374151;}
+</style>
+</head>
+<body>
+<h1>📱 控制考研择校站 · 手机端视觉预览</h1>
+<div class="sub">真实页面渲染（本机 8767 端口）· 可在手机壳内滚动 / 点击 / 观看入场动画</div>
+
+<div class="controls">
+  <button class="ctl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
+  <button class="ctl" data-w="430" data-h="932">Pro Max · 430×932</button>
+  <button class="ctl" data-w="360" data-h="800">Android · 360×800</button>
+  <button class="ctl refresh">↻ 重播入场动画</button>
+</div>
+
+<div class="phone">
+  <span class="btn btn-vol1"></span><span class="btn btn-vol2"></span><span class="btn btn-power"></span>
+  <div class="phone-screen">
+    <iframe id="frame" src="http://127.0.0.1:8767/?intro=1" title="手机端预览"></iframe>
+    <div class="notch"></div>
+  </div>
+</div>
+
+<div class="tips">
+  <b>重播动画：</b>切换尺寸或点「重播入场动画」都会重新加载页面并强制播放（?intro=1）。<br>
+  <b>真实环境：</b>iframe 内就是生产站本机页面，可滚动、可点导航、可看动画，与真机一致。
+</div>
+
+<script>
+  var frame = document.getElementById('frame');
+  var ctl = document.querySelectorAll('.ctl[data-w]');
+  ctl.forEach(function(b) {
+    b.addEventListener('click', function() {
+      ctl.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      frame.style.width = b.dataset.w + 'px';
+      frame.style.height = (parseInt(b.dataset.h, 10) - 44) + 'px';
+      reloadFrame();
+    });
+  });
+  function reloadFrame() {
+    frame.src = 'http://127.0.0.1:8767/?intro=1&t=' + Date.now();
+  }
+  document.querySelector('.refresh').addEventListener('click', reloadFrame);
+</script>
+</body>
+</html>

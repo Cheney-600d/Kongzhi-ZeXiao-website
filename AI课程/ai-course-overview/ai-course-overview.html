@@ -887,6 +887,17 @@ section{max-width:100%}
 
 <link rel="stylesheet" href="../../mobile-function-shell.css?v=20260814-theme-purple">
 <link rel="stylesheet" href="../../theme-global.css">
+<style>
+/* 手机端修复：导航不再吸顶，hero 按钮换行，避免拥挤 */
+@media (max-width: 900px) {
+  body.mobile-function-ready .navbar { position: static !important; top: auto !important; }
+}
+@media (max-width: 768px) {
+  .hero-actions { flex-wrap: wrap; overflow-x: visible; }
+  .hero-btn { flex: 0 1 auto; }
+  .navbar-inner { height: auto; padding: 0.5rem 1rem; }
+}
+</style>
 </head>
 <body>
 

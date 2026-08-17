@@ -223,20 +223,24 @@
             font-weight: 700;
         }
         
-        @media (max-width: 768px) {
-            .baodian-s-modal { max-width: 100%; border-radius: 12px; }
-            .baodian-s-modal-body { min-height: 280px; padding: 12px; }
-            .baodian-s-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
-            .baodian-s-modal-img { max-height: 55vh; }
-            .data-table { font-size: 12px; }
-            .data-table th, .data-table td { padding: 8px 6px; }
-            .data-table td:first-child { width: 100px; }
-            .teacher-card { flex-direction: column; align-items: center; text-align: center; }
-            /* 资料概览卡片：手机上从4列收成2列，避免卡片过窄+封面负边距溢出 */
-            .overview-grid, .overview-grid:nth-of-type(1) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-            .overview-card-cover { width: 100%; height: 160px; margin: 0 0 10px; max-width: 100%; }
-            .course-section { padding: 16px; }
-        }
+          @media (max-width: 768px) {
+              .baodian-s-modal { max-width: 100%; border-radius: 12px; }
+              .baodian-s-modal-body { min-height: 280px; padding: 12px; }
+              .baodian-s-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
+              .baodian-s-modal-img { max-height: 55vh; }
+              .data-table { font-size: 12px; }
+              .data-table th, .data-table td { padding: 8px 6px; }
+              .data-table td:first-child { width: 100px; }
+              .teacher-card { flex-direction: column; align-items: center; text-align: center; }
+              /* 资料概览卡片：手机端2列等高，封面/文字不再拥挤 */
+              .overview-grid, .overview-grid:nth-of-type(1) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px; }
+              .overview-card { padding: 12px 10px; display: flex; flex-direction: column; height: 100%; }
+              .overview-card-cover { width: 100%; height: 150px; margin: 0 0 10px; max-width: 100%; object-fit: contain; }
+              .overview-card-title { font-size: 13px; }
+              .overview-card-desc { font-size: 11px; line-height: 1.6; }
+              .overview-card-hint { font-size: 10px; line-height: 1.5; }
+              .course-section { padding: 16px; }
+          }
     </style>
 
 <style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>

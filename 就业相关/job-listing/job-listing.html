@@ -66,6 +66,10 @@ section>h2{font-size:1.2rem;font-weight:700;margin-bottom:1rem;padding-left:0.75
 .chart-container{width:100%;min-height:280px;}
 
 .filter-bar{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);padding:1rem 1.25rem;box-shadow:0 2px 12px rgba(37,99,235,0.08);margin-bottom:1.25rem;position:sticky;top:0;z-index:1000;}
+  .filter-bar-toggle{display:none;width:100%;padding:0.55rem 0.9rem;border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--bg3);color:var(--ink);font-size:0.9rem;font-weight:600;font-family:var(--font);cursor:pointer;text-align:left;transition:all .2s;}
+  .filter-bar-toggle:hover{color:var(--accent);border-color:var(--accent);}
+  .filter-bar-toggle::after{content:'▾';float:right;transition:transform .2s;}
+  .filter-bar.open .filter-bar-toggle::after{transform:rotate(180deg);}
 .filter-row{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;}
 .filter-row+.filter-row{margin-top:0.75rem;}
 .btn-group{display:inline-flex;gap:0;border:1px solid var(--rule);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg3);flex-wrap:wrap;}
@@ -186,6 +190,10 @@ footer a{color:var(--accent);text-decoration:none;}
   .records-list{grid-template-columns:1fr;}
   .company-modal{width:95vw;max-height:90vh;}
   select.filter-select{max-width:100%;}
+  .filter-bar{position:static;}
+  .filter-bar-toggle{display:block;}
+  .filter-bar .filter-row{display:none;}
+  .filter-bar.open .filter-row{display:flex;}
 }
 @media (min-width:769px) and (max-width:1100px){
   .records-list{grid-template-columns:repeat(2,1fr);}
@@ -240,6 +248,7 @@ footer a{color:var(--accent);text-decoration:none;}
   </header>
 
   <div class="filter-bar">
+    <button class="filter-bar-toggle" id="filter-bar-toggle" type="button">🔍 筛选与搜索</button>
     <div class="filter-row">
       <div class="search-box"><input type="text" id="search-input" placeholder="搜索公司名、岗位关键词（如：控制算法 / 伺服 / 规控 / PLC）..."></div>
       <select class="filter-select" id="filter-industry"><option value="">全部行业</option></select>
@@ -791,6 +800,9 @@ function closeCompanyModal(){document.getElementById('company-modal-overlay').cl
 
 // ===== 事件 =====
 var searchInput=document.getElementById('search-input'),timer;
+  document.getElementById('filter-bar-toggle').addEventListener('click',function(){
+    document.querySelector('.filter-bar').classList.toggle('open');
+  });
 searchInput.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(applyFilters,300);});
 ['filter-industry','filter-type','filter-city','filter-grade','filter-exam'].forEach(function(id){document.getElementById(id).addEventListener('change',applyFilters);});
 document.getElementById('btn-reset').addEventListener('click',function(){

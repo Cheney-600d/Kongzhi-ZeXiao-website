@@ -9,6 +9,13 @@
 
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260814-theme-purple">
 <link rel="stylesheet" href="../theme-global.css">
+<style>
+/* 手机端修复：页面内导航不再固定，避免与 mfs 顶栏叠加 */
+@media (max-width: 768px) {
+  body.mobile-function-ready .main-nav { position: static !important; top: auto !important; }
+  body.mobile-function-ready .page-content { padding-top: 0; }
+}
+</style>
 </head>
 <body>
   <!-- 导航 -->

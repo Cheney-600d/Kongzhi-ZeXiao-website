@@ -89,6 +89,22 @@
 
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260814-theme-purple">
 <link rel="stylesheet" href="../theme-global.css">
+<style>
+/* 手机端修复：避免横向溢出 + 双固定导航叠加 */
+@media (max-width: 900px) {
+  .bili-layout { align-items: stretch; }
+  .bili-main { width: 100%; max-width: 100%; }
+}
+@media (max-width: 768px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  body.mobile-function-ready .site-header { position: static !important; top: auto !important; box-shadow: none; }
+  body.mobile-function-ready .page-content { padding-top: 0 !important; }
+  .hero-banner { flex-direction: column; align-items: stretch; gap: 12px; text-align: center; }
+  .compact-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+  .section-header { flex-wrap: wrap; gap: 8px; }
+}
+</style>
 </head>
 <body>
   <!-- Header -->
