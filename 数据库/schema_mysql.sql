@@ -1,5 +1,5 @@
 -- 27考研院校录取数据库 · MySQL 8.x 建表语句
--- 数据源：27考研择校宝典_录取数据表_0815.xlsx（132所高校 / 155个专业方向 / 531条记录）
+-- 数据源：27考研择校宝典_录取数据表_0815.xlsx（132所高校 / 152个专业方向 / 530条记录）
 
 CREATE DATABASE IF NOT EXISTS kaoyan_admission DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE kaoyan_admission;
@@ -65,3 +65,35 @@ CREATE TABLE IF NOT EXISTS admissions (
   CONSTRAINT fk_admission_school FOREIGN KEY (school_id) REFERENCES schools(id),
   CONSTRAINT fk_admission_major FOREIGN KEY (major_id) REFERENCES majors(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='录取数据';
+
+-- 专业课科目元信息（查询页首页科目卡片）
+CREATE TABLE IF NOT EXISTS subject_meta (
+  subject_name VARCHAR(64) NOT NULL,
+  bg_gradient VARCHAR(255) DEFAULT NULL,
+  sort_order INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (subject_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='专业课科目元信息';
+
+-- 学校-专业课-层次-代码-地区
+CREATE TABLE IF NOT EXISTS exam_subjects (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  subject_name VARCHAR(64) NOT NULL,
+  school_name VARCHAR(64) NOT NULL,
+  tier VARCHAR(16) NOT NULL,
+  region VARCHAR(32) DEFAULT NULL,
+  codes_json TEXT,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_subject_school_tier (subject_name, school_name, tier),
+  KEY idx_subject_school (school_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='专业课学校科目';
+
+-- 学校-初试参考书目
+CREATE TABLE IF NOT EXISTS reference_books (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  school_name VARCHAR(64) NOT NULL,
+  book_text TEXT NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  KEY idx_book_school (school_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='初试参考书目';
+

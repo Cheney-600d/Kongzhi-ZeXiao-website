@@ -899,7 +899,7 @@
                 const resp = await fetch(`/api/books?school=${encodeURIComponent(schoolName)}`);
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);
                 const json = await resp.json();
-                if (json && json.code === 0 && json.data && json.data.books) {
+                if (json && json.code === 0 && json.data && json.data.books && json.data.books.length > 0) {
                     return json.data.books;
                 }
             } catch (e) {
