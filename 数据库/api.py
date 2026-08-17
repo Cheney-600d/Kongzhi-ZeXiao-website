@@ -1,19 +1,57 @@
 # -*- coding: utf-8 -*-
-"""院校录取数据库查询 API（本地开发用，stdl sqlite3，无第三方依赖）。
+"""院校录取数据库查询 API（支持 SQLite / MySQL 双数据源，通过 config.json 切换）。
 
-可以直接被 serve.py 调用，也可以导入到 Flask/FastAPI 项目里使用。
+SQLite 适合本地开发，MySQL 适合服务器部署。切换方式：
+  编辑 数据库/config.json 的 db_type 字段为 "sqlite" 或 "mysql"。
 """
 import json
 import pathlib
 import sqlite3
 
 DB_PATH = pathlib.Path(__file__).with_name('admission.db')
+CFG_PATH = pathlib.Path(__file__).with_name('config.json')
+
+_CFG = {}
+if CFG_PATH.exists():
+    _CFG = json.loads(CFG_PATH.read_text(encoding='utf-8'))
+DB_TYPE = str(_CFG.get('db_type') or 'sqlite').lower()
+_MYSQL = _CFG.get('mysql') or {}
+
+
+class _Db:
+    """轻量封装：统一 sqlite3 与 pymysql 的 execute/close。"""
+
+    def __init__(self, impl):
+        self.impl = impl
+
+    def execute(self, sql, args=None):
+        args = args or []
+        if DB_TYPE == 'mysql':
+            sql = sql.replace('?', '%s')
+        return self.impl.execute(sql, args)
+
+    def close(self):
+        self.impl.close()
 
 
 def _conn():
+    if DB_TYPE == 'mysql':
+        try:
+            import pymysql
+        except ImportError as e:
+            raise RuntimeError('config.json 中 db_type=mysql，但未安装 PyMySQL。请先执行 pip install pymysql') from e
+        return _Db(pymysql.connect(
+            host=_MYSQL.get('host', '127.0.0.1'),
+            port=int(_MYSQL.get('port', 3306)),
+            user=_MYSQL.get('user', 'root'),
+            password=_MYSQL.get('password', ''),
+            database=_MYSQL.get('database', 'kaoyan_admission'),
+            charset=_MYSQL.get('charset', 'utf8mb4'),
+            cursorclass=pymysql.cursors.DictCursor,
+        ))
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    return conn
+    return _Db(conn)
 
 
 def _json_default(v):
@@ -114,9 +152,9 @@ def query_summary():
     """统计摘要：用于首页或调试。"""
     conn = _conn()
     try:
-        school_count = conn.execute('SELECT COUNT(*) FROM schools').fetchone()[0]
-        major_count = conn.execute('SELECT COUNT(*) FROM majors').fetchone()[0]
-        record_count = conn.execute('SELECT COUNT(*) FROM admissions').fetchone()[0]
+        school_count = conn.execute('SELECT COUNT(*) AS c FROM schools').fetchone()['c']
+        major_count = conn.execute('SELECT COUNT(*) AS c FROM majors').fetchone()['c']
+        record_count = conn.execute('SELECT COUNT(*) AS c FROM admissions').fetchone()['c']
         top_schools = [dict(r) for r in conn.execute(
             '''SELECT s.name, COUNT(*) AS c FROM admissions a
                JOIN schools s ON s.id=a.school_id

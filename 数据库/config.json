@@ -1,0 +1,11 @@
+{
+  "db_type": "sqlite",
+  "mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "kaoyan_admission",
+    "charset": "utf8mb4"
+  }
+}

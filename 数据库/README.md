@@ -6,6 +6,7 @@
 - `schema_mysql.sql`：MySQL 8 建表语句（线上用）
 - `import_admission.py`：录取数据导入脚本（本地 SQLite / 线上 MySQL）
 - `import_subjects.py`：专业课科目/参考书导入脚本（从 raw/subjects_books_raw.json），并回填 `schools.province/tier/logo_url`
+- `config.json`：数据源切换配置（sqlite / mysql），部署 MySQL 时改这里
 - `api.py`：查询 API（无第三方依赖，供 serve.py 或 Flask/FastAPI 调用）
 - `admission.db`：SQLite 数据库（导入后生成）
 - `schools.csv` / `majors.csv` / `admissions.csv`：导出的扁平数据
@@ -29,6 +30,28 @@ curl "http://127.0.0.1:8767/api/admissions?school=清华大学&major_code=085400
 ```
 
 返回格式：`{"code":0,"data":{"items":[...],"page":1,"page_size":10,"total":...,"total_pages":...}}`
+
+## 数据源切换（SQLite / MySQL）
+
+`api.py` 默认读取 `config.json`：
+
+```json
+{
+  "db_type": "sqlite",
+  "mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "kaoyan_admission",
+    "charset": "utf8mb4"
+  }
+}
+```
+
+- 本地开发：保持 `"db_type": "sqlite"`。
+- 服务器部署：改为 `"db_type": "mysql"`，填好 MySQL 连接信息，并 `pip install pymysql`。
+- MySQL 表结构见 `schema_mysql.sql`，数据导入用 `python import_admission.py --mysql --host ...`。
 
 ## 管理接口鉴权
 
