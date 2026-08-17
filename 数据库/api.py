@@ -253,6 +253,95 @@ def query_books(school=None):
         conn.close()
 
 
+def query_posts(school=None, category=None, q=None, page=1, page_size=20):
+    """考研经验贴列表：支持按学校、专业课、关键词筛选，分页。"""
+    conn = _conn()
+    try:
+        page = max(int(page), 1)
+        page_size = max(int(page_size), 1)
+        where = []
+        args = []
+        if school:
+            where.append('school LIKE ?')
+            args.append(f'%{school}%')
+        if category:
+            where.append('category = ?')
+            args.append(category)
+        if q:
+            where.append('(title LIKE ? OR school LIKE ? OR author LIKE ?)')
+            args += [f'%{q}%', f'%{q}%', f'%{q}%']
+        suffix = (' WHERE ' + ' AND '.join(where)) if where else ''
+        total = conn.execute('SELECT COUNT(*) AS c FROM experience_posts' + suffix, args).fetchone()['c']
+        offset = (page - 1) * page_size
+        rows = conn.execute('SELECT * FROM experience_posts' + suffix + ' ORDER BY id LIMIT ? OFFSET ?',
+                            args + [page_size, offset]).fetchall()
+        items = [dict(r) for r in rows]
+        return {'code': 0, 'data': {
+            'items': items, 'page': page, 'page_size': page_size,
+            'total': total, 'total_pages': (total + page_size - 1) // page_size,
+        }}
+    finally:
+        conn.close()
+
+
+def query_jobs(q=None, type=None, industry=None, location=None, grade=None, page=1, page_size=20):
+    """校招岗位列表：支持公司/岗位关键词、类型、行业、城市、届别筛选，分页。"""
+    conn = _conn()
+    try:
+        page = max(int(page), 1)
+        page_size = max(int(page_size), 1)
+        where = []
+        args = []
+        if q:
+            where.append('(company LIKE ? OR positions LIKE ? OR note LIKE ?)')
+            args += [f'%{q}%', f'%{q}%', f'%{q}%']
+        if type:
+            where.append('types_json LIKE ?')
+            args.append(f'%{type}%')
+        if industry:
+            where.append('industries_json LIKE ?')
+            args.append(f'%{industry}%')
+        if location:
+            where.append('locations_json LIKE ?')
+            args.append(f'%{location}%')
+        if grade:
+            where.append('grades_json LIKE ?')
+            args.append(f'%{grade}%')
+        suffix = (' WHERE ' + ' AND '.join(where)) if where else ''
+        total = conn.execute('SELECT COUNT(*) AS c FROM job_posts' + suffix, args).fetchone()['c']
+        offset = (page - 1) * page_size
+        rows = conn.execute('SELECT * FROM job_posts' + suffix + ' ORDER BY id LIMIT ? OFFSET ?',
+                            args + [page_size, offset]).fetchall()
+        items = []
+        for r in rows:
+            d = dict(r)
+            for col in ('types', 'industries', 'locations', 'grades', 'exam'):
+                d[col] = json.loads(d.pop(col + '_json', None) or '[]')
+            items.append(d)
+        return {'code': 0, 'data': {
+            'items': items, 'page': page, 'page_size': page_size,
+            'total': total, 'total_pages': (total + page_size - 1) // page_size,
+        }}
+    finally:
+        conn.close()
+
+
+def query_resources():
+    """资料/课程画廊列表。"""
+    conn = _conn()
+    try:
+        rows = conn.execute('SELECT title, category, images_json, sort_order FROM course_resources ORDER BY sort_order').fetchall()
+        items = [{
+            'title': r['title'],
+            'category': r['category'],
+            'images': json.loads(r['images_json'] or '[]'),
+            'sort_order': r['sort_order'],
+        } for r in rows]
+        return {'code': 0, 'data': {'items': items, 'total': len(items)}}
+    finally:
+        conn.close()
+
+
 ROUTES = {
     '/api/schools': query_schools,
     '/api/majors': query_majors,
@@ -261,6 +350,9 @@ ROUTES = {
     '/api/subjects': query_subjects,
     '/api/exam-subjects': query_exam_subjects,
     '/api/books': query_books,
+    '/api/posts': query_posts,
+    '/api/jobs': query_jobs,
+    '/api/resources': query_resources,
 }
 
 

@@ -63,6 +63,28 @@ def main():
     check('分页返回 <= 5 条', len(r['data']['items']) <= 5)
     check('total >= 1', r['data']['total'] >= 1)
 
+    print('== /api/posts ==')
+    r = api.query_posts(page=1, page_size=3)
+    check('code == 0', r['code'] == 0)
+    check('经验贴 total >= 126', r['data']['total'] >= 126)
+    check('分页返回 <= 3 条', len(r['data']['items']) <= 3)
+    r = api.query_posts(q='南京', page=1, page_size=3)
+    check('q=南京 total >= 1', r['data']['total'] >= 1)
+
+    print('== /api/jobs ==')
+    r = api.query_jobs(page=1, page_size=3)
+    check('code == 0', r['code'] == 0)
+    check('岗位 total >= 136', r['data']['total'] >= 136)
+    check('返回岗位带 types 数组', isinstance(r['data']['items'][0].get('types'), list))
+    r = api.query_jobs(industry='工业自动化', page=1, page_size=3)
+    check('industry=工业自动化 total >= 1', r['data']['total'] >= 1)
+
+    print('== /api/resources ==')
+    r = api.query_resources()
+    check('code == 0', r['code'] == 0)
+    check('资料分类 total >= 8', r['data']['total'] >= 8)
+    check('每个分类带 images 数组', all(isinstance(x.get('images'), list) for x in r['data']['items']))
+
     print(f'\n{PASS} passed, {FAIL} failed')
     return 1 if FAIL else 0
 

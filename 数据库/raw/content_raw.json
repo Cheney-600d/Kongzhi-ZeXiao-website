@@ -1,0 +1,6225 @@
+{
+ "posts": [
+  {
+   "id": "post-101",
+   "title": "南京理工大学 总分425",
+   "school": "南京理工大学",
+   "schoolShort": "南理工",
+   "code": "",
+   "total": "425",
+   "subjectScore": "133",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-102",
+   "title": "南京理工大学 总分404",
+   "school": "南京理工大学",
+   "schoolShort": "南理工",
+   "code": "",
+   "total": "404",
+   "subjectScore": "119",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-103",
+   "title": "南京理工大学 总分405",
+   "school": "南京理工大学",
+   "schoolShort": "南理工",
+   "code": "",
+   "total": "405",
+   "subjectScore": "125",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-104",
+   "title": "河海大学 总分398",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "398",
+   "subjectScore": "122",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-105",
+   "title": "河海大学 总分433",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "433",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-106",
+   "title": "河海大学 总分424",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "424",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-107",
+   "title": "河海大学 总分416",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "416",
+   "subjectScore": "138",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-109",
+   "title": "河海大学 总分393",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "393",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-110",
+   "title": "福州大学 总分383",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "383",
+   "subjectScore": "109",
+   "author": "oh-No",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制理论",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-111",
+   "title": "福州大学 总分345",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "345",
+   "subjectScore": "110",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-112",
+   "title": "福州大学 总分333",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "333",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-113",
+   "title": "福州大学 总分351",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "351",
+   "subjectScore": "",
+   "author": "小羊94辣么拽",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-114",
+   "title": "福州大学 总分374",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "374",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-115",
+   "title": "北京工业大学 总分405",
+   "school": "北京工业大学",
+   "schoolShort": "北工",
+   "code": "",
+   "total": "405",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "0基础",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-116",
+   "title": "华东理工大学 总分420",
+   "school": "华东理工大学",
+   "schoolShort": "华理",
+   "code": "",
+   "total": "420",
+   "subjectScore": "142",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-117",
+   "title": "上海电力大学 总分395",
+   "school": "上海电力大学",
+   "schoolShort": "上海电力",
+   "code": "",
+   "total": "395",
+   "subjectScore": "136",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-118",
+   "title": "东北大学 总分434",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "434",
+   "subjectScore": "150",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-119",
+   "title": "东北大学 专业课145",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "",
+   "subjectScore": "145",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "0基础",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-120",
+   "title": "东北大学 总分457",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "457",
+   "subjectScore": "143",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "电路",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-121",
+   "title": "东南大学 总分434",
+   "school": "东南大学",
+   "schoolShort": "东南",
+   "code": "",
+   "total": "434",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "985",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-122",
+   "title": "东南大学 总分401",
+   "school": "东南大学",
+   "schoolShort": "东南",
+   "code": "",
+   "total": "401",
+   "subjectScore": "130",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "985",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-123",
+   "title": "河海大学 总分426",
+   "school": "河海大学",
+   "schoolShort": "河海",
+   "code": "",
+   "total": "426",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-124",
+   "title": "大连海事大学 总分403",
+   "school": "大连海事大学",
+   "schoolShort": "大连海事",
+   "code": "",
+   "total": "403",
+   "subjectScore": "140",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-125",
+   "title": "北京工业大学 总分400",
+   "school": "北京工业大学",
+   "schoolShort": "北工",
+   "code": "821",
+   "total": "400",
+   "subjectScore": "138",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-126",
+   "title": "南京邮电大学 总分359",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "",
+   "total": "359",
+   "subjectScore": "132",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-127",
+   "title": "杭州电子科技大学上岸经验",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "",
+   "total": "",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-128",
+   "title": "中国矿业大学 总分408",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "408",
+   "subjectScore": "136",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-129",
+   "title": "保研失败上岸某985 总分420+",
+   "school": "某985",
+   "schoolShort": "某985",
+   "code": "",
+   "total": "420",
+   "subjectScore": "140",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "985",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-130",
+   "title": "华中科技大学 总分365",
+   "school": "华中科技大学",
+   "schoolShort": "华科",
+   "code": "",
+   "total": "365",
+   "subjectScore": "113",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-131",
+   "title": "南京理工大学 总分423",
+   "school": "南京理工大学",
+   "schoolShort": "南理工",
+   "code": "",
+   "total": "423",
+   "subjectScore": "119",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "0基础",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-132",
+   "title": "南京航空航天大学 总分390",
+   "school": "南京航空航天大学",
+   "schoolShort": "南航",
+   "code": "",
+   "total": "390",
+   "subjectScore": "121",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-133",
+   "title": "杭州电子科技大学 总分400",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "861",
+   "total": "400",
+   "subjectScore": "138",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-134",
+   "title": "上海大学 总分402",
+   "school": "上海大学",
+   "schoolShort": "上大",
+   "code": "",
+   "total": "402",
+   "subjectScore": "127",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-135",
+   "title": "天津工业大学 总分388",
+   "school": "天津工业大学",
+   "schoolShort": "天工",
+   "code": "",
+   "total": "388",
+   "subjectScore": "132",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-136",
+   "title": "南京邮电大学 总分383",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "",
+   "total": "383",
+   "subjectScore": "133",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-137",
+   "title": "苏州大学 总分373",
+   "school": "苏州大学",
+   "schoolShort": "苏大",
+   "code": "",
+   "total": "373",
+   "subjectScore": "133",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-138",
+   "title": "南京邮电大学 总分421",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "",
+   "total": "421",
+   "subjectScore": "141",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-139",
+   "title": "南昌大学 总分401",
+   "school": "南昌大学",
+   "schoolShort": "南昌",
+   "code": "",
+   "total": "401",
+   "subjectScore": "142",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-140",
+   "title": "天津工业大学 总分382",
+   "school": "天津工业大学",
+   "schoolShort": "天工",
+   "code": "",
+   "total": "382",
+   "subjectScore": "134",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-141",
+   "title": "郑州大学 总分426",
+   "school": "郑州大学",
+   "schoolShort": "郑大",
+   "code": "",
+   "total": "426",
+   "subjectScore": "137",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-142",
+   "title": "太原理工大学 总分376",
+   "school": "太原理工大学",
+   "schoolShort": "太原理工",
+   "code": "",
+   "total": "376",
+   "subjectScore": "137",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-143",
+   "title": "哈尔滨工程大学 总分390",
+   "school": "哈尔滨工程大学",
+   "schoolShort": "哈工程",
+   "code": "",
+   "total": "390",
+   "subjectScore": "133",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-144",
+   "title": "上海大学 总分383",
+   "school": "上海大学",
+   "schoolShort": "上大",
+   "code": "",
+   "total": "383",
+   "subjectScore": "115",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制理论",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-145",
+   "title": "武汉理工大学 总分425",
+   "school": "武汉理工大学",
+   "schoolShort": "武理",
+   "code": "",
+   "total": "425",
+   "subjectScore": "141",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-146",
+   "title": "同济大学 总分426",
+   "school": "同济大学",
+   "schoolShort": "同济",
+   "code": "",
+   "total": "426",
+   "subjectScore": "147",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-147",
+   "title": "哈尔滨工程大学 总分415",
+   "school": "哈尔滨工程大学",
+   "schoolShort": "哈工程",
+   "code": "",
+   "total": "415",
+   "subjectScore": "145",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-149",
+   "title": "北京科技大学 总分386",
+   "school": "北京科技大学",
+   "schoolShort": "北科",
+   "code": "",
+   "total": "386",
+   "subjectScore": "142",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-150",
+   "title": "大连海事大学 总分402",
+   "school": "大连海事大学",
+   "schoolShort": "大连海事",
+   "code": "",
+   "total": "402",
+   "subjectScore": "137",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-152",
+   "title": "大连海事大学 总分403",
+   "school": "大连海事大学",
+   "schoolShort": "大连海事",
+   "code": "",
+   "total": "403",
+   "subjectScore": "129",
+   "author": "律安学长",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-153",
+   "title": "中国矿业大学 总分430",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "430",
+   "subjectScore": "139",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-154",
+   "title": "华东理工大学 总分430",
+   "school": "华东理工大学",
+   "schoolShort": "华理",
+   "code": "816",
+   "total": "430",
+   "subjectScore": "142",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-155",
+   "title": "电子科技大学 总分379",
+   "school": "电子科技大学",
+   "schoolShort": "电子科大",
+   "code": "",
+   "total": "379",
+   "subjectScore": "125",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-156",
+   "title": "南京信息工程大学 总分384",
+   "school": "南京信息工程大学",
+   "schoolShort": "南信大",
+   "code": "",
+   "total": "384",
+   "subjectScore": "122",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-157",
+   "title": "杭州电子科技大学 总分378",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "",
+   "total": "378",
+   "subjectScore": "140",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-158",
+   "title": "杭州电子科技大学 总分416",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "861",
+   "total": "416",
+   "subjectScore": "124",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-159",
+   "title": "青岛大学 专业课107",
+   "school": "青岛大学",
+   "schoolShort": "青岛",
+   "code": "",
+   "total": "",
+   "subjectScore": "107",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "0基础",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-160",
+   "title": "燕山大学 总分267",
+   "school": "燕山大学",
+   "schoolShort": "燕大",
+   "code": "",
+   "total": "267",
+   "subjectScore": "90",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "民办",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-162",
+   "title": "电子科技大学 总分412",
+   "school": "电子科技大学",
+   "schoolShort": "电子科大",
+   "code": "839",
+   "total": "412",
+   "subjectScore": "136",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-163",
+   "title": "福州大学 专业课130",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "",
+   "subjectScore": "130",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "在职",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-164",
+   "title": "福州大学 总分414",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "414",
+   "subjectScore": "127",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-165",
+   "title": "福州大学 总分437",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "437",
+   "subjectScore": "133",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-166",
+   "title": "河北工业大学 总分333",
+   "school": "河北工业大学",
+   "schoolShort": "河工大",
+   "code": "",
+   "total": "333",
+   "subjectScore": "121",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-167",
+   "title": "北京航空航天大学 总分396",
+   "school": "北京航空航天大学",
+   "schoolShort": "北航",
+   "code": "",
+   "total": "396",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "三本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-168",
+   "title": "郑州大学 总分401",
+   "school": "郑州大学",
+   "schoolShort": "郑大",
+   "code": "",
+   "total": "401",
+   "subjectScore": "131",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-169",
+   "title": "南京航空航天大学 总分361",
+   "school": "南京航空航天大学",
+   "schoolShort": "南航",
+   "code": "",
+   "total": "361",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-170",
+   "title": "上海交通大学 总分375",
+   "school": "上海交通大学",
+   "schoolShort": "上交",
+   "code": "817",
+   "total": "375",
+   "subjectScore": "121",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-171",
+   "title": "中国石油大学 总分400",
+   "school": "中国石油大学",
+   "schoolShort": "中国石油",
+   "code": "",
+   "total": "400",
+   "subjectScore": "142",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-172",
+   "title": "南京信息工程大学 总分327",
+   "school": "南京信息工程大学",
+   "schoolShort": "南信大",
+   "code": "",
+   "total": "327",
+   "subjectScore": "115",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-173",
+   "title": "南京工业大学 总分390",
+   "school": "南京工业大学",
+   "schoolShort": "南工业",
+   "code": "",
+   "total": "390",
+   "subjectScore": "138",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-174",
+   "title": "南昌大学 总分376",
+   "school": "南昌大学",
+   "schoolShort": "南昌",
+   "code": "",
+   "total": "376",
+   "subjectScore": "90",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-175",
+   "title": "厦门大学 总分361",
+   "school": "厦门大学",
+   "schoolShort": "厦大",
+   "code": "",
+   "total": "361",
+   "subjectScore": "117",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-176",
+   "title": "厦门大学 总分377",
+   "school": "厦门大学",
+   "schoolShort": "厦大",
+   "code": "",
+   "total": "377",
+   "subjectScore": "117",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "三本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-177",
+   "title": "厦门大学 总分414",
+   "school": "厦门大学",
+   "schoolShort": "厦大",
+   "code": "",
+   "total": "414",
+   "subjectScore": "130",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "电路",
+   "undergrad": "",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-178",
+   "title": "北京工业大学 总分373",
+   "school": "北京工业大学",
+   "schoolShort": "北工",
+   "code": "",
+   "total": "373",
+   "subjectScore": "126",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-179",
+   "title": "东北大学 总分430",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "430",
+   "subjectScore": "130",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-180",
+   "title": "中国科学院大学 总分397",
+   "school": "中国科学院大学",
+   "schoolShort": "国科大",
+   "code": "",
+   "total": "397",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "在职",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-181",
+   "title": "哈尔滨工程大学 总分336",
+   "school": "哈尔滨工程大学",
+   "schoolShort": "哈工程",
+   "code": "808",
+   "total": "336",
+   "subjectScore": "116",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "在职",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-182",
+   "title": "天津工业大学 总分409",
+   "school": "天津工业大学",
+   "schoolShort": "天工",
+   "code": "",
+   "total": "409",
+   "subjectScore": "140",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "电路",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-183",
+   "title": "哈尔滨工程大学 808",
+   "school": "哈尔滨工程大学",
+   "schoolShort": "哈工程",
+   "code": "808",
+   "total": "",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-184",
+   "title": "海南大学 总分392",
+   "school": "海南大学",
+   "schoolShort": "海南",
+   "code": "",
+   "total": "392",
+   "subjectScore": "136",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-185",
+   "title": "燕山大学 总分328",
+   "school": "燕山大学",
+   "schoolShort": "燕大",
+   "code": "",
+   "total": "328",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-186",
+   "title": "哈尔滨工业大学（深圳） 总分439",
+   "school": "哈尔滨工业大学（深圳）",
+   "schoolShort": "哈工深",
+   "code": "",
+   "total": "439",
+   "subjectScore": "",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-187",
+   "title": "东北大学 总分426",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "426",
+   "subjectScore": "139",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-188",
+   "title": "中国矿业大学 总分409",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "409",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-189",
+   "title": "重庆大学 总分363",
+   "school": "重庆大学",
+   "schoolShort": "重大",
+   "code": "",
+   "total": "363",
+   "subjectScore": "126",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-190",
+   "title": "重庆邮电大学 总分350",
+   "school": "重庆邮电大学",
+   "schoolShort": "重邮",
+   "code": "",
+   "total": "350",
+   "subjectScore": "129",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-191",
+   "title": "重庆邮电大学 总分375",
+   "school": "重庆邮电大学",
+   "schoolShort": "重邮",
+   "code": "",
+   "total": "375",
+   "subjectScore": "118",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "民办",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-192",
+   "title": "上海交通大学 总分370",
+   "school": "上海交通大学",
+   "schoolShort": "上交",
+   "code": "817",
+   "total": "370",
+   "subjectScore": "133",
+   "author": "舟舟学长",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-193",
+   "title": "东北大学 总分434",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "434",
+   "subjectScore": "144",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "电路",
+   "undergrad": "专升本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-194",
+   "title": "东北大学 总分438",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "438",
+   "subjectScore": "134",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-195",
+   "title": "东北大学 总分441",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "441",
+   "subjectScore": "145",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-196",
+   "title": "中国科学技术大学 总分387",
+   "school": "中国科学技术大学",
+   "schoolShort": "中科大",
+   "code": "",
+   "total": "387",
+   "subjectScore": "119",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "211",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-197",
+   "title": "中国计量大学 总分388",
+   "school": "中国计量大学",
+   "schoolShort": "中国计量",
+   "code": "",
+   "total": "388",
+   "subjectScore": "131",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-198",
+   "title": "浙江大学 总分373",
+   "school": "浙江大学",
+   "schoolShort": "浙大",
+   "code": "",
+   "total": "373",
+   "subjectScore": "104",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-199",
+   "title": "东北大学 总分435",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "435",
+   "subjectScore": "143",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-200",
+   "title": "重庆邮电大学 专业课130",
+   "school": "重庆邮电大学",
+   "schoolShort": "重邮",
+   "code": "",
+   "total": "",
+   "subjectScore": "130",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-201",
+   "title": "南昌大学 总分408",
+   "school": "南昌大学",
+   "schoolShort": "南昌",
+   "code": "",
+   "total": "408",
+   "subjectScore": "113",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-202",
+   "title": "大连理工大学 总分345",
+   "school": "大连理工大学",
+   "schoolShort": "大连理工",
+   "code": "",
+   "total": "345",
+   "subjectScore": "94",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-203",
+   "title": "华北电力大学 总分375",
+   "school": "华北电力大学",
+   "schoolShort": "华电",
+   "code": "",
+   "total": "375",
+   "subjectScore": "116",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "二战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-204",
+   "title": "南昌大学 总分338",
+   "school": "南昌大学",
+   "schoolShort": "南昌",
+   "code": "",
+   "total": "338",
+   "subjectScore": "108",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-205",
+   "title": "南昌大学 总分384",
+   "school": "南昌大学",
+   "schoolShort": "南昌",
+   "code": "",
+   "total": "384",
+   "subjectScore": "119",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-206",
+   "title": "南京航空航天大学 总分418",
+   "school": "南京航空航天大学",
+   "schoolShort": "南航",
+   "code": "",
+   "total": "418",
+   "subjectScore": "141",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-207",
+   "title": "南京航空航天大学 总分411",
+   "school": "南京航空航天大学",
+   "schoolShort": "南航",
+   "code": "",
+   "total": "411",
+   "subjectScore": "124",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-208",
+   "title": "同济大学 总分383",
+   "school": "同济大学",
+   "schoolShort": "同济",
+   "code": "825",
+   "total": "383",
+   "subjectScore": "133",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "三战",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-209",
+   "title": "中国矿业大学 总分415",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "415",
+   "subjectScore": "128",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-210",
+   "title": "东北大学 总分446",
+   "school": "东北大学",
+   "schoolShort": "东北",
+   "code": "",
+   "total": "446",
+   "subjectScore": "149",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-211",
+   "title": "中国矿业大学 总分357",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "357",
+   "subjectScore": "116",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-212",
+   "title": "中国计量大学 总分370",
+   "school": "中国计量大学",
+   "schoolShort": "中国计量",
+   "code": "",
+   "total": "370",
+   "subjectScore": "121",
+   "author": "",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-213",
+   "title": "大连理工大学 总分406",
+   "school": "大连理工大学",
+   "schoolShort": "大连理工",
+   "code": "",
+   "total": "406",
+   "subjectScore": "136",
+   "author": "",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-214",
+   "title": "中国矿业大学 总分410",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "410",
+   "subjectScore": "129",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-215",
+   "title": "杭州电子科技大学 总分359",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "",
+   "total": "359",
+   "subjectScore": "",
+   "author": "上岸同学",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-216",
+   "title": "杭州电子科技大学 总分359",
+   "school": "杭州电子科技大学",
+   "schoolShort": "杭电",
+   "code": "",
+   "total": "359",
+   "subjectScore": "112",
+   "author": "",
+   "year": "26考研",
+   "level": "双非",
+   "category": "自动控制原理",
+   "undergrad": "",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#43a047"
+  },
+  {
+   "id": "post-217",
+   "title": "武汉理工大学 总分432",
+   "school": "武汉理工大学",
+   "schoolShort": "武理",
+   "code": "",
+   "total": "432",
+   "subjectScore": "147",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-218",
+   "title": "江南大学 总分398",
+   "school": "江南大学",
+   "schoolShort": "江南",
+   "code": "807",
+   "total": "398",
+   "subjectScore": "139",
+   "author": "曙天学长",
+   "year": "26考研",
+   "level": "211",
+   "category": "电路",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-219",
+   "title": "河北工业大学 总分378",
+   "school": "河北工业大学",
+   "schoolShort": "河工大",
+   "code": "",
+   "total": "378",
+   "subjectScore": "128",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-220",
+   "title": "中国矿业大学 总分410",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "410",
+   "subjectScore": "125",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-221",
+   "title": "中国矿业大学 总分362",
+   "school": "中国矿业大学",
+   "schoolShort": "矿大",
+   "code": "",
+   "total": "362",
+   "subjectScore": "138",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-222",
+   "title": "上海交通大学上岸经验",
+   "school": "上海交通大学",
+   "schoolShort": "上交",
+   "code": "",
+   "total": "",
+   "subjectScore": "",
+   "author": "祁水学长",
+   "year": "26考研",
+   "level": "985",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-223",
+   "title": "福州大学 总分406",
+   "school": "福州大学",
+   "schoolShort": "福大",
+   "code": "",
+   "total": "406",
+   "subjectScore": "106",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "控制工程基础",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-224",
+   "title": "南京航空航天大学 总分376",
+   "school": "南京航空航天大学",
+   "schoolShort": "南航",
+   "code": "",
+   "total": "376",
+   "subjectScore": "143",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-225",
+   "title": "苏州大学 专业课125",
+   "school": "苏州大学",
+   "schoolShort": "苏大",
+   "code": "842",
+   "total": "",
+   "subjectScore": "125",
+   "author": "",
+   "year": "26考研",
+   "level": "211",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#00aeec"
+  },
+  {
+   "id": "post-226",
+   "title": "哈尔滨工业大学 总分405",
+   "school": "哈尔滨工业大学",
+   "schoolShort": "哈工大",
+   "code": "",
+   "total": "405",
+   "subjectScore": "132",
+   "author": "黑白学长",
+   "year": "26考研",
+   "level": "985",
+   "category": "控制原理",
+   "undergrad": "在职",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#e53935"
+  },
+  {
+   "id": "post-227",
+   "title": "南京邮电大学 总分405",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "812",
+   "total": "405",
+   "subjectScore": "119",
+   "author": "Asen",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-228",
+   "title": "南京邮电大学 总分396",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "812",
+   "total": "396",
+   "subjectScore": "118",
+   "author": "努力努力再努力",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "二本",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-229",
+   "title": "南京邮电大学 总分413",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "812",
+   "total": "413",
+   "subjectScore": "140",
+   "author": "清风与我",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "跨考",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  },
+  {
+   "id": "post-230",
+   "title": "南京邮电大学 总分404",
+   "school": "南京邮电大学",
+   "schoolShort": "南邮",
+   "code": "",
+   "total": "404",
+   "subjectScore": "",
+   "author": "蓝星咏叹调",
+   "year": "26考研",
+   "level": "双一流",
+   "category": "自动控制原理",
+   "undergrad": "双非",
+   "c1": "#e63946",
+   "c2": "#fdf0f0",
+   "ct": "#fff",
+   "yc1": "#ff8f1f",
+   "yc2": "#fff3e0",
+   "lc": "#9c27b0"
+  }
+ ],
+ "jobs": [
+  {
+   "company": "汇川技术",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "智能制造",
+    "运动控制"
+   ],
+   "locations": [
+    "深圳",
+    "苏州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师、控制算法工程师、伺服/电机控制、方案研发工程师",
+   "note": "汇川技术2027届校园招聘首批岗位上新，控制算法/运动控制对口；以官方公众号「汇川技术招聘」为准",
+   "apply_url": "https://campus.niuqizp.com/job-vwr5zCLZ5.html",
+   "notice_url": "https://career.smbu.edu.cn/detail/online?id=3532965"
+  },
+  {
+   "company": "中控技术",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "过程控制(DCS)",
+    "工业软件"
+   ],
+   "locations": [
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化控制工程师、DCS/过程控制工程师、工业软件/Industrial AI 工程师",
+   "note": "中控技术校招持续进行，DCS、过程控制、工业AI对口岗位，官网投递 supcontech.com/join.html",
+   "apply_url": "http://supcontech.com/join.html",
+   "notice_url": "http://jy.ncu.edu.cn/detail/job?id=2612130"
+  },
+  {
+   "company": "和利时",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "过程控制(DCS)"
+   ],
+   "locations": [
+    "杭州",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化工程师、DCS/过程控制工程师、PLC工程师",
+   "note": "和利时科技集团及杭州和利时持续校招，DCS/过程控制/自动化对口",
+   "apply_url": "https://job.bit.edu.cn/frontpage/bit/html/recruitmentinfoForm.html?positionDetailId=237edcd2b79e400cbc203d46771a943d",
+   "notice_url": "https://www.career.zju.edu.cn/jyxt/sczp/zpztgl/ckZpgwXq.zf?zpxxbh=4E8C9AB5DA1263CDE0653A68DD0E9B18"
+  },
+  {
+   "company": "埃斯顿",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "工业自动化",
+    "工业机器人",
+    "运动控制"
+   ],
+   "locations": [
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师、机器人控制算法、伺服驱动工程师",
+   "note": "埃斯顿2027届秋招宣讲会已启动，运动控制/机器人/伺服对口",
+   "apply_url": "https://m.yingjiesheng.com/xuanjianghui/xjh_6144736",
+   "notice_url": "https://job.hust.edu.cn/zpinfo1/2290043.htm"
+  },
+  {
+   "company": "新松机器人",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "春招"
+   ],
+   "industries": [
+    "工业机器人",
+    "智能制造"
+   ],
+   "locations": [
+    "沈阳"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师、机器人控制算法工程师、算法工程师",
+   "note": "沈阳新松机器人2026春招进行中，含运动控制算法岗位；2027届秋招以官方为准",
+   "apply_url": "https://www.wondercv.com/xiaozhao/shenyang-xinsong-2026-spring-7564-3bd174/",
+   "notice_url": "https://m.yingjiesheng.com/xuanjianghui/xjh_6002828"
+  },
+  {
+   "company": "绿的谐波",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "工业自动化",
+    "谐波减速器/精密传动"
+   ],
+   "locations": [
+    "苏州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制算法工程师、电气工程师、机械/助理工程师",
+   "note": "苏州绿的谐波传动科技校招+社招，控制/电气对口岗位",
+   "apply_url": "https://dwrc.cn/Web/Function/SchoolRecruit/SchoolJobDetails.aspx?PID=c890f02d-59a3-47d8-b965-b043d99aba94",
+   "notice_url": ""
+  },
+  {
+   "company": "台达",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批"
+   ],
+   "industries": [
+    "工业自动化",
+    "电源",
+    "智能制造"
+   ],
+   "locations": [
+    "上海",
+    "苏州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制工程师、自动化工程师、驱动/伺服工程师",
+   "note": "台达集团2027届研发暑期营报名开启，自动化/驱动对口",
+   "apply_url": "https://m.delta-china.com.cn/zh-CN/career/join",
+   "notice_url": "https://v.wjx.cn/vm/tKW356q.aspx"
+  },
+  {
+   "company": "施耐德电气",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "电气",
+    "能源管理"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "广州",
+    "西安",
+    "厦门",
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化/电气工程师、数字化工程师、PLC/工业软件工程师",
+   "note": "施耐德电气2027届秋招「新星计划」提前批已启动，多地岗位",
+   "apply_url": "https://campus.niuqizp.com/job-vwr5aLLNM.html",
+   "notice_url": "https://m.wh.bendibao.com/job/199755.shtm"
+  },
+  {
+   "company": "西门子",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "数字化工业",
+    "电气"
+   ],
+   "locations": [
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "数字化工业/自动化与驱动工程师、自动化测试工程师",
+   "note": "西门子中国校招官方入口，2026秋招提前批已结束，2027届以官方为准",
+   "apply_url": "https://www.siemens.com/zh-cn/company/jobs/campus-recruiting/",
+   "notice_url": "https://sfi.cuhk.edu.cn/zh-hans/node/8765"
+  },
+  {
+   "company": "ABB",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "工业自动化",
+    "电气",
+    "工业机器人"
+   ],
+   "locations": [
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电气工程师、控制工程师、自动化工程师",
+   "note": "ABB中国2026届校招已启动并开放2027届实习，电气/控制对口",
+   "apply_url": "https://campus.niuqizp.com/job-vsY5zNZzt.html",
+   "notice_url": "https://24365.cq.smartedu.cn/campus/view/id/713468/mark/cqu"
+  },
+  {
+   "company": "罗克韦尔自动化",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "工业自动化",
+    "工业软件"
+   ],
+   "locations": [
+    "大连",
+    "西安",
+    "上海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化软件工程师、控制系统工程师",
+   "note": "罗克韦尔自动化(中国)及软件(大连)持续招聘，软件/控制对口",
+   "apply_url": "https://m.yingjiesheng.com/job-007-968-867.html",
+   "notice_url": "https://jdjyw.jlu.edu.cn/mportal/company/details?id=fe18e2365b604651aa2f9e0c9f30a3f6"
+  },
+  {
+   "company": "横河电机",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "工业自动化",
+    "过程控制(DCS/仪表)"
+   ],
+   "locations": [
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制/自动化工程师、DCS工程师、仪表工程师",
+   "note": "横河电机(中国)校招入口，DCS/过程控制对口",
+   "apply_url": "https://app.mokahr.com/campus-recruitment/hhdj/58086#/",
+   "notice_url": "https://www.yokogawa.com/cn/about/careers/hr/"
+  },
+  {
+   "company": "宝信软件",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业软件",
+    "工业自动化",
+    "智能制造"
+   ],
+   "locations": [
+    "上海",
+    "马鞍山"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化工程师、工业软件/智能制造工程师",
+   "note": "宝信软件及安徽宝信2026届校招持续，工业软件与智能制造对口",
+   "apply_url": "https://yun.ahbys.com/job2.html?jid=52076&cid=17320",
+   "notice_url": "https://mp.weixin.qq.com/s/uh0Dz7cVR8BGTAMKgM9FUg"
+  },
+  {
+   "company": "中冶赛迪",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "冶金工程/智能制造"
+   ],
+   "locations": [
+    "重庆",
+    "上海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "智能化信息化工程师、自动化工程师",
+   "note": "中冶赛迪2026校招含智能化信息化类岗位，自动化对口",
+   "apply_url": "https://msearch.51job.com/jobs/chongqing-ljxq/167752427.html",
+   "notice_url": ""
+  },
+  {
+   "company": "金风科技",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "风电/新能源",
+    "工业自动化"
+   ],
+   "locations": [
+    "北京",
+    "乌鲁木齐",
+    "河北"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制算法工程师、风电电控/自动化工程师",
+   "note": "金风科技校招进行中，子公司河北金风电控2027届秋招宣讲会已启动",
+   "apply_url": "https://m.yingjiesheng.com/xuanjianghui/xjh_6252298",
+   "notice_url": "https://career.hebut.edu.cn/correcruit/content/id/77352.html"
+  },
+  {
+   "company": "大疆创新",
+   "date": "2026-08-04",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "无人机",
+    "机器人"
+   ],
+   "locations": [
+    "深圳",
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制算法工程师、运动控制算法、飞控算法、传感器融合、嵌入式（机器人方向）",
+   "note": "2027「拓疆者」校招开启，约46岗覆盖算法/硬件/芯片，北上深有岗",
+   "apply_url": "https://we.dji.com",
+   "notice_url": "http://www.offcn.com/gqzp/2026/0804/251151.html"
+  },
+  {
+   "company": "宇树科技",
+   "date": "2026-07-30",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "具身智能"
+   ],
+   "locations": [
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人运动控制、足式/人形机器人控制算法、强化学习、嵌入式控制、电机/伺服控制",
+   "note": "宇树科技2027年校园招聘已启动，人形/足式机器人控制为核心对口方向",
+   "apply_url": "https://www.unitree.com/",
+   "notice_url": "https://www.job.sjtu.edu.cn/career/zpxx/view/zpxx/194501126714953728"
+  },
+  {
+   "company": "智元机器人",
+   "date": "2026-07-17",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "具身智能"
+   ],
+   "locations": [
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "人形机器人运动控制、具身智能、强化学习、灵巧手/伺服控制、嵌入式控制",
+   "note": "智元2027届校园招聘全面启动，人形机器人整机控制/具身智能对口",
+   "apply_url": "https://www.agibot.com/",
+   "notice_url": "https://career.nankai.edu.cn/correcruit/content/id/116382.html"
+  },
+  {
+   "company": "追觅科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "苏州",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "SLAM算法、机器人感知/控制算法、嵌入式软件",
+   "note": "扫地机器人/智能清洁头部公司，SLAM与嵌入式为核心",
+   "apply_url": "",
+   "notice_url": "https://www.quanzhi.com/notice/68618b7491a306c224d1d555"
+  },
+  {
+   "company": "科沃斯机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "苏州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "SLAM算法、机器人导航算法、传感器算法",
+   "note": "科沃斯校招进行中，招聘城市苏州；含算法工程师-SLAM/传感器岗",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vU85LnMZ5.html"
+  },
+  {
+   "company": "石头科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人算法（SLAM/规划/控制）、感知算法、嵌入式",
+   "note": "石头科技校招算法类岗位为主，扫地机器人头部公司",
+   "apply_url": "",
+   "notice_url": "https://job.bit.edu.cn/frontpage/bit/html/recruitmentinfoForm.html?positionDetailId=488004a454984473bd8c1a4fa3b29289"
+  },
+  {
+   "company": "越疆机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人算法工程师、伺服算法工程师、运动控制",
+   "note": "越疆2027届校招含机器人算法工程师（深圳），社招含伺服算法工程师",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vlr5ZCNLz.html"
+  },
+  {
+   "company": "节卡机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "社招"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "上海"
+   ],
+   "grades": [],
+   "exam": [],
+   "positions": "控制算法工程师、控制器软件开发工程师、运动控制",
+   "note": "协作机器人头部公司，社招为主，控制器软件开发（上海）等控制对口岗",
+   "apply_url": "",
+   "notice_url": "https://msearch.51job.com/jobs/shanghai-mhq/171684973.html"
+  },
+  {
+   "company": "优必选",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "深圳",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法、伺服软件工程师、机器人算法工程师",
+   "note": "优必选2027届校招含伺服软件工程师等，深圳/北京",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vmk55nMtZ.html"
+  },
+  {
+   "company": "云深处科技",
+   "date": "2026-05-24",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "足式机器人运动控制、运动规划、步态控制算法",
+   "note": "云深处2027全球校招启动，四足/足式机器人，运动控制为核心方向",
+   "apply_url": "https://app135149.eapps.dingtalkcloud.com/campus-recruitment/yunshenchu/100000136",
+   "notice_url": "https://news.qq.com/rain/a/20260524A094PD00"
+  },
+  {
+   "company": "松灵机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "深圳",
+    "东莞"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人算法、运动控制、底盘控制、技术支持",
+   "note": "松灵(AgileX)移动底盘/无人驾驶平台公司，2027届校招，算法与底盘控制方向对口",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vrr5tCtM5.html"
+  },
+  {
+   "company": "拓竹科技",
+   "date": "2026-08-07",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "3D打印"
+   ],
+   "locations": [
+    "深圳",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制、电机控制、伺服、嵌入式控制",
+   "note": "拓竹2027届研发类提前批启动，开放超100岗位，控制/电机/嵌入式对口",
+   "apply_url": "https://bambulab.jobs.feishu.cn/campus/page-yJLBmj",
+   "notice_url": "https://wtu.91wllm.cn/news/view/aid/298949"
+  },
+  {
+   "company": "普渡科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人规划/控制算法、SLAM、运动控制",
+   "note": "普渡2027届校招及2028届实习生项目启动，商用服务机器人",
+   "apply_url": "",
+   "notice_url": "https://career.sysu.edu.cn/campus/view/id/996271"
+  },
+  {
+   "company": "丰疆智能",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "农机自动驾驶"
+   ],
+   "locations": [
+    "深圳",
+    "南京",
+    "武汉",
+    "西安",
+    "福州"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动驾驶规控、导航控制、运动控制、嵌入式",
+   "note": "农业机器人/自动驾驶，多地设岗，导航规控与控制方向对口",
+   "apply_url": "",
+   "notice_url": "https://m.yingjiesheng.com/job-007-966-548.html"
+  },
+  {
+   "company": "极智嘉",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "北京",
+    "合肥"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师、操作算法工程师",
+   "note": "仓储物流机器人龙头，明确招运动控制算法工程师（北京/合肥）",
+   "apply_url": "https://app.mokahr.com/campus_apply/geekplus/165879",
+   "notice_url": "https://jobs.niuqizp.com/schedule-hm88raM5L.html"
+  },
+  {
+   "company": "库犸科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "智能庭院/割草机器人"
+   ],
+   "locations": [
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "规控算法工程师、运动控制、路径规划、机器人控制",
+   "note": "库犸科技(Mammotion)智能庭院/割草机器人头部，2027提前批含规控算法工程师（深圳）",
+   "apply_url": "https://jobs.mammotion.cn",
+   "notice_url": "https://jobs.mammotion.cn/campus_recruitment/position/7659706477493684489/detail"
+  },
+  {
+   "company": "比亚迪",
+   "date": "2026-07-28",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "汽车",
+    "智能驾驶"
+   ],
+   "locations": [
+    "深圳",
+    "西安",
+    "长沙",
+    "上海",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "整车控制、底盘控制、电机控制、标定、智能驾驶规控算法",
+   "note": "比亚迪2027届秋招提前批已启动，整车/底盘/电机控制等方向，官网可投",
+   "apply_url": "https://job.byd.com/",
+   "notice_url": "http://job.hust.edu.cn/zpinfo1/2407093.htm"
+  },
+  {
+   "company": "蔚来汽车",
+   "date": "2026-07",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "汽车",
+    "智能驾驶"
+   ],
+   "locations": [
+    "上海",
+    "北京",
+    "合肥"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动驾驶规控算法、底盘控制、整车控制、电机控制、标定",
+   "note": "蔚来2027届技术提前批校园招聘启动，覆盖自动驾驶规控/底盘控制等技术岗",
+   "apply_url": "https://nio.jobs.feishu.cn/campus/",
+   "notice_url": "https://www.nowcoder.com/feed/main/detail/22d3988cf9ce48c7a820d0a2a734750c"
+  },
+  {
+   "company": "理想汽车",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批",
+    "顶尖人才专项"
+   ],
+   "industries": [
+    "汽车",
+    "智能驾驶"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "香港"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "自动驾驶规控/控制算法、底盘控制、整车控制、电机、车辆动力学、决策规划",
+   "note": "理想2027届顶尖技术人才专项「理想+」计划及2027校园招聘启动，规控/底盘方向对口",
+   "apply_url": "https://www.lixiang.com/",
+   "notice_url": "https://career.nankai.edu.cn/correcruit/content/id/116499.html"
+  },
+  {
+   "company": "小鹏汽车",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "汽车",
+    "智能驾驶"
+   ],
+   "locations": [
+    "广州",
+    "北京",
+    "上海",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动驾驶规控算法、底盘控制、整车控制",
+   "note": "小鹏2027届「探索者计划」全球校园招聘启动",
+   "apply_url": "https://xiaopeng.jobs.feishu.cn/campus",
+   "notice_url": "http://career.csu.edu.cn/job/view/id/1188543"
+  },
+  {
+   "company": "华为技术有限公司",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习生"
+   ],
+   "industries": [
+    "智能驾驶",
+    "汽车",
+    "半导体",
+    "嵌入式"
+   ],
+   "locations": [
+    "上海",
+    "东莞",
+    "深圳",
+    "杭州",
+    "武汉",
+    "北京",
+    "南京",
+    "苏州",
+    "西安",
+    "成都"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "智能车控/底盘控制/规控算法/传感器融合（车BU引望）+ 海思芯片/嵌入式软件/硬件（海思/2012实验室）",
+   "note": "华为智能汽车解决方案BU(引望)与海思/2012实验室2027届校招及实习生岗位已发布，官方招聘页投递",
+   "apply_url": "https://career.huawei.com/",
+   "notice_url": "https://campus.niuqizp.com/job-vrk5Zz5aa.html"
+  },
+  {
+   "company": "禾赛科技",
+   "date": "2026-07",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "激光雷达",
+    "智能驾驶"
+   ],
+   "locations": [
+    "上海",
+    "杭州",
+    "西安"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "激光雷达算法、传感器融合、机器人动力系统、雷达研发、标定",
+   "note": "禾赛科技2027届秋招提前批启航，激光雷达算法/传感器融合/机器人动力系统方向",
+   "apply_url": "https://kwh0jtf778.jobs.feishu.cn/229043",
+   "notice_url": "https://job.nwpu.edu.cn/frontpage/nwpu/html/recruitmentFairForm.html?id=1fc77b2176fd4d45a1ee87a43765bf41"
+  },
+  {
+   "company": "速腾聚创",
+   "date": "2026-07",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "激光雷达",
+    "智能驾驶"
+   ],
+   "locations": [
+    "深圳",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "激光雷达算法、传感器融合、硬件/电子、机器人",
+   "note": "速腾聚创2027届提前批启动（RoboSense全球校招），深圳/上海",
+   "apply_url": "https://www.robosense.ai/",
+   "notice_url": "http://job.neu.edu.cn/campus/view/id/562332"
+  },
+  {
+   "company": "图达通",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "激光雷达",
+    "智能驾驶"
+   ],
+   "locations": [
+    "苏州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "激光雷达算法、传感器融合",
+   "note": "图达通(Innovusion)2027届校招信息已发布，激光雷达算法/传感器融合方向",
+   "apply_url": "https://www.innovusion.com/",
+   "notice_url": "https://jy.scu.edu.cn/index/index/newsdetail.html?data=MDAwMDAwMDAwMJG6n3_Ed6imi4qQtMOfeZuKk7bOyGHRp7ugzc-GnZ2skMx9ZMN4gtKLipCwxKF0lZC5sq-0gqJv"
+  },
+  {
+   "company": "Momenta",
+   "date": "2026-07",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "智能驾驶"
+   ],
+   "locations": [
+    "深圳",
+    "上海",
+    "北京",
+    "苏州",
+    "广州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "规控算法、决策规划、端到端大模型、世界模型",
+   "note": "Momenta 2027 Mstar顶尖人才计划全球招聘启动，规控/决策规划/端到端方向",
+   "apply_url": "https://momenta.jobs.feishu.cn/campus/position/list",
+   "notice_url": "https://cqu.cqbys.com/campus/view/id/731902"
+  },
+  {
+   "company": "文远知行",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "智能驾驶",
+    "自动驾驶"
+   ],
+   "locations": [
+    "广州",
+    "深圳",
+    "武汉",
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "决策/控制/运动规划算法、规控算法、传感器融合",
+   "note": "文远知行2027届校招启动，含决策/控制/运动规划算法工程师，广州/深圳/武汉",
+   "apply_url": "https://app.mokahr.com/campus_apply/jingchi/2137#/jobs",
+   "notice_url": "https://campus.niuqizp.com/job-vs85zn5Cz.html"
+  },
+  {
+   "company": "小马智行",
+   "date": "2026-06",
+   "deadline": "招满为止",
+   "types": [
+    "实习生",
+    "校园招聘"
+   ],
+   "industries": [
+    "智能驾驶",
+    "自动驾驶"
+   ],
+   "locations": [
+    "北京",
+    "广州",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动规划、规划控制、端到端、决策、深度学习/强化学习",
+   "note": "小马智行2027届实习生提前上岸/校招启动，运动规划/规划控制/端到端方向",
+   "apply_url": "https://ponyai.jobs.feishu.cn/campus",
+   "notice_url": "https://campus.niuqizp.com/job-vwY5tZ5Lt.html"
+  },
+  {
+   "company": "地平线机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "秋招",
+    "校园招聘"
+   ],
+   "industries": [
+    "智能驾驶",
+    "汽车芯片",
+    "人工智能"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "成都",
+    "南京",
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "规控算法、规划控制、底盘、传感器融合、端到端自动驾驶、嵌入式/算子",
+   "note": "地平线2027届秋季校园招聘启动，规控/规划算法为控制硕士核心对口方向",
+   "apply_url": "https://www.horizon.cc/",
+   "notice_url": "https://leetcode.cn/discuss/post/U4KgmH/"
+  },
+  {
+   "company": "元戎启行",
+   "date": "2026-07",
+   "deadline": "招满为止",
+   "types": [
+    "秋招",
+    "校园招聘"
+   ],
+   "industries": [
+    "智能驾驶",
+    "自动驾驶"
+   ],
+   "locations": [
+    "深圳",
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "规划控制、感知算法、端到端",
+   "note": "元戎启行2027秋季校园招聘启动，base深圳/北京/上海，规划控制方向",
+   "apply_url": "https://www.deeproute.ai/",
+   "notice_url": "https://job.lzu.edu.cn/html/74/article/2026/90487.html"
+  },
+  {
+   "company": "博世中国",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "汽车零部件",
+    "智能驾驶"
+   ],
+   "locations": [
+    "无锡",
+    "上海",
+    "苏州",
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "底盘控制、标定、电机控制、VCU、自动驾驶软件",
+   "note": "博世中国创新与软件开发中心2027校园招聘（无锡）已开启，含底盘控制/标定/电机控制方向",
+   "apply_url": "https://careers.bosch.com.cn/",
+   "notice_url": "https://campus.niuqizp.com/job-v8U5zMnML.html"
+  },
+  {
+   "company": "采埃孚",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "汽车零部件"
+   ],
+   "locations": [
+    "上海",
+    "北京",
+    "苏州",
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "标定、底盘、电驱控制、动力总成",
+   "note": "采埃孚中国2027届校招/社招，标定/底盘/电驱控制方向",
+   "apply_url": "https://www.zf.com/china/zh/careers/careers.html",
+   "notice_url": "https://www.zf.com/china/zh/careers/careers.html"
+  },
+  {
+   "company": "小米集团",
+   "date": "2026-08-11",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批",
+    "顶尖人才计划"
+   ],
+   "industries": [
+    "互联网",
+    "人工智能",
+    "具身智能",
+    "智能汽车"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "武汉",
+    "深圳",
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "机器人控制、运动控制、强化学习、具身智能算法、智能驾驶规控、嵌入式控制",
+   "note": "小米2027届全球校招已启动，AI相关岗位需求同比增长50%，含具身智能&智能驾驶专项",
+   "apply_url": "https://campus.xiaomi.com/",
+   "notice_url": "https://24365.cq.smartedu.cn/campus/view/id/731431/mark/cqwu"
+  },
+  {
+   "company": "字节跳动",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批"
+   ],
+   "industries": [
+    "互联网",
+    "人工智能",
+    "具身智能"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "具身智能算法研究员、机器人控制、运动控制、强化学习、具身智能大模型",
+   "note": "字节Seed 2027届大模型人才校招启动，另有机器人算法专家社招；控制岗以具身智能/机器人方向为主",
+   "apply_url": "https://jobs.bytedance.com/campus",
+   "notice_url": "https://seed.bytedance.com/zh/blog/bytedance-seed-2027-foundation-model-campus-recruitment-is-now-open-internships-included"
+  },
+  {
+   "company": "商汤科技",
+   "date": "2026-07-24",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批",
+    "顶尖人才计划"
+   ],
+   "industries": [
+    "人工智能",
+    "具身智能",
+    "自动驾驶"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "自动驾驶规控/决策规划、具身智能控制、机器人算法、SLAM",
+   "note": "商汤「无限原力」顶尖人才计划招募启动，含自动驾驶与具身智能方向",
+   "apply_url": "https://hr.sensetime.com/",
+   "notice_url": "https://career.nankai.edu.cn/correcruit/content/id/116342.html"
+  },
+  {
+   "company": "旷视科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "人工智能",
+    "机器人"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人控制、SLAM/定位、嵌入式控制、运动控制",
+   "note": "旷视发布校招+社招四大类热招岗位合集，含机器人/自动驾驶方向",
+   "apply_url": "https://www.megvii.com/",
+   "notice_url": "https://mp.weixin.qq.com/s?__biz=MzU4NTkwMDM1NA==&mid=2247495972&idx=1&sn=5bde7865b1f905a0caf964fa9f19f161"
+  },
+  {
+   "company": "百度",
+   "date": "2026-07-28",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "互联网",
+    "人工智能",
+    "自动驾驶"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "广州",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "自动驾驶规控/决策规划算法、端到端自动驾驶、控制算法、强化学习",
+   "note": "百度IDG智能驾驶事业群组2027届校招进行中，含端到端自动驾驶算法研究员岗",
+   "apply_url": "https://talent.baidu.com/",
+   "notice_url": "https://job.lzu.edu.cn/html/74/article/2026/90333.html"
+  },
+  {
+   "company": "腾讯",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "社招"
+   ],
+   "industries": [
+    "互联网",
+    "具身智能",
+    "机器人"
+   ],
+   "locations": [
+    "深圳"
+   ],
+   "grades": [],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "Robotics X机器人具身智能研究员（操作/控制方向）、运动控制、强化学习",
+   "note": "腾讯Robotics X主要走社招，招聘机器人具身智能研究员(操作方向)，工作地深圳",
+   "apply_url": "https://careers.tencent.com/",
+   "notice_url": "https://s.niuqizp.com/s_social_Robotics%20X-%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E7%A0%94%E7%A9%B6%E5%91%98-%E6%93%8D%E4%BD%9C%E6%96%B9%E5%90%91/?ur=article"
+  },
+  {
+   "company": "美团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批",
+    "秋招"
+   ],
+   "industries": [
+    "互联网",
+    "无人机",
+    "机器人"
+   ],
+   "locations": [
+    "北京",
+    "深圳",
+    "上海",
+    "广州",
+    "香港"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "无人机控制/规划控制、自动配送机器人、SLAM、强化学习、嵌入式控制",
+   "note": "美团2027届秋招提前批与「北斗计划」已开启，无人机/自动配送方向对控制类专业对口",
+   "apply_url": "https://campus.meituan.com/",
+   "notice_url": "https://job.lzu.edu.cn/html/74/article/2026/89108.html"
+  },
+  {
+   "company": "蚂蚁集团",
+   "date": "2026-08-11",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批",
+    "顶尖人才计划"
+   ],
+   "industries": [
+    "互联网",
+    "人工智能"
+   ],
+   "locations": [
+    "杭州",
+    "北京",
+    "上海",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "具身智能/机器人算法、AI算法工程师",
+   "note": "蚂蚁星Plan A顶尖人才专项2027届启动，控制类直接对口岗位较少，需按「机器人/具身智能」筛选",
+   "apply_url": "https://talent.antgroup.com/",
+   "notice_url": "https://job.xjtu.edu.cn/frontpage/xjtu/html/newsDetail.html?id=e6bbc289c9774bb89ce024f0a4007924"
+  },
+  {
+   "company": "国电南瑞",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "电力/能源",
+    "嵌入式"
+   ],
+   "locations": [
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电网调度自动化、继电保护、配电自动化、嵌入式软件",
+   "note": "南瑞集团（国电南瑞母公司）2027校园招聘，具体岗位与截止以官方招聘系统为准",
+   "apply_url": "",
+   "notice_url": "https://www.gwy.com/gqzp/411471.html"
+  },
+  {
+   "company": "南瑞继保",
+   "date": "2026-04-27",
+   "deadline": "招满为止",
+   "types": [
+    "实习生招聘"
+   ],
+   "industries": [
+    "电力/能源",
+    "嵌入式"
+   ],
+   "locations": [
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "继电保护、电网自动化、电力电子控制",
+   "note": "南瑞继保2027届实习生（可转正）招聘，正式秋招以官方为准",
+   "apply_url": "",
+   "notice_url": "http://www.offcn.com/gqzp/2026/0427/234368.html"
+  },
+  {
+   "company": "许继电气",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "电力/能源"
+   ],
+   "locations": [
+    "许昌",
+    "郑州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "继电保护、电网自动化、电力电子控制、嵌入式",
+   "note": "许继（中国电气装备）官方校招入口，2027届岗位以官网最新公告为准",
+   "apply_url": "https://xjec.com/contact/campus/",
+   "notice_url": "https://job.hust.edu.cn/zpinfo1/2327188.htm"
+  },
+  {
+   "company": "四方股份",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "电力/能源",
+    "嵌入式"
+   ],
+   "locations": [
+    "北京",
+    "保定",
+    "西安",
+    "南京",
+    "武汉",
+    "湖州",
+    "乌鲁木齐"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "继电保护、电网自动化、配电自动化、嵌入式软件",
+   "note": "四方股份2027届校招提前批正式启动，多城市有岗",
+   "apply_url": "",
+   "notice_url": "https://ccnu.91wllm.cn/campus/view/id/1000963"
+  },
+  {
+   "company": "特变电工",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "电力/能源"
+   ],
+   "locations": [
+    "昌吉",
+    "沈阳",
+    "衡阳",
+    "天津"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电力电子控制、电气自动化、变压器/变流器研发",
+   "note": "特变电工旗下沈阳变压器、天津变压器等子公司校招，岗位以官方招聘页为准",
+   "apply_url": "",
+   "notice_url": "https://career.buaa.edu.cn/frontpage/buaa/html/recruitmentinfoForm.html?positionDetailId=05c9f8139b834d239d569b27975ef6a8"
+  },
+  {
+   "company": "宁德时代",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "电力/能源",
+    "嵌入式"
+   ],
+   "locations": [
+    "宁德",
+    "上海",
+    "厦门",
+    "溧阳",
+    "宜宾"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "BMS电池管理系统、电机控制、储能系统控制、嵌入式软件",
+   "note": "宁德时代2027届校园招聘宣讲会启动，BMS/储能/电机控制为控制对口方向",
+   "apply_url": "https://talent.catl.com",
+   "notice_url": "https://qc.lvu.edu.cn/2b/09/c2389a76553/page.htm"
+  },
+  {
+   "company": "中国中车",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "电力/能源",
+    "嵌入式"
+   ],
+   "locations": [
+    "株洲",
+    "青岛",
+    "北京",
+    "长春",
+    "大连"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "牵引电机控制、电力电子变流控制、嵌入式软件、轨道交通电气",
+   "note": "中国中车2027校园招聘，官网入口crrc.hotjob.cn，旗下株洲所/青岛四方招控制对口岗",
+   "apply_url": "https://crrc.hotjob.cn/",
+   "notice_url": "https://www.gwy.com/gqzp/409810.html"
+  },
+  {
+   "company": "汇顶科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "半导体",
+    "嵌入式"
+   ],
+   "locations": [
+    "深圳",
+    "上海",
+    "成都",
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "嵌入式软件、数字IC设计/验证、固件、传感器算法",
+   "note": "汇顶科技2027届校园招聘进行中，深圳/上海/成都/武汉有岗",
+   "apply_url": "",
+   "notice_url": "https://job.xjtu.edu.cn/frontpage/xjtu/html/recruitmentinfoForm.html?positionDetailId=02d0643df99e4f61b666f33833de9aca"
+  },
+  {
+   "company": "兆易创新",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "半导体",
+    "嵌入式"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "合肥",
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "嵌入式软件、存储控制器、模拟IC设计、MCU应用",
+   "note": "兆易创新2027校园招聘提前批，武汉等地有岗",
+   "apply_url": "",
+   "notice_url": "https://sdwz.91job.org.cn/recruitment/jobDetails?zpgwid=1000000000728687&dwid=650192"
+  },
+  {
+   "company": "韦尔股份",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "半导体"
+   ],
+   "locations": [
+    "上海",
+    "北京",
+    "深圳",
+    "武汉",
+    "成都",
+    "天津"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "CMOS图像传感器(CIS)模拟IC、嵌入式软件、硬件工程师、测试",
+   "note": "豪威集团(韦尔股份)27届秋招，上海/北京等多城市；控制方向可投硬件/嵌入式",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/schedule-7kw8NLCLC.html"
+  },
+  {
+   "company": "卓胜微",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "半导体"
+   ],
+   "locations": [
+    "无锡",
+    "成都"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "射频芯片设计、模拟IC设计、芯片测试、产品工程师",
+   "note": "卓胜微2026届春招/2027届校招，无锡、成都为主，射频/模拟方向",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vkl5tCzZn.html"
+  },
+  {
+   "company": "中芯国际",
+   "date": "2026-08-13",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "半导体"
+   ],
+   "locations": [
+    "上海",
+    "北京",
+    "天津",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "设备工程师、工艺工程师、自动化/机台控制",
+   "note": "中芯国际2027届校园招聘正式启动，设备/工艺岗为控制类对口方向",
+   "apply_url": "",
+   "notice_url": "https://job.lzu.edu.cn/html/74/article/2026/90768.html"
+  },
+  {
+   "company": "华虹半导体",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "半导体"
+   ],
+   "locations": [
+    "上海",
+    "无锡",
+    "成都"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "设备工程师、工艺整合、自动化控制",
+   "note": "华虹集团2027届校园招聘（芯大使招募），官方投递入口mokahr",
+   "apply_url": "https://app.mokahr.com/m/campus-recruitment/huahong/78009",
+   "notice_url": "https://www.sohu.com/a/1060130129_121124005"
+  },
+  {
+   "company": "北方华创",
+   "date": "2026-07-11",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "半导体",
+    "嵌入式"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "苏州",
+    "武汉",
+    "西安",
+    "合肥"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "半导体设备控制、电气控制、软件（设备控制）、自动化",
+   "note": "北方华创2027届校招提前批启动，北京/上海等全国多地有岗",
+   "apply_url": "",
+   "notice_url": "https://m.zggqzp.com/2026/zpxx_0711/402852.html"
+  },
+  {
+   "company": "中微公司",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "半导体"
+   ],
+   "locations": [
+    "上海",
+    "南昌"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "半导体设备控制软件、电气控制、工艺",
+   "note": "中微公司2027登峰计划博士提前批及2027届实习生招聘",
+   "apply_url": "",
+   "notice_url": "https://campus.niuqizp.com/job-vmy5zMaNL.html"
+  },
+  {
+   "company": "中国航天科技集团",
+   "date": "2026-06-30",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "西安",
+    "成都",
+    "保定"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "制导导航与控制(GNC)、飞行控制、伺服系统、火控、航天器控制系统、自动化测试",
+   "note": "航天科技2027届星辰英才计划校招提前批，控制类对口下属一/五/八院控制系统单位",
+   "apply_url": "",
+   "notice_url": "http://m.zggqzp.com/2026/zpxx_0630/400750.html"
+  },
+  {
+   "company": "航天一院",
+   "date": "2026-06-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运载火箭制导控制、伺服系统、火控、GNC",
+   "note": "航天一院(运载火箭技术研究院)2027年校园招聘，火箭总体与控制相关",
+   "apply_url": "",
+   "notice_url": "http://sa.zgsydw.com/zhaopin/20260608/79049_1.html"
+  },
+  {
+   "company": "航天五院502所",
+   "date": "2026-07-21",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "空间智能控制体系设计、卫星姿态控制/GNC、制导导航与控制、伺服",
+   "note": "五院五〇二所2027届提前批，航天器控制系统最对口院所，控制硕士优先",
+   "apply_url": "",
+   "notice_url": "https://www.gaoxiaojob.com/announcement/detail/417769.html"
+  },
+  {
+   "company": "航天八院",
+   "date": "2026-06-30",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "航天器控制、飞行控制、伺服（含上海航天控制技术研究所）",
+   "note": "航天八院(上海航天技术研究院)2027校招提前批，控制岗以官方为准",
+   "apply_url": "",
+   "notice_url": "https://www.fenbi.com/page/exam-information-detail/467289983441920"
+  },
+  {
+   "company": "中国航天科工集团",
+   "date": "2026-06-30",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京",
+    "武汉",
+    "贵阳",
+    "呼和浩特",
+    "西安",
+    "长沙"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "制导控制、飞行控制、伺服系统、自动化测试",
+   "note": "航天科工2027届校园招聘全面启动，官方网申系统casic.zhiye.com，导弹/航天控制系统院所对口",
+   "apply_url": "https://casic.zhiye.com",
+   "notice_url": "http://m.haerbin.offcn.com/html/2026/06/103111.html"
+  },
+  {
+   "company": "航天二院",
+   "date": "2026-03-13",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "导弹制导控制、伺服、火控",
+   "note": "航天科工二院2026校招暨2027届暑期实践招募，暑期实践/提前锁定，控制类对口",
+   "apply_url": "",
+   "notice_url": "http://www.offcn.com/sydw/2026/0313/1114277.html"
+  },
+  {
+   "company": "航天三院三部",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "北京",
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "导弹制导、飞行控制、GNC",
+   "note": "三院三部2027年度校园招聘启动，飞航导弹制导控制方向，控制硕士对口",
+   "apply_url": "",
+   "notice_url": "https://m.fenbi.com/page/exam-information-detail/468343912160256"
+  },
+  {
+   "company": "中国电子科技集团",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所",
+    "电子信息"
+   ],
+   "locations": [
+    "北京",
+    "南京",
+    "成都",
+    "合肥",
+    "西安",
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "雷达伺服控制、制导、控制系统、自动化测试",
+   "note": "中国电科2027年校园招聘提前批，要求硕士及以上学历，14/28/38/52等所均覆盖控制方向",
+   "apply_url": "",
+   "notice_url": "https://m.gwy.com/gqzp/410576.html"
+  },
+  {
+   "company": "中电科14所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所",
+    "电子信息"
+   ],
+   "locations": [
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "雷达系统伺服控制、信号处理、制导",
+   "note": "中电科14所暑期开放日/信息处理研究部提前批招聘宣讲，雷达伺服与运动控制对口",
+   "apply_url": "",
+   "notice_url": "https://www.wondercv.com/xiaozhao/cetc14-nanjung-summer-open-day-2027-11134-aa7a59/"
+  },
+  {
+   "company": "中电科28所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所",
+    "电子信息"
+   ],
+   "locations": [
+    "南京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "指挥控制系统、自动化",
+   "note": "28所(南京电子工程研究所)校招，C4ISR指挥控制方向，控制/自动化可投",
+   "apply_url": "",
+   "notice_url": "https://www.gaoxiaojob.com/announcement/job-list?id=408512"
+  },
+  {
+   "company": "中电科38所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所",
+    "电子信息"
+   ],
+   "locations": [
+    "合肥"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "雷达伺服、自动化测试、控制系统",
+   "note": "中电博微/38所2027届校园招聘启动，雷达整机与伺服控制对口",
+   "apply_url": "",
+   "notice_url": "https://pc.fenbi.com/page/exam-information-detail/468365664080896"
+  },
+  {
+   "company": "中电科52所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所",
+    "电子信息"
+   ],
+   "locations": [
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化测试、嵌入式控制",
+   "note": "52所(杭州计算机外部设备研究所)招聘，计算机外设/自动化方向",
+   "apply_url": "",
+   "notice_url": "https://jdjyw.jlu.edu.cn/mportal/company/details?id=6d6b5a7c292041ffb969a4502a2b2c1f"
+  },
+  {
+   "company": "中国航空工业集团",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防"
+   ],
+   "locations": [
+    "成都",
+    "沈阳",
+    "西安",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "飞行控制、制导、GNC、伺服、机载系统",
+   "note": "航空工业集团2027届校园招聘，覆盖成飞/沈飞/西飞/自控所等，飞控与控制类对口",
+   "apply_url": "",
+   "notice_url": "http://liangshan.jrzp.com/nView_6D134AEE8B7317C7.shtml"
+  },
+  {
+   "company": "沈飞",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防"
+   ],
+   "locations": [
+    "沈阳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "飞行控制、机载系统、自动化",
+   "note": "沈飞2027届校园招聘，战斗机飞控/机载控制系统对口",
+   "apply_url": "",
+   "notice_url": "http://jyc.cavtc.cn/info/1004/4671.htm"
+  },
+  {
+   "company": "航空工业618所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "西安"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "飞行控制、制导(GNC)、伺服作动、惯性导航",
+   "note": "618所(西安飞行自动控制研究所)，控制类专业最对口院所之一",
+   "apply_url": "",
+   "notice_url": "https://jdjyw.jlu.edu.cn/mportal/company/details?id=3921"
+  },
+  {
+   "company": "中国船舶集团",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "上海",
+    "武汉",
+    "大连",
+    "连云港"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制、伺服、自动化",
+   "note": "中国船舶集团2027届校园招聘，覆盖701/719/716等所，舰船自动化与控制对口",
+   "apply_url": "",
+   "notice_url": "https://dizhi.jiuyeb.cn/Zhaopin/xiaozhao.html?id=5835ad03-4022-e575-726f-c24d21fbedf9&type=1"
+  },
+  {
+   "company": "中船701所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "武汉",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "舰船总体控制、自动化",
+   "note": "701所校园招聘，舰船总体与控制系统方向，控制类对口",
+   "apply_url": "",
+   "notice_url": "https://m.gaoxiaojob.com/announcement/detail/343429.html"
+  },
+  {
+   "company": "中船719所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "舰船控制系统、自动化",
+   "note": "719所官方校招投递页，潜艇/舰船控制方向，控制类对口",
+   "apply_url": "https://campus.51job.com/cssc719/m/",
+   "notice_url": "http://campus.51job.com/cssc719/job.html"
+  },
+  {
+   "company": "中船716所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "连云港"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "自动化、伺服控制、测试（舰船自动化）",
+   "note": "江苏自动化研究所(716所)，舰船自动化与控制最对口",
+   "apply_url": "",
+   "notice_url": "http://www.job.ustc.edu.cn/Jobinformation/info.aspx?itemid=15878"
+  },
+  {
+   "company": "中国兵器工业集团",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "军工/国防"
+   ],
+   "locations": [
+    "北京",
+    "西安",
+    "南京",
+    "成都",
+    "绵阳",
+    "重庆",
+    "太原"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "火控、制导、伺服、自动化测试",
+   "note": "中国兵器「兵器未来科学家」2027届博士提前批+硕士校招，火控/制导方向对口",
+   "apply_url": "",
+   "notice_url": "https://m.fenbi.com/page/fenxiaozhaokaodetail/1/2010/467956163957760"
+  },
+  {
+   "company": "兵器202所",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "军工/国防",
+    "科研院所"
+   ],
+   "locations": [
+    "咸阳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "火炮火控、随动伺服、制导控制",
+   "note": "202所(火炮研究所)2027届暑期开放日，火炮火控与随动伺服方向对口",
+   "apply_url": "",
+   "notice_url": "https://jdjyw.jlu.edu.cn/mportal/recruit/details?id=cfc31bde680f48f4a2630031bbc27730"
+  },
+  {
+   "company": "中国工程物理研究院",
+   "date": "2026-08-01",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "科研院所",
+    "军工/国防"
+   ],
+   "locations": [
+    "绵阳",
+    "成都",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "精密控制、自动化、测试",
+   "note": "中物院计算机应用研究所/软件中心2027年度人才招聘，控制类岗位以官方为准",
+   "apply_url": "",
+   "notice_url": "https://job.xjtu.edu.cn/frontpage/xjtu/html/newsDetail.html?id=5d81f586a3ea49f99d599f1392ee6479"
+  },
+  {
+   "company": "中国航发",
+   "date": "2026-07-28",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "航空航天",
+    "军工/国防"
+   ],
+   "locations": [
+    "北京",
+    "沈阳",
+    "成都",
+    "西安",
+    "株洲"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "发动机控制系统、动力控制、液压伺服",
+   "note": "中国航发2027届校园招聘开启，航空发动机控制系统(FADEC)方向，控制类对口",
+   "apply_url": "",
+   "notice_url": "https://www.gaoxiaojob.com/announcement/detail/420377.html"
+  },
+  {
+   "company": "国家电网",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "电网",
+    "央企"
+   ],
+   "locations": [
+    "全国"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电网调度自动化、继电保护、自动化/控制类岗位（电气/自动化类专业对口）",
+   "note": "国网2027届秋招网申官网zhaopin.sgcc.com.cn，控制/自动化可报电气类与自动化类岗位",
+   "apply_url": "https://zhaopin.sgcc.com.cn",
+   "notice_url": "https://www.gwy.com/gqzp/411480.html"
+  },
+  {
+   "company": "中国南方电网",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "电网",
+    "央企"
+   ],
+   "locations": [
+    "广州",
+    "深圳",
+    "昆明",
+    "贵阳",
+    "南宁",
+    "海口"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电网调度自动化、继电保护、自动化/控制类岗位",
+   "note": "南网招聘官网zhaopin.csg.cn，电气/自动化/控制类专业对口",
+   "apply_url": "https://zhaopin.csg.cn",
+   "notice_url": "https://www.gwy.com/gqzp/409781.html"
+  },
+  {
+   "company": "无锡信捷电气",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工业自动化",
+    "运动控制",
+    "PLC"
+   ],
+   "locations": [
+    "无锡"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师、控制算法工程师、PLC/伺服应用工程师",
+   "note": "信捷电气卓越计划校招及2026届补录进行中，运动控制/控制算法对口",
+   "apply_url": "",
+   "notice_url": "https://job.dlut.edu.cn/frontpage/dlut/html/recruitmentinfoForm.html?positionDetailId=57a51b3ecbd547ac98e06b841e0bf5c0"
+  },
+  {
+   "company": "中国科学院自动化研究所",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "科研院所",
+    "人工智能",
+    "机器人"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "控制算法、机器人控制、模式识别、智能系统研究/工程岗",
+   "note": "中科院自动化所（模式识别国家重点实验室）招聘，控制/机器人/智能系统方向",
+   "apply_url": "https://www.nowcoder.com/enterprise/3792?recruitType=2",
+   "notice_url": "https://www.nowcoder.com/enterprise/3792?recruitType=2"
+  },
+  {
+   "company": "中国科学院沈阳自动化研究所",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "科研院所",
+    "机器人",
+    "工业自动化"
+   ],
+   "locations": [
+    "沈阳"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人控制、运动控制、工业自动化、智能装备研究/工程岗",
+   "note": "「以智取胜，控创未来」沈阳自动化所招聘，机器人/控制/自动化最对口",
+   "apply_url": "",
+   "notice_url": "https://www.91wllm.cn/campusUnion/view/id/991271"
+  },
+  {
+   "company": "海康威视",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "安防"
+   ],
+   "locations": [
+    "杭州",
+    "苏州",
+    "武汉",
+    "广州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "算法工程师(图像/智能)、嵌入式软件开发、硬件开发、机器人算法、控制类",
+   "note": "海康2027超新星实习生(可转正)招聘启动，含算法/嵌入式等对口岗",
+   "apply_url": "https://campushr.hikvision.com",
+   "notice_url": "https://www.scfai.edu.cn/xsc/info/1015/18762.htm"
+  },
+  {
+   "company": "大华股份",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "安防"
+   ],
+   "locations": [
+    "杭州",
+    "全国31省区"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "嵌入式软件、硬件、图像算法、飞控、智能算法、雷达算法、测控",
+   "note": "大华2027届全球校园招聘启动，含转正实习，覆盖嵌入式/飞控/算法",
+   "apply_url": "https://career.smbu.edu.cn/detail/online?id=3532206",
+   "notice_url": "https://jdjyw.jlu.edu.cn/portal/recruit/details?id=a3c98343a7bd4ae9b776b0fa46cfa384"
+  },
+  {
+   "company": "美的集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批"
+   ],
+   "industries": [
+    "智能制造"
+   ],
+   "locations": [
+    "佛山",
+    "合肥"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "自动化、电机控制、机器人、运动控制、嵌入式、智能家电研发",
+   "note": "美的27届美少年暑期实习及2027校招启动",
+   "apply_url": "https://24365.cq.smartedu.cn/campus/view/id/725932/mark/",
+   "notice_url": "https://jy.hnust.edu.cn/detail/online?id=1345864"
+  },
+  {
+   "company": "格力电器",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "提前批"
+   ],
+   "industries": [
+    "智能制造"
+   ],
+   "locations": [
+    "珠海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电机与控制器、自动化、电气控制、嵌入式、智能装备",
+   "note": "格力常设电机/控制岗，2027届提前批以官方为准",
+   "apply_url": "http://job.hust.edu.cn/zpinfo1/2375300.htm",
+   "notice_url": "https://www.scfai.edu.cn/xsc/info/1015/14072.htm"
+  },
+  {
+   "company": "海尔智家",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "智能制造"
+   ],
+   "locations": [
+    "青岛",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "智造管理、智能制造、自动化控制、嵌入式、智能家居研发",
+   "note": "海尔智家全球校招27届顶尖人才提前批启动",
+   "apply_url": "https://job.tju.edu.cn/recruitment/content/type/2/id/6111.html",
+   "notice_url": "http://job.hust.edu.cn/zpinfo1/2394272.htm"
+  },
+  {
+   "company": "先导智能",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "智能制造"
+   ],
+   "locations": [
+    "无锡"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电气工程师、软件开发、运动控制、机器视觉、锂电/光伏装备控制",
+   "note": "锂电/光伏智能装备龙头，校招设电气/软件/控制岗",
+   "apply_url": "http://job.hust.edu.cn/extxjh/561773128489836.do",
+   "notice_url": "https://jdjyw.jlu.edu.cn/portal/recruit/details?id=c79a958db95340d0a12c36ee773d9e42"
+  },
+  {
+   "company": "迈瑞医疗",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "医疗器械"
+   ],
+   "locations": [
+    "深圳",
+    "武汉"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "嵌入式软件、硬件、算法、控制系统、运动控制、机械设计",
+   "note": "迈瑞2027届暑期实习生招聘启动，研发岗对口",
+   "apply_url": "https://www.sohu.com/a/1034298705_121124209",
+   "notice_url": "http://www.offcn.com/gqzp/2026/0511/237155.html"
+  },
+  {
+   "company": "联影医疗",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "医疗器械"
+   ],
+   "locations": [
+    "上海",
+    "武汉",
+    "成都"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "控制系统工程师、算法工程师、软件/硬件、机器人、医学影像控制",
+   "note": "联影集团2027届实习生专项启动，含控制系统工程师",
+   "apply_url": "https://career.cic.tsinghua.edu.cn/xsglxt/f/jyxt/anony/showZwxx?zpxxid=545737312",
+   "notice_url": "https://jdjyw.jlu.edu.cn/portal/jyzp/recruit/details?id=d57b805ddf9c422785cbba8de914accd"
+  },
+  {
+   "company": "微创医疗机器人",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "医疗机器人"
+   ],
+   "locations": [
+    "上海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法工程师(手术机器人)、控制算法、机器人软件、嵌入式",
+   "note": "微创医疗机器人设运动控制算法(手术机器人)等对口岗",
+   "apply_url": "https://www.medbotsurgical.com/talent",
+   "notice_url": "https://m.fenbi.com/page/exam-information-detail/467208806094848"
+  },
+  {
+   "company": "阳光电源",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "储能/光伏"
+   ],
+   "locations": [
+    "合肥",
+    "上海",
+    "深圳"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电力电子、储能变流器控制、控制算法、嵌入式、光伏逆变器软件",
+   "note": "阳光电源2027届全球校招提前批启动，储能/光伏逆变器控制高度对口",
+   "apply_url": "https://www.ahbys.com/NW/job.html?id=323639&cid=11095",
+   "notice_url": "https://24365.cq.smartedu.cn/campus/view/id/731093/jyzd.xzeduc.cn/admin/default/login"
+  },
+  {
+   "company": "锦浪科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "储能/光伏"
+   ],
+   "locations": [
+    "宁波"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电力电子、逆变器软件/控制、硬件工程师、嵌入式、测试",
+   "note": "锦浪(组串式逆变器龙头)2027暑期实习及26校招，电力电子对口",
+   "apply_url": "https://campus.niuqizp.com/job-vyl5zn5zM.html",
+   "notice_url": "https://msearch.51job.com/jobs/campus/coBGYGYgBkVW9WMVExVjU.html"
+  },
+  {
+   "company": "正泰电器",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "储能/光伏"
+   ],
+   "locations": [
+    "温州",
+    "上海",
+    "杭州"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电气工程师、自动化、嵌入式、新能源/储能研发",
+   "note": "正泰电气2026届校招及宣讲会，2027届岗位以官方为准",
+   "apply_url": "https://www.goworkla.cn/Campustalk/CampustalkDetail?ctid=68f1e9685828e757bb26906d",
+   "notice_url": "http://job.xpu.edu.cn/detail/career?id=686903"
+  },
+  {
+   "company": "三一集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "工程机械"
+   ],
+   "locations": [
+    "北京",
+    "长沙",
+    "上海",
+    "昆山",
+    "西安",
+    "沈阳",
+    "珠海",
+    "宁乡"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气工程师、控制、液压、智能化、嵌入式、电驱动",
+   "note": "三一2027届校招提前批启动，覆盖多城市，电气/控制岗对口",
+   "apply_url": "https://career.csu.edu.cn/campus/view/id/587546",
+   "notice_url": "https://jxdxsjy.jx.edu.cn/sru/news/view/aid/69926/tag/"
+  },
+  {
+   "company": "徐工集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "工程机械"
+   ],
+   "locations": [
+    "徐州"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "电气工程师、智能控制、液压、嵌入式、新能源电控",
+   "note": "徐工(国企工程机械龙头)，2027届以官方为准",
+   "apply_url": "https://pmc.whu.edu.cn/info/1891/166551.htm",
+   "notice_url": "https://campus.niuqizp.com/schedule-78ks5MCLt.html"
+  },
+  {
+   "company": "中联重科",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "工程机械"
+   ],
+   "locations": [
+    "长沙"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "智能控制类、电气类、液压类、机器人、嵌入式",
+   "note": "中联重科2027届夏令营海狮计划启动，设智能控制类岗",
+   "apply_url": "https://mp.weixin.qq.com/s/kXjxAYVPJhf_WAO_eilRNw",
+   "notice_url": "https://campus.niuqizp.com/job-vYy5zMZZZ.html"
+  },
+  {
+   "company": "明阳智能",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "风电"
+   ],
+   "locations": [
+    "中山",
+    "天津"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "变流器/储能变流器控制、电气工程师、控制、结构设计",
+   "note": "明阳智能(风电整机龙头)27届校招，含储能变流器工程师",
+   "apply_url": "https://www.quanzhi.com/job/6a7c9cf0f87cf99210c4c5a1",
+   "notice_url": "https://career.sysu.edu.cn/campus/view/id/995971"
+  },
+  {
+   "company": "极飞科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习"
+   ],
+   "industries": [
+    "农业无人机"
+   ],
+   "locations": [
+    "广州",
+    "东莞"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "飞控算法、嵌入式、机器人控制算法、定位控制AI、电机控制",
+   "note": "极飞(农业无人机龙头)2027届实习生招聘，含机器人算法(定位控制)",
+   "apply_url": "https://haue.goworkla.cn/module/position_brief_detail/id-113268/",
+   "notice_url": "https://www.zhaopin.com/jobdetail/CC641482020J40879946310.htm"
+  },
+  {
+   "company": "傅利叶智能",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "实习",
+    "社招"
+   ],
+   "industries": [
+    "医疗机器人"
+   ],
+   "locations": [
+    "上海",
+    "深圳",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "运动控制算法、机器人算法(多模态)、嵌入式、硬件、控制",
+   "note": "傅利叶(康复/人形机器人)27届实习及校招，设运动控制算法工程师",
+   "apply_url": "https://app.mokahr.com/campus-recruitment/fftai/147078?locale=zh-CN",
+   "notice_url": "https://campus.niuqizp.com/schedule-7sr85zCZn.html"
+  },
+  {
+   "company": "达闼科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "社招"
+   ],
+   "industries": [
+    "机器人"
+   ],
+   "locations": [
+    "深圳",
+    "北京",
+    "上海"
+   ],
+   "grades": [
+    "2026届",
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人控制、机器人SLAM开发、嵌入式、软硬件工程师",
+   "note": "达闼(云端智能/人形机器人)设机器人控制/SLAM应届岗",
+   "apply_url": "https://ylt.gzrc.com.cn/jobs/53013587.html",
+   "notice_url": "https://wap.shixiseng.com/com/com_gkmj5423mkxn"
+  },
+  {
+   "company": "埃夫特",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘"
+   ],
+   "industries": [
+    "机器人",
+    "智能制造"
+   ],
+   "locations": [
+    "芜湖",
+    "上海"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [],
+   "positions": "机器人控制、运动控制、软件工程师、电气工程师、嵌入式",
+   "note": "埃夫特(工业机器人本体龙头)2027届秋招宣讲会已排期",
+   "apply_url": "https://m.yingjiesheng.com/xuanjianghui/xjh_6144246",
+   "notice_url": "https://10333.ncss.cn/student/jobs/WMM9HdJtH6aKS3v1gki9sa/detail.html"
+  },
+  {
+   "company": "中国工商银行",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "杭州",
+    "成都",
+    "全国"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "信息科技岗、金融科技岗、软件开发中心/数据中心岗位（自动化类、电子信息类可报）",
+   "note": "工行招聘官网job.icbc.com.cn，软件/数据中心岗招自动化、电子信息类专业",
+   "apply_url": "https://job.icbc.com.cn",
+   "notice_url": ""
+  },
+  {
+   "company": "中国建设银行",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "深圳",
+    "广州",
+    "全国"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "金融科技岗、信息科技岗、科技类专项人才（计算机、电子信息、自动化等可报）",
+   "note": "建行招聘官网job.ccb.com，金融科技/信息科技岗招自动化等专业",
+   "apply_url": "http://job.ccb.com",
+   "notice_url": ""
+  },
+  {
+   "company": "招商银行·招银网络科技",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招",
+    "提前批"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "深圳",
+    "杭州",
+    "成都"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "后端开发、前端开发、算法、测试技术开发、运维研发工程师",
+   "note": "招银网络科技2027届秋招已启动，招计算机/软件/电子信息/自动化等理工类",
+   "apply_url": "https://cmbnt.cmbchina.com",
+   "notice_url": "https://scdc.jnu.edu.cn/campus/view/id/1036169"
+  },
+  {
+   "company": "江苏银行",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "南京",
+    "上海",
+    "深圳",
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "金融科技培训生、信息科技岗、总行本部及分行岗位（计算机、电子信息、自动化等可报）",
+   "note": "江苏银行招聘官网hr.jsbchina.cn/zp，2027届秋招预计9月",
+   "apply_url": "https://hr.jsbchina.cn/zp",
+   "notice_url": ""
+  },
+  {
+   "company": "杭州银行",
+   "date": "2026-04-20",
+   "deadline": "招满为止",
+   "types": [
+    "暑期实习",
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "杭州"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "信息技术方向（软件开发、金融科技、数据方向），计算机、电子信息、自动化等可报",
+   "note": "杭州银行总行信息技术部2027届「摘星计划」暑期实习暨提前批",
+   "apply_url": "https://www.hzbank.com.cn",
+   "notice_url": "http://www.offcn.com/yinhang/2026/0420/73097.html"
+  },
+  {
+   "company": "宁波银行",
+   "date": "2026-05-15",
+   "deadline": "招满为止",
+   "types": [
+    "暑期实习",
+    "提前批",
+    "校园招聘"
+   ],
+   "industries": [
+    "银行/金融"
+   ],
+   "locations": [
+    "宁波"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "应用研发（后端、数据）、算法工程师（技术流法师方向），计算机、电子信息、自动化等可报",
+   "note": "宁波银行总行金融科技部2027届暑期实习，表现优异可转正",
+   "apply_url": "https://zhaopin.nbcb.com.cn",
+   "notice_url": "https://www.bianzhia.com/zhejiang/ningbo/20260515/251347.html"
+  },
+  {
+   "company": "国家能源集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各能源基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、计算机类、能源动力类岗位（直招+统招）",
+   "note": "国家能源集团招聘官网zhaopin.chnenergy.com.cn，电气/自动化/控制/计算机可报",
+   "apply_url": "http://zhaopin.chnenergy.com.cn",
+   "notice_url": "http://www.offcn.com/gqzp/2026/0813/252342.html"
+  },
+  {
+   "company": "中国华能集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "省会城区",
+    "县域电厂",
+    "海上风电",
+    "核电基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "火电技术岗、核电技术岗、风电/海上风电岗、水电岗（电气、自动化、热动、控制可报）",
+   "note": "华能招聘官网zhaopin.chng.com.cn，招电气/自动化/热动/控制/新能源",
+   "apply_url": "https://zhaopin.chng.com.cn",
+   "notice_url": ""
+  },
+  {
+   "company": "国家电力投资集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各发电基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、控制类、能源动力类、新能源类岗位",
+   "note": "国家电投招聘官网zhaopin.spic.com.cn，电气/自动化/控制可报",
+   "apply_url": "https://zhaopin.spic.com.cn",
+   "notice_url": "https://fenbi.com/page/exam-timeline-detail/694666"
+  },
+  {
+   "company": "中国大唐集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各发电基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、热控类、能源动力类岗位",
+   "note": "大唐招聘官网zhaopin.china-cdt.com，招电气/自动化/热控/能动",
+   "apply_url": "https://zhaopin.china-cdt.com",
+   "notice_url": ""
+  },
+  {
+   "company": "中国长江三峡集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "武汉",
+    "北京",
+    "宜昌",
+    "四川",
+    "浙江",
+    "湖北",
+    "云南",
+    "湖南"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、水利水电类、新能源类岗位",
+   "note": "三峡集团官网ctg.com.cn人才招聘，电气/自动化/水利/新能源可报",
+   "apply_url": "https://www.ctg.com.cn",
+   "notice_url": ""
+  },
+  {
+   "company": "中国石油天然气集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各油田/炼化基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "自动化类、电气类、计算机类、电子信息类、油气储运类岗位",
+   "note": "中国石油招聘官网zhaopin.cnpc.com.cn，自动化/电气/电子信息可报，部分可免笔试",
+   "apply_url": "https://zhaopin.cnpc.com.cn",
+   "notice_url": ""
+  },
+  {
+   "company": "中国石油化工集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各炼化基地"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气仪表类、自动化类、计算机类、化工设备类岗位",
+   "note": "中国石化招聘官网job.sinopec.com，电气仪表/自动化可报",
+   "apply_url": "http://job.sinopec.com",
+   "notice_url": ""
+  },
+  {
+   "company": "中国海洋石油集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "天津",
+    "深圳",
+    "湛江",
+    "上海",
+    "海上平台"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、控制类、电子信息类、海洋工程类岗位",
+   "note": "中国海油招聘官网cnooc.zhaopin.com，电气/自动化/控制/电子信息可报",
+   "apply_url": "https://cnooc.zhaopin.com",
+   "notice_url": ""
+  },
+  {
+   "company": "国家石油天然气管网集团",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "电力/能源",
+    "央企"
+   ],
+   "locations": [
+    "北京",
+    "全国各管网枢纽"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "电气类、自动化类、仪表控制类、电子信息类、油气储运类岗位",
+   "note": "国家管网招聘官网zhaopin.pipechina.com.cn，电气/自动化/仪表控制可报",
+   "apply_url": "https://zhaopin.pipechina.com.cn",
+   "notice_url": ""
+  },
+  {
+   "company": "中国兵器工业导航与控制技术研究所",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "提前批"
+   ],
+   "industries": [
+    "军工/国防",
+    "央企",
+    "事业单位"
+   ],
+   "locations": [
+    "北京"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "导航、制导与控制、惯性技术、自动化、电子信息类研究岗（博士为主）",
+   "note": "兵器工业导航控制所2027届提前批，导航制导与控制/自动化/电子信息对口",
+   "apply_url": "",
+   "notice_url": "https://m.fenbi.com/page/exam-information-detail/467775267560448"
+  },
+  {
+   "company": "中国电子科技集团第二十九研究所",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "军工/国防",
+    "央企",
+    "事业单位"
+   ],
+   "locations": [
+    "成都"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "含免笔试"
+   ],
+   "positions": "电子信息、信号处理、雷达、控制、自动化类研究岗",
+   "note": "中电科29所2027届秋招，招电子信息/信号处理/控制/自动化",
+   "apply_url": "",
+   "notice_url": "https://career.sysu.edu.cn/campus/view/id/996430"
+  },
+  {
+   "company": "定向选调生（2027届）",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "定向选调"
+   ],
+   "industries": [
+    "选调/公务员"
+   ],
+   "locations": [
+    "北京",
+    "上海",
+    "江苏",
+    "浙江",
+    "广东",
+    "四川",
+    "各省"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "定向选调-专业不限，或按「自动化类/电气类/电子信息类」报考的岗位",
+   "note": "各省定向选调2027届公告预计9月起陆续发布，控制/自动化硕士可按自动化类/电气类报考",
+   "apply_url": "",
+   "notice_url": "https://www.jinbiaochi.com/qgxds/news_935819.html"
+  },
+  {
+   "company": "中国烟草（各省局/工业公司）",
+   "date": "2026-08",
+   "deadline": "招满为止",
+   "types": [
+    "校园招聘",
+    "秋招"
+   ],
+   "industries": [
+    "央企",
+    "烟草"
+   ],
+   "locations": [
+    "各省（省局及工业公司所在地）"
+   ],
+   "grades": [
+    "2027届"
+   ],
+   "exam": [
+    "需要笔试"
+   ],
+   "positions": "自动化类、电气类、机械类、电子信息类岗位（各省局/工业公司分散招聘）",
+   "note": "烟草由各省局/工业公司分别在其官网发布，自动化/电气/机械类常见可报，谨防假冒",
+   "apply_url": "http://www.tobacco.gov.cn",
+   "notice_url": ""
+  }
+ ],
+ "resources": [
+  {
+   "title": "27控制类择校宝典",
+   "var": "zexiaoBookImages",
+   "images": [
+    "images/择校宝典/txkybook.png",
+    "images/择校宝典/屏幕截图 2026-06-19 140705.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140715.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140720.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140725.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140729.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140733.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140737.jpg",
+    "images/择校宝典/屏幕截图 2026-06-19 140745.jpg"
+   ]
+  },
+  {
+   "title": "宝典S",
+   "var": "baodianSImages",
+   "images": [
+    "images/宝典S/宝典S-1.png",
+    "images/宝典S/宝典S-2.png",
+    "images/宝典S/宝典S-3.png"
+   ]
+  },
+  {
+   "title": "刷题本",
+   "var": "workbookImages",
+   "images": [
+    "images/刷题本/image (2).jpg",
+    "images/刷题本/幻灯片1.jpg",
+    "images/刷题本/幻灯片2.jpg",
+    "images/刷题本/幻灯片3.jpg",
+    "images/刷题本/幻灯片4.jpg",
+    "images/刷题本/幻灯片5.jpg",
+    "images/刷题本/幻灯片6.jpg",
+    "images/刷题本/幻灯片7.jpg",
+    "images/刷题本/幻灯片8.jpg",
+    "images/刷题本/幻灯片9.jpg",
+    "images/刷题本/幻灯片10.jpg",
+    "images/刷题本/幻灯片11.jpg",
+    "images/刷题本/幻灯片12.jpg",
+    "images/刷题本/幻灯片13.jpg",
+    "images/刷题本/幻灯片14.jpg",
+    "images/刷题本/幻灯片15.jpg",
+    "images/刷题本/幻灯片16.jpg",
+    "images/刷题本/幻灯片17.jpg",
+    "images/刷题本/幻灯片18.jpg",
+    "images/刷题本/屏幕截图 2026-06-19 153313.jpg",
+    "images/刷题本/屏幕截图 2026-06-19 153317.jpg",
+    "images/刷题本/微信图片_20260619153025_165_312.jpg"
+   ]
+  },
+  {
+   "title": "真题",
+   "var": "realExamImages",
+   "images": [
+    "images/真题/真题.jpg"
+   ]
+  },
+  {
+   "title": "公式宝典",
+   "var": "formulaBookImages",
+   "images": [
+    "images/公式宝典/bli.jpg"
+   ]
+  },
+  {
+   "title": "高分喜报",
+   "var": "xibaoImages",
+   "images": [
+    "images/喜报/021.png",
+    "images/喜报/022.png",
+    "images/喜报/023.png",
+    "images/喜报/024.png",
+    "images/喜报/025.png",
+    "images/喜报/026.png",
+    "images/喜报/027.png",
+    "images/喜报/028.png",
+    "images/喜报/029.png",
+    "images/喜报/030.png",
+    "images/喜报/031.png",
+    "images/喜报/032.png",
+    "images/喜报/033.png",
+    "images/喜报/034.png",
+    "images/喜报/035.png",
+    "images/喜报/036.png",
+    "images/喜报/037.png",
+    "images/喜报/038.png",
+    "images/喜报/039.png",
+    "images/喜报/040.png",
+    "images/喜报/041.png",
+    "images/喜报/042.png",
+    "images/喜报/043.png",
+    "images/喜报/044.png",
+    "images/喜报/045.png",
+    "images/喜报/046.png",
+    "images/喜报/047.png",
+    "images/喜报/048.png",
+    "images/喜报/049.png",
+    "images/喜报/050.png",
+    "images/喜报/051.png",
+    "images/喜报/052.png",
+    "images/喜报/053.png",
+    "images/喜报/054.png",
+    "images/喜报/055.png",
+    "images/喜报/056.png",
+    "images/喜报/057.png",
+    "images/喜报/058.png",
+    "images/喜报/059.png",
+    "images/喜报/060.png",
+    "images/喜报/061.png",
+    "images/喜报/062.png",
+    "images/喜报/063.png",
+    "images/喜报/064.png",
+    "images/喜报/065.png",
+    "images/喜报/066.png",
+    "images/喜报/067.png",
+    "images/喜报/068.png",
+    "images/喜报/069.png",
+    "images/喜报/070.png",
+    "images/喜报/071.png"
+   ]
+  },
+  {
+   "title": "宝典A",
+   "var": "baodianAImages",
+   "images": [
+    "images/宝典SABD/宝典A-1.png",
+    "images/宝典SABD/宝典A-2.png",
+    "images/宝典SABD/宝典A-3.png"
+   ]
+  },
+  {
+   "title": "宝典B",
+   "var": "baodianBImages",
+   "images": [
+    "images/宝典SABD/宝典B-1.png",
+    "images/宝典SABD/宝典B-2.png",
+    "images/宝典SABD/宝典B-3.png"
+   ]
+  }
+ ]
+}

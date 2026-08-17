@@ -6,6 +6,7 @@
 - `schema_mysql.sql`：MySQL 8 建表语句（线上用）
 - `import_admission.py`：录取数据导入脚本（本地 SQLite / 线上 MySQL）
 - `import_subjects.py`：专业课科目/参考书导入脚本（从 raw/subjects_books_raw.json），并回填 `schools.province/tier/logo_url`
+- `import_content.py`：内容数据导入脚本（从 raw/content_raw.json：经验贴 / 校招岗位 / 资料课程）
 - `config.json`：数据源切换配置（sqlite / mysql），部署 MySQL 时改这里
 - `api.py`：查询 API（无第三方依赖，供 serve.py 或 Flask/FastAPI 调用）
 - `admission.db`：SQLite 数据库（导入后生成）
@@ -23,6 +24,9 @@
 | `/api/subjects` | 无 | 专业课科目（homeSubjects 结构，7 门） |
 | `/api/exam-subjects` | `school` | 学校-专业课扁平列表 |
 | `/api/books` | `school` | 初试参考书目 |
+| `/api/posts` | `school`、`category`、`q`、`page`、`page_size` | 考研经验贴（分页） |
+| `/api/jobs` | `q`、`type`、`industry`、`location`、`grade`、`page`、`page_size` | 校招岗位（分页） |
+| `/api/resources` | 无 | 资料/课程画廊分类 |
 
 示例：
 ```bash
@@ -99,6 +103,7 @@ http://127.0.0.1:8767/数据库/admin.html
 - `admissions`：录取数据（year 区分年份）
 - `subject_meta` / `exam_subjects`：专业课科目与学校-科目关系
 - `reference_books`：初试参考书目
+- `experience_posts` / `job_posts` / `course_resources`：经验贴 / 校招岗位 / 资料课程
 
 ## 后续更新
 - 每年新数据：新增 `year` 记录，不覆盖旧年份
