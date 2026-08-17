@@ -1021,8 +1021,8 @@ var _hmt = _hmt || [];
     </a>
     <div class="site-nav__status" aria-label="平台数据状态">
       <span><i></i>27 / 28 考研 · 26录取数据</span>
-      <b>132</b><small>所院校</small>
-      <b>530</b><small>条录取记录</small>
+      <b id="navSchoolCount">132</b><small>所院校</small>
+      <b id="navRecordCount">530</b><small>条录取记录</small>
     </div>
     <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="siteNavMenu" aria-label="打开导航菜单">
       <svg class="li-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -1145,7 +1145,7 @@ var _hmt = _hmt || [];
     <div class="text-center hero-title-wrap" style="margin-bottom:10px;">
       <div class="hero-kicker" style="margin:0 0 12px;font:600 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.26em;text-transform:uppercase;color:#a92122;">2027 / 2028 · Control Engineering</div>
       <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;line-height:1.08;color:#17191d;letter-spacing:0;margin:0 0 12px;">控制类考研与就业<span style="color:#a92122;">全链路指南</span></h1>
-      <p class="text-gray-500" style="font-size:1rem;margin:0 0 2px;">基于26考研录取数据 · 服务27/28考研 · 覆盖132所高校 · 500+学院子方向 <span style="color:#777a80;font-weight:600;">designed by @控制考研阿祖</span></p>
+      <p class="text-gray-500" style="font-size:1rem;margin:0 0 2px;">基于26考研录取数据 · 服务27/28考研 · 覆盖<span id="textSchoolCount">132</span>所高校 · 500+学院子方向 <span style="color:#777a80;font-weight:600;">designed by @控制考研阿祖</span></p>
       <div class="desktop-experience-tip">ps：电脑端食用效果更佳！</div>
     </div>
 
@@ -1198,10 +1198,10 @@ var _hmt = _hmt || [];
       .nav-pill-lg svg{width:1em;height:1em;vertical-align:-0.12em;margin-right:5px;}
     </style>
 <div class="hero-stats" aria-label="数据规模">
-      <div class="stat"><span class="stat-num">132</span><span class="stat-label">所高校</span></div>
-      <div class="stat"><span class="stat-num">530</span><span class="stat-label">条录取记录</span></div>
-      <div class="stat"><span class="stat-num">27</span><span class="stat-label">个省份</span></div>
-      <div class="stat"><span class="stat-num">154</span><span class="stat-label">个专业方向</span></div>
+      <div class="stat"><span class="stat-num" id="statSchools">132</span><span class="stat-label">所高校</span></div>
+      <div class="stat"><span class="stat-num" id="statRecords">530</span><span class="stat-label">条录取记录</span></div>
+      <div class="stat"><span class="stat-num" id="statProvinces">27</span><span class="stat-label">个省份</span></div>
+      <div class="stat"><span class="stat-num" id="statMajors">154</span><span class="stat-label">个专业方向</span></div>
     </div>
 
     <!-- 数据定位 + 新手引导 -->
@@ -1746,5 +1746,27 @@ var _hmt = _hmt || [];
 </style>
 <script src="nav-data.js"></script>
 <script src="nav-render.js"></script>
+<script>
+(function () {
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el && value !== null && value !== undefined) { el.textContent = value; }
+  }
+  fetch('/api/summary')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (json) {
+      if (!json || json.code !== 0 || !json.data) { return; }
+      var d = json.data;
+      setText('textSchoolCount', d.school_count);
+      setText('navSchoolCount', d.school_count);
+      setText('navRecordCount', d.record_count);
+      setText('statSchools', d.school_count);
+      setText('statRecords', d.record_count);
+      setText('statProvinces', d.province_count);
+      setText('statMajors', d.major_count);
+    })
+    .catch(function () { /* 静态默认值兜底 */ });
+})();
+</script>
 </body>
 </html>

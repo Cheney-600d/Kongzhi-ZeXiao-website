@@ -34,6 +34,8 @@ def main():
     check('school_count >= 132', d['school_count'] >= 132)
     check('major_count >= 150', d['major_count'] >= 150)
     check('record_count >= 500', d['record_count'] >= 500)
+    check('province_count >= 27', d['province_count'] >= 27)
+    check('subject_count >= 7', d['subject_count'] >= 7)
     check('top_schools 有 5 条', len(d['top_schools']) == 5)
 
     print('== /api/subjects ==')

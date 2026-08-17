@@ -155,6 +155,8 @@ def query_summary():
         school_count = conn.execute('SELECT COUNT(*) AS c FROM schools').fetchone()['c']
         major_count = conn.execute('SELECT COUNT(*) AS c FROM majors').fetchone()['c']
         record_count = conn.execute('SELECT COUNT(*) AS c FROM admissions').fetchone()['c']
+        province_count = conn.execute("SELECT COUNT(DISTINCT province) AS c FROM schools WHERE province IS NOT NULL AND province <> ''").fetchone()['c']
+        subject_count = conn.execute('SELECT COUNT(*) AS c FROM subject_meta').fetchone()['c']
         top_schools = [dict(r) for r in conn.execute(
             '''SELECT s.name, COUNT(*) AS c FROM admissions a
                JOIN schools s ON s.id=a.school_id
@@ -163,6 +165,8 @@ def query_summary():
             'school_count': school_count,
             'major_count': major_count,
             'record_count': record_count,
+            'province_count': province_count,
+            'subject_count': subject_count,
             'top_schools': top_schools,
         }}
     finally:
