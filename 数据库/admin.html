@@ -48,6 +48,7 @@
   .file-box input { display: none; }
   .file-box .icon { font-size: 28px; }
   .file-box .name { color: #1f2937; font-weight: 600; margin-top: 6px; word-break: break-all; }
+  .token-input { width: 100%; margin-top: 10px; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 14px; }
   .warn {
     background: #fff8e1;
     border: 1px solid #ffe082;
@@ -106,6 +107,7 @@
       <div class="name" id="fileName"></div>
       <input type="file" id="fileInput" accept=".xlsx">
     </div>
+    <input class="token-input" type="password" id="adminToken" placeholder="上线后填写 KAOYAN_ADMIN_TOKEN；本机可留空" autocomplete="off">
     <button class="btn" id="importBtn" disabled>⬆️ 导入数据库</button>
     <div class="warn">⚠️ 导入会覆盖当前数据库中的录取数据表。请确认 Excel 表头与模板一致（学校名称、学院名称、专业名称……）。</div>
     <div class="result" id="result"></div>
@@ -123,6 +125,9 @@
   const fileName = document.getElementById('fileName');
   const importBtn = document.getElementById('importBtn');
   const result = document.getElementById('result');
+    const adminToken = document.getElementById('adminToken');
+    adminToken.value = sessionStorage.getItem('kaoyan_admin_token') || '';
+    adminToken.addEventListener('input', () => sessionStorage.setItem('kaoyan_admin_token', adminToken.value));
   let selectedFile = null;
 
   async function loadSummary() {
@@ -190,7 +195,7 @@
       const base64 = await readAsBase64(selectedFile);
       const resp = await fetch('/api/admin/import-admission', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Token': adminToken.value || '' },
         body: JSON.stringify({ filename: selectedFile.name, base64: base64 })
       });
       const json = await resp.json();

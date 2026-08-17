@@ -5,7 +5,7 @@
 ## 文件说明
 - `schema_mysql.sql`：MySQL 8 建表语句（线上用）
 - `import_admission.py`：录取数据导入脚本（本地 SQLite / 线上 MySQL）
-- `import_subjects.py`：专业课科目/参考书导入脚本（从 raw/subjects_books_raw.json）
+- `import_subjects.py`：专业课科目/参考书导入脚本（从 raw/subjects_books_raw.json），并回填 `schools.province/tier/logo_url`
 - `api.py`：查询 API（无第三方依赖，供 serve.py 或 Flask/FastAPI 调用）
 - `admission.db`：SQLite 数据库（导入后生成）
 - `schools.csv` / `majors.csv` / `admissions.csv`：导出的扁平数据
@@ -29,6 +29,19 @@ curl "http://127.0.0.1:8767/api/admissions?school=清华大学&major_code=085400
 ```
 
 返回格式：`{"code":0,"data":{"items":[...],"page":1,"page_size":10,"total":...,"total_pages":...}}`
+
+## 管理接口鉴权
+
+`POST /api/admin/import-admission` 默认只允许本机回环访问（127.0.0.1 / ::1 / localhost）。
+上线前设置环境变量 `KAOYAN_ADMIN_TOKEN`，后台导入页会带 `X-Admin-Token` 请求头：
+
+```bash
+# Windows PowerShell
+$env:KAOYAN_ADMIN_TOKEN="你的强密码"
+python serve.py 8767
+```
+
+设置 Token 后，非本机或 Token 错误的请求会返回 401。
 
 ## 本地使用
 ```bash
@@ -58,7 +71,7 @@ http://127.0.0.1:8767/数据库/admin.html
 > 上线服务器时请给该接口加登录鉴权，不要直接暴露到公网。
 
 ## 核心表
-- `schools`：院校
+- `schools`：院校（含 province 省份、tier 层次、logo_url 校徽）
 - `majors`：专业方向
 - `admissions`：录取数据（year 区分年份）
 - `subject_meta` / `exam_subjects`：专业课科目与学校-科目关系

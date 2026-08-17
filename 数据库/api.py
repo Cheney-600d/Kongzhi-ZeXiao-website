@@ -28,7 +28,7 @@ def query_schools(q=None, limit=200):
     """院校列表，支持模糊搜索校名。"""
     conn = _conn()
     try:
-        sql = 'SELECT id, name FROM schools'
+        sql = 'SELECT id, name, province, tier, logo_url FROM schools'
         args = []
         if q:
             sql += ' WHERE name LIKE ?'
@@ -36,7 +36,7 @@ def query_schools(q=None, limit=200):
         sql += ' ORDER BY name LIMIT ?'
         args.append(int(limit))
         rows = conn.execute(sql, args).fetchall()
-        items = [{'id': r['id'], 'name': r['name']} for r in rows]
+        items = [{'id': r['id'], 'name': r['name'], 'province': r['province'], 'tier': r['tier'], 'logo_url': r['logo_url']} for r in rows]
         return {'code': 0, 'data': {'items': items, 'total': len(items)}}
     finally:
         conn.close()

@@ -74,17 +74,27 @@ def import_subjects_to_db(write_csv=True):
         cur.executemany('INSERT INTO exam_subjects(subject_name, school_name, tier, region, codes_json) VALUES (?, ?, ?, ?, ?)', subject_rows)
         cur.executemany('INSERT INTO reference_books(school_name, book_text, sort_order) VALUES (?, ?, ?)', book_rows)
 
-        # 回填 schools.province / tier（如果 schools 表存在）
-        try:
-            for school in school_index:
-                entries = school_index[school] or []
-                if entries:
-                    region = entries[0].get('region', '')
-                    tier = entries[0].get('tier', '')
-                    if region or tier:
-                        cur.execute('UPDATE schools SET province=?, tier=? WHERE name=?', (region, tier, school))
-        except sqlite3.OperationalError:
-            pass
+        # 回填 schools.province / tier / logo_url，并补入缺失学校
+        logo_dir = pathlib.Path(__file__).resolve().parent.parent / '专业课选择' / 'images' / '校徽'
+        cur.execute('''CREATE TABLE IF NOT EXISTS schools (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL UNIQUE,
+            province TEXT,
+            tier TEXT,
+            logo_url TEXT
+        )''')
+        all_schools = list(dict.fromkeys(list(school_index.keys()) + list(school_books.keys())))
+        for school in all_schools:
+            cur.execute('INSERT OR IGNORE INTO schools(name) VALUES (?)', (school,))
+            entries = school_index.get(school) or []
+            region = entries[0].get('region', '') if entries else ''
+            tier = entries[0].get('tier', '') if entries else ''
+            logo_url = ''
+            for ext in ('.jpg', '.png'):
+                if (logo_dir / (school + ext)).exists():
+                    logo_url = f'专业课选择/images/校徽/{school}{ext}'
+                    break
+            cur.execute('UPDATE schools SET province=?, tier=?, logo_url=? WHERE name=?', (region, tier, logo_url, school))
 
         conn.commit()
 

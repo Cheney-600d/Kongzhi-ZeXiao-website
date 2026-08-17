@@ -19,6 +19,8 @@ import api as admission_api
 import import_admission
 import import_subjects
 
+ADMIN_TOKEN = os.environ.get('KAOYAN_ADMIN_TOKEN', '').strip()
+
 
 class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -34,6 +36,15 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Content-Length', str(len(data)))
         self.end_headers()
         self.wfile.write(data)
+
+    def _is_loopback(self):
+        addr = self.client_address[0] if self.client_address else ''
+        return addr in ('127.0.0.1', '::1', 'localhost')
+
+    def _admin_authorized(self):
+        if ADMIN_TOKEN:
+            return self.headers.get('X-Admin-Token', '') == ADMIN_TOKEN
+        return self._is_loopback()
 
     def do_GET(self):
         parsed = urllib.parse.urlsplit(self.path)
@@ -63,6 +74,9 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
         parsed = urllib.parse.urlsplit(self.path)
         if parsed.path == '/api/admin/import-admission':
+            if not self._admin_authorized():
+                self._send_json(401, {'code': 1, 'msg': 'unauthorized'})
+                return
             try:
                 length = int(self.headers.get('Content-Length', '0'))
                 raw = self.rfile.read(length) if length else b''
@@ -103,4 +117,8 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
 
 with socketserver.ThreadingTCPServer(('', PORT), NoCacheHandler) as httpd:
     print(f'serving on http://127.0.0.1:{PORT} (no-cache)', flush=True)
+    if ADMIN_TOKEN:
+        print('admin import auth: KAOYAN_ADMIN_TOKEN enabled', flush=True)
+    else:
+        print('admin import auth: loopback only (set KAOYAN_ADMIN_TOKEN to require token)', flush=True)
     httpd.serve_forever()
