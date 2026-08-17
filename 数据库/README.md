@@ -4,7 +4,8 @@
 
 ## 文件说明
 - `schema_mysql.sql`：MySQL 8 建表语句（线上用）
-- `import_admission.py`：导入脚本（本地 SQLite / 线上 MySQL）
+- `import_admission.py`：录取数据导入脚本（本地 SQLite / 线上 MySQL）
+- `import_subjects.py`：专业课科目/参考书导入脚本（从 raw/subjects_books_raw.json）
 - `api.py`：查询 API（无第三方依赖，供 serve.py 或 Flask/FastAPI 调用）
 - `admission.db`：SQLite 数据库（导入后生成）
 - `schools.csv` / `majors.csv` / `admissions.csv`：导出的扁平数据
@@ -18,6 +19,9 @@
 | `/api/schools` | `q` 校名模糊搜索 | 院校列表 |
 | `/api/majors` | `school`、`code` | 专业方向列表 |
 | `/api/admissions` | `school`、`major_code`、`year`、`page`、`page_size` | 录取数据（分页） |
+| `/api/subjects` | 无 | 专业课科目（homeSubjects 结构，7 门） |
+| `/api/exam-subjects` | `school` | 学校-专业课扁平列表 |
+| `/api/books` | `school` | 初试参考书目 |
 
 示例：
 ```bash
@@ -57,6 +61,8 @@ http://127.0.0.1:8767/数据库/admin.html
 - `schools`：院校
 - `majors`：专业方向
 - `admissions`：录取数据（year 区分年份）
+- `subject_meta` / `exam_subjects`：专业课科目与学校-科目关系
+- `reference_books`：初试参考书目
 
 ## 后续更新
 - 每年新数据：新增 `year` 记录，不覆盖旧年份

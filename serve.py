@@ -17,6 +17,7 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
 sys.path.insert(0, os.path.join(BASE_DIR, '数据库'))
 import api as admission_api
 import import_admission
+import import_subjects
 
 
 class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
@@ -80,11 +81,16 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
                 with open(save_path, 'wb') as f:
                     f.write(content)
                 info = import_admission.import_excel_to_db(save_path, write_csv=True)
+                try:
+                    subj_info = import_subjects.import_subjects_to_db(write_csv=False)
+                except Exception as subj_e:
+                    subj_info = {'error': str(subj_e)}
                 self._send_json(200, {'code': 0, 'data': {
                     'records': info['records'],
                     'schools': info['schools'],
                     'majors': info['majors'],
                     'saved_as': os.path.basename(save_path),
+                    'subjects': subj_info,
                 }})
             except Exception as e:
                 self._send_json(400, {'code': 1, 'msg': str(e)})

@@ -131,11 +131,94 @@ def query_summary():
         conn.close()
 
 
+def query_subjects():
+    """专业课科目（homeSubjects 结构，前端首页科目卡片用）。"""
+    conn = _conn()
+    try:
+        metas = {r['subject_name']: r for r in conn.execute('SELECT * FROM subject_meta').fetchall()}
+        rows = conn.execute('''
+            SELECT e.subject_name, e.tier, e.school_name, e.codes_json, e.region
+            FROM exam_subjects e
+            LEFT JOIN subject_meta m ON m.subject_name = e.subject_name
+            ORDER BY COALESCE(m.sort_order, 0), e.subject_name,
+                     CASE e.tier WHEN '985高校' THEN 0 WHEN '211高校' THEN 1 ELSE 2 END,
+                     e.school_name
+        ''').fetchall()
+        items = []
+        current = None
+        for r in rows:
+            if current is None or current['name'] != r['subject_name']:
+                current = {
+                    'name': r['subject_name'],
+                    'tier': {},
+                    'bgGradient': metas[r['subject_name']]['bg_gradient'] if r['subject_name'] in metas else ''
+                }
+                items.append(current)
+            tier = r['tier'] or '未知'
+            current['tier'].setdefault(tier, []).append({
+                'name': r['school_name'],
+                'codes': json.loads(r['codes_json'] or '[]'),
+                'region': r['region'] or ''
+            })
+        return {'code': 0, 'data': {'items': items, 'total': len(items)}}
+    finally:
+        conn.close()
+
+
+def query_exam_subjects(school=None):
+    """学校-专业课扁平列表；可用 school 过滤。"""
+    conn = _conn()
+    try:
+        sql = 'SELECT subject_name, school_name, tier, region, codes_json FROM exam_subjects'
+        args = []
+        if school:
+            sql += ' WHERE school_name = ?'
+            args.append(school)
+        sql += " ORDER BY subject_name, CASE tier WHEN '985高校' THEN 0 WHEN '211高校' THEN 1 ELSE 2 END, school_name"
+        rows = conn.execute(sql, args).fetchall()
+        items = [{
+            'subjectName': r['subject_name'],
+            'schoolName': r['school_name'],
+            'tier': r['tier'],
+            'region': r['region'],
+            'codes': json.loads(r['codes_json'] or '[]'),
+        } for r in rows]
+        return {'code': 0, 'data': {'items': items, 'total': len(items)}}
+    finally:
+        conn.close()
+
+
+def query_books(school=None):
+    """参考书目；可按 school 过滤。"""
+    conn = _conn()
+    try:
+        sql = 'SELECT school_name, book_text FROM reference_books'
+        args = []
+        if school:
+            sql += ' WHERE school_name = ?'
+            args.append(school)
+        sql += ' ORDER BY school_name, sort_order'
+        rows = conn.execute(sql, args).fetchall()
+        if school:
+            books = [r['book_text'] for r in rows]
+            return {'code': 0, 'data': {'school': school, 'books': books, 'total': len(books)}}
+        grouped = {}
+        for r in rows:
+            grouped.setdefault(r['school_name'], []).append(r['book_text'])
+        items = [{'school': k, 'books': v} for k, v in grouped.items()]
+        return {'code': 0, 'data': {'items': items, 'total': len(items)}}
+    finally:
+        conn.close()
+
+
 ROUTES = {
     '/api/schools': query_schools,
     '/api/majors': query_majors,
     '/api/admissions': query_admissions,
     '/api/summary': query_summary,
+    '/api/subjects': query_subjects,
+    '/api/exam-subjects': query_exam_subjects,
+    '/api/books': query_books,
 }
 
 

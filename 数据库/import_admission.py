@@ -240,3 +240,9 @@ if __name__ == '__main__':
         import_mysql(args.host, args.port, args.user, args.password, args.database)
     else:
         import_sqlite()
+        try:
+            import import_subjects
+            subj = import_subjects.import_subjects_to_db(write_csv=True)
+            print(f"subjects OK: {subj['subjects']} 门专业课, {subj['exam_subject_rows']} 条学校-科目, {subj['book_rows']} 条参考书目")
+        except Exception as e:
+            print('subject import skipped:', e)
