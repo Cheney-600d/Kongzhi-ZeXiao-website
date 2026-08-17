@@ -254,20 +254,13 @@
             <div class="course-section-title">📊 万人教育资料体系概览</div>
             <div class="overview-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="book-showcase-card" onclick="showZexiaoBookGallery()">
-                    <img class="book-showcase-cover" src="images/择校宝典/txkybook.jpg" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
+                    <img class="book-showcase-cover" src="images/择校宝典/txkybook.png" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
                     <div class="book-showcase-title">📕 27控制类择校宝典</div>
-                    <div class="book-showcase-desc">覆盖217所高校<br>1090+专业方向数据<br>分数线/科目/报录比全收录</div>
+                    <div class="book-showcase-desc">覆盖132所高校 · 500+学院子方向<br>复录比/科目/成绩全收录</div>
                     <div class="book-showcase-hint">👆 点击查看内页详情</div>
                 </div>
-                <div class="overview-card" onclick="show660Gallery()">
-                    <img class="overview-card-cover" src="images/660/image33.jpg" alt="660题" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <div class="overview-card-icon" style="display:none">📝</div>
-                    <div class="overview-card-title">660题</div>
-                    <div class="overview-card-desc">经典习题集<br>强化阶段必备</div>
-                    <div class="overview-card-hint">👆 点击查看详情</div>
-                </div>
                 <div class="overview-card" onclick="showBaodianSModal()">
-                    <img class="overview-card-cover" src="images/宝典S/宝典S.jpg" alt="宝典S" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <img class="overview-card-cover" src="images/宝典S/宝典S.png" alt="宝典S" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📖</div>
                     <div class="overview-card-title">宝典S</div>
                     <div class="overview-card-desc">精编复习讲义<br>基础阶段核心</div>
@@ -281,7 +274,7 @@
                     <div class="overview-card-hint">👆 点击查看实拍</div>
                 </div>
                 <div class="overview-card">
-                    <img class="overview-card-cover" src="images/宝典SABD/宝典B.jpg" alt="宝典B" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <img class="overview-card-cover" src="images/宝典SABD/宝典B.png" alt="宝典B" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📄</div>
                     <div class="overview-card-title">宝典B</div>
                     <div class="overview-card-desc">模拟试卷10套<br>查漏补缺</div>
@@ -291,13 +284,6 @@
                     <div class="overview-card-icon" style="display:none">🎯</div>
                     <div class="overview-card-title">宝典C</div>
                     <div class="overview-card-desc">冲刺预测4套<br>考前点睛</div>
-                </div>
-                <div class="overview-card" onclick="showBaodianDModal()">
-                    <img class="overview-card-cover" src="images/宝典D/0de98d12f311f07732d2e81e27606a51.jpg" alt="宝典D" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <div class="overview-card-icon" style="display:none">📚</div>
-                    <div class="overview-card-title">宝典D</div>
-                    <div class="overview-card-desc">专项训练，难点勤练<br>板块化训练，强化爬坡必备</div>
-                    <div class="overview-card-hint">（仅电路赠送）</div>
                 </div>
             </div>
             <div class="overview-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 10px;">
@@ -723,7 +709,7 @@
     <script>
         // 择校宝典图片数据（直接穷举，不用manifest.json）
         const zexiaoBookImages = [
-            'images/择校宝典/txkybook.jpg',
+            'images/择校宝典/txkybook.png',
             'images/择校宝典/屏幕截图 2026-06-19 140705.jpg',
             'images/择校宝典/屏幕截图 2026-06-19 140715.jpg',
             'images/择校宝典/屏幕截图 2026-06-19 140720.jpg',
@@ -803,13 +789,6 @@
             'images/公式宝典/ddff2649550cccc3ba6b40ecea03e718.jpg'
         ];
 
-        // 宝典D图片数据
-        const baodianDImages = [
-            'images/宝典D/0de98d12f311f07732d2e81e27606a51.jpg',
-            'images/宝典D/02eca467b571bcba7dc519fc72fb28df.jpg',
-            'images/宝典D/3c81d813351ce0e1dd277654ad650ede.jpg',
-            'images/宝典D/cfd8f86c6f215b1831b4fdc23ce5ed1d.jpg'
-        ];
 
         // 高分喜报图片数据
         const xibaoImages = [
@@ -867,15 +846,6 @@
             'images/宝典SABD/f413e2693f365eb26524de85c6876a9.jpg'
         ];
         
-        // 课后习题集图片数据（直接穷举，不用manifest.json）
-        const images660 = [
-            'images/660/image26.jpg',
-            'images/660/image27.jpg',
-            'images/660/image28.jpg',
-            'images/660/image33.jpg',
-            'images/660/屏幕截图 2026-06-19 153355.jpg',
-            'images/660/屏幕截图 2026-06-19 153359.jpg'
-        ];
         
         let currentGalleryImages = [];
         let currentGalleryIndex = 0;
@@ -902,11 +872,9 @@
         // 各入口函数（保持现有HTML调用方式不变）
         function showBaodianSModal() { openGallery('📖 宝典S 精编复习讲义', baodianSImages); }
         function showWorkbookGallery() { openGallery('🖊️ 课后题刷题本', workbookImages); }
-        function show660Gallery() { openGallery('📝 660题', images660); }
         function showBaodianAModal() { openGallery('📋 宝典A 历年真题', baodianAImages); }
         function showRealExamGallery() { openGallery('📄 各院校真题电子档合集', realExamImages); }
         function showFormulaBookGallery() { openGallery('📐 各科公式宝典', formulaBookImages); }
-        function showBaodianDModal() { openGallery('📚 宝典D 专项训练', baodianDImages); }
         function showXibaoGallery() { openGallery('🎉 高分喜报', xibaoImages); }
         
         function hideBaodianSModal() {
