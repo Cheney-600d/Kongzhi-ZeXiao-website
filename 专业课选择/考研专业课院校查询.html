@@ -718,6 +718,64 @@
     border-bottom: none;
 }
 
+/* 录取数据区块（来自 /api/admissions） */
+.admission-section {
+    margin-top: 24px;
+    min-width: 0;
+}
+.admission-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+.admission-section-title .admission-source {
+    font-size: 11px;
+    font-weight: 400;
+    color: #9ca3af;
+    margin-left: 6px;
+}
+.admission-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+}
+.admission-table {
+    width: 100%;
+    min-width: 580px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.admission-table th,
+.admission-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #f1f3f5;
+    text-align: left;
+    white-space: nowrap;
+}
+.admission-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+}
+.admission-table tbody tr:hover {
+    background: #fafafa;
+}
+.admission-table tr:last-child td {
+    border-bottom: none;
+}
+@media (max-width: 768px) {
+    .admission-table {
+        min-width: 520px;
+        font-size: 12px;
+    }
+    .admission-table th,
+    .admission-table td {
+        padding: 8px;
+    }
+}
+
 </style>
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260814-theme-purple">
 <link rel="stylesheet" href="../theme-global.css">
@@ -1092,6 +1150,57 @@
                 books.forEach(b => { bookHtml += `<div class="book-line">${b}</div>`; });
                 bookSec.innerHTML = bookHtml;
                 listContainer.appendChild(bookSec);
+            }
+
+            // 🎓 录取数据（实时从 /api/admissions 拉取）
+            renderAdmissionData(schoolName, listContainer);
+        }
+
+        async function renderAdmissionData(schoolName, listContainer) {
+            try {
+                const resp = await fetch(`/api/admissions?school=${encodeURIComponent(schoolName)}&year=2027&page=1&page_size=50`);
+                if (!resp.ok) return;
+                const json = await resp.json();
+                const records = (json && json.data && json.data.items) || [];
+                if (records.length === 0) return;
+
+                const sec = document.createElement('div');
+                sec.className = 'admission-section fade-in';
+                sec.innerHTML = `<div class="admission-section-title">🎓 2027 录取数据 <span class="admission-source">来源：院校录取数据库</span></div>`;
+
+                const wrap = document.createElement('div');
+                wrap.className = 'admission-table-wrap';
+                const table = document.createElement('table');
+                table.className = 'admission-table';
+                const thead = document.createElement('thead');
+                thead.innerHTML = `<tr><th>学院</th><th>专业方向</th><th>进复试</th><th>拟录取</th><th>复录比</th><th>进复试均分</th><th>录取均分</th></tr>`;
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                records.forEach(r => {
+                    const tr = document.createElement('tr');
+                    const vals = [
+                        r.college || '—',
+                        r.major_name || r.full_text || '—',
+                        r.retest_count ?? '—',
+                        r.admitted_count ?? '—',
+                        r.retest_ratio ?? '—',
+                        r.retest_avg_score ?? '—',
+                        r.admitted_avg_score ?? '—'
+                    ];
+                    vals.forEach(v => {
+                        const td = document.createElement('td');
+                        td.textContent = v;
+                        tr.appendChild(td);
+                    });
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                wrap.appendChild(table);
+                sec.appendChild(wrap);
+                listContainer.appendChild(sec);
+            } catch (e) {
+                // 本地直接双击打开（file://）或 API 未启动时静默跳过
+                console.info('admission API unavailable:', e);
             }
         }
         
