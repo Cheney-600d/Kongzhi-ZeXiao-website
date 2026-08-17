@@ -17,3 +17,9 @@ Desktop.ini
 
 # 日志
 *.log
+
+# 本地备份目录
+backups/
+
+# 后台导入生成的带时间戳原始文件（原始 Excel 除外）
+数据库/raw/20*.xlsx

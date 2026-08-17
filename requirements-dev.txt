@@ -1,0 +1,2 @@
+# 开发/测试依赖（服务器生产环境请使用 requirements.txt）
+playwright>=1.44
