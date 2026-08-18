@@ -65,6 +65,7 @@
     subj.chapters.forEach(function (ch) {
       ch.questions.forEach(function (item) {
         if (selected.length >= 100) return;
+        if ((item.q + item.a).indexOf('香农') >= 0) return;
         selected.push({ subject: subj.name, chapter: ch.name, q: item.q, a: item.a });
       });
     });
@@ -77,6 +78,7 @@
       subj.chapters.forEach(function (ch) {
         ch.questions.forEach(function (item) {
           if (selected.length >= 100) return;
+          if ((item.q + item.a).indexOf('香农') >= 0) return;
           selected.push({ subject: subj.name, chapter: ch.name, q: item.q, a: item.a });
         });
       });
