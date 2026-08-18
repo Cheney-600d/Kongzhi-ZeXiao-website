@@ -1788,11 +1788,11 @@ var _hmt = _hmt || [];
   }
   .detail-mobile-filters { display: none; }
   .detail-mobile-filter label {
-    display: block;
-    font-size: 11px;
+    flex: none;
+    font-size: 12px;
     font-weight: 600;
     color: #6b7280;
-    margin-bottom: 5px;
+    white-space: nowrap;
   }
   #detailCards { display: none; }
   .detail-card {
@@ -1840,24 +1840,32 @@ var _hmt = _hmt || [];
     .detail-mobile-filters {
       display: grid !important;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 12px;
-      margin-bottom: 14px;
+      gap: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
       background: #f8f9fa;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
     }
-    .detail-mobile-filter { min-width: 0; }
+    .detail-mobile-filter {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
     .detail-mobile-filters .filter-sm {
-      width: 100%;
-      height: 40px;
-      padding: 0 10px;
+      flex: 1;
+      min-width: 0;
+      width: auto;
+      height: 36px;
+      padding: 0 8px;
       border: 1px solid #d1d5db;
       border-radius: 8px;
       background: #fff;
       color: #17191d;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
+      text-align: left;
       outline: none;
     }
     .detail-mobile-filters .filter-sm:focus { border-color: #a92122; box-shadow: 0 0 0 3px rgba(169,33,34,.1); }
