@@ -13,6 +13,7 @@
      需要先执行 schema_mysql.sql 建库建表。
 '''
 import argparse, csv, pathlib, re, sqlite3, sys, datetime
+from db_config import mysql_config
 
 EXCEL_PATH = pathlib.Path(__file__).with_name('raw') / '27考研择校宝典_录取数据表_0815.xlsx'
 
@@ -175,11 +176,15 @@ def import_sqlite():
     print('已生成 admission.db / schools.csv / majors.csv / admissions.csv')
 
 
-def import_mysql(host, port, user, password, database):
+def import_mysql(host, port, user, password, database, excel_path=EXCEL_PATH):
     import pymysql
     conn = pymysql.connect(host=host, port=port, user=user, password=password, database=database, charset='utf8mb4')
     cur = conn.cursor()
-    rows = read_excel_rows()
+    # 重建数据：先清空旧录取/专业/院校，再导入当前 Excel
+    cur.execute('DELETE FROM admissions')
+    cur.execute('DELETE FROM majors')
+    cur.execute('DELETE FROM schools')
+    rows = read_excel_rows(excel_path)
     school_ids, major_ids, major_full = {}, {}, {}
     n = 0
     for r in rows:
@@ -224,6 +229,20 @@ def import_mysql(host, port, user, password, database):
     conn.commit()
     cur.close(); conn.close()
     print(f'MySQL OK: {n} 条记录')
+
+
+def import_mysql_from_config(excel_path=EXCEL_PATH):
+    """根据 config.json 中的 mysql 配置导入 Excel 到 MySQL。"""
+    mc = mysql_config()
+    return import_mysql(
+        host=mc.get('host', '127.0.0.1'),
+        port=int(mc.get('port', 3306)),
+        user=mc.get('user', 'root'),
+        password=mc.get('password', ''),
+        database=mc.get('database', 'kaoyan_admission'),
+        excel_path=excel_path,
+    )
+
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()

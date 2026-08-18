@@ -13,6 +13,7 @@ import csv
 import json
 import pathlib
 import sqlite3
+from db_config import mysql_connect
 
 JSON_PATH = pathlib.Path(__file__).with_name('raw') / 'content_raw.json'
 
@@ -183,6 +184,65 @@ def import_content_to_db(write_csv=True):
         conn.close()
 
 
+
+def import_content_to_mysql():
+    # 将内容数据（经验贴/岗位/资料）写入 MySQL（按 config.json 的 mysql 配置）
+    data = read_content_data()
+    posts = data.get('posts', [])
+    jobs = data.get('jobs', [])
+    resources = data.get('resources', [])
+    conn = mysql_connect()
+    try:
+        cur = conn.cursor()
+        cur.execute('DELETE FROM experience_posts')
+        cur.execute('DELETE FROM job_posts')
+        cur.execute('DELETE FROM course_resources')
+
+        post_rows = []
+        for p in posts:
+            post_rows.append((
+                p.get('id', ''), p.get('title', ''), p.get('school', ''), p.get('schoolShort', ''),
+                p.get('code', ''), p.get('total', ''), p.get('subjectScore', ''), p.get('author', ''),
+                p.get('year', ''), p.get('level', ''), p.get('category', ''), p.get('undergrad', ''),
+                p.get('c1', ''), p.get('c2', ''), p.get('ct', ''), p.get('yc1', ''), p.get('yc2', ''), p.get('lc', ''),
+            ))
+        job_rows = []
+        for j in jobs:
+            job_rows.append((
+                j.get('company', ''), j.get('date', ''), j.get('deadline', ''), j.get('positions', ''),
+                j.get('note', ''), j.get('apply_url', ''), j.get('notice_url', ''),
+                json.dumps(j.get('types', []), ensure_ascii=False),
+                json.dumps(j.get('industries', []), ensure_ascii=False),
+                json.dumps(j.get('locations', []), ensure_ascii=False),
+                json.dumps(j.get('grades', []), ensure_ascii=False),
+                json.dumps(j.get('exam', []), ensure_ascii=False),
+            ))
+        resource_rows = []
+        for idx, r in enumerate(resources):
+            resource_rows.append((r.get('title', ''), r.get('title', ''), json.dumps(r.get('images', []), ensure_ascii=False), idx))
+
+        cur.executemany('''INSERT INTO experience_posts(
+            id, title, school, school_short, code, total, subject_score, author, year,
+            level, category, undergrad, c1, c2, ct, yc1, yc2, lc
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)''', post_rows)
+        cur.executemany('''INSERT INTO job_posts(
+            company, date, deadline, positions, note, apply_url, notice_url,
+            types_json, industries_json, locations_json, grades_json, exam_json
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)''', job_rows)
+        cur.executemany('''INSERT INTO course_resources(
+            title, category, images_json, sort_order
+        ) VALUES (%s, %s, %s, %s)''', resource_rows)
+
+        conn.commit()
+        return {'posts': len(post_rows), 'jobs': len(job_rows), 'resources': len(resource_rows)}
+    finally:
+        conn.close()
+
 if __name__ == '__main__':
-    info = import_content_to_db(write_csv=True)
-    print(f"content OK: {info['posts']} 条经验贴, {info['jobs']} 条岗位, {info['resources']} 个资料分类")
+    import sys
+    if '--mysql' in sys.argv:
+        info = import_content_to_mysql()
+        print(f"content MySQL OK: {info['posts']} 条经验贴, {info['jobs']} 条岗位, {info['resources']} 个资料分类")
+    else:
+        info = import_content_to_db(write_csv=True)
+        print(f"content OK: {info['posts']} 条经验贴, {info['jobs']} 条岗位, {info['resources']} 个资料分类")

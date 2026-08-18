@@ -12,6 +12,7 @@ import csv
 import json
 import pathlib
 import sqlite3
+from db_config import mysql_connect
 
 JSON_PATH = pathlib.Path(__file__).with_name('raw') / 'subjects_books_raw.json'
 
@@ -115,6 +116,60 @@ def import_subjects_to_db(write_csv=True):
         conn.close()
 
 
+
+def import_subjects_to_mysql():
+    """将专业课/参考书数据写入 MySQL（按 config.json 的 mysql 配置）。"""
+    home_subjects, school_index, school_books = read_subject_data()
+    conn = mysql_connect()
+    try:
+        cur = conn.cursor()
+        cur.execute('DELETE FROM exam_subjects')
+        cur.execute('DELETE FROM reference_books')
+        cur.execute('DELETE FROM subject_meta')
+
+        subject_rows = []
+        book_rows = []
+        for i, subj in enumerate(home_subjects):
+            name = subj.get('name', '')
+            bg = subj.get('bgGradient', '')
+            cur.execute('INSERT INTO subject_meta(subject_name, bg_gradient, sort_order) VALUES (%s, %s, %s)',
+                        (name, bg, i))
+            for tier, schools in (subj.get('tier') or {}).items():
+                for sch in schools:
+                    subject_rows.append((name, sch.get('name', ''), tier, sch.get('region', ''), json.dumps(sch.get('codes', []), ensure_ascii=False)))
+
+        for school, books in school_books.items():
+            for j, b in enumerate(books):
+                book_rows.append((school, b, j))
+
+        cur.executemany('INSERT INTO exam_subjects(subject_name, school_name, tier, region, codes_json) VALUES (%s, %s, %s, %s, %s)', subject_rows)
+        cur.executemany('INSERT INTO reference_books(school_name, book_text, sort_order) VALUES (%s, %s, %s)', book_rows)
+
+        # 回填/补入 schools
+        logo_dir = pathlib.Path(__file__).resolve().parent.parent / '专业课选择' / 'images' / '校徽'
+        all_schools = list(dict.fromkeys(list(school_index.keys()) + list(school_books.keys())))
+        for school in all_schools:
+            cur.execute('INSERT INTO schools(name) VALUES (%s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id)', (school,))
+            entries = school_index.get(school) or []
+            region = entries[0].get('region', '') if entries else ''
+            tier = entries[0].get('tier', '') if entries else ''
+            logo_url = ''
+            for ext in ('.jpg', '.png'):
+                if (logo_dir / (school + ext)).exists():
+                    logo_url = f'专业课选择/images/校徽/{school}{ext}'
+                    break
+            cur.execute('UPDATE schools SET province=%s, tier=%s, logo_url=%s WHERE name=%s', (region, tier, logo_url, school))
+
+        conn.commit()
+        return {'subjects': len(home_subjects), 'exam_subject_rows': len(subject_rows), 'book_rows': len(book_rows)}
+    finally:
+        conn.close()
+
 if __name__ == '__main__':
-    info = import_subjects_to_db(write_csv=True)
-    print(f"subjects OK: {info['subjects']} 门专业课, {info['exam_subject_rows']} 条学校-科目, {info['book_rows']} 条参考书目")
+    import sys
+    if '--mysql' in sys.argv:
+        info = import_subjects_to_mysql()
+        print(f"subjects MySQL OK: {info['subjects']} 门专业课, {info['exam_subject_rows']} 条学校-科目, {info['book_rows']} 条参考书目")
+    else:
+        info = import_subjects_to_db(write_csv=True)
+        print(f"subjects OK: {info['subjects']} 门专业课, {info['exam_subject_rows']} 条学校-科目, {info['book_rows']} 条参考书目")
