@@ -1687,7 +1687,8 @@ function renderDetail(schoolName){
     }).join('');
   }
   
-  const tagsHtml = `<div class="flex flex-wrap gap-2 items-center">${renderTagGroup(tags)}</div>`;
+  const evalTagsHtml = renderTagGroup(tags.filter(function(t){ return t.type === 'eval'; }));
+  const tagsHtml = `<div class="flex flex-wrap gap-2 items-center">${renderTagGroup(tags.filter(function(t){ return t.type !== 'eval'; }))}</div>`;
 
   // 计算复试最低分和录取最低分
   const minAdmit = schoolRecs.reduce((min, r) => {
@@ -1709,6 +1710,7 @@ function renderDetail(schoolName){
              onerror="this.style.display='none'" 
              alt="${schoolName}校徽">
         <h2 class="text-2xl font-bold text-gray-800">${schoolName}</h2>
+        ${evalTagsHtml}
         ${tagsHtml}
         <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource(EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html', schoolName)}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
