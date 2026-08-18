@@ -2148,25 +2148,25 @@ function renderDetailCards(data){
     if (r.majorCode && cardTitle.indexOf(r.majorCode) !== 0) cardTitle = r.majorCode + ' ' + cardTitle;
 
     var fullRows = '';
-    function addRow(label, val){
+    function addRow(label, val, cls){
       if(val == null || val === '') return;
-      fullRows += '<div class="full-item"><span>' + label + '</span><b>' + val + '</b></div>';
+      fullRows += '<div class="full-item"><span>' + label + '</span><b class="' + (cls || '') + '">' + val + '</b></div>';
     }
     addRow('学院', r.college);
     addRow('专业代码', r.majorCode);
     addRow('专业名称', r.majorName);
     addRow('进复试人数', r.enterNum);
     addRow('拟录取人数', r.admitNum);
-    addRow('复录比', r.ratio);
-    addRow('复试最高分', r.enterMax != null ? fmt(r.enterMax) : '');
-    addRow('复试最低分', r.enterMin != null ? fmt(r.enterMin) : '');
-    addRow('复试平均分', r.enterAvg != null ? fmt(r.enterAvg) : '');
-    addRow('录取最高分', r.admitMax != null ? fmt(r.admitMax) : '');
-    addRow('录取最低分', r.admitMin != null ? fmt(r.admitMin) : '');
-    addRow('录取平均分', r.admitAvg != null ? fmt(r.admitAvg) : '');
-    addRow('专业课最高分', r.courseMax != null ? fmt(r.courseMax) : '');
-    addRow('专业课最低分', r.courseMin != null ? fmt(r.courseMin) : '');
-    addRow('专业课平均分', r.courseAvg != null ? fmt(r.courseAvg) : '');
+    addRow('复录比', r.ratio, ratioClass(r.ratio));
+    addRow('复试最高分', r.enterMax != null ? fmt(r.enterMax) : '', scoreClass(r.enterMax));
+    addRow('复试最低分', r.enterMin != null ? fmt(r.enterMin) : '', scoreClass(r.enterMin));
+    addRow('复试平均分', r.enterAvg != null ? fmt(r.enterAvg) : '', scoreClass(r.enterAvg));
+    addRow('录取最高分', r.admitMax != null ? fmt(r.admitMax) : '', scoreClass(r.admitMax));
+    addRow('录取最低分', r.admitMin != null ? fmt(r.admitMin) : '', scoreClass(r.admitMin));
+    addRow('录取平均分', r.admitAvg != null ? fmt(r.admitAvg) : '', scoreClass(r.admitAvg));
+    addRow('专业课最高分', r.courseMax != null ? fmt(r.courseMax) : '', scoreClass(r.courseMax));
+    addRow('专业课最低分', r.courseMin != null ? fmt(r.courseMin) : '', scoreClass(r.courseMin));
+    addRow('专业课平均分', r.courseAvg != null ? fmt(r.courseAvg) : '', scoreClass(r.courseAvg));
     addRow('数学', r.math);
     addRow('外语', r.english);
     addRow('业务课二', r.course2);
