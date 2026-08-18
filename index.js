@@ -1695,36 +1695,36 @@ function renderDetail(schoolName){
                 style="font-size:44px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;">★</span>
         </div>
       </div>
-      <div class="overview-stats" style="display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;padding:16px;background:#f8f9fa;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
-        <div style="flex:1;min-width:100px;text-align:center;">
+      <div class="overview-stats" style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:12px;margin:12px 0;padding:16px;background:#f8f9fa;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);-webkit-overflow-scrolling:touch;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">学院数</div>
           <div style="font-size:22px;font-weight:700;color:#4A5570;">${colleges.length}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">专业方向</div>
           <div style="font-size:22px;font-weight:700;color:#4A5570;">${schoolRecs.length}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">进复试人数</div>
           <div style="font-size:22px;font-weight:700;color:#4A5570;">${totalEnter || '-'}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">拟录取人数</div>
           <div style="font-size:22px;font-weight:700;color:#4A5570;">${totalAdmit || '-'}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均录取分</div>
           <div style="font-size:22px;font-weight:700;color:#a92122;">${fmt(avgAdmit)}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均专业课</div>
           <div style="font-size:22px;font-weight:700;color:#c98a3d;">${fmt(avgCourse)}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">复试最低分</div>
           <div style="font-size:22px;font-weight:700;color:#637c9a;">${minEnter != null ? minEnter : '-'}</div>
         </div>
-        <div style="flex:1;min-width:100px;text-align:center;">
+        <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">录取最低分</div>
           <div style="font-size:22px;font-weight:700;color:#a92122;">${minAdmit != null ? minAdmit : '-'}</div>
         </div>
@@ -2003,8 +2003,10 @@ function initDetailFilters(schoolRecs){
   }
 
   fill('dFilterCollege', colleges);
+  fill('mFilterCollege', colleges);
   fill('dFilterMajorCode', majorCodes);
   fill('dFilterMajorName', majorNames);
+  fill('mFilterMajorName', majorNames);
   fill('dFilterEnterAvg', enterSteps);
   fill('dFilterAdmitAvg', admitSteps);
   fill('dFilterCourseAvg', courseSteps);
@@ -2013,7 +2015,7 @@ function initDetailFilters(schoolRecs){
   fill('dFilterCourse2', course2s);
 
   // 清空数值输入
-  ['dFilterEnterMin','dFilterAdmitMin','dFilterRatioMax'].forEach(id=>{
+  ['dFilterEnterMin','dFilterAdmitMin','dFilterRatioMax','mFilterEnterMin','mFilterAdmitMin','mFilterRatioMax'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
@@ -2024,12 +2026,12 @@ function applyDetailFilter(){
   if(!window.currentSchoolRecs) return;
   let result = [...window.currentSchoolRecs];
 
-  const college = document.getElementById('dFilterCollege').value;
+  const college = document.getElementById('dFilterCollege').value || document.getElementById('mFilterCollege').value;
   const majorCode = document.getElementById('dFilterMajorCode').value;
-  const majorName = document.getElementById('dFilterMajorName').value;
-  const enterMin = document.getElementById('dFilterEnterMin').value;
-  const admitMin = document.getElementById('dFilterAdmitMin').value;
-  const ratioMax = document.getElementById('dFilterRatioMax').value;
+  const majorName = document.getElementById('dFilterMajorName').value || document.getElementById('mFilterMajorName').value;
+  const enterMin = document.getElementById('dFilterEnterMin').value || document.getElementById('mFilterEnterMin').value;
+  const admitMin = document.getElementById('dFilterAdmitMin').value || document.getElementById('mFilterAdmitMin').value;
+  const ratioMax = document.getElementById('dFilterRatioMax').value || document.getElementById('mFilterRatioMax').value;
   const enterAvgRange = document.getElementById('dFilterEnterAvg').value;
   const admitAvgRange = document.getElementById('dFilterAdmitAvg').value;
   const courseAvgRange = document.getElementById('dFilterCourseAvg').value;
@@ -2080,6 +2082,7 @@ function renderDetailTable(data){
   if(!data || data.length === 0){
     tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:40px 20px;"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin:0 auto 14px;display:block;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round;"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg><div style="font-size:16px;font-weight:700;color:#17191d;margin-bottom:8px;">没有找到符合条件的记录</div><div style="font-size:13px;color:#777a80;margin-bottom:16px;">试试调整筛选条件</div><button onclick="resetDetailFilter()" style="padding:8px 20px;background:#a92122;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;">重置筛选</button></div></td></tr>';
     document.getElementById('detailCount').textContent = '(共0条)';
+    renderDetailCards([]);
     return;
   }
   tbody.innerHTML = ''; 
@@ -2104,7 +2107,76 @@ function renderDetailTable(data){
     `;
     tbody.appendChild(tr);
   });
+  renderDetailCards(data);
 }
+
+function renderDetailCards(data){
+  const cards = document.getElementById('detailCards');
+  if(!cards) return;
+  if(!data || data.length === 0){
+    cards.innerHTML = '<div style="text-align:center;color:#9ca3af;padding:30px 0;">没有找到符合条件的记录</div>';
+    return;
+  }
+  cards.innerHTML = data.map(function(r){
+    var cardTitle = r.majorName || '';
+    if (r.majorCode && cardTitle.indexOf(r.majorCode) !== 0) cardTitle = r.majorCode + ' ' + cardTitle;
+
+    var fullRows = '';
+    function addRow(label, val){
+      if(val == null || val === '') return;
+      fullRows += '<div class="full-item"><span>' + label + '</span><b>' + val + '</b></div>';
+    }
+    addRow('学院', r.college);
+    addRow('专业代码', r.majorCode);
+    addRow('专业名称', r.majorName);
+    addRow('进复试人数', r.enterNum);
+    addRow('拟录取人数', r.admitNum);
+    addRow('复录比', r.ratio);
+    addRow('复试最高分', r.enterMax != null ? fmt(r.enterMax) : '');
+    addRow('复试最低分', r.enterMin != null ? fmt(r.enterMin) : '');
+    addRow('复试平均分', r.enterAvg != null ? fmt(r.enterAvg) : '');
+    addRow('录取最高分', r.admitMax != null ? fmt(r.admitMax) : '');
+    addRow('录取最低分', r.admitMin != null ? fmt(r.admitMin) : '');
+    addRow('录取平均分', r.admitAvg != null ? fmt(r.admitAvg) : '');
+    addRow('专业课最高分', r.courseMax != null ? fmt(r.courseMax) : '');
+    addRow('专业课最低分', r.courseMin != null ? fmt(r.courseMin) : '');
+    addRow('专业课平均分', r.courseAvg != null ? fmt(r.courseAvg) : '');
+    addRow('数学', r.math);
+    addRow('外语', r.english);
+    addRow('业务课二', r.course2);
+
+    return '<div class="detail-card" onclick="toggleDetailCard(this)">' +
+      '<div class="detail-card__title">' + cardTitle + '</div>' +
+      '<div class="detail-card__college">' + (r.college || '') + '</div>' +
+      '<div class="detail-card__stats">' +
+        '<span>进复试 <b>' + (r.enterNum || '-') + '</b></span>' +
+        '<span>拟录取 <b>' + (r.admitNum || '-') + '</b></span>' +
+        '<span>复录比 <b class="' + ratioClass(r.ratio) + '">' + (r.ratio || '-') + '</b></span>' +
+      '</div>' +
+      '<div class="detail-card__scores">' +
+        '<span>复试均分 <b class="' + scoreClass(r.enterAvg) + '">' + fmt(r.enterAvg) + '</b></span>' +
+        '<span>录取均分 <b class="' + scoreClass(r.admitAvg) + '">' + fmt(r.admitAvg) + '</b></span>' +
+        '<span>专业课均分 <b>' + fmt(r.courseAvg) + '</b></span>' +
+      '</div>' +
+      '<div class="detail-card__subjects">数学 ' + (r.math || '-') + ' · 外语 ' + (r.english || '-') + ' · 业务课二 ' + (r.course2 || '-') + '</div>' +
+      '<div class="detail-card__full" style="display:none;">' + fullRows + '</div>' +
+      '<div class="detail-card__hint">👆 点击卡片查看完整数据</div>' +
+    '</div>';
+  }).join('');
+}
+
+window.toggleDetailCard = function(el){
+  var full = el.querySelector('.detail-card__full');
+  var hint = el.querySelector('.detail-card__hint');
+  if(!full) return;
+  if(full.style.display === 'block'){
+    full.style.display = 'none';
+    if(hint) hint.textContent = '👆 点击卡片查看完整数据';
+  } else {
+    full.style.display = 'block';
+    if(hint) hint.textContent = '🔼 点击收起完整数据';
+  }
+};
 
 // ===================== 相似院校推荐 =====================
 function renderSimilarSchools(schoolName, schoolRecs){

@@ -31,7 +31,7 @@
 </head>
 <body>
 <h1>📱 控制考研择校站 · 手机端实时预览</h1>
-<div class="sub">真实页面渲染（127.0.0.1:8765）· 手机壳内可滚动 / 点击 / 浏览全站</div>
+<div class="sub">真实页面渲染（自动跟随当前预览地址）· 手机壳内可滚动 / 点击 / 浏览全站</div>
 
 <div class="controls">
   <button class="ctl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
@@ -60,7 +60,7 @@
 <div class="phone">
   <span class="btn btn-vol1"></span><span class="btn btn-vol2"></span><span class="btn btn-power"></span>
   <div class="phone-screen">
-    <iframe id="frame" src="http://127.0.0.1:8765/index.html?intro=1" title="手机端实时预览"></iframe>
+    <iframe id="frame" src="index.html?intro=1" title="手机端实时预览"></iframe>
     <div class="notch"></div>
   </div>
 </div>
@@ -72,7 +72,7 @@
 </div>
 
 <script>
-  var BASE = 'http://127.0.0.1:8765/';
+  var BASE = '';
   var frame = document.getElementById('frame');
   var currentUrl = 'index.html?intro=1';
 

@@ -137,7 +137,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   color: var(--entry-red);
   font-size: clamp(54px, 6.4vw, 98px);
   font-weight: 800;
-  line-height: .92;
+  line-height: 1.08;
   letter-spacing: -.065em;
 }
 
@@ -148,6 +148,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   font-size: .34em;
   font-style: normal;
   font-weight: 650;
+  line-height: 1.2;
   letter-spacing: .04em;
   opacity: 0;
   transform: translateY(14px);
@@ -429,9 +430,10 @@ html.entry-intro-running body { overflow: hidden !important; }
   }
   .entry-intro__meta { right: 0; }
   .entry-intro__meta span:last-child { display: none; }
-  .entry-intro__copy { padding-top: 56px; }
-  .entry-intro__copy h1 { font-size: clamp(48px, 15vw, 72px); }
-  .entry-intro__lead { margin-top: 18px; }
+  .entry-intro__copy { padding-top: 24px; }
+  .entry-intro__copy h1 { font-size: clamp(36px, 10.5vw, 56px); line-height: 1.1; }
+  .entry-intro__copy h1 em { margin-top: 12px; }
+  .entry-intro__lead { margin-top: 12px; font-size: 13px; }
   .entry-layer-stack { min-height: 0; height: auto; }
   .entry-layer { width: 142px; min-height: 68px; padding: 10px 12px; border-radius: 10px; }
   .entry-layer strong { font-size: 13px; }
@@ -450,6 +452,10 @@ html.entry-intro-running body { overflow: hidden !important; }
    三层 base width 142px + left 2%/33%/62%，经 3D 动画 z 缩放后第三层
    视觉 right 可达 400px+，超出 390px 视口被截断。 */
 @media (max-width: 520px) {
+  .entry-intro__copy { padding-top: 12px; }
+  .entry-intro__copy h1 { font-size: clamp(30px, 9vw, 42px); line-height: 1.15; }
+  .entry-intro__copy h1 em { margin-top: 8px; }
+  .entry-intro__lead { margin-top: 10px; font-size: 12px; }
   .entry-layer {
     width: 118px;
     min-height: 60px;

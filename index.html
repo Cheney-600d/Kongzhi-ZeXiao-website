@@ -1577,7 +1577,16 @@ var _hmt = _hmt || [];
         <button class="back-btn text-xs px-3 py-1.5" onclick="resetDetailFilter()">重置</button>
       </div>
     </div>
-    <div class="overflow-x-auto table-scroll-hint">
+      <!-- 手机端精简筛选 -->
+      <div id="detailMobileFilters" class="detail-mobile-filters">
+        <select id="mFilterCollege" class="filter-sm"><option value="">学院：全部</option></select>
+        <select id="mFilterMajorName" class="filter-sm"><option value="">专业：全部</option></select>
+        <input id="mFilterEnterMin" type="number" class="filter-sm" placeholder="进复试≥">
+        <input id="mFilterAdmitMin" type="number" class="filter-sm" placeholder="拟录取≥">
+        <input id="mFilterRatioMax" type="number" class="filter-sm" placeholder="复录比≤" step="0.1">
+      </div>
+
+      <div id="detailTableWrap" class="overflow-x-auto table-scroll-hint">
       <table class="w-full text-sm">
         <thead>
           <tr class="border-b">
@@ -1634,6 +1643,8 @@ var _hmt = _hmt || [];
         <tbody id="detailTable"></tbody>
       </table>
     </div>
+      <!-- 手机端卡片列表 -->
+      <div id="detailCards"></div>
   </div>
 
   <div id="detailDistributions" class="card p-4 mb-6" style="display:none;">
@@ -1753,5 +1764,66 @@ var _hmt = _hmt || [];
     .catch(function () { /* 静态默认值兜底 */ });
 })();
 </script>
+<style>
+  /* 详情页顶部统计指标：手机端横排滚动，覆盖通用的 flex-direction:column 规则 */
+  #detailPage .card.p-6 > div.overview-stats[style*="display:flex"] {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  #detailPage .card.p-6 > div.overview-stats > div {
+    flex: 0 0 100px !important;
+    min-width: 0 !important;
+  }
+  #detailPage .card.p-6 > div.overview-stats > div > div {
+    width: auto !important;
+    max-width: none !important;
+    white-space: nowrap;
+  }
+  .detail-mobile-filters { display: none; }
+  #detailCards { display: none; }
+  .detail-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .detail-card__title { font-size: 14px; font-weight: 700; color: #17191d; margin-bottom: 2px; }
+  .detail-card__college { font-size: 12px; color: #777a80; margin-bottom: 8px; }
+  .detail-card__stats, .detail-card__scores {
+    display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: #555;
+    margin-bottom: 6px;
+  }
+  .detail-card__stats b, .detail-card__scores b { color: #17191d; font-weight: 700; }
+  .detail-card__subjects { font-size: 11px; color: #9ca3af; }
+    .detail-card { cursor: pointer; }
+    .detail-card__full {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e5e7eb;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      font-size: 12px;
+      color: #555;
+    }
+    .detail-card__full .full-item { display: flex; justify-content: space-between; gap: 8px; }
+    .detail-card__full .full-item span { color: #9ca3af; flex-shrink: 0; }
+    .detail-card__full .full-item b { color: #17191d; font-weight: 700; text-align: right; }
+    .detail-card__hint { margin-top: 8px; font-size: 11px; color: #a92122; opacity: .75; text-align: center; }
+  @media (max-width: 768px) {
+    #detailPage #detailTableWrap { display: none !important; }
+    .detail-mobile-filters { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .detail-mobile-filters .filter-sm { width: 100%; }
+    #detailCards { display: block !important; }
+  }
+  @media (min-width: 769px) {
+    .detail-mobile-filters { display: none !important; }
+    #detailCards { display: none !important; }
+  }
+</style>
 </body>
 </html>
