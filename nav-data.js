@@ -33,7 +33,6 @@ window.NAV_GROUPS = [
   ] },
   { id: 'career', label: '就业与能力', icon: 'briefcase', items: [
     { href: '就业相关/就业去向index.html', label: '就业去向', icon: 'briefcase' },
-    { href: 'AI课程/ai-course-overview/ai-course-overview.html', label: 'AI 提效指南', icon: 'sparkles' },
     { href: '就业相关/job-listing/job-listing.html', label: '27 校招信息', icon: 'megaphone' },
     { href: '就业相关/career-analysis/career-analysis.html', label: '就业分析报告', icon: 'chart' },
     { href: '就业相关/career-analysis/role-tech-stack.html', label: '职业规划全景', icon: 'compass' }

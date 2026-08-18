@@ -35,7 +35,7 @@ python serve.py 8000     # 静态文件服务 + 禁用缓存（避免浏览器�
 | `school_detail/*.html` | 每所学校独立详情页（132 所） | 由脚本生成，勿手改 |
 | `vendor/` | 本地化的全部第三方库（ECharts/Chart.js/Tailwind/字体） | 一般不动 |
 | 各 `.py` | 数据生成管线（见第四节） | 数据源更新时 |
-| 内容目录 | `就业相关/ 专业课选择/ AI课程/ 考研常识科普/ 复试全攻略/` 等 | 编辑型子站内容 |
+| 内容目录 | `就业相关/ 专业课选择/ 考研常识科普/ 复试全攻略/` 等 | 编辑型子站内容 |
 
 ---
 
@@ -141,7 +141,6 @@ python generate_zexiaobao_data.py         # 27择校宝典原始数据/data_repo
 
 - **未选方向占位**：见 3.2，`setRowPlaceholder`/`clearRowPlaceholder` 必须成对，选方向后不清除会一直灰色（已修过一次，别再犯）。
 - **校徽图片**：约 30 所学校校徽在原站就 404，页面靠 `onerror` 隐藏，视觉无影响，属预存在问题。
-- **坏页**：`AI课程/ai-course-overview/module1-ai-basics/slides.html` 结构性损坏（含裸 `</script>`），原站线上同样无法初始化，如需使用自行重写。
 - **版权**：本目录源自 www.txkyer.cn 的首页镜像（@一只通信考研的er），数据/图片版权归原站作者，本地自用没问题，公开发布前需确认授权。
 - **CDN 已全部本地化**：`vendor/` 274 个文件，全站断网可用（已用 Playwright 38/38 验证）。
 
