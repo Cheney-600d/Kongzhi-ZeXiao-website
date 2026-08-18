@@ -1683,7 +1683,7 @@ function renderDetail(schoolName){
         group: t.name
       };
       const tip = tipMap[t.type] || t.name;
-      return `<span class="tag" style="${baseStyle}" title="${tip}">${t.name}</span>`;
+      return `<span class="tag" data-type="${t.type}" style="${baseStyle}" title="${tip}">${t.name}</span>`;
     }).join('');
   }
   
