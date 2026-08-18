@@ -18,6 +18,9 @@ Desktop.ini
 # 日志
 *.log
 
+# 本地工具/工作区文件
+.dsh/
+
 # 本地备份目录
 backups/
 
