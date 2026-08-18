@@ -42,6 +42,12 @@ def to_num(v, cast):
     except Exception:
         return None
 
+def compute_retest_ratio(retest_count, admitted_count, retest_ratio=None):
+    """复录比为空时用 进复试人数/拟录取人数 补全；进复试人数小于拟录取人数时不补。"""
+    if retest_ratio is None and retest_count is not None and admitted_count is not None and admitted_count > 0 and retest_count >= admitted_count:
+        return round(retest_count / admitted_count + 1e-9, 2)
+    return retest_ratio
+
 def read_excel_rows(excel_path=EXCEL_PATH):
     import openpyxl
     wb = openpyxl.load_workbook(excel_path, read_only=True, data_only=True)
@@ -128,10 +134,13 @@ def import_excel_to_db(excel_path, write_csv=True):
                 cur.execute('INSERT INTO majors(code, name, full_text) VALUES (?, ?, ?)', (code, name, full_text))
                 major_ids[mkey] = cur.lastrowid
                 major_full[mkey] = full_text
+            retest_count = to_num(d.get('retest_count'), int)
+            admitted_count = to_num(d.get('admitted_count'), int)
+            retest_ratio = compute_retest_ratio(retest_count, admitted_count, to_num(d.get('retest_ratio'), float))
             vals = (
                 2027, school_ids[school], major_ids[mkey], college,
-                to_num(d.get('planned_enrollment'), int), to_num(d.get('retest_count'), int),
-                to_num(d.get('admitted_count'), int), to_num(d.get('retest_ratio'), float),
+                to_num(d.get('planned_enrollment'), int), retest_count,
+                admitted_count, retest_ratio,
                 to_num(d.get('retest_max_score'), float), to_num(d.get('retest_min_score'), float),
                 to_num(d.get('retest_avg_score'), float), to_num(d.get('retest_politics_avg'), float),
                 d.get('retest_english_subject'), to_num(d.get('retest_english_avg'), float),
@@ -201,10 +210,13 @@ def import_mysql(host, port, user, password, database, excel_path=EXCEL_PATH):
         if mkey not in major_ids:
             cur.execute('INSERT INTO majors(code, name, full_text) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id)', (code, name, full_text))
             major_ids[mkey] = cur.lastrowid
+        retest_count = to_num(d.get('retest_count'), int)
+        admitted_count = to_num(d.get('admitted_count'), int)
+        retest_ratio = compute_retest_ratio(retest_count, admitted_count, to_num(d.get('retest_ratio'), float))
         vals = (
             2027, school_ids[school], major_ids[mkey], college,
-            to_num(d.get('planned_enrollment'), int), to_num(d.get('retest_count'), int),
-            to_num(d.get('admitted_count'), int), to_num(d.get('retest_ratio'), float),
+            to_num(d.get('planned_enrollment'), int), retest_count,
+            admitted_count, retest_ratio,
             to_num(d.get('retest_max_score'), float), to_num(d.get('retest_min_score'), float),
             to_num(d.get('retest_avg_score'), float), to_num(d.get('retest_politics_avg'), float),
             d.get('retest_english_subject'), to_num(d.get('retest_english_avg'), float),
