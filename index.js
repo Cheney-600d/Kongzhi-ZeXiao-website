@@ -2074,7 +2074,7 @@ function updateMobileMajorOptions(){
   var uniq = [];
   names.forEach(function(n){ if(uniq.indexOf(n) < 0) uniq.push(n); });
   uniq.sort();
-  majorSel.innerHTML = '<option value="">方向：全部</option>';
+  majorSel.innerHTML = '<option value="">全部</option>';
   uniq.forEach(function(v){ majorSel.add(new Option(v, v)); });
 }
 
