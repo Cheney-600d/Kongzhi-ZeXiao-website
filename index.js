@@ -2153,6 +2153,14 @@ function renderDetailCards(data){
     var cardTitle = r.majorName || '';
     if (r.majorCode && cardTitle.indexOf(r.majorCode) !== 0) cardTitle = r.majorCode + ' ' + cardTitle;
 
+    // 复录比缺失时，用 进复试人数/拟录取人数 补全；进复试人数小于拟录取人数时不补
+    var ratioVal = r.ratio;
+    if(ratioVal == null || ratioVal === ''){
+      if(r.enterNum != null && r.admitNum != null && r.admitNum > 0 && r.enterNum >= r.admitNum){
+        ratioVal = Math.round((r.enterNum / r.admitNum) * 100) / 100;
+      }
+    }
+
     var fullRows = '';
     function addRow(label, val, cls){
       if(val == null || val === '') return;
@@ -2163,7 +2171,7 @@ function renderDetailCards(data){
     addRow('专业名称', r.majorName);
     addRow('进复试人数', r.enterNum);
     addRow('拟录取人数', r.admitNum);
-    addRow('复录比', r.ratio, ratioClass(r.ratio));
+    addRow('复录比', ratioVal, ratioClass(ratioVal));
     addRow('复试最高分', r.enterMax != null ? fmt(r.enterMax) : '', scoreClass(r.enterMax));
     addRow('复试最低分', r.enterMin != null ? fmt(r.enterMin) : '', scoreClass(r.enterMin));
     addRow('复试平均分', r.enterAvg != null ? fmt(r.enterAvg) : '', scoreClass(r.enterAvg));
@@ -2183,7 +2191,7 @@ function renderDetailCards(data){
       '<div class="detail-card__stats">' +
         '<span>进复试 <b>' + (r.enterNum || '-') + '</b></span>' +
         '<span>拟录取 <b>' + (r.admitNum || '-') + '</b></span>' +
-        '<span>复录比 <b class="' + ratioClass(r.ratio) + '">' + (r.ratio || '-') + '</b></span>' +
+        '<span>复录比 <b class="' + ratioClass(ratioVal) + '">' + (ratioVal || '-') + '</b></span>' +
       '</div>' +
       '<div class="detail-card__scores">' +
         '<span>复试均分 <b class="' + scoreClass(r.enterAvg) + '">' + fmt(r.enterAvg) + '</b></span>' +
