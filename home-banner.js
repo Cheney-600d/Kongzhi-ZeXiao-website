@@ -3,7 +3,7 @@
   var list = document.getElementById('bannerLatestPosts');
   if (!list) return;
   var posts = window.POSTS || [];
-  var LEVEL = { '985': '#E53935', '211': '#00AEEC', '双一流': '#9C27B0', '双非': '#43A047' };
+  var LEVEL = { '985': '#E53935', '211': '#00AEEC', '双非': '#43A047' };
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   // 从最新往前取 4 条，但学校去重：凑满 4 所不同学校（auto-sync 时也能保证多样性）
   var latest = [];

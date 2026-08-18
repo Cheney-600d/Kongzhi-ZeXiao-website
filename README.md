@@ -62,7 +62,7 @@ python serve.py 8000     # 静态文件服务 + 禁用缓存（避免浏览器�
 | 16-19 | courseMax/Min/Avg/Mid | 专业课最高/最低/平均/中位 | |
 | 20 | mathAvg | 数学平均 | |
 | 21-23 | math / english / course2 | 数学/英语/业务课二科目名 | |
-| 24 | tier | 院校层级（985/211/双一流/普通） | |
+| 24 | tier | 院校层级（985/211/双非/普通） | |
 
 `schoolStats`（学校级）字段：`enter/admit` 多数为 0（数据缺口）；`avgEnter/avgAdmit/avgCourse/ratio` 大部分有值（129 校中 105-124 校非 0）。
 

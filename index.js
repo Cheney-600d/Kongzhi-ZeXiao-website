@@ -981,8 +981,8 @@ function dirOptionText(r, college){
 }
 function renderDirectionRows(){
   const tbody = document.getElementById('schoolTable');
-  const tierOrder = {'985':1,'211':2,'双一流':3,'双非':4};
-  const tierClass = {'985':'tier-985','211':'tier-211','双一流':'tier-syl','双非':'tier-sf'};
+  const tierOrder = {'985':1,'211':2,'双非':4};
+  const tierClass = {'985':'tier-985','211':'tier-211','双非':'tier-sf'};
   const thInfo = document.getElementById('thSchoolInfo');
   if(thInfo) thInfo.style.display = 'none';
   const tier = document.getElementById('filterTier').value;
@@ -1054,9 +1054,9 @@ function renderSchoolTable(){
     schoolCountEl.textContent = `(共${data.length}所)`;
   }
 
-  const tierOrder = {'985': 1, '211': 2, '双一流': 3, '双非': 4};
-  const tierClass = {'985': 'tier-985', '211': 'tier-211', '双一流': 'tier-syl', '双非': 'tier-sf'};
-  const schoolClass = {'985': 'school-name-985', '211': 'school-name-211', '双一流': 'school-name-syl', '双非': 'school-name-sf'};
+  const tierOrder = {'985': 1, '211': 2,  '双非': 4};
+  const tierClass = {'985': 'tier-985', '211': 'tier-211',  '双非': 'tier-sf'};
+  const schoolClass = {'985': 'school-name-985', '211': 'school-name-211',  '双非': 'school-name-sf'};
 
   data.sort((a,b)=>{
     const ta = tierOrder[a.tier||'双非'] || 4;
@@ -1282,7 +1282,7 @@ function getTagStyle(tagName, type){
   if(type === 'tier') {
     if(tagName === '985') return {bg:'#e74c3c',color:'#fff',border:'#c0392b'};
     if(tagName === '211') return {bg:'#8b5cf6',color:'#fff',border:'#7c3aed'};
-    if(tagName === '双一流') return {bg:'#0ea5e9',color:'#fff',border:'#0284c7'};
+    
     return {bg:'#e5e7eb',color:'#6b7280',border:'#d1d5db'};
   }
   if(type === 'shengyuan') return {bg:'#f0fdf4',color:'#166534',border:'#86efac'};
@@ -2138,7 +2138,7 @@ function renderSimilarSchools(schoolName, schoolRecs){
   container.style.display = 'block';
   
   list.innerHTML = similar.map(function(s){
-    var tierClass = s.tier === '985' ? 'tag-red' : s.tier === '211' ? 'tag-orange' : s.tier === '双一流' ? 'tag-blue' : 'tag-gray';
+    var tierClass = s.tier === '985' ? 'tag-red' : s.tier === '211' ? 'tag-orange' : 'tag-gray';
     return '<a href="index.html?school=' + encodeURIComponent(s.school) + '" class="tag ' + tierClass + '" style="text-decoration:none;padding:6px 12px;font-size:13px;cursor:pointer;">' + s.school + '</a>';
   }).join('');
 }

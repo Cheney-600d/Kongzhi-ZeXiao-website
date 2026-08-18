@@ -483,7 +483,6 @@
         .school-emp-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; margin-bottom: 10px; }
         .badge-985 { background: #e74c3c; color: #fff; }
         .badge-211 { background: #8b5cf6; color: #fff; }
-        .badge-syl { background: #0ea5e9; color: #fff; }
         .badge-sf { background: #e5e7eb; color: #6b7280; }
         .badge-other { background: #e5e7eb; color: #6b7280; }
         .badge-research { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
@@ -1845,7 +1844,6 @@ a,button,input,.nav-link,.mobile-nav-tab{touch-action:manipulation}
                 const badgeClassMap = {
                     '985': 'badge-985',
                     '211': 'badge-211',
-                    '双一流': 'badge-syl',
                     '双非': 'badge-sf',
                     '其他': 'badge-other',
                     '科研院所': 'badge-research'
@@ -1855,7 +1853,6 @@ a,button,input,.nav-link,.mobile-nav-tab{touch-action:manipulation}
                     if (!cls) {
                         if (text.includes('985')) cls = 'badge-985';
                         else if (text.includes('211')) cls = 'badge-211';
-                        else if (text.includes('双一流')) cls = 'badge-syl';
                         else if (text.includes('双非')) cls = 'badge-sf';
                         else cls = 'badge-other';
                     }

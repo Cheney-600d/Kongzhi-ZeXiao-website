@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>院校PK对比 - 27控制类考研择校</title>
 <meta name="description" content="控制类考研院校PK对比工具，支持多院校复试、录取、复录比、专业课等维度横向对比。">
-<meta name="keywords" content="控制考研,择校,考研院校,院校对比,考研数据,985,211,双一流,控制科学与工程">
+<meta name="keywords" content="控制考研,择校,考研院校,院校对比,考研数据,985,211,控制科学与工程">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <script src="vendor/tailwind.js"></script>
@@ -572,7 +572,7 @@ function renderPk(){
   html += `<div style="overflow-x:auto;"><table class="compare-table" style="--cols:${schools.length};"><thead><tr><th class="label-col">对比项</th>${schools.map((s,i)=>`<th class="school-col" style="color:#fff;">${wrapSchoolBadge(s)}</th>`).join('')}</tr></thead><tbody>`;
   
   // 层级
-  const tierClassMap = {'985':'tier-985','211':'tier-211','双一流':'tier-syl','双非':'tier-sf'};
+  const tierClassMap = {'985':'tier-985','211':'tier-211','双非':'tier-sf'};
   html += `<tr><td class="label-col">层级</td>${summaries.map(s=>`<td><span class="${tierClassMap[s.tier]||'tier-sf'}">${s.tier}</span></td>`).join('')}</tr>`;
   
   // 省份
