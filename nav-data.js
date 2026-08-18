@@ -21,6 +21,7 @@ window.NAV_GROUPS = [
   { id: 'study', label: '备考与提升', icon: 'book', items: [
     { href: '考研常识科普/index.html', label: '28 考研常识扫盲', icon: 'book' },
     { href: '复试全攻略/index.html', label: '27 考研复试', icon: 'clipboard' },
+      { href: '复试全攻略/面试题库.html', label: '复试面试题库', icon: 'book' },
     { href: '考研常识科普/experience.html', label: '上岸经验贴', icon: 'message' }
   ] },
   { id: 'school', label: '择校决策', icon: 'target', items: [

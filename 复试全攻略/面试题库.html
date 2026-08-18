@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>复试面试题库 - 控制类考研</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f8f8f6;
+      color: #17191d;
+      line-height: 1.7;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .page-header {
+      background: linear-gradient(135deg, #a92122 0%, #d64545 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+    }
+    .page-header h1 { margin: 0 0 4px; font-size: 24px; }
+    .page-header p { margin: 0; font-size: 13px; opacity: .92; }
+    .filters {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .filters .wide { grid-column: 1 / -1; }
+    select, input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #fff;
+      color: #17191d;
+    }
+    .count-info { font-size: 13px; color: #6b7280; margin: 2px 2px 10px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+    }
+    .card .subject-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: #a92122;
+      background: #fdecec;
+      border-radius: 6px;
+      padding: 1px 6px;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+    .card .chapter-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: #555;
+      background: #f0f0f0;
+      border-radius: 6px;
+      padding: 1px 6px;
+      margin-bottom: 4px;
+    }
+    .card .q {
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card .q:hover { color: #a92122; }
+    .card .a {
+      display: none;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #e5e7eb;
+      font-size: 13px;
+      color: #374151;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .pager {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 14px 0 30px;
+    }
+    .pager button {
+      padding: 7px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .pager button:disabled { opacity: .4; cursor: not-allowed; }
+    .empty { text-align: center; color: #9ca3af; padding: 40px 0; }
+    .back { display: inline-block; margin-bottom: 12px; font-size: 13px; color: #a92122; text-decoration: none; }
+    @media (max-width: 600px) {
+      .page { padding: 10px; }
+      .filters { grid-template-columns: 1fr; }
+      .filters .wide { grid-column: auto; }
+      .page-header { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="index.html">← 返回复试全攻略</a>
+  <div class="page-header">
+    <h1>📖 复试面试题库</h1>
+    <p>数据来源：26宝典C · 万人教育控制复试面试宝典 · 共 <span id="totalCount">0</span> 题</p>
+  </div>
+
+  <div class="filters">
+    <select id="subjectFilter" aria-label="选择科目">
+      <option value="">全部科目</option>
+    </select>
+    <select id="chapterFilter" aria-label="选择章节">
+      <option value="">全部章节</option>
+    </select>
+    <input class="wide" id="searchInput" type="search" placeholder="搜索题目 / 答案关键词，如：稳定性、PID、拉氏变换…"/>
+  </div>
+  <div class="count-info" id="countInfo"></div>
+  <div id="list"></div>
+  <div class="pager" id="pager"></div>
+</div>
+
+<script src="面试题库.data.js"></script>
+<script>
+(function () {
+  var DATA = window.INTERVIEW_QUESTIONS || { subjects: [] };
+  var PAGE_SIZE = 50;
+  var currentPage = 1;
+
+  var subjectSel = document.getElementById('subjectFilter');
+  var chapterSel = document.getElementById('chapterFilter');
+  var searchInput = document.getElementById('searchInput');
+  var listEl = document.getElementById('list');
+  var pagerEl = document.getElementById('pager');
+  var countInfo = document.getElementById('countInfo');
+  document.getElementById('totalCount').textContent = DATA.total_questions || 0;
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // 初始化科目下拉
+  DATA.subjects.forEach(function (subj) {
+    var opt = document.createElement('option');
+    opt.value = subj.name;
+    opt.textContent = subj.name + '（' + subj.question_count + '题）';
+    subjectSel.appendChild(opt);
+  });
+
+  function updateChapters() {
+    var subjectName = subjectSel.value;
+    chapterSel.innerHTML = '<option value="">全部章节</option>';
+    chapterSel.disabled = !subjectName;
+    if (!subjectName) return;
+    var subj = DATA.subjects.find(function (s) { return s.name === subjectName; });
+    if (!subj) return;
+    subj.chapters.forEach(function (ch) {
+      if (!ch.name) return;
+      var opt = document.createElement('option');
+      opt.value = ch.name;
+      opt.textContent = ch.name + '（' + ch.question_count + '题）';
+      chapterSel.appendChild(opt);
+    });
+  }
+
+  function filteredQuestions() {
+    var subjectName = subjectSel.value;
+    var chapterName = chapterSel.value;
+    var q = searchInput.value.trim().toLowerCase();
+    var out = [];
+    DATA.subjects.forEach(function (subj) {
+      if (subjectName && subj.name !== subjectName) return;
+      subj.chapters.forEach(function (ch) {
+        if (chapterName && ch.name !== chapterName) return;
+        ch.questions.forEach(function (item) {
+          var hay = (item.q + '\n' + item.a).toLowerCase();
+          if (q && hay.indexOf(q) < 0) return;
+          out.push({ subject: subj.name, chapter: ch.name, q: item.q, a: item.a });
+        });
+      });
+    });
+    return out;
+  }
+
+  function render() {
+    var items = filteredQuestions();
+    var total = items.length;
+    var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    var start = (currentPage - 1) * PAGE_SIZE;
+    var pageItems = items.slice(start, start + PAGE_SIZE);
+    countInfo.textContent = '共 ' + total + ' 题，当前第 ' + currentPage + ' / ' + totalPages + ' 页';
+
+    if (pageItems.length === 0) {
+      listEl.innerHTML = '<div class="empty">没有找到匹配的题目</div>';
+      pagerEl.innerHTML = '';
+      return;
+    }
+
+    var html = '';
+    pageItems.forEach(function (item) {
+      html += '<div class="card">';
+      if (item.subject) html += '<span class="subject-tag">' + esc(item.subject) + '</span>';
+      if (item.chapter) html += '<span class="chapter-tag">' + esc(item.chapter) + '</span>';
+      html += '<div class="q" onclick="toggleAnswer(this)">' + esc(item.q) + '</div>';
+      html += '<div class="a">' + esc(item.a) + '</div>';
+      html += '</div>';
+    });
+    listEl.innerHTML = html;
+
+    pagerEl.innerHTML =
+      '<button ' + (currentPage <= 1 ? 'disabled' : '') + ' onclick="gotoPage(' + (currentPage - 1) + ')">上一页</button>' +
+      '<span>' + currentPage + ' / ' + totalPages + '</span>' +
+      '<button ' + (currentPage >= totalPages ? 'disabled' : '') + ' onclick="gotoPage(' + (currentPage + 1) + ')">下一页</button>';
+  }
+
+  window.gotoPage = function (page) {
+    currentPage = page;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.toggleAnswer = function (el) {
+    var a = el.nextElementSibling;
+    if (a) a.style.display = (a.style.display === 'block') ? 'none' : 'block';
+  };
+
+  subjectSel.addEventListener('change', function () {
+    updateChapters();
+    chapterSel.value = '';
+    currentPage = 1;
+    render();
+  });
+  chapterSel.addEventListener('change', function () {
+    currentPage = 1;
+    render();
+  });
+  searchInput.addEventListener('input', function () {
+    currentPage = 1;
+    render();
+  });
+
+  updateChapters();
+  render();
+})();
+</script>
+</body>
+</html>
