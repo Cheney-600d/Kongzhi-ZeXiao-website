@@ -1412,10 +1412,10 @@ function showPage(pageId){
 
 function handleFavClick(schoolName){
   toggleFavorite(schoolName);
-  var star = document.querySelector('#detailHeader .fav-star');
-  if(star){
-    star.className = 'fav-star ' + (isFavorite(schoolName) ? 'fav-active' : 'fav-inactive');
-  }
+  document.querySelectorAll('#detailHeader .fav-star').forEach(function(star){
+    var base = star.classList.contains('fav-star-mobile') ? 'fav-star fav-star-mobile' : 'fav-star';
+    star.className = base + (isFavorite(schoolName) ? ' fav-active' : ' fav-inactive');
+  });
 }
 
 function goHome(){
@@ -1711,6 +1711,10 @@ function renderDetail(schoolName){
              alt="${schoolName}校徽">
         <h2 class="text-2xl font-bold text-gray-800">${schoolName}</h2>
         ${evalTagsHtml}
+        <span class="fav-star fav-star-mobile ${isFavorite(schoolName)?'fav-active':'fav-inactive'}" 
+              onclick="handleFavClick('${schoolName.replace(/'/g, "\\'")}')" 
+              title="${isFavorite(schoolName)?'取消收藏':'加入目标院校'}" 
+              style="display:none;font-size:44px;cursor:pointer;align-items:center;justify-content:center;width:44px;height:44px;">★</span>
         ${tagsHtml}
         <div style="margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           ${(EMPLOYMENT_SCHOOLS.has(schoolName) ? `<a href="${withSchoolDetailSource(EMPLOYMENT_MAP[schoolName] || '就业相关/院校就业去向/schools/' + schoolName + '.html', schoolName)}" class="tag clickable-tag" style="background:#fff3e0;color:#ef6c00;border:1px solid #ffcc80;font-size:14px;padding:6px 14px;border-radius:16px;text-decoration:none;" title="查看${schoolName}就业去向">💼 就业去向</a>` : '')}
