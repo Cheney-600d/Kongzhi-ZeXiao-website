@@ -19,6 +19,12 @@ function scoreClass(s){
   if(s>=340) return 'score-mid';
   return 'score-low';
 }
+function courseClass(s){
+  if(s==null||isNaN(s)) return '';
+  if(s>=120) return 'score-high';
+  if(s>=100) return 'score-mid';
+  return 'score-low';
+}
 function ratioClass(r){
   if(r==null||isNaN(r)) return '';
   if(r<=1.2) return 'score-low';
@@ -1709,19 +1715,19 @@ function renderDetail(schoolName){
         </div>
         <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均录取分</div>
-          <div style="font-size:22px;font-weight:700;color:#a92122;">${fmt(avgAdmit)}</div>
+          <div class="${scoreClass(avgAdmit)}" style="font-size:22px;font-weight:700;">${fmt(avgAdmit)}</div>
         </div>
         <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">平均专业课</div>
-          <div style="font-size:22px;font-weight:700;color:#c98a3d;">${fmt(avgCourse)}</div>
+          <div class="${courseClass(avgCourse)}" style="font-size:22px;font-weight:700;">${fmt(avgCourse)}</div>
         </div>
         <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">复试最低分</div>
-          <div style="font-size:22px;font-weight:700;color:#637c9a;">${minEnter != null ? minEnter : '-'}</div>
+          <div class="${scoreClass(minEnter)}" style="font-size:22px;font-weight:700;">${minEnter != null ? minEnter : '-'}</div>
         </div>
         <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">录取最低分</div>
-          <div style="font-size:22px;font-weight:700;color:#a92122;">${minAdmit != null ? minAdmit : '-'}</div>
+          <div class="${scoreClass(minAdmit)}" style="font-size:22px;font-weight:700;">${minAdmit != null ? minAdmit : '-'}</div>
         </div>
       </div>
     </div>
@@ -2164,9 +2170,9 @@ function renderDetailCards(data){
     addRow('录取最高分', r.admitMax != null ? fmt(r.admitMax) : '', scoreClass(r.admitMax));
     addRow('录取最低分', r.admitMin != null ? fmt(r.admitMin) : '', scoreClass(r.admitMin));
     addRow('录取平均分', r.admitAvg != null ? fmt(r.admitAvg) : '', scoreClass(r.admitAvg));
-    addRow('专业课最高分', r.courseMax != null ? fmt(r.courseMax) : '', scoreClass(r.courseMax));
-    addRow('专业课最低分', r.courseMin != null ? fmt(r.courseMin) : '', scoreClass(r.courseMin));
-    addRow('专业课平均分', r.courseAvg != null ? fmt(r.courseAvg) : '', scoreClass(r.courseAvg));
+    addRow('专业课最高分', r.courseMax != null ? fmt(r.courseMax) : '', courseClass(r.courseMax));
+    addRow('专业课最低分', r.courseMin != null ? fmt(r.courseMin) : '', courseClass(r.courseMin));
+    addRow('专业课平均分', r.courseAvg != null ? fmt(r.courseAvg) : '', courseClass(r.courseAvg));
     addRow('数学', r.math);
     addRow('外语', r.english);
     addRow('业务课二', r.course2);
@@ -2182,7 +2188,7 @@ function renderDetailCards(data){
       '<div class="detail-card__scores">' +
         '<span>复试均分 <b class="' + scoreClass(r.enterAvg) + '">' + fmt(r.enterAvg) + '</b></span>' +
         '<span>录取均分 <b class="' + scoreClass(r.admitAvg) + '">' + fmt(r.admitAvg) + '</b></span>' +
-        '<span>专业课均分 <b>' + fmt(r.courseAvg) + '</b></span>' +
+        '<span>专业课均分 <b class="' + courseClass(r.courseAvg) + '">' + fmt(r.courseAvg) + '</b></span>' +
       '</div>' +
       '<div class="detail-card__subjects">数学 ' + (r.math || '-') + ' · 外语 ' + (r.english || '-') + ' · 业务课二 ' + (r.course2 || '-') + '</div>' +
       '<div class="detail-card__full" style="display:none;">' + fullRows + '</div>' +
