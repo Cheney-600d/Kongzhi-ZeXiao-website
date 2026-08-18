@@ -1690,7 +1690,7 @@ function renderDetail(schoolName){
                 style="font-size:44px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;">★</span>
         </div>
       </div>
-      <div class="overview-stats" style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:12px;margin:12px 0;padding:16px;background:#f8f9fa;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);-webkit-overflow-scrolling:touch;">
+      <div class="overview-stats" style="display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;padding:16px;background:#f8f9fa;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
         <div style="flex:0 0 100px;min-width:0;text-align:center;">
           <div style="font-size:12px;color:#888;margin-bottom:4px;">学院数</div>
           <div style="font-size:22px;font-weight:700;color:#4A5570;">${colleges.length}</div>
