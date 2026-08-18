@@ -26,6 +26,20 @@ python serve.py 8767
 
 ---
 
+## 生产环境 API
+
+```bash
+# 生产推荐：FastAPI + Uvicorn
+export KAOYAN_ADMIN_TOKEN="你的强密码"
+uvicorn api_app:app --host 127.0.0.1 --port 8000
+```
+
+- `api_app.py` 提供 `/api/*` 查询接口和 `POST /api/admin/import-admission` 后台导入接口
+- 静态文件交给 Nginx，API 反向代理到 `127.0.0.1:8000`
+- 详细部署见 `docs/部署.md`
+
+---
+
 ## 站点结构
 
 | 目录/文件 | 说明 |
@@ -102,13 +116,18 @@ python serve.py 8767
 ### 数据导入
 
 ```bash
-# 录取数据 + 专业课数据 + 内容数据（经验贴/岗位/资料）
+# SQLite（本地开发）
 python 数据库/import_admission.py
 python 数据库/import_subjects.py
 python 数据库/import_content.py
+
+# MySQL（服务器，读取 数据库/config.json 的 mysql 配置）
+python 数据库/import_admission.py --mysql
+python 数据库/import_subjects.py --mysql
+python 数据库/import_content.py --mysql
 ```
 
-后台页面 `数据库/admin.html` 可上传 Excel 自动导入录取数据。
+后台页面 `数据库/admin.html` 可上传 Excel 自动导入录取数据；系统会根据 `config.json` 自动选择写 SQLite 还是 MySQL。
 
 ---
 

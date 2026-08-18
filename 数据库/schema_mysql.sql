@@ -97,3 +97,55 @@ CREATE TABLE IF NOT EXISTS reference_books (
   KEY idx_book_school (school_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='初试参考书目';
 
+
+-- 内容数据：经验贴 / 校招岗位 / 资料课程
+CREATE TABLE IF NOT EXISTS experience_posts (
+  id VARCHAR(64) NOT NULL,
+  title TEXT,
+  school VARCHAR(64),
+  school_short VARCHAR(32),
+  code VARCHAR(32),
+  total VARCHAR(16),
+  subject_score VARCHAR(16),
+  author VARCHAR(64),
+  year VARCHAR(16),
+  level VARCHAR(16),
+  category VARCHAR(64),
+  undergrad VARCHAR(32),
+  c1 VARCHAR(16),
+  c2 VARCHAR(16),
+  ct VARCHAR(16),
+  yc1 VARCHAR(16),
+  yc2 VARCHAR(16),
+  lc VARCHAR(16),
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='考研经验贴';
+
+CREATE TABLE IF NOT EXISTS job_posts (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  company VARCHAR(128) NOT NULL,
+  date VARCHAR(32),
+  deadline VARCHAR(64),
+  positions TEXT,
+  note TEXT,
+  apply_url VARCHAR(512),
+  notice_url VARCHAR(512),
+  types_json TEXT,
+  industries_json TEXT,
+  locations_json TEXT,
+  grades_json TEXT,
+  exam_json TEXT,
+  PRIMARY KEY (id),
+  KEY idx_job_company (company)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='校招岗位';
+
+CREATE TABLE IF NOT EXISTS course_resources (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  title VARCHAR(128) NOT NULL,
+  category VARCHAR(128),
+  images_json TEXT,
+  sort_order INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  KEY idx_resource_title (title)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资料课程画廊';
+
