@@ -845,13 +845,8 @@ function openMobileSchoolDetail(cardId){
   const dirIdx = dirSel ? dirSel.value : '';
   const schRecs = records.filter(function(r){ return r.school === school; });
 
+  // 「查看完整数据」始终进入该校所有学院、所有方向的数据；方向筛选交给详情页内筛选栏
   window.pendingDetailFilter = null;
-  if(tr.dataset.dirChosen === '1' && dirIdx !== '' && schRecs[parseInt(dirIdx, 10)]){
-    const rec = schRecs[parseInt(dirIdx, 10)];
-    window.pendingDetailFilter = function(r){
-      return r.college === rec.college && r.majorName === rec.majorName;
-    };
-  }
   if(typeof window.enterSchoolDetailWithHistory === 'function') window.enterSchoolDetailWithHistory(school);
   else goDetail(school);
 }
