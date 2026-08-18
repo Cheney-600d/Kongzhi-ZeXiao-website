@@ -31,6 +31,11 @@ function ratioClass(r){
   if(r<=1.5) return 'score-mid';
   return 'score-high';
 }
+function fillRatio(ratio, enter, admit){
+  if(ratio != null && ratio !== '') return ratio;
+  if(enter == null || admit == null || admit <= 0 || enter < admit) return null;
+  return Math.round((enter / admit) * 100) / 100;
+}
 
 // ===================== 地区-省份映射（使用数据中的完整名称） =====================
 const REGION_MAP = {
@@ -730,7 +735,26 @@ function updateMobileSchoolCard(tr){
   const mapping = {enter:'row-enter',admit:'row-admit',ratio:'row-ratio',avgadmit:'row-avgadmit',avgcourse:'row-avgcourse'};
   Object.keys(mapping).forEach(function(key){
     const target = card.querySelector('[data-metric="'+key+'"]');
-    if(target) target.textContent = chosen ? mobileMetricValue(tr,mapping[key]) : '—';
+    if(!target) return;
+    if(!chosen){
+      target.textContent = '—';
+      if(key === 'ratio') target.className = '';
+      return;
+    }
+    if(key === 'ratio'){
+      const ratioText = mobileMetricValue(tr, mapping[key]);
+      const enterNum = parseFloat(mobileMetricValue(tr, 'row-enter'));
+      const admitNum = parseFloat(mobileMetricValue(tr, 'row-admit'));
+      const ratioVal = fillRatio(
+        (ratioText !== '' && ratioText !== '-' && ratioText !== '—') ? Number(ratioText) : null,
+        isNaN(enterNum) ? null : enterNum,
+        isNaN(admitNum) ? null : admitNum
+      );
+      target.textContent = ratioVal != null ? ratioVal : (ratioText === '' ? '—' : ratioText);
+      target.className = ratioVal != null ? ratioClass(ratioVal) : '';
+    } else {
+      target.textContent = mobileMetricValue(tr, mapping[key]);
+    }
   });
   updateMobileFavoriteButton(card, tr.dataset.school || '');
 }
@@ -829,11 +853,12 @@ function renderMobileDirectionCards(recs){
     const school = r.school || '';
     const direction = cleanDirName(r.majorName) || '未标注方向';
     const recordIndex = records.indexOf(r);
+    const ratioVal = fillRatio(r.ratio, r.enterNum, r.admitNum);
     return '<article class="mobile-school-card mobile-direction-card has-direction" data-school="'+escAttr(school)+'" data-record-index="'+recordIndex+'">'+
       '<header class="mobile-school-card__header"><div class="mobile-school-card__identity"><img src="专业课选择/images/校徽/'+escAttr(school)+'.jpg" onerror="this.style.display=\'none\'" alt="'+escAttr(school)+'校徽"><span><small>'+escAttr(r.tier||'—')+' · '+escAttr(r.province||'—')+'</small><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">'+escAttr(school)+'</button></span></div><button class="mobile-school-card__star'+(isFavorite(school)?' is-favorite':'')+'" type="button" onclick="toggleMobileFavorite(event,this,\''+String(school).replace(/'/g,"\\'")+'\')" aria-pressed="'+(isFavorite(school)?'true':'false')+'" aria-label="'+(isFavorite(school)?'取消收藏':'收藏')+escAttr(school)+'">'+(isFavorite(school)?'★':'☆')+'</button></header>'+
       '<div class="mobile-direction-card__path"><span>数二英二专项</span><b>'+escAttr(r.college||dirCollege(r)||'学院未标注')+'</b><strong>'+(r.majorCode?escAttr(r.majorCode)+' ':'')+escAttr(direction)+'</strong></div>'+
       '<section class="mobile-school-card__result"><div class="mobile-school-card__result-head"><b>该方向录取数据</b><span>专项筛选结果</span></div><div class="mobile-school-card__metrics">'+
-      '<div><span>'+escAttr(r.enterNum!=null?r.enterNum:'—')+'</span><small>进复试</small></div><div><span>'+escAttr(r.admitNum!=null?r.admitNum:'—')+'</span><small>拟录取</small></div><div><span>'+escAttr(r.ratio!=null?r.ratio:'—')+'</span><small>复录比</small></div><div><span>'+escAttr(r.admitAvg!=null?fmt(r.admitAvg):'—')+'</span><small>录取均分</small></div><div><span>'+escAttr(r.courseAvg!=null?fmt(r.courseAvg):'—')+'</span><small>专业课均分</small></div></div></section>'+
+      '<div><span>'+escAttr(r.enterNum!=null?r.enterNum:'—')+'</span><small>进复试</small></div><div><span>'+escAttr(r.admitNum!=null?r.admitNum:'—')+'</span><small>拟录取</small></div><div><span class="' + ratioClass(ratioVal) + '">'+(ratioVal!=null?ratioVal:'—')+'</span><small>复录比</small></div><div><span>'+escAttr(r.admitAvg!=null?fmt(r.admitAvg):'—')+'</span><small>录取均分</small></div><div><span>'+escAttr(r.courseAvg!=null?fmt(r.courseAvg):'—')+'</span><small>专业课均分</small></div></div></section>'+
       '<footer><button type="button" onclick="openMobileDirectionDetail(this.closest(\'.mobile-direction-card\'))">查看该方向完整数据 <span>→</span></button></footer></article>';
   }).join('');
 }
@@ -2154,12 +2179,7 @@ function renderDetailCards(data){
     if (r.majorCode && cardTitle.indexOf(r.majorCode) !== 0) cardTitle = r.majorCode + ' ' + cardTitle;
 
     // 复录比缺失时，用 进复试人数/拟录取人数 补全；进复试人数小于拟录取人数时不补
-    var ratioVal = r.ratio;
-    if(ratioVal == null || ratioVal === ''){
-      if(r.enterNum != null && r.admitNum != null && r.admitNum > 0 && r.enterNum >= r.admitNum){
-        ratioVal = Math.round((r.enterNum / r.admitNum) * 100) / 100;
-      }
-    }
+    var ratioVal = fillRatio(r.ratio, r.enterNum, r.admitNum);
 
     var fullRows = '';
     function addRow(label, val, cls){
