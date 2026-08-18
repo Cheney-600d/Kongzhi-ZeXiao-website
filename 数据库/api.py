@@ -28,6 +28,9 @@ class _Db:
         args = args or []
         if DB_TYPE == 'mysql':
             sql = sql.replace('?', '%s')
+            cur = self.impl.cursor()
+            cur.execute(sql, args)
+            return cur
         return self.impl.execute(sql, args)
 
     def close(self):
