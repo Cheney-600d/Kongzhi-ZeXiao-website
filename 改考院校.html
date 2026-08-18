@@ -149,8 +149,7 @@ a,button,input{touch-action:manipulation}
           <th style="width:100px">改考学校</th>
           <th style="min-width:140px">学院名称</th>
           <th style="min-width:160px">改考专业</th>
-          <th style="min-width:140px">改考前</th>
-          <th style="min-width:140px">改考后</th>
+          <th style="min-width:200px">改动信息</th>
           <th style="min-width:200px">信息来源</th>
         </tr>
       </thead>
@@ -240,7 +239,6 @@ function renderTable(data){
       '<td><a href="index.html?school='+encodeURIComponent(r.school)+'&from='+encodeURIComponent('改考院校.html')+'" class="school-name" style="text-decoration:none;cursor:pointer;" title="点击跳转到'+r.school+'详情">'+r.school+'</a></td>'+
       '<td><div class="college-text">'+collegeDisplay+'</div></td>'+
       '<td><div class="major-text">'+majorDisplay+'</div></td>'+
-      '<td><div class="before-text">'+beforeVal+'</div></td>'+
       '<td>'+publicTag+'<div class="after-text '+afterCls+'">'+afterVal+'</div>'+(r.note?'<div class="note-text">💡 '+r.note+'</div>':'')+'</td>'+
       '<td>'+(sourceUrl?'<a href="'+sourceUrl+'" target="_blank" class="source-link">🔗 戳我到院校官网</a>':'<span style="font-size:12px;color:#9a9da3">暂无链接</span>')+'</td>'+
     '</tr>';
