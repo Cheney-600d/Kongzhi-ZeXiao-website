@@ -83,7 +83,7 @@ def import_excel_to_db(excel_path, write_csv=True):
         );
         CREATE TABLE admissions (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          year INTEGER NOT NULL DEFAULT 2027,
+          year INTEGER NOT NULL DEFAULT 2026,
           school_id INTEGER NOT NULL REFERENCES schools(id),
           major_id INTEGER NOT NULL REFERENCES majors(id),
           college TEXT,
@@ -138,7 +138,7 @@ def import_excel_to_db(excel_path, write_csv=True):
             admitted_count = to_num(d.get('admitted_count'), int)
             retest_ratio = compute_retest_ratio(retest_count, admitted_count, to_num(d.get('retest_ratio'), float))
             vals = (
-                2027, school_ids[school], major_ids[mkey], college,
+                2026, school_ids[school], major_ids[mkey], college,
                 to_num(d.get('planned_enrollment'), int), retest_count,
                 admitted_count, retest_ratio,
                 to_num(d.get('retest_max_score'), float), to_num(d.get('retest_min_score'), float),
@@ -161,7 +161,7 @@ def import_excel_to_db(excel_path, write_csv=True):
               admitted_avg_score, admitted_politics_avg, admitted_english_subject, admitted_english_avg,
               admitted_math_subject, admitted_math_avg, admitted_prof_subject, admitted_prof_avg,
               source_file) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', vals)
-            admission_rows.append((2027, school, code, name, college, *vals[4:]))
+            admission_rows.append((2026, school, code, name, college, *vals[4:]))
         conn.commit()
         if write_csv:
             school_rows = [(name,) for name in sorted(school_ids)]
@@ -214,7 +214,7 @@ def import_mysql(host, port, user, password, database, excel_path=EXCEL_PATH):
         admitted_count = to_num(d.get('admitted_count'), int)
         retest_ratio = compute_retest_ratio(retest_count, admitted_count, to_num(d.get('retest_ratio'), float))
         vals = (
-            2027, school_ids[school], major_ids[mkey], college,
+            2026, school_ids[school], major_ids[mkey], college,
             to_num(d.get('planned_enrollment'), int), retest_count,
             admitted_count, retest_ratio,
             to_num(d.get('retest_max_score'), float), to_num(d.get('retest_min_score'), float),
