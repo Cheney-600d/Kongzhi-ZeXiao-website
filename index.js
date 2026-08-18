@@ -2002,6 +2002,20 @@ function initDetailFilters(schoolRecs){
   fill('dFilterMajorCode', majorCodes);
   fill('dFilterMajorName', majorNames);
   fill('mFilterMajorName', majorNames);
+  updateMobileMajorOptions();
+  var mCollege = document.getElementById('mFilterCollege');
+  var mMajor = document.getElementById('mFilterMajorName');
+  if(mCollege && !mCollege.dataset.bound){
+    mCollege.dataset.bound = '1';
+    mCollege.addEventListener('change', function(){
+      updateMobileMajorOptions();
+      applyDetailFilter();
+    });
+  }
+  if(mMajor && !mMajor.dataset.bound){
+    mMajor.dataset.bound = '1';
+    mMajor.addEventListener('change', applyDetailFilter);
+  }
   fill('dFilterEnterAvg', enterSteps);
   fill('dFilterAdmitAvg', admitSteps);
   fill('dFilterCourseAvg', courseSteps);
@@ -2016,6 +2030,23 @@ function initDetailFilters(schoolRecs){
   });
 }
 
+// 手机端：选学院后，方向只保留该学院下的方向
+function updateMobileMajorOptions(){
+  var collegeSel = document.getElementById('mFilterCollege');
+  var majorSel = document.getElementById('mFilterMajorName');
+  if(!collegeSel || !majorSel) return;
+  var recs = window.currentSchoolRecs || [];
+  var college = collegeSel.value;
+  var names = recs.filter(function(r){
+    return !college || r.college === college;
+  }).map(function(r){ return r.majorName; }).filter(Boolean);
+  var uniq = [];
+  names.forEach(function(n){ if(uniq.indexOf(n) < 0) uniq.push(n); });
+  uniq.sort();
+  majorSel.innerHTML = '<option value="">方向：全部</option>';
+  uniq.forEach(function(v){ majorSel.add(new Option(v, v)); });
+}
+
 // 应用二级页筛选
 function applyDetailFilter(){
   if(!window.currentSchoolRecs) return;
@@ -2024,9 +2055,9 @@ function applyDetailFilter(){
   const college = document.getElementById('dFilterCollege').value || document.getElementById('mFilterCollege').value;
   const majorCode = document.getElementById('dFilterMajorCode').value;
   const majorName = document.getElementById('dFilterMajorName').value || document.getElementById('mFilterMajorName').value;
-  const enterMin = document.getElementById('dFilterEnterMin').value || document.getElementById('mFilterEnterMin').value;
-  const admitMin = document.getElementById('dFilterAdmitMin').value || document.getElementById('mFilterAdmitMin').value;
-  const ratioMax = document.getElementById('dFilterRatioMax').value || document.getElementById('mFilterRatioMax').value;
+  const enterMin = document.getElementById('dFilterEnterMin').value;
+  const admitMin = document.getElementById('dFilterAdmitMin').value;
+  const ratioMax = document.getElementById('dFilterRatioMax').value;
   const enterAvgRange = document.getElementById('dFilterEnterAvg').value;
   const admitAvgRange = document.getElementById('dFilterAdmitAvg').value;
   const courseAvgRange = document.getElementById('dFilterCourseAvg').value;
