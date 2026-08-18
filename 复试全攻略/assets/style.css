@@ -544,3 +544,73 @@ pre code { background: none; color: inherit; padding: 0; }
 
 /* ===== section 兼容（子页面 main class="section"） ===== */
 .section { padding: 0; }
+
+
+/* ===== 复试板块主题增强 ===== */
+.page-hero {
+  background: linear-gradient(135deg, #a92122 0%, #e63946 100%);
+  color: #fff;
+  border: none;
+  padding: 28px 24px;
+  border-radius: 16px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 20px rgba(169, 33, 34, 0.22);
+}
+.page-hero .card-title {
+  color: #fff;
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+.page-hero .card-title .icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.page-hero p {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.95rem;
+}
+.page-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(169, 33, 34, 0.28);
+}
+
+.section h2 {
+  position: relative;
+  padding-left: 14px;
+}
+.section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.22em;
+  bottom: 0.22em;
+  width: 4px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #a92122, #e63946);
+}
+
+.section h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.tip-box {
+  border-radius: 10px;
+}
+
+.card-title {
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+  .page-hero .card-title {
+    font-size: 1.2rem;
+  }
+  .section h2 {
+    font-size: 1.15rem;
+  }
+}
