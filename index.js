@@ -1312,7 +1312,7 @@ function joinQQGroup(groupId) {
   if (isMobile) {
     window.location.href = 'mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=' + groupId;
   } else {
-    var imgPath = groupId === '1050160942' ? '专业课选择/images/27考研群/27.png' : '专业课选择/images/27考研群/28.png';
+    var imgPath = groupId === '1050160942' ? '专业课选择/images/27考研群/27.jpg' : '专业课选择/images/27考研群/28.jpg';
     openImageLightbox(imgPath);
   }
 }
