@@ -268,11 +268,12 @@ header p{font-size:.85rem !important;}
 #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCET{font-size:14px !important;}
 
 
-/* 热度榜：每行2个 */
+/* 热度榜：每行2个，长校名自动换行不溢出 */
 .heat-rank-wrap{gap:6px !important;}
-.heat-rank-btn{flex:0 0 calc(50% - 3px) !important;padding:8px 8px 8px 40px !important;}
-.heat-rank-name{font-size:12px !important;max-width:none !important;}
-.heat-rank-img{width:26px !important;height:26px !important;}
+.heat-rank-btn{flex:0 0 calc(50% - 3px) !important;padding:8px 6px 8px 36px !important;min-width:0 !important;}
+.heat-rank-info{min-width:0 !important;flex:1 !important;}
+.heat-rank-name{font-size:12px !important;line-height:1.25 !important;max-width:100% !important;white-space:normal !important;overflow:hidden !important;display:-webkit-box !important;-webkit-line-clamp:2 !important;-webkit-box-orient:vertical !important;overflow-wrap:break-word !important;}
+.heat-rank-img{width:26px !important;height:26px !important;flex-shrink:0 !important;}
 .heat-rank-badge{width:20px !important;height:20px !important;font-size:11px !important;top:-4px !important;left:-4px !important;}
 
 /* 筛选区 + 广告条：垂直堆叠 */
