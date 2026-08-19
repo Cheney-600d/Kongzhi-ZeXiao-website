@@ -61,6 +61,12 @@
         .header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .header p { font-size: 1rem; opacity: 0.9; }
         
+        /* 章节锚点导航 */
+        .section-nav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px; }
+        .section-nav a { display: inline-flex; align-items: center; gap: 4px; padding: 8px 14px; background: #fff; border: 1px solid #e5e7eb; border-radius: 999px; font-size: 13px; font-weight: 700; color: #a92122; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all .2s; }
+        .section-nav a:hover { background: #a92122; color: #fff; }
+        #part1, #part2, #part3 { scroll-margin-top: 16px; }
+        
         /* 页面切换 */
         .page { display: none; }
         .page.active { display: block; }
@@ -252,6 +258,72 @@
               .subject-tag { justify-content: center !important; padding: 8px 10px !important; font-size: 12px !important; text-align: center !important; }
               /* 资料展示卡片：避免轻微溢出 */
               .book-showcase-card { min-width: 0 !important; }
+              /* Part1/Part3 课程对比表：手机端卡片化 */
+              .course-arch-table, .course-arch-table tbody,
+              .part2-table, .part2-table tbody { display: block !important; width: 100% !important; }
+              .course-arch-table thead, .part2-table thead { display: none !important; }
+              .course-arch-table tbody tr, .part2-table tbody tr {
+                display: block !important;
+                border: 1px solid #ececec !important;
+                border-radius: 12px !important;
+                padding: 12px 14px !important;
+                margin-bottom: 10px !important;
+                background: #fff !important;
+                box-shadow: 0 1px 4px rgba(0,0,0,.04) !important;
+              }
+              .course-arch-table tbody tr.arch-group-row,
+              .part2-table tbody tr.arch-group-row {
+                background: linear-gradient(135deg, #a92122, #c0392b) !important;
+                color: #fff !important;
+                border-color: transparent !important;
+              }
+              .course-arch-table td, .part2-table td {
+                display: block !important;
+                border: none !important;
+                width: auto !important;
+                min-width: 0 !important;
+                padding: 3px 0 !important;
+                background: transparent !important;
+              }
+              .course-arch-table td:first-child, .part2-table td:first-child {
+                font-size: 14px !important;
+                font-weight: 800 !important;
+                color: #17191d !important;
+              }
+              .course-arch-table tr.arch-group-row td,
+              .part2-table tr.arch-group-row td { color: #fff !important; }
+              .course-arch-table td:nth-child(2) {
+                font-size: 12px !important;
+                color: #C0392B !important;
+                font-weight: 800 !important;
+              }
+              .course-arch-table td:nth-child(3),
+              .course-arch-table td:nth-child(4),
+              .course-arch-table td:nth-child(5),
+              .course-arch-table td:nth-child(6) {
+                display: inline-block !important;
+                width: auto !important;
+                min-width: 0 !important;
+                margin: 2px 6px 2px 0 !important;
+                padding: 3px 8px !important;
+                border-radius: 12px !important;
+                background: #f3f4f6 !important;
+                color: #333 !important;
+                font-size: 11px !important;
+                font-weight: 700 !important;
+              }
+              .course-arch-table td:nth-child(3)::before { content: '全程 '; }
+              .course-arch-table td:nth-child(4)::before { content: '督学 '; }
+              .course-arch-table td:nth-child(5)::before { content: '1v1 '; }
+              .course-arch-table td:nth-child(6)::before { content: 'SVIP '; }
+              .course-arch-table td:empty { display: none !important; }
+              .course-arch-table td:last-child, .part2-table td:last-child {
+                font-size: 12px !important;
+                color: #555 !important;
+                line-height: 1.7 !important;
+                margin-top: 4px !important;
+              }
+              .course-tagline { font-size: 11px !important; margin-top: 2px !important; }
           }
     </style>
 
@@ -332,6 +404,12 @@
             <h1>📚 万人教育控制考研课程</h1>
             <p>27控制专业课课程介绍</p>
         </div>
+
+          <div class="section-nav">
+              <a href="#part1">📚 精品课程</a>
+              <a href="#part2">📖 独家资料</a>
+              <a href="#part3">🤝 贴心服务</a>
+          </div>
         
         <!-- Part1 精品课程 -->
         <div class="course-section" id="part1">
