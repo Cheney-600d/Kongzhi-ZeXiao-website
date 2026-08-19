@@ -1769,16 +1769,18 @@ var _hmt = _hmt || [];
 </script>
 <style>
   @media (max-width: 768px) {
-    /* 详情页顶部统计指标：手机端横排滚动，覆盖通用的 flex-direction:column 规则 */
+    /* 详情页顶部统计指标：手机端三列三行网格，取消横拉滚动 */
     #detailPage .card.p-6 > div.overview-stats[style*="display:flex"] {
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      -webkit-overflow-scrolling: touch;
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 12px 8px !important;
+      overflow-x: visible !important;
+      -webkit-overflow-scrolling: auto;
     }
     #detailPage .card.p-6 > div.overview-stats > div {
-      flex: 0 0 100px !important;
+      flex: none !important;
       min-width: 0 !important;
+      width: auto !important;
     }
     #detailPage .card.p-6 > div.overview-stats > div > div {
       width: auto !important;
