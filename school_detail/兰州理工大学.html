@@ -25,16 +25,18 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
 @media(max-width:768px){.wrap{padding:12px}.card{overflow-x:auto;-webkit-overflow-scrolling:touch}table{font-size:12px}}
 </style>
 
+
+
 <style id="school-detail-mobile">
 /* school-detail-mobile */
 @media (max-width: 768px) {
   .wrap { padding: 12px; }
-  .card { overflow: visible !important; padding: 14px !important; border-radius: 14px !important; box-shadow: 0 2px 8px rgba(26,26,46,.06) !important; border: 1px solid #ececec !important; }
-  table, tbody, tr, td { display: block !important; width: 100% !important; }
+  .card { overflow: hidden !important; padding: 14px !important; border-radius: 14px !important; box-shadow: 0 2px 8px rgba(26,26,46,.06) !important; border: 1px solid #ececec !important; }
+  table, tbody, tr, td { display: block !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
   thead { display: none !important; }
   table { border: none !important; }
   tbody tr { background: #fff !important; border: 1px solid #ececec !important; border-radius: 12px !important; padding: 10px 12px !important; margin-bottom: 10px !important; box-shadow: 0 1px 4px rgba(0,0,0,.04) !important; }
-  td { display: flex !important; justify-content: space-between !important; gap: 10px !important; padding: 4px 0 !important; border: none !important; font-size: 12px !important; text-align: left !important; }
+  td { display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; gap: 2px 10px !important; padding: 4px 0 !important; border: none !important; font-size: 12px !important; text-align: left !important; overflow-wrap: break-word !important; word-break: break-word !important; }
   td::before { content: attr(data-label); font-weight: 700; color: #6a6a7a; flex-shrink: 0; padding-right: 8px; }
   td:first-child { font-weight: 800 !important; color: #17191d !important; background: transparent !important; }
   .card.collapsed > *:not(h3) { display: none !important; }
@@ -43,6 +45,8 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   .subavg { font-size: 13px !important; }
 }
 </style>
+
+
 </head>
 <body>
 <div style="max-width:1100px;margin:0 auto;padding:16px 20px 0;font-size:13px;font-weight:600;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;">
