@@ -228,9 +228,11 @@
               .baodian-s-modal-body { min-height: 280px; padding: 12px; }
               .baodian-s-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
               .baodian-s-modal-img { max-height: 55vh; }
-              .data-table { font-size: 12px; }
-              .data-table th, .data-table td { padding: 8px 6px; }
-              .data-table td:first-child { width: 100px; }
+              .data-table { font-size: 11px; }
+              .data-table th, .data-table td { padding: 6px 4px; }
+              .data-table td:first-child { width: 84px; min-width: 84px; font-size: 11px; }
+              .course-arch-table td:first-child, .part2-table td:first-child { width: 84px; min-width: 84px; }
+              .data-table th { font-size: 11px; }
               .teacher-card { flex-direction: column; align-items: center; text-align: center; }
               /* 资料概览卡片：手机端2列等高，封面/文字不再拥挤 */
               .overview-grid, .overview-grid:nth-of-type(1) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px; }
@@ -240,6 +242,16 @@
               .overview-card-desc { font-size: 11px; line-height: 1.6; }
               .overview-card-hint { font-size: 10px; line-height: 1.5; }
               .course-section { padding: 16px; }
+              /* 高分喜报：手机端改为2列，图片更大更清晰 */
+              .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+              .score-card .score-school { font-size: 12px !important; }
+              .score-card .score-number { font-size: 20px !important; }
+              .score-card .score-label { font-size: 10px !important; }
+              /* 科目标签：手机端2列，避免挤压 */
+              .subject-tags { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
+              .subject-tag { justify-content: center !important; padding: 8px 10px !important; font-size: 12px !important; text-align: center !important; }
+              /* 资料展示卡片：避免轻微溢出 */
+              .book-showcase-card { min-width: 0 !important; }
           }
     </style>
 
