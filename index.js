@@ -1889,7 +1889,7 @@ function renderDetail(schoolName){
     return s.length>14 ? s.substring(0,14)+'…' : s;
   };
   charts.detailPie = echarts.init(document.getElementById('chartDetailPie', null, {renderer: 'canvas'}));
-  if(schoolName === '哈尔滨工业大学'){
+  if(schoolName === '哈尔滨工业大学' || pieArr.length > 10){
     const pieTotal = pieArr.reduce((s,x)=>s+(x.num||0),0);
     charts.detailPie.setOption({
       tooltip:{trigger:'axis',axisPointer:{type:'shadow'},
@@ -1917,9 +1917,19 @@ function renderDetail(schoolName){
       }},
       legend:{type:'scroll',bottom:0,textStyle:{fontSize:11},formatter:function(name){return name.length>16?name.substring(0,16)+'…':name;}},
       series:[{
-        type:'pie',radius:['40%','70%'],
+        type:'pie',radius:['40%','70%'],avoidLabelOverlap:true,minAngle:2,
         itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
-        label:{show:true,formatter:function(p){return pieShort(p.name)+'\n'+(p.value?p.value+'人':'人数暂无');},fontSize:10},
+        label:{
+          show:true,
+          formatter:function(p){
+            if(p.percent != null && p.percent < 5) return '';
+            var nm = pieShort(p.name);
+            if(nm.length > 10) nm = nm.substring(0,10)+'…';
+            return nm+'\n'+(p.value?p.value+'人':'人数暂无');
+          },
+          fontSize:10
+        },
+        labelLayout:{hideOverlap:true},
         data:pieArr.map(x=>({name:x.name,value:x.num||0}))
       }]
     });
