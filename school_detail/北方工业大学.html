@@ -27,6 +27,7 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
 
 
 
+
 <style id="school-detail-mobile">
 /* school-detail-mobile */
 @media (max-width: 768px) {
@@ -43,8 +44,13 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   .stat { font-size: 13px !important; }
   .score { font-size: 12px !important; }
   .subavg { font-size: 13px !important; }
+  .subavg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-top: 6px; }
+  .subavg-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 5px 10px; background: #fff; border: 1px solid #f0ece6; border-radius: 8px; font-size: 12px; }
+  .subavg-item span { color: #6a6a7a; font-weight: 600; }
+  .subavg-item b { color: #a92122; font-weight: 800; }
 }
 </style>
+
 
 
 </head>
@@ -338,6 +344,7 @@ scales: {
   <footer>数据来源：《27考研择校宝典_版8》（控制类）· 仅供参考，最终以院校官方为准</footer>
 </div>
 
+
 <script id="school-detail-mobile-js">
 /* school-detail-mobile-js */
 (function(){
@@ -353,6 +360,29 @@ scales: {
           if(headers[i]) td.setAttribute('data-label', headers[i]);
         });
       });
+    });
+  }
+  function enhanceSubavg(){
+    if(window.innerWidth > 768) return;
+    document.querySelectorAll('.subavg').forEach(function(el){
+      if(el.dataset.subavgDone) return;
+      el.dataset.subavgDone = '1';
+      var text = el.textContent.trim();
+      var m = text.match(/各科均分[：:]\s*(.*)/);
+      if(!m) return;
+      var parts = m[1].split(/[·•]/).map(function(s){ return s.trim(); }).filter(Boolean);
+      if(parts.length < 2) return;
+      var html = '<div class="subavg-grid">';
+      parts.forEach(function(p){
+        var mm = p.match(/^(.+?)\s+([\d.]+)$/);
+        if(mm){
+          html += '<div class="subavg-item"><span>' + mm[1].trim() + '</span><b>' + mm[2] + '</b></div>';
+        } else {
+          html += '<div class="subavg-item"><span>' + p + '</span></div>';
+        }
+      });
+      html += '</div>';
+      el.innerHTML = html;
     });
   }
   function enhanceCollapse(){
@@ -378,9 +408,10 @@ scales: {
       });
     });
   }
-  function init(){ enhanceTables(); enhanceCollapse(); }
+  function init(){ enhanceTables(); enhanceSubavg(); enhanceCollapse(); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
+
 </body>
 </html>
