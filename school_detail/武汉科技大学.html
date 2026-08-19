@@ -24,6 +24,25 @@ th{background:#f8f8f6;white-space:nowrap}
 footer{text-align:center;color:#999;font-size:12px;padding:20px}
 @media(max-width:768px){.wrap{padding:12px}.card{overflow-x:auto;-webkit-overflow-scrolling:touch}table{font-size:12px}}
 </style>
+
+<style id="school-detail-mobile">
+/* school-detail-mobile */
+@media (max-width: 768px) {
+  .wrap { padding: 12px; }
+  .card { overflow: visible !important; padding: 14px !important; border-radius: 14px !important; box-shadow: 0 2px 8px rgba(26,26,46,.06) !important; border: 1px solid #ececec !important; }
+  table, tbody, tr, td { display: block !important; width: 100% !important; }
+  thead { display: none !important; }
+  table { border: none !important; }
+  tbody tr { background: #fff !important; border: 1px solid #ececec !important; border-radius: 12px !important; padding: 10px 12px !important; margin-bottom: 10px !important; box-shadow: 0 1px 4px rgba(0,0,0,.04) !important; }
+  td { display: flex !important; justify-content: space-between !important; gap: 10px !important; padding: 4px 0 !important; border: none !important; font-size: 12px !important; text-align: left !important; }
+  td::before { content: attr(data-label); font-weight: 700; color: #6a6a7a; flex-shrink: 0; padding-right: 8px; }
+  td:first-child { font-weight: 800 !important; color: #17191d !important; background: transparent !important; }
+  .card.collapsed > *:not(h3) { display: none !important; }
+  .stat { font-size: 13px !important; }
+  .score { font-size: 12px !important; }
+  .subavg { font-size: 13px !important; }
+}
+</style>
 </head>
 <body>
 <div style="max-width:1100px;margin:0 auto;padding:16px 20px 0;font-size:13px;font-weight:600;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;">
@@ -282,5 +301,50 @@ scales: {
 </script>
   <footer>数据来源：《27考研择校宝典_版8》（控制类）· 仅供参考，最终以院校官方为准</footer>
 </div>
+
+<script id="school-detail-mobile-js">
+/* school-detail-mobile-js */
+(function(){
+  function enhanceTables(){
+    document.querySelectorAll('table').forEach(function(table){
+      var headers = [];
+      var thead = table.querySelector('thead');
+      if(thead){
+        headers = Array.from(thead.querySelectorAll('th')).map(function(th){ return th.textContent.trim(); });
+      }
+      table.querySelectorAll('tbody tr').forEach(function(tr){
+        Array.from(tr.children).forEach(function(td, i){
+          if(headers[i]) td.setAttribute('data-label', headers[i]);
+        });
+      });
+    });
+  }
+  function enhanceCollapse(){
+    if(window.innerWidth > 768) return;
+    document.querySelectorAll('.card h3').forEach(function(h3){
+      if(h3.dataset.collapseBound) return;
+      h3.dataset.collapseBound = '1';
+      h3.style.cursor = 'pointer';
+      h3.style.userSelect = 'none';
+      if(!h3.querySelector('.collapse-indicator')){
+        var span = document.createElement('span');
+        span.className = 'collapse-indicator';
+        span.style.cssText = 'float:right;font-size:12px;color:#a92122;margin-left:8px;';
+        span.textContent = ' ▾';
+        h3.appendChild(span);
+      }
+      h3.addEventListener('click', function(){
+        var card = h3.closest('.card');
+        if(!card) return;
+        card.classList.toggle('collapsed');
+        var indicator = h3.querySelector('.collapse-indicator');
+        if(indicator) indicator.textContent = card.classList.contains('collapsed') ? ' ▸' : ' ▾';
+      });
+    });
+  }
+  function init(){ enhanceTables(); enhanceCollapse(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
 </body>
 </html>
