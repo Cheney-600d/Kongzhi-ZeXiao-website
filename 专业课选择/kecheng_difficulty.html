@@ -55,6 +55,30 @@
         .stat-card { transition: all 0.3s; }
         .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
         .truncate-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        /* 难度榜单卡片（手机端） */
+        .card-list { display: grid; gap: 12px; margin-top: 12px; }
+        .diff-card { background: #fff; border-radius: 14px; padding: 16px; box-shadow: 0 2px 8px rgba(26,26,46,.06); border: 1px solid #ececec; }
+        .diff-card__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+        .diff-card__rank { font-size: 13px; font-weight: 800; color: #a0aec0; }
+        .diff-card__school { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 800; color: #1a202c; text-decoration: none; margin-bottom: 4px; }
+        .diff-card__school img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #fff; }
+        .diff-card__level { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #fff; }
+        .diff-card__code { font-family: ui-monospace,SFMono-Regular,Consolas,monospace; font-size: 13px; color: #4a5568; font-weight: 700; }
+        .diff-card__subject { font-size: 13px; color: #4a5568; margin-bottom: 10px; line-height: 1.5; }
+        .diff-card__meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .diff-card__meta span { padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; }
+        .diff-card__remark { font-size: 12px; color: #718096; line-height: 1.7; background: #f7fafc; border-radius: 8px; padding: 8px 10px; }
+        .diff-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; }
+        .diff-toolbar .search-box { flex: 1; min-width: 200px; position: relative; }
+        .diff-toolbar .search-box input { width: 100%; padding: 10px 12px 10px 34px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 13px; outline: none; background: #fff; }
+        .diff-toolbar .search-box svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: #a0aec0; }
+        .diff-toolbar select { padding: 9px 10px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 13px; background: #fff; color: #4a5568; outline: none; }
+        @media (max-width: 768px) {
+            #tableCard { display: none !important; }
+            #cardList { display: grid !important; }
+            .diff-toolbar .search-box { min-width: 100%; }
+            .diff-toolbar select { flex: 1; min-width: 140px; }
+        }
     </style>
 <style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
 
@@ -113,6 +137,24 @@
                     <i class="fas fa-graduation-cap"></i>211高校榜
                 </button>
             </div>
+
+            <div class="diff-toolbar">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" id="search-input" placeholder="搜索学校、代码、科目或备注..." oninput="handleSearch()">
+                </div>
+                <select id="sort-select" onchange="handleSort()">
+                    <option value="default">默认排序</option>
+                    <option value="diff-asc">按难度值（难→易）</option>
+                    <option value="diff-desc">按难度值（易→难）</option>
+                </select>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" data-filter="diff-难度较高" onclick="toggleFilter('diff','难度较高')">难度较高</button>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" data-filter="diff-中等偏难" onclick="toggleFilter('diff','中等偏难')">中等偏难</button>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" data-filter="diff-中等难度" onclick="toggleFilter('diff','中等难度')">中等难度</button>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" data-filter="diff-中等偏易" onclick="toggleFilter('diff','中等偏易')">中等偏易</button>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" data-filter="diff-难度较低" onclick="toggleFilter('diff','难度较低')">难度较低</button>
+                <button class="filter-chip px-3 py-2 rounded-lg text-xs border border-gray-200 bg-white text-gray-600" onclick="clearFilters()">清除筛选</button>
+            </div>
             
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="stats-container">
@@ -120,7 +162,7 @@
             </div>
 
             <!-- Data Table -->
-            <div class="glass-card rounded-2xl shadow-lg overflow-hidden">
+            <div class="glass-card rounded-2xl shadow-lg overflow-hidden" id="tableCard">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm">
                         <thead class="bg-gray-50 sticky-header">
@@ -152,6 +194,8 @@
                 </div>
             </div>
 
+            <div id="cardList" class="card-list" style="display:none;"></div>
+
             <!-- Footer -->
             <div class="mt-8 text-center text-xs text-gray-400">
                 <p>数据整理自 控制阿祖《上岸难度表》 | 仅供择校参考，实际难度以当年真题为准</p>
@@ -166,6 +210,7 @@
         let currentTab = 'all';
         let activeFilters = { school: new Set(), diff: new Set() };
         let searchQuery = '';
+        let sortMode = 'default';
 
         function getDifficultyClass(diff) {
             if (diff === '难度较高') return 'difficulty-high';
@@ -206,6 +251,11 @@
                            (r['考试科目'] || '').toLowerCase().includes(q) ||
                            (r['备注'] || '').toLowerCase().includes(q);
                 });
+            }
+            if (sortMode === 'diff-asc') {
+                all = all.slice().sort((a, b) => (parseFloat(a['难度参考值']) || 0) - (parseFloat(b['难度参考值']) || 0));
+            } else if (sortMode === 'diff-desc') {
+                all = all.slice().sort((a, b) => (parseFloat(b['难度参考值']) || 0) - (parseFloat(a['难度参考值']) || 0));
             }
             return all;
         }
@@ -299,6 +349,35 @@
                 `).join('');
                 countLabel.textContent = `显示 ${data.length} 条数据`;
             }
+            renderCards(data);
+        }
+
+        function renderCards(data) {
+            const list = document.getElementById('cardList');
+            if (!list) return;
+            if (data.length === 0) {
+                list.innerHTML = '<div class="diff-card" style="text-align:center;color:#a0aec0;font-size:13px;">没有找到匹配的数据</div>';
+                return;
+            }
+            list.innerHTML = data.map((r, i) => `
+                <div class="diff-card animate-fade-in" style="animation-delay: ${i * 0.02}s">
+                    <div class="diff-card__head">
+                        <span class="diff-card__rank">#${r['序号']}</span>
+                        <span class="diff-card__level ${getSchoolClass(r['学校层次'])}">${r['学校层次']}</span>
+                    </div>
+                    <a class="diff-card__school" href="../index.html?school=${encodeURIComponent(r['学校'])}&from=${encodeURIComponent('专业课选择/kecheng_difficulty.html')}">
+                        <img src="images/校徽/${r['学校']}.jpg" alt="" onerror="this.style.display='none'" loading="lazy">
+                        ${r['学校']}
+                    </a>
+                    <div class="diff-card__subject"><span class="diff-card__code">${r['专业课代码']}</span> · ${r['考试科目']}</div>
+                    <div class="diff-card__meta">
+                        <span class="${getDifficultyClass(r['难度梯度'])}">${r['难度梯度']}</span>
+                        <span class="bg-gray-100 text-gray-600">分数段 ${r['分数段']}</span>
+                        <span class="bg-gray-100 text-gray-600">参考值 ${r['难度参考值']}</span>
+                    </div>
+                    <div class="diff-card__remark">${r['备注']}</div>
+                </div>
+            `).join('');
         }
 
         function switchTab(tab) {
@@ -332,6 +411,12 @@
 
         function handleSearch() {
             searchQuery = document.getElementById('search-input').value;
+            renderStats();
+            renderTable();
+        }
+
+        function handleSort() {
+            sortMode = document.getElementById('sort-select').value;
             renderStats();
             renderTable();
         }
