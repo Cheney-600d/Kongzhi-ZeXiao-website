@@ -72,6 +72,21 @@ tbody td{padding:14px 16px;vertical-align:top}
 .empty{text-align:center;padding:60px 20px;color:#777a80}
 .empty-icon{font-size:48px;margin-bottom:12px}.empty-icon svg{width:46px;height:46px;display:block;margin:0 auto;color:#c9ccd1;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:square;stroke-linejoin:round}
 
+  /* 改考信息卡片（手机端使用） */
+  .card-list{display:grid;gap:12px;margin-top:12px}
+  .gk-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(26,26,46,.06);border:1px solid #ececec}
+  .gk-card__head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .gk-card__date{font-size:12px;color:#777a80;white-space:nowrap}
+  .gk-card__school{display:block;font-size:17px;font-weight:800;color:#a92122;text-decoration:none;margin-bottom:2px}
+  .gk-card__college{font-size:12.5px;color:#777a80;margin-bottom:6px}
+  .gk-card__major{font-size:13.5px;font-weight:600;color:#17191d;margin-bottom:10px;line-height:1.5}
+  .gk-card__change{background:#f8f6f2;border-radius:10px;padding:10px 12px;margin-bottom:8px}
+  .gk-card__label{display:block;font-size:11px;color:#9a9da3;font-weight:700;margin-bottom:4px}
+  .gk-card__change .after-text{margin-top:2px}
+  .gk-card__note{font-size:12px;color:#9C6B2F;background:#FBEED9;padding:6px 10px;border-radius:8px;margin-bottom:8px;line-height:1.5}
+  .gk-card__source{display:inline-block;font-size:12.5px;color:#1e3a5f;text-decoration:none;font-weight:600}
+  .gk-card__source:hover{text-decoration:underline}
+
 .footer{text-align:center;padding:30px;color:#777a80;font-size:12.5px;line-height:1.8}
 
 @media(max-width:768px){
@@ -81,6 +96,8 @@ tbody td{padding:14px 16px;vertical-align:top}
   table{font-size:12px}
   tbody td{padding:10px 12px}
   thead th{padding:10px 12px}
+  .table-wrap{display:none}
+  .card-list{display:grid !important}
 }
 </style>
 
@@ -131,6 +148,12 @@ a,button,input{touch-action:manipulation}
         <button class="filter-btn" data-filter="211">211</button>
         <button class="filter-btn" data-filter="双非">双非</button>
       </div>
+    <div class="filter-group">
+        <span class="filter-label">类型：</span>
+        <button class="filter-btn type-btn active" data-type="all">全部</button>
+        <button class="filter-btn type-btn" data-type="verified">已核实</button>
+        <button class="filter-btn type-btn" data-type="pending">待确认</button>
+      </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -160,6 +183,12 @@ a,button,input{touch-action:manipulation}
       <p>未找到匹配的改考信息</p>
     </div>
   </div>
+
+    <div id="cardList" class="card-list" style="display:none;"></div>
+    <div class="empty" id="cardEmptyState" style="display:none;">
+      <div class="empty-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.4 16.4 4.6 4.6"/><path d="M8.4 11h5.2"/></svg></div>
+      <p>未找到匹配的改考信息</p>
+    </div>
 
   <div class="footer">
     <p>数据整理：@控制考研阿祖 | 信息来源：各校研究生院官网公告</p>
@@ -191,14 +220,18 @@ function isPublicChange(before,after){
 function renderTable(data){
   const tbody=document.getElementById('tableBody');
   const empty=document.getElementById('emptyState');
+  const cardEmpty=document.getElementById('cardEmptyState');
   const countEl=document.getElementById('resultCount');
   if(data.length===0){
     tbody.innerHTML='';
     empty.style.display='block';
+    if(cardEmpty) cardEmpty.style.display='block';
     countEl.textContent='';
+    renderCards([]);
     return;
   }
   empty.style.display='none';
+  if(cardEmpty) cardEmpty.style.display='none';
   countEl.textContent='共 '+data.length+' 条';
   
   var prevSchool='';
@@ -243,15 +276,51 @@ function renderTable(data){
       '<td>'+(sourceUrl?'<a href="'+sourceUrl+'" target="_blank" class="source-link">🔗 戳我到院校官网</a>':'<span style="font-size:12px;color:#9a9da3">暂无链接</span>')+'</td>'+
     '</tr>';
   }).join('');
+  renderCards(data);
+}
+
+function renderCards(data){
+  const list=document.getElementById('cardList');
+  const cardEmpty=document.getElementById('cardEmptyState');
+  if(!list) return;
+  if(data.length===0){
+    list.innerHTML='';
+    if(cardEmpty) cardEmpty.style.display='block';
+    return;
+  }
+  if(cardEmpty) cardEmpty.style.display='none';
+  list.innerHTML=data.map(function(r){
+    var levelCls=getLevelClass(r.level);
+    var levelShort=getLevelShort(r.level);
+    var afterCls=getAfterClass(r.after);
+    var publicTag=isPublicChange(r.before,r.after)?'<div class="public-tag">🎓 公共课改考</div>':'';
+    var sourceUrl=r.source||'';
+    var beforeHtml=r.before?'<div class="before-text" style="font-size:12px;">改前：'+r.before+'</div>':'';
+    return '<div class="gk-card">'+
+      '<div class="gk-card__head"><span class="level-tag '+levelCls+'">'+levelShort+'</span><span class="gk-card__date">'+(r.date||'待确认')+'</span></div>'+
+      '<a class="gk-card__school" href="index.html?school='+encodeURIComponent(r.school)+'&from='+encodeURIComponent('改考院校.html')+'">'+r.school+'</a>'+
+      '<div class="gk-card__college">'+(r.college||'—')+'</div>'+
+      '<div class="gk-card__major">'+(r.major||'—')+'</div>'+
+      '<div class="gk-card__change"><span class="gk-card__label">改动信息</span>'+beforeHtml+publicTag+'<div class="after-text '+afterCls+'">'+(r.after||'—')+'</div></div>'+
+      (r.note?'<div class="gk-card__note">💡 '+r.note+'</div>':'')+
+      (sourceUrl?'<a class="gk-card__source" href="'+sourceUrl+'" target="_blank">🔗 戳我到院校官网</a>':'<span style="font-size:12px;color:#9a9da3">暂无链接</span>')+
+    '</div>';
+  }).join('');
 }
 
 var currentFilter='all';
+var currentType='all';
 var searchQuery='';
 
 function filterData(){
   var filtered=examData;
   if(currentFilter!=='all'){
     filtered=filtered.filter(function(d){return d.level===currentFilter;});
+  }
+  if(currentType==='verified'){
+    filtered=filtered.filter(function(d){return (d.note||'').indexOf('已核实')>=0;});
+  }else if(currentType==='pending'){
+    filtered=filtered.filter(function(d){return (d.note||'').indexOf('已核实')<0;});
   }
   if(searchQuery){
     var q=searchQuery.toLowerCase();
@@ -266,11 +335,20 @@ function filterData(){
   renderTable(filtered);
 }
 
-document.querySelectorAll('.filter-btn').forEach(function(btn){
+document.querySelectorAll('.filter-btn:not(.type-btn)').forEach(function(btn){
   btn.addEventListener('click',function(){
-    document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+    document.querySelectorAll('.filter-btn:not(.type-btn)').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
     currentFilter=btn.dataset.filter;
+    filterData();
+  });
+});
+
+document.querySelectorAll('.type-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.type-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    currentType=btn.dataset.type;
     filterData();
   });
 });
