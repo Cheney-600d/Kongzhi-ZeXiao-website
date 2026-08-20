@@ -1208,7 +1208,7 @@
 
         async function renderAdmissionData(schoolName, listContainer) {
             try {
-                const resp = await fetch(`/api/admissions?school=${encodeURIComponent(schoolName)}&year=2027&page=1&page_size=50`);
+                const resp = await fetch(`/api/admissions?school=${encodeURIComponent(schoolName)}&year=2026&page=1&page_size=50`);
                 if (!resp.ok) return;
                 const json = await resp.json();
                 const records = (json && json.data && json.data.items) || [];

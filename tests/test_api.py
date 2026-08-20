@@ -58,7 +58,7 @@ def main():
     check('清华书目 >= 1', len(r['data']['books']) >= 1)
 
     print('== /api/admissions ==')
-    r = api.query_admissions(school='清华大学', year='2027', page=1, page_size=5)
+    r = api.query_admissions(school='清华大学', year='2026', page=1, page_size=5)
     check('code == 0', r['code'] == 0)
     check('分页返回 <= 5 条', len(r['data']['items']) <= 5)
     check('total >= 1', r['data']['total'] >= 1)

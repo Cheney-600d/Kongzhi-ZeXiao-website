@@ -107,7 +107,7 @@ def query_majors(school=None, code=None):
         conn.close()
 
 
-def query_admissions(school=None, major_code=None, year=2027, page=1, page_size=20):
+def query_admissions(school=None, major_code=None, year=2026, page=1, page_size=20):
     """录取数据列表：校名/专业代码筛选 + 分页。"""
     page = max(1, int(page or 1))
     page_size = min(100, max(1, int(page_size or 20)))
