@@ -378,14 +378,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            cursor: pointer;
-            text-decoration: none;
+            cursor: default;
             color: inherit;
         }
         
         .source-item:hover {
-            background: #F0EBF3;
-            transform: translateX(5px);
+            background: #f8f8f6;
         }
         
         .source-info {
@@ -2922,7 +2920,7 @@
             }
             
             grid.innerHTML = filtered.map(src => `
-                <a href="index.html?school=${encodeURIComponent(src.name)}" class="source-item" title="查看 ${src.name} 择校数据">
+                <div class="source-item">
                     <div class="source-info">
                         <div class="source-name">${src.name}</div>
                         <div class="source-tags">
@@ -2930,7 +2928,7 @@
                             <span class="source-tag province-tag">${src.province}</span>
                         </div>
                     </div>
-                </a>
+                </div>
             `).join('');
             
             document.getElementById('detailCount').textContent = `共 ${filtered.length} 所生源院校 (筛选后)`;
