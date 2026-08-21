@@ -36,6 +36,9 @@ html::-webkit-scrollbar { display: none; width: 0; height: 0; }
     gap: .7rem;
     inset: 0 0 auto;
     box-sizing: border-box;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
     min-height: 4.25rem;
     padding: max(.62rem, env(safe-area-inset-top)) .9rem .62rem;
     color: #f4f4f1;
