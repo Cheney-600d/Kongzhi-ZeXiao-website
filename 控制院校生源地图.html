@@ -69,6 +69,55 @@
             display: block;
             font-size: 0.95em;
         }
+
+        .filter-select {
+            width: 100%;
+            max-width: 420px;
+            padding: 10px 14px;
+            border: 2px solid #d5d5cf;
+            border-radius: 10px;
+            background: #fff;
+            color: #17191d;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+        .filter-select:focus {
+            border-color: #a92122;
+            box-shadow: 0 0 0 3px rgba(169,33,34,0.12);
+        }
+        .top10-list {
+            display: grid;
+            gap: 6px;
+        }
+        .top10-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 7px 12px;
+            font-size: 14px;
+        }
+        .top10-rank {
+            color: #a92122;
+            font-weight: 800;
+            min-width: 22px;
+        }
+        .top10-name {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .top10-count {
+            color: #6a6a7a;
+            font-weight: 600;
+            white-space: nowrap;
+        }
         
         .filter-buttons {
             display: flex;
@@ -314,20 +363,21 @@
         }
         
         .source-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
         
         .source-item {
-            background: #f8f8f6;
-            padding: 15px;
-            border-radius: 10px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ececec;
             border-left: 4px solid #a92122;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             cursor: pointer;
             text-decoration: none;
             color: inherit;
@@ -345,7 +395,8 @@
         .source-name {
             color: #17191d;
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
+            font-size: 14px;
             word-break: break-word;
         }
         
@@ -486,62 +537,62 @@
             <div class="filter-section">
                 <div class="filter-group">
                     <span class="filter-label">🗺️ 地区筛选（点击地区筛选，也可展开选具体省份）</span>
-                    <div class="filter-buttons" id="regionButtons">
-<button class="filter-btn region-btn active" data-region="全部" onclick="filterByRegion('全部')">全部</button>
-<button class="filter-btn region-btn " data-region="西南地区" onclick="filterByRegion('西南地区')">西南地区</button>
-<button class="filter-btn region-btn " data-region="山河四省" onclick="filterByRegion('山河四省')">山河四省</button>
-<button class="filter-btn region-btn " data-region="京津地区" onclick="filterByRegion('京津地区')">京津地区</button>
-<button class="filter-btn region-btn " data-region="华中地区" onclick="filterByRegion('华中地区')">华中地区</button>
-<button class="filter-btn region-btn " data-region="江浙沪地区" onclick="filterByRegion('江浙沪地区')">江浙沪地区</button>
-<button class="filter-btn region-btn " data-region="华南地区" onclick="filterByRegion('华南地区')">华南地区</button>
-<button class="filter-btn region-btn " data-region="西北地区" onclick="filterByRegion('西北地区')">西北地区</button>
-<button class="filter-btn region-btn " data-region="东北地区" onclick="filterByRegion('东北地区')">东北地区</button>
-                    </div>
+                    <select class="filter-select" id="regionSelect" onchange="filterByRegion(this.value)">
+                        <option value="全部" selected>全部</option>
+                        <option value="西南地区">西南地区</option>
+                        <option value="山河四省">山河四省</option>
+                        <option value="京津地区">京津地区</option>
+                        <option value="华中地区">华中地区</option>
+                        <option value="江浙沪地区">江浙沪地区</option>
+                        <option value="华南地区">华南地区</option>
+                        <option value="西北地区">西北地区</option>
+                        <option value="东北地区">东北地区</option>
+                    </select>
                 </div>
                 <div class="filter-group">
                     <span class="filter-label">📍 省份筛选</span>
-                    <div class="filter-buttons" id="provinceButtons">
-<button class="filter-btn province-btn active" data-filter="全部" onclick="filterByProvince('全部')">全部</button>
-<button class="filter-btn province-btn " data-filter="上海" onclick="filterByProvince('上海')">上海</button>
-<button class="filter-btn province-btn " data-filter="云南" onclick="filterByProvince('云南')">云南</button>
-<button class="filter-btn province-btn " data-filter="内蒙古" onclick="filterByProvince('内蒙古')">内蒙古</button>
-<button class="filter-btn province-btn " data-filter="北京" onclick="filterByProvince('北京')">北京</button>
-<button class="filter-btn province-btn " data-filter="吉林" onclick="filterByProvince('吉林')">吉林</button>
-<button class="filter-btn province-btn " data-filter="四川" onclick="filterByProvince('四川')">四川</button>
-<button class="filter-btn province-btn " data-filter="天津" onclick="filterByProvince('天津')">天津</button>
-<button class="filter-btn province-btn " data-filter="宁夏" onclick="filterByProvince('宁夏')">宁夏</button>
-<button class="filter-btn province-btn " data-filter="安徽" onclick="filterByProvince('安徽')">安徽</button>
-<button class="filter-btn province-btn " data-filter="山东" onclick="filterByProvince('山东')">山东</button>
-<button class="filter-btn province-btn " data-filter="山西" onclick="filterByProvince('山西')">山西</button>
-<button class="filter-btn province-btn " data-filter="广东" onclick="filterByProvince('广东')">广东</button>
-<button class="filter-btn province-btn " data-filter="广西" onclick="filterByProvince('广西')">广西</button>
-<button class="filter-btn province-btn " data-filter="新疆" onclick="filterByProvince('新疆')">新疆</button>
-<button class="filter-btn province-btn " data-filter="江苏" onclick="filterByProvince('江苏')">江苏</button>
-<button class="filter-btn province-btn " data-filter="江西" onclick="filterByProvince('江西')">江西</button>
-<button class="filter-btn province-btn " data-filter="河北" onclick="filterByProvince('河北')">河北</button>
-<button class="filter-btn province-btn " data-filter="河南" onclick="filterByProvince('河南')">河南</button>
-<button class="filter-btn province-btn " data-filter="浙江" onclick="filterByProvince('浙江')">浙江</button>
-<button class="filter-btn province-btn " data-filter="海南" onclick="filterByProvince('海南')">海南</button>
-<button class="filter-btn province-btn " data-filter="湖北" onclick="filterByProvince('湖北')">湖北</button>
-<button class="filter-btn province-btn " data-filter="湖南" onclick="filterByProvince('湖南')">湖南</button>
-<button class="filter-btn province-btn " data-filter="甘肃" onclick="filterByProvince('甘肃')">甘肃</button>
-<button class="filter-btn province-btn " data-filter="福建" onclick="filterByProvince('福建')">福建</button>
-<button class="filter-btn province-btn " data-filter="贵州" onclick="filterByProvince('贵州')">贵州</button>
-<button class="filter-btn province-btn " data-filter="辽宁" onclick="filterByProvince('辽宁')">辽宁</button>
-<button class="filter-btn province-btn " data-filter="重庆" onclick="filterByProvince('重庆')">重庆</button>
-<button class="filter-btn province-btn " data-filter="陕西" onclick="filterByProvince('陕西')">陕西</button>
-<button class="filter-btn province-btn " data-filter="黑龙江" onclick="filterByProvince('黑龙江')">黑龙江</button>
-<button class="filter-btn province-btn " data-filter="其他" onclick="filterByProvince('其他')">其他</button>
-                    </div>
+                    <select class="filter-select" id="provinceSelect" onchange="filterByProvince(this.value)">
+                        <option value="全部" selected>全部</option>
+                        <option value="上海">上海</option>
+                        <option value="云南">云南</option>
+                        <option value="内蒙古">内蒙古</option>
+                        <option value="北京">北京</option>
+                        <option value="吉林">吉林</option>
+                        <option value="四川">四川</option>
+                        <option value="天津">天津</option>
+                        <option value="宁夏">宁夏</option>
+                        <option value="安徽">安徽</option>
+                        <option value="山东">山东</option>
+                        <option value="山西">山西</option>
+                        <option value="广东">广东</option>
+                        <option value="广西">广西</option>
+                        <option value="新疆">新疆</option>
+                        <option value="江苏">江苏</option>
+                        <option value="江西">江西</option>
+                        <option value="河北">河北</option>
+                        <option value="河南">河南</option>
+                        <option value="浙江">浙江</option>
+                        <option value="海南">海南</option>
+                        <option value="湖北">湖北</option>
+                        <option value="湖南">湖南</option>
+                        <option value="甘肃">甘肃</option>
+                        <option value="福建">福建</option>
+                        <option value="贵州">贵州</option>
+                        <option value="辽宁">辽宁</option>
+                        <option value="重庆">重庆</option>
+                        <option value="陕西">陕西</option>
+                        <option value="黑龙江">黑龙江</option>
+                        <option value="其他">其他</option>
+                    </select>
                 </div>
                 <div class="filter-group">
                     <span class="filter-label">🏷️ 院校层次筛选</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-level="all" onclick="filterByLevel('all')">全部</button>
-                        <button class="filter-btn" data-level="985" onclick="filterByLevel('985')">985</button>
-                        <button class="filter-btn" data-level="211" onclick="filterByLevel('211')">211</button>
-                        <button class="filter-btn" data-level="双非" onclick="filterByLevel('双非')">双非</button>
-                    </div>
+                    <select class="filter-select" id="levelSelect" onchange="filterByLevel(this.value)">
+                        <option value="all" selected>全部</option>
+                        <option value="985">985</option>
+                        <option value="211">211</option>
+                        <option value="双非">双非</option>
+                    </select>
                 </div>
             </div>
             
@@ -2644,31 +2695,31 @@
             <div class="charts-section">
                 <div class="chart-card">
                     <div class="chart-title">🏆 Top 10 生源院校</div>
-                    <div class="chart-container" id="schoolChart"></div>
+                    <div class="top10-list" id="schoolTop10List"></div>
                 </div>
                 <div class="chart-card">
                     <div class="chart-title">🗺️ Top 10 生源省份</div>
-                    <div class="chart-container" id="provinceChart"></div>
+                    <div class="top10-list" id="provinceTop10List"></div>
                 </div>
             </div>
             
             <div class="detail-filters">
                 <div class="filter-group">
                     <span class="filter-label">🏷️ 生源层次筛选</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-src-level="all" onclick="filterSourcesByLevel('all')">全部</button>
-                        <button class="filter-btn" data-src-level="985" onclick="filterSourcesByLevel('985')">985</button>
-                        <button class="filter-btn" data-src-level="211" onclick="filterSourcesByLevel('211')">211</button>
-                        <button class="filter-btn" data-src-level="双非" onclick="filterSourcesByLevel('双非')">双非</button>
-                    </div>
+                    <select class="filter-select" id="sourceLevelSelect" onchange="filterSourcesByLevel(this.value)">
+                        <option value="all" selected>全部</option>
+                        <option value="985">985</option>
+                        <option value="211">211</option>
+                        <option value="双非">双非</option>
+                    </select>
                 </div>
                 <div class="filter-group">
                     <span class="filter-label">🗺️ 生源地区筛选</span>
-                    <div class="filter-buttons" id="sourceRegionButtons"></div>
+                    <select class="filter-select" id="sourceRegionSelect" onchange="filterSourcesByRegion(this.value)"></select>
                 </div>
                 <div class="filter-group">
                     <span class="filter-label">📍 生源省份筛选</span>
-                    <div class="filter-buttons" id="sourceProvinceButtons"></div>
+                    <select class="filter-select" id="sourceProvinceSelect" onchange="filterSourcesByProvince(this.value)"></select>
                 </div>
             </div>
             
@@ -2784,14 +2835,10 @@
             sourceRegions.sort();
             sourceRegions.unshift('全部');
             
-            let srcRegionButtons = '';
-            for (const r of sourceRegions) {
-                const active = r === '全部' ? 'active' : '';
-                srcRegionButtons += `<button class="filter-btn ${active}" onclick="filterSourcesByRegion('${r}')">${r}</button>`;
-            }
-            document.getElementById('sourceRegionButtons').innerHTML = srcRegionButtons;
+            const sourceRegionSelect = document.getElementById('sourceRegionSelect');
+            sourceRegionSelect.innerHTML = sourceRegions.map(r => `<option value="${r}"${r === '全部' ? ' selected' : ''}>${r}</option>`).join('');
             
-            // 生成生源省份筛选按钮
+            // 生成生源省份筛选下拉
             const sourceProvinces = [];
             const seen = new Set();
             for (const src of data.sources) {
@@ -2803,18 +2850,16 @@
             sourceProvinces.sort();
             sourceProvinces.unshift('全部');
             
-            let srcProvButtons = '';
-            for (const p of sourceProvinces) {
-                const active = p === '全部' ? 'active' : '';
-                srcProvButtons += `<button class="filter-btn ${active}" onclick="filterSourcesByProvince('${p}')">${p}</button>`;
-            }
-            document.getElementById('sourceProvinceButtons').innerHTML = srcProvButtons;
+            const sourceProvinceSelect = document.getElementById('sourceProvinceSelect');
+            sourceProvinceSelect.innerHTML = sourceProvinces.map(p => `<option value="${p}"${p === '全部' ? ' selected' : ''}>${p}</option>`).join('');
+            sourceProvinceSelect.dataset.all = JSON.stringify(sourceProvinces);
             
             currentDetailLevelFilter = 'all';
             currentDetailRegionFilter = '全部';
             currentDetailProvinceFilter = '全部';
-            document.querySelectorAll('[data-src-level]').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-src-level="all"]').classList.add('active');
+            document.getElementById('sourceLevelSelect').value = 'all';
+            document.getElementById('sourceRegionSelect').value = '全部';
+            document.getElementById('sourceProvinceSelect').value = '全部';
             
             document.getElementById('mainPage').classList.add('hidden');
             document.getElementById('detailPage').classList.add('active');
@@ -2832,100 +2877,26 @@
         }
         
         function renderCharts(data) {
-            const schoolChartDom = document.getElementById('schoolChart');
-            if (schoolChart) schoolChart.dispose();
-            schoolChart = echarts.init(schoolChartDom);
-            
-            const schoolNames = data.top10_schools.map(s => s.name);
-            const schoolCounts = data.top10_schools.map(s => s.count);
-            
-            schoolChart.setOption({
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: { type: 'shadow' },
-                    formatter: function(params) {
-                        const idx = params[0].dataIndex;
-                        const fullName = data.top10_schools[idx].name;
-                        const count = params[0].value;
-                        return fullName + '<br/>出现次数: ' + count;
-                    }
-                },
-                grid: { left: '3%', right: '18%', bottom: '10%', top: '3%', containLabel: true },
-                xAxis: {
-                    type: 'value',
-                    name: '出现次数',
-                    nameLocation: 'middle',
-                    nameGap: 24,
-                    nameTextStyle: { fontSize: 12 },
-                    axisLabel: { fontSize: 12 }
-                },
-                yAxis: {
-                    type: 'category',
-                    data: schoolNames,
-                    axisLabel: {
-                        fontSize: 12,
-                        width: 170,
-                        overflow: 'truncate',
-                        ellipsis: '..'
-                    },
-                    inverse: true
-                },
-                series: [{
-                    data: schoolCounts,
-                    type: 'bar',
-                    itemStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                            { offset: 0, color: '#a92122' },
-                            { offset: 1, color: '#c0392b' }
-                        ])
-                    },
-                    barWidth: '60%',
-                    label: { show: true, position: 'right', fontSize: 13, fontWeight: 'bold' }
-                }]
-            });
-            
-            const provinceChartDom = document.getElementById('provinceChart');
-            if (provinceChart) provinceChart.dispose();
-            provinceChart = echarts.init(provinceChartDom);
-            
-            const provinceNames = data.top10_provinces.map(p => p.name);
-            const provinceCounts = data.top10_provinces.map(p => p.count);
-            
-            provinceChart.setOption({
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: { type: 'shadow' },
-                    formatter: function(params) {
-                        const idx = params[0].dataIndex;
-                        const fullName = data.top10_provinces[idx].name;
-                        const count = params[0].value;
-                        return fullName + '<br/>出现次数: ' + count;
-                    }
-                },
-                grid: { left: '8%', right: '5%', bottom: '26%', top: '8%', containLabel: true },
-                xAxis: {
-                    type: 'category',
-                    data: provinceNames,
-                    axisLabel: { fontSize: 12, interval: 0, rotate: 40, margin: 12 }
-                },
-                yAxis: {
-                    type: 'value',
-                    name: '出现次数',
-                    axisLabel: { fontSize: 12 }
-                },
-                series: [{
-                    data: provinceCounts,
-                    type: 'bar',
-                    itemStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: '#a92122' },
-                            { offset: 1, color: '#c0392b' }
-                        ])
-                    },
-                    barWidth: '55%',
-                    label: { show: true, position: 'top', fontSize: 13, fontWeight: 'bold' }
-                }]
-            });
+            const schoolList = document.getElementById('schoolTop10List');
+            if (schoolList) {
+                schoolList.innerHTML = data.top10_schools.map((s, i) => `
+                    <div class="top10-item">
+                        <span class="top10-rank">${i + 1}</span>
+                        <span class="top10-name">${s.name}</span>
+                        <span class="top10-count">${s.count} 次</span>
+                    </div>
+                `).join('');
+            }
+            const provinceList = document.getElementById('provinceTop10List');
+            if (provinceList) {
+                provinceList.innerHTML = data.top10_provinces.map((p, i) => `
+                    <div class="top10-item">
+                        <span class="top10-rank">${i + 1}</span>
+                        <span class="top10-name">${p.name}</span>
+                        <span class="top10-count">${p.count} 次</span>
+                    </div>
+                `).join('');
+            }
         }
         
         function renderSources() {
@@ -2970,17 +2941,15 @@
         
         function filterSourcesByLevel(level) {
             currentDetailLevelFilter = level;
-            document.querySelectorAll('[data-src-level]').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-src-level="${level}"]`).classList.add('active');
+            const select = document.getElementById('sourceLevelSelect');
+            if (select) select.value = level;
             renderSources();
         }
         
         function filterSourcesByRegion(region) {
             currentDetailRegionFilter = region;
-            const buttons = document.getElementById('sourceRegionButtons').querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === region);
-            });
+            const select = document.getElementById('sourceRegionSelect');
+            if (select) select.value = region;
             
             if (region !== '全部' && currentDetailProvinceFilter !== '全部') {
                 const regionProvinces = regionMap[region];
@@ -2989,57 +2958,51 @@
                 }
             }
             
-            updateSourceProvinceButtons();
+            updateSourceProvinceSelect();
             renderSources();
         }
         
-        function updateSourceProvinceButtons() {
-            const provinceButtons = document.getElementById('sourceProvinceButtons').querySelectorAll('.filter-btn');
-            provinceButtons.forEach(btn => {
-                const province = btn.textContent;
-                if (province === '全部') {
-                    btn.style.display = 'inline-block';
-                    return;
-                }
-                
-                if (currentDetailRegionFilter === '全部') {
-                    btn.style.display = 'inline-block';
-                } else {
+        function updateSourceProvinceSelect() {
+            const select = document.getElementById('sourceProvinceSelect');
+            if (!select) return;
+            let all = [];
+            try { all = JSON.parse(select.dataset.all || '[]'); } catch(e) {}
+            const current = currentDetailProvinceFilter;
+            const options = all.map(p => {
+                let hidden = false;
+                if (p !== '全部' && currentDetailRegionFilter !== '全部') {
                     const regionProvinces = regionMap[currentDetailRegionFilter];
-                    if (regionProvinces && regionProvinces.includes(province)) {
-                        btn.style.display = 'inline-block';
-                    } else {
-                        btn.style.display = 'none';
-                    }
+                    hidden = !(regionProvinces && regionProvinces.includes(p));
                 }
-            });
-            
-            provinceButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === currentDetailProvinceFilter);
-            });
+                return `<option value="${p}"${p === current ? ' selected' : ''}${hidden ? ' data-hidden="1"' : ''}>${p}</option>`;
+            }).join('');
+            select.innerHTML = options;
+            if (currentDetailRegionFilter !== '全部' && current !== '全部') {
+                const regionProvinces = regionMap[currentDetailRegionFilter];
+                if (!regionProvinces.includes(current)) {
+                    currentDetailProvinceFilter = '全部';
+                }
+            }
+            select.value = currentDetailProvinceFilter;
         }
         
         function filterSourcesByProvince(province) {
             currentDetailProvinceFilter = province;
-            const buttons = document.getElementById('sourceProvinceButtons').querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.toggle('active', btn.textContent === province);
-            });
+            const select = document.getElementById('sourceProvinceSelect');
+            if (select) select.value = province;
             
             if (province !== '全部') {
                 for (const [region, regionProvinces] of Object.entries(regionMap)) {
                     if (regionProvinces.includes(province)) {
                         currentDetailRegionFilter = region;
-                        const regionButtons = document.getElementById('sourceRegionButtons').querySelectorAll('.filter-btn');
-                        regionButtons.forEach(btn => {
-                            btn.classList.toggle('active', btn.textContent === region);
-                        });
+                        const regionSelect = document.getElementById('sourceRegionSelect');
+                        if (regionSelect) regionSelect.value = region;
                         break;
                     }
                 }
             }
             
-            updateSourceProvinceButtons();
+            updateSourceProvinceSelect();
             renderSources();
         }
         
@@ -3053,10 +3016,8 @@
         
         function filterByRegion(region) {
             currentRegionFilter = region;
-            
-            document.querySelectorAll('.region-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-region') === region);
-            });
+            const select = document.getElementById('regionSelect');
+            if (select) select.value = region;
             
             if (region !== '全部' && currentProvinceFilter !== '全部') {
                 const regionProvinces = regionMap[region];
@@ -3070,46 +3031,43 @@
         }
         
         function updateProvinceButtons() {
-            const provinceButtons = document.querySelectorAll('.province-btn');
-            provinceButtons.forEach(btn => {
-                const province = btn.getAttribute('data-filter');
-                if (province === '全部') {
-                    btn.style.display = 'inline-block';
-                    return;
-                }
-                
-                if (currentRegionFilter === '全部') {
-                    btn.style.display = 'inline-block';
-                } else {
+            const select = document.getElementById('provinceSelect');
+            if (!select) return;
+            if (!select.dataset.all) {
+                select.dataset.all = JSON.stringify(Array.from(select.options).map(o => o.value));
+            }
+            let all = [];
+            try { all = JSON.parse(select.dataset.all); } catch(e) {}
+            const current = currentProvinceFilter;
+            const options = all.map(p => {
+                let hidden = false;
+                if (p !== '全部' && currentRegionFilter !== '全部') {
                     const regionProvinces = regionMap[currentRegionFilter];
-                    if (regionProvinces && regionProvinces.includes(province)) {
-                        btn.style.display = 'inline-block';
-                    } else {
-                        btn.style.display = 'none';
-                    }
+                    hidden = !(regionProvinces && regionProvinces.includes(p));
                 }
-            });
-            
-            provinceButtons.forEach(btn => {
-                const province = btn.getAttribute('data-filter');
-                btn.classList.toggle('active', province === currentProvinceFilter);
-            });
+                return `<option value="${p}"${p === current ? ' selected' : ''}${hidden ? ' data-hidden="1"' : ''}>${p}</option>`;
+            }).join('');
+            select.innerHTML = options;
+            if (currentRegionFilter !== '全部' && current !== '全部') {
+                const regionProvinces = regionMap[currentRegionFilter];
+                if (!regionProvinces.includes(current)) {
+                    currentProvinceFilter = '全部';
+                }
+            }
+            select.value = currentProvinceFilter;
         }
         
         function filterByProvince(province) {
             currentProvinceFilter = province;
-            
-            document.querySelectorAll('.province-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === province);
-            });
+            const select = document.getElementById('provinceSelect');
+            if (select) select.value = province;
             
             if (province !== '全部') {
                 for (const [region, regionProvinces] of Object.entries(regionMap)) {
                     if (regionProvinces.includes(province)) {
                         currentRegionFilter = region;
-                        document.querySelectorAll('.region-btn').forEach(btn => {
-                            btn.classList.toggle('active', btn.getAttribute('data-region') === region);
-                        });
+                        const regionSelect = document.getElementById('regionSelect');
+                        if (regionSelect) regionSelect.value = region;
                         break;
                     }
                 }
@@ -3121,8 +3079,8 @@
         
         function filterByLevel(level) {
             currentLevelFilter = level;
-            document.querySelectorAll('[data-level]').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-level="${level}"]`).classList.add('active');
+            const select = document.getElementById('levelSelect');
+            if (select) select.value = level;
             applyFilters();
         }
         
