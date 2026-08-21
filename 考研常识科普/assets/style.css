@@ -552,14 +552,47 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================
-   移动端表格适配：避免 compare-table 横向撑破页面
+   移动端表格适配：不使用横向滑动条，改为卡片式堆叠
    ======================================== */
 @media (max-width: 768px) {
-  .compare-table {
+  .compare-table,
+  .compare-table tbody,
+  .compare-table tr,
+  .compare-table td {
     display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  .compare-table thead {
+    display: none;
+  }
+  .compare-table tr {
+    margin-bottom: 12px;
+    border: 1px solid #e3e5e7;
+    border-radius: 10px;
+    background: #fff;
+    padding: 6px 0;
+  }
+  .compare-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: .88rem;
+  }
+  .compare-table td:last-child {
+    border-bottom: none;
+  }
+  .compare-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #6b7280;
+    flex-shrink: 0;
+    width: 34%;
+  }
+  .compare-table td > * {
+    min-width: 0;
   }
 }
