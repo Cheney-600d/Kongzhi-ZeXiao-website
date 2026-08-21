@@ -412,6 +412,14 @@ function renderHomeCharts(){
       {name:'专业方向数',type:'bar',data:provArr.map(x=>x.n),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14}
     ]
   });
+  charts.provinceSide.setOption({tooltip:{show:false}});
+  bindChartTooltip(charts.provinceSide, function(params){
+    var arr = Array.isArray(params) ? params : [params];
+    var rows = arr.map(function(p){
+      return '<tr><td>' + (p.seriesName||'专业方向数') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+    }).join('');
+    return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+  });
 
   // 复录比分布
   const ratioMap = {'1.0(等额)':0,'1.0-1.2':0,'1.2-1.5':0,'1.5-2.0':0,'2.0+':0,'未知':0};
@@ -437,6 +445,14 @@ function renderHomeCharts(){
     series:[{
       type:'bar',data:ratioData.map((x,i)=>({value:x.value,itemStyle:{color:ratioColors[i%ratioColors.length],borderRadius:[4,4,0,0]}})),barMaxWidth:16
     }]
+  });
+  charts.ratioSide.setOption({tooltip:{show:false}});
+  bindChartTooltip(charts.ratioSide, function(params){
+    var arr = Array.isArray(params) ? params : [params];
+    var rows = arr.map(function(p){
+      return '<tr><td>数量</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+    }).join('');
+    return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
   });
 
 }
@@ -575,11 +591,11 @@ function renderClickableTags(schoolName, tier) {
       return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }
     if (t.type === 'shengyuan') {
-      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="window.open(withSchoolDetailSource('控制院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
+      return `<a class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;text-decoration:none;" href="${withSchoolDetailSource('控制院校生源地图.html?school=' + encodeURIComponent(schoolName), schoolName)}" title="点击查看生源分布">${t.name}</a>`;
     }
     if (t.type === 'eval') {
       const subject = '0810';
-      return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','${subject}')" title="点击查看${t.name}研究方向">${t.name}</span>`;
+      return renderEvalBadge(t.name, `onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')"`);
     }
     return `<span class="tag clickable-tag" style="background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
   }).join('');
@@ -1207,8 +1223,12 @@ const SCHOOL_TAGS = {
   'C9联盟': new Set(['北京大学','清华大学','浙江大学','复旦大学','上海交通大学','南京大学','中国科学技术大学','哈尔滨工业大学','西安交通大学'])
 };
 
-// 有生源数据的院校（172所）
+// 有生源数据的院校（以首页132所为准，兼容旧数据）
 const SHENGYUAN_SCHOOLS = new Set(['上海交通大学','上海大学','上海海事大学','上海理工大学','上海电力大学','东北农业大学','东北大学','东北师范大学','东北林业大学','东华大学','东华理工大学','东南大学','东莞理工学院','中北大学','中南大学','中南林业科技大学','中南民族大学','中国人民公安大学','中国传媒大学','中国地质大学(北京)','中国地质大学(武汉)','中国民航大学','中国海洋大学','中国石油大学(北京)','中国石油大学(华东)','中国矿业大学','中国科学技术大学','中国科学院大学','中国计量大学','中央民族大学','中山大学','云南大学','兰州大学','内蒙古工业大学','北京交通大学','北京信息科技大学','北京化工大学','北京大学','北京工业大学','北京林业大学','北京理工大学','北京电子科技学院','北京科技大学','北京航空航天大学','北京邮电大学','北方工业大学','华东交通大学','华东师范大学','华东理工大学','华中师范大学','华中科技大学','华侨大学','华北电力大学','华北电力大学(保定)','华南农业大学','华南师范大学','华南理工大学','南京信息工程大学','南京农业大学','南京大学','南京工业大学','南京工程学院','南京师范大学','南京理工大学','南京航空航天大学','南京邮电大学','南开大学','南方科技大学','南昌大学','南昌航空大学','厦门大学','合肥工业大学','吉林大学','哈尔滨工业大学','哈尔滨工程大学','哈尔滨理工大学','四川大学','国防科技大学','复旦大学','大连工业大学','大连海事大学','大连理工大学','天津大学','天津工业大学','天津理工大学','天津科技大学','太原理工大学','宁夏大学','宁波大学','安徽农业大学','安徽大学','安徽师范大学','安徽理工大学','山东大学','山东师范大学','山东科技大学','山西大学','广东工业大学','广州大学','广西大学','成都信息工程大学','成都理工大学','新疆大学','昆明理工大学','暨南大学','杭州电子科技大学','桂林电子科技大学','武汉大学','武汉工程大学','武汉理工大学','武汉科技大学','江南大学','江苏科技大学','江西师范大学','沈阳理工大学','沈阳航空航天大学','河北工业大学','河北科技大学','河南大学','河南工业大学','河南理工大学','河海大学','济南大学','浙江大学','浙江工业大学','浙江工商大学','浙江理工大学','海南大学','深圳大学','温州大学','湖北大学','湖北工业大学','湖南大学','湖南师范大学','湘潭大学','电子科技大学','石家庄铁道大学','福州大学','福建师范大学','苏州大学','西北大学','西北工业大学','西南交通大学','西南大学','西南石油大学','西南科技大学','西安交通大学','西安工业大学','西安工程大学','西安理工大学','西安电子科技大学','西安石油大学','西安科技大学','西安邮电大学','贵州大学','郑州大学','重庆大学','重庆理工大学','重庆邮电大学','长安大学','长春工业大学','长春理工大学','长江大学','长沙理工大学','陕西师范大学','集美大学','青岛理工大学','黑龙江大学','齐鲁工业大学','燕山大学','同济大学','内蒙古大学']);
+// 同步首页 132 所院校：确保每所学校详情页都有「院校生源」入口
+if (window.KAOYAN_DATA && window.KAOYAN_DATA.schoolColleges) {
+  Object.keys(window.KAOYAN_DATA.schoolColleges).forEach(function (name) { SHENGYUAN_SCHOOLS.add(name); });
+}
 
 const EVAL_TAGS = {};
 // 有就业数据的院校（98所）
@@ -1315,16 +1335,88 @@ function getTagStyle(tagName, type){
   if(type === 'region') return {bg:'#e0e7ff',color:'#3730a3',border:'#c7d2fe'};
   if(type === 'province') return {bg:'#fef3c7',color:'#92400e',border:'#fde68a'};
   if(TAG_STYLES[tagName]) return TAG_STYLES[tagName];
-  if(tagName.startsWith('控制A+')) return {bg:'#15803d',color:'#fff',border:'#166534'};
-  if(tagName.startsWith('控制A')) return {bg:'#2563eb',color:'#fff',border:'#1e40af'};
-  if(tagName.startsWith('控制A-')) return {bg:'#60a5fa',color:'#fff',border:'#3b82f6'};
-  if(tagName.startsWith('控制B+')) return {bg:'#22c55e',color:'#fff',border:'#16a34a'};
-  if(tagName.startsWith('控制B')) return {bg:'#16a34a',color:'#fff',border:'#15803d'};
-  if(tagName.startsWith('控制B-')) return {bg:'#bbf7d0',color:'#166534',border:'#86efac'};
-  if(tagName.startsWith('控制C+')) return {bg:'#facc15',color:'#713f12',border:'#fde047'};
-  if(tagName.startsWith('控制C')) return {bg:'#f97316',color:'#fff',border:'#ea580c'};
-  if(tagName.startsWith('控制C-')) return {bg:'#d1d5db',color:'#374151',border:'#9ca3af'};
+  if(tagName.startsWith('控制A+')) return {bg:'#C62828',color:'#fff',border:'#B71C1C'};
+  if(tagName.startsWith('控制A-')) return {bg:'#F4511E',color:'#fff',border:'#D84315'};
+  if(tagName.startsWith('控制A')) return {bg:'#E53935',color:'#fff',border:'#C62828'};
+  if(tagName.startsWith('控制B+')) return {bg:'#FB8C00',color:'#fff',border:'#EF6C00'};
+  if(tagName.startsWith('控制B-')) return {bg:'#FDD835',color:'#5D4037',border:'#FBC02D'};
+  if(tagName.startsWith('控制B')) return {bg:'#FFB300',color:'#fff',border:'#FF8F00'};
+  if(tagName.startsWith('控制C+')) return {bg:'#A1887F',color:'#fff',border:'#8D6E63'};
+  if(tagName.startsWith('控制C-')) return {bg:'#BDBDBD',color:'#374151',border:'#9E9E9E'};
+  if(tagName.startsWith('控制C')) return {bg:'#9E9E9E',color:'#fff',border:'#757575'};
   return {bg:'#f3f4f6',color:'#374151',border:'#17191d'};
+}
+
+
+function renderEvalBadge(tagName, clickAttr) {
+  const s = getTagStyle(tagName, 'eval');
+  const grade = tagName.replace('控制', '');
+  const ink = (s.color === '#fff' || s.color === 'white') ? s.border : s.color;
+  return `<span class="tag eval-badge ${clickAttr ? 'clickable-tag' : ''}" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:${ink};border:1px solid ${s.border};border-radius:999px;padding:3px 12px;font-size:14px;font-weight:800;white-space:nowrap;${clickAttr ? 'cursor:pointer;' : ''}box-shadow:0 2px 6px rgba(0,0,0,0.08);" ${clickAttr || ''} title="点击查看${tagName}研究方向">
+    <span style="width:8px;height:8px;border-radius:50%;background:${ink};flex-shrink:0;"></span><span>${grade}</span>
+
+    <span style="font-size:11px;font-weight:500;opacity:.85;line-height:1.2;">学科评级</span>
+  </span>`;
+}
+
+function ensureChartTooltip(){
+  var el = document.getElementById('chartTooltip');
+  if(!el){ el = document.createElement('div'); el.id='chartTooltip'; document.body.appendChild(el); }
+  return el;
+}
+function showChartTooltip(html, ev){
+  var el = ensureChartTooltip();
+  el.innerHTML = html;
+  el.style.display = 'block';
+  positionChartTooltip(ev);
+}
+function positionChartTooltip(ev){
+  var el = document.getElementById('chartTooltip');
+  if(!el || el.style.display === 'none') return;
+  var pad = 8;
+  var vw = window.innerWidth || document.documentElement.clientWidth;
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  el.style.visibility = 'hidden';
+  var r = el.getBoundingClientRect();
+  el.style.visibility = '';
+  var cx = (ev && ev.clientX != null) ? ev.clientX : Math.round(vw / 2);
+  var cy = (ev && ev.clientY != null) ? ev.clientY : Math.round(vh / 2);
+  var x = cx + 12;
+  var y = cy + 12;
+  if(x + r.width > vw - pad) x = Math.max(pad, cx - r.width - 12);
+  if(y + r.height > vh - pad) y = Math.max(pad, cy - r.height - pad);
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+}
+function hideChartTooltip(){
+  var el = document.getElementById('chartTooltip');
+  if(el) el.style.display = 'none';
+}
+document.addEventListener('click', function(e){
+  var el = document.getElementById('chartTooltip');
+  if(el && el.style.display !== 'none' && !el.contains(e.target) && !(e.target && e.target.closest && e.target.closest('.chart-container, canvas, #chartTooltip'))) hideChartTooltip();
+});
+
+function bindChartTooltip(chart, builder){
+  chart.on('mousemove', function(params){
+    if(params.componentType === 'series'){
+      var html = builder(params);
+      if(html){
+        var ev = params.event && params.event.event ? params.event.event : params.event;
+        showChartTooltip(html, ev);
+      }
+    }
+  });
+  chart.on('mouseout', function(params){ var ev = params && params.event && params.event.event ? params.event.event : null; var rel = ev && ev.relatedTarget; var tt = document.getElementById('chartTooltip'); if(tt && rel && tt.contains(rel)) return; hideChartTooltip(); });
+  chart.on('click', function(params){
+    if(params.componentType === 'series'){
+      var html = builder(params);
+      if(html){
+        var ev = params.event && params.event.event ? params.event.event : params.event;
+        showChartTooltip(html, ev);
+      }
+    }
+  });
 }
 
 // ===================== 二级页 =====================
@@ -1582,6 +1674,7 @@ function renderDetail(schoolName){
   // 销毁旧图表
   ['detailMajor','detailPie','detailCollege','detailCourse'].forEach(k=>{
     if(charts[k]){ charts[k].dispose(); charts[k]=null; }
+      Object.keys(charts).forEach(function(key){ if(key.indexOf(k+'_')===0){ if(charts[key]) charts[key].dispose(); delete charts[key]; } });
   });
 
   // 保存当前学校数据到全局变量供筛选使用
@@ -1600,8 +1693,8 @@ function renderDetail(schoolName){
       const s = getTagStyle(t.name, t.type);
       const baseStyle = `background:${s.bg};color:${s.color};border:1px solid ${s.border};white-space:nowrap;cursor:pointer;font-size:14px;padding:6px 14px;border-radius:16px;`;
       if (t.type === 'tier') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTier('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
-      if (t.type === 'shengyuan') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="window.open(withSchoolDetailSource('控制院校生源地图.html?school=${encodeURIComponent(schoolName)}','${schoolName.replace(/'/g,"\\'")}'),'_self')" title="点击查看生源分布">${t.name}</span>`;
-      if (t.type === 'eval') return `<span class="tag clickable-tag" style="${baseStyle}" onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')" title="点击查看${t.name}研究方向">${t.name}</span>`;
+      if (t.type === 'shengyuan') return `<a class="tag clickable-tag" style="${baseStyle}text-decoration:none;" href="${withSchoolDetailSource('控制院校生源地图.html?school=' + encodeURIComponent(schoolName), schoolName)}" title="点击查看生源分布">${t.name}</a>`;
+      if (t.type === 'eval') return renderEvalBadge(t.name, `onclick="openSchoolModal('${schoolName.replace(/'/g, "\\'")}','0810')"`);
       return `<span class="tag clickable-tag" style="${baseStyle}" onclick="filterByTag('${t.name.replace(/'/g, "\\'")}')" title="点击筛选所有${t.name}院校">${t.name}</span>`;
     }).join('')}</div>`;
     
@@ -1683,6 +1776,11 @@ function renderDetail(schoolName){
         group: t.name
       };
       const tip = tipMap[t.type] || t.name;
+        if (t.type === 'shengyuan') {
+          const href = withSchoolDetailSource('控制院校生源地图.html?school=' + encodeURIComponent(schoolName), schoolName);
+          return `<a class="tag clickable-tag" data-type="${t.type}" href="${href}" style="${baseStyle}cursor:pointer;text-decoration:none;" title="点击查看${schoolName}生源分布">${t.name}</a>`;
+        }
+        if (t.type === 'eval') return renderEvalBadge(t.name, '');
       return `<span class="tag" data-type="${t.type}" style="${baseStyle}" title="${tip}">${t.name}</span>`;
     }).join('');
   }
@@ -1868,19 +1966,69 @@ function renderDetail(schoolName){
     num: x.admit>0 ? x.admit : (x.enter>0 ? x.enter : 0)
   })).sort((a,b)=>b.num-a.num);
 
+
+  // 各专业复试/录取平均分对比：拆分多个图表，避免名称遮挡
+  var majorChunkSize = 4;
+  var majorChunks = [];
+  for(var mi=0; mi<majorArr.length; mi+=majorChunkSize) majorChunks.push(majorArr.slice(mi, mi+majorChunkSize));
+  var majorContainer = document.getElementById('chartDetailMajor');
+  if(majorContainer){
+    majorContainer.style.height = 'auto';
+    majorContainer.innerHTML = '';
+    majorChunks.forEach(function(chunk, ci){
+      var div = document.createElement('div');
+      div.style.height = '280px';
+      if(ci > 0) div.style.marginTop = '16px';
+      majorContainer.appendChild(div);
+      var chart = echarts.init(div, null, {renderer:'canvas'});
+      var key = ci === 0 ? 'detailMajor' : 'detailMajor_' + (ci+1);
+      charts[key] = chart;
+      chart.setOption({
+        tooltip:{show:false},
+        legend:{bottom:0},
+        grid:{left:'3%',right:'4%',bottom:'30%',top:'10%',containLabel:true},
+        xAxis:{type:'category',data:chunk.map(function(x){return x.shortName;}),axisLabel:{interval:0,fontSize:9,width:80,overflow:'break',lineHeight:12}},
+        yAxis:{type:'value',name:'分数'},
+        series:[
+          {name:'复试平均分',type:'bar',data:chunk.map(function(x){return x.enterAvg!=null?+x.enterAvg.toFixed(1):null;}),itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]},barMaxWidth:20},
+          {name:'录取平均分',type:'bar',data:chunk.map(function(x){return x.admitAvg!=null?+x.admitAvg.toFixed(1):null;}),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:20},
+          {name:'专业课平均',type:'bar',data:chunk.map(function(x){return x.courseAvg!=null?+x.courseAvg.toFixed(1):null;}),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:20}
+        ]
+      });
+      bindChartTooltip(chart, function(params){
+        var arr = Array.isArray(params) ? params : [params];
+        var rows = arr.map(function(p){
+          return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+        }).join('');
+        return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+      });
+    });
+  }
+  /*
   charts.detailMajor = echarts.init(document.getElementById('chartDetailMajor', null, {renderer: 'canvas'}));
   charts.detailMajor.setOption({
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    tooltip:{show:false,trigger:'axis',axisPointer:{type:'shadow'}},
     legend:{bottom:0},
-    grid:{left:'3%',right:'4%',bottom:'20%',top:'10%',containLabel:true},
-    xAxis:{type:'category',data:majorArr.map(x=>x.shortName),axisLabel:{rotate:50,fontSize:10,interval:0}},
+    grid:{left:'3%',right:'4%',bottom:'18%',top:'10%',containLabel:true},
+    xAxis:{type:'category',data:majorArr.map(x=>x.shortName),axisLabel:{interval:0,fontSize:9,width:90,overflow:'truncate'}},
     yAxis:{type:'value',name:'分数'},
+    dataZoom:[{type:'inside',xAxisIndex:0,start:0,end:Math.min(100,Math.max(15,Math.round(4/majorArr.length*100)))},{type:'slider',xAxisIndex:0,height:16,bottom:2,start:0,end:Math.min(100,Math.max(15,Math.round(4/majorArr.length*100)))}],
     series:[
       {name:'复试平均分',type:'bar',data:majorArr.map(x=>x.enterAvg!=null?+x.enterAvg.toFixed(1):null),itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]},barMaxWidth:20},
       {name:'录取平均分',type:'bar',data:majorArr.map(x=>x.admitAvg!=null?+x.admitAvg.toFixed(1):null),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:20},
       {name:'专业课平均',type:'bar',data:majorArr.map(x=>x.courseAvg!=null?+x.courseAvg.toFixed(1):null),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:20}
     ]
   });
+
+  bindChartTooltip(charts.detailMajor, function(params){
+    var arr = Array.isArray(params) ? params : [params];
+    var rows = arr.map(function(p){
+      return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+    }).join('');
+    return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+  });
+  */
+
 
   // 各专业招生人数占比(哈工大为柱状图, 其余学校保持饼图)——标注具体方向名+人数
   const pieShort = function(n){
@@ -1892,7 +2040,7 @@ function renderDetail(schoolName){
   if(schoolName === '哈尔滨工业大学' || pieArr.length > 10){
     const pieTotal = pieArr.reduce((s,x)=>s+(x.num||0),0);
     charts.detailPie.setOption({
-      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},
+      tooltip:{show:false,trigger:'axis',axisPointer:{type:'shadow'},
         formatter:function(ps){
           return ps.map(p=>{
             const nm = pieShort(p.name);
@@ -1900,8 +2048,8 @@ function renderDetail(schoolName){
             return nm + '<br/>招生人数 <b>' + p.value + '</b> 人 (' + pct + '%)';
           }).join('<br/>');
         }},
-      grid:{left:'3%',right:'4%',bottom:'8%',top:'10%',containLabel:true},
-      xAxis:{type:'category',data:pieArr.map(x=>pieShort(x.name)),axisLabel:{rotate:55,fontSize:9,interval:0}},
+      grid:{left:'3%',right:'4%',bottom:'28%',top:'10%',containLabel:true},
+      xAxis:{type:'category',data:pieArr.map(x=>pieShort(x.name)),axisLabel:{interval:0,rotate:60,fontSize:9,lineHeight:12}},
       yAxis:{type:'value',name:'人数'},
       series:[{
         name:'招生人数',type:'bar',
@@ -1910,9 +2058,17 @@ function renderDetail(schoolName){
         label:{show:true,position:'top',fontSize:9,color:'#17191d',formatter:function(p){return p.value ? p.value : '';}}
       }]
     });
+    bindChartTooltip(charts.detailPie, function(params){
+      var arr = Array.isArray(params) ? params : [params];
+      var rows = arr.map(function(p){
+        var pct = pieTotal ? (p.value/pieTotal*100).toFixed(1) : '0';
+        return '<tr><td>' + pieShort(p.name) + '</td><td>' + (p.value||0) + ' 人 (' + pct + '%)</td></tr>';
+      }).join('');
+      return '<div class="tt-title">招生人数</div><table>' + rows + '</table>';
+    });
   } else {
     charts.detailPie.setOption({
-      tooltip:{trigger:'item',formatter:function(p){
+      tooltip:{show:false,trigger:'item',formatter:function(p){
         return p.name + '<br/>招生人数 <b>' + (p.value||0) + '</b> 人 (' + p.percent + '%)';
       }},
       legend:{type:'scroll',bottom:0,textStyle:{fontSize:11},formatter:function(name){return name.length>16?name.substring(0,16)+'…':name;}},
@@ -1933,6 +2089,9 @@ function renderDetail(schoolName){
         data:pieArr.map(x=>({name:x.name,value:x.num||0}))
       }]
     });
+    bindChartTooltip(charts.detailPie, function(params){
+      return '<div class="tt-title">' + (params.name||'') + '</div><table><tr><td>招生人数</td><td>' + (params.value||0) + ' 人 (' + (params.percent!=null?params.percent:'') + '%)</td></tr></table>';
+    });
   }
 
   // 各学院招生情况：显示该学院所有方向的进复试人数 + 拟录取人数（按学院区分）
@@ -1944,11 +2103,13 @@ function renderDetail(schoolName){
     collegeGroups[c].enter += (r.enterNum||0);
     collegeGroups[c].admit += (r.admitNum||0);
   });
+
+
   const collegeArr = Object.values(collegeGroups).sort((a,b)=>b.admit-a.admit);
 
   charts.detailCollege = echarts.init(document.getElementById('chartDetailCollege', null, {renderer: 'canvas'}));
   charts.detailCollege.setOption({
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(params){
+    tooltip:{show:false,trigger:'axis',axisPointer:{type:'shadow'},formatter:function(params){
       return params[0].axisValue + '<br/>' + params.map(p=>p.marker + p.seriesName + ' <b>' + (p.value||0) + '</b> 人').join('<br/>');
     }},
     legend:{bottom:0},
@@ -1956,10 +2117,22 @@ function renderDetail(schoolName){
     xAxis:{type:'value',name:'人数'},
     yAxis:{type:'category',data:collegeArr.map(x=>x.name.length>22?x.name.substring(0,22)+'…':x.name).reverse(),axisLabel:{fontSize:10}},
     series:[
-      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#637c9a',borderRadius:[5,5,0,0]},barMaxWidth:18},
-      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:18}
+      {name:'进复试人数',type:'bar',data:collegeArr.map(x=>x.enter).reverse(),itemStyle:{color:'#637c9a',borderRadius:[5,5,5,5]},barMaxWidth:18},
+      {name:'拟录取人数',type:'bar',data:collegeArr.map(x=>x.admit).reverse(),itemStyle:{color:'#a92122',borderRadius:[5,5,5,5]},barMaxWidth:18}
     ]
   });
+
+  bindChartTooltip(charts.detailCollege, function(params){
+    var arr = Array.isArray(params) ? params : [params];
+    var rows = arr.map(function(p){
+      return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value||0) + ' 人</td></tr>';
+    }).join('');
+    var idx = arr[0] && arr[0].dataIndex;
+    var college = collegeArr[collegeArr.length - 1 - idx];
+    var collegeName = college ? college.name : (arr[0] && arr[0].axisValue ? arr[0].axisValue : '');
+    return '<div class="tt-title">' + collegeName + '</div><table>' + rows + '</table>';
+  });
+
 
   // 专业课分数分布（各方向）——x轴注明具体方向名（同名方向追加学院短名区分）
   const courseDirLabel = schoolRecs.map(r=>pieShort(r.majorName) || r.majorName || '未知');
@@ -1972,24 +2145,81 @@ function renderDetail(schoolName){
     }
     return d.length>20 ? d.substring(0,20)+'…' : d;
   });
+
+  // 专业课分数分布：拆分多个图表，避免名称遮挡
+  var courseChunkSize = 4;
+  var courseChunks = [];
+  for(var ci2=0; ci2<courseXData.length; ci2+=courseChunkSize) courseChunks.push(courseXData.slice(ci2, ci2+courseChunkSize));
+  var courseContainer = document.getElementById('chartDetailCourse');
+  if(courseContainer){
+    courseContainer.style.height = 'auto';
+    courseContainer.innerHTML = '';
+    courseChunks.forEach(function(chunk, ci){
+      var div = document.createElement('div');
+      div.style.height = '280px';
+      if(ci > 0) div.style.marginTop = '16px';
+      courseContainer.appendChild(div);
+      var chart = echarts.init(div, null, {renderer:'canvas'});
+      var key = ci === 0 ? 'detailCourse' : 'detailCourse_' + (ci+1);
+      charts[key] = chart;
+      var startIdx = ci * courseChunkSize;
+      chart.setOption({
+        tooltip:{show:false},
+        legend:{bottom:0},
+        grid:{left:'3%',right:'4%',bottom:'30%',top:'10%',containLabel:true},
+        xAxis:{type:'category',data:chunk,axisLabel:{interval:0,fontSize:9,width:80,overflow:'break',lineHeight:12}},
+        yAxis:{type:'value',name:'分数'},
+        series:[
+          {name:'专业课最高',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseMax;}),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14},
+          {name:'专业课平均',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseAvg;}),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:14},
+          {name:'专业课最低',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseMin;}),itemStyle:{color:'#5d8d96',borderRadius:[5,5,0,0]},barMaxWidth:14}
+        ]
+      });
+      bindChartTooltip(chart, function(params){
+        var arr = Array.isArray(params) ? params : [params];
+        var idx = arr[0] && arr[0].dataIndex;
+        var r = schoolRecs[startIdx + idx];
+        var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
+        var rows = arr.map(function(p){
+          return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+        }).join('');
+        return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
+      });
+    });
+  }
+  /*
   charts.detailCourse = echarts.init(document.getElementById('chartDetailCourse', null, {renderer: 'canvas'}));
   charts.detailCourse.setOption({
-    tooltip:{trigger:'axis',formatter:function(ps){
+    tooltip:{show:false,trigger:'axis',formatter:function(ps){
       const idx = ps[0].dataIndex;
       const r = schoolRecs[idx];
       const head = (r.majorName||'') + (r.college ? '（'+r.college+'）' : '');
       return head + '<br/>' + ps.map(p=>p.marker + p.seriesName + ' <b>' + (p.value==null?'-':p.value) + '</b>').join('<br/>');
     }},
     legend:{bottom:0},
-    grid:{left:'3%',right:'4%',bottom:'22%',top:'10%',containLabel:true},
-    xAxis:{type:'category',data:courseXData,axisLabel:{rotate:55,fontSize:9,interval:0}},
+    grid:{left:'3%',right:'4%',bottom:'18%',top:'10%',containLabel:true},
+    xAxis:{type:'category',data:courseXData,axisLabel:{interval:0,fontSize:9,width:90,overflow:'truncate'}},
     yAxis:{type:'value',name:'分数'},
+    dataZoom:[{type:'inside',xAxisIndex:0,start:0,end:Math.min(100,Math.max(15,Math.round(4/schoolRecs.length*100)))},{type:'slider',xAxisIndex:0,height:16,bottom:2,start:0,end:Math.min(100,Math.max(15,Math.round(4/schoolRecs.length*100)))}],
     series:[
       {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14},
       {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:14},
       {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#5d8d96',borderRadius:[5,5,0,0]},barMaxWidth:14}
     ]
   });
+
+  bindChartTooltip(charts.detailCourse, function(params){
+    var arr = Array.isArray(params) ? params : [params];
+    var idx = arr[0] && arr[0].dataIndex;
+    var r = schoolRecs[idx];
+    var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
+    var rows = arr.map(function(p){
+      return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+    }).join('');
+    return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
+  });
+  */
+
 
   // 初始渲染表格（无筛选）
   renderDetailTable(schoolRecs);
@@ -2363,14 +2593,38 @@ function renderDetailDistributions(schoolName, recs){
           {name:'录取人数', type:'bar', data:d.total.admit, itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]}}
         ]
       });
+        ch.setOption({tooltip:{show:false}});
+        bindChartTooltip(ch, function(params){
+          var arr = Array.isArray(params) ? params : [params];
+          var rows = arr.map(function(p){
+            return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + ' 人</td></tr>';
+          }).join('');
+          return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+        });
     }
     if(d.math && typeof echarts !== 'undefined'){
       var cm = echarts.init(document.getElementById('dist-math-'+idx));
       cm.setOption(histOption(d.math, '#637c9a'));
+        cm.setOption({tooltip:{show:false}});
+        bindChartTooltip(cm, function(params){
+          var arr = Array.isArray(params) ? params : [params];
+          var rows = arr.map(function(p){
+            return '<tr><td>' + (p.seriesName||'人数') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+          }).join('');
+          return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+        });
     }
     if(d.course && typeof echarts !== 'undefined'){
       var cc = echarts.init(document.getElementById('dist-course-'+idx));
       cc.setOption(histOption(d.course, '#c98a3d'));
+        cc.setOption({tooltip:{show:false}});
+        bindChartTooltip(cc, function(params){
+          var arr = Array.isArray(params) ? params : [params];
+          var rows = arr.map(function(p){
+            return '<tr><td>' + (p.seriesName||'均分') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+          }).join('');
+          return '<div class="tt-title">' + (arr[0] && arr[0].name ? arr[0].name : '') + '</div><table>' + rows + '</table>';
+        });
     }
   });
 }

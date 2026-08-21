@@ -29,8 +29,8 @@
       var links = g.items.map(function (it) {
         return '<a href="' + it.href + '">' + liIcon(it.icon) + it.label + '</a>';
       }).join('');
-      return '<div class="hc">' +
-        '<div class="hc-head" role="button" tabindex="0" aria-expanded="false" onclick="var hc=this.parentNode;var o=hc.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o);">' +
+      return '<div class="hc open">' +
+        '<div class="hc-head" role="button" tabindex="0" aria-expanded="true" onclick="var hc=this.parentNode;var o=hc.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o);">' +
           '<span class="hc-ico">' + liIcon(g.icon) + '</span>' +
           '<b>' + g.label + '</b>' +
           '<span class="hc-n">' + g.items.length + ' 项</span>' +

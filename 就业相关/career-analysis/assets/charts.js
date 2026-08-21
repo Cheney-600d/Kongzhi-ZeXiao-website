@@ -101,13 +101,13 @@
     window.addEventListener('resize', function () { c2.resize(); });
   }
 
-  // 方向薪资速览表
+  // 方向薪资速览卡片
   var dirRows = '';
   direction.forEach(function (d) {
-    dirRows += '<tr><td><span class="tag">' + d.name + '</span></td><td>' + d.co +
-               '</td><td><span class="salary-tag">' + d.low + '-' + d.high + '万/年</span></td><td>' + d.note + '</td></tr>';
+    dirRows += '<div class="data-card"><div class="data-card-title"><span class="data-card-name">' + d.name + '</span><span class="salary-tag">' + d.low + '-' + d.high + '万/年</span></div><p><b>代表企业：</b>' + d.co + '</p><p><b>说明：</b>' + d.note + '</p></div>';
+               
   });
-  document.getElementById('direction-table-body').innerHTML = dirRows;
+  document.getElementById('direction-cards').innerHTML = dirRows;
 
   // ============================================================
   //  第二章：头部私企薪酬体系
@@ -175,7 +175,7 @@
     window.addEventListener('resize', function () { c4.resize(); });
   }
 
-  // 私企薪酬体系表
+  // 私企薪酬体系卡片
   var privateRows = '';
   var privateTable = [
     ['大疆', '应届总包27-50W；算法SP/SSP 42/54/60W', '弹性打卡+房补/公租房', '研发岗83%薪资40K左右'],
@@ -188,10 +188,10 @@
     ['极氪', '自动驾驶25-35K·14薪', '—', '新能源车企智能化投入大']
   ];
   privateTable.forEach(function (r) {
-    privateRows += '<tr><td><span class="tag">' + r[0] + '</span></td><td>' + r[1] +
-                   '</td><td><span class="salary-tag">' + r[2] + '</span></td><td>' + r[3] + '</td></tr>';
+    privateRows += '<div class="data-card"><div class="data-card-title"><span class="data-card-name">' + r[0] + '</span><span class="salary-tag">' + r[2] + '</span></div><p><b>职级/薪酬结构：</b>' + r[1] + '</p><p><b>特点/福利：</b>' + r[3] + '</p></div>';
+                   
   });
-  document.getElementById('private-table-body').innerHTML = privateRows;
+  document.getElementById('private-cards').innerHTML = privateRows;
 
   // ============================================================
   //  第三章：国央企薪酬体系
@@ -250,7 +250,7 @@
     window.addEventListener('resize', function () { c6.resize(); });
   }
 
-  // 国央企薪酬要点表
+  // 国央企薪酬要点卡片
   var soeRows = '';
   var soeTable = [
     ['航天科工', '硕士约34.4K/月（年薪约41万）', '98.7%岗位薪酬20-50K'],
@@ -269,10 +269,10 @@
     ['中石油', '硕博岗级7000左右', '绩效与艰苦补贴弹性大']
   ];
   soeTable.forEach(function (r) {
-    soeRows += '<tr><td><span class="tag">' + r[0] + '</span></td><td>' + r[1] +
-               '</td><td><span class="salary-tag">' + r[2] + '</span></td></tr>';
+    soeRows += '<div class="data-card"><div class="data-card-title"><span class="data-card-name">' + r[0] + '</span></div><p><b>硕士参考：</b>' + r[1] + '</p><p><b>亮点/福利：</b>' + r[2] + '</p></div>';
+               
   });
-  document.getElementById('soe-table-body').innerHTML = soeRows;
+  document.getElementById('soe-cards').innerHTML = soeRows;
 
   // ============================================================
   //  第四章：研究所与就业单位分布
@@ -314,11 +314,11 @@
     window.addEventListener('resize', function () { c7.resize(); });
   }
 
-  // 14城研究所布局明细表
+  // 14城研究所布局明细卡片
   var instRows = '';
   institute.forEach(function (d) {
-    instRows += '<tr><td><span class="tag">' + d.city + '</span></td><td>' + d.units +
-                '</td><td><span class="salary-tag">' + d.f + '</span></td></tr>';
+    instRows += '<div class="data-card"><div class="data-card-title"><span class="data-card-name">' + d.city + '</span><span class="salary-tag">' + d.n + ' 家单位</span></div><p><b>研究所/单位：</b>' + d.units + '</p><p><b>方向特色：</b>' + d.f + '</p></div>';
+                
   });
-  document.getElementById('institute-table-body').innerHTML = instRows;
+  document.getElementById('institute-cards').innerHTML = instRows;
 })();

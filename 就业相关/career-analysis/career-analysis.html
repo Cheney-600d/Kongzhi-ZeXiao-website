@@ -64,6 +64,14 @@ tbody tr:hover { background: #f8f9fa; }
 .tag { display: inline-block; background: #f0f4ff; color: var(--accent2); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 1px 2px; white-space: nowrap; }
 .salary-tag { display: inline-block; background: linear-gradient(135deg, #fff8e1, #fff3cd); color: #b8860b; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 1px 2px; white-space: nowrap; font-weight: 600; border: 1px solid #f0d68a; }
 .salary-tag.hot { background: linear-gradient(135deg, #ffe0e0, #ffcdd2); color: #c0392b; border-color: #e8a0a0; }
+  .data-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .data-card { background: var(--bg2); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 10px; padding: 14px 16px; box-shadow: var(--card-shadow); transition: transform .2s, box-shadow .2s; }
+  .data-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+  .data-card-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .data-card-name { font-weight: 700; font-size: 15px; color: var(--ink); }
+  .data-card p { font-size: 12px; color: var(--muted); line-height: 1.65; margin: 4px 0; }
+  .data-card p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 600px) { .data-cards { grid-template-columns: 1fr; } }
 .chart-figure { margin: 1.5rem 0; }
 .chart-figure figcaption { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
 mark.key { background: none; color: var(--accent); font-weight: 600; }
@@ -433,10 +441,15 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 <!-- Mobile toggle button -->
 <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换导航">☰</button>
 
-<header class="hero" id="top">
+<header class="hero" id="top" style="display:flex;flex-direction:column;align-items:center;">
   <h1 style="font-size:2.4rem;font-weight:900;color:var(--accent);text-shadow:0 2px 8px rgba(230,57,70,0.15);">控制类硕士就业市场数据总览报告</h1>
-  <p style="position:relative;z-index:1;margin-top:0.8rem;color:var(--muted);font-size:0.95rem;">基于《25就业宝典》与《26择校宝典》整理 · 方向薪资 / 私企薪酬 / 国央企 / 研究所四大维度</p>
-  <a href="../job-listing/job-listing.html" style="position:relative;z-index:1;display:inline-block;margin-top:16px;padding:10px 22px;background:linear-gradient(135deg,#e63946,#c1121f);color:#fff;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 6px 18px rgba(230,57,70,.3);">🔍 查看控制/自动化对口招聘（136 条）→</a>
+  <div style="position:relative;z-index:1;order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:540px;margin:16px auto 0;">
+      <a href="#sec-dir" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;background:rgba(255,255,255,.88);border:1px solid #d7dee6;border-radius:999px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;">一、就业方向与薪资全景</a>
+      <a href="#sec-private" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;background:rgba(255,255,255,.88);border:1px solid #d7dee6;border-radius:999px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;">二、头部私企薪酬体系</a>
+      <a href="#sec-soe" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;background:rgba(255,255,255,.88);border:1px solid #d7dee6;border-radius:999px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;">三、国央企薪酬体系</a>
+      <a href="#sec-institute" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;background:rgba(255,255,255,.88);border:1px solid #d7dee6;border-radius:999px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;">四、研究所与就业单位分布</a>
+    </div>
+  <a href="../job-listing/job-listing.html" style="position:relative;z-index:1;display:inline-block;order:1;margin-top:16px;padding:10px 22px;background:linear-gradient(135deg,#e63946,#c1121f);color:#fff;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 6px 18px rgba(230,57,70,.3);">🔍 查看控制/自动化对口招聘（136 条）→</a>
 </header>
 
 <div class="container">
@@ -458,14 +471,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 
     <div class="card">
       <h3>各方向薪资速览</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>就业方向</th><th>代表企业</th><th>参考薪资</th><th>说明</th></tr>
-          </thead>
-          <tbody id="direction-table-body"></tbody>
-        </table>
-      </div>
+      <div class="data-cards" id="direction-cards"></div>
     </div>
 
     <div class="insight-box">
@@ -494,14 +500,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 
     <div class="card">
       <h3>头部私企薪酬体系对比</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>企业</th><th>职级/薪酬结构</th><th>硕士应届参考</th><th>特点/隐性福利</th></tr>
-          </thead>
-          <tbody id="private-table-body"></tbody>
-        </table>
-      </div>
+      <div class="data-cards" id="private-cards"></div>
     </div>
 
     <div class="insight-box">
@@ -530,14 +529,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 
     <div class="card">
       <h3>国央企薪酬要点（25宝典）</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>单位</th><th>硕士参考</th><th>亮点 / 隐性福利</th></tr>
-          </thead>
-          <tbody id="soe-table-body"></tbody>
-        </table>
-      </div>
+      <div class="data-cards" id="soe-cards"></div>
     </div>
 
     <div class="insight-box">
@@ -562,14 +554,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 
     <div class="card">
       <h3>14城研究所布局明细</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>城市</th><th>研究所 / 单位</th><th>方向特色</th></tr>
-          </thead>
-          <tbody id="institute-table-body"></tbody>
-        </table>
-      </div>
+      <div class="data-cards" id="institute-cards"></div>
     </div>
 
     <div class="insight-box">
@@ -623,7 +608,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
         var target = document.getElementById(targetId);
         if (target) {
           e.preventDefault();
-          var offset = target.getBoundingClientRect().top + window.pageYOffset - 20;
+          var offset = target.getBoundingClientRect().top + window.pageYOffset - (window.matchMedia('(max-width:760px)').matches ? 84 : 20);
           window.scrollTo({ top: offset, behavior: 'smooth' });
         }
       }

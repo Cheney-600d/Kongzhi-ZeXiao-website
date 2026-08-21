@@ -1,14 +1,19 @@
 /* 主题全局细节：选中色 + 滚动条 + 焦点态 + 卡片hover + 骨架屏（控制考研红） */
 ::selection{background:#a92122;color:#fff;text-shadow:none}
 ::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
-html{scrollbar-width:thin;scrollbar-color:#c9a0a0 #f1f0eb}
-::-webkit-scrollbar{width:9px;height:9px}
-::-webkit-scrollbar-track{background:#f1f0eb}
-::-webkit-scrollbar-thumb{background:#c9a0a0;border-radius:999px;border:2px solid #f1f0eb}
-::-webkit-scrollbar-thumb:hover{background:#a92122}
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar{display:none;width:0;height:0}
 :focus-visible{outline:2px solid #a92122;outline-offset:2px}
 [id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
 [id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
 @keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .chart-container{transition:box-shadow .2s ease,transform .2s ease}
 .card:hover,.chart-container:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(169,33,34,.12) !important;border-color:#a92122 !important}
+
+
+#chartTooltip{position:fixed;z-index:99999;display:none;max-width:min(92vw,360px);max-height:70vh;overflow-y:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);padding:10px 12px;font-size:12px;line-height:1.6;color:#17191d;pointer-events:auto;}
+#chartTooltip .tt-title{font-weight:700;margin-bottom:6px;color:#17191d;}
+#chartTooltip table{width:100%;border-collapse:collapse;}
+#chartTooltip td{padding:4px 6px;border-bottom:1px solid #f0f0f0;vertical-align:top;}
+#chartTooltip td:first-child{color:#6b7280;white-space:nowrap;}
+#chartTooltip td:last-child{color:#17191d;font-weight:600;}

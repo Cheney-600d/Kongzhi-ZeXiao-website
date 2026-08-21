@@ -31,7 +31,16 @@
   var isDetailEntry = window.location.search.indexOf('school=') !== -1 ||
                       window.location.search.indexOf('from=') !== -1;
 
-  if ((!forceReplay && hasPlayed) || reducedMotion || isDetailEntry) {
+  // 从站内其他页面返回首页时，不重复播放入场动画
+  var isReturnFromSite = false;
+  try {
+    if (document.referrer) {
+      var refUrl = new URL(document.referrer);
+      if (refUrl.origin === window.location.origin) isReturnFromSite = true;
+    }
+  } catch (error) {}
+
+  if ((!forceReplay && (hasPlayed || isReturnFromSite)) || reducedMotion || isDetailEntry) {
     intro.remove();
     return;
   }

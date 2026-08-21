@@ -77,6 +77,7 @@
       font-size: .9rem;
       background: #fff;
     }
+    .filter-bar select:not(#school-select) { display: none; }
     .filter-bar input[type="text"] {
       flex: 1;
       min-width: 200px;
@@ -100,6 +101,7 @@
     }
     .school-tag:hover { background: #e3e5e7; }
     .school-tag.active { background: #e63946; color: #fff; }
+    .school-tags { display: none; }
     
     .tag-orange { background: #fff3e0; color: #ff8f1f; }
     .tag-green { background: #e8f5e9; color: #00b8a9; }
@@ -133,7 +135,10 @@
       
       <!-- Filter Bar -->
       <div class="filter-bar">
-        <input type="text" id="search-input" placeholder="<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> 搜索院校、专业课、专业方向...">
+        <input type="text" id="search-input" placeholder="🔍 搜索学校...">
+          <select id="school-select">
+            <option value="">全部学校</option>
+          </select>
         <select id="filter-year">
           <option value="">全部年份</option>
           <option value="26考研">26考研</option>
@@ -303,82 +308,58 @@ function renderPosts(posts) {
 
 function getConditionFilters() {
   const search = document.getElementById('search-input').value.toLowerCase();
-  const year = document.getElementById('filter-year').value;
-  const level = document.getElementById('filter-level').value;
-  const category = document.getElementById('filter-category').value;
-  const score = document.getElementById('filter-score').value;
-  return { search, year, level, category, score };
+  return { search };
 }
 
 function applyFilters(opts) {
-  const { search, year, level, category, score, school } = opts;
+  const { search, school } = opts;
   return POSTS.filter(p => {
-    if (year && p.year !== year) return false;
-    if (level && p.level !== level) return false;
-    if (category && p.category !== category) return false;
-    if (score) {
-      const t = parseInt(p.total, 10);
-      if (isNaN(t)) return false;
-      if (score === '420+' && t < 420) return false;
-      if (score === '400-419' && (t < 400 || t > 419)) return false;
-      if (score === '380-399' && (t < 380 || t > 399)) return false;
-      if (score === '<380' && t >= 380) return false;
-    }
     if (school && p.school !== school) return false;
     if (search) {
-      const text = (p.title + p.school + p.schoolShort + p.code + p.category + p.level).toLowerCase();
+      const text = (p.school + (p.schoolShort || '') + (p.code || '')).toLowerCase();
       if (!text.includes(search)) return false;
     }
     return true;
   });
 }
 
-// 根据当前筛选条件（不含院校），动态更新院校标签云
+// 根据当前搜索条件（仅学校），动态更新院校标签云
 function updateSchoolTags() {
-  const { search, year, level, category, score } = getConditionFilters();
-  // 先过滤出满足条件（不含院校）的结果
-  const filtered = applyFilters({ search, year, level, category, score, school: '' });
-  // 提取唯一院校并排序
-  const schools = [...new Set(filtered.map(p => p.school))].filter(s => s !== '某985').sort();
-  
-  const container = document.getElementById('school-tags');
-  let html = '<button class="school-tag active" data-school="">全部院校</button>';
-  schools.forEach(s => {
-    html += '<button class="school-tag" data-school="' + s + '">' + s + '</button>';
-  });
-  container.innerHTML = html;
+  const { search } = getConditionFilters();
+  const filtered = applyFilters({ search, school: '' });
+  const schools = [...new Set(filtered.map(p => p.school))].filter(s => s !== '某985').sort((a, b) => a.localeCompare(b, 'zh-CN'));
+  const select = document.getElementById('school-select');
+  if (!select) return;
+  const current = select.value;
+  select.innerHTML = '<option value="">全部学校</option>' + schools.map(s => '<option value="' + s + '">' + s + '</option>').join('');
+  select.value = current || '';
 }
 
-// 条件筛选变化时：更新标签云 + 渲染卡片
+// 搜索变化时：更新标签云 + 渲染卡片
 function onConditionChange() {
   updateSchoolTags();
-  const { search, year, level, category, score } = getConditionFilters();
-  const filtered = applyFilters({ search, year, level, category, score, school: '' });
+  const { search } = getConditionFilters();
+  const filtered = applyFilters({ search, school: '' });
   renderPosts(filtered);
 }
 
 // 院校标签点击时：只渲染卡片（不更新标签云）
 function onSchoolClick(school) {
-  const { search, year, level, category, score } = getConditionFilters();
-  const filtered = applyFilters({ search, year, level, category, score, school });
+  const { search } = getConditionFilters();
+  const filtered = applyFilters({ search, school });
   renderPosts(filtered);
 }
 
-// 事件绑定：条件筛选框
-['search-input', 'filter-year', 'filter-level', 'filter-category', 'filter-score'].forEach(id => {
+// 事件绑定：仅保留学校搜索框
+['search-input'].forEach(id => {
   const el = document.getElementById(id);
   if (!el) return;
-  const eventType = (id === 'search-input') ? 'input' : 'change';
-  el.addEventListener(eventType, onConditionChange);
+  el.addEventListener('input', onConditionChange);
 });
 
-// 事件绑定：院校标签点击
-document.getElementById('school-tags').addEventListener('click', function(e) {
-  if (e.target.classList.contains('school-tag')) {
-    document.querySelectorAll('.school-tag').forEach(t => t.classList.remove('active'));
-    e.target.classList.add('active');
-    onSchoolClick(e.target.dataset.school || '');
-  }
+// 事件绑定：学校下拉框
+document.getElementById('school-select').addEventListener('change', function(e) {
+  onSchoolClick(e.target.value || '');
 });
 
 // 初始渲染

@@ -77,26 +77,15 @@
         
         /* 资料体系概览 */
         .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; }
-        .overview-grid:nth-of-type(1) { grid-template-columns: repeat(4, 1fr); }
-        .overview-card { background: #FFFFFF; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+        .overview-grid:nth-of-type(1) { grid-template-columns: repeat(5, 1fr); }
+        .overview-card { background: #FFFFFF; border-radius: 10px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s; border: 2px solid transparent; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100%; }
         .overview-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(169,33,34,0.3); border-color: rgba(169,33,34,0.3); }
-        /* 马卡龙配色 - 第一个grid (7个卡片) */
-        .overview-grid:nth-of-type(1) > :nth-child(2) { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
-        .overview-grid:nth-of-type(1) > :nth-child(3) { background: linear-gradient(135deg, #FFF9C4, #FFE082); }
-        .overview-grid:nth-of-type(1) > :nth-child(4) { background: linear-gradient(135deg, #E8F5E9, #A5D6A7); }
-        .overview-grid:nth-of-type(1) > :nth-child(5) { background: linear-gradient(135deg, #F3E5F5, #CE93D8); }
-        .overview-grid:nth-of-type(1) > :nth-child(6) { background: linear-gradient(135deg, #FFF3E0, #FFCC80); }
-        .overview-grid:nth-of-type(1) > :nth-child(7) { background: linear-gradient(135deg, #E1F5FE, #81D4FA); }
-        /* 马卡龙配色 - 第二个grid (3个卡片) */
-        .overview-grid:nth-of-type(2) > :nth-child(1) { background: linear-gradient(135deg, #FFF3E0, #FFCC80); }
-        .overview-grid:nth-of-type(2) > :nth-child(2) { background: linear-gradient(135deg, #E1F5FE, #81D4FA); }
-        .overview-grid:nth-of-type(2) > :nth-child(3) { background: linear-gradient(135deg, #F1F8E9, #C5E1A5); }
         .overview-card-icon { font-size: 2rem; margin-bottom: 6px; }
-        .overview-card-cover { width: calc(100% + 28px); height: 280px; object-fit: contain; border-radius: 10px 10px 0 0; margin: -14px -14px 10px -14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.3s; background: #f5f5f5; }
-        .overview-card:hover .overview-card-cover { transform: scale(1.02); }
-        .overview-card-title { font-weight: 800; color: #17191d; font-size: 14px; margin-bottom: 4px; }
-        .overview-card-desc { font-size: 11px; color: #6a6a7a; }
-        .overview-card-hint { font-size: 10px; color: #a92122; font-weight: 700; margin-top: 4px; }
+        .overview-card-cover { width: 180px; max-width: 100%; height: 240px; object-fit: contain; border-radius: 8px; margin: 0 auto 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform 0.3s; background: #fff; flex-shrink: 0; }
+        .overview-card:hover .overview-card-cover { transform: scale(1.03); }
+        .overview-card-title { font-weight: 800; color: #17191d; font-size: 15px; margin-bottom: 6px; line-height: 1.4; }
+        .overview-card-desc { font-size: 12px; color: #6a6a7a; line-height: 1.65; }
+        .overview-card-hint { font-size: 11px; color: #a92122; font-weight: 700; margin-top: auto; padding-top: 8px; }
         
         /* 科目标签 */
         .subject-tags { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; justify-content: center; padding: 10px 0; }
@@ -243,10 +232,11 @@
               /* 资料概览卡片：手机端2列等高，封面/文字不再拥挤 */
               .overview-grid, .overview-grid:nth-of-type(1) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px; }
               .overview-card { padding: 12px 10px; display: flex; flex-direction: column; height: 100%; }
-              .overview-card-cover { width: 100%; height: 150px; margin: 0 0 10px; max-width: 100%; object-fit: contain; }
+              .overview-card-cover { width: 140px; height: 186px; margin: 0 auto 10px; object-fit: contain; }
               .overview-card-title { font-size: 13px; }
               .overview-card-desc { font-size: 11px; line-height: 1.6; }
               .overview-card-hint { font-size: 10px; line-height: 1.5; }
+                .book-showcase-cover { width: 140px; height: 186px; margin-bottom: 12px; }
               .course-section { padding: 16px; }
               /* 高分喜报：手机端改为2列，图片更大更清晰 */
               .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; }
@@ -340,39 +330,41 @@
         <!-- 资料体系概览 -->
         <div class="course-section" id="courseOverview">
             <div class="course-section-title">📊 万人教育资料体系概览</div>
-            <div class="overview-grid" style="grid-template-columns: repeat(4, 1fr);">
-                <div class="book-showcase-card" onclick="showZexiaoBookGallery()">
-                    <img class="book-showcase-cover" src="images/择校宝典/txkybook.png" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
-                    <div class="book-showcase-title">📕 27控制类择校宝典</div>
-                    <div class="book-showcase-desc">覆盖132所高校 · 500+学院子方向<br>复录比/科目/成绩全收录</div>
-                    <div class="book-showcase-hint">👆 点击查看内页详情</div>
+            <div class="overview-grid" style="grid-template-columns: repeat(5, 1fr);">
+                <div class="overview-card" onclick="showZexiaoBookGallery()">
+                    <img class="overview-card-cover" src="images/择校宝典/txkybook.png" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
+                    <div class="overview-card-icon" style="display:none">📕</div>
+                    <div class="overview-card-title">📕 27控制类择校宝典</div>
+                    <div class="overview-card-desc">覆盖132所高校 · 500+学院子方向<br>复录比/科目/成绩全收录</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
                 <div class="overview-card" onclick="showBaodianSModal()">
                     <img class="overview-card-cover" src="images/宝典S/宝典S.png" alt="宝典S" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📖</div>
                     <div class="overview-card-title">宝典S</div>
                     <div class="overview-card-desc">精编复习讲义<br>基础阶段核心</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
                 <div class="overview-card" onclick="showBaodianAModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典A.png" alt="宝典A" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📋</div>
                     <div class="overview-card-title">宝典A</div>
                     <div class="overview-card-desc">历年真题<br>真题演练必备</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
                 <div class="overview-card" onclick="showBaodianBModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典B.png" alt="宝典B" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📄</div>
                     <div class="overview-card-title">宝典B</div>
-                    <div class="overview-card-desc">模拟试卷10套<br>查漏补缺</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-desc">专项题型突破<br>强化训练</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card">
+                <div class="overview-card" onclick="showBaodianCModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典C.png" alt="宝典C" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">🎯</div>
                     <div class="overview-card-title">宝典C</div>
                     <div class="overview-card-desc">冲刺预测4套<br>考前点睛</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
             </div>
             <div class="overview-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 10px;">
@@ -381,21 +373,21 @@
                     <div class="overview-card-icon" style="display:none">📐</div>
                     <div class="overview-card-title">强化严选题</div>
                     <div class="overview-card-desc">强化严选题<br>由理想学长编写<br>深度把握命题趋势</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
                 <div class="overview-card" onclick="showWorkbookGallery()">
                     <img class="overview-card-cover" src="images/刷题本/image (2).jpg" alt="课后题刷题本" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">🖊️</div>
                     <div class="overview-card-title">课后题刷题本</div>
                     <div class="overview-card-desc">市面控制考研独一份<br>主流版本重点习题</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
                 <div class="overview-card" onclick="showRealExamGallery()">
                     <img class="overview-card-cover" src="images/真题/真题.jpg" alt="各院校真题电子档合集" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📄</div>
                     <div class="overview-card-title">各院校真题电子档合集</div>
                     <div class="overview-card-desc">免费开源领取</div>
-                    <div class="overview-card-hint">👆 点击查看实拍</div>
+                    <div class="overview-card-hint">点击查看实拍</div>
                 </div>
             </div>
         </div>
@@ -971,6 +963,10 @@
             'images/宝典SABD/宝典B-2.png',
             'images/宝典SABD/宝典B-3.png'
         ];
+
+        const baodianCImages = [
+            'images/宝典SABD/宝典C.png'
+        ];
         
         
         let currentGalleryImages = [];
@@ -1000,6 +996,7 @@
         function showWorkbookGallery() { openGallery('🖊️ 课后题刷题本', workbookImages); }
         function showBaodianAModal() { openGallery('📋 宝典A 历年真题', baodianAImages); }
         function showBaodianBModal() { openGallery('📄 宝典B 模拟试卷', baodianBImages); }
+        function showBaodianCModal() { openGallery('🎯 宝典C 冲刺预测', baodianCImages); }
         function showRealExamGallery() { openGallery('📄 各院校真题电子档合集', realExamImages); }
         function showFormulaBookGallery() { openGallery('📐 强化严选题', formulaBookImages); }
         function showXibaoGallery() { openGallery('🎉 高分喜报', xibaoImages); }

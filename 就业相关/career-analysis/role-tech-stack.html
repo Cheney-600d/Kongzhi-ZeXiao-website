@@ -1306,7 +1306,7 @@ document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',functi
   const href=this.getAttribute('href');
   if(href&&href.startsWith('#')){
     const t=document.querySelector(href);
-    if(t){ e.preventDefault(); window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-20,behavior:'smooth'}); }
+    if(t){ e.preventDefault(); const topOffset=window.matchMedia('(max-width:760px)').matches?84:20; window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-topOffset,behavior:'smooth'}); }
   }
   document.querySelectorAll('.nav a').forEach(l=>l.classList.remove('active'));
   this.classList.add('active');

@@ -171,7 +171,7 @@
             padding-right: 30px;
         }
         
-        .school-name { font-size: 1.15em; font-weight: bold; color: #17191d; flex: 1; }
+        .school-name { font-size: 1.15em; font-weight: bold; color: #17191d; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .school-tags {
             display: flex;
@@ -245,6 +245,11 @@
             color: #17191d;
             flex: 1;
             min-width: 200px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .detail-tags {
@@ -2672,6 +2677,7 @@
     </div>
     
     <script src="data/school_source_map.js"></script>
+<script src="kaoyan_data.js"></script>
     <script>
         const provinces = ["上海", "云南", "内蒙古", "北京", "吉林", "四川", "天津", "宁夏", "安徽", "山东", "山西", "广东", "广西", "新疆", "江苏", "江西", "河北", "河南", "浙江", "海南", "湖北", "湖南", "甘肃", "福建", "贵州", "辽宁", "重庆", "陕西", "黑龙江", "其他"];
         const regionMap = {"西南地区": ["四川", "重庆", "贵州", "云南"], "山河四省": ["山西", "山东", "河南", "河北"], "京津地区": ["北京", "天津"], "华中地区": ["湖南", "湖北", "安徽", "江西"], "江浙沪地区": ["江苏", "浙江", "上海"], "华南地区": ["广东", "广西", "福建", "海南"], "西北地区": ["陕西", "甘肃", "宁夏", "新疆", "西藏", "内蒙古"], "东北地区": ["黑龙江", "吉林", "辽宁"]};
@@ -2685,6 +2691,63 @@
         let currentSchool = null;
         let schoolChart = null;
         let provinceChart = null;
+
+        // ===== 与首页 132 所高校对齐：隐藏旧校、补齐缺失占位卡片 =====
+        (function(){
+            if (!window.KAOYAN_DATA || !window.KAOYAN_DATA.schoolColleges) return;
+            var homeSchools = Object.keys(window.KAOYAN_DATA.schoolColleges);
+            var grid = document.getElementById('schoolGrid');
+            if (!grid) return;
+            function norm(n){ return String(n).replace(/[（]/g,'(').replace(/[）]/g,')').replace(/\s+/g,''); }
+            var homeSet = {};
+            homeSchools.forEach(function(name){ homeSet[norm(name)] = true; });
+            function schoolMeta(name){
+                var recs = window.KAOYAN_DATA.records || [];
+                for (var i = 0; i < recs.length; i++) {
+                    if (recs[i][1] === name) {
+                        return { province: recs[i][0], tier: recs[i][recs[i].length - 1] || '双非' };
+                    }
+                }
+                return { province: '其他', tier: '双非' };
+            }
+            var cards = Array.prototype.slice.call(grid.querySelectorAll('.school-card'));
+            var seen = {};
+            cards.forEach(function(card){
+                var raw = card.getAttribute('data-name') || '';
+                var name = raw.replace(/^\(\d+\)/, '');
+                if (homeSet[norm(name)]) { seen[norm(name)] = true; }
+                else { card.style.display = 'none'; card.setAttribute('data-hidden','1'); }
+            });
+            // 去除学校卡片上显示的数字代号
+            grid.querySelectorAll('.school-card .school-name').forEach(function(el){
+                el.innerHTML = el.innerHTML.replace(/\(\d+\)/g, '');
+            });
+            homeSchools.forEach(function(schoolName){
+                var key = norm(schoolName);
+                if (seen[key]) return;
+                var meta = schoolMeta(schoolName);
+                var level = (meta.tier || '双非').toLowerCase();
+                var card = document.createElement('div');
+                card.className = 'school-card';
+                card.setAttribute('data-name', schoolName);
+                card.setAttribute('data-level', meta.tier || '双非');
+                card.setAttribute('data-province', meta.province || '其他');
+                card.onclick = (function(name){ return function(){ showDetail(name); }; })(schoolName);
+                card.innerHTML = '<div class="school-header"><div class="school-name"><img src="专业课选择/images/校徽/' + schoolName + '.jpg" onerror="this.style.display=\'none\'" style="width:35px;height:35px;border-radius:50%;margin-right:8px;vertical-align:middle;object-fit:cover;">' + schoolName + '</div><div class="school-tags"><span class="tag level-tag level-' + level + '">' + (meta.tier || '双非') + '</span><span class="tag province-tag">' + (meta.province || '其他') + '</span></div></div><div class="school-count">生源本科院校: <span>0</span> 所 (去重后) / <span>0</span> 人<br><span style="color:#a92122;font-weight:600;">该学校生源收集中</span></div><div class="arrow">›</div>';
+                grid.appendChild(card);
+                if (!window.schoolData[schoolName]) {
+                    window.schoolData[schoolName] = { target_info: { level: meta.tier || '双非', province: meta.province || '其他' }, sources: [], total_unique: 0, total_records: 0 };
+                }
+                seen[key] = true;
+            });
+            document.getElementById('statTotal').textContent = homeSchools.length;
+            // 带 school 参数时先隐藏主页，避免生源地图列表闪现
+            if (new URLSearchParams(window.location.search).get('school')) {
+                var mainPageEl = document.getElementById('mainPage');
+                if (mainPageEl) mainPageEl.classList.add('hidden');
+            }
+            if (typeof applyFilters === 'function') applyFilters();
+        })();
         
         // 显示详情
         function showDetail(schoolName) {
@@ -2692,10 +2755,11 @@
             const data = window.schoolData[schoolName];
             const targetInfo = data.target_info;
             
-            document.getElementById('detailTitle').textContent = schoolName;
+            // 去除数字代号，展示校徽 + 校名（保持单行）
+            const schoolNameOnly = schoolName.replace(/^\(\d+\)/, '');
+            document.getElementById('detailTitle').innerHTML = '<img src="专业课选择/images/校徽/' + schoolNameOnly + '.jpg" onerror="this.style.display=\'none\'" style="width:42px;height:42px;border-radius:50%;margin-right:10px;vertical-align:middle;object-fit:cover;flex:none;">' + schoolNameOnly;
             
             // 更新"查看择校数据"链接
-            const schoolNameOnly = schoolName.replace(/^\(\d+\)/, '');
             document.getElementById('toZexiaoLink').href = './index.html?school=' + encodeURIComponent(schoolNameOnly) + '&from=控制院校生源地图.html';
             
             const tagsHtml = `
@@ -3070,6 +3134,7 @@
             let visibleCount = 0;
             
             cards.forEach(card => {
+                  if (card.getAttribute('data-hidden') === '1') { card.style.display = 'none'; return; }
                 const name = card.getAttribute('data-name').toLowerCase();
                 const level = card.getAttribute('data-level');
                 const province = card.getAttribute('data-province');
@@ -3130,12 +3195,10 @@
                 });
                 console.log('[DEBUG] matchedKey:', matchedKey);
                 if (matchedKey) {
-                    setTimeout(() => {
-                        showDetail(matchedKey);
-                        // 滚动到详情区域
-                        const detailPage = document.getElementById('detailPage');
-                        if (detailPage) detailPage.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
+                    showDetail(matchedKey);
+                    // 滚动到详情区域
+                    const detailPage = document.getElementById('detailPage');
+                    if (detailPage) detailPage.scrollIntoView({ behavior: 'smooth' });
                 }
             }
         }

@@ -16,26 +16,23 @@ const SITE_NAV = [
 function renderNav() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  // 桌面导航 — 子页面显示短标签药丸按钮
+  // 桌面导航 — 所有页面都显示子页面快捷导航
   const navLinks = document.querySelector('.nav-links');
-  if (navLinks && currentPage !== 'index.html') {
+  if (navLinks) {
     navLinks.innerHTML = SITE_NAV.map(item => {
       const isActive = item.href === currentPage;
       return `<li><a href="${item.href}" class="${isActive ? 'active' : ''}">${item.label}</a></li>`;
     }).join('');
-  } else if (navLinks) {
-    navLinks.innerHTML = '';
   }
 
-  // 移动端导航
+  // 移动端导航 — 首页也显示全部子页面，子页面额外加“复试首页”
   const mobileNav = document.querySelector('.mobile-nav');
-  if (mobileNav && currentPage !== 'index.html') {
-    mobileNav.innerHTML = SITE_NAV.map(item => {
+  if (mobileNav) {
+    const homeLink = currentPage === 'index.html' ? '' : '<a href="index.html">复试首页</a>';
+    mobileNav.innerHTML = homeLink + SITE_NAV.map(item => {
       const isActive = item.href === currentPage;
       return `<a href="${item.href}" class="${isActive ? 'active' : ''}">${item.label}</a>`;
     }).join('');
-  } else if (mobileNav) {
-    mobileNav.innerHTML = '';
   }
 
   // 添加返回按钮
@@ -111,13 +108,12 @@ function setupQA() {
 }
 
 // ===== 初始化 =====
-document.addEventListener('DOMContentLoaded', () => {
+function initNav() {
   renderNav();
   setupBackToTop();
   setupQA();
 
-  // 汉堡菜单点击
-  document.querySelector('.hamburger')?.addEventListener('click', toggleMobileNav);
+  // 汉堡菜单点击已由 HTML 内联 onclick 处理，避免重复触发
 
   // 点击外部关闭移动端菜单
   document.addEventListener('click', (e) => {
@@ -129,4 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileNav.classList.remove('open');
     }
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initNav);
+} else {
+  initNav();
+}

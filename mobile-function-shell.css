@@ -13,6 +13,10 @@
 .mfs-sheet,
 .mfs-scrim { display: none; }
 
+/* 隐藏页面右侧默认滚动条（保留滚动功能），观感更干净 */
+html { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 @media (max-width: 760px) {
   html { scroll-padding-top: 4.5rem; }
   body.mobile-function-ready {
@@ -40,6 +44,14 @@
     backdrop-filter: blur(18px) saturate(110%);
     z-index: 1200;
   }
+
+  body.mobile-function-ready .mobile-nav { top: 4.25rem !important; z-index: 1250 !important; }
+  body.mobile-function-ready .main-nav { position: static !important; top: auto !important; }
+
+  /* 子页面：只显示底部导航栏，不显示顶部栏 */
+  body.mfs-bottom-only.mobile-function-ready .mfs-topbar { display: none !important; }
+  body.mfs-bottom-only.mobile-function-ready { padding-top: var(--nav-height, 4.25rem) !important; }
+  body.mfs-bottom-only.mobile-function-ready .mobile-nav { top: var(--nav-height, 56px) !important; }
 
   .mfs-icon-btn,
   .mfs-menu-btn,
@@ -89,17 +101,7 @@
   }
 
   .mfs-menu-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .38rem;
-    min-height: 2.55rem;
-    padding: 0 .78rem;
-    color: #f4f4f1;
-    background: #23262b;
-    border: 1px solid rgba(130,135,142,.34);
-    border-radius: .78rem;
-    font-size: .75rem;
-    font-weight: 650;
+    display: none !important;
   }
 
   .mfs-dock {

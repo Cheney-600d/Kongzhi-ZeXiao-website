@@ -476,13 +476,13 @@ pre code { background: none; color: inherit; padding: 0; }
 }
 .compact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 14px; margin-bottom: 32px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; margin-bottom: 24px;
 }
 .compact-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px; background: var(--bg-card);
-  border-radius: 12px; border: 1px solid var(--border-light);
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; background: var(--bg-card);
+  border-radius: 10px; border: 1px solid var(--border-light);
   transition: var(--transition); text-decoration: none;
 }
 .compact-card:hover {
@@ -490,13 +490,13 @@ pre code { background: none; color: inherit; padding: 0; }
   box-shadow: var(--shadow-lg); border-color: var(--accent);
 }
 .compact-icon {
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; flex-shrink: 0;
+  font-size: 1.1rem; flex-shrink: 0;
 }
 .compact-text { flex: 1; min-width: 0; }
-.compact-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-.compact-meta { font-size: 0.75rem; color: var(--text-muted); }
+.compact-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.compact-meta { font-size: 0.72rem; color: var(--text-muted); }
 .aside-widget {
   background: var(--bg-card); border-radius: 6px;
   border: 1px solid var(--border); padding: 16px;
@@ -536,7 +536,7 @@ pre code { background: none; color: inherit; padding: 0; }
   .compact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .compact-grid { grid-template-columns: 1fr; }
+  .compact-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 }
 
 /* ===== hero 兼容（已被删除但保留样式防残留） ===== */

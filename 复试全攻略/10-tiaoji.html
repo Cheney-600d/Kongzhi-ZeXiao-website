@@ -7,17 +7,30 @@
   <link rel="stylesheet" href="assets/style.css">
 
 <link rel="stylesheet" href="../theme-global.css">
+<link rel="stylesheet" href="../mobile-function-shell.css?v=20260815-fux">
 </head>
 <body>
   <!-- 导航 -->
   <nav class="main-nav">
     <a class="nav-brand" href="index.html">考研复试<span class="brand-accent">全攻略</span></a>
   <ul class="nav-links"></ul>
-      <div class="hamburger" onclick="toggleMobileNav()">
+      <div class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </div>
 </nav>
-  <div class="mobile-nav"></div>
+  <div class="mobile-nav">
+    <a href="index.html">复试首页</a>
+    <a href="01-timeline.html">时间线</a>
+    <a href="02-competitiveness.html">竞争力</a>
+    <a href="03-written-exam.html">笔试</a>
+    <a href="04-interview.html">面试</a>
+    <a href="05-interview-questions.html">问题</a>
+    <a href="06-mentor.html">导师</a>
+    <a href="07-projects.html">项目</a>
+    <a href="08-project-packaging.html">简历</a>
+    <a href="09-professional-questions.html">100题</a>
+    <a href="10-tiaoji.html">调剂</a>
+  </div>
 
   <!-- 正文 -->
   <main class="section">
@@ -116,8 +129,10 @@
       <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
     </div>
   </footer>
-  <!-- 回到顶部 -->
-  <a href="#" class="back-to-top" aria-label="回到顶部">↑</a>
-<script src="assets/nav.js"></script>
+
+
+<script src="assets/nav.js?v=20260815-fux"></script>
+<script src="../nav-data.js"></script>
+<script src="../mobile-function-shell.js" data-root=".."></script>
 </body>
 </html>
