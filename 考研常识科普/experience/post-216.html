@@ -27,11 +27,10 @@
   </style>
 
 <link rel="stylesheet" href="../../theme-global.css?v=20260818">
+<link rel="stylesheet" href="../../mobile-function-shell.css?v=20260818">
 </head>
 <body>
-<a href="../index.html" onmouseout="this.style.borderColor='#e3e5e7';this.style.color='#18191c';this.style.transform='scale(1)';" onmouseover="this.style.borderColor='#e63946';this.style.color='#e63946';this.style.transform='scale(1.05)';" style="position:fixed;top:16px;right:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#fff;border:1px solid #e3e5e7;border-radius:8px;color:#18191c;font-size:.9rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .2s;">
-  ← 返回首页
-</a>
+
 <div class="post-header">
 <div class="container">
 <h1>📝 杭州电子科技大学 总分359</h1>
@@ -61,7 +60,6 @@
 </div>
 </div>
 </main>
-<div id="back-to-top"><button>↑</button></div>
 <footer class="site-footer">
 <div class="footer-inner">
 <div class="footer-links">
@@ -80,18 +78,8 @@
 <p style="margin-top:6px; font-size: .75rem; color: #9499a0;">本站信息基于公开资料整理，具体政策请以教育部及目标院校官方发布为准</p>
 </div>
 </footer>
-<script>
-(function(){
-  const btn=document.getElementById('back-to-top');
-  if(!btn)return;
-  window.addEventListener('scroll',function(){
-    btn.classList.toggle('show',window.scrollY>300);
-  });
-  btn.querySelector('button').addEventListener('click',function(){
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-})();
-</script>
 <script src="../../navigation-history.js"></script>
+<script src="../../nav-data.js"></script>
+<script src="../../mobile-function-shell.js" data-root="../.."></script>
 </body>
 </html>

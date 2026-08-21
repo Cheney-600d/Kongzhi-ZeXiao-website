@@ -280,8 +280,6 @@
 
   <!-- Footer -->
   <!-- Back to Top -->
-  <div id="back-to-top"><button>↑</button></div>
-
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-links">
@@ -426,18 +424,6 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script>
-(function(){
-  const btn=document.getElementById('back-to-top');
-  if(!btn)return;
-  window.addEventListener('scroll',function(){
-    btn.classList.toggle('show',window.scrollY>300);
-  });
-  btn.querySelector('button').addEventListener('click',function(){
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-})();
-</script>
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root=".."></script>
 </body>
