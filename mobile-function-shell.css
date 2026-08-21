@@ -53,6 +53,9 @@ html::-webkit-scrollbar { display: none; width: 0; height: 0; }
   body.mfs-bottom-only.mobile-function-ready { padding-top: var(--nav-height, 4.25rem) !important; }
   body.mfs-bottom-only.mobile-function-ready .mobile-nav { top: var(--nav-height, 56px) !important; }
 
+  /* 院校详情库：隐藏顶部黑色导航后，不再保留顶部占位，避免遮挡 */
+  body.school-detail-shell.mfs-bottom-only.mobile-function-ready { padding-top: 0 !important; }
+
   .mfs-icon-btn,
   .mfs-menu-btn,
   .mfs-dock button,
