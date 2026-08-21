@@ -68,12 +68,11 @@ def main():
 
     from playwright.sync_api import sync_playwright
 
+    main_set = set(MAIN_PAGES)
     if args.main_only:
         rels = MAIN_PAGES
     else:
         rels = collect_pages()
-        if not args.desktop_all:
-            main_set = set(MAIN_PAGES)
 
     results = []
     start_time = time.time()

@@ -89,7 +89,7 @@
         .section-title .emoji { margin-right: 10px; }
         .req-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
             margin-bottom: 25px;
         }
@@ -113,9 +113,11 @@
             background: #f8f9fa;
             border-radius: 16px;
             padding: 25px;
+            min-width: 0;
         }
         .chart-container h3 { font-size: 1.1em; color: #444; margin-bottom: 20px; text-align: center; font-weight: 600; }
         .chart-wrapper { position: relative; height: 300px; }
+        .chart-wrapper canvas { max-width: 100%; }
         .insights-box {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
             border-left: 5px solid #e74c3c;
