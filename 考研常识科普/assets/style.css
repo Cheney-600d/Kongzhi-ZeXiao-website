@@ -550,3 +550,16 @@ img { max-width: 100%; height: auto; }
   font-weight: 700; color: #43a047; background: #e8f5e9;
   padding: 1px 6px; border-radius: 4px; white-space: nowrap;
 }
+
+/* ========================================
+   移动端表格适配：避免 compare-table 横向撑破页面
+   ======================================== */
+@media (max-width: 768px) {
+  .compare-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+}
