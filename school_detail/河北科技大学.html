@@ -95,30 +95,7 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>280-289</td><td>1</td><td>1</td><td>100.0%</td><td>60.0</td><td>45.0</td><td>78.0</td><td>101.0</td><td>284.0</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-0"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
-<div style="height:160px;"><canvas id="chart-0-course"></canvas></div>
-</div>
-<script>
-try {
-  var c2 = document.getElementById('chart-0-course');
-  new Chart(c2, {
-    type: 'bar',
-    data: {
-      labels: ["70-79"],
-      datasets: [{ label: '人数', data: [1], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-0');
@@ -148,51 +125,7 @@ scales: {
   <p class="subavg">各科均分：政治 55.4 · 英语 65.3 · 数学 99.0 · 专业课 107.1</p>
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>390-399</td><td>1</td><td>1</td><td>100.0%</td><td>51.0</td><td>73.0</td><td>145.0</td><td>125.0</td><td>394.0</td><td></td></tr><tr><td>380-389</td><td>1</td><td>1</td><td>100.0%</td><td>64.0</td><td>75.0</td><td>123.0</td><td>122.0</td><td>384.0</td><td></td></tr><tr><td>370-379</td><td>2</td><td>2</td><td>100.0%</td><td>54.0</td><td>76.0</td><td>121.0</td><td>125.5</td><td>376.5</td><td></td></tr><tr><td>350-359</td><td>5</td><td>5</td><td>100.0%</td><td>57.8</td><td>76.8</td><td>105.0</td><td>114.6</td><td>354.2</td><td></td></tr><tr><td>340-349</td><td>3</td><td>3</td><td>100.0%</td><td>55.3</td><td>61.7</td><td>118.0</td><td>112.0</td><td>347.0</td><td></td></tr><tr><td>330-339</td><td>1</td><td>1</td><td>100.0%</td><td>60.0</td><td>78.0</td><td>92.0</td><td>107.0</td><td>337.0</td><td></td></tr><tr><td>320-329</td><td>4</td><td>4</td><td>100.0%</td><td>55.8</td><td>61.5</td><td>92.8</td><td>113.2</td><td>323.2</td><td></td></tr><tr><td>310-319</td><td>6</td><td>6</td><td>100.0%</td><td>54.5</td><td>61.8</td><td>103.8</td><td>94.7</td><td>314.8</td><td></td></tr><tr><td>300-309</td><td>6</td><td>6</td><td>100.0%</td><td>52.7</td><td>60.8</td><td>83.3</td><td>106.5</td><td>303.3</td><td></td></tr><tr><td>290-299</td><td>5</td><td>5</td><td>100.0%</td><td>52.4</td><td>61.0</td><td>81.8</td><td>97.4</td><td>292.6</td><td></td></tr><tr><td>280-289</td><td>5</td><td>5</td><td>100.0%</td><td>52.4</td><td>58.2</td><td>77.0</td><td>95.6</td><td>283.2</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-1"></canvas></div>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布（按总分段均分）</div>
-<div style="height:160px;"><canvas id="chart-1-math"></canvas></div>
-</div>
-<script>
-try {
-  var c3 = document.getElementById('chart-1-math');
-  new Chart(c3, {
-    type: 'bar',
-    data: {
-      labels: ["390-399", "380-389", "370-379", "350-359", "340-349", "330-339", "320-329", "310-319", "300-309", "290-299", "280-289"],
-      datasets: [{ label: '均分', data: [145.0, 123.0, 121.0, 105.0, 118.0, 92.0, 92.8, 103.8, 83.3, 81.8, 77.0], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布（按总分段均分）</div>
-<div style="height:160px;"><canvas id="chart-1-course"></canvas></div>
-</div>
-<script>
-try {
-  var c3 = document.getElementById('chart-1-course');
-  new Chart(c3, {
-    type: 'bar',
-    data: {
-      labels: ["390-399", "380-389", "370-379", "350-359", "340-349", "330-339", "320-329", "310-319", "300-309", "290-299", "280-289"],
-      datasets: [{ label: '均分', data: [125.0, 122.0, 125.5, 114.6, 112.0, 107.0, 113.2, 94.7, 106.5, 97.4, 95.6], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-1');

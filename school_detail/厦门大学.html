@@ -108,9 +108,7 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   
   
   <div style="height:220px;"><canvas id="chart-0"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-0');
@@ -140,51 +138,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-1"></canvas></div>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
-<div style="height:160px;"><canvas id="chart-1-math"></canvas></div>
-</div>
-<script>
-try {
-  var c2 = document.getElementById('chart-1-math');
-  new Chart(c2, {
-    type: 'bar',
-    data: {
-      labels: ["90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [2, 3, 3, 3, 2, 1], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
-<div style="height:160px;"><canvas id="chart-1-course"></canvas></div>
-</div>
-<script>
-try {
-  var c2 = document.getElementById('chart-1-course');
-  new Chart(c2, {
-    type: 'bar',
-    data: {
-      labels: ["80-89", "90-99", "100-109", "110-119", "120-129"],
-      datasets: [{ label: '人数', data: [1, 4, 2, 4, 3], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-1');
@@ -214,9 +168,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-2"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-2');
@@ -246,9 +198,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-3"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-3');
@@ -278,9 +228,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-4"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-4');
@@ -310,51 +258,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-5"></canvas></div>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布</div>
-<div style="height:160px;"><canvas id="chart-5-math"></canvas></div>
-</div>
-<script>
-try {
-  var c2 = document.getElementById('chart-5-math');
-  new Chart(c2, {
-    type: 'bar',
-    data: {
-      labels: ["90-99", "100-109", "110-119", "120-129", "130-139", "140-149"],
-      datasets: [{ label: '人数', data: [2, 3, 3, 3, 2, 1], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布</div>
-<div style="height:160px;"><canvas id="chart-5-course"></canvas></div>
-</div>
-<script>
-try {
-  var c2 = document.getElementById('chart-5-course');
-  new Chart(c2, {
-    type: 'bar',
-    data: {
-      labels: ["80-89", "90-99", "100-109", "110-119", "120-129"],
-      datasets: [{ label: '人数', data: [1, 4, 2, 4, 3], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-5');
@@ -384,9 +288,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-6"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-6');
@@ -416,9 +318,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-7"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-7');

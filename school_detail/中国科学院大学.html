@@ -121,9 +121,7 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px}
   
   
   <div style="height:220px;"><canvas id="chart-0"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-0');
@@ -153,9 +151,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-1"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-1');
@@ -185,9 +181,7 @@ scales: {
   
   
   <div style="height:220px;"><canvas id="chart-2"></canvas></div>
-  <div style="font-size:13px;color:#999;margin-top:8px">数学分数分布：暂无数据</div>
-  <div style="font-size:13px;color:#999;margin-top:8px">专业课分数分布：暂无数据</div>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-2');
@@ -217,51 +211,7 @@ scales: {
   <p class="subavg">各科均分：政治 56.1 · 英语 69.8 · 数学 105.0 · 专业课 105.0</p>
   <table><thead><tr><th>分数段</th><th>复试人数</th><th>录取人数</th><th>录取率</th><th>政治</th><th>英语</th><th>数学</th><th>专业课</th><th>总分均分</th><th>备注</th></tr></thead><tbody><tr><td>380-384</td><td>1</td><td>1</td><td>100%</td><td>59</td><td>86</td><td>120</td><td>119</td><td>384</td><td></td></tr><tr><td>360-369</td><td>1</td><td>1</td><td>100%</td><td>60</td><td>70</td><td>131</td><td>103</td><td>364</td><td></td></tr><tr><td>350-359</td><td>1</td><td>1</td><td>100%</td><td>55</td><td>67</td><td>125</td><td>106</td><td>353</td><td></td></tr><tr><td>340-349</td><td>1</td><td>1</td><td>100%</td><td>52</td><td>78</td><td>116</td><td>102</td><td>348</td><td></td></tr><tr><td>330-339</td><td>2</td><td>1</td><td>50%</td><td>63.5</td><td>65.5</td><td>98.5</td><td>105</td><td>331</td><td></td></tr><tr><td>310-319</td><td>1</td><td></td><td>0%</td><td>49</td><td>58</td><td>101</td><td>108</td><td></td><td></td></tr><tr><td>300-309</td><td>1</td><td></td><td>0%</td><td>50</td><td>75</td><td>85</td><td>93</td><td></td><td></td></tr><tr><td>290-299</td><td>1</td><td>1</td><td>100%</td><td>53</td><td>63</td><td>70</td><td>104</td><td>290</td><td></td></tr></tbody></table>
   <div style="height:220px;"><canvas id="chart-3"></canvas></div>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">数学分数分布（按总分段均分）</div>
-<div style="height:160px;"><canvas id="chart-3-math"></canvas></div>
-</div>
-<script>
-try {
-  var c3 = document.getElementById('chart-3-math');
-  new Chart(c3, {
-    type: 'bar',
-    data: {
-      labels: ["380-384", "360-369", "350-359", "340-349", "330-339", "310-319", "300-309", "290-299"],
-      datasets: [{ label: '均分', data: [120.0, 131.0, 125.0, 116.0, 98.5, 101.0, 85.0, 70.0], backgroundColor: 'rgba(122,142,168,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-  <div style="margin-top:10px">
-<div style="font-size:13px;font-weight:600;color:#a92122;margin-bottom:4px">专业课分数分布（按总分段均分）</div>
-<div style="height:160px;"><canvas id="chart-3-course"></canvas></div>
-</div>
-<script>
-try {
-  var c3 = document.getElementById('chart-3-course');
-  new Chart(c3, {
-    type: 'bar',
-    data: {
-      labels: ["380-384", "360-369", "350-359", "340-349", "330-339", "310-319", "300-309", "290-299"],
-      datasets: [{ label: '均分', data: [119.0, 103.0, 106.0, 102.0, 105.0, 108.0, 93.0, 104.0], backgroundColor: 'rgba(201,138,61,0.82)', borderRadius: { topLeft: 5, topRight: 5, bottomLeft: 0, bottomRight: 0 }, maxBarThickness: 22 }]
-    },
-    options: { responsive: true, maintainAspectRatio: false,
-animation: { duration: 550, easing: 'easeOutQuart' },
-scales: {
-  x: { grid: { display: false }, ticks: { font: { size: 10, family: "'Noto Sans SC', system-ui, sans-serif" }, color: '#777a80', maxRotation: 0 } },
-  y: { beginAtZero: true, grid: { color: 'rgba(23,25,29,0.06)', drawBorder: false }, ticks: { font: { size: 10 }, color: '#777a80', precision: 0 } }
-}, plugins: { legend: { display: false } } }
-  });
-} catch(e) { console.error(e); }
-</script>
-</div>
+  </div>
 <script>
 try {
   var ctx = document.getElementById('chart-3');
