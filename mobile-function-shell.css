@@ -53,9 +53,22 @@ html::-webkit-scrollbar { display: none; width: 0; height: 0; }
   body.mfs-bottom-only.mobile-function-ready { padding-top: var(--nav-height, 4.25rem) !important; }
   body.mfs-bottom-only.mobile-function-ready .mobile-nav { top: var(--nav-height, 56px) !important; }
 
-  /* 院校详情库：保留顶部导航，同时避免顶部导航遮挡内容 */
-  body.school-detail-shell .mfs-topbar { box-sizing: border-box; min-height: 4.25rem; height: auto; }
-  body.school-detail-shell.mobile-function-ready { padding-top: 4.25rem !important; }
+  /* 院校详情库：顶部导航改为紧凑悬浮式，减少黑色区域宽度和遮挡 */
+  body.school-detail-shell .mfs-topbar {
+    top: calc(env(safe-area-inset-top, 0px) + .5rem);
+    left: .5rem;
+    right: .5rem;
+    width: auto;
+    min-height: 3.25rem;
+    height: 3.25rem;
+    padding: .4rem .7rem .4rem;
+    border-radius: .95rem;
+    box-sizing: border-box;
+  }
+  body.school-detail-shell .mfs-topbar .mfs-title small { font-size: .56rem; margin-bottom: .12rem; }
+  body.school-detail-shell .mfs-topbar .mfs-title strong { font-size: .86rem; }
+  body.school-detail-shell .mfs-icon-btn { width: 2.3rem; height: 2.3rem; }
+  body.school-detail-shell.mobile-function-ready { padding-top: calc(env(safe-area-inset-top, 0px) + 3.75rem) !important; }
 
   .mfs-icon-btn,
   .mfs-menu-btn,
