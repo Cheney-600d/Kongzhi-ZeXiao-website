@@ -1,8 +1,8 @@
 /* 主题全局细节：选中色 + 滚动条 + 焦点态 + 卡片hover + 骨架屏（控制考研红） */
 ::selection{background:#a92122;color:#fff;text-shadow:none}
 ::-moz-selection{background:#a92122;color:#fff;text-shadow:none}
-html{scrollbar-width:none;-ms-overflow-style:none}
-html::-webkit-scrollbar{display:none;width:0;height:0}
+html,body{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 :focus-visible{outline:2px solid #a92122;outline-offset:2px}
 [id^="chart"],[id^="dist-"]{position:relative;overflow:hidden}
 [id^="chart"]:empty::before,[id^="dist-"]:empty::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f1f0eb 40%,#e6e5df 50%,#f1f0eb 60%);background-size:200% 100%;animation:skeleton-shimmer 1.3s ease-in-out infinite}
