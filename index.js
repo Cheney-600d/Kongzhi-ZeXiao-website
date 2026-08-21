@@ -1663,16 +1663,14 @@ function setDetailTitles(recs){
   const t1 = document.getElementById('hDetailMajor');
   const t2 = document.getElementById('hDetailPie');
   const t3 = document.getElementById('hDetailCollege');
-  const t4 = document.getElementById('hDetailCourse');
   if(t1) t1.textContent = single ? ('该方向复试/录取/专业课平均：' + dir) : '各专业复试/录取平均分对比';
   if(t2) t2.textContent = single ? ('该方向招生人数：' + dir) : '各专业招生人数占比';
   if(t3) t3.textContent = single ? ('该方向招生情况：' + col) : '各学院招生情况';
-  if(t4) t4.textContent = single ? ('该方向专业课分数分布：' + dir) : '专业课分数分布';
 }
 function renderDetail(schoolName){
   try {
   // 销毁旧图表
-  ['detailMajor','detailPie','detailCollege','detailCourse'].forEach(k=>{
+  ['detailMajor','detailPie','detailCollege'].forEach(k=>{
     if(charts[k]){ charts[k].dispose(); charts[k]=null; }
       Object.keys(charts).forEach(function(key){ if(key.indexOf(k+'_')===0){ if(charts[key]) charts[key].dispose(); delete charts[key]; } });
   });
@@ -2147,72 +2145,6 @@ function renderDetail(schoolName){
     return d.length>20 ? d.substring(0,20)+'…' : d;
   });
 
-  // 专业课分数分布：横向柱状图，每行一个方向，避免名称遮挡
-  var courseContainer = document.getElementById('chartDetailCourse');
-  if(courseContainer){
-    courseContainer.style.setProperty('height', 'auto', 'important');
-    courseContainer.style.setProperty('overflow', 'visible', 'important');
-    courseContainer.innerHTML = '';
-    var courseDiv = document.createElement('div');
-    courseDiv.style.height = Math.max(320, schoolRecs.length * 34 + 60) + 'px';
-    courseContainer.appendChild(courseDiv);
-    var chart = echarts.init(courseDiv, null, {renderer:'canvas'});
-    charts.detailCourse = chart;
-    chart.setOption({
-      tooltip:{show:false},
-      legend:{bottom:0},
-      grid:{left:'32%',right:'8%',bottom:'5%',top:'5%',containLabel:true},
-      xAxis:{type:'value',name:'分数'},
-      yAxis:{type:'category',data:courseXData.slice().reverse(),axisLabel:{fontSize:9,width:120,overflow:'truncate'}},
-      series:[
-        {name:'专业课最高',type:'bar',data:schoolRecs.map(function(r){return r.courseMax;}).reverse(),itemStyle:{color:'#a92122',borderRadius:[5,5,5,5]},barMaxWidth:14},
-        {name:'专业课平均',type:'bar',data:schoolRecs.map(function(r){return r.courseAvg;}).reverse(),itemStyle:{color:'#c98a3d',borderRadius:[5,5,5,5]},barMaxWidth:14},
-        {name:'专业课最低',type:'bar',data:schoolRecs.map(function(r){return r.courseMin;}).reverse(),itemStyle:{color:'#5d8d96',borderRadius:[5,5,5,5]},barMaxWidth:14}
-      ]
-    });
-    bindChartTooltip(chart, function(params){
-      var arr = Array.isArray(params) ? params : [params];
-      var idx = arr[0] && arr[0].dataIndex;
-      var r = schoolRecs[schoolRecs.length - 1 - idx];
-      var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
-      var rows = arr.map(function(p){
-        return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
-      }).join('');
-      return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
-    });
-  }
-  /*
-  charts.detailCourse = echarts.init(document.getElementById('chartDetailCourse', null, {renderer: 'canvas'}));
-  charts.detailCourse.setOption({
-    tooltip:{show:false,trigger:'axis',formatter:function(ps){
-      const idx = ps[0].dataIndex;
-      const r = schoolRecs[idx];
-      const head = (r.majorName||'') + (r.college ? '（'+r.college+'）' : '');
-      return head + '<br/>' + ps.map(p=>p.marker + p.seriesName + ' <b>' + (p.value==null?'-':p.value) + '</b>').join('<br/>');
-    }},
-    legend:{bottom:0},
-    grid:{left:'3%',right:'4%',bottom:'18%',top:'10%',containLabel:true},
-    xAxis:{type:'category',data:courseXData,axisLabel:{interval:0,fontSize:9,width:90,overflow:'truncate'}},
-    yAxis:{type:'value',name:'分数'},
-    dataZoom:[{type:'inside',xAxisIndex:0,start:0,end:Math.min(100,Math.max(15,Math.round(4/schoolRecs.length*100)))},{type:'slider',xAxisIndex:0,height:16,bottom:2,start:0,end:Math.min(100,Math.max(15,Math.round(4/schoolRecs.length*100)))}],
-    series:[
-      {name:'专业课最高',type:'bar',data:schoolRecs.map(r=>r.courseMax),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14},
-      {name:'专业课平均',type:'bar',data:schoolRecs.map(r=>r.courseAvg),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:14},
-      {name:'专业课最低',type:'bar',data:schoolRecs.map(r=>r.courseMin),itemStyle:{color:'#5d8d96',borderRadius:[5,5,0,0]},barMaxWidth:14}
-    ]
-  });
-
-  bindChartTooltip(charts.detailCourse, function(params){
-    var arr = Array.isArray(params) ? params : [params];
-    var idx = arr[0] && arr[0].dataIndex;
-    var r = schoolRecs[idx];
-    var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
-    var rows = arr.map(function(p){
-      return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
-    }).join('');
-    return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
-  });
-  */
 
 
   // 初始渲染表格（无筛选）
