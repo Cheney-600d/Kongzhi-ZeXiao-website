@@ -266,6 +266,8 @@ header p{font-size:.85rem !important;}
 #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownDays28{font-size:16px !important;}
 #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #cetCountdownCard>div:first-child{font-size:12px !important;}
 #homePage header>div[style*="display:flex"]:nth-child(2)>div:last-child #countdownCET{font-size:14px !important;}
+  #countdownStack{flex-direction:column !important;align-items:center !important;}
+  #countdownStack .card{width:100% !important;max-width:unset !important;}
 
 
 /* 热度榜：每行2个，长校名自动换行不溢出 */
@@ -907,10 +909,9 @@ header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
   #homePage header > div[style*="margin-bottom:16px"] > div:last-child {
     width: 100% !important;
     max-width: 100% !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
     justify-content: center !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     margin-left: 0 !important;
     flex-shrink: 0 !important;
   }
@@ -1304,7 +1305,7 @@ var _hmt = _hmt || [];
         </div>
       </div>
       <!-- 右侧：倒计时 -->
-      <div style="flex-shrink:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-left:4px;">
+      <div id="countdownStack" style="flex-shrink:0;display:flex;flex-direction:column;gap:6px;align-items:flex-start;margin-left:4px;">
         <!-- 考研倒计时 -->
         <div id="countdownCard" class="card" style="padding:8px 12px;text-align:center;width:150px;">
           <div style="font-size:13px;font-weight:700;color:#a92122;margin-bottom:2px;"><svg class="li-ico" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>考研倒计时</div>
