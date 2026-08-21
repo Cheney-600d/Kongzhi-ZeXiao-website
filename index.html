@@ -1004,7 +1004,7 @@ header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
   #homePage header>div[style*="display:flex"]:nth-child(2)>div:first-child .up-badge img{width:20px !important;height:20px !important;}
   /* 手机端隐藏原左侧UP主栏，改用 hero 标题下方居中的移动版 */
   #homePage header>div[style*="display:flex"]>.up-profile-panel{display:none !important;}
-  .mobile-hero-up{display:inline-flex !important;}
+  .mobile-hero-up{display:flex !important;width:fit-content;margin-left:auto !important;margin-right:auto !important;}
 }
 </style>
 <link rel="stylesheet" href="entry-intro-white.css">
@@ -1153,16 +1153,14 @@ var _hmt = _hmt || [];
       <div class="hero-kicker" style="margin:0 0 12px;font:600 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.26em;text-transform:uppercase;color:#a92122;">2027 / 2028 · Control Engineering</div>
       <h1 class="text-5xl font-bold mb-2" style="font-size:3.85rem;line-height:1.08;color:#17191d;letter-spacing:0;margin:0 0 12px;">控制考研就业<span style="color:#a92122;">全链路指南</span></h1>
       <p class="text-gray-500" style="font-size:1rem;margin:0 0 2px;">基于26考研录取数据 · 服务27/28考研 · 覆盖<span id="textSchoolCount">132</span>所高校 · 500+学院子方向 <span style="color:#777a80;font-weight:600;">designed by @控制考研阿祖</span></p>
-      <div class="up-profile-panel mobile-hero-up" style="display:none;flex-direction:column;align-items:center;gap:8px;flex-shrink:0;margin:8px 0 12px;">
-        <!-- 头像 + B站 左上角角标 -->
-        <div class="up-avatar-wrap" style="position:relative;width:110px;height:110px;flex-shrink:0;">
-          <img src="专业课选择/images/平台图标/avatar_azhu.jpg" alt="@控制考研阿祖" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #a92122;box-shadow:0 2px 8px rgba(169,33,34,0.3);cursor:pointer;display:block;" title="@控制考研阿祖" onclick="window.open('https://space.bilibili.com/589801594?spm_id_from=333.337.0.0','_blank')">
-          <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="B站主页" class="up-badge" style="position:absolute;top:-4px;left:-4px;width:30px;height:30px;background:#e63946;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(230,57,70,0.55);overflow:hidden;cursor:pointer;" rel="noopener noreferrer">
-            <img src="专业课选择/images/平台图标/B站.jpg" alt="B站" style="width:20px;height:20px;border-radius:50%;object-fit:cover;display:block;">
+            <div class="up-profile-panel mobile-hero-up" style="display:none;flex-direction:row;align-items:center;justify-content:center;gap:10px;flex-shrink:0;margin:6px auto 10px;position:relative;left:50%;transform:translateX(-50%);">
+        <div class="up-avatar-wrap" style="position:relative;width:56px;height:56px;flex-shrink:0;">
+          <img src="专业课选择/images/平台图标/avatar_azhu.jpg" alt="@控制考研阿祖" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #a92122;box-shadow:0 2px 8px rgba(169,33,34,0.3);cursor:pointer;display:block;" title="@控制考研阿祖" onclick="window.open('https://space.bilibili.com/589801594?spm_id_from=333.337.0.0','_blank')">
+          <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="B站主页" class="up-badge" style="position:absolute;top:-3px;left:-3px;width:20px;height:20px;background:#e63946;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(230,57,70,0.55);overflow:hidden;cursor:pointer;" rel="noopener noreferrer">
+            <img src="专业课选择/images/平台图标/B站.jpg" alt="B站" style="width:13px;height:13px;border-radius:50%;object-fit:cover;display:block;">
           </a>
         </div>
-        <!-- 关于UP主 -->
-        <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="关于UP主" style="display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,#f7cfcf 0%,#f3acac 100%);color:#a92122;font-size:12px;font-weight:700;padding:6px 10px;border-radius:8px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(230,57,70,0.25);transition:all .25s ease;width:124px;">
+        <a href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" title="关于UP主" style="display:inline-flex;align-items:center;justify-content:center;gap:5px;background:linear-gradient(135deg,#f7cfcf 0%,#f3acac 100%);color:#a92122;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(230,57,70,0.25);transition:all .25s ease;">
           <span>关于 UP 主</span>
           <span style="font-size:11px;opacity:0.9;">→</span>
         </a>
