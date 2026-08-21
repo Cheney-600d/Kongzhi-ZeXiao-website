@@ -476,7 +476,7 @@ pre code { background: none; color: inherit; padding: 0; }
 }
 .compact-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px; margin-bottom: 24px;
 }
 .compact-card {
@@ -496,7 +496,7 @@ pre code { background: none; color: inherit; padding: 0; }
 }
 .compact-text { flex: 1; min-width: 0; }
 .compact-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.compact-meta { font-size: 0.72rem; color: var(--text-muted); }
+.compact-meta { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .aside-widget {
   background: var(--bg-card); border-radius: 6px;
   border: 1px solid var(--border); padding: 16px;
@@ -531,12 +531,11 @@ pre code { background: none; color: inherit; padding: 0; }
 }
 
 @media (max-width: 900px) {
-  .bili-layout { flex-direction: column; }
+  .bili-layout { flex-direction: column; align-items: stretch; }
   .bili-aside { width: 100%; position: static; }
-  .compact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .compact-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .compact-grid { gap: 8px; }
 }
 
 /* ===== hero 兼容（已被删除但保留样式防残留） ===== */
