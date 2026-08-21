@@ -2883,7 +2883,6 @@
                     <div class="top10-item">
                         <span class="top10-rank">${i + 1}</span>
                         <span class="top10-name">${s.name}</span>
-                        <span class="top10-count">${s.count} 次</span>
                     </div>
                 `).join('');
             }
@@ -2893,7 +2892,6 @@
                     <div class="top10-item">
                         <span class="top10-rank">${i + 1}</span>
                         <span class="top10-name">${p.name}</span>
-                        <span class="top10-count">${p.count} 次</span>
                     </div>
                 `).join('');
             }
@@ -2932,7 +2930,6 @@
                             <span class="source-tag province-tag">${src.province}</span>
                         </div>
                     </div>
-                    ${src.count > 1 ? `<div class="source-count">${src.count}</div>` : ''}
                 </a>
             `).join('');
             
