@@ -39,6 +39,7 @@ html::-webkit-scrollbar { display: none; width: 0; height: 0; }
     border-radius: 0 !important;
     margin: 0 !important;
     max-width: none !important;
+    text-align: left;
     min-height: 4.25rem;
     padding: max(.62rem, env(safe-area-inset-top)) .9rem .62rem;
     color: #f4f4f1;
@@ -84,7 +85,7 @@ html::-webkit-scrollbar { display: none; width: 0; height: 0; }
   .mfs-dock svg,
   .mfs-sheet svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; stroke-linejoin: round; }
 
-  .mfs-title { min-width: 0; line-height: 1.08; }
+  .mfs-title { min-width: 0; line-height: 1.08; text-align: left; }
   .mfs-title small {
     display: block;
     margin-bottom: .25rem;
