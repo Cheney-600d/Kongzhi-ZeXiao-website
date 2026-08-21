@@ -41,6 +41,28 @@
       border-radius: 6px;
       font-size: .75rem;
     }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .comparison-grid .comparison-card {
+      margin-bottom: 0;
+      height: 100%;
+    }
+    .comparison-card .vs-header small {
+      display: block;
+      color: #6b7280;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
     .principle-card {
       background: linear-gradient(135deg, #fff8f5, #fdf0f0);
       border-radius: 6px;
@@ -510,39 +532,38 @@
         <h2 class="section-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M14 22v-4a2 2 0 1 0-4 0v4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M18 5v17"/><path d="m2 10 10-8 10 8"/></svg> 末流211 vs 强双非 怎么选？</h2>
 
 
-        <div class="card">
-          <div style="overflow-x:auto;">
-            <table class="compare-table">
-              <thead>
-                <tr>
-                  <th>末流 211</th>
-                  <th>强双非</th>
-                  <th>建议</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="末流 211"><strong>河北工业大学</strong></td>
-                  <td data-label="强双非"><strong>燕山大学</strong></td>
-                  <td data-label="建议">走技术选<strong>燕山大学</strong>：控制/机械学科底蕴强，性价比高</td>
-                </tr>
-                <tr>
-                  <td data-label="末流 211"><strong>福州大学</strong></td>
-                  <td data-label="强双非"><strong>广东工业大学</strong></td>
-                  <td data-label="建议">走技术选<strong>广工</strong>：控制学科实力强、珠三角就业资源好</td>
-                </tr>
-                <tr>
-                  <td data-label="末流 211"><strong>合肥工业大学</strong></td>
-                  <td data-label="强双非"><strong>浙江工业大学</strong></td>
-                  <td data-label="建议">走技术选<strong>浙工大</strong>：杭州控制/自动化就业认可度不错</td>
-                </tr>
-                <tr>
-                  <td data-label="末流 211"><strong>广西大学</strong></td>
-                  <td data-label="强双非"><strong>深圳大学</strong></td>
-                  <td data-label="建议">走技术选<strong>深大</strong>：深圳实习/就业机会多，地理位置优势明显</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <div class="vs-header">
+              <span><small>末流211</small>河北工业大学</span>
+              <span class="vs-badge">VS</span>
+              <span><small>强双非</small>燕山大学</span>
+            </div>
+            <p><strong>走技术选燕山大学：</strong>控制/机械学科底蕴强，性价比高。</p>
+          </div>
+          <div class="comparison-card">
+            <div class="vs-header">
+              <span><small>末流211</small>福州大学</span>
+              <span class="vs-badge">VS</span>
+              <span><small>强双非</small>广东工业大学</span>
+            </div>
+            <p><strong>走技术选广工：</strong>控制学科实力强、珠三角就业资源好。</p>
+          </div>
+          <div class="comparison-card">
+            <div class="vs-header">
+              <span><small>末流211</small>合肥工业大学</span>
+              <span class="vs-badge">VS</span>
+              <span><small>强双非</small>浙江工业大学</span>
+            </div>
+            <p><strong>走技术选浙工大：</strong>杭州控制/自动化就业认可度不错。</p>
+          </div>
+          <div class="comparison-card">
+            <div class="vs-header">
+              <span><small>末流211</small>广西大学</span>
+              <span class="vs-badge">VS</span>
+              <span><small>强双非</small>深圳大学</span>
+            </div>
+            <p><strong>走技术选深大：</strong>深圳实习/就业机会多，地理位置优势明显。</p>
           </div>
         </div>
 
