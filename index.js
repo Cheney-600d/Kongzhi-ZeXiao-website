@@ -1945,7 +1945,7 @@ function renderDetail(schoolName){
   });
   const majorArr = Object.values(majorGroups).map(g=>({
     name:g.name,
-    shortName: g.name.substring(0, 18) + (g.name.length > 18 ? '...' : ''),
+    shortName: (function(n){ var p=n.split(' '); var code=p[0]||''; var rest=p.slice(1).join(' ').replace(new RegExp('^'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*'),''); var full=code+(rest?' '+rest:''); return full.substring(0,18)+(full.length>18?'...':''); })(g.name),
     enterAvg: g.we?g.enterAvg/g.we:(g.ne?g.se/g.ne:null),
     admitAvg: g.wa?g.admitAvg/g.wa:(g.na?g.sa/g.na:null),
     courseAvg: g.wp?g.courseAvg/g.wp:(g.np?g.sp/g.np:null),
