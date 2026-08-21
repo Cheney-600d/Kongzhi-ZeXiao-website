@@ -369,10 +369,10 @@ img { max-width: 100%; height: auto; }
   padding: 12px 14px; text-align: left; border-bottom: 1px solid #e3e5e7; font-size: .9rem;
 }
 .compare-table th {
-  background: #f1f2f3; color: #18191c; font-weight: 600;
+  background: #fdf0f0; color: #a92122; font-weight: 600;
 }
-.compare-table tr:nth-child(even) { background: #fafbfc; }
-.compare-table tr:hover { background: #f1f2f3; }
+.compare-table tr:nth-child(even) { background: #fff; }
+.compare-table tr:hover { background: #fdf0f0; }
 .compare-table td { color: #61666d; }
 
 /* ========================================
@@ -576,7 +576,7 @@ img { max-width: 100%; height: auto; }
   .compare-table td {
     display: block;
     padding: 6px 12px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #fde8e8;
     font-size: .88rem;
     line-height: 1.55;
   }
