@@ -112,6 +112,30 @@
       color: #666;
       margin-top: 4px;
     }
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .data-card {
+      background: #fff;
+      border: 1px solid #e3e5e7;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .data-card .data-main {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e63946;
+      margin-bottom: 6px;
+    }
+    .data-card .data-label {
+      font-size: .85rem;
+      color: #666;
+      line-height: 1.6;
+    }
     .toc {
       background: #fff;
       border-radius: 6px;
@@ -312,13 +336,24 @@
         <div class="card">
           <div class="card-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> 报录比参考标准</div>
           <div class="card-body">
-            <table class="compare-table">
-              <tr><th>报录比</th><th>竞争程度</th><th>建议</th></tr>
-              <tr><td>≤ 3:1</td><td>竞争较小</td><td>相对容易上岸</td></tr>
-              <tr><td>3:1 ~ 8:1</td><td>中等竞争</td><td>正常水平，努力可及</td></tr>
-              <tr><td>8:1 ~ 15:1</td><td>竞争激烈</td><td>需要全力以赴</td></tr>
-              <tr><td>＞ 15:1</td><td>极度激烈</td><td>谨慎选择，评估实力</td></tr>
-            </table>
+            <div class="data-grid">
+              <div class="data-card">
+                <div class="data-main">≤ 3:1</div>
+                <div class="data-label">竞争较小<br>相对容易上岸</div>
+              </div>
+              <div class="data-card">
+                <div class="data-main">3:1 ~ 8:1</div>
+                <div class="data-label">中等竞争<br>正常水平，努力可及</div>
+              </div>
+              <div class="data-card">
+                <div class="data-main">8:1 ~ 15:1</div>
+                <div class="data-label">竞争激烈<br>需要全力以赴</div>
+              </div>
+              <div class="data-card">
+                <div class="data-main">＞ 15:1</div>
+                <div class="data-label">极度激烈<br>谨慎选择，评估实力</div>
+              </div>
+            </div>
             <p style="margin-top:10px;"><strong>数据来源：</strong>研招网、学校官网招生简章、学长学姐、考研机构整理数据、知乎/考研帮等平台。</p>
           </div>
         </div>
@@ -409,12 +444,20 @@
         <h3 class="section-subtitle">初复试常见占比</h3>
         <div class="card">
           <div class="card-body">
-            <table class="compare-table">
-              <tr><th>占比</th><th>说明</th><th>适合人群</th></tr>
-              <tr><td>7:3</td><td>初试70% + 复试30%</td><td>初试高分选手，复试求稳</td></tr>
-              <tr><td>6:4</td><td>初试60% + 复试40%</td><td>比较常见，相对平衡</td></tr>
-              <tr><td>5:5</td><td>初试50% + 复试50%</td><td>复试权重高，不确定性大</td></tr>
-            </table>
+            <div class="data-grid" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
+              <div class="data-card">
+                <div class="data-main">7:3</div>
+                <div class="data-label">初试70% + 复试30%<br>初试高分选手，复试求稳</div>
+              </div>
+              <div class="data-card">
+                <div class="data-main">6:4</div>
+                <div class="data-label">初试60% + 复试40%<br>比较常见，相对平衡</div>
+              </div>
+              <div class="data-card">
+                <div class="data-main">5:5</div>
+                <div class="data-label">初试50% + 复试50%<br>复试权重高，不确定性大</div>
+              </div>
+            </div>
             <div class="tip-box info" style="margin-top:12px;">
               <div class="tip-title"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round" style="vertical-align:-0.15em;flex-shrink:0;"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16h14v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1z"/></svg> 真相</div>
               <p>复试占比低 ≠ 好考！复试水分不一样。面试主观性强，存在不确定性。<strong>好考+就业好是扯淡，两者折中考虑！</strong>适合自己的才是最好的。</p>
