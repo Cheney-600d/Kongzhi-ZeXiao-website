@@ -2147,46 +2147,38 @@ function renderDetail(schoolName){
     return d.length>20 ? d.substring(0,20)+'…' : d;
   });
 
-  // 专业课分数分布：拆分多个图表，避免名称遮挡
-  var courseChunkSize = 4;
-  var courseChunks = [];
-  for(var ci2=0; ci2<courseXData.length; ci2+=courseChunkSize) courseChunks.push(courseXData.slice(ci2, ci2+courseChunkSize));
+  // 专业课分数分布：横向柱状图，每行一个方向，避免名称遮挡
   var courseContainer = document.getElementById('chartDetailCourse');
   if(courseContainer){
     courseContainer.style.setProperty('height', 'auto', 'important');
     courseContainer.style.setProperty('overflow', 'visible', 'important');
     courseContainer.innerHTML = '';
-    courseChunks.forEach(function(chunk, ci){
-      var div = document.createElement('div');
-      div.style.height = '280px';
-      if(ci > 0) div.style.marginTop = '16px';
-      courseContainer.appendChild(div);
-      var chart = echarts.init(div, null, {renderer:'canvas'});
-      var key = ci === 0 ? 'detailCourse' : 'detailCourse_' + (ci+1);
-      charts[key] = chart;
-      var startIdx = ci * courseChunkSize;
-      chart.setOption({
-        tooltip:{show:false},
-        legend:{bottom:0},
-        grid:{left:'3%',right:'4%',bottom:'30%',top:'10%',containLabel:true},
-        xAxis:{type:'category',data:chunk,axisLabel:{interval:0,fontSize:9,width:80,overflow:'break',lineHeight:12}},
-        yAxis:{type:'value',name:'分数'},
-        series:[
-          {name:'专业课最高',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseMax;}),itemStyle:{color:'#a92122',borderRadius:[5,5,0,0]},barMaxWidth:14},
-          {name:'专业课平均',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseAvg;}),itemStyle:{color:'#c98a3d',borderRadius:[5,5,0,0]},barMaxWidth:14},
-          {name:'专业课最低',type:'bar',data:schoolRecs.slice(startIdx, startIdx+chunk.length).map(function(r){return r.courseMin;}),itemStyle:{color:'#5d8d96',borderRadius:[5,5,0,0]},barMaxWidth:14}
-        ]
-      });
-      bindChartTooltip(chart, function(params){
-        var arr = Array.isArray(params) ? params : [params];
-        var idx = arr[0] && arr[0].dataIndex;
-        var r = schoolRecs[startIdx + idx];
-        var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
-        var rows = arr.map(function(p){
-          return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
-        }).join('');
-        return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
-      });
+    var courseDiv = document.createElement('div');
+    courseDiv.style.height = Math.max(320, schoolRecs.length * 34 + 60) + 'px';
+    courseContainer.appendChild(courseDiv);
+    var chart = echarts.init(courseDiv, null, {renderer:'canvas'});
+    charts.detailCourse = chart;
+    chart.setOption({
+      tooltip:{show:false},
+      legend:{bottom:0},
+      grid:{left:'32%',right:'8%',bottom:'5%',top:'5%',containLabel:true},
+      xAxis:{type:'value',name:'分数'},
+      yAxis:{type:'category',data:courseXData.slice().reverse(),axisLabel:{fontSize:9,width:120,overflow:'truncate'}},
+      series:[
+        {name:'专业课最高',type:'bar',data:schoolRecs.map(function(r){return r.courseMax;}).reverse(),itemStyle:{color:'#a92122',borderRadius:[5,5,5,5]},barMaxWidth:14},
+        {name:'专业课平均',type:'bar',data:schoolRecs.map(function(r){return r.courseAvg;}).reverse(),itemStyle:{color:'#c98a3d',borderRadius:[5,5,5,5]},barMaxWidth:14},
+        {name:'专业课最低',type:'bar',data:schoolRecs.map(function(r){return r.courseMin;}).reverse(),itemStyle:{color:'#5d8d96',borderRadius:[5,5,5,5]},barMaxWidth:14}
+      ]
+    });
+    bindChartTooltip(chart, function(params){
+      var arr = Array.isArray(params) ? params : [params];
+      var idx = arr[0] && arr[0].dataIndex;
+      var r = schoolRecs[schoolRecs.length - 1 - idx];
+      var head = (r && r.majorName || '') + (r && r.college ? '（'+r.college+'）' : '');
+      var rows = arr.map(function(p){
+        return '<tr><td>' + (p.seriesName||'') + '</td><td>' + (p.value==null?'-':p.value) + '</td></tr>';
+      }).join('');
+      return '<div class="tt-title">' + head + '</div><table>' + rows + '</table>';
     });
   }
   /*
