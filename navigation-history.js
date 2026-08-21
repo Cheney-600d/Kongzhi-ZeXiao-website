@@ -54,7 +54,6 @@
     else if(/\/考研常识科普\/experience\/post-/.test(path)) target = '考研常识科普/experience.html';
     else if(/\/考研常识科普\/(?!index\.html$|experience\.html$)/.test(path)) target = '考研常识科普/index.html';
     else if(/\/就业相关\/院校就业去向\/schools\//.test(path)) target = '就业相关/就业去向index.html';
-    else if(/\/就业相关\/运营商就业\//.test(path)) target = '就业相关/就业去向index.html';
     else if(/\/就业相关\/career-analysis\/role-tech-stack\.html$/.test(path)) target = '就业相关/career-analysis/career-analysis.html';
     else if(/\/专业课选择\/kecheng_difficulty\.html$/.test(path)) target = '专业课选择/考研专业课院校查询.html';
     return new URL(target + '?from=parent-fallback', root).href;

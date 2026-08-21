@@ -40,7 +40,6 @@ MAIN_PAGES = [
     '就业相关/career-analysis/career-analysis.html',
     '就业相关/career-analysis/role-tech-stack.html',
     '就业相关/就业去向index.html',
-    '就业相关/运营商就业/index.html',
     '考研常识科普/index.html',
     '考研常识科普/experience.html',
     '数据库/admin.html',
