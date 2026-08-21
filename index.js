@@ -1973,7 +1973,8 @@ function renderDetail(schoolName){
   for(var mi=0; mi<majorArr.length; mi+=majorChunkSize) majorChunks.push(majorArr.slice(mi, mi+majorChunkSize));
   var majorContainer = document.getElementById('chartDetailMajor');
   if(majorContainer){
-    majorContainer.style.height = 'auto';
+    majorContainer.style.setProperty('height', 'auto', 'important');
+    majorContainer.style.setProperty('overflow', 'visible', 'important');
     majorContainer.innerHTML = '';
     majorChunks.forEach(function(chunk, ci){
       var div = document.createElement('div');
@@ -2152,7 +2153,8 @@ function renderDetail(schoolName){
   for(var ci2=0; ci2<courseXData.length; ci2+=courseChunkSize) courseChunks.push(courseXData.slice(ci2, ci2+courseChunkSize));
   var courseContainer = document.getElementById('chartDetailCourse');
   if(courseContainer){
-    courseContainer.style.height = 'auto';
+    courseContainer.style.setProperty('height', 'auto', 'important');
+    courseContainer.style.setProperty('overflow', 'visible', 'important');
     courseContainer.innerHTML = '';
     courseChunks.forEach(function(chunk, ci){
       var div = document.createElement('div');
