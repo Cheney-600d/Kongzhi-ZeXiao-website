@@ -10,13 +10,17 @@
 <meta property="og:description" content="覆盖100+高校的控制类考研择校数据，支持筛选、对比、热度、生源、就业等一站式查询。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="index.html">
-<meta property="og:image" content="专业课选择/images/平台图标/avatar_compressed.png">
+<meta property="og:image" content="assets/wanren-education-logo.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="27/28控制考研就业全链路指南">
 <meta name="twitter:description" content="覆盖100+高校的控制类考研择校数据，支持筛选、对比、热度、生源、就业等一站式查询。">
 <link rel="canonical" href="index.html">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="assets/wanren-education-logo.png">
+<link rel="stylesheet" href="vendor/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="nav-redesign.css">
+<link rel="stylesheet" href="entry-intro-white.css">
+<link rel="stylesheet" href="journey-home.css">
+<link rel="stylesheet" href="school-content.css?v=20260829">
 
 <!-- 早期广告状态同步：避免从子页面返回时QQ群广告闪现 -->
 <script>
@@ -1008,7 +1012,6 @@ header .flex{flex-wrap:wrap;gap:8px;justify-content:center;overflow-x:auto;}
   .mobile-hero-up{display:flex !important;width:fit-content;margin-left:auto !important;margin-right:auto !important;}
 }
 </style>
-<link rel="stylesheet" href="entry-intro-white.css">
 <link rel="stylesheet" href="theme-global.css?v=20260818">
 <!-- 站内访问统计：填入百度统计/51la 的统计 ID 后，取消下面注释即可生效 -->
 <!--
@@ -1024,7 +1027,7 @@ var _hmt = _hmt || [];
   <div class="site-nav__rail" aria-hidden="true"><span></span></div>
   <div class="site-nav__inner">
     <a class="site-brand" href="index.html" aria-label="控制考研择校首页">
-      <span class="site-brand__mark site-brand__mark--img"><img class="site-brand__mark-img" src="专业课选择/images/平台图标/3.jpg" alt="控制考研择校"></span>
+      <span class="site-brand__mark site-brand__mark--img"><img class="site-brand__mark-img" src="assets/wanren-education-logo.png" alt="万人教育"></span>
       <span><strong>控制考研择校</strong><small>CONTROL · SCHOOL</small></span>
     </a>
     <div class="site-nav__status" aria-label="平台数据状态">
@@ -1117,7 +1120,6 @@ var _hmt = _hmt || [];
     </div>
   </div>
 </div>
-<script src="entry-intro-white.js"></script>
 
 <!-- 导航历史记录 -->
 <script>
@@ -1148,7 +1150,98 @@ var _hmt = _hmt || [];
 
 <!-- 首页 -->
 <div id="homePage" class="page">
-  <header class="mb-8">
+  <section id="journeyHome" class="journey-home" aria-labelledby="journeyTitle">
+    <p class="journey-home__eyebrow">你的考研路线</p>
+    <h1 id="journeyTitle">从当前阶段，完成下一件关键事</h1>
+    <p class="journey-home__lead">聚焦你所在的阶段，明确下一步行动，少走弯路，高效备考。</p>
+
+    <div class="journey-stage-tabs" aria-label="选择当前考研阶段">
+      <button class="journey-stage-tab" type="button" data-stage-tab="learn" aria-pressed="false"><i class="fa-solid fa-bullseye" aria-hidden="true"></i>目标定位</button>
+      <button class="journey-stage-tab" type="button" data-stage-tab="direction" aria-pressed="false"><i class="fa-solid fa-book-open" aria-hidden="true"></i>专业课判断</button>
+      <button class="journey-stage-tab" type="button" data-stage-tab="school" aria-pressed="true"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>正在筛院校</button>
+      <button class="journey-stage-tab" type="button" data-stage-tab="target" aria-pressed="false"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>院校对比</button>
+      <button class="journey-stage-tab" type="button" data-stage-tab="review" aria-pressed="false"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>备考复习</button>
+      <button class="journey-stage-tab" type="button" data-stage-tab="retest" aria-pressed="false"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>就业与发展</button>
+      <button class="journey-stage-later" type="button" data-rechoose-stage>重新选择阶段</button>
+    </div>
+
+    <div class="journey-canvas">
+      <div class="journey-tree" aria-label="考研全流程成长地图">
+        <canvas class="journey-branches" data-journey-branches aria-hidden="true"></canvas>
+
+        <button class="journey-node journey-node--goal is-complete" type="button" data-journey-node="goal">
+          <span class="journey-node__icon" data-journey-icon="target" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>目标定位</strong><small>明确动机与个人边界</small></span>
+        </button>
+        <button class="journey-node journey-node--course is-complete" type="button" data-journey-node="course">
+          <span class="journey-node__icon" data-journey-icon="book" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>专业课判断</strong><small>评估科目难度与匹配度</small></span>
+        </button>
+        <button class="journey-node journey-node--school is-current" type="button" data-journey-node="school" aria-current="step">
+          <span class="journey-node__icon" data-journey-icon="search" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>院校筛选</strong><small>按条件筛出合适的院校</small></span>
+        </button>
+        <button class="journey-node journey-node--compare" type="button" data-journey-node="compare">
+          <span class="journey-node__icon" data-journey-icon="scale" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>院校对比</strong><small>多维比较，收敛方案</small></span>
+        </button>
+        <button class="journey-node journey-node--retest" type="button" data-journey-node="retest">
+          <span class="journey-node__icon" data-journey-icon="clipboard" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>备考攻略与资料</strong><small>汇总复习方法与资料入口</small></span>
+        </button>
+        <button class="journey-node journey-node--career" type="button" data-journey-node="career">
+          <span class="journey-node__icon" data-journey-icon="briefcase" aria-hidden="true"></span>
+          <span class="journey-node__copy"><strong>就业与发展</strong><small>提前理解长期去向</small></span>
+        </button>
+      </div>
+
+      <aside class="journey-action" aria-live="polite" aria-label="当前阶段推荐操作">
+        <span class="journey-action__meta" data-action-meta>当前查看 · 院校筛选</span>
+        <h2 data-action-title>你现在最适合做的事</h2>
+        <p class="journey-action__description" data-action-description>结合地区、层级、专业课与招录数据，建立第一批备选院校。</p>
+        <a class="journey-action__primary" href="#mainContentArea" data-action-primary>
+          <span data-action-primary-label>筛出第一批备选院校</span>
+        </a>
+        <a class="journey-action__secondary" href="专业课选择/考研专业课院校查询.html" data-action-secondary>
+          <span class="journey-action__link-icon" data-secondary-icon data-journey-icon="book" aria-hidden="true"></span>
+          <span data-secondary-label>查专业课匹配</span>
+        </a>
+        <a class="journey-action__secondary" href="heat_compare.html" data-action-secondary>
+          <span class="journey-action__link-icon" data-secondary-icon data-journey-icon="flame" aria-hidden="true"></span>
+          <span data-secondary-label>看院校热度</span>
+        </a>
+      </aside>
+
+      <div class="journey-local-note">
+        <b>你的阶段与进度只保存在本机</b>
+        <span>不注册、不上传，也不会增加云端请求。</span>
+        <a href="院校PK.html">继续上次院校对比</a>
+      </div>
+    </div>
+
+    <button class="journey-tools-trigger" type="button" data-open-tools>
+      <span>全部工具</span><small>14 项功能 · 随时直达</small>
+    </button>
+  </section>
+
+  <dialog id="journeyStageDialog" class="journey-dialog" aria-labelledby="journeyDialogTitle">
+    <div class="journey-dialog__inner">
+      <p class="journey-dialog__eyebrow">先定位，再开始</p>
+      <h2 id="journeyDialogTitle">你现在处于哪个阶段？</h2>
+      <p class="journey-dialog__lead">只影响首页推荐顺序，之后随时可以更改。</p>
+      <div class="journey-dialog__choices">
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="learn"><b>刚开始了解</b><small>还不熟悉考研流程和基本概念</small></button>
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="direction"><b>正在定方向</b><small>在判断专业课、地区与目标层级</small></button>
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="school"><b>正在筛院校</b><small>需要建立第一批备选院校</small></button>
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="target"><b>已有备选院校</b><small>正在比较并确定冲稳保方案</small></button>
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="review"><b>正在备考复习</b><small>需要复习规划、备考方法与资料入口</small></button>
+        <button class="journey-dialog__choice" type="button" data-dialog-stage="retest"><b>准备复试</b><small>需要复试信息、题库与就业参考</small></button>
+      </div>
+      <button class="journey-dialog__skip" type="button" data-dialog-skip>先看看完整路线</button>
+    </div>
+  </dialog>
+
+  <header class="mb-8 legacy-home-hero">
     <!-- 第一行：标题 -->
     <div class="text-center hero-title-wrap" style="margin-bottom:10px;">
       <div class="hero-kicker" style="margin:0 0 12px;font:600 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.26em;text-transform:uppercase;color:#a92122;">2027 / 2028 · Control Engineering</div>
@@ -1426,6 +1519,11 @@ var _hmt = _hmt || [];
     </div>
 
   <!-- 考研交流群（移动端显示） -->
+  <a class="bilibili-entry bilibili-entry--mobile card mb-4" href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer" aria-label="前往控制考研阿祖的 B 站主页">
+    <img class="bilibili-entry__avatar" src="专业课选择/images/平台图标/avatar_azhu.jpg" alt="控制考研阿祖">
+    <span class="bilibili-entry__copy"><small>B 站主页</small><strong>@控制考研阿祖</strong><em>经验分享 · 择校更新</em></span>
+    <img class="bilibili-entry__platform" src="专业课选择/images/平台图标/B站.jpg" alt="">
+  </a>
   <div class="card p-4 mb-4 ad-qq-group ad-qq-group-mobile" style="gap:20px;justify-content:center;flex-wrap:wrap;">
     <div style="flex:1;min-width:140px;max-width:260px;padding:0;background:#fff;border:0;box-shadow:none;border-radius:12px;text-align:center;display:flex;flex-direction:column;overflow:hidden;" title="点击查看大图">
         <div style="font-size:12px;font-weight:700;color:#a92122;padding:8px 10px;background:#fff;flex-shrink:0;margin:0;">🎓 27考研交流群</div>
@@ -1513,6 +1611,11 @@ var _hmt = _hmt || [];
 
       <!-- 右侧栏：图表 -->
       <div style="width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px;">
+        <a class="bilibili-entry bilibili-entry--desktop" href="https://space.bilibili.com/589801594?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer" aria-label="前往控制考研阿祖的 B 站主页">
+          <img class="bilibili-entry__avatar" src="专业课选择/images/平台图标/avatar_azhu.jpg" alt="控制考研阿祖">
+          <span class="bilibili-entry__copy"><small>B 站主页</small><strong>@控制考研阿祖</strong><em>经验分享 · 择校更新</em></span>
+          <img class="bilibili-entry__platform" src="专业课选择/images/平台图标/B站.jpg" alt="">
+        </a>
         <!-- 考研交流群（电脑端显示） -->
         <div class="ad-qq-group ad-qq-group-desktop" style="display:flex;gap:20px;">
           <div style="flex:1;padding:0;background:#fff;border:0;box-shadow:none;border-radius:12px;text-align:center;display:flex;flex-direction:column;overflow:hidden;" title="点击查看大图">
@@ -1576,6 +1679,8 @@ var _hmt = _hmt || [];
       <div id="qqGroupContent" style="text-align:center;"></div>
     </div>
   </div>
+
+  <section id="schoolContentModules" class="school-content-section school-content-section--embedded" aria-label="院校动态与交流" hidden></section>
 
   <div class="card p-4">
     <div class="flex items-center justify-between mb-3">
@@ -1681,7 +1786,10 @@ var _hmt = _hmt || [];
 </div>
 
     <script src="考研常识科普/posts-data.js" defer></script>
-    <script src="home-banner.js" defer></script>
+<script src="entry-intro-white.js" defer></script>
+<script src="journey-home.js" defer></script>
+<script src="home-banner.js" defer></script>
+<script src="school-content.js?v=20260829" defer></script>
     <script src="index.js?v=20260815-qqgroup" defer></script>
     <script src="ui-history-state.js" defer></script>
 

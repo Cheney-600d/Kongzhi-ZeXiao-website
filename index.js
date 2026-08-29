@@ -1678,6 +1678,10 @@ function renderDetail(schoolName){
   // 保存当前学校数据到全局变量供筛选使用
   window.currentSchoolName = schoolName;
   window.currentSchoolRecs = records.filter(r=>r.school===schoolName);
+  const schoolContentModules = document.getElementById('schoolContentModules');
+  if(schoolContentModules && window.SchoolContentRenderer){
+    window.SchoolContentRenderer.render(schoolContentModules, schoolName, {embedded:true});
+  }
   if(window.pendingDetailFilter){
     window.currentSchoolRecs = window.currentSchoolRecs.filter(window.pendingDetailFilter);
     window.pendingDetailFilter = null;

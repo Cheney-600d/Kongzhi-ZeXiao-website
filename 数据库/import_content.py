@@ -13,13 +13,13 @@ import csv
 import json
 import pathlib
 import sqlite3
-from db_config import mysql_connect
+from db_config import mysql_connect, sqlite_path
 
 JSON_PATH = pathlib.Path(__file__).with_name('raw') / 'content_raw.json'
 
 
 def _conn():
-    conn = sqlite3.connect(pathlib.Path(__file__).with_name('admission.db'))
+    conn = sqlite3.connect(sqlite_path())
     conn.row_factory = sqlite3.Row
     return conn
 

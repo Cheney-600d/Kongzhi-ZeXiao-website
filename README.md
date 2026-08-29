@@ -20,7 +20,7 @@ python serve.py 8767
 - 专业课院校查询：`专业课选择/考研专业课院校查询.html`
 - 复试全攻略：`复试全攻略/index.html`
 - 复试面试题库：`复试全攻略/面试题库.html`
-- 后台数据导入：`数据库/admin.html`
+- 院校内容后台：`数据库/admin.html`
 - 手机端实时预览：`移动端实时预览.html`
 
 改动 HTML/CSS/JS 后无需重启，浏览器 `Ctrl+F5` 强刷即可。
@@ -41,12 +41,16 @@ python serve.py 8767
 
 ```bash
 # 生产推荐：FastAPI + Uvicorn
-export KAOYAN_ADMIN_TOKEN="你的强密码"
-uvicorn api_app:app --host 127.0.0.1 --port 8000
+export KAOYAN_ADMIN_USER="content-admin"
+export KAOYAN_ADMIN_PASSWORD="请替换为强密码"
+export KAOYAN_ADMIN_TOKEN="请替换为另一个强随机值"
+export KAOYAN_COOKIE_SECURE="1"
+uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
 - `api_app.py` 提供 `/api/*` 查询接口和 `POST /api/admin/import-admission` 后台导入接口
 - 静态文件交给 Nginx，API 反向代理到 `127.0.0.1:8000`
+- 云端通过 `KAOYAN_SQLITE_PATH`、`KAOYAN_UPLOAD_DIR`、`KAOYAN_RAW_DIR` 把运行数据放在 Git 仓库外
 - 详细部署见 `docs/部署.md`
 
 ---
@@ -122,7 +126,8 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000
 ```
 
 - 本地开发保持 `sqlite`
-- 服务器部署改为 `mysql`，并 `pip install pymysql`，表结构见 `数据库/schema_mysql.sql`
+- 服务器可通过 `KAOYAN_DB_TYPE` 与 `KAOYAN_DB_*` 环境变量切换 MySQL，表结构见 `数据库/schema_mysql.sql`
+- 院校/真题内容后台目前始终写入 SQLite 的 `数据库/admission.db`；即使查询数据使用 MySQL，也要备份该文件
 
 ### 数据导入
 
@@ -138,14 +143,39 @@ python 数据库/import_subjects.py --mysql
 python 数据库/import_content.py --mysql
 ```
 
-后台页面 `数据库/admin.html` 可上传 Excel 自动导入录取数据；系统会根据 `config.json` 自动选择写 SQLite 还是 MySQL。
+后台页面 `数据库/admin.html` 除了上传 Excel，还可以按院校维护视频、群二维码、图片与链接模块。录取查询可选 SQLite/MySQL，内容后台仍使用 SQLite。
+
+### 院校内容后台
+
+本地地址：`http://127.0.0.1:8767/数据库/admin.html`
+
+- 本地首次登录：用户名 `admin`，密码 `admin123`
+- 生产环境必须设置 `KAOYAN_ADMIN_USER`、`KAOYAN_ADMIN_PASSWORD`；服务启动时会覆盖已有默认管理员凭据
+- 支持视频链接元数据与封面抓取；抓取失败时可以手动上传封面
+- 支持群二维码、普通图片、链接和公告模块
+- 内容可保存为草稿、拖拽排序、设置发布时间，并单独发布或下线
+- 公开院校页只读取已发布且仍在有效期内的内容
+
+```powershell
+$env:KAOYAN_ADMIN_USER="content-admin"
+$env:KAOYAN_ADMIN_PASSWORD="请替换为强密码"
+python serve.py 8767
+```
+
+相关公开接口：
+
+| 接口 | 说明 |
+|---|---|
+| `GET /api/school-content?school=院校名` | 获取院校已发布内容 |
+| `GET /api/schools/{id或院校名}/content-modules` | 获取院校已发布内容 |
+| `/api/admin/*` | 登录后的模块管理、图片上传与视频封面读取 |
 
 ---
 
 ## 后台导入与鉴权
 
-- 未设置 `KAOYAN_ADMIN_TOKEN`：仅本机回环可访问导入接口
-- 设置后：`POST /api/admin/import-admission` 必须携带请求头 `X-Admin-Token`
+- 本地 `serve.py` 未设置 Token 时，仅本机回环可访问导入接口
+- 生产 `api_app.py` 未设置 Token 时会禁用导入接口；设置后必须携带请求头 `X-Admin-Token`
 
 ```bash
 # Windows PowerShell
@@ -160,11 +190,13 @@ python serve.py 8767
 ```bash
 python tests/test_api.py
 python tests/test_server_auth.py
+python tests/test_content_admin.py
 python tests/test_mobile_pages.py
 ```
 
 - `test_api.py`：API 函数直连测试
 - `test_server_auth.py`：后台导入鉴权测试
+- `test_content_admin.py`：登录、模块增删改发、排序、上传与公开状态测试
 - `test_mobile_pages.py`：390px 手机端溢出回归（需 playwright）
 
 手机端测试首次准备：
@@ -192,7 +224,7 @@ python tools/backup.py
 
 - 环境要求
 - MySQL 建库建表与数据导入
-- `serve.py` + Nginx + HTTPS
+- FastAPI/Uvicorn + Nginx + HTTPS
 - systemd 守护
 - 备份与常见问题
 

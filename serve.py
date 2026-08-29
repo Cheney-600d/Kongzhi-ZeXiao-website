@@ -8,6 +8,7 @@ import os
 import socketserver
 import sys
 import urllib.parse
+import re
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE_DIR)
@@ -20,6 +21,7 @@ import import_admission
 import import_content
 import import_subjects
 import db_config
+import content_admin
 
 ADMIN_TOKEN = os.environ.get('KAOYAN_ADMIN_TOKEN', '').strip()
 
@@ -31,25 +33,65 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Expires', '0')
         super().end_headers()
 
-    def _send_json(self, status, obj):
+    def _send_json(self, status, obj, extra_headers=None):
         data = json.dumps(obj, ensure_ascii=False).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(data)))
+        for key, value in (extra_headers or {}).items():
+            self.send_header(key, value)
         self.end_headers()
         self.wfile.write(data)
+
+    def _read_body(self):
+        length = int(self.headers.get('Content-Length', '0'))
+        return self.rfile.read(length) if length else b''
 
     def _is_loopback(self):
         addr = self.client_address[0] if self.client_address else ''
         return addr in ('127.0.0.1', '::1', 'localhost')
 
     def _admin_authorized(self):
+        session = content_admin.get_session(self.headers)
+        if session and self.headers.get('X-CSRF-Token', '') == session.get('csrf'):
+            return True
         if ADMIN_TOKEN:
             return self.headers.get('X-Admin-Token', '') == ADMIN_TOKEN
         return self._is_loopback()
 
+    def _dispatch_content_admin(self, method, parsed, raw=b''):
+        query = {k: v[0] if isinstance(v, list) else v for k, v in urllib.parse.parse_qs(parsed.query).items()}
+        status, payload, extra = content_admin.dispatch(
+            method,
+            urllib.parse.unquote(parsed.path),
+            query,
+            self.headers,
+            raw,
+            self.client_address[0] if self.client_address else '',
+        )
+        self._send_json(status, payload, extra)
+
     def do_GET(self):
         parsed = urllib.parse.urlsplit(self.path)
+        decoded_path = urllib.parse.unquote(parsed.path)
+        if decoded_path == '/api/health':
+            self._send_json(200, {'code': 0, 'data': {'status': 'ok', 'service': 'kaoyan-site-dev'}})
+            return
+        if decoded_path == '/api/school-content':
+            params = urllib.parse.parse_qs(parsed.query)
+            school = (params.get('school') or [''])[0]
+            self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_modules(school)}})
+            return
+        if decoded_path == '/api/exam-resources':
+            self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_global_modules('exam_resources')}})
+            return
+        match = re.fullmatch(r'/api/schools/([^/]+)/content-modules', decoded_path)
+        if match:
+            self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_modules(match.group(1))}})
+            return
+        if decoded_path.startswith('/api/admin/'):
+            self._dispatch_content_admin('GET', parsed)
+            return
         if parsed.path.startswith('/api/'):
             params = {}
             for k, v in urllib.parse.parse_qs(parsed.query).items():
@@ -80,8 +122,7 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
                 self._send_json(401, {'code': 1, 'msg': 'unauthorized'})
                 return
             try:
-                length = int(self.headers.get('Content-Length', '0'))
-                raw = self.rfile.read(length) if length else b''
+                raw = self._read_body()
                 req = json.loads(raw.decode('utf-8'))
                 filename = os.path.basename(str(req.get('filename', 'upload.xlsx')))
                 if not filename.lower().endswith('.xlsx'):
@@ -127,13 +168,35 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self._send_json(400, {'code': 1, 'msg': str(e)})
             return
+        if parsed.path.startswith('/api/admin/'):
+            self._dispatch_content_admin('POST', parsed, self._read_body())
+            return
+        self._send_json(404, {'code': 1, 'msg': 'not found'})
+
+    def do_PATCH(self):
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path.startswith('/api/admin/'):
+            self._dispatch_content_admin('PATCH', parsed, self._read_body())
+            return
+        self._send_json(404, {'code': 1, 'msg': 'not found'})
+
+    def do_DELETE(self):
+        parsed = urllib.parse.urlsplit(self.path)
+        if parsed.path.startswith('/api/admin/'):
+            self._dispatch_content_admin('DELETE', parsed, self._read_body())
+            return
         self._send_json(404, {'code': 1, 'msg': 'not found'})
 
     def log_message(self, *args):
         pass
 
 
-with socketserver.ThreadingTCPServer(('', PORT), NoCacheHandler) as httpd:
+class LocalThreadingServer(socketserver.ThreadingTCPServer):
+    allow_reuse_address = True
+    daemon_threads = True
+
+
+with LocalThreadingServer(('', PORT), NoCacheHandler) as httpd:
     print(f'serving on http://127.0.0.1:{PORT} (no-cache)', flush=True)
     if ADMIN_TOKEN:
         print('admin import auth: KAOYAN_ADMIN_TOKEN enabled', flush=True)

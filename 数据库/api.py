@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
-"""院校录取数据库查询 API（支持 SQLite / MySQL 双数据源，通过 config.json 切换）。
+"""院校录取数据库查询 API（支持 SQLite / MySQL 双数据源）。
 
-SQLite 适合本地开发，MySQL 适合服务器部署。切换方式：
-  编辑 数据库/config.json 的 db_type 字段为 "sqlite" 或 "mysql"。
+环境变量优先于 config.json，生产环境建议通过 KAOYAN_DB_* 变量配置。
 """
 import json
 import pathlib
 import sqlite3
 
-DB_PATH = pathlib.Path(__file__).with_name('admission.db')
-CFG_PATH = pathlib.Path(__file__).with_name('config.json')
+import db_config
 
-_CFG = {}
-if CFG_PATH.exists():
-    _CFG = json.loads(CFG_PATH.read_text(encoding='utf-8'))
-DB_TYPE = str(_CFG.get('db_type') or 'sqlite').lower()
-_MYSQL = _CFG.get('mysql') or {}
+DB_PATH = db_config.sqlite_path()
+DB_TYPE = 'mysql' if db_config.is_mysql() else 'sqlite'
+_MYSQL = db_config.mysql_config()
 
 
 class _Db:

@@ -13,7 +13,7 @@
      需要先执行 schema_mysql.sql 建库建表。
 '''
 import argparse, csv, pathlib, re, sqlite3, sys, datetime
-from db_config import mysql_config
+from db_config import mysql_config, sqlite_path
 
 EXCEL_PATH = pathlib.Path(__file__).with_name('raw') / '27考研择校宝典_录取数据表_0815.xlsx'
 
@@ -60,7 +60,7 @@ def read_excel_rows(excel_path=EXCEL_PATH):
 def import_excel_to_db(excel_path, write_csv=True):
     '''import Excel to SQLite, return stats dict.'''
     excel_path = pathlib.Path(excel_path)
-    conn = sqlite3.connect(pathlib.Path(__file__).with_name('admission.db'))
+    conn = sqlite3.connect(sqlite_path())
     try:
         cur = conn.cursor()
         cur.executescript('''

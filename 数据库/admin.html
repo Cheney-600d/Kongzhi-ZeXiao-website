@@ -1,221 +1,146 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>院校录取数据库 · 后台导入</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-    background: #f4f6f8;
-    color: #1f2937;
-    min-height: 100vh;
-    padding: 20px 14px 40px;
-  }
-  .page {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  h1 { font-size: 20px; margin-bottom: 6px; }
-  .sub { color: #6b7280; font-size: 13px; margin-bottom: 18px; line-height: 1.7; }
-  .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-    margin-bottom: 16px;
-  }
-  .card h2 { font-size: 15px; margin-bottom: 12px; }
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .summary .num { font-size: 24px; font-weight: 800; color: #a92122; }
-  .summary .label { font-size: 12px; color: #6b7280; margin-top: 2px; }
-  .file-box {
-    border: 2px dashed #d1d5db;
-    border-radius: 12px;
-    padding: 22px 14px;
-    text-align: center;
-    color: #6b7280;
-    font-size: 13px;
-    cursor: pointer;
-    transition: border-color .2s, background .2s;
-  }
-  .file-box:hover, .file-box.dragover { border-color: #a92122; background: #fff8f8; }
-  .file-box input { display: none; }
-  .file-box .icon { font-size: 28px; }
-  .file-box .name { color: #1f2937; font-weight: 600; margin-top: 6px; word-break: break-all; }
-  .token-input { width: 100%; margin-top: 10px; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 14px; }
-  .warn {
-    background: #fff8e1;
-    border: 1px solid #ffe082;
-    color: #92400e;
-    font-size: 12px;
-    border-radius: 10px;
-    padding: 10px 12px;
-    line-height: 1.7;
-    margin-top: 12px;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    margin-top: 12px;
-    padding: 12px 16px;
-    border: none;
-    border-radius: 10px;
-    background: #a92122;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: opacity .2s;
-  }
-  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-  .btn:not(:disabled):hover { opacity: 0.88; }
-  .result { display: none; margin-top: 12px; border-radius: 10px; padding: 12px; font-size: 13px; line-height: 1.8; }
-  .result.ok { display: block; background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; }
-  .result.err { display: block; background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
-  .links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .links a { font-size: 13px; color: #a92122; }
-</style>
-<link rel="stylesheet" href="../theme-global.css?v=20260818">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>择校内容后台</title>
+  <link rel="icon" type="image/png" href="../assets/wanren-education-logo.png">
+  <link rel="stylesheet" href="../vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="admin.css?v=20260829">
 </head>
 <body>
-<div class="page">
-  <h1>🎓 院校录取数据库 · 后台导入</h1>
-  <p class="sub">上传最新版「27考研择校宝典_录取数据表_XXXX.xlsx」，导入后会重建本地 SQLite 数据库并刷新 CSV。</p>
+  <main id="loginView" class="login-view">
+    <section class="login-card" aria-labelledby="loginTitle">
+      <a class="brand brand--login" href="../index.html"><span class="brand__mark brand__mark--image"><img src="../assets/wanren-education-logo.png" alt="万人教育"></span><span>择校内容后台</span></a>
+      <p class="eyebrow">School Content Studio</p>
+      <h1 id="loginTitle">管理公开页内容</h1>
+      <p class="login-lead">登录后可维护院校详情模块与真题备考资料，并控制公开页展示。</p>
+      <form id="loginForm" class="login-form">
+        <label>用户名<input id="loginUsername" name="username" autocomplete="username" value="admin" required></label>
+        <label>密码<input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button button--primary button--wide" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i>登录后台</button>
+      </form>
+      <p id="loginMessage" class="form-message" role="status"></p>
+      <div class="local-tip"><i class="fa-solid fa-shield-halved"></i><span>本地首次使用默认密码为 <b>admin123</b>。上线前请通过环境变量 <code>KAOYAN_ADMIN_PASSWORD</code> 修改。</span></div>
+    </section>
+  </main>
 
-  <div class="card">
-    <h2>当前数据库</h2>
-    <div class="summary">
-      <div><div class="num" id="sumSchools">—</div><div class="label">院校</div></div>
-      <div><div class="num" id="sumMajors">—</div><div class="label">专业方向</div></div>
-      <div><div class="num" id="sumRecords">—</div><div class="label">录取记录</div></div>
-    </div>
+  <div id="adminApp" class="admin-shell" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="../index.html"><span class="brand__mark brand__mark--image"><img src="../assets/wanren-education-logo.png" alt="万人教育"></span><span>择校内容后台<small>School Content Studio</small></span></a>
+      <nav class="sidebar-nav" aria-label="后台导航">
+        <button data-view="overview"><i class="fa-solid fa-chart-line"></i>总览</button>
+        <button data-view="schools"><i class="fa-solid fa-building-columns"></i>院校管理</button>
+        <button class="is-active" data-view="modules"><i class="fa-solid fa-layer-group"></i>内容模块</button>
+        <button data-view="media"><i class="fa-solid fa-photo-film"></i>媒体资源</button>
+        <button data-view="history"><i class="fa-solid fa-clock-rotate-left"></i>发布记录</button>
+        <button data-view="import"><i class="fa-solid fa-file-arrow-up"></i>数据导入</button>
+      </nav>
+      <div class="sidebar-user">
+        <span class="avatar"><i class="fa-solid fa-user"></i></span>
+        <span><b id="adminDisplayName">内容管理员</b><small id="adminRole">管理员</small></span>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <button id="sidebarToggle" class="icon-button topbar__menu" type="button" aria-label="展开导航"><i class="fa-solid fa-bars"></i></button>
+        <span>内容管理 <i class="fa-solid fa-chevron-right"></i> <b id="contentBreadcrumb">院校详情页</b></span>
+        <button id="logoutBtn" class="text-button" type="button"><i class="fa-solid fa-right-from-bracket"></i>安全退出</button>
+      </header>
+
+      <div id="modulesView" class="view-panel">
+        <header class="page-heading">
+          <div><p id="moduleEyebrow" class="eyebrow">School detail operations</p><h1>内容模块配置</h1><p id="moduleDescription">按院校维护视频、群二维码、图片和链接，并控制发布状态。</p></div>
+          <div class="page-actions">
+            <label class="school-select"><span>配置页面</span><select id="contentScope"><option value="school">院校详情模块</option><option value="exam">真题备考区</option></select></label>
+            <label id="schoolSelectLabel" class="school-select"><span>当前院校</span><select id="schoolSelect"></select></label>
+            <a id="publicPreviewLink" class="button button--secondary" href="#" target="_blank"><i class="fa-regular fa-eye"></i>查看公开页</a>
+            <button id="publishBtn" class="button button--primary" type="button"><i class="fa-solid fa-cloud-arrow-up"></i>发布更改</button>
+          </div>
+        </header>
+
+        <div class="content-studio">
+          <section class="module-column panel-card">
+            <header class="panel-card__header"><div><h2>页面模块</h2><p>拖动卡片调整公开页顺序</p></div><span id="moduleCount" class="status-pill">0 个模块</span></header>
+            <div id="moduleList" class="module-list"></div>
+            <button id="addModuleBtn" class="add-module" type="button"><i class="fa-solid fa-plus"></i>添加模块</button>
+            <div id="moduleTypeMenu" class="module-type-menu" hidden>
+              <button data-add-type="video"><i class="fa-solid fa-circle-play"></i><span>视频<small>自动获取标题与封面</small></span></button>
+              <button class="scope-school-only" data-add-type="qr_group"><i class="fa-solid fa-qrcode"></i><span>群二维码<small>支持有效期与入群说明</small></span></button>
+              <button data-add-type="image"><i class="fa-regular fa-image"></i><span>图片<small>海报或院校通知</small></span></button>
+              <button data-add-type="link"><i class="fa-solid fa-link"></i><span>链接<small>学院官网或招生信息</small></span></button>
+            </div>
+            <p class="module-hint"><i class="fa-solid fa-grip-vertical"></i>排序保存后会同步影响公开页。</p>
+          </section>
+
+          <section class="editor-column panel-card">
+            <header class="panel-card__header"><div><h2 id="editorTitle">选择一个模块开始编辑</h2><p id="editorSubtitle">更改会自动保存为当前状态</p></div><span id="saveStatus" class="status-pill status-pill--success">已保存</span></header>
+            <form id="moduleForm" class="module-form" hidden>
+              <div class="form-grid">
+                <label>模块类型<select id="fieldType"><option value="video">视频</option><option value="qr_group">群二维码</option><option value="image">图片</option><option value="link">链接</option><option value="rich_text">公告</option></select></label>
+                <label>展示状态<select id="fieldStatus"><option value="draft">草稿</option><option value="published">已发布</option><option value="archived">已归档</option></select></label>
+              </div>
+              <label>模块标题<input id="fieldTitle" maxlength="160" required></label>
+              <label>摘要<textarea id="fieldDescription" rows="3" maxlength="1000"></textarea></label>
+
+              <div id="videoFields" class="type-fields">
+                <label>视频链接<div class="input-action"><input id="fieldLink" type="url" placeholder="粘贴 B 站、YouTube、腾讯视频等链接"><button id="fetchVideoBtn" class="button button--secondary" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i>获取信息</button></div></label>
+                <p id="videoFetchStatus" class="inline-status"></p>
+              </div>
+              <div id="examVideoListFields" class="type-fields" hidden>
+                <label>真题讲解视频列表<div class="bulk-video-input"><textarea id="fieldVideoList" rows="6" placeholder="每行粘贴一个 B 站视频链接"></textarea><button id="fetchVideoListBtn" class="button button--secondary" type="button"><i class="fa-solid fa-list-check"></i>批量获取</button></div></label>
+                <p id="videoListFetchStatus" class="inline-status">每行一个链接；公开页会按这里的顺序显示可跳转视频列表。</p>
+              </div>
+              <div id="linkFields" class="type-fields"><label>目标链接<input id="fieldLinkGeneric" type="text" inputmode="url" placeholder="https://"></label></div>
+
+              <div id="coverFields" class="cover-editor">
+                <div class="field-heading"><span id="coverLabel">视频封面</span><small>支持 PNG、JPEG、WebP，最大 5MB</small></div>
+                <div id="coverPreview" class="cover-preview"><i class="fa-regular fa-image"></i><span>暂无封面</span></div>
+                <div class="cover-actions"><button id="uploadCoverBtn" class="button button--secondary" type="button"><i class="fa-solid fa-upload"></i>上传替换</button><input id="coverInput" type="file" accept="image/png,image/jpeg,image/webp" hidden><button id="clearCoverBtn" class="text-button" type="button">移除封面</button></div>
+              </div>
+
+              <div id="qrFields" class="type-fields form-grid">
+                <label>二维码有效期<input id="fieldExpiresAt" type="date"></label>
+                <label>按钮文案<input id="fieldCta" maxlength="30" placeholder="扫码加入"></label>
+              </div>
+              <div id="defaultCtaField" class="type-fields"><label>按钮文案<input id="fieldCtaDefault" maxlength="30" placeholder="查看详情"></label></div>
+              <div class="form-grid">
+                <label>定时发布<input id="fieldPublishAt" type="datetime-local"></label>
+                <label>定时下线<input id="fieldUnpublishAt" type="datetime-local"></label>
+              </div>
+              <div class="editor-actions"><button id="deleteModuleBtn" class="button button--danger" type="button"><i class="fa-regular fa-trash-can"></i>删除模块</button><span id="editorMessage" class="form-message" role="status"></span></div>
+            </form>
+            <div id="editorEmpty" class="empty-editor"><i class="fa-solid fa-layer-group"></i><h3>从左侧选择模块</h3><p>也可以添加一个新模块，开始配置公开页内容。</p></div>
+          </section>
+
+          <aside class="preview-column panel-card">
+            <header class="panel-card__header"><div><h2>公开页预览</h2><p>当前模块的桌面卡片效果</p></div><span class="status-pill">实时</span></header>
+            <div id="livePreview" class="live-preview"></div>
+            <div id="publishCheck" class="publish-check"><h3><i class="fa-solid fa-circle-check"></i>发布检查</h3><ul><li>选择模块后开始检查</li></ul></div>
+            <div class="module-rules"><h3>模块规则</h3><p>公开页只展示已发布内容</p><p>视频封面允许手动覆盖</p><p>二维码可设置失效日期</p><p>所有变更进入审计记录</p></div>
+          </aside>
+        </div>
+      </div>
+
+      <div id="placeholderView" class="view-panel placeholder-view" hidden>
+        <i class="fa-solid fa-screwdriver-wrench"></i><h1 id="placeholderTitle">功能建设中</h1><p>本次本地实现聚焦内容模块的完整运营闭环。</p>
+      </div>
+
+      <div id="importView" class="view-panel import-view" hidden>
+        <header class="page-heading"><div><p class="eyebrow">Database maintenance</p><h1>录取数据导入</h1><p>上传最新版 Excel，刷新本地录取数据库。</p></div></header>
+        <section class="import-card panel-card">
+          <div class="database-summary"><div><b id="sumSchools">—</b><span>院校</span></div><div><b id="sumMajors">—</b><span>专业方向</span></div><div><b id="sumRecords">—</b><span>录取记录</span></div></div>
+          <label id="fileBox" class="file-box"><i class="fa-solid fa-file-excel"></i><strong>选择或拖入 .xlsx 文件</strong><span id="fileName">导入会覆盖当前录取数据表</span><input id="fileInput" type="file" accept=".xlsx" hidden></label>
+          <label>兼容令牌（设置了 KAOYAN_ADMIN_TOKEN 时填写）<input id="adminToken" type="password" autocomplete="off"></label>
+          <button id="importBtn" class="button button--primary button--wide" disabled><i class="fa-solid fa-file-arrow-up"></i>导入数据库</button>
+          <p id="importResult" class="form-message" role="status"></p>
+        </section>
+      </div>
+    </section>
   </div>
 
-  <div class="card">
-    <h2>上传新数据</h2>
-    <div class="file-box" id="fileBox">
-      <div class="icon">📄</div>
-      <div>点击选择 .xlsx 文件</div>
-      <div class="name" id="fileName"></div>
-      <input type="file" id="fileInput" accept=".xlsx">
-    </div>
-    <input class="token-input" type="password" id="adminToken" placeholder="上线后填写 KAOYAN_ADMIN_TOKEN；本机可留空" autocomplete="off">
-    <button class="btn" id="importBtn" disabled>⬆️ 导入数据库</button>
-    <div class="warn">⚠️ 导入会覆盖当前数据库中的录取数据表。请确认 Excel 表头与模板一致（学校名称、学院名称、专业名称……）。</div>
-    <div class="result" id="result"></div>
-  </div>
-
-  <div class="links">
-    <a href="/专业课选择/考研专业课院校查询.html">→ 查看院校查询页</a>
-    <a href="/api/summary" target="_blank">→ 查看 /api/summary</a>
-  </div>
-</div>
-
-<script>
-  const fileInput = document.getElementById('fileInput');
-  const fileBox = document.getElementById('fileBox');
-  const fileName = document.getElementById('fileName');
-  const importBtn = document.getElementById('importBtn');
-  const result = document.getElementById('result');
-    const adminToken = document.getElementById('adminToken');
-    adminToken.value = sessionStorage.getItem('kaoyan_admin_token') || '';
-    adminToken.addEventListener('input', () => sessionStorage.setItem('kaoyan_admin_token', adminToken.value));
-  let selectedFile = null;
-
-  async function loadSummary() {
-    try {
-      const resp = await fetch('/api/summary');
-      const json = await resp.json();
-      if (json.code === 0) {
-        document.getElementById('sumSchools').textContent = json.data.school_count;
-        document.getElementById('sumMajors').textContent = json.data.major_count;
-        document.getElementById('sumRecords').textContent = json.data.record_count;
-      }
-    } catch (e) {
-      document.getElementById('sumSchools').textContent = 'API 未启动';
-    }
-  }
-
-  function showResult(ok, msg) {
-    result.className = 'result ' + (ok ? 'ok' : 'err');
-    result.textContent = msg;
-  }
-
-  function readAsBase64(file) {
-    return new Promise((resolve, reject) => {
-      const fr = new FileReader();
-      fr.onload = () => {
-        const dataUrl = fr.result;
-        const base64 = String(dataUrl).split(',')[1] || '';
-        resolve(base64);
-      };
-      fr.onerror = () => reject(new Error('文件读取失败'));
-      fr.readAsDataURL(file);
-    });
-  }
-
-  fileBox.addEventListener('click', () => fileInput.click());
-  fileInput.addEventListener('change', () => {
-    selectedFile = fileInput.files[0] || null;
-    if (selectedFile) {
-      fileName.textContent = selectedFile.name + '（' + (selectedFile.size / 1024).toFixed(1) + ' KB）';
-      importBtn.disabled = false;
-    } else {
-      fileName.textContent = '';
-      importBtn.disabled = true;
-    }
-  });
-  fileBox.addEventListener('dragover', (e) => { e.preventDefault(); fileBox.classList.add('dragover'); });
-  fileBox.addEventListener('dragleave', () => fileBox.classList.remove('dragover'));
-  fileBox.addEventListener('drop', (e) => {
-    e.preventDefault();
-    fileBox.classList.remove('dragover');
-    const f = e.dataTransfer.files && e.dataTransfer.files[0];
-    if (f) {
-      fileInput.files = e.dataTransfer.files;
-      fileInput.dispatchEvent(new Event('change'));
-    }
-  });
-
-  importBtn.addEventListener('click', async () => {
-    if (!selectedFile) return;
-    if (!confirm('导入会覆盖当前数据库中的录取数据表，确定继续？')) return;
-    importBtn.disabled = true;
-    importBtn.textContent = '⏳ 导入中…';
-    showResult(false, '');
-    try {
-      const base64 = await readAsBase64(selectedFile);
-      const resp = await fetch('/api/admin/import-admission', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Admin-Token': adminToken.value || '' },
-        body: JSON.stringify({ filename: selectedFile.name, base64: base64 })
-      });
-      const json = await resp.json();
-      if (json.code === 0) {
-        const d = json.data;
-        showResult(true, '✅ 导入成功：' + d.records + ' 条录取记录，' + d.schools + ' 所学校，' + d.majors + ' 个专业方向。已保存为 ' + d.saved_as);
-        loadSummary();
-      } else {
-        showResult(false, '❌ 导入失败：' + (json.msg || '未知错误'));
-      }
-    } catch (e) {
-      showResult(false, '❌ 请求失败：' + e.message + '（请确认服务由 python serve.py 启动，而不是直接双击 HTML）');
-    } finally {
-      importBtn.disabled = !selectedFile;
-      importBtn.textContent = '⬆️ 导入数据库';
-    }
-  });
-
-  loadSummary();
-</script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="admin.js?v=20260829"></script>
 </body>
 </html>
