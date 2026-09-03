@@ -16,7 +16,7 @@
     el.innerHTML = groups.map(function (g, i) {
       var num = ('0' + (i + 1)).slice(-2);
       var links = g.items.map(function (it) {
-        return '<a href="' + it.href + '">' + liIcon(it.icon) + it.label + '</a>';
+        return '<a href="' + (window.NAV_BASE || '') + it.href + '">' + liIcon(it.icon) + it.label + '</a>';
       }).join('');
       return '<section><p><span>' + num + '</span>' + g.label + '</p>' + links + '</section>';
     }).join('');
@@ -27,7 +27,7 @@
     if (!el) return;
     el.innerHTML = groups.map(function (g) {
       var links = g.items.map(function (it) {
-        return '<a href="' + it.href + '">' + liIcon(it.icon) + it.label + '</a>';
+        return '<a href="' + (window.NAV_BASE || '') + it.href + '">' + liIcon(it.icon) + it.label + '</a>';
       }).join('');
       return '<div class="hc open">' +
         '<div class="hc-head" role="button" tabindex="0" aria-expanded="true" onclick="var hc=this.parentNode;var o=hc.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o);">' +

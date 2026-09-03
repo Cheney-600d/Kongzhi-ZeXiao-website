@@ -19,6 +19,31 @@
 <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="nav-redesign.css">
 <link rel="stylesheet" href="entry-intro-white.css">
+<script>
+(function () {
+  try {
+    var forceReplay = window.location.search.indexOf('intro=1') !== -1;
+    var shouldSkip = false;
+
+    try {
+      if (!forceReplay && window.sessionStorage.getItem('control_school_white_intro_seen_v1') === '1') shouldSkip = true;
+    } catch (e) {}
+
+    if (!forceReplay && !shouldSkip && document.referrer) {
+      try {
+        var ref = new URL(document.referrer);
+        if (ref.origin === window.location.origin) shouldSkip = true;
+      } catch (e) {}
+    }
+
+    if (!shouldSkip && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) shouldSkip = true;
+    if (!shouldSkip && (window.location.search.indexOf('school=') !== -1 || window.location.search.indexOf('from=') !== -1)) shouldSkip = true;
+
+    if (shouldSkip) document.documentElement.classList.add('entry-intro-skip');
+  } catch (e) {}
+})();
+</script>
+
 <link rel="stylesheet" href="journey-home.css">
 <link rel="stylesheet" href="school-content.css?v=20260829">
 
@@ -1462,7 +1487,7 @@ var _hmt = _hmt || [];
   </div>
 
   <!-- 筛选区 + 广告条 并排 -->
-  <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6">
+  <div id="schoolFilterSection" style="display:flex;gap:16px;align-items:stretch;margin-bottom:16px;" class="mb-6">
     <!-- 左侧：筛选区 -->
     <div class="card p-4" style="flex:1;min-width:0;overflow:visible;border-top:2px solid #a92122;">
       <div class="flex flex-wrap gap-2 items-end">
@@ -1787,7 +1812,7 @@ var _hmt = _hmt || [];
 
     <script src="考研常识科普/posts-data.js" defer></script>
 <script src="entry-intro-white.js" defer></script>
-<script src="journey-home.js" defer></script>
+<script src="journey-home.js?v=20260902" defer></script>
 <script src="home-banner.js" defer></script>
 <script src="school-content.js?v=20260829" defer></script>
     <script src="index.js?v=20260815-qqgroup" defer></script>

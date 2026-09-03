@@ -31,7 +31,7 @@
       description: '不用马上选出唯一答案。先根据地区、层级和专业课，留下 6–10 所值得进一步看的学校。',
       steps: ['填写地区、层级与专业课条件', '浏览符合条件的院校卡片', '收藏 6–10 所作为第一批备选'],
       progress: 48,
-      primary: ['开始筛选院校', '#mainContentArea'],
+      primary: ['开始筛选院校', '#schoolFilterSection'],
       secondary: ['先查专业课匹配', '专业课选择/考研专业课院校查询.html']
     },
     target: {
@@ -105,11 +105,19 @@
 
   function followLink(event) {
     var href = event.currentTarget.getAttribute('href');
-    if (href === '#mainContentArea') {
-      var target = document.getElementById('mainContentArea');
+    if (href === '#mainContentArea' || href === '#schoolFilterSection') {
+      var target = document.getElementById(href.slice(1));
       if (target) {
         event.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var el = target;
+        if (href === '#schoolFilterSection') {
+          var filterCard = target.querySelector('.card');
+          if (filterCard) el = filterCard;
+        }
+        var nav = document.querySelector('.site-nav') || document.querySelector('.mfs-topbar');
+        var offset = nav ? nav.getBoundingClientRect().height : 0;
+        var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     }
   }

@@ -8,6 +8,8 @@
   --entry-line: #e5dfdc;
 }
 
+html.entry-intro-skip .entry-intro { display: none !important; }
+
 html.entry-intro-running,
 html.entry-intro-running body { overflow: hidden !important; }
 
@@ -51,16 +53,16 @@ html.entry-intro-running body { overflow: hidden !important; }
   min-width: 0;
   background: var(--entry-canvas);
   border-right: 1px solid rgba(169,33,34,.035);
-  transition: transform 1.05s cubic-bezier(.76,0,.24,1);
+  transition: transform .65s cubic-bezier(.76,0,.24,1);
 }
 
 .entry-intro--leaving {
   pointer-events: none;
   background: transparent;
-  transition: background 0s .12s;
+  transition: background 0s .08s;
 }
 
-.entry-intro--leaving::before { opacity: 0; transition: opacity .2s ease; }
+.entry-intro--leaving::before { opacity: 0; transition: opacity .15s ease; }
 .entry-intro--leaving .entry-intro__veil span:nth-child(odd) { transform: translateY(-102%); }
 .entry-intro--leaving .entry-intro__veil span:nth-child(even) { transform: translateY(102%); }
 
@@ -97,7 +99,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   grid-template-columns: minmax(280px, .72fr) minmax(560px, 1.28fr);
   align-items: center;
   gap: clamp(30px, 5vw, 82px);
-  transition: opacity .25s ease, transform .5s ease;
+  transition: opacity .18s ease, transform .3s ease;
 }
 
 .entry-intro__meta {
@@ -123,7 +125,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   font: 700 10px/1.3 "Consolas", monospace;
   letter-spacing: .18em;
   opacity: 0;
-  animation: entry-white-copy .55s .18s ease forwards;
+  animation: entry-white-copy .35s .12s ease forwards;
 }
 
 .entry-intro__kicker i {
@@ -152,12 +154,12 @@ html.entry-intro-running body { overflow: hidden !important; }
   letter-spacing: .04em;
   opacity: 0;
   transform: translateY(14px);
-  animation: entry-white-copy .65s .7s ease forwards;
+  animation: entry-white-copy .4s .42s ease forwards;
 }
 
 .entry-intro__copy h1 {
   clip-path: inset(0 100% 0 0);
-  animation: entry-white-title .9s .28s cubic-bezier(.16,1,.3,1) forwards;
+  animation: entry-white-title .55s .18s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .entry-intro__lead {
@@ -167,7 +169,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   line-height: 1.8;
   opacity: 0;
   transform: translateY(10px);
-  animation: entry-white-copy .6s .92s ease forwards;
+  animation: entry-white-copy .38s .55s ease forwards;
 }
 
 .entry-layer-stack {
@@ -187,7 +189,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   height: 100%;
   overflow: visible;
   opacity: 0;
-  animation: entry-map-in .65s 1.62s ease forwards;
+  animation: entry-map-in .4s .95s ease forwards;
 }
 
 .entry-control-map__grid path,
@@ -208,7 +210,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   stroke-width: 1.5;
   stroke-dasharray: 760;
   stroke-dashoffset: 760;
-  animation: entry-white-line 1.05s 2.18s ease forwards;
+  animation: entry-white-line .65s 1.3s ease forwards;
 }
 
 .entry-control-map__signal,
@@ -223,13 +225,13 @@ html.entry-intro-running body { overflow: hidden !important; }
 .entry-control-map__signal {
   stroke-dasharray: 690;
   stroke-dashoffset: 690;
-  animation: entry-white-line 1.08s 1.8s ease forwards;
+  animation: entry-white-line .65s 1.08s ease forwards;
 }
 
 .entry-control-map__response {
   stroke-dasharray: 360;
   stroke-dashoffset: 360;
-  animation: entry-white-line 1.05s 2.55s ease forwards;
+  animation: entry-white-line .65s 1.52s ease forwards;
 }
 
 .entry-control-map__sum,
@@ -274,21 +276,21 @@ html.entry-intro-running body { overflow: hidden !important; }
   top: 10%;
   left: 2%;
   transform: translate3d(45px, 18px, 120px) rotateY(8deg) rotateX(5deg);
-  animation: entry-layer-input 1s .52s cubic-bezier(.16,1,.3,1) forwards;
+  animation: entry-layer-input .6s .32s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .entry-layer--model {
   top: 33%;
   left: 33%;
   transform: translate3d(30px, 24px, 190px) rotateY(5deg) rotateX(4deg);
-  animation: entry-layer-model 1s .72s cubic-bezier(.16,1,.3,1) forwards;
+  animation: entry-layer-model .6s .45s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .entry-layer--target {
   top: 57%;
   left: 62%;
   transform: translate3d(12px, 25px, 250px) rotateY(3deg) rotateX(3deg);
-  animation: entry-layer-target 1s .92s cubic-bezier(.16,1,.3,1) forwards;
+  animation: entry-layer-target .6s .55s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .entry-layer__index {
@@ -323,7 +325,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   text-align: center;
   opacity: 0;
   transform: translateY(-50%) scale(1.35);
-  animation: entry-white-lock .75s 3.05s cubic-bezier(.16,1,.3,1) forwards;
+  animation: entry-white-lock .5s 1.85s cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .entry-target-lock span,
@@ -360,7 +362,7 @@ html.entry-intro-running body { overflow: hidden !important; }
   background: var(--entry-red);
   box-shadow: 0 0 0 6px rgba(169,33,34,.08), 0 0 20px rgba(169,33,34,.28);
   opacity: 0;
-  animation: entry-white-pulse 2.1s 1.78s cubic-bezier(.42,.05,.24,1) forwards;
+  animation: entry-white-pulse 1.3s 1.05s cubic-bezier(.42,.05,.24,1) forwards;
 }
 
 .entry-intro__progress {
@@ -391,10 +393,10 @@ html.entry-intro-running body { overflow: hidden !important; }
   border-radius: 50%;
 }
 
-.entry-intro__progress span:nth-child(1) i { animation: entry-white-status .2s .8s forwards; }
-.entry-intro__progress span:nth-child(2) i { animation: entry-white-status .2s 1.7s forwards; }
-.entry-intro__progress span:nth-child(3) i { animation: entry-white-status .2s 2.55s forwards; }
-.entry-intro__progress span:nth-child(4) i { animation: entry-white-status .2s 3.2s forwards; }
+.entry-intro__progress span:nth-child(1) i { animation: entry-white-status .15s .45s forwards; }
+.entry-intro__progress span:nth-child(2) i { animation: entry-white-status .15s .95s forwards; }
+.entry-intro__progress span:nth-child(3) i { animation: entry-white-status .15s 1.45s forwards; }
+.entry-intro__progress span:nth-child(4) i { animation: entry-white-status .15s 1.85s forwards; }
 
 .entry-intro--leaving .entry-intro__stage,
 .entry-intro--leaving .entry-intro__skip {

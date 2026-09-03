@@ -50,7 +50,7 @@
   var removalTimer = null;
   var autoTimer = window.setTimeout(function () {
     closeIntro('complete');
-  }, 4550);
+  }, 2800);
 
   function remember() {
     try {
@@ -68,7 +68,7 @@
     removalTimer = window.setTimeout(function () {
       document.documentElement.classList.remove('entry-intro-running');
       intro.remove();
-    }, 1080);
+    }, 650);
   }
 
   function removeIntroImmediately() {

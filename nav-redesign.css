@@ -264,3 +264,9 @@ body{padding-top:64px!important}
 }
 @keyframes mobileDataFlash{0%{background:rgba(169,33,34,.11);box-shadow:0 0 0 8px rgba(169,33,34,.08)}100%{background:transparent;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.mobile-school-card.is-updating .mobile-school-card__result{animation:none}}
+
+/* Subpage nav height for mobile bottom-only mode */
+body.mfs-bottom-only { --nav-height: 64px; }
+
+/* Hide legacy mobile dock when the homepage site-nav is present */
+body.mfs-bottom-only.mobile-function-ready .mfs-dock { display: none !important; }
