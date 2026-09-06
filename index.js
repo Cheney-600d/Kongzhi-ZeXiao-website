@@ -66,6 +66,7 @@ function setOptions(selectId, values, label){
 // 使用 updateField 之前的所有已选字段值来过滤，忽略 updateField 及之后的字段
 function getFilteredForUpdate(updateField){
   const rv = document.getElementById('filterRegion').value;
+  const tv = document.getElementById('filterTier').value;
   const pv = document.getElementById('filterProvince').value;
   const sv = document.getElementById('filterSchool').value;
   const cv = document.getElementById('filterCollege').value;
@@ -74,6 +75,7 @@ function getFilteredForUpdate(updateField){
   const isMath2Eng2 = document.getElementById('filterMath2Eng2').checked;
   return records.filter(r=>{
     if(rv && !REGION_MAP[rv].includes(r.province)) return false;
+    if(tv && r.tier !== tv) return false;
     if(updateField !== 'province' && pv && r.province !== pv) return false;
     if(updateField !== 'school' && sv && r.school !== sv) return false;
     if(updateField !== 'college' && cv && r.college !== cv) return false;
@@ -242,6 +244,11 @@ function initFilters(){
 
   // 院校层级变化 → 触发学校列表筛选
   document.getElementById('filterTier').addEventListener('change', ()=>{
+    const base = getFilteredForUpdate('');
+    setOptions('filterProvince', [...new Set(base.map(r=>r.province))].sort(), '省份');
+    setOptions('filterSchool', [...new Set(base.map(r=>r.school))].sort(), '学校');
+    setOptions('filterCollege', [...new Set(base.map(r=>r.college))].sort(), '学院');
+    setOptions('filterMajor', [...new Set(base.map(r=>r.majorCode))].sort(), '专业');
     applySchoolFilter();
   });
 
