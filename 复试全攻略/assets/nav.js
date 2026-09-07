@@ -35,30 +35,6 @@ function renderNav() {
     }).join('');
   }
 
-  // 添加返回按钮
-  const mainNav = document.querySelector('.main-nav');
-  if (mainNav && !mainNav.querySelector('.nav-back-buttons')) {
-    const btnContainer = document.createElement('div');
-    btnContainer.className = 'nav-back-buttons';
-    if (currentPage === 'index.html') {
-      btnContainer.innerHTML = `
-        <a href="../index.html" class="nav-back-btn">← 返回择校首页</a>
-      `;
-    } else {
-      btnContainer.innerHTML = `
-        <a href="index.html" class="nav-back-btn">🏠 返回首页</a>
-        <a href="../index.html" class="nav-back-btn">← 返回择校首页</a>
-      `;
-    }
-    const hamburger = mainNav.querySelector('.hamburger');
-    if (hamburger) {
-      mainNav.insertBefore(btnContainer, hamburger);
-    } else {
-      mainNav.appendChild(btnContainer);
-    }
-  }
-}
-
 // ===== 汉堡菜单 =====
 function toggleMobileNav() {
   const mobileNav = document.querySelector('.mobile-nav');

@@ -99,7 +99,7 @@
 
   document.body.insertAdjacentHTML('afterbegin',
     '<header class="mfs-topbar" aria-label="移动端页面导航">'+
-      '<button class="mfs-icon-btn" type="button" data-mfs-back aria-label="返回上一页" title="返回上一页">'+icon.back+'</button>'+
+      '<button class="mfs-icon-btn mfs-back-btn" type="button" data-mfs-back aria-label="返回上一级" title="返回上一级">'+icon.back+'<span>返回上一级</span></button>'+
       '<span class="mfs-title"><small>CONTROL TOOL / MOBILE</small><strong>'+current+'</strong></span>'+
       '<button class="mfs-menu-btn" type="button" data-mfs-open>'+icon.grid+'<span>全部功能</span></button>'+
     '</header>'+
@@ -114,6 +114,8 @@
     '</aside>'
   );
   document.body.classList.add('mobile-function-ready');
+  var isSchoolDetail = path.indexOf('/school_detail/') !== -1;
+  if (isSchoolDetail) document.body.classList.add('mfs-no-dock');
 
   var sheet = document.querySelector('.mfs-sheet');
   var scrim = document.querySelector('.mfs-scrim');

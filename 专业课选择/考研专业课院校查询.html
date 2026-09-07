@@ -779,15 +779,11 @@
 </style>
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260818">
 <link rel="stylesheet" href="../theme-global.css?v=20260818">
+<link rel="stylesheet" href="../back-nav.css">
 </head>
 <body>
     <div class="container">
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;">
-            <a href="../index.html" id="courseUpperBack" data-internal-back onclick="return goCourseUpperBack(event)" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#a92122;color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseenter="this.style.background='#a92122'" onmouseleave="this.style.background='#a92122'">
-                <span>🏠</span>
-                <span>返回上一级</span>
-            </a>
-        </div>
+        <div class="back-nav"><a href="index.html" id="courseUpperBack" data-internal-back onclick="return goCourseUpperBack(event)" class="back back-up">← 返回上一级</a></div>
         <div class="header">
             <h1>📚 27考研专业课院校查询</h1>
             <p>自动控制 / 控制理论 / 控制工程基础 等控制类初试专业课按院校汇总</p>
@@ -806,7 +802,7 @@
         <div class="detail-page" id="detailPage">
             <div class="detail-header">
                 <h2 id="detailTitle">专业课名称</h2>
-                <button class="back-btn" onclick="history.back()">← 返回上一级</button>
+                
             </div>
             
             <div class="filter-bar">
@@ -841,7 +837,7 @@
                     <h2 id="schoolDetailTitle">院校名称</h2>
                     <a id="schoolDetailLink" href="" class="view-data-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:6px;font-size:12px;">📊 查看择校数据</a>
                 </div>
-                <button class="back-btn" onclick="goBackFromSchool()">← 返回</button>
+                
             </div>
             
             <div class="school-info-bar" id="schoolInfoBar">
@@ -1510,6 +1506,7 @@
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root=".."></script>
 <script src="../navigation-history.js"></script>
+<script src="../desktop-top-nav.js" defer></script>
 </body>
 </html>
 

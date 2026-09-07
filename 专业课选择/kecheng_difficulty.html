@@ -83,8 +83,11 @@
 <style>html{zoom:0.85;}@media(max-width:768px){html{zoom:0.9;}}</style>
 
 <link rel="stylesheet" href="../theme-global.css?v=20260818">
+<link rel="stylesheet" href="../back-nav.css">
+<link rel="stylesheet" href="../mobile-function-shell.css?v=20260818">
 </head>
 <body>
+<div class="back-nav"><a class="back back-up" href="index.html">← 返回上一级</a></div>
     <div class="min-h-screen pb-12">
         <!-- Header -->
         <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-12 px-4 relative overflow-hidden">
@@ -113,14 +116,7 @@
                         <span class="opacity-80 ml-1">级难度</span>
                     </div>
                 </div>
-                <div class="flex gap-3 mt-6">
-                    <a href="javascript:history.back()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-all backdrop-blur-sm">
-                        <i class="fas fa-arrow-left"></i> 返回上一级
-                    </a>
-                    <a href="../index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-all backdrop-blur-sm">
-                        <i class="fas fa-home"></i> 返回首页
-                    </a>
-                </div>
+                
             </div>
         </div>
 
@@ -425,5 +421,9 @@
         renderTable();
     </script>
 <script src="../navigation-history.js"></script>
+<script src="../navigation-history.js" defer></script>
+<script src="../desktop-top-nav.js" defer></script>
+<script src="../nav-data.js"></script>
+<script src="../mobile-function-shell.js" data-root="../"></script>
 </body>
 </html>

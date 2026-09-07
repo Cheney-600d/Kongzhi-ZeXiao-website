@@ -1,0 +1,89 @@
+/* 全站统一返回按钮 - 电脑端 */
+.back-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0 20px;
+}
+
+a.back,
+button.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #e3e5e7;
+  border-radius: 8px;
+  color: #3e4146;
+  font-size: .85rem;
+  line-height: 1.4;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  transition: all .2s;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a.back:hover,
+button.back:hover {
+  border-color: #a92122;
+  color: #a92122;
+  transform: translateX(-2px);
+}
+
+button.back {
+  border: 1px solid #e3e5e7;
+  background: #fff;
+  color: #3e4146;
+}
+
+/* 电脑端顶部导航（对应手机端底部导航） */
+.desktop-top-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 1px solid #e3e5e7;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.desktop-top-nav a.dt-home {
+  color: #a92122;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.desktop-top-nav a.dt-home:hover {
+  text-decoration: underline;
+}
+.desktop-top-nav .dt-title {
+  color: #61666d;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .desktop-top-nav {
+    display: none !important;
+  }
+}
+
+/* 电脑端隐藏页面左上角返回区域，返回上一级收进顶部导航 */
+@media (min-width: 769px) {
+  .back-nav {
+    display: none !important;
+  }
+}
+
+/* 手机端也隐藏页面左上角返回区域，返回上一级统一由顶部黑色导航栏承担 */
+@media (max-width: 768px) {
+  .back-nav {
+    display: none !important;
+  }
+}

@@ -397,6 +397,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 </style>
 <link rel="stylesheet" href="../../mobile-function-shell.css?v=20260818">
 <link rel="stylesheet" href="../../theme-global.css?v=20260818">
+<link rel="stylesheet" href="../../back-nav.css">
 </head>
 <body>
 
@@ -404,7 +405,7 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- 返回就业去向按钮 -->
-<a href="../就业去向index.html" class="floating-back-btn">← 返回就业去向</a>
+<div class="back-nav"><a class="back back-up" href="../index.html">← 返回上一级</a></div>
 
 <!-- Sidebar Navigation -->
 <nav class="sidebar" id="sidebar">
@@ -655,6 +656,8 @@ footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.82
 <script src="../../nav-data.js"></script>
 <script src="../../mobile-function-shell.js" data-root="../.."></script>
 <script src="../../navigation-history.js"></script>
+<script src="../../navigation-history.js" defer></script>
+<script src="../../desktop-top-nav.js" defer></script>
 </body>
 
 </html>
