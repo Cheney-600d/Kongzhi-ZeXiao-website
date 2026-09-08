@@ -6,7 +6,7 @@
 <title>控制类考研热度数据对比分析</title>
 <meta name="description" content="控制类考研院校热度榜与热度对比分析，基于最新搜索与关注数据。">
 <meta name="keywords" content="控制考研,自动化考研,择校,考研院校,院校对比,考研数据,985,211">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="assets/wanren-education-logo.png">
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +35,7 @@ header p { opacity: 0.9; font-size: 1rem; }
 .web-hot-link { padding: 14px 36px; border: none; background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); border-radius: 30px; color: #fff; text-decoration: none; font-size: 1.25rem; font-weight: 700; white-space: nowrap; transition: all 0.25s; box-shadow: 0 4px 18px rgba(255,107,53,0.4); display: inline-flex; align-items: center; gap: 10px; }
 .web-hot-link:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 28px rgba(255,107,53,0.55); }
 .web-hot-center { text-align: center; margin: 16px 0 20px; }
-.compare-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 20px; }
+.compare-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 .compare-panel { background: #fff; border-radius: 10px; padding: 16px; }
 .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #d5d5cf; }
 table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
@@ -129,7 +129,7 @@ button,a,input,select{touch-action:manipulation}
 <div class="container">
 <header>
 <h1>控制类考研热度数据对比分析</h1>
-<p>2026年4-7月 · 控制类考研热度总榜 · 985 / 211 / 双非 层级筛选 · 逐月切换看排名趋势</p>
+<p id="heatPageSubtitle">控制类考研热度总榜 · 985 / 211 / 双非 层级筛选 · 逐月切换看排名趋势</p>
 </header>
 
 <div class="controls">
@@ -148,14 +148,14 @@ button,a,input,select{touch-action:manipulation}
 <button class="tier-btn active" data-tier="all" onclick="filterTier('all')">全部</button>
 <button class="tier-btn" data-tier="985" onclick="filterTier('985')">985</button>
 <button class="tier-btn" data-tier="211" onclick="filterTier('211')">211</button>
-<button class="tier-btn" data-tier="双非" onclick="filterTier('双非')">双非</button>
+<button class="tier-btn" data-tier="double_non" onclick="filterTier('double_non')">双非</button>
 </div>
 </div>
 </div>
 
 <div id="compare-container"></div>
 
-<div class="footer">数据来源：2026年4-7月控制类考研热度总榜（万人教育/控制考研）</div>
+<div class="footer" id="heatPageFooter">数据来源：万人教育/控制考研月度热度榜</div>
 </div>
 
 <script>
@@ -291,6 +291,8 @@ render();
   }
 })();
 </script>
+
+<script src="heat-rankings.js?v=20260908"></script>
 
 <script id="entry-a11y-adapt-js">
 (function(){

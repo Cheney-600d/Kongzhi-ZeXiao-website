@@ -52,6 +52,14 @@ async def api_route(path: str, request: Request):
         return {'code': 0, 'data': {'items': content_admin.public_modules(params.get('school', ''))}}
     if full_path == '/api/exam-resources':
         return {'code': 0, 'data': {'items': content_admin.public_global_modules('exam_resources')}}
+    if full_path == '/api/heat-rankings':
+        try:
+            data = content_admin.public_heat_rankings(
+                params.get('period', ''), params.get('scope', 'all'), params.get('limit', 20)
+            )
+            return {'code': 0, 'data': data}
+        except ValueError as exc:
+            return JSONResponse({'code': 1, 'msg': str(exc)}, status_code=400)
     match = re.fullmatch(r'/api/schools/([^/]+)/content-modules', full_path)
     if match:
         return {'code': 0, 'data': {'items': content_admin.public_modules(match.group(1))}}

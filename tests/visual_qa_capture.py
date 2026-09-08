@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import pathlib
 
 from playwright.sync_api import sync_playwright
@@ -11,6 +12,7 @@ from playwright.sync_api import sync_playwright
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / 'design-output' / 'qa'
 BASE = 'http://127.0.0.1:8767'
+HEAT_SAMPLE = pathlib.Path(os.environ.get('KAOYAN_HEAT_SAMPLE', '')).expanduser() if os.environ.get('KAOYAN_HEAT_SAMPLE') else None
 
 
 def install_exam_fixture(page):
@@ -269,6 +271,20 @@ def main():
                 'singleVideoHidden': login_page.locator('#videoFields').is_hidden(),
                 'coverHidden': login_page.locator('#coverFields').is_hidden(),
                 'configuredUrls': len([line for line in login_page.locator('#fieldVideoList').input_value().splitlines() if line.strip()]),
+            }
+        if HEAT_SAMPLE and HEAT_SAMPLE.is_file():
+            login_page.locator('.sidebar-nav button[data-view="heat"]').click()
+            login_page.locator('#heatPeriod').fill('2026-08')
+            login_page.locator('#heatFileInput').set_input_files(str(HEAT_SAMPLE))
+            login_page.locator('#heatPreviewBtn').click()
+            login_page.locator('#heatPreviewPanel').wait_for(state='visible', timeout=30_000)
+            login_page.locator('.heat-group[open] .heat-match-table').first.wait_for(state='visible', timeout=10_000)
+            login_page.screenshot(path=str(OUTPUT / 'admin-heat-ranking.png'), full_page=False)
+            report['admin_heat_ranking'] = {
+                'screenshot': str(OUTPUT / 'admin-heat-ranking.png'),
+                'rows': login_page.locator('.heat-match-table tbody tr').count(),
+                'unresolved': login_page.locator('.heat-match-status.is-ambiguous, .heat-match-status.is-unmatched').count(),
+                'publishDisabled': login_page.locator('#heatPublishBtn').is_disabled(),
             }
         login_page.close()
 

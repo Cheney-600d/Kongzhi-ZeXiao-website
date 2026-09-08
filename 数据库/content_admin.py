@@ -21,6 +21,8 @@ import urllib.parse
 import urllib.request
 from http.cookies import SimpleCookie
 
+import heat_rankings
+
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 DB_PATH = pathlib.Path(os.environ.get('KAOYAN_SQLITE_PATH', '') or BASE_DIR / '数据库' / 'admission.db').expanduser().resolve()
@@ -162,6 +164,7 @@ def init_db() -> None:
             );
             """
         )
+        heat_rankings.ensure_schema(conn)
         env_username = os.environ.get('KAOYAN_ADMIN_USER')
         env_password = os.environ.get('KAOYAN_ADMIN_PASSWORD')
         if (env_username is None) != (env_password is None):
@@ -335,6 +338,11 @@ def _can_manage_school(conn: sqlite3.Connection, session: dict, school_id: int) 
         'SELECT 1 FROM admin_user_schools WHERE user_id=? AND school_id=?',
         (session['user_id'], school_id),
     ).fetchone())
+
+
+def _require_super_admin(session: dict) -> None:
+    if session.get('role') != 'super_admin':
+        raise PermissionError('只有超级管理员可以导入热度榜')
 
 
 def _module_dict(row: sqlite3.Row) -> dict:
@@ -856,6 +864,37 @@ def public_global_modules(section_key: str) -> list[dict]:
     return [_module_dict(row) for row in rows]
 
 
+def preview_heat_rankings(session: dict, body: dict) -> dict:
+    _require_super_admin(session)
+    with _connect() as conn:
+        heat_rankings.ensure_schema(conn)
+        return heat_rankings.preview_excel(conn, body)
+
+
+def publish_heat_rankings(session: dict, body: dict, request_ip: str = '') -> dict:
+    _require_super_admin(session)
+    now = _now()
+    with _LOCK, _connect() as conn:
+        heat_rankings.ensure_schema(conn)
+        result = heat_rankings.publish_preview(conn, body, int(session['user_id']), now)
+        conn.execute(
+            'INSERT INTO content_audit_logs(user_id,school_id,object_type,object_id,action,change_json,request_ip,created_at) '
+            'VALUES(?,?,?,?,?,?,?,?)',
+            (
+                session['user_id'], None, 'heat_ranking_batch', result['batch_id'], 'publish',
+                json.dumps({'period': result['period'], 'rows': result['rows'], 'replaced': result['replaced']}, ensure_ascii=False),
+                request_ip, now,
+            ),
+        )
+    return result
+
+
+def public_heat_rankings(period: str = '', scope: str = 'all', limit=20) -> dict:
+    init_db()
+    with _connect() as conn:
+        return heat_rankings.public_rankings(conn, period, scope, limit)
+
+
 def _ok(data=None, **extra):
     payload = {'code': 0, 'data': data if data is not None else {}}
     payload.update(extra)
@@ -932,6 +971,10 @@ def dispatch(method: str, path: str, query: dict, headers, raw_body: bytes, requ
             return 201, _ok(upload_image(session, body)), {}
         if path == '/api/admin/media/video-preview' and method == 'POST':
             return 200, _ok(video_preview(session, body)), {}
+        if path == '/api/admin/heat-rankings/preview' and method == 'POST':
+            return 200, _ok(preview_heat_rankings(session, body)), {}
+        if path == '/api/admin/heat-rankings/publish' and method == 'POST':
+            return 200, _ok(publish_heat_rankings(session, body, request_ip)), {}
         return 404, {'code': 1, 'msg': 'not found'}, {}
     except PermissionError as exc:
         return 401, {'code': 1, 'msg': str(exc)}, {}

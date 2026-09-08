@@ -3,7 +3,7 @@
 
   var state = {
     csrf: '', user: null, schools: [], schoolId: 0, scope: 'school', modules: [], activeId: 0,
-    saveTimer: 0, saving: false, selectedFile: null
+    saveTimer: 0, saving: false, selectedFile: null, heatFile: null, heatPreview: null
   };
 
   var $ = function (selector) { return document.querySelector(selector); };
@@ -520,12 +520,209 @@
     });
   }
 
+  var heatFileBox = $('#heatFileBox');
+  var heatFileInput = $('#heatFileInput');
+  var heatPreviewBtn = $('#heatPreviewBtn');
+  var heatPublishBtn = $('#heatPublishBtn');
+  var heatPeriod = $('#heatPeriod');
+
+  function defaultHeatPeriod() {
+    var now = new Date();
+    return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+  }
+
+  function periodFromFilename(filename) {
+    var text = String(filename || '');
+    var full = text.match(/(20\d{2})\D{0,3}(1[0-2]|0?[1-9])\s*月?/);
+    if (full) return full[1] + '-' + String(Number(full[2])).padStart(2, '0');
+    var monthOnly = text.match(/(?:^|\D)(1[0-2]|0?[1-9])\s*月/);
+    if (monthOnly) return new Date().getFullYear() + '-' + String(Number(monthOnly[1])).padStart(2, '0');
+    return '';
+  }
+
+  function resetHeatPreview() {
+    state.heatPreview = null;
+    $('#heatPreviewPanel').hidden = true;
+    $('#heatGroups').innerHTML = '';
+    heatPublishBtn.disabled = true;
+  }
+
+  function setHeatFile(file) {
+    state.heatFile = file || null;
+    resetHeatPreview();
+    var valid = !!(file && /\.xlsx$/i.test(file.name) && file.size <= 12 * 1024 * 1024);
+    $('#heatFileName').textContent = file
+      ? file.name + ' · ' + Math.max(1, Math.round(file.size / 1024)) + ' KB'
+      : '需要包含总榜、985、211、普通院校四张工作表';
+    heatPreviewBtn.disabled = !valid || !heatPeriod.value;
+    if (file && !valid) showMessage($('#heatMessage'), '请选择不超过 12MB 的 .xlsx 文件。', false);
+    else showMessage($('#heatMessage'), '', true);
+    var inferred = file ? periodFromFilename(file.name) : '';
+    if (inferred) heatPeriod.value = inferred;
+  }
+
+  function bindHeatFileDrop() {
+    if (!heatFileBox) return;
+    heatFileBox.addEventListener('dragover', function (event) { event.preventDefault(); heatFileBox.classList.add('is-dragover'); });
+    heatFileBox.addEventListener('dragleave', function () { heatFileBox.classList.remove('is-dragover'); });
+    heatFileBox.addEventListener('drop', function (event) {
+      event.preventDefault(); heatFileBox.classList.remove('is-dragover');
+      setHeatFile(event.dataTransfer.files[0] || null);
+    });
+    heatFileInput.addEventListener('change', function () { setHeatFile(heatFileInput.files[0] || null); });
+    heatPeriod.value = defaultHeatPeriod();
+    heatPeriod.addEventListener('change', function () {
+      resetHeatPreview();
+      heatPreviewBtn.disabled = !state.heatFile || !heatPeriod.value;
+    });
+  }
+
+  function allHeatRows() {
+    var rows = [];
+    (state.heatPreview && state.heatPreview.groups || []).forEach(function (group) {
+      (group.items || []).forEach(function (item) { rows.push(item); });
+    });
+    return rows;
+  }
+
+  function heatOptionHtml(item, catalog) {
+    var candidates = item.match && item.match.candidates || [];
+    var suggested = {};
+    candidates.forEach(function (candidate) { suggested[candidate.name] = true; });
+    var current = item.match && item.match.school_name || '';
+    var html = '<option value="">请选择对应院校</option>';
+    if (candidates.length) {
+      html += '<optgroup label="建议匹配">' + candidates.map(function (candidate) {
+        return '<option value="' + escapeHtml(candidate.name) + '"' + (candidate.name === current ? ' selected' : '') + '>' + escapeHtml(candidate.name) + '</option>';
+      }).join('') + '</optgroup>';
+    }
+    html += '<optgroup label="全部院校">' + catalog.filter(function (school) { return !suggested[school.name]; }).map(function (school) {
+      return '<option value="' + escapeHtml(school.name) + '"' + (school.name === current ? ' selected' : '') + '>' + escapeHtml(school.name) + '</option>';
+    }).join('') + '</optgroup>';
+    return html;
+  }
+
+  function heatStatus(item) {
+    if (item.match && item.match.manual) return { label: '已人工确认', cls: '' };
+    if (item.match && item.match.status === 'matched') return { label: '自动匹配', cls: '' };
+    if (item.match && item.match.status === 'ambiguous') return { label: '存在歧义', cls: ' is-ambiguous' };
+    return { label: '未匹配', cls: ' is-unmatched' };
+  }
+
+  function updateHeatPublishState() {
+    var rows = allHeatRows();
+    var unresolved = rows.filter(function (item) { return !(item.match && item.match.school_name); }).length;
+    heatPublishBtn.disabled = !rows.length || unresolved > 0;
+    var hint = $('#heatPublishHint');
+    hint.classList.toggle('is-ready', unresolved === 0 && rows.length > 0);
+    hint.textContent = unresolved ? '还有 ' + unresolved + ' 条院校信息需要确认。' : '80 条院校信息均已匹配，可以发布。';
+  }
+
+  function renderHeatPreview() {
+    var preview = state.heatPreview;
+    if (!preview) return;
+    $('#heatPreviewPanel').hidden = false;
+    $('#heatPreviewTitle').textContent = preview.year + '年' + preview.month + '月 · ' + preview.filename;
+    $('#heatSummary').innerHTML =
+      '<span>共 ' + preview.summary.rows + ' 条</span>' +
+      '<span class="is-good">自动匹配 ' + preview.summary.matched + '</span>' +
+      '<span class="is-warning">歧义 ' + preview.summary.ambiguous + '</span>' +
+      '<span class="is-danger">未匹配 ' + preview.summary.unmatched + '</span>';
+    $('#heatGroups').innerHTML = preview.groups.map(function (group) {
+      var unresolved = group.items.filter(function (item) { return !(item.match && item.match.school_name); }).length;
+      var rows = group.items.map(function (item) {
+        var status = heatStatus(item);
+        var rowCls = status.cls ? status.cls.trim() : '';
+        return '<tr class="' + rowCls + '" data-scope="' + group.scope + '" data-rank="' + item.rank + '">' +
+          '<td>' + item.rank + '</td><td><b>' + escapeHtml(item.source_school_name) + '</b></td>' +
+          '<td>' + item.heat + '</td><td>' + (item.total_rank == null ? '—' : item.total_rank) + '</td>' +
+          '<td><select aria-label="为' + escapeHtml(item.source_school_name) + '选择院校">' + heatOptionHtml(item, preview.catalog) + '</select></td>' +
+          '<td><span class="heat-match-status' + status.cls + '">' + status.label + '</span></td></tr>';
+      }).join('');
+      return '<details class="heat-group"' + (unresolved ? ' open' : '') + '><summary><b>' + escapeHtml(group.label) + '榜</b><span>前20名 · ' + (unresolved ? unresolved + ' 条待确认' : '全部已匹配') + '</span></summary>' +
+        '<div class="heat-table-wrap"><table class="heat-match-table"><thead><tr><th>排名</th><th>Excel 院校名</th><th>热度值</th><th>总排名</th><th>匹配到网站院校</th><th>状态</th></tr></thead><tbody>' + rows + '</tbody></table></div></details>';
+    }).join('');
+
+    Array.prototype.forEach.call($('#heatGroups').querySelectorAll('select'), function (select) {
+      select.addEventListener('change', function () {
+        var row = select.closest('tr');
+        var group = preview.groups.find(function (entry) { return entry.scope === row.dataset.scope; });
+        var item = group.items.find(function (entry) { return entry.rank === Number(row.dataset.rank); });
+        var selectedSchool = preview.catalog.find(function (school) { return school.name === select.value; }) || {};
+        preview.groups.forEach(function (entry) {
+          entry.items.forEach(function (candidate) {
+            if (candidate.source_school_name !== item.source_school_name) return;
+            candidate.match.school_name = select.value;
+            candidate.match.school_id = selectedSchool.school_id || null;
+            candidate.match.manual = !!select.value;
+          });
+        });
+        renderHeatPreview();
+      });
+    });
+    updateHeatPublishState();
+  }
+
+  heatPreviewBtn.addEventListener('click', async function () {
+    if (!state.heatFile || !heatPeriod.value) return;
+    heatPreviewBtn.disabled = true;
+    showMessage($('#heatMessage'), '正在读取工作表并匹配院校…', true);
+    try {
+      var data = await api('/api/admin/heat-rankings/preview', {
+        method: 'POST',
+        body: JSON.stringify({ period: heatPeriod.value, filename: state.heatFile.name, base64: await fileToBase64(state.heatFile) })
+      });
+      state.heatPreview = data;
+      renderHeatPreview();
+      showMessage($('#heatMessage'), '解析完成。请检查黄色或红色匹配项。', true);
+    } catch (error) {
+      resetHeatPreview();
+      showMessage($('#heatMessage'), error.message, false);
+    } finally {
+      heatPreviewBtn.disabled = !state.heatFile || !heatPeriod.value;
+    }
+  });
+
+  heatPublishBtn.addEventListener('click', async function () {
+    if (!state.heatPreview || heatPublishBtn.disabled) return;
+    var label = state.heatPreview.year + '年' + state.heatPreview.month + '月';
+    if (!window.confirm('将发布' + label + '四组前20名榜单；同月份旧数据会被覆盖。确定继续？')) return;
+    heatPublishBtn.disabled = true;
+    showMessage($('#heatMessage'), '正在发布榜单…', true);
+    try {
+      var groups = state.heatPreview.groups.map(function (group) {
+        return {
+          scope: group.scope,
+          items: group.items.map(function (item) {
+            return {
+              rank: item.rank, source_school_name: item.source_school_name,
+              school_name: item.match.school_name, heat: item.heat,
+              total_rank: item.total_rank, source_tier: item.source_tier
+            };
+          })
+        };
+      });
+      var result = await api('/api/admin/heat-rankings/publish', {
+        method: 'POST', body: JSON.stringify({ period: state.heatPreview.period, filename: state.heatPreview.filename, groups: groups })
+      });
+      showMessage($('#heatMessage'), label + '榜单发布成功，共更新 ' + result.rows + ' 条。', true);
+      $('#heatPublishHint').textContent = '发布成功，首页展示总榜前10名，完整榜单展示四组前20名。';
+      $('#heatPublishHint').classList.add('is-ready');
+      toast('热度榜发布成功');
+    } catch (error) {
+      showMessage($('#heatMessage'), error.message, false);
+      updateHeatPublishState();
+    }
+  });
+
+  bindHeatFileDrop();
+
   Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (button) {
     button.addEventListener('click', function () {
       Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === button); });
       var view = button.dataset.view;
-      $('#modulesView').hidden = view !== 'modules'; $('#importView').hidden = view !== 'import'; $('#placeholderView').hidden = view === 'modules' || view === 'import';
-      if (view !== 'modules' && view !== 'import') $('#placeholderTitle').textContent = button.textContent.trim();
+      $('#modulesView').hidden = view !== 'modules'; $('#importView').hidden = view !== 'import'; $('#heatView').hidden = view !== 'heat'; $('#placeholderView').hidden = view === 'modules' || view === 'import' || view === 'heat';
+      if (view !== 'modules' && view !== 'import' && view !== 'heat') $('#placeholderTitle').textContent = button.textContent.trim();
       if (view === 'import') loadSummary();
       els.adminApp.classList.remove('is-sidebar-open');
     });

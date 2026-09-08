@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """院校内容后台核心流程测试（使用临时数据库，不改正式数据）。"""
 import base64
+import io
 import json
 import os
 import pathlib
@@ -126,6 +127,51 @@ def main():
             'section_key': 'exam_resources', 'ordered_ids': [exam_video_id, exam_link_id]
         }, auth)
         check('真题模块排序可持久化', status == 200 and [x['id'] for x in body['data']['items']] == [exam_video_id, exam_link_id])
+
+        print('== 热度榜 Excel 导入 ==')
+        import openpyxl
+        conn = sqlite3.connect(admin.DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            catalog = admin.heat_rankings._school_catalog(conn)
+        finally:
+            conn.close()
+        school_names = [item['name'] for item in catalog[:20]]
+        workbook = openpyxl.Workbook()
+        workbook.remove(workbook.active)
+        sheet_defs = [
+            ('总热度榜', ['总排名', '招生单位', '热度值', '高校类型'], '985院校'),
+            ('985热度榜', ['排名', '招生单位', '热度值', '总排名'], None),
+            ('211热度榜', ['排名', '招生单位', '热度值', '总排名'], None),
+            ('普通院校热度榜', ['排名', '招生单位', '热度值', '总排名'], None),
+        ]
+        for sheet_name, headers, source_tier in sheet_defs:
+            sheet = workbook.create_sheet(sheet_name)
+            sheet.append(headers)
+            for rank, school_name in enumerate(school_names, start=1):
+                sheet.append([rank, school_name, 100 - rank, source_tier if source_tier else rank])
+        output = io.BytesIO()
+        workbook.save(output)
+        workbook.close()
+        encoded = base64.b64encode(output.getvalue()).decode('ascii')
+        status, body, _ = call('POST', '/api/admin/heat-rankings/preview', {
+            'period': '2026-08', 'filename': '8月热度榜单.xlsx', 'base64': encoded
+        }, auth)
+        preview = body.get('data', {})
+        check('可解析四张榜单并生成80条预览', status == 200 and preview.get('summary', {}).get('rows') == 80)
+        publish_groups = []
+        for group in preview.get('groups', []):
+            publish_groups.append({'scope': group['scope'], 'items': [{
+                'rank': item['rank'], 'source_school_name': item['source_school_name'],
+                'school_name': item['match']['school_name'], 'heat': item['heat'],
+                'total_rank': item['total_rank'], 'source_tier': item['source_tier'],
+            } for item in group['items']]})
+        status, body, _ = call('POST', '/api/admin/heat-rankings/publish', {
+            'period': preview.get('period'), 'filename': preview.get('filename'), 'groups': publish_groups
+        }, auth)
+        check('确认匹配后可发布四组前20名', status == 200 and body.get('data', {}).get('rows') == 80)
+        public_heat = admin.public_heat_rankings('', 'all', 10)
+        check('首页接口只返回最新总榜前10名', public_heat.get('period') == '202608' and len(public_heat.get('items', [])) == 10)
 
         print('== 图片与链接安全 ==')
         png = b'\x89PNG\r\n\x1a\n' + b'test-image-data'

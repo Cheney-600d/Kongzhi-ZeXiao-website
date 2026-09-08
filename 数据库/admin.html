@@ -35,6 +35,7 @@
         <button class="is-active" data-view="modules"><i class="fa-solid fa-layer-group"></i>内容模块</button>
         <button data-view="media"><i class="fa-solid fa-photo-film"></i>媒体资源</button>
         <button data-view="history"><i class="fa-solid fa-clock-rotate-left"></i>发布记录</button>
+        <button data-view="heat"><i class="fa-solid fa-fire-flame-curved"></i>热度榜单</button>
         <button data-view="import"><i class="fa-solid fa-file-arrow-up"></i>数据导入</button>
       </nav>
       <div class="sidebar-user">
@@ -128,6 +129,32 @@
         <i class="fa-solid fa-screwdriver-wrench"></i><h1 id="placeholderTitle">功能建设中</h1><p>本次本地实现聚焦内容模块的完整运营闭环。</p>
       </div>
 
+      <div id="heatView" class="view-panel heat-view" hidden>
+        <header class="page-heading">
+          <div><p class="eyebrow">Ranking operations</p><h1>院校热度榜单</h1><p>上传月度 Excel，核对院校匹配结果后一次发布四组前 20 名榜单。</p></div>
+          <a class="button button--secondary" href="../heat_compare.html" target="_blank"><i class="fa-regular fa-eye"></i>查看公开榜单</a>
+        </header>
+        <section class="heat-import-card panel-card">
+          <div class="heat-import-grid">
+            <label>榜单月份<input id="heatPeriod" type="month" min="2020-01" required></label>
+            <label id="heatFileBox" class="file-box file-box--compact"><i class="fa-solid fa-file-excel"></i><strong>选择或拖入热度榜 .xlsx</strong><span id="heatFileName">需要包含总榜、985、211、普通院校四张工作表</span><input id="heatFileInput" type="file" accept=".xlsx" hidden></label>
+            <button id="heatPreviewBtn" class="button button--primary" type="button" disabled><i class="fa-solid fa-wand-magic-sparkles"></i>解析并自动匹配</button>
+          </div>
+          <p id="heatMessage" class="form-message" role="status"></p>
+        </section>
+        <section id="heatPreviewPanel" class="heat-preview panel-card" hidden>
+          <header class="panel-card__header">
+            <div><h2 id="heatPreviewTitle">匹配预览</h2><p>黄色和红色项目必须选择正确院校后才能发布。</p></div>
+            <div id="heatSummary" class="heat-summary"></div>
+          </header>
+          <div id="heatGroups" class="heat-groups"></div>
+          <div class="heat-publish-bar">
+            <p id="heatPublishHint">请先处理未匹配院校。</p>
+            <button id="heatPublishBtn" class="button button--primary" type="button" disabled><i class="fa-solid fa-cloud-arrow-up"></i>确认发布本月榜单</button>
+          </div>
+        </section>
+      </div>
+
       <div id="importView" class="view-panel import-view" hidden>
         <header class="page-heading"><div><p class="eyebrow">Database maintenance</p><h1>录取数据导入</h1><p>上传最新版 Excel，刷新本地录取数据库。</p></div></header>
         <section class="import-card panel-card">
@@ -142,7 +169,7 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="admin.js?v=20260829"></script>
+  <script src="admin.js?v=20260908-heat-ranking"></script>
 <script src="../desktop-top-nav.js" defer></script>
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root="../"></script>

@@ -136,7 +136,7 @@ function initHeatRank(){
     titleEl.textContent = '🔥 ' + HEAT_LATEST_YEAR + '年' + HEAT_LATEST_MONTH + '月热度榜 TOP10';
   }
   if (linkEl) {
-    linkEl.href = 'heat_compare.html?month=' + HEAT_LATEST_MONTH;
+    linkEl.href = 'heat_compare.html?period=' + LATEST_HEAT.key;
   }
   
   var html = '<div class="heat-rank-wrap">';
@@ -162,6 +162,29 @@ function initHeatRank(){
   }).join('');
   html += '</div>';
   container.innerHTML = html;
+}
+
+async function loadPublishedHeatRank(){
+  try {
+    var response = await fetch('/api/heat-rankings?scope=all&limit=10', {cache:'no-store'});
+    var json = await response.json();
+    var data = json && json.code === 0 ? json.data : null;
+    if(!response.ok || !data || !data.period || !Array.isArray(data.items) || !data.items.length) return;
+    var mapped = data.items.slice(0, 10).map(function(item){
+      return {
+        rank: Number(item.rank), school: item.school_name || item.source_school_name,
+        heat: Number(item.heat), tier: item.tier || '双非'
+      };
+    });
+    HEAT_DATA_BY_MONTH[data.period] = mapped;
+    LATEST_HEAT = {key:data.period, year:Number(data.year), month:Number(data.month), data:mapped};
+    HEAT_RANK_TOP10 = mapped;
+    HEAT_LATEST_MONTH = LATEST_HEAT.month;
+    HEAT_LATEST_YEAR = LATEST_HEAT.year;
+    initHeatRank();
+  } catch(error) {
+    console.warn('热度榜接口暂不可用，继续展示内置榜单。', error);
+  }
 }
 
 // ===================== 筛选器初始化 =====================
@@ -256,6 +279,7 @@ function initFilters(){
   // document.getElementById('bilibiliFans').textContent = 'B站 27.0万';
   initPosterCarousel();
   initHeatRank();
+  loadPublishedHeatRank();
 }
 
 function saveHomeFilterState(){
@@ -3062,6 +3086,7 @@ var POSTERS = [
 var VALID_POSTERS = new Set(["哈工大801控制考研全程班", "万人教育答疑班开班"]);
 // 27考研改考院校集合（数据来源：改考院校.html）
 var GAIKAO_SCHOOLS = new Set(["东北林业大学","东南大学","中国地质大学（北京）","中国计量大学","中央民族大学","北京林业大学","北京理工大学","华东师范大学","华北电力大学","华南理工大学","南京信息工程大学","南京林业大学","南京理工大学","厦门大学","吉林大学","哈尔滨工业大学","天津大学","天津工业大学","宁波大学","安徽大学","杭州电子科技大学","河北工业大学","浙江大学","浙江师范大学","海南大学","福州大学","绍兴大学","西北工业大学","西南交通大学","西南大学","西安邮电大学","长安大学","黑龙江大学"]);
+// 仅登记已人工确认的控制类院校群；素材目录还混有电子、通信等专业群，禁止按同名文件自动全量导入。
 var VALID_QRS = new Set([
   "上海大学", "东北大学", "东南大学", "中南大学", "中国矿业大学（徐州）", "中国科学技术大学", "中国科学院大学", "北京工业大学",
   "北京航空航天大学", "华北电力大学（北京）", "华北电力大学（保定）", "南京信息工程大学", "南京理工大学", "南京航空航天大学", "南京邮电大学", "南昌大学",

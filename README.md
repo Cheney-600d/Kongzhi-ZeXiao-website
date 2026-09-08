@@ -106,6 +106,7 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 | `/api/posts` | 经验贴（筛选/搜索/分页） |
 | `/api/jobs` | 校招岗位（筛选/搜索/分页） |
 | `/api/resources` | 资料课程画廊 |
+| `/api/heat-rankings?period=202608&scope=all&limit=20` | 月度热度榜；scope 支持 all / 985 / 211 / double_non |
 
 ### 数据源切换
 
@@ -127,7 +128,7 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 
 - 本地开发保持 `sqlite`
 - 服务器可通过 `KAOYAN_DB_TYPE` 与 `KAOYAN_DB_*` 环境变量切换 MySQL，表结构见 `数据库/schema_mysql.sql`
-- 院校/真题内容后台目前始终写入 SQLite 的 `数据库/admission.db`；即使查询数据使用 MySQL，也要备份该文件
+- 院校内容、真题模块和热度榜后台始终写入 SQLite 的 `数据库/admission.db`；即使查询数据使用 MySQL，也要备份该文件
 
 ### 数据导入
 
@@ -143,7 +144,7 @@ python 数据库/import_subjects.py --mysql
 python 数据库/import_content.py --mysql
 ```
 
-后台页面 `数据库/admin.html` 除了上传 Excel，还可以按院校维护视频、群二维码、图片与链接模块。录取查询可选 SQLite/MySQL，内容后台仍使用 SQLite。
+后台页面 `数据库/admin.html` 除了导入录取数据，还可以按院校维护视频、群二维码、图片与链接模块，并通过月度 Excel 更新总榜及 985、211、双非四组热度榜。录取查询可选 SQLite/MySQL，内容后台仍使用 SQLite。
 
 ### 院校内容后台
 
@@ -153,6 +154,7 @@ python 数据库/import_content.py --mysql
 - 生产环境必须设置 `KAOYAN_ADMIN_USER`、`KAOYAN_ADMIN_PASSWORD`；服务启动时会覆盖已有默认管理员凭据
 - 支持视频链接元数据与封面抓取；抓取失败时可以手动上传封面
 - 支持群二维码、普通图片、链接和公告模块
+- 支持热度榜 Excel 解析预览、院校自动匹配、歧义人工确认和按月覆盖发布
 - 内容可保存为草稿、拖拽排序、设置发布时间，并单独发布或下线
 - 公开院校页只读取已发布且仍在有效期内的内容
 
@@ -168,6 +170,7 @@ python serve.py 8767
 |---|---|
 | `GET /api/school-content?school=院校名` | 获取院校已发布内容 |
 | `GET /api/schools/{id或院校名}/content-modules` | 获取院校已发布内容 |
+| `GET /api/heat-rankings?period=&scope=&limit=` | 获取已发布月度热度榜 |
 | `/api/admin/*` | 登录后的模块管理、图片上传与视频封面读取 |
 
 ---
@@ -196,7 +199,7 @@ python tests/test_mobile_pages.py
 
 - `test_api.py`：API 函数直连测试
 - `test_server_auth.py`：后台导入鉴权测试
-- `test_content_admin.py`：登录、模块增删改发、排序、上传与公开状态测试
+- `test_content_admin.py`：登录、模块增删改发、热度榜 Excel 导入、排序、上传与公开状态测试
 - `test_mobile_pages.py`：390px 手机端溢出回归（需 playwright）
 
 手机端测试首次准备：

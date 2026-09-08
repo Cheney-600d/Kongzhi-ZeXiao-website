@@ -85,6 +85,16 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         if decoded_path == '/api/exam-resources':
             self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_global_modules('exam_resources')}})
             return
+        if decoded_path == '/api/heat-rankings':
+            params = urllib.parse.parse_qs(parsed.query)
+            period = (params.get('period') or [''])[0]
+            scope = (params.get('scope') or ['all'])[0]
+            limit = (params.get('limit') or [20])[0]
+            try:
+                self._send_json(200, {'code': 0, 'data': content_admin.public_heat_rankings(period, scope, limit)})
+            except ValueError as exc:
+                self._send_json(400, {'code': 1, 'msg': str(exc)})
+            return
         match = re.fullmatch(r'/api/schools/([^/]+)/content-modules', decoded_path)
         if match:
             self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_modules(match.group(1))}})
