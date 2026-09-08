@@ -3,7 +3,8 @@
 
   var state = {
     csrf: '', user: null, schools: [], schoolId: 0, scope: 'school', modules: [], activeId: 0,
-    saveTimer: 0, saving: false, selectedFile: null, heatFile: null, heatPreview: null
+    saveTimer: 0, saving: false, selectedFile: null, heatFile: null, heatPreview: null,
+    schoolManagerId: 0, schoolManagerModules: [], schoolManagerRequest: 0
   };
 
   var $ = function (selector) { return document.querySelector(selector); };
@@ -38,6 +39,13 @@
   function safeUrl(value) {
     var url = String(value || '').trim();
     return /^(https?:\/\/|\/|\.\.\/|\.\/)/i.test(url) ? url : '#';
+  }
+
+  function adminAssetUrl(value) {
+    var url = String(value || '').trim().replace(/\\/g, '/');
+    if (!url || (/^[a-z][a-z0-9+.-]*:/i.test(url) && !/^https?:\/\//i.test(url))) return '';
+    if (/^(https?:\/\/|\/|\.\.\/)/i.test(url)) return url;
+    return '../' + url.replace(/^\.\//, '').replace(/^\/+/, '');
   }
 
   function normalizeExternalUrl(value) {
@@ -125,6 +133,7 @@
       var data = await api('/api/admin/me');
       showAdmin(data);
       await loadSchools();
+      await switchAdminView('overview');
     } catch (error) {
       showLogin('');
     }
@@ -143,6 +152,7 @@
       showAdmin(data);
       els.loginPassword.value = '';
       await loadSchools();
+      await switchAdminView('overview');
     } catch (error) {
       showMessage(els.loginMessage, error.message, false);
     } finally {
@@ -156,16 +166,21 @@
     showLogin('已安全退出。');
   });
 
-  async function loadSchools() {
-    var data = await api('/api/admin/schools');
-    state.schools = data.items || [];
+  function syncSchoolSelectOptions() {
+    var selected = state.schools.some(function (school) { return school.id === Number(state.schoolId); }) ? Number(state.schoolId) : 0;
     els.schoolSelect.innerHTML = state.schools.map(function (school) {
       return '<option value="' + school.id + '">' + escapeHtml(school.name) + '</option>';
     }).join('');
-    var preferred = state.schools.find(function (school) { return school.name === '浙江工业大学'; }) || state.schools[0];
+    var preferred = state.schools.find(function (school) { return school.id === selected; }) || state.schools.find(function (school) { return school.name === '浙江工业大学'; }) || state.schools[0];
     if (!preferred) throw new Error('当前账号没有可管理的院校');
     state.schoolId = preferred.id;
     els.schoolSelect.value = String(preferred.id);
+  }
+
+  async function loadSchools() {
+    var data = await api('/api/admin/schools');
+    state.schools = data.items || [];
+    syncSchoolSelectOptions();
     syncScopeUi();
     await loadModules();
   }
@@ -214,6 +229,130 @@
     renderModuleList();
     renderEditor();
   }
+
+  function schoolManagerFilteredItems() {
+    var keyword = $('#schoolManagerSearch').value.trim().toLowerCase();
+    var tier = $('#schoolManagerTier').value;
+    return state.schools.filter(function (school) {
+      var haystack = (school.name + ' ' + (school.province || '')).toLowerCase();
+      return (!keyword || haystack.indexOf(keyword) !== -1) && (!tier || (school.tier || '') === tier);
+    });
+  }
+
+  function renderSchoolManagerList() {
+    var items = schoolManagerFilteredItems();
+    $('#schoolManagerResult').textContent = '当前显示 ' + items.length + ' / ' + state.schools.length + ' 所院校';
+    $('#schoolManagerList').innerHTML = items.length ? items.map(function (school) {
+      var active = school.id === Number(state.schoolManagerId);
+      var logoUrl = adminAssetUrl(school.logo_url);
+      var logo = logoUrl ? '<img src="' + escapeHtml(logoUrl) + '" alt="">' : '<i class="fa-solid fa-building-columns"></i>';
+      return '<button class="school-manager-item' + (active ? ' is-active' : '') + '" type="button" data-school-manage="' + school.id + '">' +
+        '<span class="school-manager-item__logo">' + logo + '</span><span><b>' + escapeHtml(school.name) + '</b><small>' +
+        escapeHtml((school.province || '地区待补充') + ' · ' + (school.tier || '普通院校')) + '</small></span><span class="school-manager-item__count"><strong>' +
+        formatCount(school.module_count) + ' 个模块</strong><i class="fa-solid fa-chevron-right"></i></span></button>';
+    }).join('') : '<p class="school-manager-empty">没有符合当前条件的院校</p>';
+  }
+
+  function renderSchoolProfile(school, modules) {
+    $('#schoolProfileEmpty').hidden = true;
+    $('#schoolProfileContent').hidden = false;
+    $('#schoolProfileName').textContent = school.name;
+    $('#schoolProfileMeta').textContent = (school.province || '地区待补充') + ' / ' + (school.tier || '普通院校');
+    var profileLogoUrl = adminAssetUrl(school.logo_url);
+    $('#schoolProfileLogo').innerHTML = profileLogoUrl ? '<img src="' + escapeHtml(profileLogoUrl) + '" alt="' + escapeHtml(school.name) + '">' : '<i class="fa-solid fa-building-columns"></i>';
+    $('#schoolProfilePublicLink').href = '../index.html?school=' + encodeURIComponent(school.name) + '&uiView=school-detail#schoolContentModules';
+    var published = modules.filter(function (item) { return item.status === 'published'; }).length;
+    var drafts = modules.filter(function (item) { return item.status === 'draft'; }).length;
+    $('#schoolProfileModules').textContent = formatCount(modules.length);
+    $('#schoolProfilePublished').textContent = formatCount(published);
+    $('#schoolProfileDrafts').textContent = formatCount(drafts);
+    if (school.modules_updated_at) {
+      var updated = new Date(school.modules_updated_at);
+      $('#schoolProfileUpdate').textContent = '最近更新：' + (Number.isNaN(updated.getTime()) ? school.modules_updated_at : updated.toLocaleString('zh-CN', { hour12: false }));
+    } else {
+      $('#schoolProfileUpdate').textContent = '尚未配置模块';
+    }
+    var icons = { video: 'fa-circle-play', qr_group: 'fa-qrcode', image: 'fa-image', link: 'fa-link', rich_text: 'fa-align-left' };
+    $('#schoolProfileModulesList').innerHTML = modules.length ? modules.map(function (item) {
+      var publishedItem = item.status === 'published';
+      return '<button class="school-profile-module" type="button" data-edit-school="' + school.id + '" data-edit-module="' + item.id + '"><i class="fa-solid ' +
+        (icons[item.type] || 'fa-layer-group') + '"></i><span><b>' + escapeHtml(item.title) + '</b><small>' + escapeHtml(typeLabels[item.type] || item.type) +
+        ' · 点击进入内容模块编辑</small></span><span class="school-profile-module__state"><span class="' + (publishedItem ? 'is-published' : '') + '">' +
+        (publishedItem ? '已发布' : item.status === 'archived' ? '已归档' : '草稿') + '</span><i class="fa-solid fa-arrow-right"></i></span></button>';
+    }).join('') : '<div class="school-profile-modules__empty">该院校还没有详情页模块。<br>点击“添加模块”即可进入内容模块创建。</div>';
+  }
+
+  async function loadSchoolManagerDetail(schoolId) {
+    var school = state.schools.find(function (item) { return item.id === Number(schoolId); });
+    if (!school) return;
+    state.schoolManagerId = school.id;
+    renderSchoolManagerList();
+    var requestId = ++state.schoolManagerRequest;
+    $('#schoolProfileEmpty').hidden = true;
+    $('#schoolProfileContent').hidden = false;
+    $('#schoolProfileName').textContent = school.name;
+    $('#schoolProfileModulesList').innerHTML = '<div class="school-profile-modules__empty">正在读取详情页配置…</div>';
+    try {
+      var data = await api('/api/admin/schools/' + school.id + '/modules');
+      if (requestId !== state.schoolManagerRequest) return;
+      state.schoolManagerModules = data.items || [];
+      renderSchoolProfile(school, state.schoolManagerModules);
+    } catch (error) {
+      if (requestId === state.schoolManagerRequest) $('#schoolProfileModulesList').innerHTML = '<div class="school-profile-modules__empty">' + escapeHtml(error.message) + '</div>';
+    }
+  }
+
+  async function applySchoolManagerFilters() {
+    var items = schoolManagerFilteredItems();
+    if (items.length && !items.some(function (school) { return school.id === Number(state.schoolManagerId); })) {
+      await loadSchoolManagerDetail(items[0].id);
+    } else {
+      renderSchoolManagerList();
+    }
+  }
+
+  async function loadSchoolManagement() {
+    var data = await api('/api/admin/schools');
+    state.schools = data.items || [];
+    syncSchoolSelectOptions();
+    $('#schoolManagementCount').textContent = formatCount(state.schools.length);
+    var selectedTier = $('#schoolManagerTier').value;
+    var tiers = Array.from(new Set(state.schools.map(function (school) { return school.tier || ''; }).filter(Boolean))).sort();
+    $('#schoolManagerTier').innerHTML = '<option value="">全部层级</option>' + tiers.map(function (tier) { return '<option value="' + escapeHtml(tier) + '">' + escapeHtml(tier) + '</option>'; }).join('');
+    if (tiers.indexOf(selectedTier) !== -1) $('#schoolManagerTier').value = selectedTier;
+    var preferred = state.schools.find(function (school) { return school.id === Number(state.schoolManagerId || state.schoolId); }) || state.schools[0];
+    if (preferred) await loadSchoolManagerDetail(preferred.id);
+    else {
+      renderSchoolManagerList();
+      $('#schoolProfileEmpty').hidden = false;
+      $('#schoolProfileContent').hidden = true;
+    }
+  }
+
+  async function openSchoolModuleEditor(schoolId, moduleId, showAddMenu) {
+    state.scope = 'school';
+    els.contentScope.value = 'school';
+    state.schoolId = Number(schoolId);
+    els.schoolSelect.value = String(state.schoolId);
+    state.activeId = Number(moduleId) || 0;
+    syncScopeUi();
+    await switchAdminView('modules');
+    await loadModules(state.activeId);
+    if (showAddMenu) els.typeMenu.hidden = false;
+  }
+
+  $('#schoolManagerSearch').addEventListener('input', applySchoolManagerFilters);
+  $('#schoolManagerTier').addEventListener('change', applySchoolManagerFilters);
+  $('#schoolManagerList').addEventListener('click', function (event) {
+    var button = event.target.closest('[data-school-manage]');
+    if (button) loadSchoolManagerDetail(Number(button.dataset.schoolManage));
+  });
+  $('#schoolProfileModulesList').addEventListener('click', function (event) {
+    var button = event.target.closest('[data-edit-module]');
+    if (button) openSchoolModuleEditor(Number(button.dataset.editSchool), Number(button.dataset.editModule), false);
+  });
+  $('#schoolProfileConfigureBtn').addEventListener('click', function () { openSchoolModuleEditor(state.schoolManagerId, 0, false); });
+  $('#schoolProfileAddBtn').addEventListener('click', function () { openSchoolModuleEditor(state.schoolManagerId, 0, true); });
 
   function renderModuleList() {
     els.moduleCount.textContent = state.modules.length + ' 个模块';
@@ -766,17 +905,29 @@
 
   $('#refreshAnalyticsBtn').addEventListener('click', loadAnalytics);
 
+  async function switchAdminView(view) {
+    var activeButton = $('.sidebar-nav button[data-view="' + view + '"]');
+    Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === activeButton); });
+    var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview' || view === 'schools';
+    $('#modulesView').hidden = view !== 'modules';
+    $('#importView').hidden = view !== 'import';
+    $('#heatView').hidden = view !== 'heat';
+    $('#overviewView').hidden = view !== 'overview';
+    $('#schoolManagementView').hidden = view !== 'schools';
+    $('#placeholderView').hidden = implemented;
+    if (!implemented && activeButton) $('#placeholderTitle').textContent = activeButton.textContent.trim();
+    var breadcrumb = ({ overview: '运营数据总览', schools: '院校管理', heat: '院校热度榜单', import: '录取数据导入' })[view];
+    if (view === 'modules') breadcrumb = state.scope === 'exam' ? '真题备考区' : '院校详情页';
+    $('#contentBreadcrumb').textContent = breadcrumb || (activeButton ? activeButton.textContent.trim() : '内容管理');
+    if (view === 'overview') await loadAnalytics();
+    if (view === 'schools') await loadSchoolManagement();
+    if (view === 'import') await loadSummary();
+    els.adminApp.classList.remove('is-sidebar-open');
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (button) {
     button.addEventListener('click', function () {
-      Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === button); });
-      var view = button.dataset.view;
-      var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview';
-      $('#modulesView').hidden = view !== 'modules'; $('#importView').hidden = view !== 'import'; $('#heatView').hidden = view !== 'heat'; $('#overviewView').hidden = view !== 'overview'; $('#placeholderView').hidden = implemented;
-      if (!implemented) $('#placeholderTitle').textContent = button.textContent.trim();
-      $('#contentBreadcrumb').textContent = ({ overview: '运营数据总览', modules: '院校详情页', heat: '院校热度榜单', import: '录取数据导入' })[view] || button.textContent.trim();
-      if (view === 'overview') loadAnalytics();
-      if (view === 'import') loadSummary();
-      els.adminApp.classList.remove('is-sidebar-open');
+      switchAdminView(button.dataset.view).catch(function (error) { toast(error.message); });
     });
   });
   $('#sidebarToggle').addEventListener('click', function () { els.adminApp.classList.toggle('is-sidebar-open'); });

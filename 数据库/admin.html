@@ -6,7 +6,7 @@
   <title>择校内容后台</title>
   <link rel="icon" type="image/png" href="../assets/wanren-education-logo.png">
   <link rel="stylesheet" href="../vendor/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="admin.css?v=20260908-analytics">
+  <link rel="stylesheet" href="admin.css?v=20260908-school-management">
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260818">
 </head>
 <body>
@@ -30,9 +30,9 @@
     <aside class="sidebar">
       <a class="brand" href="../index.html"><span class="brand__mark brand__mark--image"><img src="../assets/wanren-education-logo.png" alt="万人教育"></span><span>择校内容后台<small>School Content Studio</small></span></a>
       <nav class="sidebar-nav" aria-label="后台导航">
-        <button data-view="overview"><i class="fa-solid fa-chart-line"></i>总览</button>
+        <button class="is-active" data-view="overview"><i class="fa-solid fa-chart-line"></i>总览</button>
         <button data-view="schools"><i class="fa-solid fa-building-columns"></i>院校管理</button>
-        <button class="is-active" data-view="modules"><i class="fa-solid fa-layer-group"></i>内容模块</button>
+        <button data-view="modules"><i class="fa-solid fa-layer-group"></i>内容模块</button>
         <button data-view="media"><i class="fa-solid fa-photo-film"></i>媒体资源</button>
         <button data-view="history"><i class="fa-solid fa-clock-rotate-left"></i>发布记录</button>
         <button data-view="heat"><i class="fa-solid fa-fire-flame-curved"></i>热度榜单</button>
@@ -51,7 +51,7 @@
         <button id="logoutBtn" class="text-button" type="button"><i class="fa-solid fa-right-from-bracket"></i>安全退出</button>
       </header>
 
-      <div id="modulesView" class="view-panel">
+      <div id="modulesView" class="view-panel" hidden>
         <header class="page-heading">
           <div><p id="moduleEyebrow" class="eyebrow">School detail operations</p><h1>内容模块配置</h1><p id="moduleDescription">按院校维护视频、群二维码、图片和链接，并控制发布状态。</p></div>
           <div class="page-actions">
@@ -125,7 +125,7 @@
         </div>
       </div>
 
-      <div id="overviewView" class="view-panel overview-view" hidden>
+      <div id="overviewView" class="view-panel overview-view">
         <header class="page-heading overview-heading">
           <div><p class="eyebrow">Operation analytics</p><h1>运营数据总览</h1><p>统计公开网站中的链接、按钮和可点击卡片操作，数据按北京时间汇总。</p></div>
           <button id="refreshAnalyticsBtn" class="button button--secondary" type="button"><i class="fa-solid fa-rotate"></i>刷新数据</button>
@@ -149,6 +149,42 @@
           </article>
         </section>
         <p id="analyticsMessage" class="form-message analytics-message" role="status"></p>
+      </div>
+
+      <div id="schoolManagementView" class="view-panel school-management-view" hidden>
+        <header class="page-heading school-management-heading">
+          <div><p class="eyebrow">School workspace</p><h1>院校管理</h1><p>从已有院校中选择目标，查看详情页配置状态并进入对应模块编辑器。</p></div>
+          <span class="school-total-badge"><b id="schoolManagementCount">0</b> 所可管理院校</span>
+        </header>
+
+        <section class="school-management-layout">
+          <aside class="panel-card school-browser">
+            <header class="school-browser__filters">
+              <label class="school-search"><i class="fa-solid fa-magnifying-glass"></i><input id="schoolManagerSearch" type="search" placeholder="搜索院校或省份"></label>
+              <select id="schoolManagerTier" aria-label="按院校层级筛选"><option value="">全部层级</option></select>
+            </header>
+            <p id="schoolManagerResult" class="school-browser__result">正在读取院校…</p>
+            <div id="schoolManagerList" class="school-manager-list"></div>
+          </aside>
+
+          <article class="panel-card school-profile">
+            <div id="schoolProfileEmpty" class="school-profile__empty"><i class="fa-solid fa-building-columns"></i><h2>选择一所院校</h2><p>右侧将显示详情页模块配置状态。</p></div>
+            <div id="schoolProfileContent" hidden>
+              <header class="school-profile__header">
+                <span id="schoolProfileLogo" class="school-profile__logo"><i class="fa-solid fa-building-columns"></i></span>
+                <div><p id="schoolProfileMeta">院校详情页</p><h2 id="schoolProfileName">—</h2><span id="schoolProfileUpdate">尚未配置模块</span></div>
+                <div class="school-profile__actions"><a id="schoolProfilePublicLink" class="button button--secondary" href="#" target="_blank"><i class="fa-regular fa-eye"></i>查看公开页</a><button id="schoolProfileConfigureBtn" class="button button--primary" type="button"><i class="fa-solid fa-sliders"></i>配置详情页</button></div>
+              </header>
+              <section class="school-profile__metrics">
+                <div><b id="schoolProfileModules">0</b><span>全部模块</span></div>
+                <div><b id="schoolProfilePublished">0</b><span>已发布</span></div>
+                <div><b id="schoolProfileDrafts">0</b><span>草稿</span></div>
+              </section>
+              <header class="school-profile__section-title"><div><h3>详情页模块</h3><p>此处与“内容模块”实时联动</p></div><button id="schoolProfileAddBtn" class="text-button" type="button"><i class="fa-solid fa-plus"></i>添加模块</button></header>
+              <div id="schoolProfileModulesList" class="school-profile-modules"></div>
+            </div>
+          </article>
+        </section>
       </div>
 
       <div id="placeholderView" class="view-panel placeholder-view" hidden>
@@ -195,7 +231,7 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="admin.js?v=20260908-analytics"></script>
+  <script src="admin.js?v=20260908-school-management"></script>
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root="../"></script>
 </body>

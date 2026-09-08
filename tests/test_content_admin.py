@@ -123,6 +123,19 @@ def main():
             'school_id': 1, 'ordered_ids': [second_id, module_id]
         }, auth)
         check('可以拖拽排序并持久化', status == 200 and [x['id'] for x in body['data']['items']] == [second_id, module_id])
+        status, body, _ = call('GET', '/api/admin/schools', headers={'Cookie': cookie})
+        managed_school = body.get('data', {}).get('items', [{}])[0]
+        check('院校管理返回模块总数与发布状态', status == 200 and managed_school.get('module_count') == 2
+              and managed_school.get('published_count') == 1 and managed_school.get('draft_count') == 1)
+        conn = sqlite3.connect(admin.DB_PATH)
+        try:
+            conn.execute('INSERT OR IGNORE INTO admin_user_schools(user_id,school_id) VALUES(?,?)', (1, 1))
+            conn.commit()
+        finally:
+            conn.close()
+        limited_schools = admin.list_schools({'role': 'school_editor', 'user_id': 1})
+        check('院校编辑账号只返回授权院校及其模块统计', len(limited_schools) == 1
+              and limited_schools[0].get('module_count') == 2)
 
         print('== 真题备考区配置 ==')
         status, body, _ = call('POST', '/api/admin/global-modules', {

@@ -372,15 +372,39 @@ def _module_dict(row: sqlite3.Row) -> dict:
 def list_schools(session: dict) -> list[dict]:
     with _connect() as conn:
         if session['role'] == 'super_admin':
-            rows = conn.execute('SELECT id,name,province,tier FROM schools ORDER BY name').fetchall()
+            rows = conn.execute(
+                """SELECT s.id,s.name,s.province,s.tier,s.logo_url,
+                          COUNT(m.id) AS module_count,
+                          SUM(CASE WHEN m.status='published' THEN 1 ELSE 0 END) AS published_count,
+                          SUM(CASE WHEN m.status='draft' THEN 1 ELSE 0 END) AS draft_count,
+                          MAX(m.updated_at) AS modules_updated_at
+                   FROM schools s
+                   LEFT JOIN school_content_modules m ON m.school_id=s.id
+                   GROUP BY s.id,s.name,s.province,s.tier,s.logo_url
+                   ORDER BY s.name"""
+            ).fetchall()
         else:
             rows = conn.execute(
-                'SELECT s.id,s.name,s.province,s.tier FROM schools s '
-                'JOIN admin_user_schools aus ON aus.school_id=s.id '
-                'WHERE aus.user_id=? ORDER BY s.name',
+                """SELECT s.id,s.name,s.province,s.tier,s.logo_url,
+                          COUNT(m.id) AS module_count,
+                          SUM(CASE WHEN m.status='published' THEN 1 ELSE 0 END) AS published_count,
+                          SUM(CASE WHEN m.status='draft' THEN 1 ELSE 0 END) AS draft_count,
+                          MAX(m.updated_at) AS modules_updated_at
+                   FROM schools s
+                   LEFT JOIN school_content_modules m ON m.school_id=s.id
+                   JOIN admin_user_schools aus ON aus.school_id=s.id
+                   WHERE aus.user_id=?
+                   GROUP BY s.id,s.name,s.province,s.tier,s.logo_url
+                   ORDER BY s.name""",
                 (session['user_id'],),
             ).fetchall()
-    return [dict(r) for r in rows]
+    items = []
+    for row in rows:
+        item = dict(row)
+        for key in ('module_count', 'published_count', 'draft_count'):
+            item[key] = int(item.get(key) or 0)
+        items.append(item)
+    return items
 
 
 def list_modules(session: dict, school_id: int) -> list[dict]:

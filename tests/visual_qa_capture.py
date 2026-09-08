@@ -84,8 +84,8 @@ def login_admin(page):
     page.locator('#loginUsername').fill('admin')
     page.locator('#loginPassword').fill('admin123')
     page.locator('#loginForm button[type="submit"]').click()
-    page.locator('#modulesView').wait_for(state='visible', timeout=20_000)
-    page.locator('.module-card').first.wait_for(state='visible', timeout=20_000)
+    page.locator('#overviewView').wait_for(state='visible', timeout=20_000)
+    page.locator('#refreshAnalyticsBtn:not(:disabled)').wait_for(state='visible', timeout=20_000)
     page.wait_for_timeout(500)
 
 
@@ -244,6 +244,15 @@ def main():
             login_page, f'{BASE}/数据库/admin.html', 'admin-login.png', '#loginForm'
         )
         login_admin(login_page)
+        login_page.screenshot(path=str(OUTPUT / 'admin-default-overview.png'), full_page=False)
+        report['admin_default_overview'] = {
+            'screenshot': str(OUTPUT / 'admin-default-overview.png'),
+            'overviewVisible': login_page.locator('#overviewView').is_visible(),
+            'activeView': login_page.locator('.sidebar-nav button.is-active').get_attribute('data-view'),
+        }
+        login_page.locator('.sidebar-nav button[data-view="modules"]').click()
+        login_page.locator('#modulesView').wait_for(state='visible', timeout=10_000)
+        login_page.locator('.module-card').first.wait_for(state='visible', timeout=20_000)
         login_page.screenshot(path=str(OUTPUT / 'admin-desktop.png'), full_page=False)
         report['admin_desktop'] = {
             'screenshot': str(OUTPUT / 'admin-desktop.png'),
