@@ -1756,7 +1756,7 @@ function renderDetail(schoolName){
           <div style="font-size:16px;font-weight:600;color:#888;">暂无该院校详细招生数据</div>
           <div style="font-size:13px;color:#aaa;margin-top:8px;">该院校暂未收录到 27 择校数据总览中</div>
           <div style="margin-top:20px;">
-            <a href="school_detail/${schoolName}.html" class="tag clickable-tag" style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;font-size:14px;padding:8px 20px;text-decoration:none;" title="查看${schoolName}详细院校介绍">🏫 查看院校详情页</a>
+            <a href="school_detail/route.html?school=${encodeURIComponent(schoolName)}" class="tag clickable-tag" style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;font-size:14px;padding:8px 20px;text-decoration:none;" title="查看${schoolName}详细院校介绍">🏫 查看院校详情页</a>
           </div>
         </div>
       </div>

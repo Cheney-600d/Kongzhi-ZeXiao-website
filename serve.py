@@ -74,6 +74,17 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlsplit(self.path)
         decoded_path = urllib.parse.unquote(parsed.path)
+        school_detail_match = re.fullmatch(r'/school_detail/([^/]+)\.html', decoded_path)
+        if school_detail_match and school_detail_match.group(1) not in ('index', 'route'):
+            requested_file = self.translate_path(parsed.path)
+            if not os.path.isfile(requested_file):
+                school = school_detail_match.group(1)
+                target = '/school_detail/route.html?school=' + urllib.parse.quote(school)
+                self.send_response(302)
+                self.send_header('Location', target)
+                self.send_header('Content-Length', '0')
+                self.end_headers()
+                return
         if decoded_path == '/api/health':
             self._send_json(200, {'code': 0, 'data': {'status': 'ok', 'service': 'kaoyan-site-dev'}})
             return

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>院校页面正在建设中 · 控制考研择校</title>
+<link rel="icon" type="image/png" href="../assets/wanren-education-logo.png">
+<style>
+  :root{--ink:#17191d;--muted:#777a80;--line:#deded8;--paper:#fff;--canvas:#f8f8f6;--brand:#a9332a;--brand-dark:#8f251f;--soft:#f3e8e5;--green:#69885b}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;color:var(--ink);background-color:var(--canvas);background-image:linear-gradient(rgba(169,51,42,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(169,51,42,.055) 1px,transparent 1px);background-size:48px 48px;display:flex;flex-direction:column}
+  a{color:inherit}
+  .topbar{height:76px;padding:0 clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;background:#1f2023;color:#fff;border-bottom:3px solid var(--brand)}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand img{width:46px;height:46px;border-radius:50%;object-fit:contain;background:#fff}
+  .brand strong{display:block;font-size:18px;letter-spacing:.04em}
+  .brand small{display:block;margin-top:2px;color:#b9bbc0;font:600 10px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em}
+  .top-link{font-size:14px;text-decoration:none;color:#e6e7e9;padding:9px 14px;border:1px solid #4b4d52;border-radius:9px}
+  .top-link:hover{border-color:#fff;color:#fff}
+  main{width:min(1120px,calc(100% - 36px));margin:auto;padding:46px 0}
+  .status-card{position:relative;overflow:hidden;min-height:540px;background:rgba(255,255,255,.96);border:1px solid var(--line);border-top:6px solid var(--brand);border-radius:22px;box-shadow:0 20px 55px rgba(34,28,24,.1);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.65fr)}
+  .status-card::after{content:"";position:absolute;width:360px;height:360px;right:-150px;bottom:-180px;border:70px solid rgba(169,51,42,.055);border-radius:50%;pointer-events:none}
+  .content{padding:clamp(42px,7vw,84px);display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:24px;color:var(--brand);font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase}
+  .eyebrow::before{content:"";width:34px;height:3px;background:var(--brand);border-radius:99px}
+  h1{max-width:720px;margin:0;font-size:clamp(34px,5vw,62px);line-height:1.16;letter-spacing:-.035em}
+  #schoolName{color:var(--brand)}
+  .lead{max-width:650px;margin:24px 0 0;color:var(--muted);font-size:clamp(15px,1.6vw,18px);line-height:1.9}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+  .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:750;transition:transform .18s,box-shadow .18s,border-color .18s}
+  .button:hover{transform:translateY(-1px)}
+  .button.primary{background:var(--brand);color:#fff;box-shadow:0 9px 20px rgba(169,51,42,.2)}
+  .button.primary:hover{background:var(--brand-dark)}
+  .button.secondary{background:#fff;border:1px solid var(--line);color:#3e4146}
+  .button.secondary:hover{border-color:var(--brand);color:var(--brand)}
+  .aside{position:relative;z-index:1;margin:32px 32px 32px 0;padding:42px 34px;background:#fbfaf7;border:1px solid #e7e2db;border-radius:18px;display:flex;flex-direction:column;justify-content:center}
+  .icon{width:76px;height:76px;border-radius:22px;background:var(--soft);display:grid;place-items:center;margin-bottom:28px;color:var(--brand)}
+  .icon svg{width:39px;height:39px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .aside h2{margin:0 0 22px;font-size:20px}
+  .progress-list{list-style:none;margin:0;padding:0}
+  .progress-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:15px 0;border-top:1px solid #e8e3dc}
+  .progress-list li:last-child{border-bottom:1px solid #e8e3dc}
+  .step{width:28px;height:28px;border:1px solid #d4cfc8;border-radius:50%;display:grid;place-items:center;color:var(--brand);font:700 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;background:#fff}
+  .progress-list b{display:block;font-size:14px;margin-bottom:3px}
+  .progress-list span:last-child{display:block;color:#8b8d91;font-size:12px;line-height:1.5}
+  .checking{margin-top:20px;color:var(--green);font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .checking::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 5px rgba(105,136,91,.12)}
+  footer{text-align:center;color:#9a9b9f;font-size:12px;padding:0 20px 22px}
+  @media(max-width:780px){
+    .topbar{height:66px;padding:0 16px}.brand img{width:40px;height:40px}.brand strong{font-size:16px}.top-link{font-size:13px;padding:8px 10px}
+    main{width:min(100% - 24px,620px);padding:24px 0}
+    .status-card{min-height:0;grid-template-columns:1fr;border-radius:17px}
+    .content{padding:38px 24px 30px}.lead{margin-top:18px}.actions{margin-top:28px}.button{flex:1;min-width:150px;padding:0 14px}
+    .aside{margin:0 16px 16px;padding:26px 22px;border-radius:14px}.icon{width:60px;height:60px;border-radius:18px;margin-bottom:20px}.icon svg{width:32px;height:32px}
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="返回控制考研择校首页">
+    <img src="../assets/wanren-education-logo.png" alt="万人教育">
+    <span><strong>控制考研择校</strong><small>CONTROL · SCHOOL</small></span>
+  </a>
+  <a class="top-link" href="../index.html">返回择校首页</a>
+</header>
+<main>
+  <section class="status-card" aria-labelledby="pageTitle">
+    <div class="content">
+      <div class="eyebrow">School Profile · 内容状态</div>
+      <h1 id="pageTitle"><span id="schoolName">该院校</span><br>页面正在建设中</h1>
+      <p class="lead">招生信息、专业课与就业资料正在整理。内容完成审核并发布后，该入口会自动开放，无需更换链接。</p>
+      <div class="actions">
+        <a class="button primary" href="../index.html">返回择校首页</a>
+        <a class="button secondary" href="index.html">查看已开放院校</a>
+      </div>
+    </div>
+    <aside class="aside">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M9 36h30M13 36V17l11-7 11 7v19M20 36V25h8v11M18 20h.01M30 20h.01"/><path d="M36 11v8h7"/></svg>
+      </div>
+      <h2>资料上线流程</h2>
+      <ol class="progress-list">
+        <li><span class="step">01</span><span><b>资料整理</b><span>核对院系、专业与招生数据</span></span></li>
+        <li><span class="step">02</span><span><b>内容审核</b><span>校验信息来源与展示模块</span></span></li>
+        <li><span class="step">03</span><span><b>正式开放</b><span>发布后自动进入院校详情库</span></span></li>
+      </ol>
+      <div class="checking" id="statusText" aria-live="polite">正在确认页面状态</div>
+    </aside>
+  </section>
+</main>
+<footer>万人教育 · 控制考研择校</footer>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var schoolName = (params.get('school') || '').trim();
+  var nameNode = document.getElementById('schoolName');
+  var statusNode = document.getElementById('statusText');
+
+  if (!schoolName) {
+    statusNode.textContent = '院校名称暂未识别';
+    return;
+  }
+
+  nameNode.textContent = schoolName;
+  document.title = schoolName + '页面正在建设中 · 控制考研择校';
+  var target = encodeURIComponent(schoolName) + '.html';
+
+  fetch(target, { method: 'HEAD', cache: 'no-store' })
+    .then(function (response) {
+      if (response.ok) {
+        statusNode.textContent = '页面已开放，正在进入';
+        window.location.replace(target);
+        return;
+      }
+      statusNode.textContent = '当前状态：资料建设中';
+    })
+    .catch(function () {
+      statusNode.textContent = '当前状态：资料建设中';
+    });
+})();
+</script>
+</body>
+</html>

@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function () {
+  var marker = '/school_detail/';
+  var pathname = window.location.pathname;
+  var markerIndex = pathname.lastIndexOf(marker);
+  if (markerIndex < 0 || !/\.html$/i.test(pathname)) return;
+  var encodedName = pathname.slice(markerIndex + marker.length, -5);
+  var schoolName;
+  try { schoolName = decodeURIComponent(encodedName); } catch (error) { return; }
+  if (!schoolName || schoolName === 'index' || schoolName === 'route') return;
+  var routePath = pathname.slice(0, markerIndex + marker.length) + 'route.html?school=' + encodeURIComponent(schoolName);
+  window.location.replace(routePath);
+})();
+</script>
 <title>404 · 页面未找到 | 控制考研择校</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
