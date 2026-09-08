@@ -44,3 +44,7 @@ design-qa.md
 
 # 后台运行期新增上传文件由服务器单独备份；仓库内首批素材会强制纳入首次提交
 uploads/content/*
+
+# 本地会话/OCR 临时目录
+.dsh-filess/
+.tmp_pdf_ocr/

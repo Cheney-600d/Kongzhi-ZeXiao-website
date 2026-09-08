@@ -1265,7 +1265,7 @@ const EVAL_TAGS = {};
 // 有就业数据的院校（98所）
 const EMPLOYMENT_SCHOOLS = new Set([
   '上海大学','上海电力大学','东北大学','东北林业大学','东南大学',
-  '中国海洋大学','中国矿业大学','中山大学','北京工业大学','北京理工大学',
+  '中国海洋大学','中山大学','北京工业大学','北京理工大学',
   '北京航空航天大学','北京邮电大学','华东师范大学','华中师范大学','华中科技大学',
   '华北电力大学','华南农业大学','华南师范大学','南京信息工程大学','南京理工大学',
   '南京航空航天大学','南京邮电大学','南方科技大学','南昌大学','厦门大学',
@@ -1930,7 +1930,7 @@ function renderDetail(schoolName){
     document.getElementById('qqGroupContent').innerHTML = `
       <div style="text-align:center;cursor:pointer;" onclick="openQrLightbox('${getQrPath(schoolName)}')">
         <img src="${getQrPath(schoolName)}"
-             style="width:100%;max-width:260px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.15);display:block;margin:0 auto;"
+             style="width:100%;max-width:260px;aspect-ratio:944 / 1164;object-fit:contain;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.15);display:block;margin:0 auto;"
              alt="${schoolName}QQ群">
         <div style="font-size:12px;color:#555;font-weight:600;margin-top:4px;">📱 院校QQ群</div>
         <div style="font-size:10px;color:#999;">扫码加入考研群</div>
@@ -3117,7 +3117,7 @@ function loadHomepageMedia(){
 // 实际存在的图片文件集合——用于彻底避免404请求
 var VALID_POSTERS = new Set(["哈工大801控制考研全程班", "万人教育答疑班开班"]);
 // 27考研改考院校集合（数据来源：改考院校.html）
-var GAIKAO_SCHOOLS = new Set(["东北林业大学","东南大学","中国地质大学（北京）","中国计量大学","中央民族大学","北京林业大学","北京理工大学","华东师范大学","华北电力大学","华南理工大学","南京信息工程大学","南京林业大学","南京理工大学","厦门大学","吉林大学","哈尔滨工业大学","天津大学","天津工业大学","宁波大学","安徽大学","杭州电子科技大学","河北工业大学","浙江大学","浙江师范大学","海南大学","福州大学","绍兴大学","西北工业大学","西南交通大学","西南大学","西安邮电大学","长安大学","黑龙江大学"]);
+var GAIKAO_SCHOOLS = new Set(["河南大学", "长安大学", "吉林大学", "重庆大学", "华北电力大学(保定)", "江苏科技大学", "哈尔滨工业大学", "北京航空航天大学"]);
 // 仅登记已人工确认的控制类院校群；素材目录还混有电子、通信等专业群，禁止按同名文件自动全量导入。
 var VALID_QRS = new Set([
   "上海大学", "东北大学", "东南大学", "中南大学", "中国矿业大学（徐州）", "中国科学技术大学", "中国科学院大学", "北京工业大学",

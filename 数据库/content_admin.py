@@ -1223,8 +1223,12 @@ def _ok(data=None, **extra):
 
 
 def _session_cookie(token: str, max_age: int) -> str:
-    cookie = f'{COOKIE_NAME}={token}; Path=/; HttpOnly; SameSite=Lax; Max-Age={max_age}'
-    if os.environ.get('KAOYAN_COOKIE_SECURE', '').strip().lower() in {'1', 'true', 'yes', 'on'}:
+    samesite = os.environ.get('KAOYAN_COOKIE_SAMESITE', 'Lax').strip().title()
+    if samesite not in ('Lax', 'Strict', 'None'):
+        samesite = 'Lax'
+    cookie = f'{COOKIE_NAME}={token}; Path=/; HttpOnly; SameSite={samesite}; Max-Age={max_age}'
+    secure = os.environ.get('KAOYAN_COOKIE_SECURE', '').strip().lower() in {'1', 'true', 'yes', 'on'}
+    if secure or samesite == 'None':
         cookie += '; Secure'
     return cookie
 
