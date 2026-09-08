@@ -6,7 +6,7 @@
   <title>择校内容后台</title>
   <link rel="icon" type="image/png" href="../assets/wanren-education-logo.png">
   <link rel="stylesheet" href="../vendor/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="admin.css?v=20260829">
+  <link rel="stylesheet" href="admin.css?v=20260908-analytics">
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260818">
 </head>
 <body>
@@ -125,6 +125,32 @@
         </div>
       </div>
 
+      <div id="overviewView" class="view-panel overview-view" hidden>
+        <header class="page-heading overview-heading">
+          <div><p class="eyebrow">Operation analytics</p><h1>运营数据总览</h1><p>统计公开网站中的链接、按钮和可点击卡片操作，数据按北京时间汇总。</p></div>
+          <button id="refreshAnalyticsBtn" class="button button--secondary" type="button"><i class="fa-solid fa-rotate"></i>刷新数据</button>
+        </header>
+
+        <section class="analytics-metrics" aria-label="点击数据概览">
+          <article class="analytics-metric analytics-metric--primary"><span><i class="fa-solid fa-arrow-pointer"></i>累计点击数</span><strong id="clickTotal">0</strong><small>网站累计有效操作</small></article>
+          <article class="analytics-metric"><span><i class="fa-regular fa-sun"></i>日间点击</span><strong id="clickToday">0</strong><small>今日 00:00 至现在</small></article>
+          <article class="analytics-metric"><span><i class="fa-regular fa-calendar"></i>本周点击</span><strong id="clickWeek">0</strong><small>本周一至现在</small></article>
+          <article class="analytics-metric"><span><i class="fa-regular fa-calendar-days"></i>本月点击</span><strong id="clickMonth">0</strong><small>本月 1 日至现在</small></article>
+        </section>
+
+        <section class="analytics-layout">
+          <article class="panel-card analytics-chart-card">
+            <header class="analytics-card-heading"><div><h2>近 14 天点击趋势</h2><p>每日有效点击次数</p></div><span id="analyticsUpdatedAt">等待刷新</span></header>
+            <div id="analyticsChart" class="analytics-chart" aria-label="近14天点击柱状图"></div>
+          </article>
+          <article class="panel-card analytics-pages-card">
+            <header class="analytics-card-heading"><div><h2>本月热门页面</h2><p>按页面点击次数排序</p></div><i class="fa-solid fa-ranking-star"></i></header>
+            <div id="analyticsTopPages" class="analytics-pages-list"><p class="analytics-empty">暂时还没有点击数据</p></div>
+          </article>
+        </section>
+        <p id="analyticsMessage" class="form-message analytics-message" role="status"></p>
+      </div>
+
       <div id="placeholderView" class="view-panel placeholder-view" hidden>
         <i class="fa-solid fa-screwdriver-wrench"></i><h1 id="placeholderTitle">功能建设中</h1><p>本次本地实现聚焦内容模块的完整运营闭环。</p>
       </div>
@@ -169,7 +195,7 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="admin.js?v=20260908-heat-ranking"></script>
+  <script src="admin.js?v=20260908-analytics"></script>
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root="../"></script>
 </body>

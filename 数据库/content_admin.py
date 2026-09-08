@@ -31,6 +31,7 @@ COOKIE_NAME = 'kaoyan_admin_session'
 SESSION_TTL = dt.timedelta(hours=8)
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
 PBKDF2_ROUNDS = 240_000
+LOCAL_TZ = dt.timezone(dt.timedelta(hours=8))
 TRUSTED_MEDIA_HOSTS = ('bilibili.com', 'b23.tv', 'hdslb.com', 'biliimg.com')
 PROXY_FAKE_IP_RANGES = (ipaddress.ip_network('198.18.0.0/15'),)
 
@@ -162,6 +163,19 @@ def init_db() -> None:
               request_ip TEXT,
               created_at TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS site_click_events (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              page_path TEXT NOT NULL,
+              page_title TEXT NOT NULL DEFAULT '',
+              target_type TEXT NOT NULL DEFAULT '',
+              target_label TEXT NOT NULL DEFAULT '',
+              target_path TEXT NOT NULL DEFAULT '',
+              occurred_at TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS idx_site_click_occurred
+              ON site_click_events(occurred_at);
+            CREATE INDEX IF NOT EXISTS idx_site_click_page
+              ON site_click_events(page_path, occurred_at);
             """
         )
         heat_rankings.ensure_schema(conn)
@@ -895,6 +909,86 @@ def public_heat_rankings(period: str = '', scope: str = 'all', limit=20) -> dict
         return heat_rankings.public_rankings(conn, period, scope, limit)
 
 
+def _analytics_text(value, limit: int) -> str:
+    return re.sub(r'\s+', ' ', str(value or '')).strip()[:limit]
+
+
+def record_public_click(payload: dict) -> dict:
+    """记录公开站点上的有效点击；不保存 IP、Cookie、输入值等个人信息。"""
+    init_db()
+    page_path = _analytics_text(payload.get('page_path'), 320)
+    if not page_path.startswith('/'):
+        raise ValueError('页面路径无效')
+    page_path = page_path.split('?', 1)[0].split('#', 1)[0]
+    if page_path.startswith('/数据库/') or page_path.endswith('/admin.html'):
+        return {'recorded': False}
+    page_title = _analytics_text(payload.get('page_title'), 120)
+    target_type = _analytics_text(payload.get('target_type'), 32)
+    target_label = _analytics_text(payload.get('target_label'), 100)
+    target_path = _analytics_text(payload.get('target_path'), 360)
+    if target_type not in {'link', 'button', 'control', 'card'}:
+        target_type = 'control'
+    with _LOCK, _connect() as conn:
+        conn.execute(
+            'INSERT INTO site_click_events(page_path,page_title,target_type,target_label,target_path,occurred_at) '
+            'VALUES(?,?,?,?,?,?)',
+            (page_path, page_title, target_type, target_label, target_path, _now()),
+        )
+    return {'recorded': True}
+
+
+def _utc_boundary(local_date: dt.date) -> str:
+    local_midnight = dt.datetime.combine(local_date, dt.time.min, tzinfo=LOCAL_TZ)
+    return local_midnight.astimezone(dt.timezone.utc).replace(microsecond=0).isoformat()
+
+
+def analytics_summary(_session: dict) -> dict:
+    init_db()
+    today = dt.datetime.now(dt.timezone.utc).astimezone(LOCAL_TZ).date()
+    week_start = today - dt.timedelta(days=today.weekday())
+    month_start = today.replace(day=1)
+    series_start = today - dt.timedelta(days=13)
+    boundaries = {
+        'today': _utc_boundary(today),
+        'week': _utc_boundary(week_start),
+        'month': _utc_boundary(month_start),
+        'series': _utc_boundary(series_start),
+    }
+    with _connect() as conn:
+        metrics = {'total': int(conn.execute('SELECT COUNT(*) FROM site_click_events').fetchone()[0])}
+        for key in ('today', 'week', 'month'):
+            metrics[key] = int(conn.execute(
+                'SELECT COUNT(*) FROM site_click_events WHERE occurred_at>=?', (boundaries[key],)
+            ).fetchone()[0])
+        daily_rows = conn.execute(
+            "SELECT strftime('%Y-%m-%d', occurred_at, '+8 hours') AS day, COUNT(*) AS clicks "
+            'FROM site_click_events WHERE occurred_at>=? GROUP BY day ORDER BY day',
+            (boundaries['series'],),
+        ).fetchall()
+        top_rows = conn.execute(
+            'SELECT page_path, MAX(page_title) AS page_title, COUNT(*) AS clicks '
+            'FROM site_click_events WHERE occurred_at>=? GROUP BY page_path '
+            'ORDER BY clicks DESC, page_path LIMIT 8',
+            (boundaries['month'],),
+        ).fetchall()
+    daily_map = {row['day']: int(row['clicks']) for row in daily_rows}
+    daily = []
+    for offset in range(14):
+        day = series_start + dt.timedelta(days=offset)
+        day_key = day.isoformat()
+        daily.append({'date': day_key, 'clicks': daily_map.get(day_key, 0)})
+    return {
+        'metrics': metrics,
+        'daily': daily,
+        'top_pages': [
+            {'path': row['page_path'], 'title': row['page_title'] or row['page_path'], 'clicks': int(row['clicks'])}
+            for row in top_rows
+        ],
+        'timezone': 'Asia/Shanghai',
+        'generated_at': _now(),
+    }
+
+
 def _ok(data=None, **extra):
     payload = {'code': 0, 'data': data if data is not None else {}}
     payload.update(extra)
@@ -926,6 +1020,8 @@ def dispatch(method: str, path: str, query: dict, headers, raw_body: bytes, requ
             return 200, _ok({'user': {k: session[k] for k in ('user_id','username','display_name','role')}, 'csrf_token': session['csrf']}), {}
 
         session = _require_session(method, headers)
+        if path == '/api/admin/analytics/summary' and method == 'GET':
+            return 200, _ok(analytics_summary(session)), {}
         if path == '/api/admin/schools' and method == 'GET':
             return 200, _ok({'items': list_schools(session)}), {}
         match = re.fullmatch(r'/api/admin/schools/(\d+)/modules', path)

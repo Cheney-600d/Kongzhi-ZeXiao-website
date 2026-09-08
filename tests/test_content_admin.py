@@ -70,6 +70,29 @@ def main():
         status, body, _ = call('GET', '/api/admin/schools', headers={'Cookie': cookie})
         check('管理员可读取院校', status == 200 and body['data']['items'][0]['name'] == '测试大学')
 
+        print('== 点击统计总览 ==')
+        first_click = admin.record_public_click({
+            'page_path': '/index.html', 'page_title': '择校首页',
+            'target_type': 'button', 'target_label': '查看院校', 'target_path': '/index.html'
+        })
+        admin.record_public_click({
+            'page_path': '/真题备考区.html', 'page_title': '真题备考区',
+            'target_type': 'link', 'target_label': '领取真题资料', 'target_path': 'pan.baidu.com/example'
+        })
+        ignored_click = admin.record_public_click({
+            'page_path': '/数据库/admin.html', 'page_title': '后台',
+            'target_type': 'button', 'target_label': '保存'
+        })
+        check('公开页有效点击可以写入且后台点击被忽略', first_click.get('recorded') and not ignored_click.get('recorded'))
+        status, body, _ = call('GET', '/api/admin/analytics/summary', headers={'Cookie': cookie})
+        analytics = body.get('data', {})
+        check('总览返回累计、日、周、月点击', status == 200 and analytics.get('metrics') == {
+            'total': 2, 'today': 2, 'week': 2, 'month': 2
+        })
+        check('总览返回14日趋势与热门页面', len(analytics.get('daily', [])) == 14 and len(analytics.get('top_pages', [])) == 2)
+        status, _, _ = call('GET', '/api/admin/analytics/summary')
+        check('未登录无法读取点击统计', status == 401)
+
         print('== 模块 CRUD 与发布 ==')
         status, body, _ = call('POST', '/api/admin/schools/1/modules', {
             'type': 'video',

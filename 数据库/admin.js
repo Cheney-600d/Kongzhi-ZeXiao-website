@@ -717,12 +717,64 @@
 
   bindHeatFileDrop();
 
+  function formatCount(value) {
+    return new Intl.NumberFormat('zh-CN').format(Number(value) || 0);
+  }
+
+  function renderAnalytics(data) {
+    var metrics = data.metrics || {};
+    $('#clickTotal').textContent = formatCount(metrics.total);
+    $('#clickToday').textContent = formatCount(metrics.today);
+    $('#clickWeek').textContent = formatCount(metrics.week);
+    $('#clickMonth').textContent = formatCount(metrics.month);
+
+    var daily = data.daily || [];
+    var maxClicks = Math.max.apply(Math, daily.map(function (item) { return Number(item.clicks) || 0; }).concat([1]));
+    $('#analyticsChart').innerHTML = daily.map(function (item, index) {
+      var clicks = Number(item.clicks) || 0;
+      var height = Math.max(4, Math.round(clicks / maxClicks * 190));
+      var date = new Date(item.date + 'T00:00:00+08:00');
+      var label = (date.getMonth() + 1) + '/' + date.getDate();
+      var todayClass = index === daily.length - 1 ? ' is-today' : '';
+      return '<div class="analytics-bar' + todayClass + '" style="--bar-height:' + height + 'px" title="' + escapeHtml(item.date + '：' + clicks + ' 次') + '">' +
+        '<b>' + formatCount(clicks) + '</b><i aria-hidden="true"></i><small>' + label + '</small></div>';
+    }).join('');
+
+    var pages = data.top_pages || [];
+    $('#analyticsTopPages').innerHTML = pages.length ? pages.map(function (page, index) {
+      return '<div class="analytics-page"><span>' + String(index + 1).padStart(2, '0') + '</span><div><b>' + escapeHtml(page.title || page.path) +
+        '</b><small>' + escapeHtml(page.path) + '</small></div><strong>' + formatCount(page.clicks) + '</strong></div>';
+    }).join('') : '<p class="analytics-empty">暂时还没有点击数据，前台产生操作后会自动显示。</p>';
+    var generated = data.generated_at ? new Date(data.generated_at) : new Date();
+    $('#analyticsUpdatedAt').textContent = '更新于 ' + generated.toLocaleString('zh-CN', { hour12: false });
+  }
+
+  async function loadAnalytics() {
+    var button = $('#refreshAnalyticsBtn');
+    button.disabled = true;
+    showMessage($('#analyticsMessage'), '正在读取点击数据…', true);
+    try {
+      var data = await api('/api/admin/analytics/summary');
+      renderAnalytics(data);
+      showMessage($('#analyticsMessage'), '统计数据已更新', true);
+    } catch (error) {
+      showMessage($('#analyticsMessage'), error.message, false);
+    } finally {
+      button.disabled = false;
+    }
+  }
+
+  $('#refreshAnalyticsBtn').addEventListener('click', loadAnalytics);
+
   Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (button) {
     button.addEventListener('click', function () {
       Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === button); });
       var view = button.dataset.view;
-      $('#modulesView').hidden = view !== 'modules'; $('#importView').hidden = view !== 'import'; $('#heatView').hidden = view !== 'heat'; $('#placeholderView').hidden = view === 'modules' || view === 'import' || view === 'heat';
-      if (view !== 'modules' && view !== 'import' && view !== 'heat') $('#placeholderTitle').textContent = button.textContent.trim();
+      var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview';
+      $('#modulesView').hidden = view !== 'modules'; $('#importView').hidden = view !== 'import'; $('#heatView').hidden = view !== 'heat'; $('#overviewView').hidden = view !== 'overview'; $('#placeholderView').hidden = implemented;
+      if (!implemented) $('#placeholderTitle').textContent = button.textContent.trim();
+      $('#contentBreadcrumb').textContent = ({ overview: '运营数据总览', modules: '院校详情页', heat: '院校热度榜单', import: '录取数据导入' })[view] || button.textContent.trim();
+      if (view === 'overview') loadAnalytics();
       if (view === 'import') loadSummary();
       els.adminApp.classList.remove('is-sidebar-open');
     });

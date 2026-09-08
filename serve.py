@@ -127,6 +127,17 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urllib.parse.urlsplit(self.path)
+        decoded_path = urllib.parse.unquote(parsed.path)
+        if decoded_path == '/api/analytics/click':
+            try:
+                raw = self._read_body()
+                if len(raw) > 4096:
+                    raise ValueError('请求内容过大')
+                payload = json.loads(raw.decode('utf-8'))
+                self._send_json(201, {'code': 0, 'data': content_admin.record_public_click(payload)})
+            except (ValueError, TypeError, json.JSONDecodeError) as exc:
+                self._send_json(400, {'code': 1, 'msg': str(exc)})
+            return
         if parsed.path == '/api/admin/import-admission':
             if not self._admin_authorized():
                 self._send_json(401, {'code': 1, 'msg': 'unauthorized'})

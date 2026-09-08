@@ -44,6 +44,21 @@ def health():
     return {'code': 0, 'data': {'status': 'ok', 'service': 'kaoyan-site-api'}}
 
 
+@app.post('/api/analytics/click')
+async def analytics_click(request: Request):
+    raw = await request.body()
+    if len(raw) > 4096:
+        return JSONResponse({'code': 1, 'msg': '请求内容过大'}, status_code=400)
+    try:
+        payload = json.loads(raw.decode('utf-8'))
+        return JSONResponse(
+            {'code': 0, 'data': content_admin.record_public_click(payload)},
+            status_code=201,
+        )
+    except (ValueError, TypeError, json.JSONDecodeError) as exc:
+        return JSONResponse({'code': 1, 'msg': str(exc)}, status_code=400)
+
+
 @app.get('/api/{path:path}')
 async def api_route(path: str, request: Request):
     full_path = '/api/' + path

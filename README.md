@@ -88,7 +88,7 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 
 文件：`数据库/admission.db`
 
-表：`schools`、`majors`、`admissions`、`subject_meta`、`exam_subjects`、`reference_books`、`experience_posts`、`job_posts`、`course_resources`
+表：`schools`、`majors`、`admissions`、`subject_meta`、`exam_subjects`、`reference_books`、`experience_posts`、`job_posts`、`course_resources`，以及内容后台创建的模块、热度榜和 `site_click_events` 点击统计表。
 
 ### API 接口
 
@@ -107,6 +107,7 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 | `/api/jobs` | 校招岗位（筛选/搜索/分页） |
 | `/api/resources` | 资料课程画廊 |
 | `/api/heat-rankings?period=202608&scope=all&limit=20` | 月度热度榜；scope 支持 all / 985 / 211 / double_non |
+| `POST /api/analytics/click` | 记录公开页链接、按钮和可点击卡片操作，不保存个人信息 |
 
 ### 数据源切换
 
@@ -155,6 +156,7 @@ python 数据库/import_content.py --mysql
 - 支持视频链接元数据与封面抓取；抓取失败时可以手动上传封面
 - 支持群二维码、普通图片、链接和公告模块
 - 支持热度榜 Excel 解析预览、院校自动匹配、歧义人工确认和按月覆盖发布
+- 总览展示累计、今日、本周、本月点击，近 14 天趋势和本月热门页面
 - 内容可保存为草稿、拖拽排序、设置发布时间，并单独发布或下线
 - 公开院校页只读取已发布且仍在有效期内的内容
 
@@ -171,6 +173,8 @@ python serve.py 8767
 | `GET /api/school-content?school=院校名` | 获取院校已发布内容 |
 | `GET /api/schools/{id或院校名}/content-modules` | 获取院校已发布内容 |
 | `GET /api/heat-rankings?period=&scope=&limit=` | 获取已发布月度热度榜 |
+| `POST /api/analytics/click` | 写入一次公开页有效点击 |
+| `GET /api/admin/analytics/summary` | 登录后读取点击统计面板数据 |
 | `/api/admin/*` | 登录后的模块管理、图片上传与视频封面读取 |
 
 ---
@@ -199,7 +203,7 @@ python tests/test_mobile_pages.py
 
 - `test_api.py`：API 函数直连测试
 - `test_server_auth.py`：后台导入鉴权测试
-- `test_content_admin.py`：登录、模块增删改发、热度榜 Excel 导入、排序、上传与公开状态测试
+- `test_content_admin.py`：登录、点击统计、模块增删改发、热度榜 Excel 导入、排序、上传与公开状态测试
 - `test_mobile_pages.py`：390px 手机端溢出回归（需 playwright）
 
 手机端测试首次准备：

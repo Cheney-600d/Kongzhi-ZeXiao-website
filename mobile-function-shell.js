@@ -2,6 +2,13 @@
   'use strict';
   var script = document.currentScript;
   var root = script && script.dataset.root ? script.dataset.root.replace(/\/$/, '') : '.';
+  if (!window.__siteAnalyticsLoading && decodeURI(location.pathname).indexOf('/数据库/') === -1) {
+    window.__siteAnalyticsLoading = true;
+    var analyticsScript = document.createElement('script');
+    analyticsScript.src = root + '/site-analytics.js?v=20260908';
+    analyticsScript.defer = true;
+    document.head.appendChild(analyticsScript);
+  }
     var icon = Object.assign({}, window.NAV_ICONS, {
     back: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>',
     grid: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',

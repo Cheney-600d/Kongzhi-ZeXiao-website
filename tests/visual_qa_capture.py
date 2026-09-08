@@ -251,6 +251,18 @@ def main():
             'modules': login_page.locator('.module-card').count(),
             'schoolOptions': login_page.locator('#schoolSelect option').count(),
         }
+        login_page.locator('.sidebar-nav button[data-view="overview"]').click()
+        login_page.locator('#overviewView').wait_for(state='visible', timeout=10_000)
+        login_page.locator('#refreshAnalyticsBtn:not(:disabled)').wait_for(state='visible', timeout=10_000)
+        login_page.screenshot(path=str(OUTPUT / 'admin-analytics-overview.png'), full_page=False)
+        report['admin_analytics_overview'] = {
+            'screenshot': str(OUTPUT / 'admin-analytics-overview.png'),
+            'metrics': metrics(login_page),
+            'metricCards': login_page.locator('.analytics-metric').count(),
+            'trendDays': login_page.locator('.analytics-bar').count(),
+            'total': login_page.locator('#clickTotal').inner_text(),
+        }
+        login_page.locator('.sidebar-nav button[data-view="modules"]').click()
         login_page.locator('#contentScope').select_option('exam')
         login_page.wait_for_timeout(500)
         login_page.screenshot(path=str(OUTPUT / 'admin-exam-scope.png'), full_page=False)

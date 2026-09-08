@@ -1,4 +1,16 @@
 (function () {
+  function loadAnalytics() {
+    if (window.__siteAnalyticsLoading || decodeURI(location.pathname).indexOf('/数据库/') !== -1) return;
+    window.__siteAnalyticsLoading = true;
+    var homeUrl = new URL(homeHref(), location.href);
+    var script = document.createElement('script');
+    script.src = new URL('site-analytics.js?v=20260908', homeUrl).href;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  loadAnalytics();
+
   function isDesktop() {
     return !window.matchMedia || window.matchMedia('(min-width: 769px)').matches;
   }
