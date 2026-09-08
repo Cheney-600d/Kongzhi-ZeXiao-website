@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """本地开发服务器：静态文件 + 录取数据库 API + 管理导入 + 禁用缓存头。"""
 import base64
+import binascii
 import datetime
 import http.server
 import json
 import os
+import pathlib
 import socketserver
 import sys
 import urllib.parse
@@ -13,6 +15,15 @@ import re
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE_DIR)
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+MAX_IMPORT_BYTES = 12 * 1024 * 1024
+MAX_IMPORT_BODY_BYTES = 17 * 1024 * 1024
+PUBLIC_STATIC_SUFFIXES = {
+    '.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg',
+    '.ico', '.woff', '.woff2', '.ttf', '.xml',
+}
+BLOCKED_STATIC_DIRS = {
+    '.git', '__pycache__', 'deploy', 'design-output', 'docs', 'tests', 'tools',
+}
 
 # 把 数据库/ 目录加入 import path，便于直接 import api 和 import_admission
 sys.path.insert(0, os.path.join(BASE_DIR, '数据库'))
@@ -46,6 +57,25 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
     def _read_body(self):
         length = int(self.headers.get('Content-Length', '0'))
         return self.rfile.read(length) if length else b''
+
+    def _static_path_allowed(self, url_path):
+        target = pathlib.Path(self.translate_path(url_path)).resolve()
+        try:
+            relative = target.relative_to(pathlib.Path(BASE_DIR).resolve())
+        except ValueError:
+            return False
+        parts = relative.parts
+        if any(part.startswith('.') or part.casefold() in BLOCKED_STATIC_DIRS for part in parts):
+            return False
+        if parts and parts[0] == '数据库' and ('raw' in parts or relative.name == 'config.json'):
+            return False
+        if target.is_dir():
+            return (target / 'index.html').is_file()
+        return relative.name == 'robots.txt' or relative.suffix.lower() in PUBLIC_STATIC_SUFFIXES
+
+    def list_directory(self, path):
+        self.send_error(404)
+        return None
 
     def _is_loopback(self):
         addr = self.client_address[0] if self.client_address else ''
@@ -137,6 +167,9 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(data)
             return
+        if not self._static_path_allowed(parsed.path):
+            self.send_error(404)
+            return
         return super().do_GET()
 
     def do_POST(self):
@@ -157,7 +190,19 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
                 self._send_json(401, {'code': 1, 'msg': 'unauthorized'})
                 return
             try:
+                try:
+                    body_length = int(self.headers.get('Content-Length', '0'))
+                except ValueError as exc:
+                    raise ValueError('Content-Length 无效') from exc
+                if body_length < 0:
+                    raise ValueError('Content-Length 无效')
+                if body_length > MAX_IMPORT_BODY_BYTES:
+                    self._send_json(413, {'code': 1, 'msg': '上传文件不能超过 12 MB'})
+                    return
                 raw = self._read_body()
+                if len(raw) > MAX_IMPORT_BODY_BYTES:
+                    self._send_json(413, {'code': 1, 'msg': '上传文件不能超过 12 MB'})
+                    return
                 req = json.loads(raw.decode('utf-8'))
                 filename = os.path.basename(str(req.get('filename', 'upload.xlsx')))
                 if not filename.lower().endswith('.xlsx'):
@@ -165,7 +210,13 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
                 b64 = str(req.get('base64', ''))
                 if not b64:
                     raise ValueError('缺少 base64 文件内容')
-                content = base64.b64decode(b64)
+                try:
+                    content = base64.b64decode(b64, validate=True)
+                except (binascii.Error, ValueError) as exc:
+                    raise ValueError('Base64 文件内容无效') from exc
+                if len(content) > MAX_IMPORT_BYTES:
+                    self._send_json(413, {'code': 1, 'msg': '上传文件不能超过 12 MB'})
+                    return
                 raw_dir = os.path.join(BASE_DIR, '数据库', 'raw')
                 os.makedirs(raw_dir, exist_ok=True)
                 stamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -231,7 +282,7 @@ class LocalThreadingServer(socketserver.ThreadingTCPServer):
     daemon_threads = True
 
 
-with LocalThreadingServer(('', PORT), NoCacheHandler) as httpd:
+with LocalThreadingServer(('127.0.0.1', PORT), NoCacheHandler) as httpd:
     print(f'serving on http://127.0.0.1:{PORT} (no-cache)', flush=True)
     if ADMIN_TOKEN:
         print('admin import auth: KAOYAN_ADMIN_TOKEN enabled', flush=True)

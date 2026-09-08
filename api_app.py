@@ -7,6 +7,7 @@
 静态文件建议交给 Nginx，本应用提供 /api/* JSON 接口和后台导入接口。
 """
 import base64
+import binascii
 import datetime
 import hmac
 import json
@@ -29,6 +30,8 @@ import import_subjects  # noqa: E402
 import content_admin  # noqa: E402
 
 ADMIN_TOKEN = os.environ.get('KAOYAN_ADMIN_TOKEN', '').strip()
+MAX_IMPORT_BYTES = 12 * 1024 * 1024
+MAX_IMPORT_BODY_BYTES = 17 * 1024 * 1024
 
 app = FastAPI(title='控制考研择校网站 API', version='1.0.0')
 
@@ -102,14 +105,30 @@ async def admin_import(request: Request):
         return JSONResponse({'code': 1, 'msg': 'unauthorized'}, status_code=401)
 
     try:
-        req = await request.json()
+        try:
+            body_length = int(request.headers.get('Content-Length', '0'))
+        except ValueError:
+            return JSONResponse({'code': 1, 'msg': 'Content-Length 无效'}, status_code=400)
+        if body_length < 0:
+            return JSONResponse({'code': 1, 'msg': 'Content-Length 无效'}, status_code=400)
+        if body_length > MAX_IMPORT_BODY_BYTES:
+            return JSONResponse({'code': 1, 'msg': '上传文件不能超过 12 MB'}, status_code=413)
+        raw = await request.body()
+        if len(raw) > MAX_IMPORT_BODY_BYTES:
+            return JSONResponse({'code': 1, 'msg': '上传文件不能超过 12 MB'}, status_code=413)
+        req = json.loads(raw.decode('utf-8'))
         filename = os.path.basename(str(req.get('filename', 'upload.xlsx')))
         if not filename.lower().endswith('.xlsx'):
             filename += '.xlsx'
         b64 = str(req.get('base64', ''))
         if not b64:
             return JSONResponse({'code': 1, 'msg': '缺少 base64 文件内容'}, status_code=400)
-        content = base64.b64decode(b64)
+        try:
+            content = base64.b64decode(b64, validate=True)
+        except (binascii.Error, ValueError) as exc:
+            raise ValueError('Base64 文件内容无效') from exc
+        if len(content) > MAX_IMPORT_BYTES:
+            return JSONResponse({'code': 1, 'msg': '上传文件不能超过 12 MB'}, status_code=413)
         raw_dir = pathlib.Path(
             os.environ.get('KAOYAN_RAW_DIR', '') or BASE_DIR / '数据库' / 'raw'
         ).expanduser().resolve()

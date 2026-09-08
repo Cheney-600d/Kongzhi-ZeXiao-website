@@ -379,7 +379,7 @@ def _can_manage_school(conn: sqlite3.Connection, session: dict, school_id: int) 
 
 def _require_super_admin(session: dict) -> None:
     if session.get('role') != 'super_admin':
-        raise PermissionError('只有超级管理员可以导入热度榜')
+        raise PermissionError('只有超级管理员可以执行此操作')
 
 
 def _module_dict(row: sqlite3.Row) -> dict:
@@ -579,6 +579,7 @@ def _audit_global(conn, session, section_key, object_id, action, change, request
 
 
 def list_global_modules(session: dict, section_key: str) -> list[dict]:
+    _require_super_admin(session)
     key = _section_key(section_key)
     with _connect() as conn:
         rows = conn.execute(
@@ -589,6 +590,7 @@ def list_global_modules(session: dict, section_key: str) -> list[dict]:
 
 
 def create_global_module(session: dict, section_key: str, body: dict, request_ip: str) -> dict:
+    _require_super_admin(session)
     key = _section_key(section_key)
     values = _module_values(body)
     with _LOCK, _connect() as conn:
@@ -614,6 +616,7 @@ def create_global_module(session: dict, section_key: str, body: dict, request_ip
 
 
 def update_global_module(session: dict, module_id: int, body: dict, request_ip: str, audit_action: str = 'update') -> dict:
+    _require_super_admin(session)
     with _LOCK, _connect() as conn:
         row = conn.execute('SELECT * FROM global_content_modules WHERE id=?', (module_id,)).fetchone()
         if not row:
@@ -633,6 +636,7 @@ def update_global_module(session: dict, module_id: int, body: dict, request_ip: 
 
 
 def delete_global_module(session: dict, module_id: int, request_ip: str) -> None:
+    _require_super_admin(session)
     with _LOCK, _connect() as conn:
         row = conn.execute('SELECT section_key,title FROM global_content_modules WHERE id=?', (module_id,)).fetchone()
         if not row:
@@ -642,6 +646,7 @@ def delete_global_module(session: dict, module_id: int, request_ip: str) -> None
 
 
 def reorder_global_modules(session: dict, section_key: str, ordered_ids: list, request_ip: str) -> list[dict]:
+    _require_super_admin(session)
     key = _section_key(section_key)
     ids = [int(x) for x in ordered_ids]
     with _LOCK, _connect() as conn:
@@ -660,6 +665,7 @@ def reorder_global_modules(session: dict, section_key: str, ordered_ids: list, r
 
 
 def set_global_publish_state(session: dict, module_id: int, status: str, request_ip: str) -> dict:
+    _require_super_admin(session)
     if status not in ('published', 'draft'):
         raise ValueError('发布状态无效')
     action = 'publish' if status == 'published' else 'unpublish'
@@ -889,6 +895,23 @@ def _validate_public_url(url: str) -> urllib.parse.SplitResult:
     return parsed
 
 
+class _ValidatingRedirectHandler(urllib.request.HTTPRedirectHandler):
+    max_redirections = 3
+    max_repeats = 2
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        target = urllib.parse.urljoin(req.full_url, newurl)
+        _validate_public_url(target)
+        return super().redirect_request(req, fp, code, msg, headers, target)
+
+
+_PUBLIC_URL_OPENER = urllib.request.build_opener(_ValidatingRedirectHandler())
+
+
+def _open_public_url(req, timeout=10):
+    return _PUBLIC_URL_OPENER.open(req, timeout=timeout)
+
+
 class _MetaParser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
@@ -953,7 +976,7 @@ def _bilibili_preview(session: dict, url: str, parsed: urllib.parse.SplitResult)
         'Referer': 'https://www.bilibili.com/',
     }
     api_req = urllib.request.Request(api_url, headers=headers)
-    with urllib.request.urlopen(api_req, timeout=10) as response:
+    with _open_public_url(api_req, timeout=10) as response:
         _validate_public_url(response.geturl())
         raw = response.read(2 * 1024 * 1024 + 1)
     if len(raw) > 2 * 1024 * 1024:
@@ -977,7 +1000,7 @@ def _bilibili_preview(session: dict, url: str, parsed: urllib.parse.SplitResult)
             'Accept': 'image/*',
             'Referer': 'https://www.bilibili.com/',
         })
-        with urllib.request.urlopen(image_req, timeout=10) as image_response:
+        with _open_public_url(image_req, timeout=10) as image_response:
             _validate_public_url(image_response.geturl())
             image_data = image_response.read(MAX_IMAGE_BYTES + 1)
         asset = save_image_bytes(image_data, 'video_cover', session['user_id'], image_url)
@@ -1002,7 +1025,7 @@ def video_preview(session: dict, body: dict) -> dict:
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml',
     })
-    with urllib.request.urlopen(req, timeout=10) as response:
+    with _open_public_url(req, timeout=10) as response:
         final_url = response.geturl()
         _validate_public_url(final_url)
         raw = response.read(2 * 1024 * 1024 + 1)
@@ -1019,7 +1042,7 @@ def video_preview(session: dict, body: dict) -> dict:
         image_url = urllib.parse.urljoin(final_url, image_url)
         _validate_public_url(image_url)
         image_req = urllib.request.Request(image_url, headers={'User-Agent': req.headers['User-agent'], 'Accept': 'image/*'})
-        with urllib.request.urlopen(image_req, timeout=10) as image_response:
+        with _open_public_url(image_req, timeout=10) as image_response:
             _validate_public_url(image_response.geturl())
             image_data = image_response.read(MAX_IMAGE_BYTES + 1)
         asset = save_image_bytes(image_data, 'video_cover', session['user_id'], image_url)

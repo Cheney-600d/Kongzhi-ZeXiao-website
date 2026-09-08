@@ -173,6 +173,31 @@ def main():
         }, auth)
         check('真题模块排序可持久化', status == 200 and [x['id'] for x in body['data']['items']] == [exam_video_id, exam_link_id])
 
+        editor_session = {'role': 'school_editor', 'user_id': 1}
+        denied_actions = [
+            ('读取全局模块', lambda: admin.list_global_modules(editor_session, 'exam_resources')),
+            ('创建全局模块', lambda: admin.create_global_module(
+                editor_session, 'exam_resources', {'type': 'link', 'title': '越权内容'}, '127.0.0.1'
+            )),
+            ('更新全局模块', lambda: admin.update_global_module(
+                editor_session, exam_link_id, {'title': '越权修改'}, '127.0.0.1'
+            )),
+            ('删除全局模块', lambda: admin.delete_global_module(editor_session, exam_link_id, '127.0.0.1')),
+            ('重排全局模块', lambda: admin.reorder_global_modules(
+                editor_session, 'exam_resources', [exam_video_id, exam_link_id], '127.0.0.1'
+            )),
+            ('发布全局模块', lambda: admin.set_global_publish_state(
+                editor_session, exam_link_id, 'published', '127.0.0.1'
+            )),
+        ]
+        for label, action in denied_actions:
+            try:
+                action()
+                denied = False
+            except PermissionError:
+                denied = True
+            check(f'院校编辑无权{label}', denied)
+
         print('== 热度榜 Excel 导入 ==')
         import openpyxl
         conn = sqlite3.connect(admin.DB_PATH)
@@ -244,6 +269,16 @@ def main():
         }, auth)
         check('视频封面抓取阻止内网地址', status == 400 and '内网' in body.get('msg', ''))
 
+        redirect_blocked = False
+        try:
+            admin._ValidatingRedirectHandler().redirect_request(
+                admin.urllib.request.Request('https://example.com/video'),
+                None, 302, 'Found', {}, 'http://127.0.0.1/internal-service'
+            )
+        except ValueError as error:
+            redirect_blocked = '内网' in str(error)
+        check('HTTP 跳转在请求内网前被阻止', redirect_blocked)
+
         fake_dns = [(admin.socket.AF_INET, admin.socket.SOCK_STREAM, 6, '', ('198.18.0.26', 443))]
 
         class FakeResponse:
@@ -275,7 +310,7 @@ def main():
             FakeResponse('https://i0.hdslb.com/bfs/archive/test.jpg', fake_jpeg),
         ]
         with mock.patch.object(admin.socket, 'getaddrinfo', return_value=fake_dns), \
-                mock.patch.object(admin.urllib.request, 'urlopen', side_effect=fake_responses):
+                mock.patch.object(admin, '_open_public_url', side_effect=fake_responses):
             status, body, _ = call('POST', '/api/admin/media/video-preview', {
                 'url': 'https://www.bilibili.com/video/BV1x1KD6KEwq/?spm_id_from=333.1387.search'
             }, auth)
