@@ -116,24 +116,37 @@ def _match_school(source_name: str, catalog: list[dict]) -> dict:
         keyed.setdefault(_name_key(school['name']), []).append(school)
 
     exact = keyed.get(source_key, [])
-    if len(exact) == 1:
-        return _match_payload('matched', exact[0], exact)
     if len(exact) > 1:
         return _match_payload('ambiguous', None, exact)
 
-    # 榜单常省略校区，例如“华北电力大学”或“中国石油大学”。
-    # 唯一前缀可以自动匹配；多校区则交给管理员确认。
-    prefix = []
+    # 榜单常省略校区，例如“华北电力大学”或“中国石油大学”。即使存在
+    # 一个通用同名页面，也必须先检查“（北京）/（保定）”等具体校区。
+    descendants = []
     for school in catalog:
         candidate_key = _name_key(school['name'])
-        if candidate_key.startswith(source_key) or source_key.startswith(candidate_key):
-            prefix.append(school)
-    unique = {item['name']: item for item in prefix}
-    prefix = list(unique.values())
-    if len(prefix) == 1:
-        return _match_payload('matched', prefix[0], prefix)
-    if len(prefix) > 1:
-        return _match_payload('ambiguous', None, prefix)
+        if candidate_key != source_key and candidate_key.startswith(source_key):
+            descendants.append(school)
+    descendants = list({item['name']: item for item in descendants}.values())
+    if len(descendants) > 1:
+        return _match_payload('ambiguous', None, descendants)
+    if len(descendants) == 1 and exact:
+        return _match_payload('ambiguous', None, [exact[0], descendants[0]])
+    if len(descendants) == 1:
+        return _match_payload('matched', descendants[0], descendants)
+    if len(exact) == 1:
+        return _match_payload('matched', exact[0], exact)
+
+    # 兼容来源名称比目录名称更长的少量情况；仍然只在候选唯一时自动确认。
+    parents = []
+    for school in catalog:
+        candidate_key = _name_key(school['name'])
+        if candidate_key and source_key.startswith(candidate_key):
+            parents.append(school)
+    parents = list({item['name']: item for item in parents}.values())
+    if len(parents) == 1:
+        return _match_payload('matched', parents[0], parents)
+    if len(parents) > 1:
+        return _match_payload('ambiguous', None, parents)
     return _match_payload('unmatched', None, [])
 
 

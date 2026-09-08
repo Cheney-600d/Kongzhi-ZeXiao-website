@@ -277,7 +277,7 @@ function initFilters(){
 
   // B站粉丝数（已移到header中显示）
   // document.getElementById('bilibiliFans').textContent = 'B站 27.0万';
-  initPosterCarousel();
+  loadHomepageMedia().then(initPosterCarousel, initPosterCarousel);
   initHeatRank();
   loadPublishedHeatRank();
 }
@@ -3082,6 +3082,38 @@ var POSTERS = [
   {school: '哈工大801控制考研全程班', img: '专业课选择/images/院校海报/compressed/哈工大801控制考研全程班.jpg', link: ''},
   {school: '万人教育答疑班开班', img: '专业课选择/images/院校海报/compressed/万人教育答疑班.jpg', link: ''}
 ];
+
+function loadHomepageMedia(){
+  return fetch('/api/site-media', {credentials:'same-origin', cache:'no-store'})
+    .then(function(response){
+      if(!response.ok) throw new Error('媒体配置读取失败');
+      return response.json();
+    })
+    .then(function(payload){
+      if(!payload || payload.code !== 0 || !payload.data) throw new Error('媒体配置格式错误');
+      var items = Array.isArray(payload.data.items) ? payload.data.items : [];
+      var byKey = {};
+      items.forEach(function(item){ byKey[item.slot_key] = item; });
+      ['home_qr_27','home_qr_28'].forEach(function(key){
+        var item = byKey[key];
+        document.querySelectorAll('[data-media-slot="' + key + '"]').forEach(function(card){
+          if(!item){ card.style.display = 'none'; return; }
+          card.style.removeProperty('display');
+          var title = card.querySelector('[data-media-title]');
+          var image = card.querySelector('[data-media-image]');
+          if(title) title.textContent = '🎓 ' + (item.title || '考研交流群');
+          if(!image) return;
+          image.src = item.image_url;
+          image.alt = item.title || '考研交流群';
+          image.onclick = item.link_url ? function(){ window.open(item.link_url, '_blank', 'noopener'); } : function(){ openImageLightbox(item.image_url); };
+        });
+      });
+      var configuredPosters = items.filter(function(item){ return item.kind === 'poster' && item.image_url; })
+        .map(function(item){ return {school:item.title || '院校海报', img:item.image_url, link:item.link_url || ''}; });
+      if(configuredPosters.length) POSTERS = configuredPosters;
+      else if(items.some(function(item){ return String(item.slot_key || '').indexOf('home_poster_') === 0; })) POSTERS = [];
+    });
+}
 // 实际存在的图片文件集合——用于彻底避免404请求
 var VALID_POSTERS = new Set(["哈工大801控制考研全程班", "万人教育答疑班开班"]);
 // 27考研改考院校集合（数据来源：改考院校.html）
@@ -3142,8 +3174,8 @@ function initPosterCarousel(){
   var carousel = document.getElementById('posterCarousel');
   if(!carousel || POSTERS.length === 0) return;
   
-  // 直接用 VALID_POSTERS 过滤，不发送任何检测请求
-  var filtered = POSTERS.filter(function(p){ return VALID_POSTERS.has(p.school); });
+  // 后台发布的图片已经通过上传校验；仅过滤空地址，不额外发探测请求。
+  var filtered = POSTERS.filter(function(p){ return !!p.img; });
   if(filtered.length === 0){
     carousel.style.display = 'none';
     return;

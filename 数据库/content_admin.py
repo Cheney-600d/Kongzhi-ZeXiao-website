@@ -34,6 +34,12 @@ PBKDF2_ROUNDS = 240_000
 LOCAL_TZ = dt.timezone(dt.timedelta(hours=8))
 TRUSTED_MEDIA_HOSTS = ('bilibili.com', 'b23.tv', 'hdslb.com', 'biliimg.com')
 PROXY_FAKE_IP_RANGES = (ipaddress.ip_network('198.18.0.0/15'),)
+SITE_MEDIA_DEFAULTS = (
+    ('home_qr_27', 'qr_code', '27考研交流群', '专业课选择/images/27考研群/27.jpg', '', 10),
+    ('home_qr_28', 'qr_code', '28考研交流群', '专业课选择/images/27考研群/28.jpg', '', 20),
+    ('home_poster_1', 'poster', '哈工大801控制考研全程班', '专业课选择/images/院校海报/compressed/哈工大801控制考研全程班.jpg', '', 30),
+    ('home_poster_2', 'poster', '万人教育答疑班开班', '专业课选择/images/院校海报/compressed/万人教育答疑班.jpg', '', 40),
+)
 
 _SESSIONS: dict[str, dict] = {}
 _LOCK = threading.RLock()
@@ -109,6 +115,17 @@ def init_db() -> None:
               created_by INTEGER,
               created_at TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS site_media_slots (
+              slot_key TEXT PRIMARY KEY,
+              kind TEXT NOT NULL,
+              title TEXT NOT NULL,
+              image_url TEXT NOT NULL,
+              link_url TEXT NOT NULL DEFAULT '',
+              enabled INTEGER NOT NULL DEFAULT 1,
+              sort_order INTEGER NOT NULL DEFAULT 0,
+              updated_by INTEGER,
+              updated_at TEXT NOT NULL
+            );
             CREATE TABLE IF NOT EXISTS school_content_modules (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               school_id INTEGER NOT NULL,
@@ -179,6 +196,12 @@ def init_db() -> None:
             """
         )
         heat_rankings.ensure_schema(conn)
+        now = _now()
+        conn.executemany(
+            'INSERT OR IGNORE INTO site_media_slots(slot_key,kind,title,image_url,link_url,enabled,sort_order,updated_at) '
+            'VALUES(?,?,?,?,?,1,?,?)',
+            [(*item, now) for item in SITE_MEDIA_DEFAULTS],
+        )
         env_username = os.environ.get('KAOYAN_ADMIN_USER')
         env_password = os.environ.get('KAOYAN_ADMIN_PASSWORD')
         if (env_username is None) != (env_password is None):
@@ -482,7 +505,7 @@ def create_module(session: dict, school_id: int, body: dict, request_ip: str) ->
     return _module_dict(row)
 
 
-def update_module(session: dict, module_id: int, body: dict, request_ip: str) -> dict:
+def update_module(session: dict, module_id: int, body: dict, request_ip: str, audit_action: str = 'update') -> dict:
     with _LOCK, _connect() as conn:
         row = conn.execute('SELECT * FROM school_content_modules WHERE id=?', (module_id,)).fetchone()
         if not row:
@@ -498,7 +521,7 @@ def update_module(session: dict, module_id: int, body: dict, request_ip: str) ->
              values['config_json'], values['sort_order'], values['status'], values['publish_at'],
              values['unpublish_at'], session['user_id'], _now(), module_id),
         )
-        _audit(conn, session, school_id, module_id, 'update', body, request_ip)
+        _audit(conn, session, school_id, module_id, audit_action, body, request_ip)
         updated = conn.execute('SELECT * FROM school_content_modules WHERE id=?', (module_id,)).fetchone()
     return _module_dict(updated)
 
@@ -531,7 +554,12 @@ def reorder_modules(session: dict, school_id: int, ordered_ids: list, request_ip
 def set_publish_state(session: dict, module_id: int, status: str, request_ip: str) -> dict:
     if status not in ('published', 'draft'):
         raise ValueError('发布状态无效')
-    return update_module(session, module_id, {'status': status, 'publish_at': _now() if status == 'published' else None}, request_ip)
+    action = 'publish' if status == 'published' else 'unpublish'
+    return update_module(
+        session, module_id,
+        {'status': status, 'publish_at': _now() if status == 'published' else None},
+        request_ip, action,
+    )
 
 
 def _section_key(value: str) -> str:
@@ -585,7 +613,7 @@ def create_global_module(session: dict, section_key: str, body: dict, request_ip
     return _module_dict(row)
 
 
-def update_global_module(session: dict, module_id: int, body: dict, request_ip: str) -> dict:
+def update_global_module(session: dict, module_id: int, body: dict, request_ip: str, audit_action: str = 'update') -> dict:
     with _LOCK, _connect() as conn:
         row = conn.execute('SELECT * FROM global_content_modules WHERE id=?', (module_id,)).fetchone()
         if not row:
@@ -599,7 +627,7 @@ def update_global_module(session: dict, module_id: int, body: dict, request_ip: 
              values['config_json'], values['sort_order'], values['status'], values['publish_at'],
              values['unpublish_at'], session['user_id'], _now(), module_id),
         )
-        _audit_global(conn, session, section_key, module_id, 'update', body, request_ip)
+        _audit_global(conn, session, section_key, module_id, audit_action, body, request_ip)
         updated = conn.execute('SELECT * FROM global_content_modules WHERE id=?', (module_id,)).fetchone()
     return _module_dict(updated)
 
@@ -634,10 +662,11 @@ def reorder_global_modules(session: dict, section_key: str, ordered_ids: list, r
 def set_global_publish_state(session: dict, module_id: int, status: str, request_ip: str) -> dict:
     if status not in ('published', 'draft'):
         raise ValueError('发布状态无效')
+    action = 'publish' if status == 'published' else 'unpublish'
     return update_global_module(
         session, module_id,
         {'status': status, 'publish_at': _now() if status == 'published' else None},
-        request_ip,
+        request_ip, action,
     )
 
 
@@ -685,6 +714,157 @@ def upload_image(session: dict, body: dict) -> dict:
     if kind not in ('image', 'qr_code', 'video_cover'):
         kind = 'image'
     return save_image_bytes(data, kind, session['user_id'])
+
+
+def _site_media_dict(row: sqlite3.Row) -> dict:
+    item = dict(row)
+    item['enabled'] = bool(item.get('enabled'))
+    return item
+
+
+def list_site_media(session: dict) -> list[dict]:
+    _require_super_admin(session)
+    with _connect() as conn:
+        rows = conn.execute(
+            'SELECT slot_key,kind,title,image_url,link_url,enabled,sort_order,updated_at '
+            'FROM site_media_slots ORDER BY sort_order,slot_key'
+        ).fetchall()
+    return [_site_media_dict(row) for row in rows]
+
+
+def _clean_media_url(value: str, *, required: bool) -> str:
+    url = str(value or '').strip().replace('\\', '/')[:2000]
+    if not url and not required:
+        return ''
+    if not url:
+        raise ValueError('请先上传图片')
+    if re.match(r'^(?:https?://|/|\.\.?/)', url, re.I):
+        return url
+    if re.match(r'^[^:/?#]+(?:/[^?#]*)?(?:\?[^#]*)?(?:#.*)?$', url):
+        return url
+    raise ValueError('媒体地址格式不正确')
+
+
+def update_site_media(session: dict, slot_key: str, body: dict, request_ip: str) -> dict:
+    _require_super_admin(session)
+    key = str(slot_key or '').strip()
+    with _LOCK, _connect() as conn:
+        row = conn.execute('SELECT * FROM site_media_slots WHERE slot_key=?', (key,)).fetchone()
+        if not row:
+            raise LookupError('媒体槽位不存在')
+        title = str(body.get('title', row['title'])).strip()[:120]
+        if not title:
+            raise ValueError('展示标题不能为空')
+        image_url = _clean_media_url(body.get('image_url', row['image_url']), required=True)
+        link_url = _clean_media_url(body.get('link_url', row['link_url']), required=False)
+        enabled = 1 if body.get('enabled', bool(row['enabled'])) else 0
+        now = _now()
+        conn.execute(
+            'UPDATE site_media_slots SET title=?,image_url=?,link_url=?,enabled=?,updated_by=?,updated_at=? '
+            'WHERE slot_key=?',
+            (title, image_url, link_url, enabled, session['user_id'], now, key),
+        )
+        conn.execute(
+            'INSERT INTO content_audit_logs(user_id,school_id,object_type,object_id,action,change_json,request_ip,created_at) '
+            'VALUES(?,?,?,?,?,?,?,?)',
+            (
+                session['user_id'], None, 'site_media_slot', None, 'publish',
+                json.dumps({
+                    'slot_key': key, 'title': title, 'kind': row['kind'], 'image_url': image_url,
+                    'link_url': link_url, 'enabled': bool(enabled),
+                }, ensure_ascii=False),
+                request_ip, now,
+            ),
+        )
+        updated = conn.execute(
+            'SELECT slot_key,kind,title,image_url,link_url,enabled,sort_order,updated_at '
+            'FROM site_media_slots WHERE slot_key=?', (key,)
+        ).fetchone()
+    return _site_media_dict(updated)
+
+
+def public_site_media() -> list[dict]:
+    init_db()
+    with _connect() as conn:
+        rows = conn.execute(
+            'SELECT slot_key,kind,title,image_url,link_url,enabled,sort_order,updated_at '
+            'FROM site_media_slots WHERE enabled=1 ORDER BY sort_order,slot_key'
+        ).fetchall()
+    return [_site_media_dict(row) for row in rows]
+
+
+def list_audit_logs(session: dict, query: dict) -> dict:
+    try:
+        page = max(1, int(query.get('page', 1) or 1))
+        page_size = max(10, min(100, int(query.get('page_size', 30) or 30)))
+    except (TypeError, ValueError):
+        raise ValueError('分页参数无效') from None
+    action = str(query.get('action', '') or '').strip()
+    object_type = str(query.get('object_type', '') or '').strip()
+    keyword = re.sub(r'\s+', ' ', str(query.get('q', '') or '')).strip()[:100]
+    where = []
+    params: list = []
+    if session.get('role') != 'super_admin':
+        where.append('l.user_id=?')
+        params.append(session['user_id'])
+    if action:
+        where.append('l.action=?')
+        params.append(action)
+    if object_type:
+        where.append('l.object_type=?')
+        params.append(object_type)
+    if keyword:
+        like = f'%{keyword}%'
+        where.append('(u.display_name LIKE ? OR u.username LIKE ? OR s.name LIKE ? OR l.change_json LIKE ?)')
+        params.extend((like, like, like, like))
+    where_sql = (' WHERE ' + ' AND '.join(where)) if where else ''
+    joins = (
+        ' FROM content_audit_logs l '
+        'LEFT JOIN admin_users u ON u.id=l.user_id '
+        'LEFT JOIN schools s ON s.id=l.school_id '
+        "LEFT JOIN school_content_modules sm ON l.object_type='school_content_module' AND sm.id=l.object_id "
+        "LEFT JOIN global_content_modules gm ON l.object_type='global_content_module' AND gm.id=l.object_id "
+    )
+    with _connect() as conn:
+        total = int(conn.execute('SELECT COUNT(*)' + joins + where_sql, params).fetchone()[0])
+        rows = conn.execute(
+            'SELECT l.id,l.object_type,l.object_id,l.action,l.change_json,l.created_at,'
+            'u.username,u.display_name,s.name AS school_name,sm.title AS school_module_title,'
+            'gm.title AS global_module_title' + joins + where_sql +
+            ' ORDER BY l.id DESC LIMIT ? OFFSET ?',
+            [*params, page_size, (page - 1) * page_size],
+        ).fetchall()
+    items = []
+    for row in rows:
+        item = dict(row)
+        try:
+            change = json.loads(item.pop('change_json') or '{}')
+        except json.JSONDecodeError:
+            change = {}
+        object_type_value = item['object_type']
+        if object_type_value == 'school_content_module':
+            target_title = item.pop('school_module_title') or change.get('title') or f"院校详情模块 #{item.get('object_id') or '—'}"
+            item.pop('global_module_title', None)
+        elif object_type_value == 'global_content_module':
+            target_title = item.pop('global_module_title') or change.get('title') or f"真题备考模块 #{item.get('object_id') or '—'}"
+            item.pop('school_module_title', None)
+        elif object_type_value == 'heat_ranking_batch':
+            period = str(change.get('period') or '')
+            target_title = f'{period[:4]}年{int(period[4:6])}月热度榜' if len(period) == 6 else '院校热度榜'
+            item.pop('school_module_title', None)
+            item.pop('global_module_title', None)
+        elif object_type_value == 'site_media_slot':
+            target_title = change.get('title') or change.get('slot_key') or '首页媒体'
+            item.pop('school_module_title', None)
+            item.pop('global_module_title', None)
+        else:
+            target_title = change.get('title') or object_type_value
+            item.pop('school_module_title', None)
+            item.pop('global_module_title', None)
+        item['change'] = change
+        item['target_title'] = target_title
+        items.append(item)
+    return {'items': items, 'total': total, 'page': page, 'page_size': page_size}
 
 
 def _validate_public_url(url: str) -> urllib.parse.SplitResult:
@@ -1046,6 +1226,8 @@ def dispatch(method: str, path: str, query: dict, headers, raw_body: bytes, requ
         session = _require_session(method, headers)
         if path == '/api/admin/analytics/summary' and method == 'GET':
             return 200, _ok(analytics_summary(session)), {}
+        if path == '/api/admin/audit-logs' and method == 'GET':
+            return 200, _ok(list_audit_logs(session, query)), {}
         if path == '/api/admin/schools' and method == 'GET':
             return 200, _ok({'items': list_schools(session)}), {}
         match = re.fullmatch(r'/api/admin/schools/(\d+)/modules', path)
@@ -1089,6 +1271,11 @@ def dispatch(method: str, path: str, query: dict, headers, raw_body: bytes, requ
             return 200, _ok({'items': items}), {}
         if path == '/api/admin/media/upload' and method == 'POST':
             return 201, _ok(upload_image(session, body)), {}
+        if path == '/api/admin/site-media' and method == 'GET':
+            return 200, _ok({'items': list_site_media(session)}), {}
+        match = re.fullmatch(r'/api/admin/site-media/([a-z0-9_-]+)', path)
+        if match and method == 'PATCH':
+            return 200, _ok(update_site_media(session, match.group(1), body, request_ip)), {}
         if path == '/api/admin/media/video-preview' and method == 'POST':
             return 200, _ok(video_preview(session, body)), {}
         if path == '/api/admin/heat-rankings/preview' and method == 'POST':

@@ -112,6 +112,15 @@ def main():
         check('可以自动保存编辑内容', status == 200 and body['data']['title'] == '更新后的视频标题')
         status, body, _ = call('POST', f'/api/admin/modules/{module_id}/publish', {}, auth)
         check('可以发布模块', status == 200 and body['data']['status'] == 'published')
+        conn = sqlite3.connect(admin.DB_PATH)
+        try:
+            last_action = conn.execute(
+                'SELECT action FROM content_audit_logs WHERE object_type=? AND object_id=? ORDER BY id DESC LIMIT 1',
+                ('school_content_module', module_id),
+            ).fetchone()[0]
+        finally:
+            conn.close()
+        check('模块发布记录使用明确的 publish 操作', last_action == 'publish')
         public_items = admin.public_modules('测试大学')
         check('已发布模块出现在院校页接口', len(public_items) == 1 and public_items[0]['id'] == module_id)
 
@@ -172,6 +181,10 @@ def main():
             catalog = admin.heat_rankings._school_catalog(conn)
         finally:
             conn.close()
+        campus_match = admin.heat_rankings._match_school('华北电力大学', catalog)
+        campus_candidates = {item['name'] for item in campus_match.get('candidates', [])}
+        check('华北电力大学触发北京/保定人工确认', campus_match.get('status') == 'ambiguous'
+              and campus_candidates == {'华北电力大学（北京）', '华北电力大学（保定）'})
         school_names = [item['name'] for item in catalog[:20]]
         workbook = openpyxl.Workbook()
         workbook.remove(workbook.active)
@@ -215,6 +228,17 @@ def main():
             'kind': 'qr_code', 'base64': base64.b64encode(png).decode('ascii')
         }, auth)
         check('可以上传群二维码图片', status == 201 and body['data']['url'].endswith('.png'))
+        uploaded_url = body.get('data', {}).get('url')
+        status, body, _ = call('GET', '/api/admin/site-media', headers={'Cookie': cookie})
+        check('媒体资源返回两个二维码与两个海报槽位', status == 200 and len(body.get('data', {}).get('items', [])) == 4)
+        status, body, _ = call('PATCH', '/api/admin/site-media/home_qr_27', {
+            'title': '27考研测试群', 'image_url': uploaded_url, 'link_url': '', 'enabled': True
+        }, auth)
+        check('首页二维码可替换并立即发布', status == 200 and body.get('data', {}).get('image_url') == uploaded_url)
+        public_media = admin.public_site_media()
+        check('公开媒体接口读取已发布首页资源', any(
+            item['slot_key'] == 'home_qr_27' and item['title'] == '27考研测试群' for item in public_media
+        ))
         status, body, _ = call('POST', '/api/admin/media/video-preview', {
             'url': 'http://127.0.0.1/private-video'
         }, auth)
@@ -283,6 +307,16 @@ def main():
             })
             check('环境变量可覆盖已有默认管理员', status == 200 and body['data']['user']['username'] == 'cloud-admin')
             check('HTTPS 模式设置 Secure Cookie', '; Secure' in extra.get('Set-Cookie', ''))
+
+        print('== 发布记录 ==')
+        status, body, _ = call('GET', '/api/admin/audit-logs', headers={'Cookie': cookie}, query={'page_size': '100'})
+        audit_items = body.get('data', {}).get('items', [])
+        check('发布记录接口返回模块、媒体与榜单操作', status == 200
+              and any(item['object_type'] == 'school_content_module' and item['action'] == 'publish' for item in audit_items)
+              and any(item['object_type'] == 'site_media_slot' and item['action'] == 'publish' for item in audit_items)
+              and any(item['object_type'] == 'heat_ranking_batch' and item['action'] == 'publish' for item in audit_items))
+        status, body, _ = call('GET', '/api/admin/audit-logs', headers={'Cookie': cookie}, query={'object_type': 'site_media_slot'})
+        check('发布记录支持按内容类型筛选', status == 200 and body.get('data', {}).get('total') == 1)
 
     admin.DB_PATH = previous_db
     admin.UPLOAD_DIR = previous_upload

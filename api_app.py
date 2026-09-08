@@ -67,6 +67,8 @@ async def api_route(path: str, request: Request):
         return {'code': 0, 'data': {'items': content_admin.public_modules(params.get('school', ''))}}
     if full_path == '/api/exam-resources':
         return {'code': 0, 'data': {'items': content_admin.public_global_modules('exam_resources')}}
+    if full_path == '/api/site-media':
+        return {'code': 0, 'data': {'items': content_admin.public_site_media()}}
     if full_path == '/api/heat-rankings':
         try:
             data = content_admin.public_heat_rankings(

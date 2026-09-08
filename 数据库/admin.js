@@ -4,7 +4,8 @@
   var state = {
     csrf: '', user: null, schools: [], schoolId: 0, scope: 'school', modules: [], activeId: 0,
     saveTimer: 0, saving: false, selectedFile: null, heatFile: null, heatPreview: null,
-    schoolManagerId: 0, schoolManagerModules: [], schoolManagerRequest: 0
+    schoolManagerId: 0, schoolManagerModules: [], schoolManagerRequest: 0,
+    siteMedia: [], historyPage: 1, historyTotal: 0, historyPageSize: 30
   };
 
   var $ = function (selector) { return document.querySelector(selector); };
@@ -905,22 +906,196 @@
 
   $('#refreshAnalyticsBtn').addEventListener('click', loadAnalytics);
 
+  var mediaKindLabels = { qr_code: '交流群二维码', poster: '院校海报' };
+
+  function mediaSlotHint(item) {
+    if (item.slot_key === 'home_qr_27') return '首页 27 考研交流群卡片';
+    if (item.slot_key === 'home_qr_28') return '首页 28 考研交流群卡片';
+    return '首页右侧院校海报轮播位';
+  }
+
+  function renderSiteMedia() {
+    var grid = $('#siteMediaGrid');
+    grid.innerHTML = state.siteMedia.map(function (item) {
+      return '<article class="site-media-card panel-card" data-slot-key="' + escapeHtml(item.slot_key) + '">' +
+        '<div class="site-media-preview site-media-preview--' + escapeHtml(item.kind) + '">' +
+          '<img src="' + escapeHtml(adminAssetUrl(item.image_url)) + '" alt="' + escapeHtml(item.title) + '">' +
+          '<span>' + escapeHtml(mediaKindLabels[item.kind] || '首页媒体') + '</span>' +
+        '</div>' +
+        '<div class="site-media-editor"><header><div><small>' + escapeHtml(mediaSlotHint(item)) + '</small><h2>' + escapeHtml(item.title) + '</h2></div>' +
+          '<label class="media-switch"><input data-media-field="enabled" type="checkbox" ' + (item.enabled ? 'checked' : '') + '><span></span><em>' + (item.enabled ? '已展示' : '已隐藏') + '</em></label></header>' +
+          '<label>展示标题<input data-media-field="title" maxlength="120" value="' + escapeHtml(item.title) + '"></label>' +
+          '<label>点击跳转链接（选填）<input data-media-field="link_url" inputmode="url" placeholder="不填则点击放大图片" value="' + escapeHtml(item.link_url || '') + '"></label>' +
+          '<div class="site-media-path"><i class="fa-regular fa-image"></i><span title="' + escapeHtml(item.image_url) + '">' + escapeHtml(item.image_url) + '</span></div>' +
+          '<div class="site-media-actions"><button class="button button--secondary" data-media-upload type="button"><i class="fa-solid fa-upload"></i>上传替换</button>' +
+          '<input data-media-file type="file" accept="image/png,image/jpeg,image/webp" hidden>' +
+          '<button class="button button--primary" data-media-save type="button"><i class="fa-solid fa-cloud-arrow-up"></i>保存并发布</button></div>' +
+          '<small class="site-media-updated">上次更新：' + escapeHtml(item.updated_at ? new Date(item.updated_at).toLocaleString('zh-CN', { hour12: false }) : '—') + '</small>' +
+        '</div></article>';
+    }).join('');
+    if (!state.siteMedia.length) grid.innerHTML = '<div class="history-empty"><i class="fa-regular fa-images"></i><p>暂无可配置的首页媒体槽位</p></div>';
+  }
+
+  async function loadSiteMedia() {
+    showMessage($('#mediaMessage'), '正在读取首页媒体…', true);
+    try {
+      var data = await api('/api/admin/site-media');
+      state.siteMedia = data.items || [];
+      renderSiteMedia();
+      showMessage($('#mediaMessage'), '', true);
+    } catch (error) {
+      showMessage($('#mediaMessage'), error.message, false);
+    }
+  }
+
+  function readSiteMediaCard(card) {
+    return {
+      title: card.querySelector('[data-media-field="title"]').value.trim(),
+      link_url: card.querySelector('[data-media-field="link_url"]').value.trim(),
+      enabled: card.querySelector('[data-media-field="enabled"]').checked
+    };
+  }
+
+  async function saveSiteMediaCard(card, extra) {
+    var key = card.dataset.slotKey;
+    var button = card.querySelector('[data-media-save]');
+    var payload = Object.assign(readSiteMediaCard(card), extra || {});
+    button.disabled = true;
+    try {
+      var updated = await api('/api/admin/site-media/' + encodeURIComponent(key), { method: 'PATCH', body: JSON.stringify(payload) });
+      state.siteMedia = state.siteMedia.map(function (item) { return item.slot_key === key ? updated : item; });
+      renderSiteMedia();
+      toast('首页媒体已发布');
+    } catch (error) {
+      toast(error.message);
+      button.disabled = false;
+    }
+  }
+
+  $('#siteMediaGrid').addEventListener('click', function (event) {
+    var card = event.target.closest('.site-media-card');
+    if (!card) return;
+    var upload = event.target.closest('[data-media-upload]');
+    if (upload) { card.querySelector('[data-media-file]').click(); return; }
+    if (event.target.closest('[data-media-save]')) saveSiteMediaCard(card);
+  });
+
+  $('#siteMediaGrid').addEventListener('change', async function (event) {
+    var card = event.target.closest('.site-media-card');
+    if (!card) return;
+    if (event.target.matches('[data-media-field="enabled"]')) {
+      var label = event.target.closest('.media-switch').querySelector('em');
+      label.textContent = event.target.checked ? '已展示' : '已隐藏';
+      return;
+    }
+    if (!event.target.matches('[data-media-file]')) return;
+    var file = event.target.files && event.target.files[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { toast('图片不能超过 5MB'); event.target.value = ''; return; }
+    var uploadButton = card.querySelector('[data-media-upload]');
+    uploadButton.disabled = true;
+    try {
+      var kind = card.dataset.slotKey.indexOf('home_qr_') === 0 ? 'qr_code' : 'image';
+      var asset = await api('/api/admin/media/upload', { method: 'POST', body: JSON.stringify({ filename: file.name, kind: kind, base64: await fileToBase64(file) }) });
+      await saveSiteMediaCard(card, { image_url: asset.url });
+    } catch (error) {
+      toast(error.message);
+    } finally {
+      event.target.value = '';
+      if (document.body.contains(uploadButton)) uploadButton.disabled = false;
+    }
+  });
+
+  var historyActionLabels = { publish: '发布', unpublish: '下线', create: '新建', update: '更新', delete: '删除', reorder: '排序' };
+  var historyTypeLabels = { school_content_module: '院校详情模块', global_content_module: '真题备考模块', site_media_slot: '首页媒体', heat_ranking_batch: '热度榜单' };
+
+  function auditSummary(item) {
+    var change = item.change || {};
+    if (item.object_type === 'heat_ranking_batch') return (change.rows || 0) + ' 条榜单数据' + (change.replaced ? '，已替换同月版本' : '');
+    if (item.object_type === 'site_media_slot') return (change.enabled === false ? '隐藏媒体' : '更新图片并展示') + (change.link_url ? '，含跳转链接' : '');
+    if (item.action === 'reorder') return '调整了 ' + ((change.ordered_ids || []).length || 0) + ' 个模块的顺序';
+    if (item.action === 'publish') return '状态更新为已发布';
+    if (item.action === 'unpublish') return '状态更新为草稿';
+    var labels = { title: '标题', description: '摘要', link_url: '链接', cover_url: '封面', status: '状态', config: '模块配置', config_json: '模块配置' };
+    var keys = Object.keys(change).filter(function (key) { return labels[key]; }).map(function (key) { return labels[key]; });
+    return keys.length ? '变更：' + keys.slice(0, 4).join('、') : (historyActionLabels[item.action] || '内容变更');
+  }
+
+  function formatAuditTime(value) {
+    if (!value) return '—';
+    var date = new Date(value);
+    return isNaN(date.getTime()) ? value : date.toLocaleString('zh-CN', { hour12: false });
+  }
+
+  function renderAuditHistory(data) {
+    state.historyPage = data.page || 1;
+    state.historyTotal = data.total || 0;
+    state.historyPageSize = data.page_size || 30;
+    var items = data.items || [];
+    $('#historyTableBody').innerHTML = items.map(function (item) {
+      var action = historyActionLabels[item.action] || item.action;
+      var scope = item.school_name || (item.object_type === 'global_content_module' ? '真题备考区' : item.object_type === 'site_media_slot' ? '公开首页' : item.object_type === 'heat_ranking_batch' ? '全站榜单' : '全局');
+      return '<tr><td data-label="时间"><time>' + escapeHtml(formatAuditTime(item.created_at)) + '</time></td>' +
+        '<td data-label="操作人"><b>' + escapeHtml(item.display_name || item.username || '系统') + '</b><small>' + escapeHtml(item.username || '') + '</small></td>' +
+        '<td data-label="内容"><b>' + escapeHtml(item.target_title) + '</b><small>' + escapeHtml(historyTypeLabels[item.object_type] || item.object_type) + '</small></td>' +
+        '<td data-label="操作"><span class="history-action history-action--' + escapeHtml(item.action) + '">' + escapeHtml(action) + '</span></td>' +
+        '<td data-label="范围">' + escapeHtml(scope) + '</td><td data-label="变更摘要">' + escapeHtml(auditSummary(item)) + '</td></tr>';
+    }).join('');
+    $('#historyEmpty').hidden = items.length > 0;
+    $('.history-table-wrap').hidden = items.length === 0;
+    var totalPages = Math.max(1, Math.ceil(state.historyTotal / state.historyPageSize));
+    $('#historyCount').textContent = '共 ' + state.historyTotal + ' 条记录';
+    $('#historyPageInfo').textContent = '第 ' + state.historyPage + ' / ' + totalPages + ' 页';
+    $('#historyPrev').disabled = state.historyPage <= 1;
+    $('#historyNext').disabled = state.historyPage >= totalPages;
+  }
+
+  async function loadAuditHistory(page) {
+    var params = new URLSearchParams({ page: String(page || 1), page_size: '30' });
+    var action = $('#historyAction').value;
+    var objectType = $('#historyObjectType').value;
+    var query = $('#historySearch').value.trim();
+    if (action) params.set('action', action);
+    if (objectType) params.set('object_type', objectType);
+    if (query) params.set('q', query);
+    showMessage($('#historyMessage'), '正在读取发布记录…', true);
+    try {
+      var data = await api('/api/admin/audit-logs?' + params.toString());
+      renderAuditHistory(data);
+      showMessage($('#historyMessage'), '', true);
+    } catch (error) {
+      showMessage($('#historyMessage'), error.message, false);
+    }
+  }
+
+  $('#refreshHistoryBtn').addEventListener('click', function () { loadAuditHistory(state.historyPage); });
+  $('#applyHistoryFilter').addEventListener('click', function () { loadAuditHistory(1); });
+  $('#historyAction').addEventListener('change', function () { loadAuditHistory(1); });
+  $('#historyObjectType').addEventListener('change', function () { loadAuditHistory(1); });
+  $('#historySearch').addEventListener('keydown', function (event) { if (event.key === 'Enter') { event.preventDefault(); loadAuditHistory(1); } });
+  $('#historyPrev').addEventListener('click', function () { if (state.historyPage > 1) loadAuditHistory(state.historyPage - 1); });
+  $('#historyNext').addEventListener('click', function () { if (state.historyPage * state.historyPageSize < state.historyTotal) loadAuditHistory(state.historyPage + 1); });
+
   async function switchAdminView(view) {
     var activeButton = $('.sidebar-nav button[data-view="' + view + '"]');
     Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === activeButton); });
-    var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview' || view === 'schools';
+    var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview' || view === 'schools' || view === 'media' || view === 'history';
     $('#modulesView').hidden = view !== 'modules';
     $('#importView').hidden = view !== 'import';
     $('#heatView').hidden = view !== 'heat';
     $('#overviewView').hidden = view !== 'overview';
     $('#schoolManagementView').hidden = view !== 'schools';
+    $('#mediaView').hidden = view !== 'media';
+    $('#historyView').hidden = view !== 'history';
     $('#placeholderView').hidden = implemented;
     if (!implemented && activeButton) $('#placeholderTitle').textContent = activeButton.textContent.trim();
-    var breadcrumb = ({ overview: '运营数据总览', schools: '院校管理', heat: '院校热度榜单', import: '录取数据导入' })[view];
+    var breadcrumb = ({ overview: '运营数据总览', schools: '院校管理', media: '首页媒体资源', history: '发布记录', heat: '院校热度榜单', import: '录取数据导入' })[view];
     if (view === 'modules') breadcrumb = state.scope === 'exam' ? '真题备考区' : '院校详情页';
     $('#contentBreadcrumb').textContent = breadcrumb || (activeButton ? activeButton.textContent.trim() : '内容管理');
     if (view === 'overview') await loadAnalytics();
     if (view === 'schools') await loadSchoolManagement();
+    if (view === 'media') await loadSiteMedia();
+    if (view === 'history') await loadAuditHistory(1);
     if (view === 'import') await loadSummary();
     els.adminApp.classList.remove('is-sidebar-open');
   }
