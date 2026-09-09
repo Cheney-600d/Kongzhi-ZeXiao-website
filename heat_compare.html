@@ -117,6 +117,22 @@ button,a,input,select{touch-action:manipulation}
 @media (max-width:520px){
   .stats-bar{grid-template-columns:1fr}
   .compare-panel{padding:10px 0}
+  /* 手机端热度榜改为卡片式，避免表格横向溢出 */
+  .table-wrap{overflow:visible;border:0;background:transparent}
+  .table-wrap table{min-width:0;width:100%;display:block}
+  .table-wrap thead{display:none}
+  .table-wrap tbody{display:block;width:100%}
+  .table-wrap tbody tr{display:grid;grid-template-columns:36px minmax(0,1fr) auto;grid-template-areas:"rank school heat" "rank trend tier";align-items:center;gap:4px 10px;background:#fff;border:1px solid #ede9e9;border-radius:10px;padding:10px 12px;margin-bottom:8px}
+  .table-wrap tbody tr:nth-child(even){background:#fff}
+  .table-wrap tbody td{border:none;padding:0}
+  .table-wrap tbody td.rank{grid-area:rank;text-align:center}
+  .table-wrap tbody td.school{grid-area:school;min-width:0}
+  .table-wrap tbody td.school a{display:flex;align-items:center;white-space:normal;word-break:break-word;font-size:.92rem}
+  .table-wrap tbody td.school a img{width:30px!important;height:30px!important;margin-right:6px;flex:0 0 auto}
+  .table-wrap tbody td.heat{grid-area:heat;text-align:right;white-space:nowrap}
+  .table-wrap tbody td:nth-child(4){grid-area:trend;text-align:right;white-space:nowrap}
+  .table-wrap tbody td:nth-child(5){grid-area:tier;text-align:right}
+  .table-wrap tbody td .tier-tag{white-space:nowrap}
 }
 </style>
 

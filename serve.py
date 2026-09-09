@@ -15,6 +15,7 @@ import re
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(BASE_DIR)
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+HOST = os.environ.get('HOST', '127.0.0.1').strip() or '127.0.0.1'
 MAX_IMPORT_BYTES = 12 * 1024 * 1024
 MAX_IMPORT_BODY_BYTES = 17 * 1024 * 1024
 PUBLIC_STATIC_SUFFIXES = {
@@ -282,8 +283,8 @@ class LocalThreadingServer(socketserver.ThreadingTCPServer):
     daemon_threads = True
 
 
-with LocalThreadingServer(('127.0.0.1', PORT), NoCacheHandler) as httpd:
-    print(f'serving on http://127.0.0.1:{PORT} (no-cache)', flush=True)
+with LocalThreadingServer((HOST, PORT), NoCacheHandler) as httpd:
+    print(f'serving on http://{HOST}:{PORT} (no-cache, HOST={HOST})', flush=True)
     if ADMIN_TOKEN:
         print('admin import auth: KAOYAN_ADMIN_TOKEN enabled', flush=True)
     else:

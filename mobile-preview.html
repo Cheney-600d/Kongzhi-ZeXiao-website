@@ -31,6 +31,8 @@
 <div class="sub">真实页面渲染（本机 8767 端口）· 可在手机壳内滚动 / 点击 / 观看入场动画</div>
 
 <div class="controls">
+  <button class="ctl path active" data-path="">🏠 首页</button>
+  <button class="ctl path" data-path="heat_compare.html?period=202607">🔥 热度榜</button>
   <button class="ctl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
   <button class="ctl" data-w="430" data-h="932">Pro Max · 430×932</button>
   <button class="ctl" data-w="360" data-h="800">Android · 360×800</button>
@@ -52,7 +54,15 @@
 
 <script>
   var frame = document.getElementById('frame');
+  var currentPath = '';
   var ctl = document.querySelectorAll('.ctl[data-w]');
+  var pathCtl = document.querySelectorAll('.ctl.path');
+  function reloadFrame() {
+    var path = currentPath ? currentPath + (currentPath.indexOf('?') >= 0 ? '&' : '?') : '?';
+    frame.src = 'http://127.0.0.1:8767/' + currentPath + path + 'intro=1&t=' + Date.now();
+    var sub = document.querySelector('.sub');
+    if (sub) sub.textContent = '真实页面渲染（本机 8767 端口）· 当前：' + (currentPath || '首页');
+  }
   ctl.forEach(function(b) {
     b.addEventListener('click', function() {
       ctl.forEach(function(x){ x.classList.remove('active'); });
@@ -62,9 +72,14 @@
       reloadFrame();
     });
   });
-  function reloadFrame() {
-    frame.src = 'http://127.0.0.1:8767/?intro=1&t=' + Date.now();
-  }
+  pathCtl.forEach(function(b) {
+    b.addEventListener('click', function() {
+      pathCtl.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      currentPath = b.dataset.path;
+      reloadFrame();
+    });
+  });
   document.querySelector('.refresh').addEventListener('click', reloadFrame);
 </script>
 <script src="desktop-top-nav.js" defer></script>
