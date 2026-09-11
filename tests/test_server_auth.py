@@ -118,6 +118,10 @@ def main():
     try:
         status, body = get(8799, '/api/summary')
         check('/api/summary 200', status == 200 and body.get('code') == 0)
+        status, body = get(8799, '/api/course-resources')
+        resources = body.get('data', {}).get('items', [])
+        check('/api/course-resources 返回公开配置', status == 200 and len(resources) == 9
+              and all(item.get('slot_key') and isinstance(item.get('images'), list) for item in resources))
         status, _ = get_raw(8799, '/index.html')
         check('公开首页可以访问', status == 200)
         status, _ = get_raw(8799, '/数据库/admin.html')

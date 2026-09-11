@@ -40,6 +40,45 @@ SITE_MEDIA_DEFAULTS = (
     ('home_poster_1', 'poster', '哈工大801控制考研全程班', '专业课选择/images/院校海报/compressed/哈工大801控制考研全程班.jpg', '', 30),
     ('home_poster_2', 'poster', '万人教育答疑班开班', '专业课选择/images/院校海报/compressed/万人教育答疑班.jpg', '', 40),
 )
+COURSE_RESOURCE_DEFAULTS = (
+    (
+        'zexiao_book', '📕 27控制类择校宝典', '覆盖132所高校 · 500+学院子方向\n复录比/科目/成绩全收录',
+        '专业课选择/images/择校宝典/txkybook.png',
+        ['专业课选择/images/择校宝典/txkybook.png'], 10,
+    ),
+    (
+        'baodian_s', '宝典S', '精编复习讲义\n基础阶段核心', '专业课选择/images/宝典S/宝典S.png',
+        [f'专业课选择/images/宝典S/宝典S-{index}.png' for index in range(1, 4)], 20,
+    ),
+    (
+        'baodian_a', '宝典A', '历年真题\n真题演练必备', '专业课选择/images/宝典SABD/宝典A.png',
+        [f'专业课选择/images/宝典SABD/宝典A-{index}.png' for index in range(1, 4)], 30,
+    ),
+    (
+        'baodian_b', '宝典B', '专项题型突破\n强化训练', '专业课选择/images/宝典SABD/宝典B.png',
+        [f'专业课选择/images/宝典SABD/宝典B-{index}.png' for index in range(1, 4)], 40,
+    ),
+    (
+        'baodian_c', '宝典C', '冲刺预测4套\n考前点睛', '专业课选择/images/宝典SABD/宝典C.png',
+        ['专业课选择/images/宝典SABD/宝典C.png'], 50,
+    ),
+    (
+        'formula_book', '强化严选题', '由理想学长编写\n深度把握命题趋势', '专业课选择/images/公式宝典/bli.jpg',
+        ['专业课选择/images/公式宝典/bli.jpg'], 60,
+    ),
+    (
+        'workbook', '课后题刷题本', '市面控制考研独一份\n主流版本重点习题', '专业课选择/images/刷题本/image (2).jpg',
+        ['专业课选择/images/刷题本/image (2).jpg'], 70,
+    ),
+    (
+        'real_exam', '各院校真题电子档合集', '免费开源领取', '专业课选择/images/真题/真题.jpg',
+        ['专业课选择/images/真题/真题.jpg'], 80,
+    ),
+    (
+        'high_scores', '高分喜报', '优秀学员成绩展示', '专业课选择/images/喜报/021.png',
+        [f'专业课选择/images/喜报/{index:03d}.png' for index in range(21, 72)], 90,
+    ),
+)
 
 _SESSIONS: dict[str, dict] = {}
 _LOCK = threading.RLock()
@@ -126,6 +165,17 @@ def init_db() -> None:
               updated_by INTEGER,
               updated_at TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS course_resource_slots (
+              slot_key TEXT PRIMARY KEY,
+              title TEXT NOT NULL,
+              description TEXT NOT NULL DEFAULT '',
+              cover_url TEXT NOT NULL,
+              images_json TEXT NOT NULL DEFAULT '[]',
+              enabled INTEGER NOT NULL DEFAULT 1,
+              sort_order INTEGER NOT NULL DEFAULT 0,
+              updated_by INTEGER,
+              updated_at TEXT NOT NULL
+            );
             CREATE TABLE IF NOT EXISTS school_content_modules (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               school_id INTEGER NOT NULL,
@@ -201,6 +251,15 @@ def init_db() -> None:
             'INSERT OR IGNORE INTO site_media_slots(slot_key,kind,title,image_url,link_url,enabled,sort_order,updated_at) '
             'VALUES(?,?,?,?,?,1,?,?)',
             [(*item, now) for item in SITE_MEDIA_DEFAULTS],
+        )
+        conn.executemany(
+            'INSERT OR IGNORE INTO course_resource_slots('
+            'slot_key,title,description,cover_url,images_json,enabled,sort_order,updated_at'
+            ') VALUES(?,?,?,?,?,1,?,?)',
+            [
+                (slot_key, title, description, cover_url, json.dumps(images, ensure_ascii=False), sort_order, now)
+                for slot_key, title, description, cover_url, images, sort_order in COURSE_RESOURCE_DEFAULTS
+            ],
         )
         env_username = os.environ.get('KAOYAN_ADMIN_USER')
         env_password = os.environ.get('KAOYAN_ADMIN_PASSWORD')
@@ -799,6 +858,97 @@ def public_site_media() -> list[dict]:
     return [_site_media_dict(row) for row in rows]
 
 
+def _course_resource_dict(row: sqlite3.Row) -> dict:
+    item = dict(row)
+    try:
+        images = json.loads(item.pop('images_json') or '[]')
+    except (TypeError, json.JSONDecodeError):
+        images = []
+    item['images'] = [str(value) for value in images if str(value or '').strip()]
+    item['enabled'] = bool(item.get('enabled'))
+    return item
+
+
+def list_course_resources(session: dict) -> list[dict]:
+    _require_super_admin(session)
+    init_db()
+    with _connect() as conn:
+        rows = conn.execute(
+            'SELECT slot_key,title,description,cover_url,images_json,enabled,sort_order,updated_at '
+            'FROM course_resource_slots ORDER BY sort_order,slot_key'
+        ).fetchall()
+    return [_course_resource_dict(row) for row in rows]
+
+
+def _clean_image_list(value) -> list[str]:
+    if not isinstance(value, list):
+        raise ValueError('图库必须是图片地址数组')
+    if len(value) > 100:
+        raise ValueError('每个资料分类最多保存 100 张图片')
+    images = []
+    seen = set()
+    for raw_url in value:
+        url = _clean_media_url(raw_url, required=True)
+        if url not in seen:
+            seen.add(url)
+            images.append(url)
+    return images
+
+
+def update_course_resource(session: dict, slot_key: str, body: dict, request_ip: str) -> dict:
+    _require_super_admin(session)
+    key = str(slot_key or '').strip()
+    with _LOCK, _connect() as conn:
+        row = conn.execute('SELECT * FROM course_resource_slots WHERE slot_key=?', (key,)).fetchone()
+        if not row:
+            raise LookupError('资料课程槽位不存在')
+        title = str(body.get('title', row['title'])).strip()[:120]
+        if not title:
+            raise ValueError('展示标题不能为空')
+        description = str(body.get('description', row['description'])).strip()[:500]
+        cover_url = _clean_media_url(body.get('cover_url', row['cover_url']), required=True)
+        images = _clean_image_list(body.get('images', json.loads(row['images_json'] or '[]')))
+        enabled = 1 if body.get('enabled', bool(row['enabled'])) else 0
+        if enabled and not images:
+            raise ValueError('展示中的资料分类至少需要一张图库图片')
+        now = _now()
+        conn.execute(
+            'UPDATE course_resource_slots SET title=?,description=?,cover_url=?,images_json=?,enabled=?,updated_by=?,updated_at=? '
+            'WHERE slot_key=?',
+            (
+                title, description, cover_url, json.dumps(images, ensure_ascii=False), enabled,
+                session['user_id'], now, key,
+            ),
+        )
+        conn.execute(
+            'INSERT INTO content_audit_logs(user_id,school_id,object_type,object_id,action,change_json,request_ip,created_at) '
+            'VALUES(?,?,?,?,?,?,?,?)',
+            (
+                session['user_id'], None, 'course_resource_slot', None, 'publish',
+                json.dumps({
+                    'slot_key': key, 'title': title, 'cover_url': cover_url,
+                    'image_count': len(images), 'enabled': bool(enabled),
+                }, ensure_ascii=False),
+                request_ip, now,
+            ),
+        )
+        updated = conn.execute(
+            'SELECT slot_key,title,description,cover_url,images_json,enabled,sort_order,updated_at '
+            'FROM course_resource_slots WHERE slot_key=?', (key,)
+        ).fetchone()
+    return _course_resource_dict(updated)
+
+
+def public_course_resources() -> list[dict]:
+    init_db()
+    with _connect() as conn:
+        rows = conn.execute(
+            'SELECT slot_key,title,description,cover_url,images_json,enabled,sort_order,updated_at '
+            'FROM course_resource_slots WHERE enabled=1 ORDER BY sort_order,slot_key'
+        ).fetchall()
+    return [_course_resource_dict(row) for row in rows]
+
+
 def list_audit_logs(session: dict, query: dict) -> dict:
     try:
         page = max(1, int(query.get('page', 1) or 1))
@@ -1303,6 +1453,11 @@ def dispatch(method: str, path: str, query: dict, headers, raw_body: bytes, requ
         match = re.fullmatch(r'/api/admin/site-media/([a-z0-9_-]+)', path)
         if match and method == 'PATCH':
             return 200, _ok(update_site_media(session, match.group(1), body, request_ip)), {}
+        if path == '/api/admin/course-resources' and method == 'GET':
+            return 200, _ok({'items': list_course_resources(session)}), {}
+        match = re.fullmatch(r'/api/admin/course-resources/([a-z0-9_-]+)', path)
+        if match and method == 'PATCH':
+            return 200, _ok(update_course_resource(session, match.group(1), body, request_ip)), {}
         if path == '/api/admin/media/video-preview' and method == 'POST':
             return 200, _ok(video_preview(session, body)), {}
         if path == '/api/admin/heat-rankings/preview' and method == 'POST':

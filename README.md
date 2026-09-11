@@ -81,14 +81,14 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 | 专业课科目/参考书 | 从查询页提取 | 7 门 / 146 条 / 461 本书 |
 | 经验贴 | `考研常识科普/posts-data.js` | 126 条 |
 | 校招岗位 | `就业相关/job-listing` | 136 条 |
-| 资料课程 | `专业课选择/资料和课程.html` | 8 个分类 |
+| 资料课程 | `专业课选择/资料和课程.html` | 9 个后台配置槽位（含高分喜报） |
 | 复试面试题库 | 桌面《26宝典C：万人教育控制复试面试宝典.docx》 | 1485 题 |
 
 ### SQLite 数据库
 
 文件：`数据库/admission.db`
 
-表：`schools`、`majors`、`admissions`、`subject_meta`、`exam_subjects`、`reference_books`、`experience_posts`、`job_posts`、`course_resources`，以及内容后台创建的模块、热度榜和 `site_click_events` 点击统计表。
+表：`schools`、`majors`、`admissions`、`subject_meta`、`exam_subjects`、`reference_books`、`experience_posts`、`job_posts`、`course_resources`、`course_resource_slots`，以及内容后台创建的模块、热度榜和 `site_click_events` 点击统计表。
 
 ### API 接口
 
@@ -106,6 +106,7 @@ uvicorn api_app:app --host 127.0.0.1 --port 8000 --workers 1
 | `/api/posts` | 经验贴（筛选/搜索/分页） |
 | `/api/jobs` | 校招岗位（筛选/搜索/分页） |
 | `/api/resources` | 资料课程画廊 |
+| `/api/course-resources` | 后台发布的资料卡、封面与图库配置 |
 | `/api/heat-rankings?period=202608&scope=all&limit=20` | 月度热度榜；scope 支持 all / 985 / 211 / double_non |
 | `POST /api/analytics/click` | 记录公开页链接、按钮和可点击卡片操作，不保存个人信息 |
 

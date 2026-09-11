@@ -149,3 +149,16 @@ CREATE TABLE IF NOT EXISTS course_resources (
   KEY idx_resource_title (title)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资料课程画廊';
 
+CREATE TABLE IF NOT EXISTS course_resource_slots (
+  slot_key VARCHAR(64) NOT NULL,
+  title VARCHAR(120) NOT NULL,
+  description VARCHAR(500) NOT NULL DEFAULT '',
+  cover_url VARCHAR(2000) NOT NULL,
+  images_json TEXT NOT NULL,
+  enabled TINYINT(1) NOT NULL DEFAULT 1,
+  sort_order INT NOT NULL DEFAULT 0,
+  updated_by INT UNSIGNED,
+  updated_at VARCHAR(40) NOT NULL,
+  PRIMARY KEY (slot_key),
+  KEY idx_course_resource_public (enabled, sort_order)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='资料与课程页面可替换槽位';

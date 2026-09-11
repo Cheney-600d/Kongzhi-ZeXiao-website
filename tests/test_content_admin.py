@@ -264,6 +264,30 @@ def main():
         check('公开媒体接口读取已发布首页资源', any(
             item['slot_key'] == 'home_qr_27' and item['title'] == '27考研测试群' for item in public_media
         ))
+        status, body, _ = call('GET', '/api/admin/course-resources', headers={'Cookie': cookie})
+        resource_items = body.get('data', {}).get('items', [])
+        check('后台返回九个资料与课程配置槽位', status == 200 and len(resource_items) == 9)
+        status, body, _ = call('PATCH', '/api/admin/course-resources/baodian_s', {
+            'title': '新版宝典S', 'description': '新版资料说明',
+            'cover_url': uploaded_url, 'images': [uploaded_url, '/uploads/content/detail.png'], 'enabled': True
+        }, auth)
+        updated_resource = body.get('data', {})
+        check('资料卡封面和整组图库可替换', status == 200 and updated_resource.get('title') == '新版宝典S'
+              and updated_resource.get('images') == [uploaded_url, '/uploads/content/detail.png'])
+        public_resources = admin.public_course_resources()
+        check('资料课程配置发布后同步到公开接口', any(
+            item['slot_key'] == 'baodian_s' and item['cover_url'] == uploaded_url for item in public_resources
+        ))
+        status, _, _ = call('PATCH', '/api/admin/course-resources/baodian_s', {
+            'images': [], 'enabled': True
+        }, auth)
+        check('展示中的资料卡不允许空图库', status == 400)
+        try:
+            admin.list_course_resources({'role': 'school_editor', 'user_id': 1})
+            resource_denied = False
+        except PermissionError:
+            resource_denied = True
+        check('院校编辑账号无权配置全站资料课程', resource_denied)
         status, body, _ = call('POST', '/api/admin/media/video-preview', {
             'url': 'http://127.0.0.1/private-video'
         }, auth)
@@ -349,6 +373,7 @@ def main():
         check('发布记录接口返回模块、媒体与榜单操作', status == 200
               and any(item['object_type'] == 'school_content_module' and item['action'] == 'publish' for item in audit_items)
               and any(item['object_type'] == 'site_media_slot' and item['action'] == 'publish' for item in audit_items)
+              and any(item['object_type'] == 'course_resource_slot' and item['action'] == 'publish' for item in audit_items)
               and any(item['object_type'] == 'heat_ranking_batch' and item['action'] == 'publish' for item in audit_items))
         status, body, _ = call('GET', '/api/admin/audit-logs', headers={'Cookie': cookie}, query={'object_type': 'site_media_slot'})
         check('发布记录支持按内容类型筛选', status == 200 and body.get('data', {}).get('total') == 1)

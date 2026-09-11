@@ -130,6 +130,9 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         if decoded_path == '/api/site-media':
             self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_site_media()}})
             return
+        if decoded_path == '/api/course-resources':
+            self._send_json(200, {'code': 0, 'data': {'items': content_admin.public_course_resources()}})
+            return
         if decoded_path == '/api/heat-rankings':
             params = urllib.parse.parse_qs(parsed.query)
             period = (params.get('period') or [''])[0]

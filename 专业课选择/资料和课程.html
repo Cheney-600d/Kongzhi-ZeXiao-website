@@ -332,35 +332,35 @@
         <div class="course-section" id="courseOverview">
             <div class="course-section-title">📊 万人教育资料体系概览</div>
             <div class="overview-grid" style="grid-template-columns: repeat(5, 1fr);">
-                <div class="overview-card" onclick="showZexiaoBookGallery()">
+                <div class="overview-card" data-resource-key="zexiao_book" onclick="showZexiaoBookGallery()">
                     <img class="overview-card-cover" src="images/择校宝典/txkybook.png" alt="27控制类择校宝典" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22240%22><rect width=%22180%22 height=%22240%22 fill=%22%23f0f0f0%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22%23999%22>27择校宝典</text></svg>'">
                     <div class="overview-card-icon" style="display:none">📕</div>
                     <div class="overview-card-title">📕 27控制类择校宝典</div>
                     <div class="overview-card-desc">覆盖132所高校 · 500+学院子方向<br>复录比/科目/成绩全收录</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showBaodianSModal()">
+                <div class="overview-card" data-resource-key="baodian_s" onclick="showBaodianSModal()">
                     <img class="overview-card-cover" src="images/宝典S/宝典S.png" alt="宝典S" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📖</div>
                     <div class="overview-card-title">宝典S</div>
                     <div class="overview-card-desc">精编复习讲义<br>基础阶段核心</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showBaodianAModal()">
+                <div class="overview-card" data-resource-key="baodian_a" onclick="showBaodianAModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典A.png" alt="宝典A" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📋</div>
                     <div class="overview-card-title">宝典A</div>
                     <div class="overview-card-desc">历年真题<br>真题演练必备</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showBaodianBModal()">
+                <div class="overview-card" data-resource-key="baodian_b" onclick="showBaodianBModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典B.png" alt="宝典B" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📄</div>
                     <div class="overview-card-title">宝典B</div>
                     <div class="overview-card-desc">专项题型突破<br>强化训练</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showBaodianCModal()">
+                <div class="overview-card" data-resource-key="baodian_c" onclick="showBaodianCModal()">
                     <img class="overview-card-cover" src="images/宝典SABD/宝典C.png" alt="宝典C" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">🎯</div>
                     <div class="overview-card-title">宝典C</div>
@@ -369,21 +369,21 @@
                 </div>
             </div>
             <div class="overview-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 10px;">
-                <div class="overview-card" onclick="showFormulaBookGallery()">
+                <div class="overview-card" data-resource-key="formula_book" onclick="showFormulaBookGallery()">
                     <img class="overview-card-cover" src="images/公式宝典/bli.jpg" alt="强化严选题" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📐</div>
                     <div class="overview-card-title">强化严选题</div>
                     <div class="overview-card-desc">强化严选题<br>由理想学长编写<br>深度把握命题趋势</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showWorkbookGallery()">
+                <div class="overview-card" data-resource-key="workbook" onclick="showWorkbookGallery()">
                     <img class="overview-card-cover" src="images/刷题本/image (2).jpg" alt="课后题刷题本" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">🖊️</div>
                     <div class="overview-card-title">课后题刷题本</div>
                     <div class="overview-card-desc">市面控制考研独一份<br>主流版本重点习题</div>
                     <div class="overview-card-hint">点击查看实拍</div>
                 </div>
-                <div class="overview-card" onclick="showRealExamGallery()">
+                <div class="overview-card" data-resource-key="real_exam" onclick="showRealExamGallery()">
                     <img class="overview-card-cover" src="images/真题/真题.jpg" alt="各院校真题电子档合集" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <div class="overview-card-icon" style="display:none">📄</div>
                     <div class="overview-card-title">各院校真题电子档合集</div>
@@ -749,7 +749,7 @@
         <!-- 高分喜报 -->
         <div class="course-section" id="scores">
             <div class="course-section-title">🎉 高分喜报</div>
-            <div class="score-grid" onclick="showXibaoGallery()">
+            <div class="score-grid" id="highScoreGrid" onclick="showXibaoGallery()">
                 <div class="score-card"><img src="images/喜报/021.png" alt="高分喜报"></div>
                 <div class="score-card"><img src="images/喜报/022.png" alt="高分喜报"></div>
                 <div class="score-card"><img src="images/喜报/023.png" alt="高分喜报"></div>
@@ -833,22 +833,14 @@
     <script>
         // 择校宝典图片数据（直接穷举，不用manifest.json）
         const zexiaoBookImages = [
-            'images/择校宝典/txkybook.png',
-            'images/择校宝典/屏幕截图 2026-06-19 140705.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140715.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140720.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140725.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140729.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140733.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140737.jpg',
-            'images/择校宝典/屏幕截图 2026-06-19 140745.jpg'
+            'images/择校宝典/txkybook.png'
         ];
         
         // 择校宝典图片展示
         function showZexiaoBookGallery() {
             currentGalleryImages = zexiaoBookImages;
             currentGalleryIndex = 0;
-            document.getElementById('galleryModalTitle').textContent = '📕 27控制类择校宝典';
+            document.getElementById('galleryModalTitle').textContent = resourceTitles.zexiao_book;
             document.getElementById('baodianSModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             renderGalleryDots();
@@ -862,28 +854,7 @@
         
         // 刷题本图片数据（直接穷举，不用manifest.json）
         const workbookImages = [
-            'images/刷题本/image (2).jpg',
-            'images/刷题本/幻灯片1.jpg',
-            'images/刷题本/幻灯片2.jpg',
-            'images/刷题本/幻灯片3.jpg',
-            'images/刷题本/幻灯片4.jpg',
-            'images/刷题本/幻灯片5.jpg',
-            'images/刷题本/幻灯片6.jpg',
-            'images/刷题本/幻灯片7.jpg',
-            'images/刷题本/幻灯片8.jpg',
-            'images/刷题本/幻灯片9.jpg',
-            'images/刷题本/幻灯片10.jpg',
-            'images/刷题本/幻灯片11.jpg',
-            'images/刷题本/幻灯片12.jpg',
-            'images/刷题本/幻灯片13.jpg',
-            'images/刷题本/幻灯片14.jpg',
-            'images/刷题本/幻灯片15.jpg',
-            'images/刷题本/幻灯片16.jpg',
-            'images/刷题本/幻灯片17.jpg',
-            'images/刷题本/幻灯片18.jpg',
-            'images/刷题本/屏幕截图 2026-06-19 153313.jpg',
-            'images/刷题本/屏幕截图 2026-06-19 153317.jpg',
-            'images/刷题本/微信图片_20260619153025_165_312.jpg'
+            'images/刷题本/image (2).jpg'
         ];
         
         // 真题图片数据（直接穷举，不用manifest.json）
@@ -968,6 +939,101 @@
         const baodianCImages = [
             'images/宝典SABD/宝典C.png'
         ];
+
+        const resourceGalleryMap = {
+            zexiao_book: zexiaoBookImages,
+            baodian_s: baodianSImages,
+            baodian_a: baodianAImages,
+            baodian_b: baodianBImages,
+            baodian_c: baodianCImages,
+            formula_book: formulaBookImages,
+            workbook: workbookImages,
+            real_exam: realExamImages,
+            high_scores: xibaoImages
+        };
+        const resourceTitles = {
+            zexiao_book: '📕 27控制类择校宝典',
+            baodian_s: '📖 宝典S 精编复习讲义',
+            baodian_a: '📋 宝典A 历年真题',
+            baodian_b: '📄 宝典B 模拟试卷',
+            baodian_c: '🎯 宝典C 冲刺预测',
+            formula_book: '📐 强化严选题',
+            workbook: '🖊️ 课后题刷题本',
+            real_exam: '📄 各院校真题电子档合集',
+            high_scores: '🎉 高分喜报'
+        };
+
+        function courseResourceAssetUrl(value) {
+            const url = String(value || '').trim().replace(/\\/g, '/');
+            if (/^(?:https?:\/\/|\/|\.\.\/|\.\/)/i.test(url)) return url;
+            return '../' + url.replace(/^\/+/, '');
+        }
+
+        function replaceGalleryImages(key, images) {
+            const target = resourceGalleryMap[key];
+            if (!target || !Array.isArray(images) || !images.length) return;
+            target.splice(0, target.length, ...images.map(courseResourceAssetUrl));
+        }
+
+        function applyCourseResourceConfig(items) {
+            const configuredKeys = new Set();
+            items.forEach(item => {
+                const key = String(item.slot_key || '');
+                configuredKeys.add(key);
+                replaceGalleryImages(key, item.images);
+                resourceTitles[key] = item.title || resourceTitles[key] || '资料实拍';
+                if (key === 'high_scores') {
+                    const scoreGrid = document.getElementById('highScoreGrid');
+                    if (!scoreGrid) return;
+                    scoreGrid.textContent = '';
+                    resourceGalleryMap.high_scores.forEach(url => {
+                        const card = document.createElement('div');
+                        const image = document.createElement('img');
+                        card.className = 'score-card';
+                        image.src = url;
+                        image.alt = '高分喜报';
+                        image.loading = 'lazy';
+                        card.appendChild(image);
+                        scoreGrid.appendChild(card);
+                    });
+                    const heading = scoreGrid.previousElementSibling;
+                    if (heading) heading.textContent = '🎉 ' + String(item.title || '高分喜报').replace(/^🎉\s*/, '');
+                    return;
+                }
+                const card = document.querySelector('.overview-card[data-resource-key="' + key + '"]');
+                if (!card) return;
+                const cover = card.querySelector('.overview-card-cover');
+                const title = card.querySelector('.overview-card-title');
+                const description = card.querySelector('.overview-card-desc');
+                if (cover && item.cover_url) {
+                    cover.src = courseResourceAssetUrl(item.cover_url);
+                    cover.alt = item.title || cover.alt;
+                }
+                if (title) title.textContent = item.title || title.textContent;
+                if (description) {
+                    description.textContent = item.description || '';
+                    description.style.whiteSpace = 'pre-line';
+                }
+            });
+            document.querySelectorAll('.overview-card[data-resource-key]').forEach(card => {
+                card.style.display = configuredKeys.has(card.dataset.resourceKey) ? '' : 'none';
+            });
+            if (!configuredKeys.has('high_scores')) {
+                const scoreGrid = document.getElementById('highScoreGrid');
+                if (scoreGrid && scoreGrid.closest('.course-section')) scoreGrid.closest('.course-section').style.display = 'none';
+            }
+        }
+
+        async function loadCourseResourceConfig() {
+            try {
+                const response = await fetch('../api/course-resources', { cache: 'no-store' });
+                const payload = await response.json();
+                if (!response.ok || payload.code !== 0 || !payload.data || !Array.isArray(payload.data.items)) return;
+                applyCourseResourceConfig(payload.data.items);
+            } catch (_error) {
+                // 保留页面内置内容，静态预览和 API 临时不可用时仍可正常浏览。
+            }
+        }
         
         
         let currentGalleryImages = [];
@@ -993,14 +1059,14 @@
         }
         
         // 各入口函数（保持现有HTML调用方式不变）
-        function showBaodianSModal() { openGallery('📖 宝典S 精编复习讲义', baodianSImages); }
-        function showWorkbookGallery() { openGallery('🖊️ 课后题刷题本', workbookImages); }
-        function showBaodianAModal() { openGallery('📋 宝典A 历年真题', baodianAImages); }
-        function showBaodianBModal() { openGallery('📄 宝典B 模拟试卷', baodianBImages); }
-        function showBaodianCModal() { openGallery('🎯 宝典C 冲刺预测', baodianCImages); }
-        function showRealExamGallery() { openGallery('📄 各院校真题电子档合集', realExamImages); }
-        function showFormulaBookGallery() { openGallery('📐 强化严选题', formulaBookImages); }
-        function showXibaoGallery() { openGallery('🎉 高分喜报', xibaoImages); }
+        function showBaodianSModal() { openGallery(resourceTitles.baodian_s, baodianSImages); }
+        function showWorkbookGallery() { openGallery(resourceTitles.workbook, workbookImages); }
+        function showBaodianAModal() { openGallery(resourceTitles.baodian_a, baodianAImages); }
+        function showBaodianBModal() { openGallery(resourceTitles.baodian_b, baodianBImages); }
+        function showBaodianCModal() { openGallery(resourceTitles.baodian_c, baodianCImages); }
+        function showRealExamGallery() { openGallery(resourceTitles.real_exam, realExamImages); }
+        function showFormulaBookGallery() { openGallery(resourceTitles.formula_book, formulaBookImages); }
+        function showXibaoGallery() { openGallery(resourceTitles.high_scores, xibaoImages); }
         
         function hideBaodianSModal() {
             document.getElementById('baodianSModal').classList.remove('active');
@@ -1092,6 +1158,7 @@
         document.getElementById('baodianSModal').addEventListener('click', function(e) {
             if (e.target === this) hideBaodianSModal();
         });
+        loadCourseResourceConfig();
     </script>
 <script src="../desktop-top-nav.js" defer></script>
 <script src="../nav-data.js"></script>

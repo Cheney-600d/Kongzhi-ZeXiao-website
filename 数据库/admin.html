@@ -6,7 +6,7 @@
   <title>择校内容后台</title>
   <link rel="icon" type="image/png" href="../assets/wanren-education-logo.png">
   <link rel="stylesheet" href="../vendor/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="admin.css?v=20260908-media-history">
+  <link rel="stylesheet" href="admin.css?v=20260911-course-resources">
 <link rel="stylesheet" href="../mobile-function-shell.css?v=20260818">
 </head>
 <body>
@@ -34,6 +34,7 @@
         <button data-view="schools"><i class="fa-solid fa-building-columns"></i>院校管理</button>
         <button data-view="modules"><i class="fa-solid fa-layer-group"></i>内容模块</button>
         <button data-view="media"><i class="fa-solid fa-photo-film"></i>媒体资源</button>
+        <button data-view="resources"><i class="fa-solid fa-book-open"></i>资料与课程</button>
         <button data-view="history"><i class="fa-solid fa-clock-rotate-left"></i>发布记录</button>
         <button data-view="heat"><i class="fa-solid fa-fire-flame-curved"></i>热度榜单</button>
         <button data-view="import"><i class="fa-solid fa-file-arrow-up"></i>数据导入</button>
@@ -197,6 +198,16 @@
         <p id="mediaMessage" class="form-message" role="status"></p>
       </div>
 
+      <div id="resourcesView" class="view-panel resources-view" hidden>
+        <header class="page-heading resources-heading">
+          <div><p class="eyebrow">Course resources</p><h1>资料与课程配置</h1><p>替换公开页各资料卡的标题、说明、封面和整组实拍图；保存后立即生效。</p></div>
+          <a class="button button--secondary" href="../专业课选择/资料和课程.html" target="_blank"><i class="fa-regular fa-eye"></i>查看公开页</a>
+        </header>
+        <section class="media-notice"><i class="fa-solid fa-circle-info"></i><span>封面建议使用竖版图片；图库可批量上传，也可在地址列表中逐行排序或删除。单张图片最大 5MB。</span></section>
+        <section id="courseResourceGrid" class="course-resource-grid" aria-live="polite"></section>
+        <p id="resourceMessage" class="form-message" role="status"></p>
+      </div>
+
       <div id="historyView" class="view-panel history-view" hidden>
         <header class="page-heading history-heading">
           <div><p class="eyebrow">Publishing audit</p><h1>发布记录</h1><p>查看模块发布、下线、首页媒体更新和热度榜发布记录。</p></div>
@@ -204,7 +215,7 @@
         </header>
         <section class="history-filter panel-card">
           <label>操作类型<select id="historyAction"><option value="">全部操作</option><option value="publish">发布</option><option value="unpublish">下线</option><option value="create">新建</option><option value="update">更新</option><option value="delete">删除</option><option value="reorder">排序</option></select></label>
-          <label>内容类型<select id="historyObjectType"><option value="">全部内容</option><option value="school_content_module">院校详情模块</option><option value="global_content_module">真题备考模块</option><option value="site_media_slot">首页媒体</option><option value="heat_ranking_batch">热度榜单</option></select></label>
+          <label>内容类型<select id="historyObjectType"><option value="">全部内容</option><option value="school_content_module">院校详情模块</option><option value="global_content_module">真题备考模块</option><option value="site_media_slot">首页媒体</option><option value="course_resource_slot">资料与课程</option><option value="heat_ranking_batch">热度榜单</option></select></label>
           <label class="history-search">搜索<input id="historySearch" type="search" placeholder="管理员、院校或内容名称"></label>
           <button id="applyHistoryFilter" class="button button--primary" type="button"><i class="fa-solid fa-filter"></i>筛选</button>
         </section>
@@ -263,7 +274,7 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="admin.js?v=20260908-media-history"></script>
+  <script src="admin.js?v=20260911-course-resources"></script>
 <script src="../nav-data.js"></script>
 <script src="../mobile-function-shell.js" data-root="../"></script>
 </body>

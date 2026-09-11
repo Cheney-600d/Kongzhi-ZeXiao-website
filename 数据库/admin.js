@@ -5,7 +5,7 @@
     csrf: '', user: null, schools: [], schoolId: 0, scope: 'school', modules: [], activeId: 0,
     saveTimer: 0, saving: false, selectedFile: null, heatFile: null, heatPreview: null,
     schoolManagerId: 0, schoolManagerModules: [], schoolManagerRequest: 0,
-    siteMedia: [], historyPage: 1, historyTotal: 0, historyPageSize: 30
+    siteMedia: [], courseResources: [], historyPage: 1, historyTotal: 0, historyPageSize: 30
   };
 
   var $ = function (selector) { return document.querySelector(selector); };
@@ -1006,13 +1006,134 @@
     }
   });
 
+  function resourceSlotHint(item) {
+    return item.slot_key === 'high_scores' ? '公开页高分喜报图库' : '公开页资料卡 · ' + (item.images || []).length + ' 张实拍图';
+  }
+
+  function renderCourseResources() {
+    var grid = $('#courseResourceGrid');
+    grid.innerHTML = state.courseResources.map(function (item) {
+      return '<article class="course-resource-card panel-card" data-resource-key="' + escapeHtml(item.slot_key) + '">' +
+        '<div class="course-resource-preview"><img src="' + escapeHtml(adminAssetUrl(item.cover_url)) + '" alt="' + escapeHtml(item.title) + '"><span>封面预览</span></div>' +
+        '<div class="course-resource-editor"><header><div><small>' + escapeHtml(resourceSlotHint(item)) + '</small><h2>' + escapeHtml(item.title) + '</h2></div>' +
+          '<label class="media-switch"><input data-resource-field="enabled" type="checkbox" ' + (item.enabled ? 'checked' : '') + '><span></span><em>' + (item.enabled ? '已展示' : '已隐藏') + '</em></label></header>' +
+          '<div class="course-resource-fields"><label>展示标题<input data-resource-field="title" maxlength="120" value="' + escapeHtml(item.title) + '"></label>' +
+          '<label>卡片说明<textarea data-resource-field="description" rows="3" maxlength="500">' + escapeHtml(item.description || '') + '</textarea></label></div>' +
+          '<label>封面地址<input data-resource-field="cover_url" value="' + escapeHtml(item.cover_url || '') + '" placeholder="上传封面后自动填写"></label>' +
+          '<label>图库图片地址（每行一张，顺序即公开页顺序）<textarea class="course-resource-gallery" data-resource-field="images" spellcheck="false">' + escapeHtml((item.images || []).join('\n')) + '</textarea></label>' +
+          '<div class="course-resource-meta"><span>' + (item.images || []).length + ' 张图库图片</span><span>上次更新：' + escapeHtml(item.updated_at ? new Date(item.updated_at).toLocaleString('zh-CN', { hour12: false }) : '—') + '</span></div>' +
+          '<p class="course-resource-upload-status" data-resource-status></p>' +
+          '<div class="course-resource-actions"><button class="button button--secondary" data-resource-cover-upload type="button"><i class="fa-solid fa-upload"></i>上传封面</button>' +
+          '<input data-resource-cover-file type="file" accept="image/png,image/jpeg,image/webp" hidden>' +
+          '<button class="button button--secondary" data-resource-gallery-upload type="button"><i class="fa-regular fa-images"></i>批量替换图库</button>' +
+          '<input data-resource-gallery-files type="file" accept="image/png,image/jpeg,image/webp" multiple hidden>' +
+          '<button class="button button--primary" data-resource-save type="button"><i class="fa-solid fa-cloud-arrow-up"></i>保存并发布</button></div>' +
+        '</div></article>';
+    }).join('');
+    if (!state.courseResources.length) grid.innerHTML = '<div class="history-empty panel-card"><i class="fa-solid fa-book-open"></i><p>暂无可配置的资料课程槽位</p></div>';
+  }
+
+  async function loadCourseResources() {
+    showMessage($('#resourceMessage'), '正在读取资料与课程配置…', true);
+    try {
+      var data = await api('/api/admin/course-resources');
+      state.courseResources = data.items || [];
+      renderCourseResources();
+      showMessage($('#resourceMessage'), '', true);
+    } catch (error) {
+      showMessage($('#resourceMessage'), error.message, false);
+    }
+  }
+
+  function readCourseResourceCard(card) {
+    var seen = {};
+    var images = card.querySelector('[data-resource-field="images"]').value.split(/\r?\n/).map(function (value) { return value.trim(); }).filter(function (url) {
+      if (!url || seen[url]) return false;
+      seen[url] = true;
+      return true;
+    });
+    return {
+      title: card.querySelector('[data-resource-field="title"]').value.trim(),
+      description: card.querySelector('[data-resource-field="description"]').value.trim(),
+      cover_url: card.querySelector('[data-resource-field="cover_url"]').value.trim(),
+      images: images,
+      enabled: card.querySelector('[data-resource-field="enabled"]').checked
+    };
+  }
+
+  async function saveCourseResourceCard(card, extra, successMessage) {
+    var key = card.dataset.resourceKey;
+    var button = card.querySelector('[data-resource-save]');
+    var payload = Object.assign(readCourseResourceCard(card), extra || {});
+    button.disabled = true;
+    try {
+      var updated = await api('/api/admin/course-resources/' + encodeURIComponent(key), { method: 'PATCH', body: JSON.stringify(payload) });
+      state.courseResources = state.courseResources.map(function (item) { return item.slot_key === key ? updated : item; });
+      renderCourseResources();
+      toast(successMessage || '资料与课程配置已发布');
+    } catch (error) {
+      toast(error.message);
+      button.disabled = false;
+      throw error;
+    }
+  }
+
+  async function uploadResourceFiles(files, statusNode) {
+    var urls = [];
+    if (files.length > 100) throw new Error('每个资料分类最多保存 100 张图片');
+    for (var index = 0; index < files.length; index += 1) {
+      var file = files[index];
+      if (file.size > 5 * 1024 * 1024) throw new Error(file.name + ' 超过 5MB');
+      statusNode.textContent = '正在上传 ' + (index + 1) + ' / ' + files.length + '：' + file.name;
+      var asset = await api('/api/admin/media/upload', { method: 'POST', body: JSON.stringify({ filename: file.name, kind: 'image', base64: await fileToBase64(file) }) });
+      urls.push(asset.url);
+    }
+    return urls;
+  }
+
+  $('#courseResourceGrid').addEventListener('click', function (event) {
+    var card = event.target.closest('.course-resource-card');
+    if (!card) return;
+    if (event.target.closest('[data-resource-cover-upload]')) { card.querySelector('[data-resource-cover-file]').click(); return; }
+    if (event.target.closest('[data-resource-gallery-upload]')) { card.querySelector('[data-resource-gallery-files]').click(); return; }
+    if (event.target.closest('[data-resource-save]')) saveCourseResourceCard(card).catch(function () {});
+  });
+
+  $('#courseResourceGrid').addEventListener('change', async function (event) {
+    var card = event.target.closest('.course-resource-card');
+    if (!card) return;
+    if (event.target.matches('[data-resource-field="enabled"]')) {
+      event.target.closest('.media-switch').querySelector('em').textContent = event.target.checked ? '已展示' : '已隐藏';
+      return;
+    }
+    var isCover = event.target.matches('[data-resource-cover-file]');
+    var isGallery = event.target.matches('[data-resource-gallery-files]');
+    if (!isCover && !isGallery) return;
+    var files = Array.prototype.slice.call(event.target.files || []);
+    if (!files.length) return;
+    var statusNode = card.querySelector('[data-resource-status]');
+    statusNode.classList.remove('is-error');
+    try {
+      if (isGallery && !window.confirm('将用选中的 ' + files.length + ' 张图片替换当前整组图库，确定继续？')) return;
+      var urls = await uploadResourceFiles(isCover ? files.slice(0, 1) : files, statusNode);
+      statusNode.textContent = '上传完成，正在发布…';
+      await saveCourseResourceCard(card, isCover ? { cover_url: urls[0] } : { images: urls }, isCover ? '封面已替换并发布' : '图库已替换并发布');
+    } catch (error) {
+      statusNode.textContent = error.message;
+      statusNode.classList.add('is-error');
+    } finally {
+      event.target.value = '';
+    }
+  });
+
   var historyActionLabels = { publish: '发布', unpublish: '下线', create: '新建', update: '更新', delete: '删除', reorder: '排序' };
-  var historyTypeLabels = { school_content_module: '院校详情模块', global_content_module: '真题备考模块', site_media_slot: '首页媒体', heat_ranking_batch: '热度榜单' };
+  var historyTypeLabels = { school_content_module: '院校详情模块', global_content_module: '真题备考模块', site_media_slot: '首页媒体', course_resource_slot: '资料与课程', heat_ranking_batch: '热度榜单' };
 
   function auditSummary(item) {
     var change = item.change || {};
     if (item.object_type === 'heat_ranking_batch') return (change.rows || 0) + ' 条榜单数据' + (change.replaced ? '，已替换同月版本' : '');
     if (item.object_type === 'site_media_slot') return (change.enabled === false ? '隐藏媒体' : '更新图片并展示') + (change.link_url ? '，含跳转链接' : '');
+    if (item.object_type === 'course_resource_slot') return (change.enabled === false ? '隐藏资料卡' : '更新资料卡') + '，图库 ' + (change.image_count || 0) + ' 张';
     if (item.action === 'reorder') return '调整了 ' + ((change.ordered_ids || []).length || 0) + ' 个模块的顺序';
     if (item.action === 'publish') return '状态更新为已发布';
     if (item.action === 'unpublish') return '状态更新为草稿';
@@ -1079,22 +1200,24 @@
   async function switchAdminView(view) {
     var activeButton = $('.sidebar-nav button[data-view="' + view + '"]');
     Array.prototype.forEach.call(document.querySelectorAll('.sidebar-nav button'), function (item) { item.classList.toggle('is-active', item === activeButton); });
-    var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview' || view === 'schools' || view === 'media' || view === 'history';
+    var implemented = view === 'modules' || view === 'import' || view === 'heat' || view === 'overview' || view === 'schools' || view === 'media' || view === 'resources' || view === 'history';
     $('#modulesView').hidden = view !== 'modules';
     $('#importView').hidden = view !== 'import';
     $('#heatView').hidden = view !== 'heat';
     $('#overviewView').hidden = view !== 'overview';
     $('#schoolManagementView').hidden = view !== 'schools';
     $('#mediaView').hidden = view !== 'media';
+    $('#resourcesView').hidden = view !== 'resources';
     $('#historyView').hidden = view !== 'history';
     $('#placeholderView').hidden = implemented;
     if (!implemented && activeButton) $('#placeholderTitle').textContent = activeButton.textContent.trim();
-    var breadcrumb = ({ overview: '运营数据总览', schools: '院校管理', media: '首页媒体资源', history: '发布记录', heat: '院校热度榜单', import: '录取数据导入' })[view];
+    var breadcrumb = ({ overview: '运营数据总览', schools: '院校管理', media: '首页媒体资源', resources: '资料与课程配置', history: '发布记录', heat: '院校热度榜单', import: '录取数据导入' })[view];
     if (view === 'modules') breadcrumb = state.scope === 'exam' ? '真题备考区' : '院校详情页';
     $('#contentBreadcrumb').textContent = breadcrumb || (activeButton ? activeButton.textContent.trim() : '内容管理');
     if (view === 'overview') await loadAnalytics();
     if (view === 'schools') await loadSchoolManagement();
     if (view === 'media') await loadSiteMedia();
+    if (view === 'resources') await loadCourseResources();
     if (view === 'history') await loadAuditHistory(1);
     if (view === 'import') await loadSummary();
     els.adminApp.classList.remove('is-sidebar-open');

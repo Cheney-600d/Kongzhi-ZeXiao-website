@@ -103,7 +103,8 @@ http://127.0.0.1:8767/数据库/admin.html
 - `admissions`：录取数据（year 区分年份）
 - `subject_meta` / `exam_subjects`：专业课科目与学校-科目关系
 - `reference_books`：初试参考书目
-- `experience_posts` / `job_posts` / `course_resources`：经验贴 / 校招岗位 / 资料课程
+- `experience_posts` / `job_posts` / `course_resources`：经验贴 / 校招岗位 / 原始资料课程导入数据
+- `course_resource_slots`：资料与课程公开页的后台可替换封面、图库与显隐配置
 
 ## 后续更新
 - 每年新数据：新增 `year` 记录，不覆盖旧年份
